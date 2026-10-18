@@ -1,0 +1,7 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>ZEK | Propuestas</title>
+<style>body{font-family:system-ui,sans-serif;background:#F8F7FF;color:#111;max-width:760px;margin:0 auto;padding:48px 20px}
+h1{font-size:28px}a{color:#6C3BFF}li{margin:10px 0}small{color:#666}</style></head>
+<body><h1>ZEK Agencia Digital</h1><p>Propuestas de sitios web.</p><ul id="l"></ul>
+<script>fetch('demos.json').then(r=>r.json()).then(d=>{document.getElementById('l').innerHTML=Object.entries(d).reverse()
+.map(([k,v])=>`<li><a href="${k}/">${v.cliente}</a> <small>${v.fecha.slice(0,10)}</small></li>`).join('')})</script></body></html>
