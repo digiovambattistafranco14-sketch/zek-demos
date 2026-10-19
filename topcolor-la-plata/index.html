@@ -292,23 +292,40 @@ footer{padding:36px 0 120px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--ink);font-weight:600}
 
-/* ---------- botón de WhatsApp ---------- */
-.wa{position:fixed;right:max(18px, env(safe-area-inset-right));bottom:max(18px, env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:12px;
-  padding:9px 20px 9px 9px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;
-  box-shadow:0 2px 4px rgba(12,106,41,.25), 0 18px 40px -14px rgba(12,106,41,.75);
-  transition:transform .18s var(--ease-out), background-color .2s ease, box-shadow .2s ease;
-  animation:subir .5s var(--ease-out) 1.6s both}
-.wa .ico{width:44px;height:44px;border-radius:50%;background:#fff;color:var(--green);display:grid;place-items:center;flex:none}
-.wa .ico svg{width:24px;height:24px;fill:currentColor}
-.wa b{display:block;font-weight:600;font-size:15px;line-height:1.15}
-.wa small{display:block;font-size:13px;opacity:.85;font-variant-numeric:tabular-nums}
-.wa:active{transform:scale(.97)}
-@media (hover:hover) and (pointer:fine){.wa:hover{background:var(--green-deep);transform:translateY(-2px);box-shadow:0 2px 4px rgba(12,106,41,.25), 0 24px 46px -14px rgba(12,106,41,.85)}}
-@media (max-width:520px){.wa{padding:8px}.wa .txt{display:none}.wa .ico{width:48px;height:48px}}
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.6s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+/* dos ondas que salen cada tanto, como un llamado, y después descansan */
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 2.6s infinite}
+.wa::after{animation-delay:3s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(20,33,26,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
 
 /* ---------- menos movimiento ---------- */
 @media (prefers-reduced-motion: reduce){
   .hero h1 span,.hero .lead,.hero .ctas,.where,.print-back,.print-main,.wa{animation:subir-suave .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
   .print-main img{animation:none}
   .print-back{transform:rotate(5deg)}.print-main{transform:rotate(-3deg)}
   .film-track{animation:none}
@@ -559,8 +576,8 @@ footer a{color:var(--ink);font-weight:600}
 </footer>
 
 <a class="wa" href="https://wa.me/5492214597390" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 0221 459-7390">
-  <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
-  <span class="txt"><b>Escribinos</b><small>0221 459-7390</small></span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>0221 459-7390</small></span>
 </a>
 
 <script>
