@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pach Barber Club | Peluquería y barbería en Paraná</title>
+<meta name="description" content="Peluquería y barbería en Colón 344, Paraná. Corte, barba y color con turno. Elegí qué te hacés y el día, y te confirmamos por mensaje.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121212'/%3E%3Crect x='10' y='16' width='44' height='26' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Ctext x='32' y='35.5' font-family='Arial Black,Arial' font-weight='900' font-size='15' fill='%23fff' text-anchor='middle'%3EPCH%3C/text%3E%3Crect x='14' y='48' width='36' height='2.4' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="alternate icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pach Barber Club | Peluquería y barbería en Paraná">
+<meta property="og:description" content="Corte, barba y color en Colón 344, Paraná. Sacá tu turno desde la web.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/pach-barber-club/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/pach-barber-club/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#121212">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+/* Concepto: el poste de barbería que tienen en el local. Es el único momento fuerte: en la portada se prende y arranca a girar.
+   Los servicios están en un tablero de letras, como el de cualquier barbería, con "Consultá" donde iría el precio.
+   El turno se arma como un ticket de papel del club, que se va completando mientras elegís.
+   Colores de su marca: el negro y blanco del logo y de la pared del local, el cromo de los sillones
+   y el dorado de sus capas, que aparece solo en el poste y en el sello del ticket. */
+:root{
+  --pared:#121212;      /* la pared negra del local y el fondo del logo */
+  --pared-2:#1D1D1D;
+  --azulejo:#F1F2F0;    /* fondo claro, frío como el azulejo */
+  --papel:#FBFBFA;
+  --tinta:#151515;
+  --gris:#575B60;
+  --gris-claro:#B9BDC1;
+  --cromo:#A3A9AE;
+  --dorado:#C8A145;     /* el dorado de sus capas */
+  --err:#B3261E;
+  /* Tipografía sacada del logo: la palabra PACH es una palo seco ancha y pesada; BARBER CLUB, la misma fina y espaciada.
+     Archivo tiene eje de ancho, así que sale todo de una sola familia. */
+  --f:'Archivo', 'Arial', system-ui, sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:76px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--azulejo);color:var(--tinta);font-family:var(--f);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased;font-kerning:normal}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--f);text-wrap:balance}
+p{margin:0}
+::selection{background:var(--tinta);color:#fff}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:3px;border-radius:6px}
+.oscuro :focus-visible,.top :focus-visible,.menu :focus-visible{outline-color:#fff}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.ico{width:20px;height:20px;flex:none}
+.ancha{font-stretch:125%;font-weight:800;letter-spacing:-0.01em}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font:600 16px/1 var(--f);text-decoration:none;white-space:nowrap;transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-blanco{background:#fff;color:var(--tinta)}
+.btn-linea{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.btn-negro{background:var(--tinta);color:#fff}
+@media (hover:hover) and (pointer:fine){
+  .btn-blanco:hover{background:#E4E6E8}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px #fff}
+  .btn-negro:hover{background:#333}
+}
+
+/* ---------- encabezado: su letrero recreado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;background:var(--pared);color:#fff;
+  transition:background-color .3s ease, box-shadow .3s ease}
+.top.scrolled{background:rgba(18,18,18,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.08), 0 16px 30px -24px rgba(0,0,0,.8)}
+@media (prefers-reduced-transparency: reduce){.top.scrolled{background:var(--pared);-webkit-backdrop-filter:none;backdrop-filter:none}}
+.top .wrap{display:flex;align-items:center;gap:22px}
+.marca{display:inline-flex;flex-direction:column;align-items:stretch;gap:4px;text-decoration:none;color:#fff;border-radius:4px}
+.caja{display:block;border:2px solid currentColor;padding:4px 10px 3px;font-stretch:125%;font-weight:800;font-size:21px;line-height:1;letter-spacing:.07em;text-align:center}
+.club{display:block;font-weight:300;font-size:8.5px;line-height:1;letter-spacing:.42em;text-align:center;margin-right:-.42em;white-space:nowrap}
+.que{font-size:13.5px;line-height:1.3;color:var(--gris-claro);padding-left:18px;box-shadow:inset 1px 0 0 rgba(255,255,255,.18)}
+.links{display:flex;gap:4px;margin-left:auto}
+.links a{position:relative;text-decoration:none;font-weight:500;font-size:15.5px;padding:10px 12px;color:#E8E9EA}
+.links a::after{content:"";position:absolute;left:12px;right:12px;bottom:5px;height:2px;border-radius:2px;background:var(--dorado);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.links a:hover::after{transform:scaleX(1)}}
+.links a:focus-visible::after{transform:scaleX(1)}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:46px;height:46px;border:0;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);color:#fff;cursor:pointer;place-items:center;transition:background-color .2s ease}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"]{background:#fff;color:var(--tinta)}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.menu-btn:active{transform:scale(.95)}
+.menu{position:fixed;top:calc(var(--header) - 2px);left:12px;right:12px;z-index:49;background:var(--pared-2);color:#fff;border-radius:20px;padding:8px 8px 12px;
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.06);transform-origin:top center;opacity:0;transform:translateY(-8px) scale(.98);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s}
+.menu.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s}
+.menu .item-m{display:block;padding:15px 14px;font-stretch:125%;font-weight:700;font-size:24px;line-height:1;text-decoration:none}
+.menu .item-m + .item-m{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.menu .item-m:active{background:rgba(255,255,255,.06)}
+.menu .dato{margin:8px 14px 14px;font-size:14.5px;color:var(--gris-claro)}
+.menu .btn{display:flex;width:100%}
+@media (max-width:960px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+@media (max-width:420px){.que{font-size:12.5px;padding-left:14px}.top .wrap{gap:14px}}
+
+/* ---------- portada: la pared negra, el espejo y el poste ---------- */
+.hero{background:var(--pared);color:#fff;padding:calc(var(--header) + 56px) 0 96px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-stretch:125%;font-weight:800;font-size:clamp(3rem, 6.4vw, 5.9rem);line-height:.95;letter-spacing:-0.02em}
+.hero h1 span{display:block}
+.hero .lead{margin-top:28px;font-size:clamp(18px, 1.6vw, 20.5px);line-height:1.55;color:#C9CCCF;max-width:36ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.donde{display:flex;align-items:center;gap:10px;margin-top:30px;font-size:15px;color:var(--gris-claro)}
+.donde svg{width:18px;height:18px;flex:none}
+.estacion{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:stretch;justify-self:end;width:min(470px, 100%)}
+
+/* el poste: bola y tapas de cromo, el tubo de vidrio con las rayas que suben */
+.poste{display:flex;flex-direction:column;align-items:center;width:78px}
+.poste .bola{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 34% 30%, #fff 0, #D9DDE0 22%, #8E959A 62%, #3E4246 100%);margin-bottom:-4px;position:relative;z-index:1}
+.poste .tapa{width:78px;height:24px;border-radius:9px;background:linear-gradient(90deg, #4A4E52 0%, #C9CED2 22%, #F5F6F7 38%, #9AA0A5 62%, #5C6166 82%, #3E4246 100%);
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
+.poste .tapa.abajo{height:30px;border-radius:9px 9px 14px 14px}
+.tubo{position:relative;flex:1;min-height:260px;width:60px;overflow:hidden;background:var(--papel)}
+.rayas{position:absolute;left:0;top:0;width:100%;height:calc(100% + 56px);will-change:transform;
+  background:linear-gradient(to bottom right, var(--tinta) 0 25%, var(--papel) 25% 50%, var(--dorado) 50% 75%, var(--papel) 75% 100%) 0 0 / 60px 56px}
+/* el vidrio: sombra en los bordes y un brillo vertical, para que se lea como un cilindro */
+.tubo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.08) 22%, rgba(255,255,255,.55) 36%, rgba(255,255,255,0) 50%, rgba(0,0,0,.1) 72%, rgba(0,0,0,.6) 100%)}
+.tubo::before{content:"";position:absolute;inset:0;z-index:1;background:#000;opacity:0;pointer-events:none}
+
+.espejo{position:relative;margin:0;border-radius:26px;padding:9px;background:#0A0A0A;align-self:center;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.75), 0 0 0 6px rgba(255,255,255,.06), 0 40px 70px -40px rgba(0,0,0,.9)}
+.espejo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:var(--pared-2)}
+
+/* el momento de la página: el texto entra, el poste se prende y arranca a girar (el giro lo maneja el JS) */
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes prender{from{opacity:.72}to{opacity:0}}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+.hero h1 span,.hero .lead,.hero .ctas,.donde{animation:subir .7s var(--ease-out) both}
+.hero h1 span:nth-child(2){animation-delay:.06s}
+.hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}.donde{animation-delay:.26s}
+.espejo{animation:subir .8s var(--ease-out) .1s both}
+.poste{animation:aparecer .5s ease .05s both}
+.tubo::before{animation:prender .5s ease .45s both}
+@media (max-width:860px){
+  .hero{padding:calc(var(--header) + 30px) 0 64px}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .estacion{justify-self:start;width:100%;max-width:440px;gap:20px}
+  .poste{width:58px}.poste .tapa{width:58px}.tubo{width:44px;min-height:0}.poste .bola{width:28px;height:28px}
+  .rayas{background-size:44px 42px;height:calc(100% + 42px)}
+}
+
+/* ---------- qué te hacés: el tablero de letras ---------- */
+.servicios{padding:104px 0}
+.cab{max-width:640px}
+.cab h2{font-stretch:125%;font-weight:800;font-size:clamp(2.3rem, 4.6vw, 3.7rem);line-height:.98;letter-spacing:-0.015em}
+.cab p{margin-top:16px;color:var(--gris);font-size:18.5px;line-height:1.55;max-width:48ch}
+.servicios .grid{display:grid;grid-template-columns:1.45fr .55fr;gap:28px;margin-top:52px;align-items:start}
+/* el fieltro negro con canaletas donde se encastran las letras, dentro de un marco */
+.tablero{position:relative;background:var(--pared);color:#F2F2F0;border-radius:14px;padding:clamp(18px, 3vw, 34px) clamp(18px, 3.4vw, 40px) clamp(22px, 3vw, 34px);
+  background-image:repeating-linear-gradient(to bottom, rgba(255,255,255,.035) 0 1px, transparent 1px 9px);
+  box-shadow:0 0 0 9px #2A2A2A, 0 0 0 10px #3A3A3A, 0 40px 70px -36px rgba(18,18,18,.65)}
+.fila{display:grid;grid-template-columns:1fr auto;column-gap:18px;row-gap:8px;align-items:center;padding:20px 0}
+.fila + .fila{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.renglon{display:flex;align-items:baseline;gap:10px;min-width:0;font-stretch:87%;font-weight:600;font-size:clamp(21px, 2.3vw, 27px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase}
+.renglon .pts{flex:1;min-width:20px;height:0;border-bottom:2px dotted rgba(255,255,255,.3);transform:translateY(-5px)}
+.renglon .pre{font-size:.72em;letter-spacing:.1em;color:var(--gris-claro);white-space:nowrap}
+.fila .det{grid-column:1;color:#AEB2B6;font-size:15.5px;line-height:1.45;max-width:46ch}
+.fila .sumar{grid-column:2;grid-row:1 / span 2}
+.fila.prod{grid-template-columns:auto 1fr auto}
+.fila.prod .lata{grid-row:1 / span 2;width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #3A3A3A}
+.fila.prod .renglon,.fila.prod .det{grid-column:2}
+.fila.prod .sumar{grid-column:3}
+.pie-tablero{margin-top:12px;padding-top:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);text-align:center;font-stretch:87%;font-weight:600;font-size:18px;letter-spacing:.24em;text-transform:uppercase;color:#E2E3E4}
+/* sumar al turno: se vuelve una ficha blanca con tilde cuando ya está */
+.sumar{display:inline-flex;align-items:center;justify-content:center;min-width:138px;gap:8px;height:44px;padding:0 16px 0 13px;border:0;border-radius:999px;cursor:pointer;background:transparent;color:#fff;
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45);font:600 14.5px/1 var(--f);white-space:nowrap;
+  transition:background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .14s var(--ease-out)}
+.sumar svg{width:18px;height:18px;flex:none}
+.sumar .si{display:none}
+.sumar[aria-pressed="true"]{background:#fff;color:var(--tinta);box-shadow:none}
+.sumar[aria-pressed="true"] .si{display:block}.sumar[aria-pressed="true"] .no{display:none}
+.sumar:active{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.sumar[aria-pressed="false"]:hover{box-shadow:inset 0 0 0 1.5px #fff}}
+.al-lado{display:grid;gap:18px}
+.al-lado figure{margin:0}
+.al-lado img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#DDE0E2}
+.al-lado figcaption{margin-top:10px;font-size:14.5px;color:var(--gris)}
+.al-lado .nota-t{font-size:16px;line-height:1.5;color:var(--gris)}
+.al-lado .nota-t b{color:var(--tinta)}
+@media (max-width:900px){.servicios .grid{grid-template-columns:1fr}.al-lado{grid-template-columns:1fr 1fr;align-items:start}}
+@media (max-width:560px){
+  .servicios{padding:80px 0}
+  .tablero{box-shadow:0 0 0 6px #2A2A2A, 0 0 0 7px #3A3A3A, 0 30px 60px -34px rgba(18,18,18,.65)}
+  .fila,.fila.prod{grid-template-columns:1fr;padding:18px 0}
+  .fila .sumar,.fila.prod .sumar{grid-column:1;grid-row:auto;justify-self:start;margin-top:4px}
+  .fila.prod .lata{grid-row:auto;width:52px;height:52px}
+  .fila.prod .renglon,.fila.prod .det{grid-column:1}
+  .renglon .pre{display:none}
+  .renglon .pts{display:none}
+  .al-lado{grid-template-columns:1fr}
+}
+
+/* ---------- trabajos: la fila de espejos del local ---------- */
+.trabajos{padding:24px 0 112px}
+.espejos{display:grid;grid-template-columns:1.25fr .8fr .8fr;gap:22px;margin-top:52px;align-items:end}
+.espejos figure{margin:0}
+.espejos .marco{border-radius:22px;padding:7px;background:var(--pared);box-shadow:0 0 0 1.5px rgba(18,18,18,.12), 0 30px 60px -36px rgba(18,18,18,.6)}
+.espejos img{width:100%;object-fit:cover;border-radius:16px;background:#DDE0E2}
+.espejos .ancho img{aspect-ratio:4/3;object-position:62% 50%}
+.espejos .alto img{aspect-ratio:9/16}
+.espejos figcaption{margin-top:12px;font-size:15px;color:var(--gris)}
+.espejos figcaption b{display:block;color:var(--tinta);font-weight:600;font-size:16.5px}
+.mas-ig{display:inline-flex;align-items:center;gap:8px;margin-top:30px;font-weight:600;text-decoration:none;box-shadow:inset 0 -2px 0 var(--tinta);padding-bottom:3px}
+.mas-ig svg{width:18px;height:18px}
+@media (max-width:860px){
+  .espejos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;gap:16px;margin-inline:-20px;padding:0 20px 10px;scrollbar-width:none;align-items:flex-start}
+  .espejos::-webkit-scrollbar{display:none}
+  .espejos figure{flex:0 0 min(300px, 76%);scroll-snap-align:start}
+  .espejos .alto{flex-basis:min(230px, 60%)}
+}
+
+/* ---------- tu turno: el formulario y el ticket ---------- */
+.turno{padding:104px 0 112px;background:#E6E8E6}
+.turno .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start;margin-top:48px}
+.turno .cab{width:min(1180px, 100% - 40px);margin-inline:auto;max-width:none}
+.turno .cab h2,.turno .cab p{max-width:640px}
+.form{display:grid;gap:30px}
+.form fieldset{border:0;margin:0;padding:0;min-width:0}
+.form legend,.form .f > label{display:block;font-weight:700;font-size:16px;margin-bottom:12px;padding:0}
+.opc{font-weight:400;color:var(--gris)}
+.f{display:flex;flex-direction:column;min-width:0}
+.fichas{display:flex;flex-wrap:wrap;gap:8px}
+.fichas label{cursor:pointer;position:relative}
+.fichas input{position:absolute;opacity:0;pointer-events:none}
+.fichas span{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;border-radius:999px;background:var(--papel);box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.16);
+  font-weight:500;font-size:15.5px;line-height:1.2;transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
+.fichas span small{font-size:12.5px;color:var(--gris);font-weight:500}
+.fichas span svg{width:16px;height:16px;display:none}
+.fichas input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
+.fichas input:checked + span small{color:var(--gris-claro)}
+.fichas input:checked + span svg{display:block}
+.fichas input:focus-visible + span{outline:3px solid var(--tinta);outline-offset:2px}
+.fichas label:active span{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.fichas input:not(:checked) + span:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
+.fichas.dias{display:grid;grid-template-columns:repeat(4, 1fr)}
+.dias span{width:100%;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px;min-height:54px;padding:0 16px;border-radius:14px}
+.dias span b{font-weight:600}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form input[type=text],.form input[type=tel],.form textarea{min-height:50px;border-radius:12px;border:1.5px solid rgba(21,21,21,.22);background:var(--papel);padding:0 14px;
+  font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+.form textarea{padding:12px 14px;min-height:86px;resize:vertical;line-height:1.45}
+.form input::placeholder,.form textarea::placeholder{color:#6A6E72}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--tinta);box-shadow:0 0 0 3px rgba(21,21,21,.14)}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.13)}
+.f.error .fichas span{box-shadow:inset 0 0 0 1.5px var(--err)}
+.err{color:var(--err);font-size:14px;font-weight:600;margin-top:8px}
+.err:empty{display:none}
+@media (max-width:560px){
+  .dos{grid-template-columns:1fr}
+  /* en el celular los días corren de costado */
+  .fichas.dias{display:flex;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;margin-inline:-20px;padding:2px 20px 8px;scroll-padding-inline:20px;scrollbar-width:none}
+  .fichas.dias::-webkit-scrollbar{display:none}
+  .dias label{flex:0 0 auto;scroll-snap-align:start}
+  .dias span{min-width:86px}
+}
+
+/* el ticket del club: papel con muescas a los costados y una línea para cortar */
+.ticket-col{position:sticky;top:calc(var(--header) + 28px)}
+.ticket{position:relative;background:var(--papel);border-radius:6px;padding:28px 28px 26px;
+  box-shadow:0 1px 2px rgba(18,18,18,.08), 0 34px 60px -34px rgba(18,18,18,.45)}
+.t-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-bottom:18px;box-shadow:inset 0 -1.5px 0 var(--tinta)}
+.t-cab .marca{color:var(--tinta)}
+.t-cab .caja{font-size:19px}
+.t-cab .club{font-size:7.5px}
+.t-cab small{font-size:13.5px;color:var(--gris);text-align:right;line-height:1.35}
+.t-tit{font-stretch:125%;font-weight:800;font-size:30px;line-height:1;margin:20px 0 6px}
+.t-datos{margin:0;display:grid;gap:0}
+.t-datos div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:11px 0;box-shadow:inset 0 -1px 0 rgba(21,21,21,.08)}
+.t-datos dt{font-size:14px;color:var(--gris)}
+.t-datos dd{margin:0;font-weight:600;font-size:16px;line-height:1.35;overflow-wrap:anywhere}
+.t-datos dd.falta{font-weight:400;color:#8A8E92}
+.corte{position:relative;margin:26px -28px 24px;height:0;border-top:2px dashed rgba(21,21,21,.22)}
+/* las muescas del ticket, del color del fondo de la sección */
+.corte::before,.corte::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:#E6E8E6}
+.corte::before{left:-12px}.corte::after{right:-12px}
+.enviar{width:100%;height:58px;font-size:16.5px;background:var(--tinta);color:#fff}
+.con-wa .enviar{background:#25D366;color:#fff}
+@media (hover:hover) and (pointer:fine){.enviar:hover{background:#333}.con-wa .enviar:hover{background:#1EBE5A}}
+.nota{margin-top:10px;font-size:14px;color:var(--gris);text-align:center}
+.aviso{font-size:14.5px;font-weight:600;text-align:center;color:var(--tinta)}
+.aviso:not(:empty){margin-top:10px}
+.aviso.mal{color:var(--err)}
+.prev{margin-top:14px;background:rgba(21,21,21,.04);border-radius:12px;padding:2px 14px}
+.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px}
+.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:0 0 14px}
+/* el sello dorado que cae sobre el ticket cuando lo mandás */
+.sello{position:absolute;right:22px;top:92px;width:112px;height:112px;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none;
+  color:var(--dorado);box-shadow:inset 0 0 0 3px currentColor, inset 0 0 0 7px var(--papel), inset 0 0 0 8.5px currentColor;
+  font-stretch:125%;font-weight:800;font-size:15px;line-height:1.05;letter-spacing:.04em;opacity:0;transform:rotate(-14deg) scale(1.25);
+  transition:opacity .2s var(--ease-out), transform .26s var(--ease-out)}
+.sello.on{opacity:.92;transform:rotate(-14deg)}
+@media (max-width:900px){
+  .turno .wrap{grid-template-columns:1fr;gap:44px}
+  .ticket-col{position:static}
+}
+@media (max-width:560px){
+  .turno{padding:80px 0 96px}
+  .ticket{padding:24px 20px 22px}
+  .corte{margin-inline:-20px}
+  .t-datos div{grid-template-columns:84px 1fr}
+  .sello{width:96px;height:96px;font-size:13px;right:14px}
+}
+
+/* ---------- dónde estamos ---------- */
+.local{padding:104px 0 112px}
+.local .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.dir{font-stretch:125%;font-weight:800;font-size:clamp(2.6rem, 5.4vw, 4.6rem);line-height:.95;letter-spacing:-0.02em}
+.dir small{display:block;font-size:.42em;font-weight:600;letter-spacing:0;margin-top:12px;color:var(--gris)}
+.local dl{margin:34px 0 34px;display:grid;gap:18px}
+.local dt{font-size:14px;color:var(--gris)}
+.local dd{margin:2px 0 0;font-weight:600;font-size:18px}
+.local .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn-borde{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.3)}
+@media (hover:hover) and (pointer:fine){.btn-borde:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
+.vista{display:grid;gap:14px}
+.vista img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;background:#DDE0E2}
+.vista iframe{width:100%;height:300px;border:0;border-radius:16px;filter:grayscale(1) contrast(1.05);background:#DDE0E2}
+@media (max-width:860px){.local .grid{grid-template-columns:1fr;gap:40px}.local{padding:80px 0 96px}}
+
+footer{background:var(--pared);color:#C9CCCF;padding:44px 0 120px;font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .marca{color:#fff}
+footer a{color:#fff;font-weight:600}
+footer p + p{margin-top:4px}
+
+/* ---------- ver tu turno: aparece cuando sumaste algo y no estás mirando el ticket ---------- */
+.ir-turno{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 78px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 6px);z-index:60;
+  display:flex;align-items:center;gap:10px;height:52px;padding:0 10px 0 18px;border-radius:999px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;
+  box-shadow:0 3px 6px rgba(18,18,18,.2), 0 16px 34px -10px rgba(18,18,18,.6);
+  opacity:0;transform:translateY(12px);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s}
+.ir-turno.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s}
+.ir-turno b{min-width:32px;height:32px;padding:0 9px;border-radius:999px;background:#fff;color:var(--tinta);display:grid;place-items:center;font-size:14.5px;font-variant-numeric:tabular-nums}
+.ir-turno:active{transform:scale(.97)}
+@media (max-width:640px){.ir-turno{left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 72px);bottom:max(20px, env(safe-area-inset-bottom));height:58px;justify-content:space-between;padding-left:20px}}
+
+/* ---------- botón flotante de contacto: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:61;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.2s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa .i-wa{display:none;width:34px;height:34px}
+.con-wa .wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.con-wa .wa .i-wa{display:block}.con-wa .wa .i-ig{display:none}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;animation:wa-onda 5s var(--ease-out) 3.2s infinite}
+.con-wa .wa::before,.con-wa .wa::after{background:#25D366}
+.wa::after{animation-delay:3.6s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(18,18,18,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--gris)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- menos movimiento: sin desplazamientos, el poste quieto ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero h1 span,.hero .lead,.hero .ctas,.donde,.espejo,.poste,.wa{animation:aparecer .4s ease both}
+  .tubo::before{animation:none;opacity:0}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .links a::after,.menu,.ir-turno{transition-property:opacity, visibility}
+  .menu,.ir-turno{transform:none}
+  .sello{transition:opacity .2s ease;transform:rotate(-14deg)}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="tilde" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></g></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Pach Barber Club, ir al inicio">
+      <span class="caja" aria-hidden="true">PACH</span>
+      <span class="club" aria-hidden="true">BARBER CLUB</span>
+    </a>
+    <span class="que">Peluquería y barbería<br>en Paraná</span>
+    <nav class="links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#turno">Tu turno</a><a href="#local">Dónde estamos</a>
+    </nav>
+    <a class="btn btn-blanco" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Menú">
+  <a class="item-m" href="#servicios">Servicios</a><a class="item-m" href="#trabajos">Trabajos</a><a class="item-m" href="#turno">Tu turno</a><a class="item-m" href="#local">Dónde estamos</a>
+  <p class="dato">Colón 344, Paraná. Atención por turnos.</p>
+  <a class="btn btn-blanco" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+</nav>
+
+<main>
+  <section class="hero oscuro" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1><span>Tu turno</span> <span>en el club.</span></h1>
+        <p class="lead">Peluquería y barbería en Paraná. Elegí qué te hacés y el día, y te confirmamos el horario por mensaje.</p>
+        <div class="ctas">
+          <a class="btn btn-blanco" href="#turno">Sacar turno</a>
+          <a class="btn btn-linea" href="#trabajos">Ver trabajos</a>
+        </div>
+        <p class="donde"><svg aria-hidden="true"><use href="#pin"/></svg>Colón 344, Paraná. Atención por turnos.</p>
+      </div>
+      <div class="estacion">
+        <div class="poste" aria-hidden="true">
+          <span class="bola"></span>
+          <span class="tapa"></span>
+          <span class="tubo"><span class="rayas" id="rayas"></span></span>
+          <span class="tapa abajo"></span>
+        </div>
+        <figure class="espejo"><img src="img/foto-05.jpg" alt="Barbero de Pach con gorra cortando a un cliente de pelo con rulos, con capa de peines estampados" width="512" height="640" fetchpriority="high"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="servicios" id="servicios">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Qué te hacés.</h2>
+        <p>Tocá lo que quieras y se suma a tu turno. Los precios te los pasamos por mensaje.</p>
+      </div>
+      <div class="grid">
+        <div class="tablero">
+          <div class="fila" data-serv="corte">
+            <p class="renglon"><span>Corte</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
+            <p class="det">Degradé, tijera o texturizado. Si tenés una foto de lo que querés, traela.</p>
+            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
+          </div>
+          <div class="fila" data-serv="barba">
+            <p class="renglon"><span>Barba</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
+            <p class="det">Perfilado y arreglo de barba.</p>
+            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
+          </div>
+          <div class="fila" data-serv="color">
+            <p class="renglon"><span>Color</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
+            <p class="det">Mechas y platinado.</p>
+            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
+          </div>
+          <div class="fila" data-serv="lineas">
+            <p class="renglon"><span>Líneas</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
+            <p class="det">Un detalle marcado al costado, para sumarle al corte.</p>
+            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
+          </div>
+          <div class="fila prod" data-serv="cera">
+            <img class="lata" src="img/foto-01.jpg" alt="Ceras y pomadas en el estante de Pach" width="150" height="150" loading="lazy">
+            <p class="renglon"><span>Cera o pomada</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
+            <p class="det">Para peinarte en casa. Te ayudamos a elegir la que va con tu corte.</p>
+            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
+          </div>
+          <p class="pie-tablero">Atención por turnos</p>
+        </div>
+        <div class="al-lado">
+          <figure>
+            <img src="img/foto-06.jpg" alt="Cliente con texturizado arriba, mechas claras y degradé a los costados" width="640" height="640" loading="lazy">
+            <figcaption>Texturizado con mechas y degradé.</figcaption>
+          </figure>
+          <p class="nota-t"><b>¿No sabés qué hacerte?</b> Sumá corte y contanos en el turno qué tenés en mente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trabajos" id="trabajos">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Pasaron por el sillón.</h2>
+        <p>Algunos trabajos del club. Hay muchos más en el Instagram.</p>
+      </div>
+      <div class="espejos">
+        <figure class="ancho"><div class="marco"><img src="img/foto-07.jpg" alt="El local de Pach con dos barberos trabajando, capas negras y doradas, y el poste de barbería encendido al fondo" width="640" height="360" loading="lazy"></div>
+          <figcaption><b>El local</b>Capas negras y doradas, y el poste prendido al fondo.</figcaption></figure>
+        <figure class="alto"><div class="marco"><img src="img/foto-10.jpg" alt="Celular mostrando un corte con degradé y una línea marcada al costado, frente al espejo de la barbería" width="360" height="640" loading="lazy"></div>
+          <figcaption><b>Degradé con línea</b>El detalle al costado.</figcaption></figure>
+        <figure class="alto"><div class="marco"><img src="img/foto-12.jpg" alt="Barbero de Pach trabajando con un cliente, filmado desde un celular" width="360" height="640" loading="lazy"></div>
+          <figcaption><b>Detrás de cámara</b>Grabando un corte para el Instagram.</figcaption></figure>
+      </div>
+      <a class="mas-ig" href="https://instagram.com/pachbarber" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg>Ver más en @pachbarber</a>
+    </div>
+  </section>
+
+  <section class="turno" id="turno">
+    <div class="cab">
+      <h2>Armá tu turno.</h2>
+      <p>Elegí qué te hacés, el día y más o menos a qué hora. Te respondemos con el horario exacto.</p>
+    </div>
+    <div class="wrap">
+      <form class="form" id="form" novalidate>
+        <fieldset class="f" id="f-serv">
+          <legend>¿Qué te hacés?</legend>
+          <div class="fichas" id="servs">
+            <label><input type="checkbox" name="serv" value="corte"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Corte</span></label>
+            <label><input type="checkbox" name="serv" value="barba"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Barba</span></label>
+            <label><input type="checkbox" name="serv" value="color"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Color</span></label>
+            <label><input type="checkbox" name="serv" value="lineas"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Líneas</span></label>
+            <label><input type="checkbox" name="serv" value="cera"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Cera o pomada</span></label>
+          </div>
+          <small class="err" id="err-serv"></small>
+        </fieldset>
+        <fieldset class="f" id="f-dia">
+          <legend>¿Qué día?</legend>
+          <div class="fichas dias" id="dias"></div>
+          <small class="err" id="err-dia"></small>
+        </fieldset>
+        <fieldset class="f" id="f-franja">
+          <legend>¿A qué hora más o menos?</legend>
+          <div class="fichas" id="franjas">
+            <label><input type="radio" name="franja" value="a la mañana"><span><svg aria-hidden="true"><use href="#tilde"/></svg>A la mañana</span></label>
+            <label><input type="radio" name="franja" value="a la tarde"><span><svg aria-hidden="true"><use href="#tilde"/></svg>A la tarde</span></label>
+            <label><input type="radio" name="franja" value="a última hora"><span><svg aria-hidden="true"><use href="#tilde"/></svg>A última hora</span></label>
+            <label><input type="radio" name="franja" value="cuando tengan lugar"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Me da igual</span></label>
+          </div>
+          <small class="err" id="err-franja"></small>
+        </fieldset>
+        <div class="dos">
+          <div class="f"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+          <div class="f"><label for="tel">Tu teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 343 412-3456" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+        </div>
+        <div class="f"><label for="aclar">¿Algo más? <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Qué corte tenés en mente, con quién te atendés, si venís con alguien…"></textarea></div>
+      </form>
+
+      <div class="ticket-col">
+        <div class="ticket" id="ticket">
+          <div class="t-cab">
+            <span class="marca" aria-hidden="true"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
+            <small>Colón 344<br>Paraná</small>
+          </div>
+          <p class="t-tit">Tu turno</p>
+          <dl class="t-datos">
+            <div><dt>Servicio</dt><dd id="t-serv" class="falta">Elegí qué te hacés</dd></div>
+            <div><dt>Día</dt><dd id="t-dia" class="falta">Elegí el día</dd></div>
+            <div><dt>Hora</dt><dd id="t-franja" class="falta">Elegí la franja</dd></div>
+            <div><dt>A nombre de</dt><dd id="t-nombre" class="falta">Tu nombre</dd></div>
+          </dl>
+          <span class="sello" id="sello" aria-hidden="true">TURNO<br>PEDIDO</span>
+          <div class="corte" aria-hidden="true"></div>
+          <button class="btn enviar" type="submit" form="form" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Pedir turno por Instagram</span></button>
+          <p class="nota" id="nota">Copiamos tu turno y abrimos el chat de @pachbarber. Solo pegalo y mandalo.</p>
+          <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="local" id="local">
+    <div class="wrap grid">
+      <div>
+        <h2 class="dir">Colón 344 <small>Paraná, Entre Ríos</small></h2>
+        <dl>
+          <div><dt>Cómo se atiende</dt><dd>Con turno. Sacalo desde acá o por mensaje.</dd></div>
+          <div><dt>Horarios</dt><dd>Consultá por mensaje.</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></dd></div>
+        </dl>
+        <div class="ctas">
+          <a class="btn btn-negro" href="#turno">Sacar turno</a>
+          <a class="btn btn-borde" href="https://www.google.com/maps/search/?api=1&query=Pach%20Barber%20Club%20Col%C3%B3n%20344%20Paran%C3%A1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
+        </div>
+      </div>
+      <div class="vista">
+        <iframe title="Mapa: Pach Barber Club, Colón 344, Paraná" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=-31.7290553,-60.5225181&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Pach Barber Club, volver arriba"><span class="caja" aria-hidden="true">PACH</span><span class="club" aria-hidden="true">BARBER CLUB</span></a>
+    <div>
+      <p>Peluquería y barbería. Colón 344, Paraná. <a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></p>
+      <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="ir-turno" href="#turno" id="irTurno" aria-label="Ver tu turno"><span>Ver tu turno</span><b id="irN">0</b></a>
+<a class="wa" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram" id="flotante">
+  <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
+  <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small id="tipSub">Por mensaje directo</small></span>
+</a>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<script>
+// =====================================================================================
+//  WHATSAPP DE LA BARBERÍA: poné el número acá y TODA la página pasa a WhatsApp.
+//  Formato: 549 + característica + número, sin espacios, sin + ni guiones (ej. '5493434123456').
+//  Mientras esté vacío, el turno se copia al portapapeles y se abre el chat de Instagram
+//  (@pachbarber). Con el número, el botón abre wa.me con el turno ya escrito,
+//  y el botón flotante y "Escribinos" también van a WhatsApp.
+// =====================================================================================
+var WA = '';
+var IG_DM = 'https://ig.me/m/pachbarber';
+document.documentElement.classList.add('js');
+if (WA) {
+  document.documentElement.classList.add('con-wa');
+  document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
+  document.querySelectorAll('.btn use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
+  document.getElementById('flotante').setAttribute('aria-label', 'Escribinos por WhatsApp');
+  document.getElementById('tipSub').textContent = 'Por WhatsApp';
+}
+
+var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+function calma() { return !!(mq && mq.matches); }
+
+// Encabezado y menú del celular
+(function () {
+  var top = document.getElementById('top');
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  if (!('IntersectionObserver' in window)) return;
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+})();
+
+// El poste: arranca rápido al prenderse y se asienta en su giro de siempre. Se frena cuando no se ve.
+(function () {
+  var rayas = document.getElementById('rayas');
+  if (!rayas || !rayas.animate || calma()) return;
+  var paso = function () { return rayas.offsetHeight - rayas.parentNode.offsetHeight; }; // alto de un dibujo de rayas
+  var anim = null;
+  function armar() {
+    if (anim) anim.cancel();
+    var p = paso() || 56;
+    anim = rayas.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-p) + 'px)' }], { duration: 1500, iterations: Infinity, easing: 'linear' });
+  }
+  armar();
+  // el arranque: mucha velocidad al prenderse y frena hasta el giro tranquilo
+  var t0 = null, DEMORA = 450, DUR = 1700;
+  anim.playbackRate = 0;
+  function arrancar(ts) {
+    if (t0 === null) t0 = ts;
+    var t = (ts - t0 - DEMORA) / DUR;
+    if (t < 0) { requestAnimationFrame(arrancar); return; }
+    if (t >= 1) { anim.playbackRate = 1; return; }
+    // de 0 a 7 veces la velocidad en un instante, y después frena con ease-out hasta la velocidad normal
+    if (t < .12) anim.playbackRate = (t / .12) * 7;
+    else { var u = (t - .12) / .88; anim.playbackRate = 7 - 6 * (1 - Math.pow(1 - u, 3)); }
+    requestAnimationFrame(arrancar);
+  }
+  requestAnimationFrame(arrancar);
+  var mm = window.matchMedia('(max-width:860px)');
+  if (mm.addEventListener) mm.addEventListener('change', function () { var r = anim.playbackRate; armar(); anim.playbackRate = r; });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { if (es[0].isIntersecting) anim.play(); else anim.pause(); }).observe(rayas.parentNode);
+  }
+})();
+
+// Tu turno: lo que sumás en el tablero, el día y la franja, tus datos, y el ticket que se completa solo
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('form');
+  var CLAVE = 'pach-turno-v1';
+  var SERV = { corte: 'Corte', barba: 'Barba', color: 'Color', lineas: 'Líneas', cera: 'Cera o pomada' };
+  var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var CORTO = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+
+  function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function deIso(v) { var p = v.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+
+  // los próximos 7 días, más "el primero que tengan"
+  var html = '';
+  for (var i = 0; i < 7; i++) {
+    var d = new Date(hoy); d.setDate(hoy.getDate() + i);
+    var nom = i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : CORTO[d.getDay()].charAt(0).toUpperCase() + CORTO[d.getDay()].slice(1);
+    html += '<label><input type="radio" name="dia" value="' + iso(d) + '"><span><b>' + nom + '</b><small>' + d.getDate() + '/' + (d.getMonth() + 1) + '</small></span></label>';
+  }
+  html += '<label><input type="radio" name="dia" value="primero"><span><b>Cuanto antes</b><small>primer lugar libre</small></span></label>';
+  $('dias').innerHTML = html;
+
+  function diaTexto(v) {
+    if (!v) return '';
+    if (v === 'primero') return 'cuanto antes, el primer lugar libre';
+    var d = deIso(v), dif = Math.round((d - hoy) / 864e5);
+    var base = DIAS[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+    return dif === 0 ? 'hoy, ' + base : dif === 1 ? 'mañana, ' + base : base;
+  }
+  function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function servs() { return Array.prototype.map.call(form.querySelectorAll('input[name="serv"]:checked'), function (c) { return c.value; }); }
+  function limpio(v) { return v.replace(/\s+/g, ' ').trim(); }
+  function leer() {
+    return { serv: servs(), dia: radio('dia'), franja: radio('franja'), nombre: limpio($('nombre').value), tel: limpio($('tel').value), aclar: limpio($('aclar').value) };
+  }
+
+  // recuperar lo que habías dejado
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && typeof g === 'object') {
+      (Array.isArray(g.serv) ? g.serv : []).forEach(function (s) { var c = form.querySelector('input[name="serv"][value="' + s + '"]'); if (c) c.checked = true; });
+      if (typeof g.dia === 'string') { var r = form.querySelector('input[name="dia"][value="' + g.dia + '"]'); if (r) r.checked = true; }
+      if (typeof g.franja === 'string') { var f = form.querySelector('input[name="franja"][value="' + g.franja + '"]'); if (f) f.checked = true; }
+      ['nombre', 'tel', 'aclar'].forEach(function (c) { if (typeof g[c] === 'string') $(c).value = g[c]; });
+    }
+  } catch (e) {}
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(leer())); } catch (e) {} }
+
+  function mensaje(borrador) {
+    var d = leer(), L = ['Hola, Pach! Quiero sacar un turno:'];
+    if (d.serv.length) d.serv.forEach(function (s) { L.push('• ' + SERV[s]); }); else if (borrador) L.push('• …');
+    L.push('');
+    L.push('Día: ' + (diaTexto(d.dia) || (borrador ? '…' : '')));
+    L.push('Hora: ' + (d.franja || (borrador ? '…' : '')));
+    L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
+    if (d.aclar) L.push('Aclaraciones: ' + d.aclar);
+    L.push('', '¿Qué horario tienen? Gracias.');
+    return L.join('\n');
+  }
+
+  function pon(id, txt, falta) { var el = $(id); el.textContent = txt || falta; el.classList.toggle('falta', !txt); }
+  var irTurno = $('irTurno'), enTurno = false, nAntes = servs().length;
+  function render() {
+    var d = leer();
+    pon('t-serv', d.serv.map(function (s) { return SERV[s]; }).join(', '), 'Elegí qué te hacés');
+    var dt = diaTexto(d.dia); pon('t-dia', dt ? dt.charAt(0).toUpperCase() + dt.slice(1) : '', 'Elegí el día');
+    pon('t-franja', d.franja ? d.franja.charAt(0).toUpperCase() + d.franja.slice(1) : '', 'Elegí la franja');
+    pon('t-nombre', d.nombre, 'Tu nombre');
+    // el tablero refleja lo que está en el turno
+    document.querySelectorAll('.fila[data-serv]').forEach(function (f) {
+      var on = d.serv.indexOf(f.getAttribute('data-serv')) >= 0, b = f.querySelector('.sumar');
+      b.setAttribute('aria-pressed', String(on));
+      b.querySelector('span').textContent = on ? 'En tu turno' : 'Sumar';
+      b.setAttribute('aria-label', (on ? 'Sacar ' : 'Sumar ') + SERV[f.getAttribute('data-serv')] + (on ? ' del turno' : ' al turno'));
+    });
+    var n = d.serv.length;
+    $('irN').textContent = n;
+    irTurno.setAttribute('aria-label', 'Ver tu turno (' + n + ')');
+    irTurno.classList.toggle('on', n > 0 && !enTurno);
+    if (n > nAntes && !calma() && irTurno.animate && !enTurno) {
+      $('irN').animate([{ transform: 'scale(1)' }, { transform: 'scale(1.3)', offset: .35 }, { transform: 'scale(1)' }], { duration: 320, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+    }
+    nAntes = n;
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+
+  // botón "Sumar" del tablero
+  document.querySelectorAll('.fila[data-serv] .sumar').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var id = b.closest('.fila').getAttribute('data-serv');
+      var c = form.querySelector('input[name="serv"][value="' + id + '"]');
+      c.checked = !c.checked;
+      marcar('serv', '');
+      render();
+      var a = $('anuncio'); a.textContent = ''; setTimeout(function () { a.textContent = SERV[id] + (c.checked ? ' sumado a tu turno.' : ' sacado de tu turno.'); }, 30);
+    });
+  });
+
+  // el botón "Ver tu turno" se esconde cuando ya estás mirando el turno
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { enTurno = es[0].isIntersecting; irTurno.classList.toggle('on', leer().serv.length > 0 && !enTurno); },
+      { rootMargin: '0px 0px -30% 0px' }).observe($('turno'));
+  }
+
+  // errores
+  var CAMPO = { serv: 'f-serv', dia: 'f-dia', franja: 'f-franja', nombre: 'nombre', tel: 'tel' };
+  function marcar(k, txt) {
+    var el = $(CAMPO[k]), f = el.classList.contains('f') ? el : el.closest('.f');
+    f.classList.toggle('error', !!txt);
+    if (el.tagName === 'INPUT') { if (txt) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
+    $('err-' + k).textContent = txt;
+  }
+  function validar() {
+    var d = leer(), malos = [];
+    var ch = [
+      ['serv', d.serv.length ? '' : 'Elegí al menos una cosa para hacerte.'],
+      ['dia', d.dia ? '' : 'Elegí un día, o "Cuanto antes".'],
+      ['franja', d.franja ? '' : 'Elegí más o menos a qué hora te queda bien.'],
+      ['nombre', d.nombre ? '' : 'Poné tu nombre para anotar el turno.'],
+      ['tel', !d.tel ? 'Poné tu teléfono para confirmarte el horario.' : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : '']
+    ];
+    ch.forEach(function (c) { marcar(c[0], c[1]); if (c[1]) malos.push(c[0]); });
+    return malos;
+  }
+  function foco(k) {
+    var el = $(CAMPO[k]);
+    if (el.tagName === 'INPUT') { el.focus(); return; }
+    var i = el.querySelector('input'); if (i) i.focus();
+  }
+
+  form.addEventListener('input', function (e) {
+    var k = e.target.name; if (CAMPO[k] && $('err-' + k).textContent) marcar(k, '');
+    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
+    $('sello').classList.remove('on');
+    render();
+  });
+  form.addEventListener('change', function (e) { var k = e.target.name; if (CAMPO[k]) marcar(k, ''); render(); });
+
+  // enviar
+  if (WA) {
+    $('enviar').querySelector('use').setAttribute('href', '#wa');
+    $('enviar').querySelector('span').textContent = 'Pedir turno por WhatsApp';
+    $('nota').textContent = 'Se abre WhatsApp con tu turno escrito. Solo falta tocar enviar.';
+  }
+  function abrirLink(url) { var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove(); }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var aviso = $('aviso'), malos = validar();
+    if (malos.length) {
+      aviso.classList.add('mal');
+      aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.';
+      foco(malos[0]);
+      return;
+    }
+    aviso.classList.remove('mal');
+    $('sello').classList.add('on');
+    var msg = mensaje(false);
+    if (WA) { abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg)); aviso.textContent = 'Abrimos WhatsApp con tu turno.'; return; }
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu turno: pegalo en el chat y mandalo.';
+      else { aviso.textContent = 'No pudimos copiarlo solo: copialo de "Ver cómo llega el mensaje" y pegalo en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
