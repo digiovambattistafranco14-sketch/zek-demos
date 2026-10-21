@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Pach Barber Club | Peluquería y barbería en Paraná</title>
-<meta name="description" content="Peluquería y barbería en Colón 344, Paraná. Corte, barba y color con turno. Elegí qué te hacés y el día, y te confirmamos por mensaje.">
+<meta name="description" content="Peluquería y barbería en Colón 344, Paraná. Sacá tu turno desde la web: elegí qué te hacés, el día y el horario, y te lo confirmamos por mensaje.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121212'/%3E%3Crect x='10' y='16' width='44' height='26' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Ctext x='32' y='35.5' font-family='Arial Black,Arial' font-weight='900' font-size='15' fill='%23fff' text-anchor='middle'%3EPCH%3C/text%3E%3Crect x='14' y='48' width='36' height='2.4' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="alternate icon" href="img/perfil.jpg">
 <meta property="og:type" content="website">
@@ -15,110 +15,140 @@
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/pach-barber-club/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#121212">
+<meta name="theme-color" content="#0C0C0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <style>
-/* Concepto: el poste de barbería que tienen en el local. Es el único momento fuerte: en la portada se prende y arranca a girar.
+/* Concepto: el poste de barbería que tienen prendido en el local. Es el único momento fuerte: en la portada se prende y arranca a girar.
    Los servicios están en un tablero de letras, como el de cualquier barbería, con "Consultá" donde iría el precio.
-   El turno se arma como un ticket de papel del club, que se va completando mientras elegís.
+   El turno se saca como en una agenda de barbería: servicio, día en el calendario, horario y tus datos,
+   y se va escribiendo solo en un ticket de papel del club, con una barrita con las rayas del poste que se llena a medida que completás.
    Colores de su marca: el negro y blanco del logo y de la pared del local, el cromo de los sillones
-   y el dorado de sus capas, que aparece solo en el poste y en el sello del ticket. */
+   y el dorado de sus capas, que aparece en el poste, en el botón de turno y en lo que vas eligiendo. */
 :root{
-  --pared:#121212;      /* la pared negra del local y el fondo del logo */
-  --pared-2:#1D1D1D;
-  --azulejo:#F1F2F0;    /* fondo claro, frío como el azulejo */
+  --pared:#0C0C0C;      /* la pared negra del local y el fondo del logo */
+  --pared-2:#1A1A1A;
+  --pared-3:#262626;
+  --azulejo:#F2F2F0;    /* fondo claro, frío como el azulejo */
   --papel:#FBFBFA;
   --tinta:#151515;
   --gris:#575B60;
   --gris-claro:#B9BDC1;
   --cromo:#A3A9AE;
-  --dorado:#C8A145;     /* el dorado de sus capas */
+  --dorado:#D9A441;     /* el dorado de sus capas */
+  --dorado-2:#E8B95A;
   --err:#B3261E;
   /* Tipografía sacada del logo: la palabra PACH es una palo seco ancha y pesada; BARBER CLUB, la misma fina y espaciada.
      Archivo tiene eje de ancho, así que sale todo de una sola familia. */
   --f:'Archivo', 'Arial', system-ui, sans-serif;
   --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
-  --header:76px;
+  --header:88px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none !important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--azulejo);color:var(--tinta);font-family:var(--f);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased;font-kerning:normal}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{margin:0;font-family:var(--f);text-wrap:balance}
 p{margin:0}
-::selection{background:var(--tinta);color:#fff}
+::selection{background:var(--dorado);color:var(--tinta)}
 :focus-visible{outline:3px solid var(--tinta);outline-offset:3px;border-radius:6px}
 .oscuro :focus-visible,.top :focus-visible,.menu :focus-visible{outline-color:#fff}
-section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
 .ico{width:20px;height:20px;flex:none}
-.ancha{font-stretch:125%;font-weight:800;letter-spacing:-0.01em}
 
 /* ---------- botones ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
-  font:600 16px/1 var(--f);text-decoration:none;white-space:nowrap;transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;border:0;cursor:pointer;
+  font:600 16.5px/1 var(--f);text-decoration:none;white-space:nowrap;transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
 .btn:active{transform:scale(.97)}
+.btn-oro{background:var(--dorado);color:var(--tinta)}
 .btn-blanco{background:#fff;color:var(--tinta)}
-.btn-linea{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.btn-linea{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
 .btn-negro{background:var(--tinta);color:#fff}
+.btn-borde{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.3)}
 @media (hover:hover) and (pointer:fine){
+  .btn-oro:hover{background:var(--dorado-2)}
   .btn-blanco:hover{background:#E4E6E8}
   .btn-linea:hover{box-shadow:inset 0 0 0 1.5px #fff}
   .btn-negro:hover{background:#333}
+  .btn-borde:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
 }
 
-/* ---------- encabezado: su letrero recreado ---------- */
-.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;background:var(--pared);color:#fff;
+/* ---------- encabezado: una barra que flota sobre la página, como la vidriera del local ---------- */
+.top{position:fixed;top:max(12px, env(safe-area-inset-top));left:0;right:0;z-index:50;pointer-events:none}
+.barra{pointer-events:auto;width:min(1240px, 100% - 24px);margin-inline:auto;height:64px;display:flex;align-items:center;gap:14px;padding:0 10px;border-radius:999px;color:#fff;
+  background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.11);
   transition:background-color .3s ease, box-shadow .3s ease}
-.top.scrolled{background:rgba(18,18,18,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);
-  box-shadow:inset 0 -1px 0 rgba(255,255,255,.08), 0 16px 30px -24px rgba(0,0,0,.8)}
-@media (prefers-reduced-transparency: reduce){.top.scrolled{background:var(--pared);-webkit-backdrop-filter:none;backdrop-filter:none}}
-.top .wrap{display:flex;align-items:center;gap:22px}
-.marca{display:inline-flex;flex-direction:column;align-items:stretch;gap:4px;text-decoration:none;color:#fff;border-radius:4px}
-.caja{display:block;border:2px solid currentColor;padding:4px 10px 3px;font-stretch:125%;font-weight:800;font-size:21px;line-height:1;letter-spacing:.07em;text-align:center}
-.club{display:block;font-weight:300;font-size:8.5px;line-height:1;letter-spacing:.42em;text-align:center;margin-right:-.42em;white-space:nowrap}
-.que{font-size:13.5px;line-height:1.3;color:var(--gris-claro);padding-left:18px;box-shadow:inset 1px 0 0 rgba(255,255,255,.18)}
-.links{display:flex;gap:4px;margin-left:auto}
-.links a{position:relative;text-decoration:none;font-weight:500;font-size:15.5px;padding:10px 12px;color:#E8E9EA}
-.links a::after{content:"";position:absolute;left:12px;right:12px;bottom:5px;height:2px;border-radius:2px;background:var(--dorado);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
-@media (hover:hover) and (pointer:fine){.links a:hover::after{transform:scaleX(1)}}
-.links a:focus-visible::after{transform:scaleX(1)}
-.top .btn{height:44px;padding:0 18px;font-size:15px}
-.menu-btn{display:none;margin-left:auto;width:46px;height:46px;border:0;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);color:#fff;cursor:pointer;place-items:center;transition:background-color .2s ease}
+.top.scrolled .barra{background:rgba(14,14,14,.76);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1), 0 20px 44px -22px rgba(0,0,0,.75)}
+@media (prefers-reduced-transparency: reduce){.top.scrolled .barra{background:var(--pared);-webkit-backdrop-filter:none;backdrop-filter:none}}
+.marca{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#fff;border-radius:999px;padding-right:6px;min-width:0}
+.marca img{width:44px;height:44px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px rgba(255,255,255,.28)}
+.nom{display:flex;flex-direction:column;min-width:0;line-height:1.15;overflow:hidden}
+.nom b{font-stretch:118%;font-weight:800;font-size:16.5px;letter-spacing:-0.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nom small{font-size:13px;color:var(--gris-claro);white-space:nowrap}
+.nom .corta,.b-turno .corta{display:none}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{position:relative;text-decoration:none;font-weight:500;font-size:15.5px;padding:10px 13px;color:#D4D6D8;border-radius:999px;transition:color .2s ease}
+.links a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;border-radius:2px;background:var(--dorado);transform:scaleX(0);transform-origin:left;transition:transform .28s var(--ease-out)}
+.links a.activo{color:#fff}
+.links a.activo::after,.links a:focus-visible::after{transform:scaleX(1)}
+@media (hover:hover) and (pointer:fine){.links a:hover{color:#fff}.links a:hover::after{transform:scaleX(1)}}
+.acciones{display:flex;align-items:center;gap:8px}
+.b-top{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;font:600 15px/1 var(--f);text-decoration:none;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease}
+.b-top:active{transform:scale(.97)}
+.b-escribinos{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.b-escribinos .ico{width:18px;height:18px}
+.b-turno{background:var(--dorado);color:var(--tinta)}
+@media (hover:hover) and (pointer:fine){.b-escribinos:hover{box-shadow:inset 0 0 0 1.5px #fff}.b-turno:hover{background:var(--dorado-2)}}
+.menu-btn{display:none;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;place-items:center;flex:none;transition:background-color .2s ease, transform .16s var(--ease-out)}
 .menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s var(--ease-out)}
 .menu-btn i + i{margin-top:5px}
 .menu-btn[aria-expanded="true"]{background:#fff;color:var(--tinta)}
 .menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
 .menu-btn:active{transform:scale(.95)}
-.menu{position:fixed;top:calc(var(--header) - 2px);left:12px;right:12px;z-index:49;background:var(--pared-2);color:#fff;border-radius:20px;padding:8px 8px 12px;
-  box-shadow:0 30px 60px -24px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.06);transform-origin:top center;opacity:0;transform:translateY(-8px) scale(.98);visibility:hidden;pointer-events:none;
-  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s}
-.menu.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s}
-.menu .item-m{display:block;padding:15px 14px;font-stretch:125%;font-weight:700;font-size:24px;line-height:1;text-decoration:none}
+.menu{position:fixed;top:calc(max(12px, env(safe-area-inset-top)) + 72px);left:12px;right:12px;z-index:49;background:var(--pared-2);color:#fff;border-radius:24px;padding:8px 8px 12px;
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.75), inset 0 0 0 1px rgba(255,255,255,.08);transform-origin:top right;opacity:0;transform:translateY(-6px) scale(.97);visibility:hidden;pointer-events:none;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.menu.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.menu .item-m{display:block;padding:15px 14px;font-stretch:125%;font-weight:700;font-size:24px;line-height:1;text-decoration:none;border-radius:14px}
 .menu .item-m + .item-m{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 .menu .item-m:active{background:rgba(255,255,255,.06)}
 .menu .dato{margin:8px 14px 14px;font-size:14.5px;color:var(--gris-claro)}
+.menu .btns{display:grid;gap:8px}
 .menu .btn{display:flex;width:100%}
-@media (max-width:960px){.links,.top .btn{display:none}.menu-btn{display:grid}}
-@media (max-width:420px){.que{font-size:12.5px;padding-left:14px}.top .wrap{gap:14px}}
+@media (max-width:1100px){.links,.b-escribinos{display:none}.acciones{margin-left:auto}.menu-btn{display:grid}}
+@media (max-width:480px){
+  .barra{height:60px;gap:8px;padding:0 8px}
+  .marca{gap:10px}.marca img{width:40px;height:40px}
+  .nom b{font-size:14.5px;font-stretch:110%}.nom small{font-size:12px}
+  .nom .larga,.b-turno .larga{display:none}.nom .corta,.b-turno .corta{display:inline}
+  .b-turno{padding:0 14px;font-size:14.5px}
+  .menu{top:calc(max(12px, env(safe-area-inset-top)) + 68px)}
+}
+@media (max-width:350px){.b-turno{display:none}}
 
 /* ---------- portada: la pared negra, el espejo y el poste ---------- */
-.hero{background:var(--pared);color:#fff;padding:calc(var(--header) + 56px) 0 96px;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-.hero h1{font-stretch:125%;font-weight:800;font-size:clamp(3rem, 6.4vw, 5.9rem);line-height:.95;letter-spacing:-0.02em}
+.hero{position:relative;background:var(--pared);color:#fff;padding:calc(var(--header) + 48px) 0 110px;overflow:hidden}
+/* el reflejo de los spots del techo sobre la pared */
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 50% at 78% 18%, rgba(255,255,255,.07), transparent 70%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.hero h1{font-stretch:125%;font-weight:800;font-size:clamp(3.3rem, 7.2vw, 6.9rem);line-height:.92;letter-spacing:-0.025em}
 .hero h1 span{display:block}
-.hero .lead{margin-top:28px;font-size:clamp(18px, 1.6vw, 20.5px);line-height:1.55;color:#C9CCCF;max-width:36ch}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.donde{display:flex;align-items:center;gap:10px;margin-top:30px;font-size:15px;color:var(--gris-claro)}
+.hero h1 .fina{font-weight:300;font-stretch:100%;letter-spacing:-0.035em;color:#E9EAEB}
+.hero .lead{margin-top:30px;font-size:clamp(18px, 1.6vw, 21px);line-height:1.55;color:#C9CCCF;max-width:34ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.donde{display:flex;align-items:center;gap:10px;margin-top:32px;font-size:15px;color:var(--gris-claro)}
 .donde svg{width:18px;height:18px;flex:none}
-.estacion{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:stretch;justify-self:end;width:min(470px, 100%)}
+.estacion{position:relative;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:stretch;justify-self:end;width:min(510px, 100%)}
 
 /* el poste: bola y tapas de cromo, el tubo de vidrio con las rayas que suben */
 .poste{display:flex;flex-direction:column;align-items:center;width:78px}
@@ -126,7 +156,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .poste .tapa{width:78px;height:24px;border-radius:9px;background:linear-gradient(90deg, #4A4E52 0%, #C9CED2 22%, #F5F6F7 38%, #9AA0A5 62%, #5C6166 82%, #3E4246 100%);
   box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
 .poste .tapa.abajo{height:30px;border-radius:9px 9px 14px 14px}
-.tubo{position:relative;flex:1;min-height:260px;width:60px;overflow:hidden;background:var(--papel)}
+.tubo{position:relative;flex:1;min-height:260px;width:60px;overflow:hidden;background:var(--papel);box-shadow:0 0 40px rgba(217,164,65,.18)}
 .rayas{position:absolute;left:0;top:0;width:100%;height:calc(100% + 56px);will-change:transform;
   background:linear-gradient(to bottom right, var(--tinta) 0 25%, var(--papel) 25% 50%, var(--dorado) 50% 75%, var(--papel) 75% 100%) 0 0 / 60px 56px}
 /* el vidrio: sombra en los bordes y un brillo vertical, para que se lea como un cilindro */
@@ -134,9 +164,24 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
   background:linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.08) 22%, rgba(255,255,255,.55) 36%, rgba(255,255,255,0) 50%, rgba(0,0,0,.1) 72%, rgba(0,0,0,.6) 100%)}
 .tubo::before{content:"";position:absolute;inset:0;z-index:1;background:#000;opacity:0;pointer-events:none}
 
-.espejo{position:relative;margin:0;border-radius:26px;padding:9px;background:#0A0A0A;align-self:center;
-  box-shadow:0 0 0 1.5px rgba(255,255,255,.75), 0 0 0 6px rgba(255,255,255,.06), 0 40px 70px -40px rgba(0,0,0,.9)}
-.espejo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:var(--pared-2)}
+.espejo{position:relative;margin:0;border-radius:28px;padding:9px;background:#050505;align-self:center;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.75), 0 0 0 7px rgba(255,255,255,.05), 0 50px 90px -40px rgba(0,0,0,.95)}
+.espejo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;background:var(--pared-2)}
+
+/* elegir el día desde la portada: una tarjeta apoyada sobre el espejo */
+.rapido{position:absolute;left:70px;right:28px;bottom:-40px;z-index:2;padding:16px 16px 14px;border-radius:20px;
+  background:rgba(26,26,26,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1), 0 30px 50px -24px rgba(0,0,0,.9)}
+.rapido p{font-weight:700;font-size:15.5px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.rapido p a{font-weight:500;font-size:14px;color:var(--gris-claro);text-decoration:none}
+.rapido p a:hover{color:#fff}
+.dias-r{display:grid;grid-template-columns:repeat(4, 1fr);gap:6px}
+.dias-r a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;border-radius:12px;text-decoration:none;
+  background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:background-color .18s ease, color .18s ease, transform .14s var(--ease-out)}
+.dias-r b{font-weight:600;font-size:14.5px;line-height:1.1}
+.dias-r small{font-size:12.5px;color:var(--gris-claro);line-height:1.1}
+.dias-r a:active{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.dias-r a:hover{background:var(--dorado);color:var(--tinta)}.dias-r a:hover small{color:#3A2E12}}
 
 /* el momento de la página: el texto entra, el poste se prende y arranca a girar (el giro lo maneja el JS) */
 @keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -146,20 +191,23 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .hero h1 span:nth-child(2){animation-delay:.06s}
 .hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}.donde{animation-delay:.26s}
 .espejo{animation:subir .8s var(--ease-out) .1s both}
+.rapido{animation:subir .7s var(--ease-out) .5s both}
 .poste{animation:aparecer .5s ease .05s both}
 .tubo::before{animation:prender .5s ease .45s both}
-@media (max-width:860px){
-  .hero{padding:calc(var(--header) + 30px) 0 64px}
+@media (max-width:900px){
+  .hero{padding:calc(var(--header) + 34px) 0 72px}
   .hero .wrap{grid-template-columns:1fr;gap:44px}
-  .estacion{justify-self:start;width:100%;max-width:440px;gap:20px}
+  .estacion{justify-self:start;width:100%;max-width:460px;gap:20px}
   .poste{width:58px}.poste .tapa{width:58px}.tubo{width:44px;min-height:0}.poste .bola{width:28px;height:28px}
   .rayas{background-size:44px 42px;height:calc(100% + 42px)}
+  .rapido{position:relative;grid-column:1 / -1;left:auto;right:auto;bottom:auto;margin-top:-58px;margin-inline:22px 0}
 }
+@media (max-width:420px){.rapido{margin-inline:12px 0}.dias-r{gap:5px}.dias-r b{font-size:14px}}
 
 /* ---------- qué te hacés: el tablero de letras ---------- */
-.servicios{padding:104px 0}
-.cab{max-width:640px}
-.cab h2{font-stretch:125%;font-weight:800;font-size:clamp(2.3rem, 4.6vw, 3.7rem);line-height:.98;letter-spacing:-0.015em}
+.servicios{padding:112px 0}
+.cab{max-width:660px}
+.cab h2{font-stretch:125%;font-weight:800;font-size:clamp(2.4rem, 4.8vw, 3.9rem);line-height:.96;letter-spacing:-0.02em}
 .cab p{margin-top:16px;color:var(--gris);font-size:18.5px;line-height:1.55;max-width:48ch}
 .servicios .grid{display:grid;grid-template-columns:1.45fr .55fr;gap:28px;margin-top:52px;align-items:start}
 /* el fieltro negro con canaletas donde se encastran las letras, dentro de un marco */
@@ -178,13 +226,13 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .fila.prod .renglon,.fila.prod .det{grid-column:2}
 .fila.prod .sumar{grid-column:3}
 .pie-tablero{margin-top:12px;padding-top:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);text-align:center;font-stretch:87%;font-weight:600;font-size:18px;letter-spacing:.24em;text-transform:uppercase;color:#E2E3E4}
-/* sumar al turno: se vuelve una ficha blanca con tilde cuando ya está */
+/* sumar al turno: se vuelve una ficha dorada con tilde cuando ya está */
 .sumar{display:inline-flex;align-items:center;justify-content:center;min-width:138px;gap:8px;height:44px;padding:0 16px 0 13px;border:0;border-radius:999px;cursor:pointer;background:transparent;color:#fff;
   box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45);font:600 14.5px/1 var(--f);white-space:nowrap;
   transition:background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .14s var(--ease-out)}
 .sumar svg{width:18px;height:18px;flex:none}
 .sumar .si{display:none}
-.sumar[aria-pressed="true"]{background:#fff;color:var(--tinta);box-shadow:none}
+.sumar[aria-pressed="true"]{background:var(--dorado);color:var(--tinta);box-shadow:none}
 .sumar[aria-pressed="true"] .si{display:block}.sumar[aria-pressed="true"] .no{display:none}
 .sumar:active{transform:scale(.96)}
 @media (hover:hover) and (pointer:fine){.sumar[aria-pressed="false"]:hover{box-shadow:inset 0 0 0 1.5px #fff}}
@@ -196,7 +244,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .al-lado .nota-t b{color:var(--tinta)}
 @media (max-width:900px){.servicios .grid{grid-template-columns:1fr}.al-lado{grid-template-columns:1fr 1fr;align-items:start}}
 @media (max-width:560px){
-  .servicios{padding:80px 0}
+  .servicios{padding:84px 0}
   .tablero{box-shadow:0 0 0 6px #2A2A2A, 0 0 0 7px #3A3A3A, 0 30px 60px -34px rgba(18,18,18,.65)}
   .fila,.fila.prod{grid-template-columns:1fr;padding:18px 0}
   .fila .sumar,.fila.prod .sumar{grid-column:1;grid-row:auto;justify-self:start;margin-top:4px}
@@ -207,88 +255,128 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
   .al-lado{grid-template-columns:1fr}
 }
 
-/* ---------- trabajos: la fila de espejos del local ---------- */
-.trabajos{padding:24px 0 112px}
-.espejos{display:grid;grid-template-columns:1.25fr .8fr .8fr;gap:22px;margin-top:52px;align-items:end}
+/* ---------- trabajos: la fila de espejos del local, sobre la pared negra ---------- */
+.trabajos{padding:112px 0 120px;background:var(--pared);color:#fff}
+.trabajos .cab p{color:var(--gris-claro)}
+.espejos{display:grid;grid-template-columns:1.3fr .8fr .8fr;gap:22px;margin-top:52px;align-items:start}
 .espejos figure{margin:0}
-.espejos .marco{border-radius:22px;padding:7px;background:var(--pared);box-shadow:0 0 0 1.5px rgba(18,18,18,.12), 0 30px 60px -36px rgba(18,18,18,.6)}
-.espejos img{width:100%;object-fit:cover;border-radius:16px;background:#DDE0E2}
-.espejos .ancho img{aspect-ratio:4/3;object-position:62% 50%}
+.espejos .marco{border-radius:24px;padding:7px;background:#050505;box-shadow:0 0 0 1.5px rgba(255,255,255,.55), 0 40px 70px -40px rgba(0,0,0,.9)}
+.espejos img{width:100%;object-fit:cover;border-radius:18px;background:var(--pared-2)}
+.espejos .ancho img{aspect-ratio:14/15;object-position:62% 50%}
 .espejos .alto img{aspect-ratio:9/16}
-.espejos figcaption{margin-top:12px;font-size:15px;color:var(--gris)}
-.espejos figcaption b{display:block;color:var(--tinta);font-weight:600;font-size:16.5px}
-.mas-ig{display:inline-flex;align-items:center;gap:8px;margin-top:30px;font-weight:600;text-decoration:none;box-shadow:inset 0 -2px 0 var(--tinta);padding-bottom:3px}
+.espejos figcaption{margin-top:14px;font-size:15px;color:var(--gris-claro)}
+.espejos figcaption b{display:block;color:#fff;font-weight:600;font-size:16.5px}
+.mas-ig{display:inline-flex;align-items:center;gap:8px;margin-top:34px;font-weight:600;text-decoration:none;box-shadow:inset 0 -2px 0 var(--dorado);padding-bottom:3px}
 .mas-ig svg{width:18px;height:18px}
 @media (max-width:860px){
+  .trabajos{padding:84px 0 92px}
   .espejos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;gap:16px;margin-inline:-20px;padding:0 20px 10px;scrollbar-width:none;align-items:flex-start}
   .espejos::-webkit-scrollbar{display:none}
-  .espejos figure{flex:0 0 min(300px, 76%);scroll-snap-align:start}
+  .espejos figure{flex:0 0 min(300px, 78%);scroll-snap-align:start}
   .espejos .alto{flex-basis:min(230px, 60%)}
+  .espejos .ancho img{aspect-ratio:4/3}
 }
 
-/* ---------- tu turno: el formulario y el ticket ---------- */
-.turno{padding:104px 0 112px;background:#E6E8E6}
-.turno .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start;margin-top:48px}
+/* ---------- tu turno: la agenda y el ticket ---------- */
+.turno{padding:112px 0 120px;background:#E7E8E5}
+.turno .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:start;margin-top:48px}
 .turno .cab{width:min(1180px, 100% - 40px);margin-inline:auto;max-width:none}
 .turno .cab h2,.turno .cab p{max-width:640px}
-.form{display:grid;gap:30px}
-.form fieldset{border:0;margin:0;padding:0;min-width:0}
-.form legend,.form .f > label{display:block;font-weight:700;font-size:16px;margin-bottom:12px;padding:0}
-.opc{font-weight:400;color:var(--gris)}
+.form{display:grid;gap:22px}
+.paso{border:0;margin:0;padding:22px;min-width:0;background:var(--papel);border-radius:22px;box-shadow:0 1px 2px rgba(18,18,18,.06)}
+.paso > legend{float:left;width:100%;display:flex;align-items:center;gap:12px;font-stretch:112%;font-weight:700;font-size:19px;line-height:1.2;margin:0 0 16px;padding:0}
+.paso > legend + *{clear:both}
+.n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--tinta);color:#fff;font-stretch:100%;font-weight:700;font-size:14px;
+  transition:background-color .2s ease, color .2s ease}
+.n svg{width:16px;height:16px;display:none}
+.paso.ok .n{background:var(--dorado);color:var(--tinta)}
+.paso.ok .n svg{display:block}.paso.ok .n span{display:none}
+.opc{font-weight:400;color:var(--gris);font-stretch:100%;font-size:15px}
 .f{display:flex;flex-direction:column;min-width:0}
+.f > label{display:block;font-weight:600;font-size:15.5px;margin-bottom:8px}
+
+/* fichas que se eligen (servicios, días, horarios) */
 .fichas{display:flex;flex-wrap:wrap;gap:8px}
 .fichas label{cursor:pointer;position:relative}
 .fichas input{position:absolute;opacity:0;pointer-events:none}
-.fichas span{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;border-radius:999px;background:var(--papel);box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.16);
+.fichas span{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;padding:0 17px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.15);
   font-weight:500;font-size:15.5px;line-height:1.2;transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
-.fichas span small{font-size:12.5px;color:var(--gris);font-weight:500}
 .fichas span svg{width:16px;height:16px;display:none}
 .fichas input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
-.fichas input:checked + span small{color:var(--gris-claro)}
-.fichas input:checked + span svg{display:block}
+.fichas input:checked + span svg{display:block;color:var(--dorado)}
 .fichas input:focus-visible + span{outline:3px solid var(--tinta);outline-offset:2px}
-.fichas label:active span{transform:scale(.97)}
-@media (hover:hover) and (pointer:fine){.fichas input:not(:checked) + span:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
-.fichas.dias{display:grid;grid-template-columns:repeat(4, 1fr)}
-.dias span{width:100%;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px;min-height:54px;padding:0 16px;border-radius:14px}
-.dias span b{font-weight:600}
+.fichas input:disabled + span{cursor:not-allowed;background:transparent;color:#A9ACB0;box-shadow:inset 0 0 0 1px rgba(21,21,21,.07)}
+.fichas label:active input:not(:disabled) + span{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.fichas input:not(:checked):not(:disabled) + span:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
+
+/* el calendario: dos semanas, de lunes a domingo */
+.cal-cab{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.mes{font-weight:600;font-size:15.5px;color:var(--gris)}
+.sem,.cal{display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:6px}
+.sem span{text-align:center;font-size:13px;font-weight:600;color:var(--gris);padding-bottom:4px}
+.cal span{width:100%;min-height:58px;padding:0;border-radius:14px;flex-direction:column;gap:0;font-variant-numeric:tabular-nums}
+.cal span b{font-size:18px;font-weight:600;line-height:1.1}
+.cal span small{font-size:11.5px;font-weight:600;line-height:1.1;color:var(--gris)}
+.cal input:checked + span small{color:var(--dorado)}
+.cal .hoy span{box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.4)}
+.cal .vacio{visibility:hidden}
+.primero span{min-height:40px;font-size:14.5px}
+
+/* los horarios */
+.horas{display:grid;gap:16px}
+.horas h3{font-size:14.5px;font-weight:600;color:var(--gris);margin-bottom:8px}
+.slots{display:grid;grid-template-columns:repeat(auto-fill, minmax(76px, 1fr));gap:7px}
+.slots span{width:100%;border-radius:12px;padding:0;font-weight:600;font-variant-numeric:tabular-nums}
+.sin-dia{font-size:15.5px;color:var(--gris);padding:6px 0}
+.horas .igual{justify-self:start}
+.nota-h{font-size:14px;color:var(--gris);margin-top:14px}
+
 .dos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form input[type=text],.form input[type=tel],.form textarea{min-height:50px;border-radius:12px;border:1.5px solid rgba(21,21,21,.22);background:var(--papel);padding:0 14px;
+.form input[type=text],.form input[type=tel],.form textarea{min-height:52px;border-radius:12px;border:1.5px solid rgba(21,21,21,.2);background:#fff;padding:0 14px;
   font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
 .form textarea{padding:12px 14px;min-height:86px;resize:vertical;line-height:1.45}
 .form input::placeholder,.form textarea::placeholder{color:#6A6E72}
 .form input:focus,.form textarea:focus{outline:none;border-color:var(--tinta);box-shadow:0 0 0 3px rgba(21,21,21,.14)}
-.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.13)}
-.f.error .fichas span{box-shadow:inset 0 0 0 1.5px var(--err)}
-.err{color:var(--err);font-size:14px;font-weight:600;margin-top:8px}
+.f.error input[type=text],.f.error input[type=tel]{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.13)}
+.paso.error{box-shadow:inset 0 0 0 1.5px var(--err)}
+.err{color:var(--err);font-size:14px;font-weight:600;margin-top:10px;display:block}
 .err:empty{display:none}
+.datos{display:grid;gap:16px}
 @media (max-width:560px){
+  .paso{padding:18px 16px;border-radius:18px}
   .dos{grid-template-columns:1fr}
-  /* en el celular los días corren de costado */
-  .fichas.dias{display:flex;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;margin-inline:-20px;padding:2px 20px 8px;scroll-padding-inline:20px;scrollbar-width:none}
-  .fichas.dias::-webkit-scrollbar{display:none}
-  .dias label{flex:0 0 auto;scroll-snap-align:start}
-  .dias span{min-width:86px}
+  .sem,.cal{gap:4px}
+  .cal span{min-height:52px;border-radius:12px}
+  .cal span b{font-size:16.5px}
+  .slots{grid-template-columns:repeat(4, minmax(0, 1fr));gap:6px}
 }
 
 /* el ticket del club: papel con muescas a los costados y una línea para cortar */
-.ticket-col{position:sticky;top:calc(var(--header) + 28px)}
-.ticket{position:relative;background:var(--papel);border-radius:6px;padding:28px 28px 26px;
+.ticket-col{position:sticky;top:calc(var(--header) + 20px)}
+.ticket{position:relative;background:var(--papel);border-radius:8px;padding:28px 28px 26px;
   box-shadow:0 1px 2px rgba(18,18,18,.08), 0 34px 60px -34px rgba(18,18,18,.45)}
-.t-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-bottom:18px;box-shadow:inset 0 -1.5px 0 var(--tinta)}
-.t-cab .marca{color:var(--tinta)}
-.t-cab .caja{font-size:19px}
-.t-cab .club{font-size:7.5px}
+.t-cab{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.t-logo{display:flex;flex-direction:column;align-items:stretch;gap:4px}
+.t-logo .caja{display:block;border:2px solid currentColor;padding:4px 10px 3px;font-stretch:125%;font-weight:800;font-size:19px;line-height:1;letter-spacing:.07em;text-align:center}
+.t-logo .club{display:block;font-weight:300;font-size:7.5px;line-height:1;letter-spacing:.42em;text-align:center;margin-right:-.42em;white-space:nowrap}
 .t-cab small{font-size:13.5px;color:var(--gris);text-align:right;line-height:1.35}
-.t-tit{font-stretch:125%;font-weight:800;font-size:30px;line-height:1;margin:20px 0 6px}
+/* la barrita con las rayas del poste que se llena a medida que completás el turno */
+.t-prog{display:flex;align-items:center;gap:12px;margin:22px 0 4px}
+.t-barra{flex:1;height:8px;border-radius:8px;background:rgba(21,21,21,.08);overflow:hidden}
+.t-barra i{display:block;height:100%;border-radius:8px;clip-path:inset(0 100% 0 0 round 8px);transition:clip-path .35s var(--ease-out);
+  background:repeating-linear-gradient(-45deg, var(--tinta) 0 6px, var(--papel) 6px 10px, var(--dorado) 10px 16px, var(--papel) 16px 20px)}
+.t-prog small{font-size:13.5px;color:var(--gris);font-variant-numeric:tabular-nums;white-space:nowrap}
+.t-tit{font-stretch:125%;font-weight:800;font-size:32px;line-height:1;margin:16px 0 6px}
 .t-datos{margin:0;display:grid;gap:0}
 .t-datos div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:11px 0;box-shadow:inset 0 -1px 0 rgba(21,21,21,.08)}
 .t-datos dt{font-size:14px;color:var(--gris)}
 .t-datos dd{margin:0;font-weight:600;font-size:16px;line-height:1.35;overflow-wrap:anywhere}
 .t-datos dd.falta{font-weight:400;color:#8A8E92}
+.t-hora{font-stretch:125%;font-weight:800;font-size:22px !important;line-height:1.1 !important}
+.t-hora.falta{font-stretch:100%;font-size:16px !important}
 .corte{position:relative;margin:26px -28px 24px;height:0;border-top:2px dashed rgba(21,21,21,.22)}
 /* las muescas del ticket, del color del fondo de la sección */
-.corte::before,.corte::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:#E6E8E6}
+.corte::before,.corte::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:#E7E8E5}
 .corte::before{left:-12px}.corte::after{right:-12px}
 .enviar{width:100%;height:58px;font-size:16.5px;background:var(--tinta);color:#fff}
 .con-wa .enviar{background:#25D366;color:#fff}
@@ -301,17 +389,18 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px}
 .prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:0 0 14px}
 /* el sello dorado que cae sobre el ticket cuando lo mandás */
-.sello{position:absolute;right:22px;top:92px;width:112px;height:112px;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none;
+.sello{position:absolute;right:22px;top:118px;width:112px;height:112px;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none;
   color:var(--dorado);box-shadow:inset 0 0 0 3px currentColor, inset 0 0 0 7px var(--papel), inset 0 0 0 8.5px currentColor;
   font-stretch:125%;font-weight:800;font-size:15px;line-height:1.05;letter-spacing:.04em;opacity:0;transform:rotate(-14deg) scale(1.25);
   transition:opacity .2s var(--ease-out), transform .26s var(--ease-out)}
 .sello.on{opacity:.92;transform:rotate(-14deg)}
-@media (max-width:900px){
-  .turno .wrap{grid-template-columns:1fr;gap:44px}
+@media (max-width:960px){
+  .turno .wrap{grid-template-columns:1fr;gap:36px}
   .ticket-col{position:static}
 }
 @media (max-width:560px){
-  .turno{padding:80px 0 96px}
+  .turno{padding:84px 0 100px}
+  .turno .wrap{width:min(1180px, 100% - 24px)}
   .ticket{padding:24px 20px 22px}
   .corte{margin-inline:-20px}
   .t-datos div{grid-template-columns:84px 1fr}
@@ -319,7 +408,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 }
 
 /* ---------- dónde estamos ---------- */
-.local{padding:104px 0 112px}
+.local{padding:112px 0 120px;background:var(--azulejo)}
 .local .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
 .dir{font-stretch:125%;font-weight:800;font-size:clamp(2.6rem, 5.4vw, 4.6rem);line-height:.95;letter-spacing:-0.02em}
 .dir small{display:block;font-size:.42em;font-weight:600;letter-spacing:0;margin-top:12px;color:var(--gris)}
@@ -327,27 +416,23 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .local dt{font-size:14px;color:var(--gris)}
 .local dd{margin:2px 0 0;font-weight:600;font-size:18px}
 .local .ctas{display:flex;flex-wrap:wrap;gap:12px}
-.btn-borde{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.3)}
-@media (hover:hover) and (pointer:fine){.btn-borde:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
-.vista{display:grid;gap:14px}
-.vista img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;background:#DDE0E2}
-.vista iframe{width:100%;height:300px;border:0;border-radius:16px;filter:grayscale(1) contrast(1.05);background:#DDE0E2}
-@media (max-width:860px){.local .grid{grid-template-columns:1fr;gap:40px}.local{padding:80px 0 96px}}
+.vista iframe{width:100%;height:340px;border:0;border-radius:20px;filter:grayscale(1) contrast(1.05);background:#DDE0E2;display:block}
+@media (max-width:860px){.local .grid{grid-template-columns:1fr;gap:40px}.local{padding:84px 0 96px}}
 
 footer{background:var(--pared);color:#C9CCCF;padding:44px 0 120px;font-size:14.5px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-footer .marca{color:#fff}
+footer .marca{padding-right:0}
 footer a{color:#fff;font-weight:600}
 footer p + p{margin-top:4px}
 
-/* ---------- ver tu turno: aparece cuando sumaste algo y no estás mirando el ticket ---------- */
+/* ---------- ver tu turno: aparece cuando sumaste algo y no estás mirando la agenda ---------- */
 .ir-turno{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 78px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 6px);z-index:60;
   display:flex;align-items:center;gap:10px;height:52px;padding:0 10px 0 18px;border-radius:999px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;
   box-shadow:0 3px 6px rgba(18,18,18,.2), 0 16px 34px -10px rgba(18,18,18,.6);
   opacity:0;transform:translateY(12px);visibility:hidden;pointer-events:none;
   transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s}
 .ir-turno.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s}
-.ir-turno b{min-width:32px;height:32px;padding:0 9px;border-radius:999px;background:#fff;color:var(--tinta);display:grid;place-items:center;font-size:14.5px;font-variant-numeric:tabular-nums}
+.ir-turno b{min-width:32px;height:32px;padding:0 9px;border-radius:999px;background:var(--dorado);color:var(--tinta);display:grid;place-items:center;font-size:14.5px;font-variant-numeric:tabular-nums}
 .ir-turno:active{transform:scale(.97)}
 @media (max-width:640px){.ir-turno{left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 72px);bottom:max(20px, env(safe-area-inset-bottom));height:58px;justify-content:space-between;padding-left:20px}}
 
@@ -386,13 +471,14 @@ footer p + p{margin-top:4px}
 
 /* ---------- menos movimiento: sin desplazamientos, el poste quieto ---------- */
 @media (prefers-reduced-motion: reduce){
-  .hero h1 span,.hero .lead,.hero .ctas,.donde,.espejo,.poste,.wa{animation:aparecer .4s ease both}
+  .hero h1 span,.hero .lead,.hero .ctas,.donde,.espejo,.rapido,.poste,.wa{animation:aparecer .4s ease both}
   .tubo::before{animation:none;opacity:0}
   .wa::before,.wa::after{animation:none}
   .wa:hover svg{animation:none}
   .links a::after,.menu,.ir-turno{transition-property:opacity, visibility}
   .menu,.ir-turno{transform:none}
   .sello{transition:opacity .2s ease;transform:rotate(-14deg)}
+  .t-barra i{transition:none}
 }
 </style>
 </head>
@@ -406,35 +492,38 @@ footer p + p{margin-top:4px}
 </svg>
 
 <header class="top" id="top">
-  <div class="wrap">
+  <div class="barra">
     <a class="marca" href="#inicio" aria-label="Pach Barber Club, ir al inicio">
-      <span class="caja" aria-hidden="true">PACH</span>
-      <span class="club" aria-hidden="true">BARBER CLUB</span>
+      <img src="img/perfil.jpg" alt="" width="100" height="100">
+      <span class="nom"><b>Pach Barber Club</b><small><span class="larga">Peluquería y barbería en Paraná</span><span class="corta">Barbería en Paraná</span></small></span>
     </a>
-    <span class="que">Peluquería y barbería<br>en Paraná</span>
-    <nav class="links" aria-label="Secciones">
-      <a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#turno">Tu turno</a><a href="#local">Dónde estamos</a>
+    <nav class="links" id="links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#turno">Turnos</a><a href="#local">Dónde estamos</a>
     </nav>
-    <a class="btn btn-blanco" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener">
-      <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos
-    </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+    <div class="acciones">
+      <a class="b-top b-escribinos" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+      <a class="b-top b-turno" href="#turno"><span class="larga">Sacar turno</span><span class="corta">Turno</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+    </div>
   </div>
 </header>
 <nav class="menu" id="menu" aria-label="Menú">
-  <a class="item-m" href="#servicios">Servicios</a><a class="item-m" href="#trabajos">Trabajos</a><a class="item-m" href="#turno">Tu turno</a><a class="item-m" href="#local">Dónde estamos</a>
+  <a class="item-m" href="#servicios">Servicios</a><a class="item-m" href="#trabajos">Trabajos</a><a class="item-m" href="#turno">Turnos</a><a class="item-m" href="#local">Dónde estamos</a>
   <p class="dato">Colón 344, Paraná. Atención por turnos.</p>
-  <a class="btn btn-blanco" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+  <div class="btns">
+    <a class="btn btn-oro" href="#turno">Sacar turno</a>
+    <a class="btn btn-blanco" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+  </div>
 </nav>
 
 <main>
   <section class="hero oscuro" id="inicio">
     <div class="wrap">
       <div>
-        <h1><span>Tu turno</span> <span>en el club.</span></h1>
-        <p class="lead">Peluquería y barbería en Paraná. Elegí qué te hacés y el día, y te confirmamos el horario por mensaje.</p>
+        <h1><span>Tu turno</span> <span class="fina">en el club.</span></h1>
+        <p class="lead">Peluquería y barbería en Paraná. Elegí qué te hacés, el día y el horario, y te lo confirmamos por mensaje.</p>
         <div class="ctas">
-          <a class="btn btn-blanco" href="#turno">Sacar turno</a>
+          <a class="btn btn-oro" href="#turno">Sacar turno</a>
           <a class="btn btn-linea" href="#trabajos">Ver trabajos</a>
         </div>
         <p class="donde"><svg aria-hidden="true"><use href="#pin"/></svg>Colón 344, Paraná. Atención por turnos.</p>
@@ -447,6 +536,10 @@ footer p + p{margin-top:4px}
           <span class="tapa abajo"></span>
         </div>
         <figure class="espejo"><img src="img/foto-05.jpg" alt="Barbero de Pach con gorra cortando a un cliente de pelo con rulos, con capa de peines estampados" width="512" height="640" fetchpriority="high"></figure>
+        <div class="rapido">
+          <p>¿Cuándo venís? <a href="#turno">Ver más días</a></p>
+          <div class="dias-r" id="diasR"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -498,7 +591,7 @@ footer p + p{margin-top:4px}
     </div>
   </section>
 
-  <section class="trabajos" id="trabajos">
+  <section class="trabajos oscuro" id="trabajos">
     <div class="wrap">
       <div class="cab">
         <h2>Pasaron por el sillón.</h2>
@@ -518,13 +611,13 @@ footer p + p{margin-top:4px}
 
   <section class="turno" id="turno">
     <div class="cab">
-      <h2>Armá tu turno.</h2>
-      <p>Elegí qué te hacés, el día y más o menos a qué hora. Te respondemos con el horario exacto.</p>
+      <h2>Sacá tu turno.</h2>
+      <p>Cuatro pasos: qué te hacés, el día, el horario y tu nombre. Te respondemos confirmando el turno.</p>
     </div>
     <div class="wrap">
       <form class="form" id="form" novalidate>
-        <fieldset class="f" id="f-serv">
-          <legend>¿Qué te hacés?</legend>
+        <fieldset class="paso f" id="f-serv">
+          <legend><span class="n" aria-hidden="true"><span>1</span><svg><use href="#tilde"/></svg></span>¿Qué te hacés?</legend>
           <div class="fichas" id="servs">
             <label><input type="checkbox" name="serv" value="corte"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Corte</span></label>
             <label><input type="checkbox" name="serv" value="barba"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Barba</span></label>
@@ -534,39 +627,49 @@ footer p + p{margin-top:4px}
           </div>
           <small class="err" id="err-serv"></small>
         </fieldset>
-        <fieldset class="f" id="f-dia">
-          <legend>¿Qué día?</legend>
-          <div class="fichas dias" id="dias"></div>
+
+        <fieldset class="paso f" id="f-dia">
+          <legend><span class="n" aria-hidden="true"><span>2</span><svg><use href="#tilde"/></svg></span>¿Qué día?</legend>
+          <div class="cal-cab">
+            <span class="mes" id="mes"></span>
+            <div class="fichas primero"><label><input type="radio" name="dia" value="primero"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Cuanto antes</span></label></div>
+          </div>
+          <div class="sem" aria-hidden="true"><span>lun</span><span>mar</span><span>mié</span><span>jue</span><span>vie</span><span>sáb</span><span>dom</span></div>
+          <div class="fichas cal" id="cal"></div>
           <small class="err" id="err-dia"></small>
         </fieldset>
-        <fieldset class="f" id="f-franja">
-          <legend>¿A qué hora más o menos?</legend>
-          <div class="fichas" id="franjas">
-            <label><input type="radio" name="franja" value="a la mañana"><span><svg aria-hidden="true"><use href="#tilde"/></svg>A la mañana</span></label>
-            <label><input type="radio" name="franja" value="a la tarde"><span><svg aria-hidden="true"><use href="#tilde"/></svg>A la tarde</span></label>
-            <label><input type="radio" name="franja" value="a última hora"><span><svg aria-hidden="true"><use href="#tilde"/></svg>A última hora</span></label>
-            <label><input type="radio" name="franja" value="cuando tengan lugar"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Me da igual</span></label>
-          </div>
-          <small class="err" id="err-franja"></small>
+
+        <fieldset class="paso f" id="f-hora">
+          <legend><span class="n" aria-hidden="true"><span>3</span><svg><use href="#tilde"/></svg></span>¿A qué hora?</legend>
+          <div class="horas" id="horas"></div>
+          <p class="nota-h">Si ese horario ya está tomado, te ofrecemos el más cercano.</p>
+          <small class="err" id="err-hora"></small>
         </fieldset>
-        <div class="dos">
-          <div class="f"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
-          <div class="f"><label for="tel">Tu teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 343 412-3456" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
-        </div>
-        <div class="f"><label for="aclar">¿Algo más? <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Qué corte tenés en mente, con quién te atendés, si venís con alguien…"></textarea></div>
+
+        <fieldset class="paso f" id="f-datos">
+          <legend><span class="n" aria-hidden="true"><span>4</span><svg><use href="#tilde"/></svg></span>Tus datos</legend>
+          <div class="datos">
+            <div class="dos">
+              <div class="f"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+              <div class="f"><label for="tel">Tu teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 343 412-3456" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+            </div>
+            <div class="f"><label for="aclar">¿Algo más? <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Qué corte tenés en mente, con quién te atendés, si venís con alguien…"></textarea></div>
+          </div>
+        </fieldset>
       </form>
 
       <div class="ticket-col">
         <div class="ticket" id="ticket">
           <div class="t-cab">
-            <span class="marca" aria-hidden="true"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
+            <span class="t-logo" aria-hidden="true"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
             <small>Colón 344<br>Paraná</small>
           </div>
+          <div class="t-prog"><span class="t-barra"><i id="barra"></i></span><small id="progTxt">0 de 4 pasos</small></div>
           <p class="t-tit">Tu turno</p>
           <dl class="t-datos">
             <div><dt>Servicio</dt><dd id="t-serv" class="falta">Elegí qué te hacés</dd></div>
             <div><dt>Día</dt><dd id="t-dia" class="falta">Elegí el día</dd></div>
-            <div><dt>Hora</dt><dd id="t-franja" class="falta">Elegí la franja</dd></div>
+            <div><dt>Hora</dt><dd id="t-hora" class="t-hora falta">Elegí el horario</dd></div>
             <div><dt>A nombre de</dt><dd id="t-nombre" class="falta">Tu nombre</dd></div>
           </dl>
           <span class="sello" id="sello" aria-hidden="true">TURNO<br>PEDIDO</span>
@@ -604,9 +707,12 @@ footer p + p{margin-top:4px}
 
 <footer>
   <div class="wrap">
-    <a class="marca" href="#inicio" aria-label="Pach Barber Club, volver arriba"><span class="caja" aria-hidden="true">PACH</span><span class="club" aria-hidden="true">BARBER CLUB</span></a>
+    <a class="marca" href="#inicio" aria-label="Pach Barber Club, volver arriba">
+      <img src="img/perfil.jpg" alt="" width="100" height="100" loading="lazy">
+      <span class="nom"><b>Pach Barber Club</b><small>Peluquería y barbería en Paraná</small></span>
+    </a>
     <div>
-      <p>Peluquería y barbería. Colón 344, Paraná. <a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></p>
+      <p>Colón 344, Paraná. <a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></p>
       <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
     </div>
   </div>
@@ -630,11 +736,20 @@ footer p + p{margin-top:4px}
 // =====================================================================================
 var WA = '';
 var IG_DM = 'https://ig.me/m/pachbarber';
+// =====================================================================================
+//  AGENDA: horarios que se ofrecen para pedir turno. Todavía no tenemos los horarios reales
+//  del club, así que van de 9 a 20 h cada 30 minutos y todos los días. Cuando los pasen:
+//  DESDE = primer turno, HASTA = último turno, CADA = minutos entre turnos,
+//  PAUSA = horas sin turnos (ej. ['13:00', '16:00'] para cerrar al mediodía),
+//  CERRADO = días que no abren (0 = domingo, 1 = lunes … 6 = sábado), ej. [0].
+// =====================================================================================
+var AGENDA = { DESDE: '09:00', HASTA: '20:00', CADA: 30, PAUSA: null, CERRADO: [] };
+
 document.documentElement.classList.add('js');
 if (WA) {
   document.documentElement.classList.add('con-wa');
   document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
-  document.querySelectorAll('.btn use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
+  document.querySelectorAll('[data-contacto] use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
   document.getElementById('flotante').setAttribute('aria-label', 'Escribinos por WhatsApp');
   document.getElementById('tipSub').textContent = 'Por WhatsApp';
 }
@@ -642,7 +757,7 @@ if (WA) {
 var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
 function calma() { return !!(mq && mq.matches); }
 
-// Encabezado y menú del celular
+// Encabezado: translúcido al bajar, la sección donde estás marcada en el menú, y el menú del celular
 (function () {
   var top = document.getElementById('top');
   var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
@@ -650,11 +765,25 @@ function calma() { return !!(mq && mq.matches); }
   btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
   menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) setMenu(false); });
   if (!('IntersectionObserver' in window)) return;
   var sentinel = document.createElement('div');
   sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
   document.body.prepend(sentinel);
   new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  var links = Array.prototype.slice.call(document.querySelectorAll('#links a'));
+  var vistas = {};
+  var obs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { vistas[e.target.id] = e.isIntersecting; });
+    var activa = '';
+    links.forEach(function (a) { var id = a.getAttribute('href').slice(1); if (!activa && vistas[id]) activa = id; });
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + activa;
+      a.classList.toggle('activo', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) obs.observe(s); });
 })();
 
 // El poste: arranca rápido al prenderse y se asienta en su giro de siempre. Se frena cuando no se ve.
@@ -683,60 +812,121 @@ function calma() { return !!(mq && mq.matches); }
     requestAnimationFrame(arrancar);
   }
   requestAnimationFrame(arrancar);
-  var mm = window.matchMedia('(max-width:860px)');
+  var mm = window.matchMedia('(max-width:900px)');
   if (mm.addEventListener) mm.addEventListener('change', function () { var r = anim.playbackRate; armar(); anim.playbackRate = r; });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) { if (es[0].isIntersecting) anim.play(); else anim.pause(); }).observe(rayas.parentNode);
   }
 })();
 
-// Tu turno: lo que sumás en el tablero, el día y la franja, tus datos, y el ticket que se completa solo
+// Tu turno: servicio, día en el calendario, horario y tus datos, y el ticket que se completa solo
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var form = $('form');
-  var CLAVE = 'pach-turno-v1';
+  var CLAVE = 'pach-turno-v2';
   var SERV = { corte: 'Corte', barba: 'Barba', color: 'Color', lineas: 'Líneas', cera: 'Cera o pomada' };
   var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-  var CORTO = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  var CORTO = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  var ADELANTE = 14; // cuántos días se pueden pedir, contando hoy
 
   function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function deIso(v) { var p = v.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function min(hhmm) { var p = hhmm.split(':'); return (+p[0]) * 60 + (+p[1]); }
+  function hhmm(m) { return ('0' + Math.floor(m / 60)).slice(-2) + ':' + ('0' + (m % 60)).slice(-2); }
   var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  var HOY = iso(hoy);
 
-  // los próximos 7 días, más "el primero que tengan"
-  var html = '';
-  for (var i = 0; i < 7; i++) {
-    var d = new Date(hoy); d.setDate(hoy.getDate() + i);
-    var nom = i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : CORTO[d.getDay()].charAt(0).toUpperCase() + CORTO[d.getDay()].slice(1);
-    html += '<label><input type="radio" name="dia" value="' + iso(d) + '"><span><b>' + nom + '</b><small>' + d.getDate() + '/' + (d.getMonth() + 1) + '</small></span></label>';
+  // los horarios de un día (si es hoy, solo los que faltan, con media hora de margen)
+  function horarios(dia) {
+    var L = [], desde = min(AGENDA.DESDE), hasta = min(AGENDA.HASTA), cada = AGENDA.CADA || 30;
+    var ahora = new Date(), limite = dia === HOY ? ahora.getHours() * 60 + ahora.getMinutes() + 30 : -1;
+    var p0 = AGENDA.PAUSA ? min(AGENDA.PAUSA[0]) : -1, p1 = AGENDA.PAUSA ? min(AGENDA.PAUSA[1]) : -1;
+    for (var m = desde; m <= hasta; m += cada) {
+      if (m < limite) continue;
+      if (AGENDA.PAUSA && m >= p0 && m < p1) continue;
+      L.push(hhmm(m));
+    }
+    return L;
   }
-  html += '<label><input type="radio" name="dia" value="primero"><span><b>Cuanto antes</b><small>primer lugar libre</small></span></label>';
-  $('dias').innerHTML = html;
+  function abre(d) { return AGENDA.CERRADO.indexOf(d.getDay()) < 0; }
+  function disponible(v) {
+    if (v === 'primero') return true;
+    var d = deIso(v), dif = Math.round((d - hoy) / 864e5);
+    return dif >= 0 && dif < ADELANTE && abre(d) && horarios(v).length > 0;
+  }
+
+  // el calendario: de lunes de esta semana hasta el domingo de la semana del último día que se puede pedir
+  var ini = new Date(hoy); ini.setDate(hoy.getDate() - ((hoy.getDay() + 6) % 7));
+  var fin = new Date(hoy); fin.setDate(hoy.getDate() + ADELANTE - 1); fin.setDate(fin.getDate() + (7 - fin.getDay()) % 7);
+  var html = '', meses = [];
+  for (var d = new Date(ini); d <= fin; d.setDate(d.getDate() + 1)) {
+    var v = iso(d), dif = Math.round((d - hoy) / 864e5);
+    if (dif < 0 || dif >= ADELANTE) { html += '<label class="vacio" aria-hidden="true"><span><b>' + d.getDate() + '</b></span></label>'; continue; }
+    if (meses.indexOf(MESES[d.getMonth()]) < 0) meses.push(MESES[d.getMonth()]);
+    var ok = disponible(v), et = dif === 0 ? 'hoy' : dif === 1 ? 'mañana' : '';
+    var aria = DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()] + (et ? ', ' + et : '') + (ok ? '' : ', sin turnos');
+    html += '<label' + (dif === 0 ? ' class="hoy"' : '') + '><input type="radio" name="dia" value="' + v + '"' + (ok ? '' : ' disabled') + ' aria-label="' + aria + '">' +
+      '<span><b>' + d.getDate() + '</b>' + (et ? '<small>' + et + '</small>' : '') + '</span></label>';
+  }
+  $('cal').innerHTML = html;
+  var tm = meses.join(' y '); $('mes').textContent = tm.charAt(0).toUpperCase() + tm.slice(1);
+
+  // los próximos días con lugar, para elegir desde la portada
+  var rapidos = '', cuantos = 0;
+  for (var i = 0; i < ADELANTE && cuantos < 4; i++) {
+    var dd = new Date(hoy); dd.setDate(hoy.getDate() + i);
+    if (!disponible(iso(dd))) continue;
+    var nom = i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : CORTO[dd.getDay()];
+    rapidos += '<a href="#f-hora" data-dia="' + iso(dd) + '"><b>' + nom + '</b><small>' + dd.getDate() + '/' + (dd.getMonth() + 1) + '</small></a>';
+    cuantos++;
+  }
+  $('diasR').innerHTML = rapidos;
 
   function diaTexto(v) {
     if (!v) return '';
-    if (v === 'primero') return 'cuanto antes, el primer lugar libre';
+    if (v === 'primero') return 'cuanto antes';
     var d = deIso(v), dif = Math.round((d - hoy) / 864e5);
     var base = DIAS[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
     return dif === 0 ? 'hoy, ' + base : dif === 1 ? 'mañana, ' + base : base;
   }
+  function horaTexto(h) { return !h ? '' : h === 'igual' ? 'La primera libre' : h + ' h'; }
   function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
   function servs() { return Array.prototype.map.call(form.querySelectorAll('input[name="serv"]:checked'), function (c) { return c.value; }); }
   function limpio(v) { return v.replace(/\s+/g, ' ').trim(); }
   function leer() {
-    return { serv: servs(), dia: radio('dia'), franja: radio('franja'), nombre: limpio($('nombre').value), tel: limpio($('tel').value), aclar: limpio($('aclar').value) };
+    return { serv: servs(), dia: radio('dia'), hora: radio('hora'), nombre: limpio($('nombre').value), tel: limpio($('tel').value), aclar: limpio($('aclar').value) };
+  }
+
+  // los horarios del día elegido, separados en mañana y tarde
+  function ficha(valor, txt, marcado) {
+    return '<label><input type="radio" name="hora" value="' + valor + '"' + (marcado ? ' checked' : '') + '><span>' + txt + '</span></label>';
+  }
+  function armarHoras(dia, elegida) {
+    var caja = $('horas');
+    if (!dia) { caja.innerHTML = '<p class="sin-dia">Elegí un día y te mostramos los horarios.</p>'; return; }
+    var L = horarios(dia === 'primero' ? '' : dia);
+    if (elegida && elegida !== 'igual' && L.indexOf(elegida) < 0) elegida = '';
+    var man = L.filter(function (h) { return min(h) < 13 * 60; }), tar = L.filter(function (h) { return min(h) >= 13 * 60; });
+    var out = '';
+    if (man.length) out += '<div><h3>Mañana</h3><div class="fichas slots">' + man.map(function (h) { return ficha(h, h, h === elegida); }).join('') + '</div></div>';
+    if (tar.length) out += '<div><h3>Tarde</h3><div class="fichas slots">' + tar.map(function (h) { return ficha(h, h, h === elegida); }).join('') + '</div></div>';
+    out += '<div class="fichas igual">' + ficha('igual', '<svg aria-hidden="true"><use href="#tilde"/></svg>Me da igual, la primera libre', elegida === 'igual') + '</div>';
+    caja.innerHTML = out;
   }
 
   // recuperar lo que habías dejado
+  var guardado = {};
   try {
     var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
     if (g && typeof g === 'object') {
+      guardado = g;
       (Array.isArray(g.serv) ? g.serv : []).forEach(function (s) { var c = form.querySelector('input[name="serv"][value="' + s + '"]'); if (c) c.checked = true; });
-      if (typeof g.dia === 'string') { var r = form.querySelector('input[name="dia"][value="' + g.dia + '"]'); if (r) r.checked = true; }
-      if (typeof g.franja === 'string') { var f = form.querySelector('input[name="franja"][value="' + g.franja + '"]'); if (f) f.checked = true; }
+      if (typeof g.dia === 'string') { var r = form.querySelector('input[name="dia"][value="' + g.dia + '"]'); if (r && !r.disabled) r.checked = true; }
       ['nombre', 'tel', 'aclar'].forEach(function (c) { if (typeof g[c] === 'string') $(c).value = g[c]; });
     }
   } catch (e) {}
+  armarHoras(radio('dia'), typeof guardado.hora === 'string' ? guardado.hora : '');
   function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(leer())); } catch (e) {} }
 
   function mensaje(borrador) {
@@ -744,22 +934,36 @@ function calma() { return !!(mq && mq.matches); }
     if (d.serv.length) d.serv.forEach(function (s) { L.push('• ' + SERV[s]); }); else if (borrador) L.push('• …');
     L.push('');
     L.push('Día: ' + (diaTexto(d.dia) || (borrador ? '…' : '')));
-    L.push('Hora: ' + (d.franja || (borrador ? '…' : '')));
+    L.push('Hora: ' + (d.hora === 'igual' ? 'la primera que tengan libre' : d.hora ? d.hora + ' h' : (borrador ? '…' : '')));
     L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
     L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
     if (d.aclar) L.push('Aclaraciones: ' + d.aclar);
-    L.push('', '¿Qué horario tienen? Gracias.');
+    L.push('', d.hora && d.hora !== 'igual' ? '¿Me confirman si está libre? Gracias.' : '¿Qué horario tienen? Gracias.');
     return L.join('\n');
   }
 
-  function pon(id, txt, falta) { var el = $(id); el.textContent = txt || falta; el.classList.toggle('falta', !txt); }
+  // el ticket: cada dato que entra aparece con un movimiento corto
+  function pon(id, txt, falta, mover) {
+    var el = $(id), antes = el.textContent, nuevo = txt || falta;
+    el.textContent = nuevo; el.classList.toggle('falta', !txt);
+    if (mover && txt && antes !== nuevo && !calma() && el.animate) {
+      el.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], { duration: 220, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+    }
+  }
+  function cap(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : ''; }
   var irTurno = $('irTurno'), enTurno = false, nAntes = servs().length;
   function render() {
     var d = leer();
-    pon('t-serv', d.serv.map(function (s) { return SERV[s]; }).join(', '), 'Elegí qué te hacés');
-    var dt = diaTexto(d.dia); pon('t-dia', dt ? dt.charAt(0).toUpperCase() + dt.slice(1) : '', 'Elegí el día');
-    pon('t-franja', d.franja ? d.franja.charAt(0).toUpperCase() + d.franja.slice(1) : '', 'Elegí la franja');
-    pon('t-nombre', d.nombre, 'Tu nombre');
+    pon('t-serv', d.serv.map(function (s) { return SERV[s]; }).join(', '), 'Elegí qué te hacés', true);
+    pon('t-dia', cap(diaTexto(d.dia)), 'Elegí el día', true);
+    pon('t-hora', horaTexto(d.hora), 'Elegí el horario', true);
+    pon('t-nombre', d.nombre, 'Tu nombre', false);
+    // los pasos que ya están
+    var listos = [d.serv.length > 0, !!d.dia, !!d.hora, !!d.nombre && d.tel.replace(/\D/g, '').length >= 8];
+    ['f-serv', 'f-dia', 'f-hora', 'f-datos'].forEach(function (id, i) { $(id).classList.toggle('ok', listos[i]); });
+    var n = listos.filter(Boolean).length;
+    $('barra').style.clipPath = 'inset(0 ' + (100 - n * 25) + '% 0 0 round 8px)';
+    $('progTxt').textContent = n === 4 ? 'Listo para pedir' : n + ' de 4 pasos';
     // el tablero refleja lo que está en el turno
     document.querySelectorAll('.fila[data-serv]').forEach(function (f) {
       var on = d.serv.indexOf(f.getAttribute('data-serv')) >= 0, b = f.querySelector('.sumar');
@@ -767,14 +971,14 @@ function calma() { return !!(mq && mq.matches); }
       b.querySelector('span').textContent = on ? 'En tu turno' : 'Sumar';
       b.setAttribute('aria-label', (on ? 'Sacar ' : 'Sumar ') + SERV[f.getAttribute('data-serv')] + (on ? ' del turno' : ' al turno'));
     });
-    var n = d.serv.length;
-    $('irN').textContent = n;
-    irTurno.setAttribute('aria-label', 'Ver tu turno (' + n + ')');
-    irTurno.classList.toggle('on', n > 0 && !enTurno);
-    if (n > nAntes && !calma() && irTurno.animate && !enTurno) {
+    var ns = d.serv.length;
+    $('irN').textContent = ns;
+    irTurno.setAttribute('aria-label', 'Ver tu turno (' + ns + ')');
+    irTurno.classList.toggle('on', ns > 0 && !enTurno);
+    if (ns > nAntes && !calma() && irTurno.animate && !enTurno) {
       $('irN').animate([{ transform: 'scale(1)' }, { transform: 'scale(1.3)', offset: .35 }, { transform: 'scale(1)' }], { duration: 320, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
     }
-    nAntes = n;
+    nAntes = ns;
     $('msgPrev').textContent = mensaje(true);
     guardar();
   }
@@ -791,14 +995,21 @@ function calma() { return !!(mq && mq.matches); }
     });
   });
 
-  // el botón "Ver tu turno" se esconde cuando ya estás mirando el turno
+  // elegir el día desde la portada
+  $('diasR').addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dia]'); if (!a) return;
+    var r = form.querySelector('input[name="dia"][value="' + a.getAttribute('data-dia') + '"]');
+    if (r && !r.disabled) { r.checked = true; armarHoras(r.value, radio('hora')); marcar('dia', ''); render(); }
+  });
+
+  // el botón "Ver tu turno" se esconde cuando ya estás mirando la agenda
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) { enTurno = es[0].isIntersecting; irTurno.classList.toggle('on', leer().serv.length > 0 && !enTurno); },
       { rootMargin: '0px 0px -30% 0px' }).observe($('turno'));
   }
 
   // errores
-  var CAMPO = { serv: 'f-serv', dia: 'f-dia', franja: 'f-franja', nombre: 'nombre', tel: 'tel' };
+  var CAMPO = { serv: 'f-serv', dia: 'f-dia', hora: 'f-hora', nombre: 'nombre', tel: 'tel' };
   function marcar(k, txt) {
     var el = $(CAMPO[k]), f = el.classList.contains('f') ? el : el.closest('.f');
     f.classList.toggle('error', !!txt);
@@ -809,10 +1020,10 @@ function calma() { return !!(mq && mq.matches); }
     var d = leer(), malos = [];
     var ch = [
       ['serv', d.serv.length ? '' : 'Elegí al menos una cosa para hacerte.'],
-      ['dia', d.dia ? '' : 'Elegí un día, o "Cuanto antes".'],
-      ['franja', d.franja ? '' : 'Elegí más o menos a qué hora te queda bien.'],
+      ['dia', d.dia ? '' : 'Elegí un día en el calendario, o "Cuanto antes".'],
+      ['hora', d.hora ? '' : 'Elegí un horario, o "Me da igual".'],
       ['nombre', d.nombre ? '' : 'Poné tu nombre para anotar el turno.'],
-      ['tel', !d.tel ? 'Poné tu teléfono para confirmarte el horario.' : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : '']
+      ['tel', !d.tel ? 'Poné tu teléfono para confirmarte el turno.' : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : '']
     ];
     ch.forEach(function (c) { marcar(c[0], c[1]); if (c[1]) malos.push(c[0]); });
     return malos;
@@ -820,7 +1031,8 @@ function calma() { return !!(mq && mq.matches); }
   function foco(k) {
     var el = $(CAMPO[k]);
     if (el.tagName === 'INPUT') { el.focus(); return; }
-    var i = el.querySelector('input'); if (i) i.focus();
+    var i = el.querySelector('input:not(:disabled)'); if (i) i.focus();
+    if (el.scrollIntoView) el.scrollIntoView({ block: 'start', behavior: calma() ? 'auto' : 'smooth' });
   }
 
   form.addEventListener('input', function (e) {
@@ -829,7 +1041,12 @@ function calma() { return !!(mq && mq.matches); }
     $('sello').classList.remove('on');
     render();
   });
-  form.addEventListener('change', function (e) { var k = e.target.name; if (CAMPO[k]) marcar(k, ''); render(); });
+  form.addEventListener('change', function (e) {
+    var k = e.target.name;
+    if (k === 'dia') armarHoras(e.target.value, radio('hora'));
+    if (CAMPO[k]) marcar(k, '');
+    render();
+  });
 
   // enviar
   if (WA) {
