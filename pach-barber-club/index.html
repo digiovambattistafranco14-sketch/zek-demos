@@ -137,7 +137,7 @@ p{margin:0}
 .hero-foto img{width:100%;height:100%;object-fit:cover;object-position:72% 40%;filter:saturate(.75)}
 .hero-foto::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg, rgba(12,12,12,.96) 0%, rgba(12,12,12,.86) 40%, rgba(12,12,12,.5) 100%), linear-gradient(0deg, rgba(12,12,12,.85) 0%, transparent 35%)}
-.hero-cuerpo{position:relative;flex:1;display:grid;grid-template-columns:1fr auto;align-items:end;gap:48px;padding:calc(var(--header) + 80px) 0 72px}
+.hero-cuerpo{position:relative;flex:1;display:grid;grid-template-columns:1fr auto;align-items:end;gap:48px;padding:56px 0 64px}
 .hero h1{font-size:clamp(3.3rem, 8.2vw, 7.6rem)}
 .hero h1 span{display:block}
 .hero-pie{display:grid;grid-template-columns:minmax(0, 34rem) auto;align-items:end;justify-content:space-between;gap:28px 48px;margin-top:40px}
@@ -148,6 +148,32 @@ p{margin:0}
 .bajar a{display:flex;align-items:center;justify-content:space-between;height:64px;text-decoration:none;font-size:14.5px;color:var(--gris-claro);transition:color .2s ease}
 .bajar svg{width:20px;height:20px}
 @media (hover:hover) and (pointer:fine){.bajar a:hover{color:#fff}}
+
+/* ---------- el turnero: el talón del ticket de la reserva, pegado abajo del encabezado, lo primero que se ve ---------- */
+.turnero{position:relative;z-index:1;padding-top:calc(env(safe-area-inset-top) + var(--header) + 14px);animation:subir .7s var(--ease-out) both}
+.turnero-in{display:grid;grid-template-columns:auto minmax(0, 1fr) auto;align-items:center;gap:20px 36px;padding:24px 28px;
+  background:var(--papel);color:var(--tinta);border-radius:4px;border-left:4px solid var(--dorado);box-shadow:0 26px 60px -26px rgba(0,0,0,.85)}
+.t-talon{padding-right:32px;border-right:1.5px dashed rgba(21,21,21,.28)}
+.t-talon .titulo{font-size:clamp(26px, 2.5vw, 34px);white-space:nowrap}
+.t-talon p + p{margin-top:8px;max-width:21rem;font-size:15px;line-height:1.45;color:var(--gris)}
+.t-servs{display:grid;gap:10px}
+.t-servs > span{font-size:14.5px;font-weight:600;color:var(--gris)}
+.t-servs div{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:8px}
+.t-servs .btn{height:48px;padding:0 10px;font-size:13px;letter-spacing:.09em}
+.turnero-in > .btn{height:58px;padding:0 30px;font-size:14.5px}
+.turnero :focus-visible{outline-color:var(--tinta)}
+@media (max-width:1000px){
+  .turnero-in{grid-template-columns:1fr auto;padding:22px 24px}
+  .t-talon{grid-column:1 / -1;padding:0 0 18px;margin:0;border-right:0;border-bottom:1.5px dashed rgba(21,21,21,.28)}
+}
+@media (max-width:640px){
+  .turnero{padding-top:calc(env(safe-area-inset-top) + var(--header) + 8px)}
+  .turnero .wrap{width:min(1270px, 100% - 24px)}
+  .turnero-in{grid-template-columns:1fr;gap:16px;padding:20px 18px 18px 22px}
+  .t-talon{padding-bottom:16px}
+  .t-servs .btn{height:46px;padding:0 4px;font-size:12px;letter-spacing:.05em}
+  .turnero-in > .btn{width:100%;height:56px}
+}
 
 /* el poste: bola y tapas de cromo, el tubo de vidrio con las rayas que suben */
 .poste{display:flex;flex-direction:column;align-items:center;width:70px;height:380px;align-self:center}
@@ -173,12 +199,13 @@ p{margin:0}
 .tubo::before{animation:prender .5s ease .45s both}
 @media (max-width:900px){
   .hero{min-height:min(100svh, 780px)}
-  .hero-cuerpo{grid-template-columns:1fr;padding:calc(var(--header) + 150px) 0 40px}
+  .hero-cuerpo{grid-template-columns:1fr;padding:44px 0 40px}
+  .hero h1{padding-right:64px}
   .hero-pie{grid-template-columns:1fr;margin-top:26px}
   .hero-foto img{object-position:50% 30%}
   .hero-foto::after{background:linear-gradient(0deg, rgba(12,12,12,.97) 0%, rgba(12,12,12,.9) 45%, rgba(12,12,12,.45) 100%)}
-  /* en el celular el poste queda arriba a la derecha, sobre la foto */
-  .poste{position:absolute;top:calc(var(--header) + 22px);right:0;width:44px;height:170px}
+  /* en el celular el poste queda a la derecha del título, sobre la foto */
+  .poste{position:absolute;top:50px;right:0;width:44px;height:170px}
   .poste .tapa{width:44px;height:15px;border-radius:5px}.poste .tapa.abajo{height:18px}
   .poste .bola{width:20px;height:20px}
   .tubo{width:34px}
@@ -550,7 +577,7 @@ body.reservando .wa{visibility:hidden}
 
 /* ---------- menos movimiento: sin desplazamientos, el poste quieto ---------- */
 @media (prefers-reduced-motion: reduce){
-  .hero h1 span,.hero .lead,.hero .ctas,.poste,.wa{animation:aparecer .4s ease both}
+  .hero h1 span,.hero .lead,.hero .ctas,.poste,.turnero,.wa{animation:aparecer .4s ease both}
   .tubo::before{animation:none;opacity:0}
   .wa::before,.wa::after{animation:none}
   .wa:hover svg{animation:none}
@@ -610,13 +637,30 @@ body.reservando .wa{visibility:hidden}
       <source media="(max-width:700px)" srcset="img/foto-05.jpg">
       <img src="img/foto-07.jpg" alt="" width="640" height="360" fetchpriority="high">
     </picture>
+    <div class="turnero">
+      <div class="wrap turnero-in" role="group" aria-label="Sacá tu turno">
+        <div class="t-talon">
+          <p class="titulo">Sacá tu turno.</p>
+          <p>Elegí qué te hacés, el día y el horario. Te lo confirmamos por mensaje.</p>
+        </div>
+        <div class="t-servs">
+          <span id="t-servs-tit">¿Qué te hacés?</span>
+          <div role="group" aria-labelledby="t-servs-tit">
+            <a class="btn btn-borde" href="#reservar" data-serv="corte">Corte</a>
+            <a class="btn btn-borde" href="#reservar" data-serv="barba">Barba</a>
+            <a class="btn btn-borde" href="#reservar" data-serv="color">Color</a>
+            <a class="btn btn-borde" href="#reservar" data-serv="lineas">Líneas</a>
+          </div>
+        </div>
+        <a class="btn btn-oro" href="#reservar">Reservar turno</a>
+      </div>
+    </div>
     <div class="wrap hero-cuerpo">
       <div>
         <h1 class="titulo"><span>Tu turno</span> <span>en el club.</span></h1>
         <div class="hero-pie">
-          <p class="lead">Peluquería y barbería en Paraná. Elegí qué te hacés, el día y el horario desde acá, y te lo confirmamos por mensaje.</p>
+          <p class="lead">Peluquería y barbería en Paraná. Se atiende con turno, y lo pedís desde acá arriba en un minuto.</p>
           <div class="ctas">
-            <a class="btn btn-oro" href="#reservar">Reservar turno</a>
             <a class="btn btn-linea" href="https://www.google.com/maps/search/?api=1&query=Pach%20Barber%20Club%20Col%C3%B3n%20344%20Paran%C3%A1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#pin"/></svg>Colón 344</a>
           </div>
         </div>
