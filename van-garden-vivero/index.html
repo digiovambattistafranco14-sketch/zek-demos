@@ -38,6 +38,8 @@
   --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --err:#B3261E;
   --r:18px;
   --header:72px;
 }
@@ -161,8 +163,29 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .sector .stake{position:absolute;left:18px;top:18px;padding:8px 12px 9px;border-radius:8px 8px 3px 3px;transform:rotate(-3deg)}
 .sector .stake::after{width:16px;height:22px}
 .sector .stake b{font-size:16px}
-.pedir{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:600;font-size:15px;color:var(--sage-deep);text-decoration:none;box-shadow:inset 0 -1.5px 0 rgba(63,94,69,.35);padding-bottom:2px;transition:box-shadow .2s ease}
-@media (hover:hover) and (pointer:fine){.pedir:hover{box-shadow:inset 0 -1.5px 0 var(--sage-deep)}}
+.sector .txt{flex:1;display:flex;flex-direction:column;align-items:flex-start}
+.sector .add{margin-top:auto;padding-top:18px}
+
+/* ---------- agregar al pedido: el botón se vuelve − cantidad + ---------- */
+.add{display:inline-grid;justify-items:start}
+.add > *{grid-area:1 / 1}
+.agregar{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;background:var(--sage-deep);color:#fff;cursor:pointer;font:600 15px/1 var(--body);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s, background-color .2s ease}
+.agregar svg{width:18px;height:18px;flex:none}
+.agregar:active{transform:scale(.97)}
+.cant{display:inline-flex;align-items:center;height:44px;border-radius:999px;background:#fff;color:var(--sage-deep);box-shadow:inset 0 0 0 1.5px var(--sage-deep);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s}
+.cant button{width:44px;height:44px;flex:none;border:0;border-radius:50%;background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out), opacity .15s ease}
+.cant button svg{width:18px;height:18px}
+.cant button:active{transform:scale(.9)}
+.cant button:disabled{opacity:.35;cursor:default;transform:none}
+.cant output{min-width:2.2ch;text-align:center;font-family:var(--display);font-variation-settings:"wdth" 80;font-weight:800;font-size:19px;color:var(--moss);font-variant-numeric:tabular-nums}
+.add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.96);visibility:hidden;pointer-events:none;
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear .16s}
+@media (hover:hover) and (pointer:fine){
+  .agregar:hover{background:var(--sage-ink)}
+  .cant button:not(:disabled):hover{background:rgba(63,94,69,.1)}
+}
 .s-interior{grid-column:span 7;--h:400px}
 .s-interior .fotos{grid-template-columns:1.2fr 1fr}
 .s-ramos{grid-column:span 5;--h:400px}
@@ -170,12 +193,14 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .s-sucus{grid-column:span 4}
 .s-cinta{grid-column:span 4}
 .s-novia{grid-column:span 12;min-height:0;background:var(--sage);color:#fff;flex-direction:row;align-items:center;gap:28px;padding:28px clamp(22px, 4vw, 48px)}
-.s-novia svg{width:92px;height:auto;flex:none;color:#fff}
-.s-novia svg path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s-novia > svg{width:92px;height:auto;flex:none;color:#fff}
+.s-novia > svg path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .s-novia .txt{padding:0;flex:1}
 .s-novia p{color:rgba(255,255,255,.88);max-width:56ch}
-.s-novia .btn{background:#fff;color:var(--sage-ink);flex:none}
-@media (hover:hover) and (pointer:fine){.s-novia .btn:hover{background:var(--leaf)}}
+.s-novia .add{flex:none;margin:0;padding:0}
+.s-novia .agregar{background:#fff;color:var(--sage-ink)}
+.s-novia .cant{box-shadow:none}
+@media (hover:hover) and (pointer:fine){.s-novia .agregar:hover{background:var(--leaf)}}
 @media (max-width:900px){
   .sectores{grid-template-columns:1fr 1fr;gap:14px}
   .s-interior,.s-ramos,.s-novia{grid-column:span 2}
@@ -187,7 +212,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
   .sectores{grid-template-columns:1fr}
   .s-interior,.s-ramos,.s-orquideas,.s-sucus,.s-cinta,.s-novia{grid-column:auto}
   .s-novia{flex-direction:column;align-items:flex-start;gap:18px}
-  .s-novia svg{width:64px}
+  .s-novia > svg{width:64px}
 }
 
 /* ---------- fichas de cuidado ---------- */
@@ -207,14 +232,15 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .medidas svg{width:17px;height:17px}
 .medidas .on{color:var(--sage-deep)}
 .medidas .off{color:rgba(34,56,42,.18)}
-.ficha .tip{font-size:15.5px;line-height:1.5;padding-top:12px;box-shadow:0 -1px 0 rgba(34,56,42,.1)}
+.ficha .tip{flex:1;font-size:15.5px;line-height:1.5;padding-top:12px;box-shadow:0 -1px 0 rgba(34,56,42,.1)}
+.ficha .add{margin-top:16px}
 @media (max-width:900px){
   .fichas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;gap:16px;margin-inline:-20px;padding:0 20px 8px;scrollbar-width:none}
   .fichas::-webkit-scrollbar{display:none}
   .ficha{flex:0 0 min(290px, 80%);scroll-snap-align:start}
 }
 
-/* ---------- armá tu pedido: la tarjetita ---------- */
+/* ---------- tu pedido: la tarjetita con lo que fuiste eligiendo ---------- */
 .order{padding:0 0 112px}
 .order .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
 .order-text{position:sticky;top:calc(var(--header) + 32px)}
@@ -233,36 +259,137 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .cartelito::before{content:"";position:absolute;top:9px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:inset 0 1px 2px rgba(74,58,30,.4)}
 .cartelito::after{content:"";position:absolute;bottom:100%;left:50%;width:2px;height:26px;background:var(--rose);transform-origin:bottom;transform:rotate(-12deg)}
 .cartelito img{width:46px;height:46px;border-radius:50%;margin-top:14px;mix-blend-mode:multiply}
-.tarjeta fieldset{border:0;margin:0;padding:0;min-width:0}
-.tarjeta legend,.tarjeta .f > label{display:block;font-weight:600;font-size:14px;color:var(--moss);margin-bottom:8px;padding:0}
-.f{display:flex;flex-direction:column;min-width:0}
-.f small{color:var(--muted);font-size:13px;margin-top:6px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.tarjeta input[type=text],.tarjeta input[type=date],.tarjeta textarea{min-height:48px;border-radius:12px;border:1.5px solid rgba(34,56,42,.2);background:var(--leaf);padding:0 14px;font:inherit;font-size:16px;color:var(--moss);width:100%}
-.tarjeta textarea{padding:12px 14px;min-height:84px;resize:vertical;line-height:1.45}
-.tarjeta input::placeholder,.tarjeta textarea::placeholder{color:#6B786C}
-.tarjeta input:focus,.tarjeta textarea:focus{outline:none;border-color:var(--sage-deep);box-shadow:0 0 0 3px rgba(63,94,69,.2)}
-.pick{display:flex;flex-wrap:wrap;gap:8px}
-.pick label{cursor:pointer}
-.pick input{position:absolute;opacity:0;pointer-events:none}
-.pick span{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;background:var(--leaf);box-shadow:inset 0 0 0 1.5px rgba(34,56,42,.14);font-weight:500;font-size:15px;
-  transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out), padding .16s var(--ease-out)}
-.pick span svg{width:0;height:16px;opacity:0;transform:scale(.6);transition:opacity .16s ease, transform .2s var(--ease-out), width .16s var(--ease-out), margin .16s var(--ease-out);margin-right:0}
-.pick input:checked + span{background:var(--sage-deep);color:#fff;box-shadow:none;padding-left:14px}
-.pick input:checked + span svg{width:16px;opacity:1;transform:none;margin-right:7px}
-.pick input:focus-visible + span{outline:3px solid var(--rose);outline-offset:2px}
-.pick label:active span{transform:scale(.97)}
-.colores input:checked + span{background:var(--rose)}
-.preview{background:var(--leaf);border-radius:14px 14px 14px 4px;padding:14px 16px}
-.preview small{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-.preview p{white-space:pre-line;font-size:15px}
-.tarjeta .send{width:100%;height:58px;font-size:17px}
-.aviso{font-size:14.5px;color:var(--sage-deep);font-weight:600;min-height:1.4em;text-align:center}
+.res-txt{color:var(--muted);max-width:42ch}
+.res-txt b{color:var(--moss)}
+.res-btn{width:100%;margin-top:20px}
+.res-lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.res-lista li{display:flex;align-items:center;gap:12px;font-weight:500}
+.res-lista img,.res-lista .th-ico{width:44px;height:44px;border-radius:12px;object-fit:cover;flex:none;background:var(--leaf-2)}
+.res-lista .n{font-family:var(--display);font-variation-settings:"wdth" 80;font-weight:800;font-size:19px;min-width:1.6ch;color:var(--sage-deep)}
+.res-mas{display:block;width:max-content;margin:14px auto 0;font-weight:600;font-size:15px;color:var(--sage-deep);text-decoration:none;box-shadow:inset 0 -1.5px 0 rgba(63,94,69,.35);padding-bottom:2px}
+.th-ico{display:grid;place-items:center;background:var(--sage) !important;color:#fff}
+.th-ico svg{width:55%;height:55%}
 @media (max-width:860px){
   .order .wrap{grid-template-columns:1fr;gap:40px}
   .order-text{position:static}
 }
-@media (max-width:440px){.two{grid-template-columns:1fr}}
+
+/* ---------- botón del pedido: flotante en compu, barra abajo en el celular ---------- */
+.badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--rose);color:#fff;
+  font:700 12.5px/22px var(--body);text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--leaf)}
+.cart-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 6px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:52px;height:52px;border:0;border-radius:50%;cursor:pointer;background:var(--sage-deep);color:#fff;display:grid;place-items:center;
+  box-shadow:0 3px 6px rgba(34,56,42,.2), 0 14px 30px -10px rgba(34,56,42,.6);
+  opacity:0;transform:translateY(10px) scale(.92);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s, background-color .2s ease}
+.cart-fab.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s, background-color .2s ease}
+.cart-fab svg{width:26px;height:26px}
+.cart-fab:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.cart-fab:hover{background:var(--sage-ink)}}
+.cart-bar{display:none}
+@media (max-width:640px){
+  .cart-fab{display:none}
+  .cart-bar{display:flex;position:fixed;left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 72px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+    height:58px;align-items:center;gap:10px;padding:0 12px 0 18px;border:0;border-radius:999px;cursor:pointer;background:var(--sage-deep);color:#fff;font:600 16px/1 var(--body);
+    box-shadow:0 3px 6px rgba(34,56,42,.2), 0 16px 34px -10px rgba(34,56,42,.6);
+    transform:translateY(calc(100% + 32px));visibility:hidden;transition:transform .26s var(--ease-out), visibility 0s linear .26s}
+  .cart-bar.on{transform:none;visibility:visible;transition:transform .26s var(--ease-out), visibility 0s}
+  .cart-bar:active{transform:scale(.98)}
+  .cart-bar svg{width:24px;height:24px;flex:none}
+  .cart-bar .badge{position:static;margin-left:auto;min-width:34px;height:34px;padding:0 10px;font-size:15px;line-height:34px;background:#fff;color:var(--sage-ink);box-shadow:none}
+}
+
+/* ---------- el panel del pedido: de costado en compu, hoja desde abajo en el celular ---------- */
+html.carrito-abierto{overflow:hidden}
+.carrito{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;overflow:hidden;color:var(--moss)}
+.carrito::backdrop{background:transparent}
+.velo{position:absolute;inset:0;background:rgba(22,36,27,.45);opacity:0;transition:opacity .24s ease}
+.cajon{position:absolute;top:0;right:0;bottom:0;width:min(460px, 100%);display:flex;flex-direction:column;background:var(--leaf);border-radius:24px 0 0 24px;
+  box-shadow:-30px 0 60px -30px rgba(22,36,27,.5);transform:translateX(100%);transition:transform .3s var(--ease-drawer)}
+.carrito.open .velo{opacity:1}
+.carrito.open .cajon{transform:none}
+.cajon-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 14px 24px}
+.cajon-cab h2{font-weight:800;font-size:30px;line-height:1}
+.cajon-sub{margin-top:6px;font-size:14px;color:var(--muted)}
+.cerrar{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--leaf-2);color:var(--moss);display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out)}
+.cerrar svg{width:20px;height:20px}
+.cerrar:active{transform:scale(.92)}
+@media (hover:hover) and (pointer:fine){.cerrar:hover{background:#D3DDC8}}
+.cajon-cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 24px 24px}
+.cajon-pie{padding:14px 20px max(16px, env(safe-area-inset-bottom)) 24px;background:var(--leaf);box-shadow:0 -1px 0 rgba(34,56,42,.1)}
+@media (max-width:640px){
+  .cajon{top:auto;left:0;width:100%;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);border-radius:24px 24px 0 0;
+    box-shadow:0 -30px 60px -30px rgba(22,36,27,.5);transform:translateY(100%)}
+  .cajon-cab{padding:20px 16px 12px 20px}
+  .cajon-cuerpo{padding:4px 16px 20px 20px}
+  .cajon-pie{padding-left:20px;padding-right:16px}
+}
+
+.vacio{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 0 8px}
+.vacio svg{width:64px;height:auto;color:var(--sage);margin-bottom:6px}
+.vacio svg path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vacio h3{font-weight:800;font-size:24px;line-height:1.05}
+.vacio p{color:var(--muted);max-width:34ch}
+.vacio .btn{margin-top:10px}
+
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:16px;padding:10px;
+  box-shadow:0 1px 2px rgba(34,56,42,.08);transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.item.sale{opacity:0;transform:translateX(16px)}
+.item .th{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--leaf-2)}
+.item-txt{min-width:0}
+.item-txt b{display:block;font-family:var(--display);font-variation-settings:"wdth" 82;font-weight:700;font-size:17px;line-height:1.15;letter-spacing:-0.01em}
+.quitar{margin-top:2px;min-height:30px;padding:0;border:0;background:none;color:var(--muted);font:500 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (hover:hover) and (pointer:fine){.quitar:hover{color:var(--moss)}}
+.item .cant{height:40px;background:var(--leaf);box-shadow:none}
+.item .cant button{width:40px;height:40px}
+.item .cant output{font-size:17px}
+.vaciar{display:block;margin:12px 0 0 auto;min-height:32px;padding:0;border:0;background:none;color:var(--muted);font:500 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+.datos{display:grid;gap:18px;margin-top:22px;padding-top:22px;box-shadow:0 -1px 0 rgba(34,56,42,.12)}
+.datos > h3{font-weight:800;font-size:22px;line-height:1}
+.datos fieldset{border:0;margin:0;padding:0;min-width:0}
+.datos legend,.datos .f > label{display:block;font-weight:600;font-size:14.5px;color:var(--moss);margin-bottom:8px;padding:0}
+.opc{font-weight:400;color:var(--muted)}
+.f{display:flex;flex-direction:column;min-width:0}
+.datos input[type=text],.datos input[type=tel],.datos input[type=date],.datos textarea{min-height:48px;border-radius:12px;border:1.5px solid rgba(34,56,42,.2);background:#fff;padding:0 14px;
+  font:inherit;font-size:16px;color:var(--moss);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+.datos textarea{padding:12px 14px;min-height:80px;resize:vertical;line-height:1.45}
+.datos input::placeholder,.datos textarea::placeholder{color:#6B786C}
+.datos input:focus,.datos textarea:focus{outline:none;border-color:var(--sage-deep);box-shadow:0 0 0 3px rgba(63,94,69,.2)}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.13)}
+.err{color:var(--err);font-size:13.5px;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick label{cursor:pointer}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick span{display:inline-flex;align-items:center;height:42px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(34,56,42,.14);font-weight:500;font-size:15px;
+  transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
+.pick span svg{width:16px;height:16px;margin-right:7px;display:none}
+.pick input:checked + span{background:var(--sage-deep);color:#fff;box-shadow:none}
+.pick input:checked + span svg{display:block}
+.pick input:focus-visible + span{outline:3px solid var(--rose);outline-offset:2px}
+.pick label:active span{transform:scale(.97)}
+/* la tarjetita de kraft que va con el ramo */
+.f-tarjeta{position:relative;display:grid;gap:16px;background:var(--kraft);color:var(--kraft-ink);border-radius:10px;padding:18px 16px 18px;
+  box-shadow:0 1px 2px rgba(74,58,30,.2), 0 12px 22px -14px rgba(74,58,30,.7)}
+.f-tarjeta::before{content:"";position:absolute;top:16px;right:16px;width:11px;height:11px;border-radius:50%;background:var(--leaf);box-shadow:inset 0 1px 2px rgba(74,58,30,.45)}
+.datos .f-tarjeta legend,.datos .f-tarjeta .f > label{color:var(--kraft-ink)}
+.f-tarjeta .opc{color:rgba(74,58,30,.75)}
+.f-tarjeta .pick span{background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1.5px rgba(74,58,30,.18)}
+.datos .f-tarjeta input[type=text]{background:rgba(255,255,255,.6);border-color:rgba(74,58,30,.25);font-family:var(--display);font-variation-settings:"wdth" 85;font-weight:600;font-size:18px;color:var(--kraft-ink)}
+.prev{background:#fff;border-radius:14px;padding:4px 16px}
+.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px;color:var(--sage-deep)}
+.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:2px 0 14px}
+.enviar{width:100%;height:56px;font-size:17px;background:var(--sage-deep);color:#fff;box-shadow:0 10px 24px -12px rgba(46,73,52,.85)}
+.con-wa .enviar{background:#25D366;box-shadow:0 10px 24px -12px rgba(7,94,84,.7)}
+@media (hover:hover) and (pointer:fine){.enviar:hover{background:var(--sage-ink)}.con-wa .enviar:hover{background:#1EBE5A}}
+.nota{margin-top:8px;font-size:13.5px;color:var(--muted);text-align:center}
+.aviso{font-size:14.5px;color:var(--sage-deep);font-weight:600;text-align:center}
+.aviso:not(:empty){margin-top:8px}
+.aviso.mal{color:var(--err)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* ---------- lo que fue llegando ---------- */
 .llegando{background:var(--sage-ink);color:#EEF3EA;padding:104px 0;position:relative;overflow:hidden}
@@ -337,6 +464,13 @@ footer a{color:var(--moss);font-weight:600}
   .wa::before,.wa::after{animation:none}
   .wa:hover svg{animation:none}
   .js .masonry .ph{clip-path:none;transition:none}
+  /* el pedido: sin desplazamientos, solo aparece y desaparece */
+  .cajon{transform:none !important;opacity:0;transition:opacity .18s ease}
+  .carrito.open .cajon{opacity:1}
+  .add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar,.cart-fab,.item.sale{transform:none}
+  .cart-fab.on{transform:none}
+  .cart-bar,.cart-bar.on{transform:none;opacity:0;transition:opacity .18s ease, visibility 0s linear .18s}
+  .cart-bar.on{opacity:1;transition:opacity .18s ease, visibility 0s}
 }
 @keyframes aparecer{from{opacity:0}to{opacity:1}}
 </style>
@@ -347,6 +481,10 @@ footer a{color:var(--moss);font-weight:600}
   <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
   <symbol id="sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></symbol>
   <symbol id="gota" viewBox="0 0 24 24"><path d="M12 2.8c-3.4 4.4-6.2 8-6.2 11.4a6.2 6.2 0 0 0 12.4 0C18.2 10.8 15.4 7.2 12 2.8z" fill="currentColor"/></symbol>
+  <symbol id="maceta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 12.6h14.8"/><path d="M6 12.6l1.4 8.1a1.3 1.3 0 0 0 1.3 1.1h6.6a1.3 1.3 0 0 0 1.3-1.1l1.4-8.1"/><path d="M12 12.6V7.8"/><path d="M12 9C12 5.9 9.8 3.6 6.5 3.6c0 3.1 2.2 5.4 5.5 5.4z"/><path d="M12 7.8c0-2.7 1.9-4.8 4.9-4.8 0 2.7-1.9 4.8-4.9 4.8z"/></g></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="cruz" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   <symbol id="tilde" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -357,7 +495,7 @@ footer a{color:var(--moss);font-weight:600}
       <span>Van Garden<small>Vivero y florería en Salta</small></span>
     </a>
     <nav class="links" aria-label="Secciones">
-      <a href="#vivero">El vivero</a><a href="#cuidados">Cuidados</a><a href="#pedido">Armá tu pedido</a><a href="#local">Dónde estamos</a>
+      <a href="#vivero">El vivero</a><a href="#cuidados">Cuidados</a><a href="#pedido">Tu pedido</a><a href="#local">Dónde estamos</a>
     </nav>
     <a class="btn btn-green" data-contacto href="https://ig.me/m/van_garden_vivero" target="_blank" rel="noopener">
       <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos
@@ -366,7 +504,7 @@ footer a{color:var(--moss);font-weight:600}
   </div>
 </header>
 <nav class="sheet-menu" id="menu" aria-label="Menú">
-  <a href="#vivero">El vivero</a><a href="#cuidados">Cuidados</a><a href="#pedido">Armá tu pedido</a><a href="#local">Dónde estamos</a>
+  <a href="#vivero">El vivero</a><a href="#cuidados">Cuidados</a><a href="#pedido">Tu pedido</a><a href="#local">Dónde estamos</a>
   <a class="btn btn-green" data-contacto href="https://ig.me/m/van_garden_vivero" target="_blank" rel="noopener">Escribinos</a>
 </nav>
 
@@ -377,7 +515,7 @@ footer a{color:var(--moss);font-weight:600}
         <h1><span>Plantas y flores</span> <span>para tu casa.</span></h1>
         <p class="lead">Plantas de interior, suculentas, orquídeas y ramos para regalar. Pasá a elegir o te lo llevamos.</p>
         <div class="ctas">
-          <a class="btn btn-green" href="#pedido">Armá tu pedido</a>
+          <a class="btn btn-green" href="#vivero">Recorré el vivero</a>
           <a class="btn btn-ghost" href="#local">Cómo llegar</a>
         </div>
         <p class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Mendoza 1298, Salta. De 10 a 20 hs.</p>
@@ -417,36 +555,36 @@ footer a{color:var(--moss);font-weight:600}
           <div class="fotos"><img src="img/gomero-variegado.jpg" alt="Gomeros variegados con hojas verdes, crema y rosadas" loading="lazy"><img src="img/caladium.jpg" alt="Caladium de hojas verde claro con pintitas bordó" loading="lazy"></div>
           <div class="stake" aria-hidden="true"><b>Interior</b></div>
           <div class="txt"><h3>Plantas de interior</h3><p>Gomeros variegados, caladium y follaje para darle verde a tu casa.</p>
-            <a class="pedir" href="#pedido" data-pedir="Planta de interior">Consultar por una planta</a></div>
+            <div class="add" data-item="interior" data-n="0"></div></div>
         </article>
         <article class="sector s-ramos">
           <div class="fotos"><img src="img/ramo-azucenas.jpg" alt="Ramo de azucenas rosadas, rosas y lisianthus envuelto en papel" loading="lazy"></div>
           <div class="stake" aria-hidden="true"><b>Ramos</b></div>
           <div class="txt"><h3>Ramos de flores</h3><p>Azucenas, rosas, lisianthus y flores de estación, envueltos para regalar.</p>
-            <a class="pedir" href="#pedido" data-pedir="Ramo de flores">Pedir un ramo</a></div>
+            <div class="add" data-item="ramo" data-n="0"></div></div>
         </article>
         <article class="sector s-orquideas">
           <div class="fotos"><img src="img/orquidea-rosa.jpg" alt="Flores de orquídea rosa de cerca" loading="lazy"></div>
           <div class="stake" aria-hidden="true"><b>Orquídeas</b></div>
           <div class="txt"><h3>Orquídeas</h3><p>En maceta, con caja y moño, listas para regalar.</p>
-            <a class="pedir" href="#pedido" data-pedir="Orquídea">Pedir una orquídea</a></div>
+            <div class="add" data-item="orquidea" data-n="0"></div></div>
         </article>
         <article class="sector s-sucus">
           <div class="fotos"><img src="img/suculentas.jpg" alt="Suculentas envueltas en arpillera con moño bordó" loading="lazy"></div>
           <div class="stake" aria-hidden="true"><b>Sucus</b></div>
           <div class="txt"><h3>Suculentas</h3><p>Envueltas en arpillera con moño. Para regalar una o muchas.</p>
-            <a class="pedir" href="#pedido" data-pedir="Suculentas">Consultar por sucus</a></div>
+            <div class="add" data-item="suculenta" data-n="0"></div></div>
         </article>
         <article class="sector s-cinta">
           <div class="fotos"><img src="img/rosas-cinta.jpg" alt="Ramo de rosas de cinta con banda que dice Felicidades Licenciada" loading="lazy"></div>
           <div class="stake" aria-hidden="true"><b>Recibidas</b></div>
           <div class="txt"><h3>Rosas de cinta</h3><p>Para recibidas y fechas especiales, con tu frase en la banda.</p>
-            <a class="pedir" href="#pedido" data-pedir="Ramo de rosas de cinta">Pedir uno con tu frase</a></div>
+            <div class="add" data-item="cinta" data-n="0"></div></div>
         </article>
         <article class="sector s-novia">
           <svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 116 C60 96 58 78 60 58"/><path d="M60 58 C48 50 40 36 44 22 C56 26 62 42 60 58 Z"/><path d="M60 58 C72 50 82 38 80 22 C68 26 58 42 60 58 Z"/><path d="M60 62 C46 62 30 54 24 40 C40 38 54 48 60 62 Z"/><path d="M60 62 C74 62 90 54 96 40 C80 38 66 48 60 62 Z"/><path d="M50 84 C56 80 64 80 70 84 L66 94 L54 94 Z"/></svg>
           <div class="txt"><h3>Ramos de novia</h3><p>Contanos cómo es tu vestido, tus colores y la fecha, y lo pensamos con vos.</p></div>
-          <a class="btn" href="#pedido" data-pedir="Ramo de novia">Consultar por tu ramo</a>
+          <div class="add" data-item="novia" data-n="0"></div>
         </article>
       </div>
     </div>
@@ -466,6 +604,7 @@ footer a{color:var(--moss);font-weight:600}
             <dt aria-label="Agua: media"><svg class="on"><use href="#gota"/></svg><svg class="on"><use href="#gota"/></svg><svg class="off"><use href="#gota"/></svg></dt><dd>Riego moderado</dd>
           </dl>
           <p class="tip">Regá cuando los primeros centímetros de tierra estén secos. Limpiá las hojas con un paño húmedo.</p>
+          <div class="add" data-item="gomero" data-n="0"></div>
         </div></li>
         <li class="ficha"><div class="stake">
           <div class="cab"><img src="img/caladium.jpg" alt="" loading="lazy"><div><b>Caladium</b><i>Caladium bicolor</i></div></div>
@@ -474,6 +613,7 @@ footer a{color:var(--moss);font-weight:600}
             <dt aria-label="Agua: media"><svg class="on"><use href="#gota"/></svg><svg class="on"><use href="#gota"/></svg><svg class="off"><use href="#gota"/></svg></dt><dd>Húmeda, nunca encharcada</dd>
           </dl>
           <p class="tip">En invierno descansa y pierde las hojas. No la tires: en primavera vuelve a brotar.</p>
+          <div class="add" data-item="caladium" data-n="0"></div>
         </div></li>
         <li class="ficha"><div class="stake">
           <div class="cab"><img src="img/orquidea-rosa.jpg" alt="" loading="lazy"><div><b>Orquídea</b><i>Phalaenopsis</i></div></div>
@@ -482,6 +622,7 @@ footer a{color:var(--moss);font-weight:600}
             <dt aria-label="Agua: poca"><svg class="on"><use href="#gota"/></svg><svg class="off"><use href="#gota"/></svg><svg class="off"><use href="#gota"/></svg></dt><dd>Cada 7 a 10 días</dd>
           </dl>
           <p class="tip">Regá por inmersión unos minutos y dejala escurrir bien. Que no quede agua en el fondo de la maceta.</p>
+          <div class="add" data-item="orquidea" data-n="0"></div>
         </div></li>
         <li class="ficha"><div class="stake">
           <div class="cab"><img src="img/suculentas.jpg" alt="" loading="lazy"><div><b>Suculentas</b><i>Echeveria y compañía</i></div></div>
@@ -490,6 +631,7 @@ footer a{color:var(--moss);font-weight:600}
             <dt aria-label="Agua: poca"><svg class="on"><use href="#gota"/></svg><svg class="off"><use href="#gota"/></svg><svg class="off"><use href="#gota"/></svg></dt><dd>Poca agua</dd>
           </dl>
           <p class="tip">Regá solo cuando la tierra esté seca del todo. Siempre en maceta con agujero.</p>
+          <div class="add" data-item="suculenta" data-n="0"></div>
         </div></li>
         <li class="ficha"><div class="stake">
           <div class="cab"><img src="img/calas.jpg" alt="" loading="lazy"><div><b>Calas</b><i>Zantedeschia</i></div></div>
@@ -498,6 +640,7 @@ footer a{color:var(--moss);font-weight:600}
             <dt aria-label="Agua: mucha"><svg class="on"><use href="#gota"/></svg><svg class="on"><use href="#gota"/></svg><svg class="on"><use href="#gota"/></svg></dt><dd>Húmeda mientras florece</dd>
           </dl>
           <p class="tip">Cuando termina la floración, regá menos y dejá que las hojas se sequen solas.</p>
+          <div class="add" data-item="calas" data-n="0"></div>
         </div></li>
         <li class="ficha"><div class="stake">
           <div class="cab"><img src="img/ramo-azucenas.jpg" alt="" loading="lazy"><div><b>Tu ramo</b><i>Flores de corte</i></div></div>
@@ -514,65 +657,26 @@ footer a{color:var(--moss);font-weight:600}
   <section class="order" id="pedido">
     <div class="wrap">
       <div class="order-text">
-        <div class="head"><h2>Armá tu pedido.</h2>
-          <p>Elegí qué buscás, para quién y para cuándo. El mensaje te queda listo para mandarnos.</p></div>
+        <div class="head"><h2>Tu pedido.</h2>
+          <p>Agregá lo que te guste del vivero, completá tus datos y mandanos el pedido armado.</p></div>
         <ol class="steps">
-          <li><b>Elegí</b><span>Un ramo, una planta, una orquídea o lo que tengas en mente.</span></li>
-          <li><b>Mandanos el mensaje</b><span>Te confirmamos lo que hay y te pasamos el precio.</span></li>
-          <li><b>Retiralo o recibilo</b><span>Pasá por Mendoza 1298 o te lo llevamos a domicilio.</span></li>
+          <li><b>Agregá</b><span>Ramos, plantas, orquídeas o sucus, con la cantidad que quieras.</span></li>
+          <li><b>Completá tus datos</b><span>Tu nombre, tu teléfono, para cuándo y la frase para la tarjeta.</span></li>
+          <li><b>Mandá el pedido</b><span>Te confirmamos lo que hay y te pasamos el precio. Lo retirás en Mendoza 1298 o te lo llevamos.</span></li>
         </ol>
       </div>
-      <form class="tarjeta" id="pedidoForm" novalidate>
-        <div class="t-top"><div><b>Tu pedido</b><small>Van Garden Vivero, Mendoza 1298</small></div><div class="cartelito" aria-hidden="true"><img src="img/perfil.jpg" alt=""></div></div>
-        <fieldset class="f">
-          <legend>¿Qué buscás?</legend>
-          <div class="pick" id="tipos">
-            <label><input type="radio" name="tipo" value="Ramo de flores" checked><span><svg><use href="#tilde"/></svg>Ramo de flores</span></label>
-            <label><input type="radio" name="tipo" value="Planta de interior"><span><svg><use href="#tilde"/></svg>Planta de interior</span></label>
-            <label><input type="radio" name="tipo" value="Orquídea"><span><svg><use href="#tilde"/></svg>Orquídea</span></label>
-            <label><input type="radio" name="tipo" value="Suculentas"><span><svg><use href="#tilde"/></svg>Suculentas</span></label>
-            <label><input type="radio" name="tipo" value="Ramo de rosas de cinta"><span><svg><use href="#tilde"/></svg>Rosas de cinta</span></label>
-            <label><input type="radio" name="tipo" value="Ramo de novia"><span><svg><use href="#tilde"/></svg>Ramo de novia</span></label>
-          </div>
-        </fieldset>
-        <fieldset class="f" id="ocasionWrap">
-          <legend>¿Para qué ocasión?</legend>
-          <div class="pick">
-            <label><input type="radio" name="ocasion" value="un cumpleaños"><span><svg><use href="#tilde"/></svg>Cumpleaños</span></label>
-            <label><input type="radio" name="ocasion" value="un aniversario"><span><svg><use href="#tilde"/></svg>Aniversario</span></label>
-            <label><input type="radio" name="ocasion" value="una recibida"><span><svg><use href="#tilde"/></svg>Recibida</span></label>
-            <label><input type="radio" name="ocasion" value="un nacimiento"><span><svg><use href="#tilde"/></svg>Nacimiento</span></label>
-            <label><input type="radio" name="ocasion" value="mi casa"><span><svg><use href="#tilde"/></svg>Para mi casa</span></label>
-          </div>
-        </fieldset>
-        <fieldset class="f" id="coloresWrap">
-          <legend>Colores que te gustan</legend>
-          <div class="pick colores">
-            <label><input type="checkbox" name="color" value="rosas"><span><svg><use href="#tilde"/></svg>Rosas</span></label>
-            <label><input type="checkbox" name="color" value="blancos"><span><svg><use href="#tilde"/></svg>Blancos</span></label>
-            <label><input type="checkbox" name="color" value="amarillos"><span><svg><use href="#tilde"/></svg>Amarillos</span></label>
-            <label><input type="checkbox" name="color" value="lilas"><span><svg><use href="#tilde"/></svg>Lilas</span></label>
-            <label><input type="checkbox" name="color" value="rojos"><span><svg><use href="#tilde"/></svg>Rojos</span></label>
-          </div>
-        </fieldset>
-        <div class="f" id="fraseWrap"><label for="frase">Frase para la tarjeta o la banda (opcional)</label><input id="frase" type="text" placeholder="Ej: Felicidades, licenciada"></div>
-        <div class="f"><label for="detalle">Algo más que quieras contarnos (opcional)</label><textarea id="detalle" placeholder="Para quién es, qué planta buscás, si va en maceta…"></textarea></div>
-        <fieldset class="f">
-          <legend>¿Cómo lo recibís?</legend>
-          <div class="pick">
-            <label><input type="radio" name="entrega" value="retiro" checked><span><svg><use href="#tilde"/></svg>Lo retiro en el vivero</span></label>
-            <label><input type="radio" name="entrega" value="envio"><span><svg><use href="#tilde"/></svg>Envío a domicilio</span></label>
-          </div>
-        </fieldset>
-        <div class="two">
-          <div class="f" id="barrioWrap" hidden><label for="barrio">¿A qué barrio?</label><input id="barrio" type="text" placeholder="Ej: Tres Cerritos"></div>
-          <div class="f"><label for="fecha">¿Para cuándo?</label><input id="fecha" type="date"></div>
-          <div class="f"><label for="nombre">Tu nombre (opcional)</label><input id="nombre" type="text" autocomplete="given-name"></div>
+      <div class="tarjeta" id="resumen">
+        <div class="t-top"><div><b>Lo que elegiste</b><small>Van Garden Vivero, Mendoza 1298</small></div><div class="cartelito" aria-hidden="true"><img src="img/perfil.jpg" alt=""></div></div>
+        <div id="resVacio">
+          <p class="res-txt">Todavía no elegiste nada. Recorré el vivero y tocá <b>Agregar</b> en lo que te guste.</p>
+          <a class="btn btn-green res-btn" href="#vivero">Recorré el vivero</a>
         </div>
-        <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><p id="pedidoPrev"></p></div>
-        <button class="btn btn-green send" type="submit" id="sendBtn"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Copiar pedido y abrir el chat</span></button>
-        <p class="aviso" id="aviso" role="status"></p>
-      </form>
+        <div id="resLleno" hidden>
+          <ul class="res-lista" id="resLista"></ul>
+          <button class="btn btn-green res-btn" type="button" data-abrir-carrito>Completar datos y enviar</button>
+          <a class="res-mas" href="#vivero">Sumar algo más</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -629,8 +733,78 @@ footer a{color:var(--moss);font-weight:600}
   <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small id="tipSub">Por mensaje directo</small></span>
 </a>
 
+<button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu pedido">
+  <svg aria-hidden="true"><use href="#maceta"/></svg><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver pedido">
+  <svg aria-hidden="true"><use href="#maceta"/></svg><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<dialog class="carrito" id="carrito" aria-labelledby="carritoTit">
+  <div class="velo" data-cerrar aria-hidden="true"></div>
+  <div class="cajon">
+    <div class="cajon-cab">
+      <div><h2 id="carritoTit">Tu pedido</h2><p class="cajon-sub" id="carritoSub">Van Garden Vivero, Mendoza 1298</p></div>
+      <button type="button" class="cerrar" id="cerrarCarrito" data-cerrar aria-label="Cerrar tu pedido"><svg aria-hidden="true"><use href="#cruz"/></svg></button>
+    </div>
+    <div class="cajon-cuerpo" id="cajonCuerpo">
+      <div class="vacio" id="vacio">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 112 C60 92 59 76 60 56"/><path d="M60 78 C46 76 30 66 24 48 C42 46 56 58 60 78 Z"/><path d="M60 62 C74 58 88 46 92 28 C74 28 61 42 60 62 Z"/><path d="M36 112h48"/></svg>
+        <h3>Todavía no elegiste nada.</h3>
+        <p>Recorré el vivero y tocá Agregar en lo que te guste: ramos, plantas, orquídeas o sucus.</p>
+        <a class="btn btn-green" href="#vivero" data-ir="vivero">Ir al recorrido</a>
+      </div>
+      <div id="lleno" hidden>
+        <ul class="lista" id="lista" aria-label="Lo que elegiste"></ul>
+        <button type="button" class="vaciar" id="vaciar">Vaciar pedido</button>
+        <form class="datos" id="datos" novalidate>
+          <h3>Tus datos</h3>
+          <div class="f"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+          <div class="f"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 387 123-4567" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+          <fieldset class="f">
+            <legend>¿Cómo lo recibís?</legend>
+            <div class="pick">
+              <label><input type="radio" name="entrega" value="retiro" checked><span><svg aria-hidden="true"><use href="#tilde"/></svg>Lo retiro en el vivero</span></label>
+              <label><input type="radio" name="entrega" value="envio"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Envío a domicilio</span></label>
+            </div>
+          </fieldset>
+          <div class="f" id="dirWrap" hidden><label for="dir">Dirección de entrega</label><input id="dir" name="dir" type="text" autocomplete="street-address" placeholder="Calle, número y barrio" aria-describedby="err-dir"><small class="err" id="err-dir"></small></div>
+          <div class="f"><label for="fecha">¿Para cuándo? <span class="opc">(opcional)</span></label><input id="fecha" name="fecha" type="date"></div>
+          <div class="f-tarjeta">
+            <fieldset class="f">
+              <legend>¿Es para regalar? <span class="opc">(opcional)</span></legend>
+              <div class="pick" id="ocasiones">
+                <label><input type="radio" name="ocasion" value="cumpleaños"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Cumpleaños</span></label>
+                <label><input type="radio" name="ocasion" value="aniversario"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Aniversario</span></label>
+                <label><input type="radio" name="ocasion" value="recibida"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Recibida</span></label>
+                <label><input type="radio" name="ocasion" value="nacimiento"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Nacimiento</span></label>
+                <label><input type="radio" name="ocasion" value="para mi casa"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Para mi casa</span></label>
+              </div>
+            </fieldset>
+            <div class="f"><label for="frase">Frase para la tarjeta <span class="opc">(opcional)</span></label><input id="frase" name="frase" type="text" placeholder="Ej: Feliz cumple, má"></div>
+          </div>
+          <div class="f"><label for="aclar">Aclaraciones <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Colores que te gustan, si va en maceta, a qué hora…"></textarea></div>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+        </form>
+      </div>
+    </div>
+    <div class="cajon-pie" id="cajonPie" hidden>
+      <button class="btn enviar" type="submit" form="datos" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Enviar pedido por Instagram</span></button>
+      <p class="nota" id="nota">Copiamos tu pedido y abrimos el chat de @van_garden_vivero.</p>
+      <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
 <script>
-// Contacto: cuando el vivero pase su WhatsApp, poné el número acá (ej. '5493871234567') y toda la página pasa a WhatsApp.
+// =====================================================================================
+//  WHATSAPP DEL VIVERO: poné el número acá y TODA la página pasa a WhatsApp.
+//  Formato: 549 + característica + número, sin espacios, sin + ni guiones (ej. '5493871234567').
+//  Mientras esté vacío, el pedido se copia al portapapeles y se abre el chat de Instagram
+//  (@van_garden_vivero). Con el número, el carrito abre wa.me con el pedido ya escrito,
+//  y el botón flotante y "Escribinos" también van a WhatsApp.
+// =====================================================================================
 var WA = '';
 var IG_DM = 'https://ig.me/m/van_garden_vivero';
 document.documentElement.classList.add('js');
@@ -676,59 +850,348 @@ if (WA) {
   figs.forEach(function (f) { io.observe(f); });
 })();
 
-// Armá tu pedido: arma el mensaje y lo manda por WhatsApp (o lo copia y abre el chat de Instagram)
+// Tu pedido: agregar desde el recorrido, revisar en el panel y mandarlo armado
 (function () {
-  var form = document.getElementById('pedidoForm'); if (!form) return;
   var $ = function (id) { return document.getElementById(id); };
-  var prev = $('pedidoPrev'), aviso = $('aviso');
-  if (WA) { $('sendBtn').querySelector('span').textContent = 'Enviar pedido por WhatsApp'; }
-  function val(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
-  function fechaLinda(v) {
-    if (!v) return '';
+  var html = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var calma = function () { return !!(mq && mq.matches); };
+  var CLAVE = 'vangarden-pedido-v1';
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+
+  // Lo que hay en la página (sin precios): nombre en singular y plural, y la foto de la miniatura
+  var CAT = {
+    interior:  { uno: 'Planta de interior', varios: 'Plantas de interior', img: 'img/gomero-variegado.jpg' },
+    ramo:      { uno: 'Ramo de flores', varios: 'Ramos de flores', img: 'img/ramo-azucenas.jpg' },
+    orquidea:  { uno: 'Orquídea Phalaenopsis', varios: 'Orquídeas Phalaenopsis', img: 'img/orquidea-rosa.jpg' },
+    suculenta: { uno: 'Suculenta', varios: 'Suculentas', img: 'img/suculentas.jpg' },
+    cinta:     { uno: 'Ramo de rosas de cinta', varios: 'Ramos de rosas de cinta', img: 'img/rosas-cinta.jpg' },
+    novia:     { uno: 'Ramo de novia', varios: 'Ramos de novia', img: '' },
+    gomero:    { uno: 'Gomero variegado', varios: 'Gomeros variegados', img: 'img/gomero-variegado.jpg' },
+    caladium:  { uno: 'Caladium', varios: 'Caladium', img: 'img/caladium.jpg' },
+    calas:     { uno: 'Cala', varios: 'Calas', img: 'img/calas.jpg' }
+  };
+  var nombre = function (id, n) { return n === 1 ? CAT[id].uno : CAT[id].varios; };
+
+  var estado = { items: [], datos: {} };
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && Array.isArray(g.items)) {
+      g.items.forEach(function (it) {
+        var n = it && Math.floor(+it.n);
+        if (it && CAT[it.id] && n > 0) estado.items.push({ id: it.id, n: Math.min(99, n) });
+      });
+      if (g.datos && typeof g.datos === 'object') estado.datos = g.datos;
+    }
+  } catch (e) {}
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {} }
+  function idx(id) { for (var i = 0; i < estado.items.length; i++) if (estado.items[i].id === id) return i; return -1; }
+  function cant(id) { var i = idx(id); return i < 0 ? 0 : estado.items[i].n; }
+  function total() { return estado.items.reduce(function (a, it) { return a + it.n; }, 0); }
+
+  var dlg = $('carrito'), form = $('datos'), lista = $('lista');
+  var fab = $('cartFab'), bar = $('cartBar');
+
+  // Botones "Agregar" en cada sector y ficha
+  var MAS = '<svg aria-hidden="true"><use href="#mas"/></svg>', MENOS = '<svg aria-hidden="true"><use href="#menos"/></svg>';
+  function stepper(id, n, etiqueta) {
+    return '<div class="cant" role="group" aria-label="' + etiqueta + '">' +
+      '<button type="button" data-d="-1" aria-label="Uno menos">' + MENOS + '</button>' +
+      '<output>' + n + '</output>' +
+      '<button type="button" data-d="1" aria-label="Uno más">' + MAS + '</button></div>';
+  }
+  document.querySelectorAll('.add[data-item]').forEach(function (box) {
+    var id = box.getAttribute('data-item'); if (!CAT[id]) return;
+    box.innerHTML = '<button type="button" class="agregar" aria-label="Agregar ' + CAT[id].uno + ' al pedido">' + MAS + 'Agregar</button>' +
+      stepper(id, 0, CAT[id].uno + ' en tu pedido');
+  });
+
+  // ----- dibujar todo según el estado -----
+  var totalAntes = total();
+  function thumb(id, cls) {
+    return CAT[id].img ? '<img class="' + cls + '" src="' + CAT[id].img + '" alt="" loading="lazy">'
+      : '<span class="' + cls + ' th-ico"><svg aria-hidden="true"><use href="#maceta"/></svg></span>';
+  }
+  function render() {
+    var t = total();
+    document.querySelectorAll('.add[data-item]').forEach(function (box) {
+      var n = cant(box.getAttribute('data-item'));
+      box.setAttribute('data-n', String(n));
+      var o = box.querySelector('output'); if (o) o.textContent = n;
+      var menos = box.querySelector('[data-d="-1"]'); if (menos) menos.setAttribute('aria-label', n === 1 ? 'Quitar del pedido' : 'Uno menos');
+    });
+    document.querySelectorAll('[data-total]').forEach(function (b) { b.textContent = t; });
+    fab.classList.toggle('on', t > 0); bar.classList.toggle('on', t > 0);
+    fab.setAttribute('aria-label', 'Ver tu pedido (' + t + ')');
+    bar.setAttribute('aria-label', 'Ver pedido (' + t + ')');
+    if (t > totalAntes) pulsar(totalAntes > 0);
+    totalAntes = t;
+
+    // panel
+    $('vacio').hidden = t > 0; $('lleno').hidden = t === 0; $('cajonPie').hidden = t === 0;
+    $('carritoSub').textContent = t ? (t === 1 ? '1 cosa elegida' : t + ' cosas elegidas') : 'Van Garden Vivero, Mendoza 1298';
+    Array.prototype.forEach.call(lista.querySelectorAll('.item:not(.sale)'), function (li) {
+      if (!cant(li.getAttribute('data-item'))) {
+        li.classList.add('sale');
+        setTimeout(function () { li.remove(); }, calma() ? 0 : 180);
+      }
+    });
+    estado.items.forEach(function (it) {
+      var li = lista.querySelector('.item[data-item="' + it.id + '"]:not(.sale)');
+      if (!li) {
+        li = document.createElement('li'); li.className = 'item'; li.setAttribute('data-item', it.id);
+        li.innerHTML = thumb(it.id, 'th') + '<div class="item-txt"><b></b><button type="button" class="quitar" data-quitar>Quitar</button></div>' +
+          stepper(it.id, it.n, 'Cantidad de ' + CAT[it.id].uno);
+        lista.appendChild(li);
+      }
+      li.querySelector('b').textContent = nombre(it.id, it.n);
+      li.querySelector('output').textContent = it.n;
+      li.querySelector('[data-d="-1"]').disabled = it.n <= 1;
+      li.querySelector('[data-d="1"]').disabled = it.n >= 99;
+      li.querySelector('[data-quitar]').setAttribute('aria-label', 'Quitar ' + nombre(it.id, it.n) + ' del pedido');
+    });
+
+    // resumen de la sección "Tu pedido"
+    $('resVacio').hidden = t > 0; $('resLleno').hidden = t === 0;
+    $('resLista').innerHTML = estado.items.map(function (it) {
+      return '<li>' + thumb(it.id, '') + '<span class="n">' + it.n + '</span>' + nombre(it.id, it.n) + '</li>';
+    }).join('');
+
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+
+  // el contador late cuando sumás algo
+  function pulsar(yaEstaba) {
+    if (calma()) return;
+    document.querySelectorAll('.badge[data-total]').forEach(function (b) {
+      if (b.animate) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)', offset: .35 }, { transform: 'scale(1)' }], { duration: 340, easing: EASE });
+    });
+    if (yaEstaba && fab.animate && getComputedStyle(fab).display !== 'none') {
+      fab.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.08)', offset: .35 }, { transform: 'scale(1)' }], { duration: 300, easing: EASE });
+    }
+  }
+  function anunciar(txt) {
+    var el = dlg.open ? $('aviso') : $('anuncio');
+    el.classList.remove('mal');
+    el.textContent = ''; setTimeout(function () { el.textContent = txt; }, 30);
+  }
+  function setCant(id, n) {
+    n = Math.max(0, Math.min(99, n));
+    var i = idx(id);
+    if (i < 0 && n > 0) estado.items.push({ id: id, n: n });
+    else if (i >= 0 && n === 0) estado.items.splice(i, 1);
+    else if (i >= 0) estado.items[i].n = n;
+    render();
+    anunciar(n ? nombre(id, n) + ': ' + n + ' en tu pedido.' : 'Quitaste ' + CAT[id].uno + ' del pedido.');
+  }
+
+  // ----- clicks en la página y en el panel -----
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.agregar, [data-d], [data-quitar], [data-abrir-carrito], [data-cerrar], [data-ir], #vaciar');
+    if (!b) return;
+    var cont = b.closest('[data-item]'), id = cont && cont.getAttribute('data-item');
+    if (b.classList.contains('agregar')) {
+      setCant(id, 1);
+      var mas = cont.querySelector('[data-d="1"]'); if (mas) mas.focus();
+    } else if (b.hasAttribute('data-d')) {
+      var n = cant(id) + (+b.getAttribute('data-d'));
+      setCant(id, n);
+      if (n <= 0 && cont.classList.contains('add')) cont.querySelector('.agregar').focus();
+    } else if (b.hasAttribute('data-quitar')) {
+      var vecino = cont.nextElementSibling || cont.previousElementSibling;
+      setCant(id, 0);
+      if (vecino && !vecino.classList.contains('sale')) vecino.querySelector('[data-quitar]').focus();
+      else if (!total()) $('vacio').querySelector('a').focus();
+    } else if (b.id === 'vaciar') {
+      estado.items = []; render(); anunciar('Vaciaste el pedido.');
+      $('vacio').querySelector('a').focus();
+    } else if (b.hasAttribute('data-abrir-carrito')) {
+      abrir(b);
+    } else if (b.hasAttribute('data-cerrar')) {
+      cerrar();
+    } else if (b.hasAttribute('data-ir')) {
+      e.preventDefault();
+      cerrar(b.getAttribute('data-ir'));
+    }
+  });
+
+  // ----- abrir y cerrar el panel -----
+  var abridor = null, timer = 0, irA = null;
+  function abrir(desde) {
+    clearTimeout(timer);
+    abridor = desde || document.activeElement;
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      html.classList.add('carrito-abierto');
+      $('aviso').textContent = '';
+      $('cajonCuerpo').scrollTop = 0;
+      void dlg.offsetWidth; // que arranque cerrado y la transición se vea
+    }
+    dlg.classList.add('open');
+    $('cerrarCarrito').focus();
+  }
+  function cerrar(destino) {
+    if (!dlg.open) return;
+    irA = destino || null;
+    dlg.classList.remove('open');
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (dlg.open && !dlg.classList.contains('open')) { if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); alCerrar(); } } }, calma() ? 180 : 300);
+  }
+  function alCerrar() {
+    dlg.classList.remove('open');
+    html.classList.remove('carrito-abierto');
+    if (irA) {
+      var sec = $(irA); irA = null;
+      if (sec) {
+        sec.scrollIntoView({ behavior: calma() ? 'auto' : 'smooth', block: 'start' });
+        var primero = sec.querySelector('.agregar'); if (primero) primero.focus({ preventScroll: true });
+      }
+    } else if (abridor && document.contains(abridor) && abridor.getClientRects().length) {
+      abridor.focus({ preventScroll: true });
+    }
+  }
+  dlg.addEventListener('close', alCerrar);
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); cerrar(); }); // Escape, con animación
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); cerrar(); return; }
+    if (e.key !== 'Tab') return; // el foco no se escapa del panel
+    var f = Array.prototype.filter.call(dlg.querySelectorAll('button, a[href], input, textarea, summary, [tabindex]:not([tabindex="-1"])'),
+      function (el) { return !el.disabled && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden'; });
+    if (!f.length) return;
+    var pri = f[0], ult = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); }
+    else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+  });
+
+  // ----- tus datos -----
+  var campos = ['nombre', 'tel', 'dir', 'fecha', 'frase', 'aclar'];
+  function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function leer() {
+    var d = {};
+    campos.forEach(function (c) { d[c] = $(c).value.replace(/\s+/g, ' ').trim(); });
+    d.entrega = radio('entrega') || 'retiro'; d.ocasion = radio('ocasion');
+    return d;
+  }
+  function hoyISO() { var h = new Date(); return h.getFullYear() + '-' + ('0' + (h.getMonth() + 1)).slice(-2) + '-' + ('0' + h.getDate()).slice(-2); }
+  $('fecha').min = hoyISO();
+  (function restaurar() {
+    var d = estado.datos || {};
+    campos.forEach(function (c) { if (typeof d[c] === 'string') $(c).value = d[c]; });
+    if ($('fecha').value && $('fecha').value < $('fecha').min) $('fecha').value = '';
+    var en = form.querySelector('input[name="entrega"][value="' + (d.entrega === 'envio' ? 'envio' : 'retiro') + '"]'); if (en) en.checked = true;
+    if (d.ocasion) { var oc = form.querySelector('input[name="ocasion"][value="' + d.ocasion + '"]'); if (oc) oc.checked = true; }
+  })();
+  function fechaCorta(v) {
     var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
-    return d.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+    if (isNaN(d)) return '';
+    var dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    return dias[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
   }
-  function texto() {
-    var t = val('tipo'), lineas = ['Hola Van Garden! Quiero hacer un pedido:'];
-    var colores = Array.prototype.map.call(form.querySelectorAll('input[name="color"]:checked'), function (c) { return c.value; });
-    var conFlores = /Ramo/.test(t);
-    var linea = t;
-    var oc = val('ocasion');
-    if (oc) linea += oc === 'mi casa' ? ', para mi casa' : ', para ' + oc;
-    lineas.push(linea + '.');
-    if (conFlores && colores.length) lineas.push('Me gustan los colores ' + colores.join(', ').replace(/, ([^,]*)$/, ' y $1') + '.');
-    if (conFlores && $('frase').value.trim()) lineas.push('Frase: "' + $('frase').value.trim() + '".');
-    if ($('detalle').value.trim()) lineas.push($('detalle').value.trim());
-    if (val('entrega') === 'envio') lineas.push('Lo necesito con envío a domicilio' + ($('barrio').value.trim() ? ', en ' + $('barrio').value.trim() : '') + '.');
-    else lineas.push('Lo retiro en el vivero.');
-    if ($('fecha').value) lineas.push('Para el ' + fechaLinda($('fecha').value) + '.');
-    if ($('nombre').value.trim()) lineas.push('Soy ' + $('nombre').value.trim() + '.');
-    return lineas.join('\n');
+  function mensaje(borrador) {
+    var d = leer(), L = ['Hola, Van Garden! Quiero hacer este pedido:'];
+    estado.items.forEach(function (it) { L.push('• ' + it.n + ' ' + nombre(it.id, it.n)); });
+    L.push('');
+    L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
+    var ent = d.entrega === 'envio' ? 'envío a ' + (d.dir || (borrador ? '…' : '')) : 'retiro en el vivero';
+    if (d.fecha && fechaCorta(d.fecha)) ent += ', el ' + fechaCorta(d.fecha);
+    L.push('Entrega: ' + ent);
+    if (d.ocasion) L.push('Ocasión: ' + d.ocasion);
+    if (d.frase) L.push('Tarjeta: ' + d.frase);
+    if (d.aclar) L.push('Aclaraciones: ' + d.aclar);
+    L.push('', '¿Me confirman? Gracias.');
+    return L.join('\n');
   }
-  function sync() {
-    var conFlores = /Ramo/.test(val('tipo'));
-    $('coloresWrap').hidden = !conFlores;
-    $('fraseWrap').hidden = !conFlores;
-    $('barrioWrap').hidden = val('entrega') !== 'envio';
-    prev.textContent = texto();
-    aviso.textContent = '';
+  function syncDatos() {
+    $('dirWrap').hidden = radio('entrega') !== 'envio';
+    estado.datos = leer();
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
   }
-  form.addEventListener('input', sync); form.addEventListener('change', sync);
+  form.addEventListener('input', function (e) {
+    var f = e.target.closest('.f');
+    if (f && f.classList.contains('error')) marcar(e.target, '');
+    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
+    syncDatos();
+  });
+  form.addEventListener('change', syncDatos);
+  // la ocasión se puede destildar tocándola de nuevo
+  var ocPrev = radio('ocasion') ? form.querySelector('input[name="ocasion"]:checked') : null;
+  $('ocasiones').addEventListener('click', function (e) {
+    var r = e.target.closest('input[name="ocasion"]'); if (!r) return;
+    if (r === ocPrev) { r.checked = false; ocPrev = null; } else ocPrev = r;
+    syncDatos();
+  });
+
+  function marcar(input, txt) {
+    var f = input.closest('.f'), err = $('err-' + input.id);
+    f.classList.toggle('error', !!txt);
+    if (txt) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    if (err) err.textContent = txt;
+  }
+  function validar() {
+    var malos = [], d = leer();
+    var chequeo = [
+      ['nombre', d.nombre ? '' : 'Poné tu nombre así sabemos de quién es el pedido.'],
+      ['tel', !d.tel ? 'Poné tu teléfono para que te confirmemos el pedido.'
+        : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : ''],
+      ['dir', d.entrega === 'envio' && !d.dir ? 'Poné la dirección adonde te lo llevamos.' : '']
+    ];
+    chequeo.forEach(function (c) { marcar($(c[0]), c[1]); if (c[1]) malos.push($(c[0])); });
+    return malos;
+  }
+
+  // ----- enviar -----
+  var envBtn = $('enviar');
+  if (WA) {
+    envBtn.querySelector('use').setAttribute('href', '#wa');
+    envBtn.querySelector('span').textContent = 'Enviar pedido por WhatsApp';
+    $('nota').textContent = 'Se abre WhatsApp con tu pedido escrito. Solo falta tocar enviar.';
+  }
+  function abrirLink(url) {
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    dlg.appendChild(a); a.click(); a.remove();
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      dlg.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var msg = texto();
-    if (WA) { window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener'); return; }
-    var abrir = function (ok) {
-      aviso.textContent = ok ? 'Copiamos tu pedido. Pegalo en el chat y mandalo.' : 'Copiá el mensaje de arriba y pegalo en el chat.';
-      window.open(IG_DM, '_blank', 'noopener');
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg).then(function () { abrir(true); }, function () { abrir(false); });
-    else abrir(false);
+    if (!total()) return;
+    var aviso = $('aviso');
+    var malos = validar();
+    if (malos.length) {
+      aviso.classList.add('mal');
+      aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.';
+      malos[0].focus();
+      return;
+    }
+    aviso.classList.remove('mal');
+    var msg = mensaje(false);
+    if (WA) {
+      abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg));
+      aviso.textContent = 'Abrimos WhatsApp con tu pedido.';
+      return;
+    }
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu pedido: pegalo en el chat.';
+      else { aviso.textContent = 'No pudimos copiarlo solo: copialo de "Ver cómo llega el mensaje" y pegalo en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
   });
-  document.querySelectorAll('[data-pedir]').forEach(function (a) {
-    a.addEventListener('click', function () { var r = form.querySelector('input[name="tipo"][value="' + a.getAttribute('data-pedir') + '"]'); if (r) { r.checked = true; sync(); } });
-  });
-  sync();
+
+  render();
+  syncDatos();
 })();
 </script>
 </body>
