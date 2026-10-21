@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Pach Barber Club | Peluquería y barbería en Paraná</title>
-<meta name="description" content="Peluquería y barbería en Colón 344, Paraná. Sacá tu turno desde la web: elegí qué te hacés, el día y el horario, y te lo confirmamos por mensaje.">
+<meta name="description" content="Peluquería y barbería en Colón 344, Paraná. Reservá tu turno desde la web: elegí qué te hacés, el día y el horario, y te lo confirmamos por mensaje.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121212'/%3E%3Crect x='10' y='16' width='44' height='26' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Ctext x='32' y='35.5' font-family='Arial Black,Arial' font-weight='900' font-size='15' fill='%23fff' text-anchor='middle'%3EPCH%3C/text%3E%3Crect x='14' y='48' width='36' height='2.4' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="alternate icon" href="img/perfil.jpg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pach Barber Club | Peluquería y barbería en Paraná">
-<meta property="og:description" content="Corte, barba y color en Colón 344, Paraná. Sacá tu turno desde la web.">
+<meta property="og:description" content="Corte, barba y color en Colón 344, Paraná. Reservá tu turno desde la web.">
 <meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/pach-barber-club/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/pach-barber-club/">
@@ -20,421 +20,499 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <style>
-/* Concepto: el poste de barbería que tienen prendido en el local. Es el único momento fuerte: en la portada se prende y arranca a girar.
-   Los servicios están en un tablero de letras, como el de cualquier barbería, con "Consultá" donde iría el precio.
-   El turno se saca como en una agenda de barbería: servicio, día en el calendario, horario y tus datos,
-   y se va escribiendo solo en un ticket de papel del club, con una barrita con las rayas del poste que se llena a medida que completás.
-   Colores de su marca: el negro y blanco del logo y de la pared del local, el cromo de los sillones
-   y el dorado de sus capas, que aparece en el poste, en el botón de turno y en lo que vas eligiendo. */
+/* Sistema copiado de la referencia que eligió Franco (portada con foto, carta de servicios, galería escalonada,
+   dónde estamos con cartel y mapa, pie grande y la reserva en una vista aparte, paso a paso, con el ticket del turno al costado),
+   vestido con la marca de Pach: el negro y blanco del logo y de la pared del local, el cromo de los sillones
+   y el dorado de sus capas. El momento fuerte sigue siendo el poste de barbería, que en la portada se prende y arranca a girar;
+   sus rayas vuelven en la barra de avance de la reserva. */
 :root{
   --pared:#0C0C0C;      /* la pared negra del local y el fondo del logo */
-  --pared-2:#1A1A1A;
+  --pared-2:#161616;
   --pared-3:#262626;
   --azulejo:#F2F2F0;    /* fondo claro, frío como el azulejo */
-  --papel:#FBFBFA;
+  --papel:#F8F8F6;
+  --cromo-claro:#E3E4E1;
   --tinta:#151515;
   --gris:#575B60;
   --gris-claro:#B9BDC1;
   --cromo:#A3A9AE;
   --dorado:#D9A441;     /* el dorado de sus capas */
   --dorado-2:#E8B95A;
+  --linea:rgba(21,21,21,.14);
   --err:#B3261E;
-  /* Tipografía sacada del logo: la palabra PACH es una palo seco ancha y pesada; BARBER CLUB, la misma fina y espaciada.
+  /* Tipografía sacada del logo: PACH es una palo seco ancha y pesada; BARBER CLUB, la misma fina y espaciada.
      Archivo tiene eje de ancho, así que sale todo de una sola familia. */
   --f:'Archivo', 'Arial', system-ui, sans-serif;
   --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
-  --header:88px;
+  --header:80px;
+  --rtop:137px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none !important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--azulejo);color:var(--tinta);font-family:var(--f);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased;font-kerning:normal}
+body.reservando{overflow:hidden}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{margin:0;font-family:var(--f);text-wrap:balance}
 p{margin:0}
 ::selection{background:var(--dorado);color:var(--tinta)}
-:focus-visible{outline:3px solid var(--tinta);outline-offset:3px;border-radius:6px}
-.oscuro :focus-visible,.top :focus-visible,.menu :focus-visible{outline-color:#fff}
-[id]{scroll-margin-top:calc(var(--header) + 12px)}
-.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:3px;border-radius:4px}
+.oscuro :focus-visible,.top :focus-visible,.menu :focus-visible,.r-top :focus-visible,.ticket :focus-visible{outline-color:#fff}
+[id]{scroll-margin-top:calc(var(--header) + 8px)}
+.wrap{width:min(1270px, 100% - 48px);margin-inline:auto}
 .ico{width:20px;height:20px;flex:none}
+.titulo{font-stretch:125%;font-weight:800;text-transform:uppercase;line-height:.92;letter-spacing:-0.01em}
 
-/* ---------- botones ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;border:0;cursor:pointer;
-  font:600 16.5px/1 var(--f);text-decoration:none;white-space:nowrap;transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+/* ---------- botones: rectos y en mayúsculas espaciadas, como el BARBER CLUB del logo ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:54px;padding:0 26px;border-radius:4px;border:0;cursor:pointer;
+  font:700 14px/1 var(--f);font-stretch:112%;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
 .btn:active{transform:scale(.97)}
 .btn-oro{background:var(--dorado);color:var(--tinta)}
-.btn-blanco{background:#fff;color:var(--tinta)}
-.btn-linea{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.btn-linea{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
 .btn-negro{background:var(--tinta);color:#fff}
-.btn-borde{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.3)}
+.btn-borde{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1px rgba(21,21,21,.35)}
 @media (hover:hover) and (pointer:fine){
   .btn-oro:hover{background:var(--dorado-2)}
-  .btn-blanco:hover{background:#E4E6E8}
-  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px #fff}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1px #fff}
   .btn-negro:hover{background:#333}
-  .btn-borde:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+  .btn-borde:hover{box-shadow:inset 0 0 0 1px var(--tinta)}
 }
 
-/* ---------- encabezado: una barra que flota sobre la página, como la vidriera del local ---------- */
-.top{position:fixed;top:max(12px, env(safe-area-inset-top));left:0;right:0;z-index:50;pointer-events:none}
-.barra{pointer-events:auto;width:min(1240px, 100% - 24px);margin-inline:auto;height:64px;display:flex;align-items:center;gap:14px;padding:0 10px;border-radius:999px;color:#fff;
-  background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.11);
+/* ---------- encabezado ---------- */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;padding-top:env(safe-area-inset-top);
   transition:background-color .3s ease, box-shadow .3s ease}
-.top.scrolled .barra{background:rgba(14,14,14,.76);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1), 0 20px 44px -22px rgba(0,0,0,.75)}
-@media (prefers-reduced-transparency: reduce){.top.scrolled .barra{background:var(--pared);-webkit-backdrop-filter:none;backdrop-filter:none}}
-.marca{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#fff;border-radius:999px;padding-right:6px;min-width:0}
-.marca img{width:44px;height:44px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px rgba(255,255,255,.28)}
+.top.scrolled{background:rgba(12,12,12,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 1px 0 rgba(255,255,255,.09)}
+@media (prefers-reduced-transparency: reduce){.top.scrolled{background:var(--pared);-webkit-backdrop-filter:none;backdrop-filter:none}}
+.barra{height:var(--header);display:flex;align-items:center;gap:16px}
+.marca{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#fff;min-width:0}
+.marca img{width:44px;height:44px;border-radius:50%;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.3)}
 .nom{display:flex;flex-direction:column;min-width:0;line-height:1.15;overflow:hidden}
-.nom b{font-stretch:118%;font-weight:800;font-size:16.5px;letter-spacing:-0.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nom b{font-stretch:118%;font-weight:800;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nom small{font-size:13px;color:var(--gris-claro);white-space:nowrap}
-.nom .corta,.b-turno .corta{display:none}
-.links{display:flex;gap:2px;margin-left:auto}
-.links a{position:relative;text-decoration:none;font-weight:500;font-size:15.5px;padding:10px 13px;color:#D4D6D8;border-radius:999px;transition:color .2s ease}
-.links a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;border-radius:2px;background:var(--dorado);transform:scaleX(0);transform-origin:left;transition:transform .28s var(--ease-out)}
+.links{display:flex;gap:4px;margin-inline:auto}
+.links a{position:relative;text-decoration:none;font-weight:600;font-size:12.5px;letter-spacing:.17em;text-transform:uppercase;padding:12px 14px;color:#C2C5C8;transition:color .2s ease}
+.links a::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:1.5px;background:var(--dorado);transform:scaleX(0);transform-origin:left;transition:transform .28s var(--ease-out)}
 .links a.activo{color:#fff}
 .links a.activo::after,.links a:focus-visible::after{transform:scaleX(1)}
 @media (hover:hover) and (pointer:fine){.links a:hover{color:#fff}.links a:hover::after{transform:scaleX(1)}}
-.acciones{display:flex;align-items:center;gap:8px}
-.b-top{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;font:600 15px/1 var(--f);text-decoration:none;white-space:nowrap;
-  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease}
-.b-top:active{transform:scale(.97)}
-.b-escribinos{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.acciones{display:flex;align-items:center;gap:10px}
+.acciones .btn{height:46px;padding:0 18px;font-size:13px}
 .b-escribinos .ico{width:18px;height:18px}
-.b-turno{background:var(--dorado);color:var(--tinta)}
-@media (hover:hover) and (pointer:fine){.b-escribinos:hover{box-shadow:inset 0 0 0 1.5px #fff}.b-turno:hover{background:var(--dorado-2)}}
-.menu-btn{display:none;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;place-items:center;flex:none;transition:background-color .2s ease, transform .16s var(--ease-out)}
+.corta{display:none}
+.menu-btn{display:none;width:46px;height:46px;border:0;border-radius:4px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;place-items:center;flex:none;transition:background-color .2s ease, transform .16s var(--ease-out)}
 .menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s var(--ease-out)}
 .menu-btn i + i{margin-top:5px}
 .menu-btn[aria-expanded="true"]{background:#fff;color:var(--tinta)}
 .menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
 .menu-btn:active{transform:scale(.95)}
-.menu{position:fixed;top:calc(max(12px, env(safe-area-inset-top)) + 72px);left:12px;right:12px;z-index:49;background:var(--pared-2);color:#fff;border-radius:24px;padding:8px 8px 12px;
-  box-shadow:0 30px 60px -24px rgba(0,0,0,.75), inset 0 0 0 1px rgba(255,255,255,.08);transform-origin:top right;opacity:0;transform:translateY(-6px) scale(.97);visibility:hidden;pointer-events:none;
+.menu{position:fixed;top:calc(env(safe-area-inset-top) + var(--header));left:0;right:0;z-index:49;background:var(--pared-2);color:#fff;padding:8px 24px 22px;
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.08);transform-origin:top center;opacity:0;transform:translateY(-6px);visibility:hidden;pointer-events:none;
   transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
 .menu.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
-.menu .item-m{display:block;padding:15px 14px;font-stretch:125%;font-weight:700;font-size:24px;line-height:1;text-decoration:none;border-radius:14px}
+.menu .item-m{display:block;padding:16px 0;font-stretch:125%;font-weight:800;font-size:26px;line-height:1;text-transform:uppercase;text-decoration:none}
 .menu .item-m + .item-m{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
-.menu .item-m:active{background:rgba(255,255,255,.06)}
-.menu .dato{margin:8px 14px 14px;font-size:14.5px;color:var(--gris-claro)}
+.menu .dato{margin:10px 0 18px;font-size:14.5px;color:var(--gris-claro)}
 .menu .btns{display:grid;gap:8px}
 .menu .btn{display:flex;width:100%}
 @media (max-width:1100px){.links,.b-escribinos{display:none}.acciones{margin-left:auto}.menu-btn{display:grid}}
 @media (max-width:480px){
-  .barra{height:60px;gap:8px;padding:0 8px}
+  :root{--header:68px}
+  .wrap{width:min(1270px, 100% - 40px)}
+  .barra{gap:10px}
   .marca{gap:10px}.marca img{width:40px;height:40px}
-  .nom b{font-size:14.5px;font-stretch:110%}.nom small{font-size:12px}
-  .nom .larga,.b-turno .larga{display:none}.nom .corta,.b-turno .corta{display:inline}
-  .b-turno{padding:0 14px;font-size:14.5px}
-  .menu{top:calc(max(12px, env(safe-area-inset-top)) + 68px)}
+  .nom b{font-size:14.5px;font-stretch:100%}.nom small{font-size:12px}
+  .larga{display:none}.corta{display:inline}
+  .acciones{gap:8px}
+  .acciones .btn{padding:0 12px;font-size:12px;letter-spacing:.08em}
 }
-@media (max-width:350px){.b-turno{display:none}}
+@media (max-width:340px){.acciones .btn-oro{display:none}}
 
-/* ---------- portada: la pared negra, el espejo y el poste ---------- */
-.hero{position:relative;background:var(--pared);color:#fff;padding:calc(var(--header) + 48px) 0 110px;overflow:hidden}
-/* el reflejo de los spots del techo sobre la pared */
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(60% 50% at 78% 18%, rgba(255,255,255,.07), transparent 70%)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
-.hero h1{font-stretch:125%;font-weight:800;font-size:clamp(3.3rem, 7.2vw, 6.9rem);line-height:.92;letter-spacing:-0.025em}
+/* ---------- portada: la foto del local, en penumbra, y el poste prendido ---------- */
+.hero{position:relative;min-height:min(100svh, 900px);display:flex;flex-direction:column;background:var(--pared);color:#fff;overflow:hidden}
+.hero-foto{position:absolute;inset:0}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:72% 40%;filter:saturate(.75)}
+.hero-foto::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg, rgba(12,12,12,.96) 0%, rgba(12,12,12,.86) 40%, rgba(12,12,12,.5) 100%), linear-gradient(0deg, rgba(12,12,12,.85) 0%, transparent 35%)}
+.hero-cuerpo{position:relative;flex:1;display:grid;grid-template-columns:1fr auto;align-items:end;gap:48px;padding:calc(var(--header) + 80px) 0 72px}
+.hero h1{font-size:clamp(3.3rem, 8.2vw, 7.6rem)}
 .hero h1 span{display:block}
-.hero h1 .fina{font-weight:300;font-stretch:100%;letter-spacing:-0.035em;color:#E9EAEB}
-.hero .lead{margin-top:30px;font-size:clamp(18px, 1.6vw, 21px);line-height:1.55;color:#C9CCCF;max-width:34ch}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-.donde{display:flex;align-items:center;gap:10px;margin-top:32px;font-size:15px;color:var(--gris-claro)}
-.donde svg{width:18px;height:18px;flex:none}
-.estacion{position:relative;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:stretch;justify-self:end;width:min(510px, 100%)}
+.hero-pie{display:grid;grid-template-columns:minmax(0, 34rem) auto;align-items:end;justify-content:space-between;gap:28px 48px;margin-top:40px}
+.hero .lead{font-size:clamp(18px, 1.5vw, 20px);line-height:1.6;color:#CDD0D3;max-width:36ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .ctas .ico{width:18px;height:18px}
+.bajar{position:relative;border-top:1px solid rgba(255,255,255,.12)}
+.bajar a{display:flex;align-items:center;justify-content:space-between;height:64px;text-decoration:none;font-size:14.5px;color:var(--gris-claro);transition:color .2s ease}
+.bajar svg{width:20px;height:20px}
+@media (hover:hover) and (pointer:fine){.bajar a:hover{color:#fff}}
 
 /* el poste: bola y tapas de cromo, el tubo de vidrio con las rayas que suben */
-.poste{display:flex;flex-direction:column;align-items:center;width:78px}
-.poste .bola{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 34% 30%, #fff 0, #D9DDE0 22%, #8E959A 62%, #3E4246 100%);margin-bottom:-4px;position:relative;z-index:1}
-.poste .tapa{width:78px;height:24px;border-radius:9px;background:linear-gradient(90deg, #4A4E52 0%, #C9CED2 22%, #F5F6F7 38%, #9AA0A5 62%, #5C6166 82%, #3E4246 100%);
+.poste{display:flex;flex-direction:column;align-items:center;width:70px;height:380px;align-self:center}
+.poste .bola{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 34% 30%, #fff 0, #D9DDE0 22%, #8E959A 62%, #3E4246 100%);margin-bottom:-4px;position:relative;z-index:1}
+.poste .tapa{width:70px;height:22px;border-radius:8px;background:linear-gradient(90deg, #4A4E52 0%, #C9CED2 22%, #F5F6F7 38%, #9AA0A5 62%, #5C6166 82%, #3E4246 100%);
   box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
-.poste .tapa.abajo{height:30px;border-radius:9px 9px 14px 14px}
-.tubo{position:relative;flex:1;min-height:260px;width:60px;overflow:hidden;background:var(--papel);box-shadow:0 0 40px rgba(217,164,65,.18)}
-.rayas{position:absolute;left:0;top:0;width:100%;height:calc(100% + 56px);will-change:transform;
-  background:linear-gradient(to bottom right, var(--tinta) 0 25%, var(--papel) 25% 50%, var(--dorado) 50% 75%, var(--papel) 75% 100%) 0 0 / 60px 56px}
-/* el vidrio: sombra en los bordes y un brillo vertical, para que se lea como un cilindro */
+.poste .tapa.abajo{height:28px;border-radius:8px 8px 12px 12px}
+.tubo{position:relative;flex:1;width:54px;overflow:hidden;background:var(--papel);box-shadow:0 0 50px rgba(217,164,65,.22)}
+.rayas{position:absolute;left:0;top:0;width:100%;height:calc(100% + 52px);will-change:transform;
+  background:linear-gradient(to bottom right, var(--tinta) 0 25%, var(--papel) 25% 50%, var(--dorado) 50% 75%, var(--papel) 75% 100%) 0 0 / 54px 52px}
 .tubo::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.08) 22%, rgba(255,255,255,.55) 36%, rgba(255,255,255,0) 50%, rgba(0,0,0,.1) 72%, rgba(0,0,0,.6) 100%)}
 .tubo::before{content:"";position:absolute;inset:0;z-index:1;background:#000;opacity:0;pointer-events:none}
 
-.espejo{position:relative;margin:0;border-radius:28px;padding:9px;background:#050505;align-self:center;
-  box-shadow:0 0 0 1.5px rgba(255,255,255,.75), 0 0 0 7px rgba(255,255,255,.05), 0 50px 90px -40px rgba(0,0,0,.95)}
-.espejo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;background:var(--pared-2)}
-
-/* elegir el día desde la portada: una tarjeta apoyada sobre el espejo */
-.rapido{position:absolute;left:70px;right:28px;bottom:-40px;z-index:2;padding:16px 16px 14px;border-radius:20px;
-  background:rgba(26,26,26,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1), 0 30px 50px -24px rgba(0,0,0,.9)}
-.rapido p{font-weight:700;font-size:15.5px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.rapido p a{font-weight:500;font-size:14px;color:var(--gris-claro);text-decoration:none}
-.rapido p a:hover{color:#fff}
-.dias-r{display:grid;grid-template-columns:repeat(4, 1fr);gap:6px}
-.dias-r a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;border-radius:12px;text-decoration:none;
-  background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:background-color .18s ease, color .18s ease, transform .14s var(--ease-out)}
-.dias-r b{font-weight:600;font-size:14.5px;line-height:1.1}
-.dias-r small{font-size:12.5px;color:var(--gris-claro);line-height:1.1}
-.dias-r a:active{transform:scale(.96)}
-@media (hover:hover) and (pointer:fine){.dias-r a:hover{background:var(--dorado);color:var(--tinta)}.dias-r a:hover small{color:#3A2E12}}
-
 /* el momento de la página: el texto entra, el poste se prende y arranca a girar (el giro lo maneja el JS) */
 @keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes prender{from{opacity:.72}to{opacity:0}}
+@keyframes prender{from{opacity:.75}to{opacity:0}}
 @keyframes aparecer{from{opacity:0}to{opacity:1}}
-.hero h1 span,.hero .lead,.hero .ctas,.donde{animation:subir .7s var(--ease-out) both}
+.hero h1 span,.hero .lead,.hero .ctas{animation:subir .7s var(--ease-out) both}
 .hero h1 span:nth-child(2){animation-delay:.06s}
-.hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}.donde{animation-delay:.26s}
-.espejo{animation:subir .8s var(--ease-out) .1s both}
-.rapido{animation:subir .7s var(--ease-out) .5s both}
+.hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}
 .poste{animation:aparecer .5s ease .05s both}
 .tubo::before{animation:prender .5s ease .45s both}
 @media (max-width:900px){
-  .hero{padding:calc(var(--header) + 34px) 0 72px}
-  .hero .wrap{grid-template-columns:1fr;gap:44px}
-  .estacion{justify-self:start;width:100%;max-width:460px;gap:20px}
-  .poste{width:58px}.poste .tapa{width:58px}.tubo{width:44px;min-height:0}.poste .bola{width:28px;height:28px}
-  .rayas{background-size:44px 42px;height:calc(100% + 42px)}
-  .rapido{position:relative;grid-column:1 / -1;left:auto;right:auto;bottom:auto;margin-top:-58px;margin-inline:22px 0}
+  .hero{min-height:min(100svh, 780px)}
+  .hero-cuerpo{grid-template-columns:1fr;padding:calc(var(--header) + 150px) 0 40px}
+  .hero-pie{grid-template-columns:1fr;margin-top:26px}
+  .hero-foto img{object-position:50% 30%}
+  .hero-foto::after{background:linear-gradient(0deg, rgba(12,12,12,.97) 0%, rgba(12,12,12,.9) 45%, rgba(12,12,12,.45) 100%)}
+  /* en el celular el poste queda arriba a la derecha, sobre la foto */
+  .poste{position:absolute;top:calc(var(--header) + 22px);right:0;width:44px;height:170px}
+  .poste .tapa{width:44px;height:15px;border-radius:5px}.poste .tapa.abajo{height:18px}
+  .poste .bola{width:20px;height:20px}
+  .tubo{width:34px}
+  .rayas{background-size:34px 34px;height:calc(100% + 34px)}
 }
-@media (max-width:420px){.rapido{margin-inline:12px 0}.dias-r{gap:5px}.dias-r b{font-size:14px}}
-
-/* ---------- qué te hacés: el tablero de letras ---------- */
-.servicios{padding:112px 0}
-.cab{max-width:660px}
-.cab h2{font-stretch:125%;font-weight:800;font-size:clamp(2.4rem, 4.8vw, 3.9rem);line-height:.96;letter-spacing:-0.02em}
-.cab p{margin-top:16px;color:var(--gris);font-size:18.5px;line-height:1.55;max-width:48ch}
-.servicios .grid{display:grid;grid-template-columns:1.45fr .55fr;gap:28px;margin-top:52px;align-items:start}
-/* el fieltro negro con canaletas donde se encastran las letras, dentro de un marco */
-.tablero{position:relative;background:var(--pared);color:#F2F2F0;border-radius:14px;padding:clamp(18px, 3vw, 34px) clamp(18px, 3.4vw, 40px) clamp(22px, 3vw, 34px);
-  background-image:repeating-linear-gradient(to bottom, rgba(255,255,255,.035) 0 1px, transparent 1px 9px);
-  box-shadow:0 0 0 9px #2A2A2A, 0 0 0 10px #3A3A3A, 0 40px 70px -36px rgba(18,18,18,.65)}
-.fila{display:grid;grid-template-columns:1fr auto;column-gap:18px;row-gap:8px;align-items:center;padding:20px 0}
-.fila + .fila{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
-.renglon{display:flex;align-items:baseline;gap:10px;min-width:0;font-stretch:87%;font-weight:600;font-size:clamp(21px, 2.3vw, 27px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase}
-.renglon .pts{flex:1;min-width:20px;height:0;border-bottom:2px dotted rgba(255,255,255,.3);transform:translateY(-5px)}
-.renglon .pre{font-size:.72em;letter-spacing:.1em;color:var(--gris-claro);white-space:nowrap}
-.fila .det{grid-column:1;color:#AEB2B6;font-size:15.5px;line-height:1.45;max-width:46ch}
-.fila .sumar{grid-column:2;grid-row:1 / span 2}
-.fila.prod{grid-template-columns:auto 1fr auto}
-.fila.prod .lata{grid-row:1 / span 2;width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #3A3A3A}
-.fila.prod .renglon,.fila.prod .det{grid-column:2}
-.fila.prod .sumar{grid-column:3}
-.pie-tablero{margin-top:12px;padding-top:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);text-align:center;font-stretch:87%;font-weight:600;font-size:18px;letter-spacing:.24em;text-transform:uppercase;color:#E2E3E4}
-/* sumar al turno: se vuelve una ficha dorada con tilde cuando ya está */
-.sumar{display:inline-flex;align-items:center;justify-content:center;min-width:138px;gap:8px;height:44px;padding:0 16px 0 13px;border:0;border-radius:999px;cursor:pointer;background:transparent;color:#fff;
-  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45);font:600 14.5px/1 var(--f);white-space:nowrap;
-  transition:background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .14s var(--ease-out)}
-.sumar svg{width:18px;height:18px;flex:none}
-.sumar .si{display:none}
-.sumar[aria-pressed="true"]{background:var(--dorado);color:var(--tinta);box-shadow:none}
-.sumar[aria-pressed="true"] .si{display:block}.sumar[aria-pressed="true"] .no{display:none}
-.sumar:active{transform:scale(.96)}
-@media (hover:hover) and (pointer:fine){.sumar[aria-pressed="false"]:hover{box-shadow:inset 0 0 0 1.5px #fff}}
-.al-lado{display:grid;gap:18px}
-.al-lado figure{margin:0}
-.al-lado img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#DDE0E2}
-.al-lado figcaption{margin-top:10px;font-size:14.5px;color:var(--gris)}
-.al-lado .nota-t{font-size:16px;line-height:1.5;color:var(--gris)}
-.al-lado .nota-t b{color:var(--tinta)}
-@media (max-width:900px){.servicios .grid{grid-template-columns:1fr}.al-lado{grid-template-columns:1fr 1fr;align-items:start}}
-@media (max-width:560px){
-  .servicios{padding:84px 0}
-  .tablero{box-shadow:0 0 0 6px #2A2A2A, 0 0 0 7px #3A3A3A, 0 30px 60px -34px rgba(18,18,18,.65)}
-  .fila,.fila.prod{grid-template-columns:1fr;padding:18px 0}
-  .fila .sumar,.fila.prod .sumar{grid-column:1;grid-row:auto;justify-self:start;margin-top:4px}
-  .fila.prod .lata{grid-row:auto;width:52px;height:52px}
-  .fila.prod .renglon,.fila.prod .det{grid-column:1}
-  .renglon .pre{display:none}
-  .renglon .pts{display:none}
-  .al-lado{grid-template-columns:1fr}
+@media (max-width:480px){
+  .hero h1{font-size:clamp(2.9rem, 14.4vw, 3.6rem)}
+  .hero .ctas{display:grid}
+  .hero .ctas .btn{width:100%}
 }
 
-/* ---------- trabajos: la fila de espejos del local, sobre la pared negra ---------- */
-.trabajos{padding:112px 0 120px;background:var(--pared);color:#fff}
-.trabajos .cab p{color:var(--gris-claro)}
-.espejos{display:grid;grid-template-columns:1.3fr .8fr .8fr;gap:22px;margin-top:52px;align-items:start}
-.espejos figure{margin:0}
-.espejos .marco{border-radius:24px;padding:7px;background:#050505;box-shadow:0 0 0 1.5px rgba(255,255,255,.55), 0 40px 70px -40px rgba(0,0,0,.9)}
-.espejos img{width:100%;object-fit:cover;border-radius:18px;background:var(--pared-2)}
-.espejos .ancho img{aspect-ratio:14/15;object-position:62% 50%}
-.espejos .alto img{aspect-ratio:9/16}
-.espejos figcaption{margin-top:14px;font-size:15px;color:var(--gris-claro)}
-.espejos figcaption b{display:block;color:#fff;font-weight:600;font-size:16.5px}
-.mas-ig{display:inline-flex;align-items:center;gap:8px;margin-top:34px;font-weight:600;text-decoration:none;box-shadow:inset 0 -2px 0 var(--dorado);padding-bottom:3px}
-.mas-ig svg{width:18px;height:18px}
+/* ---------- lo que importa del club: tres datos en una tira ---------- */
+.claves{background:var(--cromo-claro)}
+.claves ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3, 1fr)}
+.claves li{display:flex;gap:16px;align-items:flex-start;padding:34px 32px 34px 0}
+.claves li + li{padding-left:32px;box-shadow:inset 1px 0 0 var(--linea)}
+.claves svg{width:26px;height:26px;flex:none;color:#9C7428;margin-top:2px}
+.claves b{display:block;font-stretch:112%;font-weight:700;font-size:17px;line-height:1.3}
+.claves span{display:block;color:var(--gris);font-size:15.5px;line-height:1.45;margin-top:3px}
 @media (max-width:860px){
-  .trabajos{padding:84px 0 92px}
-  .espejos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;gap:16px;margin-inline:-20px;padding:0 20px 10px;scrollbar-width:none;align-items:flex-start}
-  .espejos::-webkit-scrollbar{display:none}
-  .espejos figure{flex:0 0 min(300px, 78%);scroll-snap-align:start}
-  .espejos .alto{flex-basis:min(230px, 60%)}
-  .espejos .ancho img{aspect-ratio:4/3}
+  .claves ul{grid-template-columns:1fr}
+  .claves li,.claves li + li{padding:22px 0;box-shadow:none}
+  .claves li + li{box-shadow:inset 0 1px 0 var(--linea)}
 }
 
-/* ---------- tu turno: la agenda y el ticket ---------- */
-.turno{padding:112px 0 120px;background:#E7E8E5}
-.turno .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:start;margin-top:48px}
-.turno .cab{width:min(1180px, 100% - 40px);margin-inline:auto;max-width:none}
-.turno .cab h2,.turno .cab p{max-width:640px}
-.form{display:grid;gap:22px}
-.paso{border:0;margin:0;padding:22px;min-width:0;background:var(--papel);border-radius:22px;box-shadow:0 1px 2px rgba(18,18,18,.06)}
-.paso > legend{float:left;width:100%;display:flex;align-items:center;gap:12px;font-stretch:112%;font-weight:700;font-size:19px;line-height:1.2;margin:0 0 16px;padding:0}
-.paso > legend + *{clear:both}
-.n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--tinta);color:#fff;font-stretch:100%;font-weight:700;font-size:14px;
-  transition:background-color .2s ease, color .2s ease}
-.n svg{width:16px;height:16px;display:none}
-.paso.ok .n{background:var(--dorado);color:var(--tinta)}
-.paso.ok .n svg{display:block}.paso.ok .n span{display:none}
-.opc{font-weight:400;color:var(--gris);font-stretch:100%;font-size:15px}
-.f{display:flex;flex-direction:column;min-width:0}
-.f > label{display:block;font-weight:600;font-size:15.5px;margin-bottom:8px}
-
-/* fichas que se eligen (servicios, días, horarios) */
-.fichas{display:flex;flex-wrap:wrap;gap:8px}
-.fichas label{cursor:pointer;position:relative}
-.fichas input{position:absolute;opacity:0;pointer-events:none}
-.fichas span{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;padding:0 17px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.15);
-  font-weight:500;font-size:15.5px;line-height:1.2;transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
-.fichas span svg{width:16px;height:16px;display:none}
-.fichas input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
-.fichas input:checked + span svg{display:block;color:var(--dorado)}
-.fichas input:focus-visible + span{outline:3px solid var(--tinta);outline-offset:2px}
-.fichas input:disabled + span{cursor:not-allowed;background:transparent;color:#A9ACB0;box-shadow:inset 0 0 0 1px rgba(21,21,21,.07)}
-.fichas label:active input:not(:disabled) + span{transform:scale(.96)}
-@media (hover:hover) and (pointer:fine){.fichas input:not(:checked):not(:disabled) + span:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
-
-/* el calendario: dos semanas, de lunes a domingo */
-.cal-cab{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-.mes{font-weight:600;font-size:15.5px;color:var(--gris)}
-.sem,.cal{display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:6px}
-.sem span{text-align:center;font-size:13px;font-weight:600;color:var(--gris);padding-bottom:4px}
-.cal span{width:100%;min-height:58px;padding:0;border-radius:14px;flex-direction:column;gap:0;font-variant-numeric:tabular-nums}
-.cal span b{font-size:18px;font-weight:600;line-height:1.1}
-.cal span small{font-size:11.5px;font-weight:600;line-height:1.1;color:var(--gris)}
-.cal input:checked + span small{color:var(--dorado)}
-.cal .hoy span{box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.4)}
-.cal .vacio{visibility:hidden}
-.primero span{min-height:40px;font-size:14.5px}
-
-/* los horarios */
-.horas{display:grid;gap:16px}
-.horas h3{font-size:14.5px;font-weight:600;color:var(--gris);margin-bottom:8px}
-.slots{display:grid;grid-template-columns:repeat(auto-fill, minmax(76px, 1fr));gap:7px}
-.slots span{width:100%;border-radius:12px;padding:0;font-weight:600;font-variant-numeric:tabular-nums}
-.sin-dia{font-size:15.5px;color:var(--gris);padding:6px 0}
-.horas .igual{justify-self:start}
-.nota-h{font-size:14px;color:var(--gris);margin-top:14px}
-
-.dos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form input[type=text],.form input[type=tel],.form textarea{min-height:52px;border-radius:12px;border:1.5px solid rgba(21,21,21,.2);background:#fff;padding:0 14px;
-  font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
-.form textarea{padding:12px 14px;min-height:86px;resize:vertical;line-height:1.45}
-.form input::placeholder,.form textarea::placeholder{color:#6A6E72}
-.form input:focus,.form textarea:focus{outline:none;border-color:var(--tinta);box-shadow:0 0 0 3px rgba(21,21,21,.14)}
-.f.error input[type=text],.f.error input[type=tel]{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.13)}
-.paso.error{box-shadow:inset 0 0 0 1.5px var(--err)}
-.err{color:var(--err);font-size:14px;font-weight:600;margin-top:10px;display:block}
-.err:empty{display:none}
-.datos{display:grid;gap:16px}
-@media (max-width:560px){
-  .paso{padding:18px 16px;border-radius:18px}
-  .dos{grid-template-columns:1fr}
-  .sem,.cal{gap:4px}
-  .cal span{min-height:52px;border-radius:12px}
-  .cal span b{font-size:16.5px}
-  .slots{grid-template-columns:repeat(4, minmax(0, 1fr));gap:6px}
+/* ---------- la carta ---------- */
+.carta{padding:120px 0 128px;background:var(--papel)}
+.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap}
+.cab h2{font-size:clamp(2.8rem, 6.4vw, 5.4rem)}
+.cab .al-lado{display:flex;gap:12px;align-items:flex-start;max-width:24rem;font-size:15.5px;line-height:1.5;color:var(--gris)}
+.cab .al-lado svg{width:22px;height:22px;flex:none;color:#9C7428;margin-top:1px}
+.cab .al-lado b{color:var(--tinta);font-weight:600}
+.lista{list-style:none;margin:56px 0 0;padding:0;border-top:1px solid var(--linea)}
+.lista li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:6px 36px;padding:30px 4px;border-bottom:1px solid var(--linea)}
+.lista h3{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(25px, 3vw, 36px);line-height:1}
+.lista p{grid-column:1;color:var(--gris);font-size:16px;line-height:1.45;margin-top:8px;max-width:52ch}
+.lista .precio{grid-column:2;grid-row:1 / span 2;font-size:clamp(18px, 1.8vw, 22px);font-weight:500;color:var(--gris)}
+.lista .btn{grid-column:3;grid-row:1 / span 2;height:46px;padding:0 18px;font-size:12.5px}
+.carta .nota-c{margin-top:28px;font-size:16px;color:var(--gris)}
+.carta .nota-c a{color:var(--tinta);font-weight:600;text-decoration-color:var(--dorado);text-decoration-thickness:2px;text-underline-offset:4px}
+@media (max-width:700px){
+  .carta{padding:84px 0 92px}
+  .lista{margin-top:40px}
+  .lista li{grid-template-columns:1fr auto;padding:24px 0;gap:4px 16px}
+  .lista .precio{grid-column:2;grid-row:1;font-size:17px}
+  .lista p{grid-column:1 / -1}
+  .lista .btn{grid-column:1 / -1;grid-row:auto;justify-self:start;margin-top:14px}
 }
 
-/* el ticket del club: papel con muescas a los costados y una línea para cortar */
-.ticket-col{position:sticky;top:calc(var(--header) + 20px)}
-.ticket{position:relative;background:var(--papel);border-radius:8px;padding:28px 28px 26px;
-  box-shadow:0 1px 2px rgba(18,18,18,.08), 0 34px 60px -34px rgba(18,18,18,.45)}
-.t-cab{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.t-logo{display:flex;flex-direction:column;align-items:stretch;gap:4px}
-.t-logo .caja{display:block;border:2px solid currentColor;padding:4px 10px 3px;font-stretch:125%;font-weight:800;font-size:19px;line-height:1;letter-spacing:.07em;text-align:center}
-.t-logo .club{display:block;font-weight:300;font-size:7.5px;line-height:1;letter-spacing:.42em;text-align:center;margin-right:-.42em;white-space:nowrap}
-.t-cab small{font-size:13.5px;color:var(--gris);text-align:right;line-height:1.35}
-/* la barrita con las rayas del poste que se llena a medida que completás el turno */
-.t-prog{display:flex;align-items:center;gap:12px;margin:22px 0 4px}
-.t-barra{flex:1;height:8px;border-radius:8px;background:rgba(21,21,21,.08);overflow:hidden}
-.t-barra i{display:block;height:100%;border-radius:8px;clip-path:inset(0 100% 0 0 round 8px);transition:clip-path .35s var(--ease-out);
-  background:repeating-linear-gradient(-45deg, var(--tinta) 0 6px, var(--papel) 6px 10px, var(--dorado) 10px 16px, var(--papel) 16px 20px)}
-.t-prog small{font-size:13.5px;color:var(--gris);font-variant-numeric:tabular-nums;white-space:nowrap}
-.t-tit{font-stretch:125%;font-weight:800;font-size:32px;line-height:1;margin:16px 0 6px}
-.t-datos{margin:0;display:grid;gap:0}
-.t-datos div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:11px 0;box-shadow:inset 0 -1px 0 rgba(21,21,21,.08)}
-.t-datos dt{font-size:14px;color:var(--gris)}
-.t-datos dd{margin:0;font-weight:600;font-size:16px;line-height:1.35;overflow-wrap:anywhere}
-.t-datos dd.falta{font-weight:400;color:#8A8E92}
-.t-hora{font-stretch:125%;font-weight:800;font-size:22px !important;line-height:1.1 !important}
-.t-hora.falta{font-stretch:100%;font-size:16px !important}
-.corte{position:relative;margin:26px -28px 24px;height:0;border-top:2px dashed rgba(21,21,21,.22)}
-/* las muescas del ticket, del color del fondo de la sección */
-.corte::before,.corte::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:#E7E8E5}
-.corte::before{left:-12px}.corte::after{right:-12px}
-.enviar{width:100%;height:58px;font-size:16.5px;background:var(--tinta);color:#fff}
-.con-wa .enviar{background:#25D366;color:#fff}
-@media (hover:hover) and (pointer:fine){.enviar:hover{background:#333}.con-wa .enviar:hover{background:#1EBE5A}}
-.nota{margin-top:10px;font-size:14px;color:var(--gris);text-align:center}
-.aviso{font-size:14.5px;font-weight:600;text-align:center;color:var(--tinta)}
-.aviso:not(:empty){margin-top:10px}
-.aviso.mal{color:var(--err)}
-.prev{margin-top:14px;background:rgba(21,21,21,.04);border-radius:12px;padding:2px 14px}
-.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px}
-.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:0 0 14px}
-/* el sello dorado que cae sobre el ticket cuando lo mandás */
-.sello{position:absolute;right:22px;top:118px;width:112px;height:112px;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none;
-  color:var(--dorado);box-shadow:inset 0 0 0 3px currentColor, inset 0 0 0 7px var(--papel), inset 0 0 0 8.5px currentColor;
-  font-stretch:125%;font-weight:800;font-size:15px;line-height:1.05;letter-spacing:.04em;opacity:0;transform:rotate(-14deg) scale(1.25);
-  transition:opacity .2s var(--ease-out), transform .26s var(--ease-out)}
-.sello.on{opacity:.92;transform:rotate(-14deg)}
-@media (max-width:960px){
-  .turno .wrap{grid-template-columns:1fr;gap:36px}
-  .ticket-col{position:static}
-}
-@media (max-width:560px){
-  .turno{padding:84px 0 100px}
-  .turno .wrap{width:min(1180px, 100% - 24px)}
-  .ticket{padding:24px 20px 22px}
-  .corte{margin-inline:-20px}
-  .t-datos div{grid-template-columns:84px 1fr}
-  .sello{width:96px;height:96px;font-size:13px;right:14px}
+/* ---------- trabajos: galería escalonada sobre la pared negra ---------- */
+.trabajos{padding:120px 0 150px;background:var(--pared-2);color:#fff}
+.trabajos .cab .al-lado{color:var(--gris-claro)}
+.galeria{display:grid;grid-template-columns:repeat(3, 1fr);gap:56px clamp(24px, 6vw, 110px);margin-top:64px;align-items:start}
+.galeria figure{margin:0}
+.galeria > :nth-child(3n+2){margin-top:72px}
+.galeria img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--pared-3);box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.galeria figcaption{margin-top:18px}
+.galeria figcaption b{display:block;font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:22px;line-height:1}
+.galeria figcaption span{display:block;margin-top:8px;font-size:14.5px;color:var(--gris-claro);line-height:1.45}
+.mas-ig{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:4/5;padding:28px;text-decoration:none;color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);transition:background-color .2s ease, box-shadow .2s ease}
+.mas-ig svg{width:34px;height:34px;color:var(--dorado)}
+.mas-ig b{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(22px, 2.4vw, 30px);line-height:1}
+.mas-ig b + span{display:block;margin-top:10px;color:var(--gris-claro);font-size:15px}
+@media (hover:hover) and (pointer:fine){.mas-ig:hover{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--dorado)}}
+@media (max-width:860px){
+  .trabajos{padding:84px 0 110px}
+  .galeria{grid-template-columns:repeat(2, minmax(0, 1fr));gap:36px 18px;margin-top:44px}
+  .galeria > :nth-child(3n+2){margin-top:0}
+  .galeria > :nth-child(2n){margin-top:48px}
+  .galeria figcaption b{font-size:16px;font-stretch:112%;hyphens:auto}
+  .galeria figcaption span{font-size:13.5px}
+  .mas-ig{padding:18px}
+  .mas-ig b{font-size:17px;font-stretch:100%;text-transform:none;line-height:1.15;overflow-wrap:anywhere}
+  .mas-ig b + span{font-size:13.5px}
 }
 
 /* ---------- dónde estamos ---------- */
-.local{padding:112px 0 120px;background:var(--azulejo)}
-.local .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
-.dir{font-stretch:125%;font-weight:800;font-size:clamp(2.6rem, 5.4vw, 4.6rem);line-height:.95;letter-spacing:-0.02em}
-.dir small{display:block;font-size:.42em;font-weight:600;letter-spacing:0;margin-top:12px;color:var(--gris)}
-.local dl{margin:34px 0 34px;display:grid;gap:18px}
-.local dt{font-size:14px;color:var(--gris)}
-.local dd{margin:2px 0 0;font-weight:600;font-size:18px}
+.local{padding:120px 0 128px;background:var(--azulejo)}
+.local .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.local h2{font-size:clamp(2.6rem, 4.7vw, 4.4rem)}
+.local .intro{margin-top:24px;font-size:19px;line-height:1.6;color:#3C4044;max-width:34ch}
+.local dl{margin:32px 0 34px;max-width:30rem;border-top:1px solid var(--linea)}
+.local dl div{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--linea)}
+.local dt{color:var(--gris);font-size:15.5px}
+.local dd{margin:0;font-weight:600;font-size:16px;text-align:right}
 .local .ctas{display:flex;flex-wrap:wrap;gap:12px}
-.vista iframe{width:100%;height:340px;border:0;border-radius:20px;filter:grayscale(1) contrast(1.05);background:#DDE0E2;display:block}
-@media (max-width:860px){.local .grid{grid-template-columns:1fr;gap:40px}.local{padding:84px 0 96px}}
+/* el cartel de la puerta: el logo de Pach en una placa negra con un marco corrido */
+.cartel{position:relative;justify-self:end;width:min(380px, 100%);margin:0 14px 14px 0}
+.cartel::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--dorado);pointer-events:none}
+.placa{position:relative;z-index:1;background:var(--pared);color:#fff;padding:18px}
+.placa-in{border:1px solid rgba(255,255,255,.22);padding:48px 24px 40px;text-align:center}
+.logo-pach{display:inline-flex;flex-direction:column;align-items:stretch;gap:6px}
+.logo-pach .caja{display:block;border:2.5px solid currentColor;padding:8px 18px 6px;font-stretch:125%;font-weight:800;font-size:34px;line-height:1;letter-spacing:.07em}
+.logo-pach .club{display:block;font-weight:300;font-size:11px;line-height:1;letter-spacing:.5em;margin-right:-.5em;white-space:nowrap}
+.placa .calle{margin-top:34px;font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:34px;line-height:1}
+.placa .calle span{display:block;color:var(--dorado);font-stretch:100%;font-weight:500;font-size:28px;margin-top:6px}
+.placa hr{width:56px;margin:26px auto;border:0;border-top:1px solid var(--dorado)}
+.placa .ciudad{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gris-claro)}
+.mapa{position:relative;margin:80px 12px 0 0}
+.mapa::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:1px solid var(--dorado);pointer-events:none}
+.mapa iframe{position:relative;z-index:1;display:block;width:100%;height:440px;border:0;filter:grayscale(1) contrast(1.05);background:#DDE0E2}
+.mapa-pie{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:30px;font-size:15.5px;color:var(--gris)}
+.mapa-pie a{display:inline-flex;align-items:center;gap:8px;color:var(--tinta);font-weight:600;text-decoration:none;box-shadow:inset 0 -2px 0 var(--dorado);padding-bottom:2px}
+.mapa-pie svg{width:18px;height:18px}
+@media (max-width:900px){
+  .local{padding:84px 0 96px}
+  .local .grid{grid-template-columns:1fr;gap:56px}
+  .cartel{justify-self:start}
+  .mapa{margin-top:64px}
+  .mapa iframe{height:340px}
+}
+@media (max-width:480px){.local .ctas{display:grid}.local .ctas .btn{width:100%}}
 
-footer{background:var(--pared);color:#C9CCCF;padding:44px 0 120px;font-size:14.5px}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-footer .marca{padding-right:0}
-footer a{color:#fff;font-weight:600}
-footer p + p{margin-top:4px}
+/* ---------- pie ---------- */
+footer{background:var(--pared);color:#C9CCCF;font-size:15px}
+.pie-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;padding:96px 0 80px}
+.pie-grid .logo-pach{color:var(--dorado)}
+.pie-grid .logo-pach .caja{font-size:26px;padding:6px 14px 5px}
+.pie-grid .logo-pach .club{font-size:9px}
+.pie-lema{margin:30px 0 30px;color:#fff;font-size:clamp(2rem, 3.4vw, 2.8rem)}
+footer h3{font-stretch:112%;font-weight:700;font-size:15px;color:#fff;margin-bottom:18px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+footer li a,footer li span{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#D4D6D8}
+footer li svg{width:18px;height:18px;flex:none;color:var(--cromo)}
+@media (hover:hover) and (pointer:fine){footer li a:hover{color:#fff}}
+.pie-dir{color:#fff;font-size:17px;line-height:1.5;margin-bottom:6px}
+.pie-baja{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:24px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.1);font-size:14px;color:#9EA2A6}
+.pie-baja a{color:#fff;font-weight:600}
+@media (max-width:900px){.pie-grid{grid-template-columns:1fr 1fr;padding:72px 0 56px}.pie-grid > :first-child{grid-column:1 / -1}}
+@media (max-width:560px){.pie-grid{grid-template-columns:1fr;gap:40px}.pie-baja{padding-bottom:calc(100px + env(safe-area-inset-bottom))}}
 
-/* ---------- ver tu turno: aparece cuando sumaste algo y no estás mirando la agenda ---------- */
-.ir-turno{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 78px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 6px);z-index:60;
-  display:flex;align-items:center;gap:10px;height:52px;padding:0 10px 0 18px;border-radius:999px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;
-  box-shadow:0 3px 6px rgba(18,18,18,.2), 0 16px 34px -10px rgba(18,18,18,.6);
-  opacity:0;transform:translateY(12px);visibility:hidden;pointer-events:none;
-  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s}
-.ir-turno.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s}
-.ir-turno b{min-width:32px;height:32px;padding:0 9px;border-radius:999px;background:var(--dorado);color:var(--tinta);display:grid;place-items:center;font-size:14.5px;font-variant-numeric:tabular-nums}
-.ir-turno:active{transform:scale(.97)}
-@media (max-width:640px){.ir-turno{left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 72px);bottom:max(20px, env(safe-area-inset-bottom));height:58px;justify-content:space-between;padding-left:20px}}
+/* =====================================================================================
+   LA RESERVA: una vista aparte, como una página propia, con los pasos arriba y el ticket al costado
+   ===================================================================================== */
+.reserva{position:fixed;inset:0;z-index:70;background:var(--papel);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.reserva.entra{animation:r-entra .32s var(--ease-out) both}
+@keyframes r-entra{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.r-top{position:sticky;top:0;z-index:5;background:var(--pared);color:#fff;padding-top:env(safe-area-inset-top)}
+.r-fila{height:68px;display:flex;align-items:center;gap:14px}
+.r-volver{display:grid;place-items:center;width:44px;height:44px;margin-left:-10px;border:0;border-radius:4px;background:transparent;color:#fff;cursor:pointer;transition:background-color .2s ease}
+.r-volver svg{width:22px;height:22px}
+@media (hover:hover) and (pointer:fine){.r-volver:hover{background:rgba(255,255,255,.08)}}
+.r-top .marca img{width:36px;height:36px}
+.r-top .marca b{font-size:15px}
+.r-escribinos{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--dorado);padding:10px 0}
+.r-escribinos .ico{width:17px;height:17px}
+/* la barra de avance: las rayas del poste que se van llenando */
+.r-linea{height:2px;background:rgba(255,255,255,.14);overflow:hidden}
+.r-linea i{display:block;height:100%;transform-origin:left;transform:scaleX(.25);transition:transform .4s var(--ease-out);
+  background:repeating-linear-gradient(-45deg, #fff 0 6px, var(--dorado) 6px 12px)}
+.pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4, 1fr);height:66px;align-items:center}
+.pasos button{display:inline-flex;align-items:center;gap:12px;border:0;background:transparent;color:#7E8387;padding:8px 8px 8px 0;cursor:pointer;
+  font:600 12.5px/1 var(--f);letter-spacing:.17em;text-transform:uppercase;transition:color .2s ease}
+.pasos button:disabled{cursor:default}
+.pn{width:28px;height:28px;display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);font-size:12.5px;letter-spacing:0;transition:background-color .2s ease, color .2s ease, box-shadow .2s ease}
+.pn svg{width:15px;height:15px;display:none}
+.pasos .hecho button{color:#E2E4E6}
+.pasos .hecho .pn{box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.pasos .hecho .pn svg{display:block}.pasos .hecho .pn span{display:none}
+.pasos .actual button{color:#fff}
+.pasos .actual .pn{background:var(--dorado);color:var(--tinta);box-shadow:none}
+@media (hover:hover) and (pointer:fine){.pasos .hecho button:hover{color:#fff}}
+.r-movil{display:none;height:52px;align-items:center;justify-content:space-between;font-size:14px}
+.r-movil b{color:var(--dorado);font-weight:700;font-size:12.5px;letter-spacing:.17em;text-transform:uppercase}
+
+.r-cuerpo{display:grid;grid-template-columns:minmax(0, 1fr) 360px;gap:clamp(40px, 8vw, 150px);align-items:start;padding:64px 0 96px}
+.panel:focus{outline:none}
+.panel h2{font-size:clamp(2.6rem, 5vw, 4rem);outline:none}
+.panel .sub{margin-top:14px;color:var(--gris);font-size:17px;line-height:1.5;max-width:44ch}
+.panel.mueve{animation:r-paso .3s var(--ease-out) both}
+.panel.mueve.atras{animation-name:r-paso-atras}
+@keyframes r-paso{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+@keyframes r-paso-atras{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+.chip{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:10px 14px;font-size:14.5px;color:#3C4044;box-shadow:inset 0 0 0 1px var(--linea)}
+.chip svg{width:18px;height:18px;color:#9C7428}
+
+/* las opciones: filas con una casilla cuadrada, como la lista de la carta */
+.opciones{margin-top:32px;border-top:1px solid var(--linea)}
+.opcion{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:4px 22px;align-items:start;padding:24px 18px;border-bottom:1px solid var(--linea);cursor:pointer;
+  transition:background-color .18s ease}
+.opcion input,.dia input,.slot input{position:absolute;opacity:0;pointer-events:none}
+.casilla{width:24px;height:24px;display:grid;place-items:center;margin-top:5px;box-shadow:inset 0 0 0 1.5px rgba(21,21,21,.35);background:#fff;transition:background-color .15s ease, box-shadow .15s ease}
+.casilla svg{width:16px;height:16px;color:var(--dorado);opacity:0;transform:scale(.6);transition:opacity .15s ease, transform .2s var(--ease-out)}
+.o-txt b{display:block;font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(22px, 2.4vw, 30px);line-height:1.05}
+.o-txt small{display:block;margin-top:8px;font-size:15.5px;line-height:1.45;color:var(--gris)}
+.o-pre{font-size:17px;color:var(--gris);padding-top:4px}
+.opcion:has(input:checked){background:#fff}
+.opcion input:checked ~ .casilla{background:var(--tinta);box-shadow:none}
+.opcion input:checked ~ .casilla svg{opacity:1;transform:none}
+.opcion input:focus-visible ~ .casilla{outline:3px solid var(--tinta);outline-offset:3px}
+@media (hover:hover) and (pointer:fine){.opcion:hover{background:#fff}}
+/* la opción suelta ("cuanto antes", "me da igual"): una tarjeta con su ícono */
+.opcion.suelta{margin-top:30px;border:1px solid var(--linea);grid-template-columns:auto 1fr;align-items:center;padding:20px}
+.opcion.suelta .casilla{width:44px;height:44px;margin:0;border-radius:0}
+.opcion.suelta .casilla svg{width:20px;height:20px;opacity:1;transform:none;color:#9C7428}
+.opcion.suelta .o-txt b{font-size:20px}
+.opcion.suelta .o-txt small{margin-top:4px;font-size:15px}
+.opcion.suelta:has(input:checked){border-color:var(--tinta)}
+.separa{margin:34px 0 14px;font-size:15px;color:var(--gris)}
+
+/* el calendario del mes */
+.cal-caja{max-width:470px;border:1px solid var(--linea);background:var(--papel)}
+.cal-cab{display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 10px;border-bottom:1px solid var(--linea)}
+.cal-cab h3{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:22px;line-height:1}
+.cal-nav{width:44px;height:44px;display:grid;place-items:center;border:0;background:transparent;color:var(--tinta);cursor:pointer;border-radius:4px}
+.cal-nav svg{width:22px;height:22px}
+.cal-nav:disabled{color:#C3C6C9;cursor:default}
+@media (hover:hover) and (pointer:fine){.cal-nav:not(:disabled):hover{background:rgba(21,21,21,.06)}}
+.sem{display:grid;grid-template-columns:repeat(7, 1fr);padding:12px 10px 8px;border-bottom:1px solid var(--linea)}
+.sem span{text-align:center;font-size:12.5px;color:var(--gris);font-weight:600}
+.cal{display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:4px;padding:10px}
+.dia{position:relative;display:block}
+.dia span{display:flex;flex-direction:column;align-items:center;justify-content:center;height:52px;font-size:16.5px;font-variant-numeric:tabular-nums;color:#B4B8BB;
+  transition:background-color .15s ease, color .15s ease, box-shadow .15s ease}
+.dia.lugar span{color:var(--tinta);cursor:pointer}
+.dia.lugar span::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--dorado);margin-top:4px}
+.dia.hoy span{box-shadow:inset 0 0 0 1px var(--dorado)}
+.dia input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
+.dia input:focus-visible + span{outline:3px solid var(--tinta);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.dia.lugar input:not(:checked) + span:hover{background:#fff;box-shadow:inset 0 0 0 1px var(--tinta)}}
+.leyenda{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;font-size:13.5px;color:var(--gris)}
+.leyenda span{display:inline-flex;align-items:center;gap:8px}
+.leyenda i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--dorado)}
+.leyenda i.c{width:14px;height:14px;border-radius:0;background:transparent;box-shadow:inset 0 0 0 1px var(--dorado)}
+
+/* los horarios */
+.horas{display:grid;gap:26px;margin-top:30px}
+.horas h3{font-size:15px;font-weight:600;color:var(--gris);margin-bottom:12px}
+.slots{display:grid;grid-template-columns:repeat(auto-fill, minmax(96px, 1fr));gap:8px}
+.slot{position:relative;display:block}
+.slot span{display:grid;place-items:center;height:52px;font-weight:600;font-size:16px;font-variant-numeric:tabular-nums;cursor:pointer;background:#fff;box-shadow:inset 0 0 0 1px var(--linea);
+  transition:background-color .15s ease, color .15s ease, box-shadow .15s ease}
+.slot input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
+.slot input:focus-visible + span{outline:3px solid var(--tinta);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.slot input:not(:checked) + span:hover{box-shadow:inset 0 0 0 1px var(--tinta)}}
+.horas .opcion.suelta{margin-top:0}
+
+/* tus datos */
+.datos{display:grid;gap:20px;margin-top:32px;max-width:640px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.f{display:flex;flex-direction:column;min-width:0}
+.f > label{display:block;font-weight:600;font-size:15.5px;margin-bottom:8px}
+.opc{font-weight:400;color:var(--gris);font-size:15px}
+.datos input,.datos textarea{min-height:54px;border-radius:0;border:1px solid rgba(21,21,21,.28);background:#fff;padding:0 15px;
+  font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+.datos textarea{padding:13px 15px;min-height:96px;resize:vertical;line-height:1.45}
+.datos input::placeholder,.datos textarea::placeholder{color:#6A6E72}
+.datos input:focus,.datos textarea:focus{outline:none;border-color:var(--tinta);box-shadow:0 0 0 3px rgba(21,21,21,.12)}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.12)}
+.err{color:var(--err);font-size:14px;font-weight:600;margin-top:8px;display:block}
+.err:empty{display:none}
+
+/* Atrás y Continuar */
+.r-nav{margin-top:48px}
+.r-ayuda{font-size:14.5px;color:var(--gris);margin-bottom:14px}
+.r-ayuda.mal{color:var(--err);font-weight:600}
+.r-botones{display:grid;grid-template-columns:auto minmax(0, 1fr);gap:12px}
+.b-sigue{white-space:normal;text-align:center;line-height:1.2}
+.r-botones .btn{height:56px}
+.r-botones .ico{width:20px;height:20px}
+.b-sigue[aria-disabled="true"]{background:#AEB2B5;color:#F3F4F4}
+.con-wa .b-sigue.final{background:#25D366;color:#fff}
+.con-wa .b-sigue.final[aria-disabled="true"]{background:#AEB2B5;color:#F3F4F4}
+@media (hover:hover) and (pointer:fine){.b-sigue[aria-disabled="true"]:hover{background:#A3A7AA}.con-wa .b-sigue.final:not([aria-disabled="true"]):hover{background:#1EBE5A}}
+
+/* el ticket del club: placa negra con muescas a los costados y una línea para cortar */
+.r-lado{position:sticky;top:calc(var(--rtop) + 28px)}
+.ticket{position:relative;background:var(--pared);color:#fff;overflow:hidden}
+.t-cab{position:relative;padding:30px 30px 28px}
+.t-cab small{display:block;font-size:13.5px;color:var(--gris-claro);margin-bottom:16px}
+.t-cab .logo-pach .caja{font-size:26px;padding:6px 14px 5px}
+.t-cab .logo-pach .club{font-size:8.5px}
+/* el poste de fondo, apagado, como marca de agua */
+.t-cab::after{content:"";position:absolute;right:-18px;top:-10px;width:70px;height:170px;opacity:.07;transform:rotate(14deg);
+  background:linear-gradient(to bottom right, #fff 0 25%, transparent 25% 50%, #fff 50% 75%, transparent 75% 100%) 0 0 / 70px 60px}
+.corte{position:relative;height:0;margin:0 30px;border-top:1px dashed rgba(255,255,255,.3)}
+.corte::before,.corte::after{content:"";position:absolute;top:-12px;width:24px;height:24px;border-radius:50%;background:var(--papel)}
+.corte::before{left:-42px}.corte::after{right:-42px}
+.t-datos{margin:0;padding:8px 30px 0}
+.t-datos div{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.t-datos div:last-child{border-bottom:0}
+.t-datos dt{font-size:13.5px;color:#8D9296;flex:none}
+.t-datos dd{margin:0;font-size:16px;font-weight:500;text-align:right;line-height:1.35;overflow-wrap:anywhere}
+.t-datos dd.falta{color:#5D6266}
+.t-datos .t-hora{font-stretch:125%;font-weight:800;font-size:24px;color:var(--dorado);line-height:1.05}
+.t-datos .t-hora.falta{font-stretch:100%;font-weight:500;font-size:16px;color:#5D6266}
+.t-pie{padding:18px 30px 22px;border-top:1px solid rgba(255,255,255,.1);font-size:14px;line-height:1.5;color:var(--gris-claro)}
+/* el sello dorado que cae sobre el ticket cuando lo mandás */
+.sello{position:absolute;right:20px;top:46px;width:108px;height:108px;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none;z-index:2;
+  color:var(--dorado);box-shadow:inset 0 0 0 3px currentColor, inset 0 0 0 7px var(--pared), inset 0 0 0 8.5px currentColor;
+  font-stretch:125%;font-weight:800;font-size:15px;line-height:1.05;letter-spacing:.04em;opacity:0;transform:rotate(-14deg) scale(1.25);
+  transition:opacity .2s var(--ease-out), transform .26s var(--ease-out)}
+.sello.on{opacity:.95;transform:rotate(-14deg)}
+.r-nota{display:flex;gap:10px;margin-top:16px;font-size:14px;line-height:1.45;color:var(--gris)}
+.r-nota svg{width:18px;height:18px;flex:none;color:#9C7428;margin-top:1px}
+.aviso{font-size:14.5px;font-weight:600;color:var(--tinta)}
+.aviso:not(:empty){margin-top:14px}
+.aviso.mal{color:var(--err)}
+.prev{margin-top:14px;background:rgba(21,21,21,.04);padding:2px 14px}
+.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px}
+.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:0 0 14px}
+
+@media (max-width:1000px){
+  :root{--rtop:121px}
+  .pasos{display:none}
+  .r-movil{display:flex}
+  .r-cuerpo{grid-template-columns:1fr;gap:56px;padding:40px 0 64px}
+  .r-lado{position:static}
+  /* Atrás y Continuar quedan pegados abajo, siempre a mano */
+  .r-nav{position:sticky;bottom:0;z-index:3;margin:40px -24px 0;padding:14px 24px calc(14px + env(safe-area-inset-bottom));background:rgba(248,248,246,.94);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 -1px 0 var(--linea)}
+  .r-ayuda{margin-bottom:10px;font-size:14px}
+}
+@media (max-width:560px){
+  .r-fila{height:60px}
+  :root{--rtop:113px}
+  .r-top .marca .nom{display:none}
+  .r-nav{margin-inline:-20px;padding-inline:20px}
+  .opcion{grid-template-columns:auto 1fr;padding:20px 6px}
+  .o-pre{grid-column:2;padding-top:6px;font-size:15px}
+  .opcion.suelta{padding:16px}
+  .dos{grid-template-columns:1fr}
+  .cal{padding:8px;gap:2px}
+  .sem{padding-inline:8px}
+  .dia span{height:46px;font-size:15.5px}
+  .slots{grid-template-columns:repeat(3, minmax(0, 1fr))}
+  .r-botones .btn{padding:0 16px;letter-spacing:.07em}
+  #bAtras{width:56px;padding:0}
+  #bAtras span{display:none}
+  .t-cab,.t-datos,.t-pie{padding-inline:22px}
+  .corte{margin-inline:22px}.corte::before{left:-34px}.corte::after{right:-34px}
+  .sello{width:96px;height:96px;font-size:13px;right:14px}
+}
 
 /* ---------- botón flotante de contacto: solo el ícono, con vida ---------- */
 .wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:61;
@@ -451,7 +529,7 @@ footer p + p{margin-top:4px}
 .con-wa .wa::before,.con-wa .wa::after{background:#25D366}
 .wa::after{animation-delay:3.6s}
 .wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--tinta);font-weight:600;font-size:15px;
-  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(18,18,18,.45);pointer-events:none;
+  padding:10px 14px;border-radius:10px;box-shadow:0 10px 30px -12px rgba(18,18,18,.45);pointer-events:none;
   opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
 .wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
 .wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--gris)}
@@ -463,6 +541,7 @@ footer p + p{margin-top:4px}
   .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
   .wa:hover::before,.wa:hover::after{animation-play-state:paused}
 }
+body.reservando .wa{visibility:hidden}
 @keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
 @keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
 @keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
@@ -471,254 +550,305 @@ footer p + p{margin-top:4px}
 
 /* ---------- menos movimiento: sin desplazamientos, el poste quieto ---------- */
 @media (prefers-reduced-motion: reduce){
-  .hero h1 span,.hero .lead,.hero .ctas,.donde,.espejo,.rapido,.poste,.wa{animation:aparecer .4s ease both}
+  .hero h1 span,.hero .lead,.hero .ctas,.poste,.wa{animation:aparecer .4s ease both}
   .tubo::before{animation:none;opacity:0}
   .wa::before,.wa::after{animation:none}
   .wa:hover svg{animation:none}
-  .links a::after,.menu,.ir-turno{transition-property:opacity, visibility}
-  .menu,.ir-turno{transform:none}
+  .reserva.entra{animation:aparecer .2s ease both}
+  .panel.mueve,.panel.mueve.atras{animation:none}
+  .links a::after,.menu{transition-property:opacity, visibility}
+  .menu{transform:none}
   .sello{transition:opacity .2s ease;transform:rotate(-14deg)}
-  .t-barra i{transition:none}
+  .r-linea i{transition:none}
 }
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
-  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
-  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.030-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
   <symbol id="tilde" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></g></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></g></symbol>
+  <symbol id="der" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="izq" viewBox="0 0 24 24"><path d="M20 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="abajo" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="reloj" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="tijera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="7" r="3"/><circle cx="6" cy="17" r="3"/><path d="M8.6 8.6 20 18M8.6 15.4 20 6"/></g></symbol>
+  <symbol id="msj" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
+  <symbol id="rayo" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
 </svg>
 
 <header class="top" id="top">
-  <div class="barra">
+  <div class="wrap barra">
     <a class="marca" href="#inicio" aria-label="Pach Barber Club, ir al inicio">
       <img src="img/perfil.jpg" alt="" width="100" height="100">
-      <span class="nom"><b>Pach Barber Club</b><small><span class="larga">Peluquería y barbería en Paraná</span><span class="corta">Barbería en Paraná</span></small></span>
+      <span class="nom"><b>Pach Barber Club</b><small>Barbería en Paraná</small></span>
     </a>
     <nav class="links" id="links" aria-label="Secciones">
-      <a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#turno">Turnos</a><a href="#local">Dónde estamos</a>
+      <a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#local">Dónde estamos</a>
     </nav>
     <div class="acciones">
-      <a class="b-top b-escribinos" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
-      <a class="b-top b-turno" href="#turno"><span class="larga">Sacar turno</span><span class="corta">Turno</span></a>
+      <a class="btn btn-linea b-escribinos" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+      <a class="btn btn-oro" href="#reservar"><span class="larga">Reservar turno</span><span class="corta">Reservar</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
     </div>
   </div>
 </header>
 <nav class="menu" id="menu" aria-label="Menú">
-  <a class="item-m" href="#servicios">Servicios</a><a class="item-m" href="#trabajos">Trabajos</a><a class="item-m" href="#turno">Turnos</a><a class="item-m" href="#local">Dónde estamos</a>
-  <p class="dato">Colón 344, Paraná. Atención por turnos.</p>
+  <a class="item-m" href="#servicios">Servicios</a><a class="item-m" href="#trabajos">Trabajos</a><a class="item-m" href="#local">Dónde estamos</a>
+  <p class="dato">Colón 344, Paraná. Atención con turno.</p>
   <div class="btns">
-    <a class="btn btn-oro" href="#turno">Sacar turno</a>
-    <a class="btn btn-blanco" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    <a class="btn btn-oro" href="#reservar">Reservar turno</a>
+    <a class="btn btn-linea" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
   </div>
 </nav>
 
-<main>
+<main id="principal">
   <section class="hero oscuro" id="inicio">
-    <div class="wrap">
+    <picture class="hero-foto">
+      <source media="(max-width:700px)" srcset="img/foto-05.jpg">
+      <img src="img/foto-07.jpg" alt="" width="640" height="360" fetchpriority="high">
+    </picture>
+    <div class="wrap hero-cuerpo">
       <div>
-        <h1><span>Tu turno</span> <span class="fina">en el club.</span></h1>
-        <p class="lead">Peluquería y barbería en Paraná. Elegí qué te hacés, el día y el horario, y te lo confirmamos por mensaje.</p>
-        <div class="ctas">
-          <a class="btn btn-oro" href="#turno">Sacar turno</a>
-          <a class="btn btn-linea" href="#trabajos">Ver trabajos</a>
+        <h1 class="titulo"><span>Tu turno</span> <span>en el club.</span></h1>
+        <div class="hero-pie">
+          <p class="lead">Peluquería y barbería en Paraná. Elegí qué te hacés, el día y el horario desde acá, y te lo confirmamos por mensaje.</p>
+          <div class="ctas">
+            <a class="btn btn-oro" href="#reservar">Reservar turno</a>
+            <a class="btn btn-linea" href="https://www.google.com/maps/search/?api=1&query=Pach%20Barber%20Club%20Col%C3%B3n%20344%20Paran%C3%A1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#pin"/></svg>Colón 344</a>
+          </div>
         </div>
-        <p class="donde"><svg aria-hidden="true"><use href="#pin"/></svg>Colón 344, Paraná. Atención por turnos.</p>
       </div>
-      <div class="estacion">
-        <div class="poste" aria-hidden="true">
-          <span class="bola"></span>
-          <span class="tapa"></span>
-          <span class="tubo"><span class="rayas" id="rayas"></span></span>
-          <span class="tapa abajo"></span>
-        </div>
-        <figure class="espejo"><img src="img/foto-05.jpg" alt="Barbero de Pach con gorra cortando a un cliente de pelo con rulos, con capa de peines estampados" width="512" height="640" fetchpriority="high"></figure>
-        <div class="rapido">
-          <p>¿Cuándo venís? <a href="#turno">Ver más días</a></p>
-          <div class="dias-r" id="diasR"></div>
-        </div>
+      <div class="poste" aria-hidden="true">
+        <span class="bola"></span>
+        <span class="tapa"></span>
+        <span class="tubo"><span class="rayas" id="rayas"></span></span>
+        <span class="tapa abajo"></span>
       </div>
     </div>
+    <div class="bajar"><a class="wrap" href="#servicios">Bajá para ver los servicios<svg aria-hidden="true"><use href="#abajo"/></svg></a></div>
   </section>
 
-  <section class="servicios" id="servicios">
+  <section class="claves" aria-label="Cómo se atiende">
+    <ul class="wrap">
+      <li><svg aria-hidden="true"><use href="#reloj"/></svg><div><b>Atención con turno</b><span>Venís a la hora que pediste.</span></div></li>
+      <li><svg aria-hidden="true"><use href="#tijera"/></svg><div><b>Corte, barba y color</b><span>Y líneas, para sumarle al corte.</span></div></li>
+      <li><svg aria-hidden="true"><use href="#msj"/></svg><div><b>Turno en un minuto</b><span>Lo pedís desde acá y te lo confirmamos por mensaje.</span></div></li>
+    </ul>
+  </section>
+
+  <section class="carta" id="servicios">
     <div class="wrap">
       <div class="cab">
-        <h2>Qué te hacés.</h2>
-        <p>Tocá lo que quieras y se suma a tu turno. Los precios te los pasamos por mensaje.</p>
+        <h2 class="titulo">Qué te hacés.</h2>
+        <p class="al-lado"><svg aria-hidden="true"><use href="#msj"/></svg><span>Elegí y reservá desde acá. <b>Los precios te los pasamos por mensaje.</b></span></p>
       </div>
-      <div class="grid">
-        <div class="tablero">
-          <div class="fila" data-serv="corte">
-            <p class="renglon"><span>Corte</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
-            <p class="det">Degradé, tijera o texturizado. Si tenés una foto de lo que querés, traela.</p>
-            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
-          </div>
-          <div class="fila" data-serv="barba">
-            <p class="renglon"><span>Barba</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
-            <p class="det">Perfilado y arreglo de barba.</p>
-            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
-          </div>
-          <div class="fila" data-serv="color">
-            <p class="renglon"><span>Color</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
-            <p class="det">Mechas y platinado.</p>
-            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
-          </div>
-          <div class="fila" data-serv="lineas">
-            <p class="renglon"><span>Líneas</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
-            <p class="det">Un detalle marcado al costado, para sumarle al corte.</p>
-            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
-          </div>
-          <div class="fila prod" data-serv="cera">
-            <img class="lata" src="img/foto-01.jpg" alt="Ceras y pomadas en el estante de Pach" width="150" height="150" loading="lazy">
-            <p class="renglon"><span>Cera o pomada</span><span class="pts" aria-hidden="true"></span><span class="pre">Consultá</span></p>
-            <p class="det">Para peinarte en casa. Te ayudamos a elegir la que va con tu corte.</p>
-            <button type="button" class="sumar" aria-pressed="false"><svg class="no" aria-hidden="true"><use href="#mas"/></svg><svg class="si" aria-hidden="true"><use href="#tilde"/></svg><span>Sumar</span></button>
-          </div>
-          <p class="pie-tablero">Atención por turnos</p>
-        </div>
-        <div class="al-lado">
-          <figure>
-            <img src="img/foto-06.jpg" alt="Cliente con texturizado arriba, mechas claras y degradé a los costados" width="640" height="640" loading="lazy">
-            <figcaption>Texturizado con mechas y degradé.</figcaption>
-          </figure>
-          <p class="nota-t"><b>¿No sabés qué hacerte?</b> Sumá corte y contanos en el turno qué tenés en mente.</p>
-        </div>
-      </div>
+      <ul class="lista">
+        <li><h3>Corte</h3><p>Degradé, tijera o texturizado. Si tenés una foto de lo que querés, traela.</p><span class="precio">Consultá</span><a class="btn btn-borde" href="#reservar" data-serv="corte">Reservar</a></li>
+        <li><h3>Barba</h3><p>Perfilado y arreglo de barba.</p><span class="precio">Consultá</span><a class="btn btn-borde" href="#reservar" data-serv="barba">Reservar</a></li>
+        <li><h3>Color</h3><p>Mechas y platinado.</p><span class="precio">Consultá</span><a class="btn btn-borde" href="#reservar" data-serv="color">Reservar</a></li>
+        <li><h3>Líneas</h3><p>Un detalle marcado al costado, para sumarle al corte.</p><span class="precio">Consultá</span><a class="btn btn-borde" href="#reservar" data-serv="lineas">Reservar</a></li>
+        <li><h3>Cera o pomada</h3><p>Para peinarte en casa. Te ayudamos a elegir la que va con tu corte.</p><span class="precio">Consultá</span><a class="btn btn-borde" href="#reservar" data-serv="cera">Sumar al turno</a></li>
+      </ul>
+      <p class="nota-c">¿No sabés qué hacerte? <a href="#reservar" data-serv="corte">Reservá un corte</a> y contanos en el turno qué tenés en mente.</p>
     </div>
   </section>
 
   <section class="trabajos oscuro" id="trabajos">
     <div class="wrap">
       <div class="cab">
-        <h2>Pasaron por el sillón.</h2>
-        <p>Algunos trabajos del club. Hay muchos más en el Instagram.</p>
+        <h2 class="titulo">Pasaron por el sillón.</h2>
+        <p class="al-lado">Algunos trabajos del club. Hay muchos más en el Instagram.</p>
       </div>
-      <div class="espejos">
-        <figure class="ancho"><div class="marco"><img src="img/foto-07.jpg" alt="El local de Pach con dos barberos trabajando, capas negras y doradas, y el poste de barbería encendido al fondo" width="640" height="360" loading="lazy"></div>
-          <figcaption><b>El local</b>Capas negras y doradas, y el poste prendido al fondo.</figcaption></figure>
-        <figure class="alto"><div class="marco"><img src="img/foto-10.jpg" alt="Celular mostrando un corte con degradé y una línea marcada al costado, frente al espejo de la barbería" width="360" height="640" loading="lazy"></div>
-          <figcaption><b>Degradé con línea</b>El detalle al costado.</figcaption></figure>
-        <figure class="alto"><div class="marco"><img src="img/foto-12.jpg" alt="Barbero de Pach trabajando con un cliente, filmado desde un celular" width="360" height="640" loading="lazy"></div>
-          <figcaption><b>Detrás de cámara</b>Grabando un corte para el Instagram.</figcaption></figure>
-      </div>
-      <a class="mas-ig" href="https://instagram.com/pachbarber" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg>Ver más en @pachbarber</a>
-    </div>
-  </section>
-
-  <section class="turno" id="turno">
-    <div class="cab">
-      <h2>Sacá tu turno.</h2>
-      <p>Cuatro pasos: qué te hacés, el día, el horario y tu nombre. Te respondemos confirmando el turno.</p>
-    </div>
-    <div class="wrap">
-      <form class="form" id="form" novalidate>
-        <fieldset class="paso f" id="f-serv">
-          <legend><span class="n" aria-hidden="true"><span>1</span><svg><use href="#tilde"/></svg></span>¿Qué te hacés?</legend>
-          <div class="fichas" id="servs">
-            <label><input type="checkbox" name="serv" value="corte"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Corte</span></label>
-            <label><input type="checkbox" name="serv" value="barba"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Barba</span></label>
-            <label><input type="checkbox" name="serv" value="color"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Color</span></label>
-            <label><input type="checkbox" name="serv" value="lineas"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Líneas</span></label>
-            <label><input type="checkbox" name="serv" value="cera"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Cera o pomada</span></label>
-          </div>
-          <small class="err" id="err-serv"></small>
-        </fieldset>
-
-        <fieldset class="paso f" id="f-dia">
-          <legend><span class="n" aria-hidden="true"><span>2</span><svg><use href="#tilde"/></svg></span>¿Qué día?</legend>
-          <div class="cal-cab">
-            <span class="mes" id="mes"></span>
-            <div class="fichas primero"><label><input type="radio" name="dia" value="primero"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Cuanto antes</span></label></div>
-          </div>
-          <div class="sem" aria-hidden="true"><span>lun</span><span>mar</span><span>mié</span><span>jue</span><span>vie</span><span>sáb</span><span>dom</span></div>
-          <div class="fichas cal" id="cal"></div>
-          <small class="err" id="err-dia"></small>
-        </fieldset>
-
-        <fieldset class="paso f" id="f-hora">
-          <legend><span class="n" aria-hidden="true"><span>3</span><svg><use href="#tilde"/></svg></span>¿A qué hora?</legend>
-          <div class="horas" id="horas"></div>
-          <p class="nota-h">Si ese horario ya está tomado, te ofrecemos el más cercano.</p>
-          <small class="err" id="err-hora"></small>
-        </fieldset>
-
-        <fieldset class="paso f" id="f-datos">
-          <legend><span class="n" aria-hidden="true"><span>4</span><svg><use href="#tilde"/></svg></span>Tus datos</legend>
-          <div class="datos">
-            <div class="dos">
-              <div class="f"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
-              <div class="f"><label for="tel">Tu teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 343 412-3456" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
-            </div>
-            <div class="f"><label for="aclar">¿Algo más? <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Qué corte tenés en mente, con quién te atendés, si venís con alguien…"></textarea></div>
-          </div>
-        </fieldset>
-      </form>
-
-      <div class="ticket-col">
-        <div class="ticket" id="ticket">
-          <div class="t-cab">
-            <span class="t-logo" aria-hidden="true"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
-            <small>Colón 344<br>Paraná</small>
-          </div>
-          <div class="t-prog"><span class="t-barra"><i id="barra"></i></span><small id="progTxt">0 de 4 pasos</small></div>
-          <p class="t-tit">Tu turno</p>
-          <dl class="t-datos">
-            <div><dt>Servicio</dt><dd id="t-serv" class="falta">Elegí qué te hacés</dd></div>
-            <div><dt>Día</dt><dd id="t-dia" class="falta">Elegí el día</dd></div>
-            <div><dt>Hora</dt><dd id="t-hora" class="t-hora falta">Elegí el horario</dd></div>
-            <div><dt>A nombre de</dt><dd id="t-nombre" class="falta">Tu nombre</dd></div>
-          </dl>
-          <span class="sello" id="sello" aria-hidden="true">TURNO<br>PEDIDO</span>
-          <div class="corte" aria-hidden="true"></div>
-          <button class="btn enviar" type="submit" form="form" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Pedir turno por Instagram</span></button>
-          <p class="nota" id="nota">Copiamos tu turno y abrimos el chat de @pachbarber. Solo pegalo y mandalo.</p>
-          <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
-          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
-        </div>
+      <div class="galeria">
+        <figure><img src="img/foto-07.jpg" alt="El local de Pach con dos barberos trabajando, capas negras y doradas, y el poste de barbería encendido al fondo" width="640" height="360" loading="lazy" style="object-position:76% 50%">
+          <figcaption><b>El local</b><span>Capas negras y doradas, y el poste prendido al fondo.</span></figcaption></figure>
+        <figure><img src="img/foto-05.jpg" alt="Barbero de Pach con gorra cortando a un cliente de pelo con rulos, con capa de peines estampados" width="512" height="640" loading="lazy">
+          <figcaption><b>Rulos y degradé</b><span>Con la capa de peines del club.</span></figcaption></figure>
+        <figure><img src="img/foto-10.jpg" alt="Celular mostrando un corte con degradé y una línea marcada al costado, frente al espejo de la barbería" width="360" height="640" loading="lazy">
+          <figcaption><b>Degradé con línea</b><span>El detalle al costado.</span></figcaption></figure>
+        <figure><img src="img/foto-06.jpg" alt="Cliente con texturizado arriba, mechas claras y degradé a los costados" width="640" height="640" loading="lazy">
+          <figcaption><b>Texturizado con mechas</b><span>Arriba con textura, los costados en degradé.</span></figcaption></figure>
+        <figure><img src="img/foto-12.jpg" alt="Barbero de Pach trabajando con un cliente, filmado desde un celular" width="360" height="640" loading="lazy">
+          <figcaption><b>Detrás de cámara</b><span>Grabando un corte para el Instagram.</span></figcaption></figure>
+        <a class="mas-ig" href="https://instagram.com/pachbarber" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg><span><b>Ver más en @pachbarber</b><span>Los cortes de la semana, en el Instagram del club.</span></span></a>
       </div>
     </div>
   </section>
 
   <section class="local" id="local">
-    <div class="wrap grid">
-      <div>
-        <h2 class="dir">Colón 344 <small>Paraná, Entre Ríos</small></h2>
-        <dl>
-          <div><dt>Cómo se atiende</dt><dd>Con turno. Sacalo desde acá o por mensaje.</dd></div>
-          <div><dt>Horarios</dt><dd>Consultá por mensaje.</dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></dd></div>
-        </dl>
-        <div class="ctas">
-          <a class="btn btn-negro" href="#turno">Sacar turno</a>
-          <a class="btn btn-borde" href="https://www.google.com/maps/search/?api=1&query=Pach%20Barber%20Club%20Col%C3%B3n%20344%20Paran%C3%A1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <h2 class="titulo">Colón 344, Paraná.</h2>
+          <p class="intro">Estamos en Colón 344, en Paraná, Entre Ríos. Se atiende con turno: lo reservás desde acá o por mensaje.</p>
+          <dl>
+            <div><dt>Atención</dt><dd>Con turno</dd></div>
+            <div><dt>Horarios</dt><dd>Consultá por mensaje</dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></dd></div>
+          </dl>
+          <div class="ctas">
+            <a class="btn btn-negro" href="#reservar">Reservar turno</a>
+            <a class="btn btn-borde" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+          </div>
+        </div>
+        <div class="cartel" aria-hidden="true">
+          <div class="placa"><div class="placa-in">
+            <span class="logo-pach"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
+            <p class="calle">Colón<span>344</span></p>
+            <hr>
+            <p class="ciudad">Paraná, Entre Ríos</p>
+          </div></div>
         </div>
       </div>
-      <div class="vista">
+      <div class="mapa">
         <iframe title="Mapa: Pach Barber Club, Colón 344, Paraná" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=-31.7290553,-60.5225181&z=16&output=embed"></iframe>
+      </div>
+      <div class="mapa-pie">
+        <span>Se atiende con turno, en Colón 344.</span>
+        <a href="https://www.google.com/maps/search/?api=1&query=Pach%20Barber%20Club%20Col%C3%B3n%20344%20Paran%C3%A1" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <a class="marca" href="#inicio" aria-label="Pach Barber Club, volver arriba">
-      <img src="img/perfil.jpg" alt="" width="100" height="100" loading="lazy">
-      <span class="nom"><b>Pach Barber Club</b><small>Peluquería y barbería en Paraná</small></span>
-    </a>
+<footer id="pie">
+  <div class="wrap pie-grid">
     <div>
-      <p>Colón 344, Paraná. <a href="https://instagram.com/pachbarber" target="_blank" rel="noopener">@pachbarber</a></p>
-      <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+      <span class="logo-pach" aria-hidden="true"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
+      <p class="pie-lema titulo">Tu turno<br>en el club.</p>
+      <a class="btn btn-oro" href="#reservar">Reservar turno</a>
     </div>
+    <div>
+      <h3>Dónde</h3>
+      <p class="pie-dir">Colón 344<br>Paraná, Entre Ríos</p>
+      <ul>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Pach%20Barber%20Club%20Col%C3%B3n%20344%20Paran%C3%A1" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a></li>
+        <li><a href="https://instagram.com/pachbarber" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg>@pachbarber</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Turnos</h3>
+      <ul>
+        <li><span><svg aria-hidden="true"><use href="#reloj"/></svg>Atención con turno</span></li>
+        <li><span><svg aria-hidden="true"><use href="#cal"/></svg>Horarios: consultá por mensaje</span></li>
+        <li><a data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#msj"/></svg>Escribinos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap pie-baja">
+    <p>Pach Barber Club · Paraná</p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
   </div>
 </footer>
 
-<a class="ir-turno" href="#turno" id="irTurno" aria-label="Ver tu turno"><span>Ver tu turno</span><b id="irN">0</b></a>
+<!-- ===================== LA RESERVA ===================== -->
+<div class="reserva" id="reserva" role="dialog" aria-modal="true" aria-label="Reservar turno en Pach Barber Club" hidden>
+  <div class="r-top">
+    <div class="wrap r-fila">
+      <button type="button" class="r-volver" id="rVolver" aria-label="Volver a la página"><svg aria-hidden="true"><use href="#izq"/></svg></button>
+      <span class="marca"><img src="img/perfil.jpg" alt="" width="100" height="100"><span class="nom"><b>Pach Barber Club</b></span></span>
+      <a class="r-escribinos" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    </div>
+    <div class="r-linea"><i id="rProg"></i></div>
+    <div class="wrap">
+      <ol class="pasos" id="pasos">
+        <li><button type="button" data-ir="0"><span class="pn"><span>1</span><svg aria-hidden="true"><use href="#tilde"/></svg></span>Servicio</button></li>
+        <li><button type="button" data-ir="1"><span class="pn"><span>2</span><svg aria-hidden="true"><use href="#tilde"/></svg></span>Día</button></li>
+        <li><button type="button" data-ir="2"><span class="pn"><span>3</span><svg aria-hidden="true"><use href="#tilde"/></svg></span>Horario</button></li>
+        <li><button type="button" data-ir="3"><span class="pn"><span>4</span><svg aria-hidden="true"><use href="#tilde"/></svg></span>Tus datos</button></li>
+      </ol>
+      <div class="r-movil" aria-hidden="true"><b id="rPasoN">Paso 1 de 4</b><span id="rPasoNom">Servicio</span></div>
+    </div>
+  </div>
+
+  <div class="wrap r-cuerpo">
+    <form id="form" novalidate>
+      <section class="panel" data-paso="0" aria-labelledby="h-p0">
+        <h2 class="titulo" id="h-p0" tabindex="-1">¿Qué te hacés?</h2>
+        <p class="sub">Elegí uno o más. Los precios te los pasamos por mensaje.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="serv" value="corte"><span class="casilla"><svg aria-hidden="true"><use href="#tilde"/></svg></span><span class="o-txt"><b>Corte</b><small>Degradé, tijera o texturizado.</small></span><span class="o-pre">Consultá</span></label>
+          <label class="opcion"><input type="checkbox" name="serv" value="barba"><span class="casilla"><svg aria-hidden="true"><use href="#tilde"/></svg></span><span class="o-txt"><b>Barba</b><small>Perfilado y arreglo de barba.</small></span><span class="o-pre">Consultá</span></label>
+          <label class="opcion"><input type="checkbox" name="serv" value="color"><span class="casilla"><svg aria-hidden="true"><use href="#tilde"/></svg></span><span class="o-txt"><b>Color</b><small>Mechas y platinado.</small></span><span class="o-pre">Consultá</span></label>
+          <label class="opcion"><input type="checkbox" name="serv" value="lineas"><span class="casilla"><svg aria-hidden="true"><use href="#tilde"/></svg></span><span class="o-txt"><b>Líneas</b><small>Un detalle marcado al costado.</small></span><span class="o-pre">Consultá</span></label>
+          <label class="opcion"><input type="checkbox" name="serv" value="cera"><span class="casilla"><svg aria-hidden="true"><use href="#tilde"/></svg></span><span class="o-txt"><b>Cera o pomada</b><small>Te la llevás en el turno.</small></span><span class="o-pre">Consultá</span></label>
+        </div>
+      </section>
+
+      <section class="panel" data-paso="1" aria-labelledby="h-p1" hidden>
+        <h2 class="titulo" id="h-p1" tabindex="-1">¿Qué día?</h2>
+        <p class="sub">Los días apagados no tienen turnos.</p>
+        <label class="opcion suelta"><input type="radio" name="dia" value="primero"><span class="casilla"><svg aria-hidden="true"><use href="#rayo"/></svg></span><span class="o-txt"><b>Cuanto antes</b><small>Te damos el primer turno que haya.</small></span></label>
+        <p class="separa">O elegí un día del calendario</p>
+        <div class="cal-caja">
+          <div class="cal-cab">
+            <button type="button" class="cal-nav" id="mesAnt" aria-label="Mes anterior"><svg aria-hidden="true"><use href="#izq"/></svg></button>
+            <h3 id="mesTit" aria-live="polite"></h3>
+            <button type="button" class="cal-nav" id="mesSig" aria-label="Mes siguiente"><svg aria-hidden="true"><use href="#der"/></svg></button>
+          </div>
+          <div class="sem" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+          <div class="cal" id="calDias"></div>
+        </div>
+        <p class="leyenda"><span><i></i>Con turnos</span><span><i class="c"></i>Hoy</span><span id="leyHasta"></span></p>
+      </section>
+
+      <section class="panel" data-paso="2" aria-labelledby="h-p2" hidden>
+        <h2 class="titulo" id="h-p2" tabindex="-1">¿A qué hora?</h2>
+        <p class="sub">Si ese horario ya está tomado, te ofrecemos el más cercano.</p>
+        <p class="chip"><svg aria-hidden="true"><use href="#cal"/></svg><span id="diaChip"></span></p>
+        <div class="horas" id="horas"></div>
+      </section>
+
+      <section class="panel" data-paso="3" aria-labelledby="h-p3" hidden>
+        <h2 class="titulo" id="h-p3" tabindex="-1">Tus datos</h2>
+        <p class="sub">Para anotar el turno a tu nombre y confirmártelo.</p>
+        <div class="datos">
+          <div class="dos">
+            <div class="f"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+            <div class="f"><label for="tel">Tu teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 343 412-3456" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+          </div>
+          <div class="f"><label for="aclar">¿Algo más? <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Qué corte tenés en mente, con quién te atendés, si venís con alguien…"></textarea></div>
+        </div>
+      </section>
+
+      <div class="r-nav">
+        <p class="r-ayuda" id="rAyuda" aria-live="polite"></p>
+        <div class="r-botones">
+          <button type="button" class="btn btn-borde" id="bAtras"><svg class="ico" aria-hidden="true"><use href="#izq"/></svg><span>Salir</span></button>
+          <button type="submit" class="btn btn-negro b-sigue" id="bSigue"><span>Continuar</span><svg class="ico" aria-hidden="true"><use href="#der"/></svg></button>
+        </div>
+      </div>
+    </form>
+
+    <aside class="r-lado" aria-label="Resumen de tu turno">
+      <div class="ticket" id="ticket">
+        <div class="t-cab">
+          <small>Tu turno en</small>
+          <span class="logo-pach" aria-hidden="true"><span class="caja">PACH</span><span class="club">BARBER CLUB</span></span>
+          <span class="sr">Pach Barber Club</span>
+        </div>
+        <div class="corte" aria-hidden="true"></div>
+        <dl class="t-datos">
+          <div><dt>Servicio</dt><dd id="t-serv" class="falta">—</dd></div>
+          <div><dt>Día</dt><dd id="t-dia" class="falta">—</dd></div>
+          <div><dt>Horario</dt><dd id="t-hora" class="t-hora falta">—</dd></div>
+          <div><dt>A nombre de</dt><dd id="t-nombre" class="falta">—</dd></div>
+          <div><dt>Precio</dt><dd>Te lo pasamos por mensaje</dd></div>
+        </dl>
+        <p class="t-pie">Colón 344, Paraná. Te confirmamos el turno por mensaje.</p>
+        <span class="sello" id="sello" aria-hidden="true">TURNO<br>PEDIDO</span>
+      </div>
+      <p class="r-nota" id="nota"><svg aria-hidden="true"><use href="#msj"/></svg><span id="notaTxt">Al pedirlo, copiamos tu turno y abrimos el chat de @pachbarber. Solo lo pegás y lo mandás.</span></p>
+      <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+      <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+    </aside>
+  </div>
+</div>
+
 <a class="wa" data-contacto href="https://ig.me/m/pachbarber" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram" id="flotante">
   <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
   <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
@@ -742,8 +872,9 @@ var IG_DM = 'https://ig.me/m/pachbarber';
 //  DESDE = primer turno, HASTA = último turno, CADA = minutos entre turnos,
 //  PAUSA = horas sin turnos (ej. ['13:00', '16:00'] para cerrar al mediodía),
 //  CERRADO = días que no abren (0 = domingo, 1 = lunes … 6 = sábado), ej. [0].
+//  ADELANTE = cuántos días para adelante se puede pedir, contando hoy.
 // =====================================================================================
-var AGENDA = { DESDE: '09:00', HASTA: '20:00', CADA: 30, PAUSA: null, CERRADO: [] };
+var AGENDA = { DESDE: '09:00', HASTA: '20:00', CADA: 30, PAUSA: null, CERRADO: [], ADELANTE: 30 };
 
 document.documentElement.classList.add('js');
 if (WA) {
@@ -758,10 +889,11 @@ var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)
 function calma() { return !!(mq && mq.matches); }
 
 // Encabezado: translúcido al bajar, la sección donde estás marcada en el menú, y el menú del celular
+var setMenu;
 (function () {
   var top = document.getElementById('top');
   var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
-  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  setMenu = function (open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); };
   btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
   menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
@@ -794,7 +926,7 @@ function calma() { return !!(mq && mq.matches); }
   var anim = null;
   function armar() {
     if (anim) anim.cancel();
-    var p = paso() || 56;
+    var p = paso() || 52;
     anim = rayas.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-p) + 'px)' }], { duration: 1500, iterations: Infinity, easing: 'linear' });
   }
   armar();
@@ -806,7 +938,6 @@ function calma() { return !!(mq && mq.matches); }
     var t = (ts - t0 - DEMORA) / DUR;
     if (t < 0) { requestAnimationFrame(arrancar); return; }
     if (t >= 1) { anim.playbackRate = 1; return; }
-    // de 0 a 7 veces la velocidad en un instante, y después frena con ease-out hasta la velocidad normal
     if (t < .12) anim.playbackRate = (t / .12) * 7;
     else { var u = (t - .12) / .88; anim.playbackRate = 7 - 6 * (1 - Math.pow(1 - u, 3)); }
     requestAnimationFrame(arrancar);
@@ -819,23 +950,27 @@ function calma() { return !!(mq && mq.matches); }
   }
 })();
 
-// Tu turno: servicio, día en el calendario, horario y tus datos, y el ticket que se completa solo
+// La reserva: servicio, día, horario y tus datos, de a un paso, con el ticket que se completa solo
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var form = $('form');
+  var vista = $('reserva'), form = $('form');
   var CLAVE = 'pach-turno-v2';
   var SERV = { corte: 'Corte', barba: 'Barba', color: 'Color', lineas: 'Líneas', cera: 'Cera o pomada' };
+  var PASOS = ['Servicio', 'Día', 'Horario', 'Tus datos'];
   var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-  var CORTO = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-  var ADELANTE = 14; // cuántos días se pueden pedir, contando hoy
+  var ADELANTE = AGENDA.ADELANTE || 30;
+  var paneles = Array.prototype.slice.call(form.querySelectorAll('.panel'));
+  var items = Array.prototype.slice.call($('pasos').querySelectorAll('li'));
 
   function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function deIso(v) { var p = v.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
   function min(hhmm) { var p = hhmm.split(':'); return (+p[0]) * 60 + (+p[1]); }
   function hhmm(m) { return ('0' + Math.floor(m / 60)).slice(-2) + ':' + ('0' + (m % 60)).slice(-2); }
+  function cap(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : ''; }
   var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
   var HOY = iso(hoy);
+  var ultimo = new Date(hoy); ultimo.setDate(hoy.getDate() + ADELANTE - 1);
 
   // los horarios de un día (si es hoy, solo los que faltan, con media hora de margen)
   function horarios(dia) {
@@ -849,85 +984,91 @@ function calma() { return !!(mq && mq.matches); }
     }
     return L;
   }
-  function abre(d) { return AGENDA.CERRADO.indexOf(d.getDay()) < 0; }
   function disponible(v) {
     if (v === 'primero') return true;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return false;
     var d = deIso(v), dif = Math.round((d - hoy) / 864e5);
-    return dif >= 0 && dif < ADELANTE && abre(d) && horarios(v).length > 0;
+    return dif >= 0 && dif < ADELANTE && AGENDA.CERRADO.indexOf(d.getDay()) < 0 && horarios(v).length > 0;
   }
 
-  // el calendario: de lunes de esta semana hasta el domingo de la semana del último día que se puede pedir
-  var ini = new Date(hoy); ini.setDate(hoy.getDate() - ((hoy.getDay() + 6) % 7));
-  var fin = new Date(hoy); fin.setDate(hoy.getDate() + ADELANTE - 1); fin.setDate(fin.getDate() + (7 - fin.getDay()) % 7);
-  var html = '', meses = [];
-  for (var d = new Date(ini); d <= fin; d.setDate(d.getDate() + 1)) {
-    var v = iso(d), dif = Math.round((d - hoy) / 864e5);
-    if (dif < 0 || dif >= ADELANTE) { html += '<label class="vacio" aria-hidden="true"><span><b>' + d.getDate() + '</b></span></label>'; continue; }
-    if (meses.indexOf(MESES[d.getMonth()]) < 0) meses.push(MESES[d.getMonth()]);
-    var ok = disponible(v), et = dif === 0 ? 'hoy' : dif === 1 ? 'mañana' : '';
-    var aria = DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()] + (et ? ', ' + et : '') + (ok ? '' : ', sin turnos');
-    html += '<label' + (dif === 0 ? ' class="hoy"' : '') + '><input type="radio" name="dia" value="' + v + '"' + (ok ? '' : ' disabled') + ' aria-label="' + aria + '">' +
-      '<span><b>' + d.getDate() + '</b>' + (et ? '<small>' + et + '</small>' : '') + '</span></label>';
-  }
-  $('cal').innerHTML = html;
-  var tm = meses.join(' y '); $('mes').textContent = tm.charAt(0).toUpperCase() + tm.slice(1);
+  // lo elegido (el día y la hora se guardan acá porque el calendario se vuelve a dibujar al cambiar de mes)
+  var sel = { dia: '', hora: '' };
+  var paso = 0, intento = false;
+  var mesVisto = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
 
-  // los próximos días con lugar, para elegir desde la portada
-  var rapidos = '', cuantos = 0;
-  for (var i = 0; i < ADELANTE && cuantos < 4; i++) {
-    var dd = new Date(hoy); dd.setDate(hoy.getDate() + i);
-    if (!disponible(iso(dd))) continue;
-    var nom = i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : CORTO[dd.getDay()];
-    rapidos += '<a href="#f-hora" data-dia="' + iso(dd) + '"><b>' + nom + '</b><small>' + dd.getDate() + '/' + (dd.getMonth() + 1) + '</small></a>';
-    cuantos++;
-  }
-  $('diasR').innerHTML = rapidos;
-
+  function servs() { return Array.prototype.map.call(form.querySelectorAll('input[name="serv"]:checked'), function (c) { return c.value; }); }
+  function limpio(v) { return v.replace(/\s+/g, ' ').trim(); }
+  function leer() { return { serv: servs(), dia: sel.dia, hora: sel.hora, nombre: limpio($('nombre').value), tel: limpio($('tel').value), aclar: limpio($('aclar').value) }; }
   function diaTexto(v) {
     if (!v) return '';
     if (v === 'primero') return 'cuanto antes';
     var d = deIso(v), dif = Math.round((d - hoy) / 864e5);
-    var base = DIAS[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+    var base = DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()];
     return dif === 0 ? 'hoy, ' + base : dif === 1 ? 'mañana, ' + base : base;
   }
-  function horaTexto(h) { return !h ? '' : h === 'igual' ? 'La primera libre' : h + ' h'; }
-  function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
-  function servs() { return Array.prototype.map.call(form.querySelectorAll('input[name="serv"]:checked'), function (c) { return c.value; }); }
-  function limpio(v) { return v.replace(/\s+/g, ' ').trim(); }
-  function leer() {
-    return { serv: servs(), dia: radio('dia'), hora: radio('hora'), nombre: limpio($('nombre').value), tel: limpio($('tel').value), aclar: limpio($('aclar').value) };
+  function telOk(t) { return t.replace(/\D/g, '').length >= 8; }
+  function valido(i) {
+    var d = leer();
+    return i === 0 ? d.serv.length > 0 : i === 1 ? !!d.dia : i === 2 ? !!d.hora : !!d.nombre && telOk(d.tel);
   }
+  function primeroQueFalta() { for (var i = 0; i < 4; i++) if (!valido(i)) return i; return 3; }
+
+  // el calendario del mes que estás mirando
+  $('leyHasta').textContent = 'Se puede pedir hasta ' + ADELANTE + ' días para adelante';
+  function armarCal() {
+    var y = mesVisto.getFullYear(), m = mesVisto.getMonth();
+    $('mesTit').textContent = MESES[m] + ' ' + y;
+    $('mesAnt').disabled = y === hoy.getFullYear() && m === hoy.getMonth();
+    $('mesSig').disabled = y === ultimo.getFullYear() && m === ultimo.getMonth();
+    var vacios = (new Date(y, m, 1).getDay() + 6) % 7, total = new Date(y, m + 1, 0).getDate(), html = '';
+    for (var i = 0; i < vacios; i++) html += '<span aria-hidden="true"></span>';
+    for (var d = 1; d <= total; d++) {
+      var f = new Date(y, m, d), v = iso(f), dif = Math.round((f - hoy) / 864e5), ok = disponible(v);
+      var et = dif === 0 ? ', hoy' : dif === 1 ? ', mañana' : '';
+      var aria = DIAS[f.getDay()] + ' ' + d + ' de ' + MESES[m] + et + (ok ? '' : ', sin turnos');
+      html += '<label class="dia' + (ok ? ' lugar' : '') + (dif === 0 ? ' hoy' : '') + '"><input type="radio" name="dia" value="' + v + '"' + (ok ? '' : ' disabled') +
+        (v === sel.dia ? ' checked' : '') + ' aria-label="' + aria + '"><span>' + d + '</span></label>';
+    }
+    $('calDias').innerHTML = html;
+  }
+  $('mesAnt').addEventListener('click', function () { mesVisto.setMonth(mesVisto.getMonth() - 1); armarCal(); });
+  $('mesSig').addEventListener('click', function () { mesVisto.setMonth(mesVisto.getMonth() + 1); armarCal(); });
 
   // los horarios del día elegido, separados en mañana y tarde
-  function ficha(valor, txt, marcado) {
-    return '<label><input type="radio" name="hora" value="' + valor + '"' + (marcado ? ' checked' : '') + '><span>' + txt + '</span></label>';
+  function ficha(valor, marcado) {
+    return '<label class="slot"><input type="radio" name="hora" value="' + valor + '"' + (marcado ? ' checked' : '') + '><span>' + valor + '</span></label>';
   }
-  function armarHoras(dia, elegida) {
+  function armarHoras() {
     var caja = $('horas');
-    if (!dia) { caja.innerHTML = '<p class="sin-dia">Elegí un día y te mostramos los horarios.</p>'; return; }
-    var L = horarios(dia === 'primero' ? '' : dia);
-    if (elegida && elegida !== 'igual' && L.indexOf(elegida) < 0) elegida = '';
+    $('diaChip').textContent = sel.dia ? cap(diaTexto(sel.dia)) : 'Elegí el día en el paso anterior';
+    if (!sel.dia) { caja.innerHTML = ''; return; }
+    var L = horarios(sel.dia === 'primero' ? '' : sel.dia);
+    if (sel.hora && sel.hora !== 'igual' && L.indexOf(sel.hora) < 0) sel.hora = '';
     var man = L.filter(function (h) { return min(h) < 13 * 60; }), tar = L.filter(function (h) { return min(h) >= 13 * 60; });
-    var out = '';
-    if (man.length) out += '<div><h3>Mañana</h3><div class="fichas slots">' + man.map(function (h) { return ficha(h, h, h === elegida); }).join('') + '</div></div>';
-    if (tar.length) out += '<div><h3>Tarde</h3><div class="fichas slots">' + tar.map(function (h) { return ficha(h, h, h === elegida); }).join('') + '</div></div>';
-    out += '<div class="fichas igual">' + ficha('igual', '<svg aria-hidden="true"><use href="#tilde"/></svg>Me da igual, la primera libre', elegida === 'igual') + '</div>';
+    var out = '<label class="opcion suelta"><input type="radio" name="hora" value="igual"' + (sel.hora === 'igual' ? ' checked' : '') +
+      '><span class="casilla"><svg aria-hidden="true"><use href="#rayo"/></svg></span><span class="o-txt"><b>Me da igual</b><small>La primera hora libre de ese día.</small></span></label>';
+    if (man.length) out += '<div role="group" aria-labelledby="h-man"><h3 id="h-man">Mañana</h3><div class="slots">' + man.map(function (h) { return ficha(h, h === sel.hora); }).join('') + '</div></div>';
+    if (tar.length) out += '<div role="group" aria-labelledby="h-tar"><h3 id="h-tar">Tarde</h3><div class="slots">' + tar.map(function (h) { return ficha(h, h === sel.hora); }).join('') + '</div></div>';
     caja.innerHTML = out;
   }
 
   // recuperar lo que habías dejado
-  var guardado = {};
+  var pasoGuardado = 0;
   try {
     var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
     if (g && typeof g === 'object') {
-      guardado = g;
       (Array.isArray(g.serv) ? g.serv : []).forEach(function (s) { var c = form.querySelector('input[name="serv"][value="' + s + '"]'); if (c) c.checked = true; });
-      if (typeof g.dia === 'string') { var r = form.querySelector('input[name="dia"][value="' + g.dia + '"]'); if (r && !r.disabled) r.checked = true; }
+      if (typeof g.dia === 'string' && disponible(g.dia)) sel.dia = g.dia;
+      if (typeof g.hora === 'string') sel.hora = g.hora;
       ['nombre', 'tel', 'aclar'].forEach(function (c) { if (typeof g[c] === 'string') $(c).value = g[c]; });
+      if (typeof g.paso === 'number') pasoGuardado = g.paso;
     }
   } catch (e) {}
-  armarHoras(radio('dia'), typeof guardado.hora === 'string' ? guardado.hora : '');
-  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(leer())); } catch (e) {} }
+  if (sel.dia === 'primero') form.querySelector('input[name="dia"][value="primero"]').checked = true;
+  else if (sel.dia) { var dsel = deIso(sel.dia); mesVisto = new Date(dsel.getFullYear(), dsel.getMonth(), 1); }
+  if (!sel.dia) sel.hora = '';
+  armarCal(); armarHoras();
+  function guardar() { try { var d = leer(); d.paso = paso; localStorage.setItem(CLAVE, JSON.stringify(d)); } catch (e) {} }
 
   function mensaje(borrador) {
     var d = leer(), L = ['Hola, Pach! Quiero sacar un turno:'];
@@ -943,117 +1084,106 @@ function calma() { return !!(mq && mq.matches); }
   }
 
   // el ticket: cada dato que entra aparece con un movimiento corto
-  function pon(id, txt, falta, mover) {
-    var el = $(id), antes = el.textContent, nuevo = txt || falta;
+  function pon(id, txt, mover) {
+    var el = $(id), antes = el.textContent, nuevo = txt || '—';
     el.textContent = nuevo; el.classList.toggle('falta', !txt);
     if (mover && txt && antes !== nuevo && !calma() && el.animate) {
       el.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], { duration: 220, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
     }
   }
-  function cap(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : ''; }
-  var irTurno = $('irTurno'), enTurno = false, nAntes = servs().length;
+  var AYUDA = ['Podés elegir más de uno.', 'Elegí un día del calendario, o "Cuanto antes".', 'Elegí un horario, o "Me da igual".', 'Revisá tus datos y pedí el turno.'];
+  var FALTA = ['Elegí al menos un servicio para seguir.', 'Elegí un día del calendario, o "Cuanto antes", para seguir.', 'Elegí un horario, o "Me da igual", para seguir.', 'Completá tu nombre y tu teléfono para pedir el turno.'];
   function render() {
     var d = leer();
-    pon('t-serv', d.serv.map(function (s) { return SERV[s]; }).join(', '), 'Elegí qué te hacés', true);
-    pon('t-dia', cap(diaTexto(d.dia)), 'Elegí el día', true);
-    pon('t-hora', horaTexto(d.hora), 'Elegí el horario', true);
-    pon('t-nombre', d.nombre, 'Tu nombre', false);
-    // los pasos que ya están
-    var listos = [d.serv.length > 0, !!d.dia, !!d.hora, !!d.nombre && d.tel.replace(/\D/g, '').length >= 8];
-    ['f-serv', 'f-dia', 'f-hora', 'f-datos'].forEach(function (id, i) { $(id).classList.toggle('ok', listos[i]); });
-    var n = listos.filter(Boolean).length;
-    $('barra').style.clipPath = 'inset(0 ' + (100 - n * 25) + '% 0 0 round 8px)';
-    $('progTxt').textContent = n === 4 ? 'Listo para pedir' : n + ' de 4 pasos';
-    // el tablero refleja lo que está en el turno
-    document.querySelectorAll('.fila[data-serv]').forEach(function (f) {
-      var on = d.serv.indexOf(f.getAttribute('data-serv')) >= 0, b = f.querySelector('.sumar');
-      b.setAttribute('aria-pressed', String(on));
-      b.querySelector('span').textContent = on ? 'En tu turno' : 'Sumar';
-      b.setAttribute('aria-label', (on ? 'Sacar ' : 'Sumar ') + SERV[f.getAttribute('data-serv')] + (on ? ' del turno' : ' al turno'));
+    pon('t-serv', d.serv.map(function (s) { return SERV[s]; }).join(', '), true);
+    pon('t-dia', cap(diaTexto(d.dia)), true);
+    pon('t-hora', d.hora === 'igual' ? 'La primera libre' : d.hora ? d.hora + ' h' : '', true);
+    pon('t-nombre', d.nombre, false);
+    // los pasos: hecho, actual, o todavía no
+    items.forEach(function (li, i) {
+      var b = li.querySelector('button'), ok = valido(i);
+      li.classList.toggle('actual', i === paso);
+      li.classList.toggle('hecho', i !== paso && ok);
+      var llega = true; for (var k = 0; k < i; k++) if (!valido(k)) llega = false;
+      b.disabled = i === paso || !llega;
+      if (i === paso) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+      b.setAttribute('aria-label', 'Paso ' + (i + 1) + ': ' + PASOS[i] + (ok ? ', listo' : ''));
     });
-    var ns = d.serv.length;
-    $('irN').textContent = ns;
-    irTurno.setAttribute('aria-label', 'Ver tu turno (' + ns + ')');
-    irTurno.classList.toggle('on', ns > 0 && !enTurno);
-    if (ns > nAntes && !calma() && irTurno.animate && !enTurno) {
-      $('irN').animate([{ transform: 'scale(1)' }, { transform: 'scale(1.3)', offset: .35 }, { transform: 'scale(1)' }], { duration: 320, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
-    }
-    nAntes = ns;
+    var listo = valido(paso);
+    var sigue = $('bSigue');
+    sigue.setAttribute('aria-disabled', String(!listo));
+    var ayuda = $('rAyuda');
+    ayuda.textContent = !listo && intento ? FALTA[paso] : !listo && paso < 3 ? FALTA[paso] : AYUDA[paso];
+    ayuda.classList.toggle('mal', !listo && intento);
     $('msgPrev').textContent = mensaje(true);
     guardar();
   }
 
-  // botón "Sumar" del tablero
-  document.querySelectorAll('.fila[data-serv] .sumar').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var id = b.closest('.fila').getAttribute('data-serv');
-      var c = form.querySelector('input[name="serv"][value="' + id + '"]');
-      c.checked = !c.checked;
-      marcar('serv', '');
-      render();
-      var a = $('anuncio'); a.textContent = ''; setTimeout(function () { a.textContent = SERV[id] + (c.checked ? ' sumado a tu turno.' : ' sacado de tu turno.'); }, 30);
+  function irA(i, enfocar) {
+    var atras = i < paso;
+    paso = i; intento = false;
+    paneles.forEach(function (p, k) {
+      p.hidden = k !== i;
+      if (k === i && !calma()) { p.classList.remove('mueve', 'atras'); void p.offsetWidth; p.classList.add('mueve'); if (atras) p.classList.add('atras'); }
     });
-  });
-
-  // elegir el día desde la portada
-  $('diasR').addEventListener('click', function (e) {
-    var a = e.target.closest('a[data-dia]'); if (!a) return;
-    var r = form.querySelector('input[name="dia"][value="' + a.getAttribute('data-dia') + '"]');
-    if (r && !r.disabled) { r.checked = true; armarHoras(r.value, radio('hora')); marcar('dia', ''); render(); }
-  });
-
-  // el botón "Ver tu turno" se esconde cuando ya estás mirando la agenda
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { enTurno = es[0].isIntersecting; irTurno.classList.toggle('on', leer().serv.length > 0 && !enTurno); },
-      { rootMargin: '0px 0px -30% 0px' }).observe($('turno'));
+    if (i === 1) armarCal();
+    if (i === 2) armarHoras();
+    $('rProg').style.transform = 'scaleX(' + ((i + 1) / 4) + ')';
+    $('rPasoN').textContent = 'Paso ' + (i + 1) + ' de 4';
+    $('rPasoNom').textContent = PASOS[i];
+    $('bAtras').querySelector('span').textContent = i === 0 ? 'Salir' : 'Atrás';
+    $('bAtras').setAttribute('aria-label', i === 0 ? 'Salir de la reserva' : 'Volver al paso anterior');
+    var sigue = $('bSigue');
+    sigue.classList.toggle('final', i === 3);
+    sigue.querySelector('span').textContent = i < 3 ? 'Continuar' : WA ? 'Pedir turno por WhatsApp' : 'Pedir turno por Instagram';
+    sigue.querySelector('use').setAttribute('href', i < 3 ? '#der' : WA ? '#wa' : '#ig');
+    render();
+    if (enfocar) {
+      vista.scrollTop = 0;
+      var h = paneles[i].querySelector('h2'); if (h && h.focus) h.focus({ preventScroll: true });
+    }
   }
 
-  // errores
-  var CAMPO = { serv: 'f-serv', dia: 'f-dia', hora: 'f-hora', nombre: 'nombre', tel: 'tel' };
+  // botones Atrás / Continuar y los pasos de arriba
+  $('bAtras').addEventListener('click', function () { if (paso === 0) salir(); else irA(paso - 1, true); });
+  $('pasos').addEventListener('click', function (e) { var b = e.target.closest('button[data-ir]'); if (b && !b.disabled) irA(+b.getAttribute('data-ir'), true); });
+
+  // errores de los datos
   function marcar(k, txt) {
-    var el = $(CAMPO[k]), f = el.classList.contains('f') ? el : el.closest('.f');
+    var el = $(k), f = el.closest('.f');
     f.classList.toggle('error', !!txt);
-    if (el.tagName === 'INPUT') { if (txt) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
+    if (txt) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
     $('err-' + k).textContent = txt;
   }
-  function validar() {
-    var d = leer(), malos = [];
-    var ch = [
-      ['serv', d.serv.length ? '' : 'Elegí al menos una cosa para hacerte.'],
-      ['dia', d.dia ? '' : 'Elegí un día en el calendario, o "Cuanto antes".'],
-      ['hora', d.hora ? '' : 'Elegí un horario, o "Me da igual".'],
-      ['nombre', d.nombre ? '' : 'Poné tu nombre para anotar el turno.'],
-      ['tel', !d.tel ? 'Poné tu teléfono para confirmarte el turno.' : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : '']
-    ];
-    ch.forEach(function (c) { marcar(c[0], c[1]); if (c[1]) malos.push(c[0]); });
-    return malos;
-  }
-  function foco(k) {
-    var el = $(CAMPO[k]);
-    if (el.tagName === 'INPUT') { el.focus(); return; }
-    var i = el.querySelector('input:not(:disabled)'); if (i) i.focus();
-    if (el.scrollIntoView) el.scrollIntoView({ block: 'start', behavior: calma() ? 'auto' : 'smooth' });
+  function validarDatos() {
+    var d = leer();
+    marcar('nombre', d.nombre ? '' : 'Poné tu nombre para anotar el turno.');
+    marcar('tel', !d.tel ? 'Poné tu teléfono para confirmarte el turno.' : !telOk(d.tel) ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : '');
+    if (!d.nombre) { $('nombre').focus(); return false; }
+    if (!telOk(d.tel)) { $('tel').focus(); return false; }
+    return true;
   }
 
   form.addEventListener('input', function (e) {
-    var k = e.target.name; if (CAMPO[k] && $('err-' + k).textContent) marcar(k, '');
-    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
-    $('sello').classList.remove('on');
+    var k = e.target.name;
+    if ((k === 'nombre' || k === 'tel') && $('err-' + k).textContent) marcar(k, '');
+    $('sello').classList.remove('on'); $('aviso').textContent = ''; $('aviso').classList.remove('mal');
     render();
   });
   form.addEventListener('change', function (e) {
     var k = e.target.name;
-    if (k === 'dia') armarHoras(e.target.value, radio('hora'));
-    if (CAMPO[k]) marcar(k, '');
+    if (k === 'dia') { sel.dia = e.target.value; armarHoras(); }
+    if (k === 'hora') sel.hora = e.target.value;
+    if (k === 'serv') {
+      var a = $('anuncio'), nom = SERV[e.target.value], on = e.target.checked;
+      a.textContent = ''; setTimeout(function () { a.textContent = nom + (on ? ' sumado a tu turno.' : ' sacado de tu turno.'); }, 30);
+    }
+    $('sello').classList.remove('on');
     render();
   });
 
   // enviar
-  if (WA) {
-    $('enviar').querySelector('use').setAttribute('href', '#wa');
-    $('enviar').querySelector('span').textContent = 'Pedir turno por WhatsApp';
-    $('nota').textContent = 'Se abre WhatsApp con tu turno escrito. Solo falta tocar enviar.';
-  }
+  if (WA) $('notaTxt').textContent = 'Al pedirlo, se abre WhatsApp con tu turno escrito. Solo falta tocar enviar.';
   function abrirLink(url) { var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove(); }
   function copiarViejo(txt) {
     try {
@@ -1067,13 +1197,15 @@ function calma() { return !!(mq && mq.matches); }
   }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var aviso = $('aviso'), malos = validar();
-    if (malos.length) {
-      aviso.classList.add('mal');
-      aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.';
-      foco(malos[0]);
+    if (paso < 3) {
+      if (valido(paso)) irA(paso + 1, true);
+      else { intento = true; render(); }
       return;
     }
+    var falta = primeroQueFalta();
+    if (falta < 3) { irA(falta, true); intento = true; render(); return; }
+    var aviso = $('aviso');
+    if (!validarDatos()) { intento = true; render(); return; }
     aviso.classList.remove('mal');
     $('sello').classList.add('on');
     var msg = mensaje(false);
@@ -1084,6 +1216,46 @@ function calma() { return !!(mq && mq.matches); }
       abrirLink(IG_DM);
     });
   });
+
+  // abrir y cerrar la reserva, como si fuera otra página (#reservar), con el botón Atrás del navegador funcionando
+  var fondo = ['top', 'menu', 'principal', 'pie', 'flotante'].map($);
+  var volverA = null;
+  function abrir(servicio) {
+    if (servicio && SERV[servicio]) { var c = form.querySelector('input[name="serv"][value="' + servicio + '"]'); if (c) c.checked = true; }
+    var yaAbierta = !vista.hidden;
+    if (!yaAbierta) {
+      volverA = document.activeElement;
+      if (setMenu) setMenu(false);
+      vista.hidden = false;
+      document.body.classList.add('reservando');
+      fondo.forEach(function (el) { el.setAttribute('inert', ''); el.setAttribute('aria-hidden', 'true'); });
+      if (!calma()) { vista.classList.remove('entra'); void vista.offsetWidth; vista.classList.add('entra'); }
+    }
+    irA(servicio ? 0 : Math.min(pasoGuardado, primeroQueFalta()), true);
+  }
+  function cerrar() {
+    if (vista.hidden) return;
+    vista.hidden = true;
+    document.body.classList.remove('reservando');
+    fondo.forEach(function (el) { el.removeAttribute('inert'); el.removeAttribute('aria-hidden'); });
+    pasoGuardado = paso;
+    if (volverA && volverA.focus) volverA.focus({ preventScroll: true });
+  }
+  function salir() {
+    if (history.state && history.state.reserva) history.back();
+    else { history.replaceState(null, '', location.pathname + location.search); cerrar(); }
+  }
+  $('rVolver').addEventListener('click', salir);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#reservar"]'); if (!a) return;
+    e.preventDefault();
+    if (location.hash !== '#reservar') history.pushState({ reserva: true }, '', '#reservar');
+    abrir(a.getAttribute('data-serv'));
+  });
+  vista.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !e.target.closest('input, textarea')) salir(); });
+  window.addEventListener('popstate', function () { if (location.hash === '#reservar') abrir(); else cerrar(); });
+  window.addEventListener('hashchange', function () { if (location.hash === '#reservar') abrir(); else cerrar(); });
+  if (location.hash === '#reservar') abrir();
 
   render();
 })();
