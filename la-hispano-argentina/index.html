@@ -114,7 +114,11 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
   .cart-top .cuenta{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;padding:0 5px;font-size:11.5px;box-shadow:0 0 0 2px var(--harina)}
   .cart-top .cuenta.cero{display:none}
   .menu-btn{margin-left:8px}
+  .top .wrap{gap:12px}
+  .brand > span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .brand small{overflow:hidden;text-overflow:ellipsis}
 }
+@media (max-width:380px){.brand img{width:38px;height:38px}.brand{gap:10px}.brand span{font-size:15.5px}}
 
 /* ---------- portada: la vidriera ---------- */
 .hero{padding:calc(var(--header) + 40px) 0 88px;overflow:hidden}
@@ -332,7 +336,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 @media (max-width:860px){.pedido .wrap{grid-template-columns:1fr;gap:40px}.pedido-text{position:static}}
 
 /* ---------- la bolsa flotante: círculo arriba del WhatsApp, barra abajo en el celular ---------- */
-.cart-float{position:fixed;z-index:59;right:max(24px, env(safe-area-inset-right));bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);
+.cart-float{position:fixed;z-index:61;right:max(24px, env(safe-area-inset-right));bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);
   width:56px;height:56px;border:0;border-radius:50%;background:var(--dulce);color:#fff;display:grid;place-items:center;cursor:pointer;font:inherit;
   box-shadow:0 3px 6px rgba(111,60,23,.25), 0 14px 30px -10px rgba(111,60,23,.7);
   opacity:0;visibility:hidden;transform:translateY(14px) scale(.92);
