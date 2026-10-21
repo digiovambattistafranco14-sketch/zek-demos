@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>La Hispano Argentina | Panadería y confitería en Los Polvorines</title>
+<meta name="description" content="Panadería, confitería y cafetería en Los Polvorines desde 1987. Pan, facturas, tortas por encargo, pan dulce, catering y salón. Ing. Huergo 3453.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La Hispano Argentina | Panadería y confitería en Los Polvorines">
+<meta property="og:description" content="Mirá el mostrador y el menú del día, y encargá tortas, facturas y pan dulce por WhatsApp. Ing. Huergo 3453, Los Polvorines.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/la-hispano-argentina/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/la-hispano-argentina/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#8E4F22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Caveat:wght@500;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concepto: la vidriera de una panadería de barrio. La portada es una vidriera en arco con el nombre pintado
+   en el vidrio, que se desempaña al cargar; el mostrador es una vitrina con cartelitos de precio; el menú del día
+   está escrito con tiza en un pizarrón; el pedido se arma en una bolsa de papel madera. */
+:root{
+  --harina:#FCFBF8;     /* fondo */
+  --harina-2:#F4EFE7;
+  --ink:#2B1D14;        /* tinta marrón muy oscura */
+  --muted:#6A5546;
+  --dulce:#8E4F22;      /* el marrón de sus ilustraciones */
+  --dulce-deep:#6F3C17;
+  --oro:#D6AE5C;        /* letras pintadas en el vidrio */
+  --madera:#5A3A24;
+  --pizarron:#24332C;
+  --tiza:#EEEBE3;
+  --kraft:#D7B98E;
+  --kraft-2:#E8D6B5;
+  --kraft-ink:#4A3016;
+  --display:'Gloock', Georgia, 'Times New Roman', serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --chalk:'Caveat', 'Segoe Print', cursive;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:72px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--harina);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-0.01em;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--dulce);color:#fff}
+:focus-visible{outline:3px solid var(--dulce);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+.head{max-width:620px}
+.head h2{font-size:clamp(2rem, 4vw, 3.2rem);line-height:1.04}
+.head p{margin-top:14px;color:var(--muted);font-size:18px;max-width:52ch}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 24px;border:0;border-radius:999px;font:inherit;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--dulce);color:#fff;box-shadow:0 10px 24px -12px rgba(111,60,23,.85)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(43,29,20,.24)}
+@media (hover:hover) and (pointer:fine){
+  .btn-main:hover{background:var(--dulce-deep)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(252,251,248,.86);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(43,29,20,.08), 0 10px 30px -18px rgba(43,29,20,.35)}
+.top .wrap{display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(142,79,34,.35), 0 4px 12px -4px rgba(0,0,0,.3)}
+.brand span{font-family:var(--display);font-size:18px;line-height:1.1;white-space:nowrap}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 13px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(43,29,20,.06)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(43,29,20,.06);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:#fff;border-radius:18px;padding:10px;box-shadow:0 24px 60px -20px rgba(43,29,20,.45);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:block;padding:14px 16px;border-radius:12px;font-family:var(--display);font-size:20px;text-decoration:none}
+.sheet-menu a:active{background:var(--harina-2)}
+.sheet-menu .btn{display:flex;margin-top:6px;font-family:var(--body);font-size:16px}
+@media (max-width:1000px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+@media (max-width:380px){.brand small{display:none}}
+
+/* ---------- portada: la vidriera ---------- */
+.hero{padding:calc(var(--header) + 40px) 0 88px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.6rem, 5.2vw, 4.4rem);line-height:1.02;letter-spacing:-0.02em}
+.hero h1 span{display:block}
+.hero .lead{margin-top:24px;font-size:clamp(17px, 1.6vw, 19.5px);color:var(--muted);max-width:42ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.where{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:15px;color:var(--muted)}
+.where svg{width:18px;height:18px;flex:none;color:var(--dulce)}
+.vidriera{position:relative;justify-self:center;width:min(440px, 100%);aspect-ratio:4/5;padding:14px;
+  background:linear-gradient(100deg, #6A452B, var(--madera) 40%, #4A2F1C);
+  border-radius:50% 50% 14px 14px / 40% 40% 14px 14px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.12), 0 2px 3px rgba(43,29,20,.12), 0 40px 70px -34px rgba(43,29,20,.65)}
+.vidrio{position:relative;width:100%;height:100%;overflow:hidden;border-radius:50% 50% 4px 4px / 39.4% 39.4% 4px 4px;background:#3a2a1e;isolation:isolate}
+.vidrio > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* sombra arriba para que se lean las letras, y el reflejo del vidrio */
+.vidrio::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(36,22,12,.62) 0%, rgba(36,22,12,.25) 38%, transparent 56%),
+             linear-gradient(115deg, transparent 38%, rgba(255,255,255,.13) 44%, transparent 52%, transparent 62%, rgba(255,255,255,.07) 66%, transparent 70%)}
+/* travesaño de la ventana */
+.vidrio::after{content:"";position:absolute;left:0;right:0;top:43%;height:10px;z-index:3;background:linear-gradient(180deg, #6A452B, var(--madera));box-shadow:0 3px 8px -2px rgba(0,0,0,.45)}
+.empanado{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
+  background:radial-gradient(ellipse 70% 60% at 52% 64%, rgba(246,242,236,.42), rgba(246,242,236,.78) 70%, rgba(246,242,236,.9))}
+.letras{position:absolute;inset:0;z-index:4;width:100%;height:100%;pointer-events:none;overflow:visible}
+.letras text{fill:var(--oro);stroke:rgba(40,22,8,.6);stroke-width:2.4px;paint-order:stroke;stroke-linejoin:round}
+.letras .arco{font-family:var(--display);font-size:29px;letter-spacing:2.5px}
+.letras .sub{font-family:var(--display);font-size:17px;letter-spacing:.5px}
+.letras .desde{font-family:var(--display);font-size:16px;letter-spacing:3px}
+
+@keyframes desempanar{from{opacity:1}to{opacity:0}}
+@keyframes enfocar{from{filter:blur(14px) brightness(1.18) saturate(.55);transform:scale(1.06)}to{filter:none;transform:none}}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes llegar{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes pintar{from{opacity:0}to{opacity:1}}
+.hero h1 span, .hero .lead, .hero .ctas, .where{animation:subir .7s var(--ease-out) both}
+.hero h1 span:nth-child(2){animation-delay:.06s}
+.hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}.where{animation-delay:.26s}
+.vidriera{animation:llegar .8s var(--ease-out) .08s both}
+/* el momento de la página: el vidrio se desempaña de adentro hacia afuera */
+.empanado{animation:desempanar 2.2s var(--ease-out) .7s both}
+.vidrio > img{animation:enfocar 2.4s var(--ease-out) .6s both}
+.letras{animation:pintar .9s ease .35s both}
+@media (max-width:860px){
+  .hero{padding-top:calc(var(--header) + 24px);padding-bottom:64px}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .vidriera{width:min(340px, 90%)}
+}
+
+/* ---------- el mostrador: vitrina con cartelitos ---------- */
+.mostrador{padding:56px 0 104px}
+.vitrina{margin-top:48px;background:linear-gradient(180deg, #fff, #FAF6F0);border-radius:22px;padding:18px clamp(12px, 3vw, 36px) 8px;
+  box-shadow:0 0 0 1px rgba(43,29,20,.06), 0 30px 70px -44px rgba(43,29,20,.55);position:relative}
+.vitrina::before{content:"";position:absolute;left:18px;right:18px;top:0;height:6px;border-radius:0 0 6px 6px;background:var(--madera);opacity:.9}
+.estante{display:grid;grid-template-columns:repeat(3, 1fr);column-gap:0}
+.producto{position:relative;display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:end;padding:30px 18px 34px;text-decoration:none;color:inherit}
+/* el vidrio del estante, debajo de cada producto */
+.producto::after{content:"";position:absolute;left:0;right:0;bottom:0;height:9px;
+  background:linear-gradient(180deg, rgba(214,226,224,.9), rgba(186,204,201,.55));box-shadow:0 1px 0 rgba(255,255,255,.9) inset, 0 8px 14px -8px rgba(43,29,20,.35)}
+.producto img{width:96px;height:96px;object-fit:contain;mix-blend-mode:multiply;transition:transform .25s var(--ease-out)}
+.producto h3{font-size:1.45rem;line-height:1.1}
+.producto p{margin-top:6px;color:var(--muted);font-size:15px;line-height:1.45}
+/* el cartelito de precio, colgado del borde del estante */
+.cartel{position:absolute;z-index:1;bottom:-8px;right:18px;font-size:12.5px;font-weight:600;color:var(--dulce-deep);background:#fff;padding:4px 10px 4px 9px;border-radius:4px;
+  box-shadow:0 0 0 1px rgba(142,79,34,.28), 0 4px 10px -6px rgba(43,29,20,.4);transform:rotate(-2deg);transform-origin:top center;transition:transform .25s var(--ease-out), background-color .2s ease, color .2s ease}
+.cartel b{font-weight:700}
+.sumar{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-weight:600;font-size:14.5px;color:var(--dulce)}
+.sumar svg{width:16px;height:16px}
+@media (hover:hover) and (pointer:fine){
+  .producto:hover img{transform:translateY(-4px)}
+  .producto:hover .cartel{transform:rotate(2deg);background:var(--dulce);color:#fff}
+}
+.producto:active img{transform:translateY(-2px) scale(.98)}
+.vitrina-pie{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:22px;color:var(--muted);font-size:15px}
+@media (max-width:900px){.estante{grid-template-columns:repeat(2, 1fr)}}
+@media (max-width:600px){
+  .estante{grid-template-columns:1fr}
+  .producto{grid-template-columns:76px 1fr;padding:26px 6px 30px}
+  .producto img{width:76px;height:76px}
+  .cartel{right:10px}
+}
+
+/* ---------- menú del día: el pizarrón ---------- */
+.menu{padding:0 0 112px}
+.menu .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.menu-side .btn{margin-top:28px}
+.menu-side img{margin-top:32px;border-radius:16px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.pizarron{position:relative;background:var(--pizarron);color:var(--tiza);border-radius:10px;padding:clamp(26px, 4vw, 48px) clamp(22px, 4vw, 52px) clamp(28px, 4vw, 44px);
+  border:14px solid var(--madera);box-shadow:inset 0 0 0 1px rgba(0,0,0,.35), inset 0 0 60px rgba(0,0,0,.35), 0 34px 70px -36px rgba(43,29,20,.7);overflow:hidden;font-family:var(--chalk)}
+/* restos de tiza borrada */
+.pizarron::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 40% 18% at 78% 22%, rgba(238,235,227,.07), transparent 70%),
+             radial-gradient(ellipse 30% 14% at 18% 86%, rgba(238,235,227,.06), transparent 70%),
+             radial-gradient(ellipse 50% 10% at 60% 60%, rgba(238,235,227,.04), transparent 70%)}
+.pz-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.pizarron h3{font-family:var(--chalk);font-weight:700;font-size:clamp(2.6rem, 5vw, 3.6rem);line-height:1;text-shadow:0 0 1px rgba(238,235,227,.5)}
+.pz-fecha{font-size:clamp(1.3rem, 2.4vw, 1.6rem);font-weight:500;color:#E9D9A6}
+.pz-lista{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+.pz-lista li{display:flex;align-items:baseline;gap:12px;font-size:clamp(1.35rem, 2.5vw, 1.75rem);line-height:1.2;font-weight:500;text-shadow:0 0 1px rgba(238,235,227,.45)}
+.pz-lista li b{font-weight:700;white-space:nowrap}
+.pz-lista li i{flex:1;min-width:20px;border-bottom:2px dotted rgba(238,235,227,.35);transform:translateY(-6px)}
+.pz-lista li span{text-align:right}
+.pz-pie{margin-top:26px;font-size:clamp(1.3rem, 2.3vw, 1.6rem);color:#E9D9A6;transform:rotate(-1.5deg);transform-origin:left}
+.pz-pie a{color:var(--tiza);text-underline-offset:5px;text-decoration-thickness:2px}
+/* la tiza escribe cada renglón cuando el pizarrón aparece */
+.js .pz-escribe{clip-path:inset(-10% 100% -10% 0);transition:clip-path .7s var(--ease-out)}
+.js .pizarron.in .pz-escribe{clip-path:inset(-10% -2% -10% 0)}
+@media (max-width:860px){.menu .wrap{grid-template-columns:1fr;gap:36px}.menu-side img{display:none}}
+@media (max-width:520px){
+  .pizarron{border-width:10px}
+  .pz-lista li{flex-wrap:wrap;gap:0 10px}
+  .pz-lista li i{display:none}
+  .pz-lista li span{text-align:left;width:100%;color:#D8D3C6}
+}
+
+/* ---------- tortas ---------- */
+.tortas{padding:0 0 112px}
+.tortas .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.tortas figure{margin:0;position:relative}
+.tortas figure img{width:100%;aspect-ratio:13/10;object-fit:cover;border-radius:20px}
+.checks{list-style:none;margin:28px 0 32px;padding:0;display:grid;gap:12px}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:17px}
+.checks svg{width:22px;height:22px;color:var(--dulce);margin-top:2px}
+@media (max-width:860px){.tortas .wrap{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- pan dulce ---------- */
+.pandulce{position:relative;isolation:isolate;color:#FFF8EE;padding:clamp(88px, 12vw, 150px) 0;overflow:hidden;background:#2A190E}
+.pandulce > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;object-position:65% 50%}
+.pandulce::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg, rgba(34,20,10,.9) 0%, rgba(34,20,10,.72) 38%, rgba(34,20,10,.1) 75%)}
+.pandulce .head h2{font-size:clamp(2.3rem, 5vw, 4rem)}
+.pandulce .head p{color:rgba(255,248,238,.86)}
+.faltan{display:inline-flex;align-items:baseline;gap:10px;margin-top:26px;font-weight:500;color:rgba(255,248,238,.9)}
+.faltan b{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem, 5vw, 3.6rem);line-height:1;color:var(--oro)}
+.pandulce .btn{margin-top:28px}
+.pandulce .btn-main{background:#FFF8EE;color:var(--dulce-deep);box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+@media (hover:hover) and (pointer:fine){.pandulce .btn-main:hover{background:#fff}}
+@media (max-width:700px){.pandulce::before{background:linear-gradient(180deg, rgba(34,20,10,.55) 0%, rgba(34,20,10,.88) 55%)}.pandulce{padding-top:200px}}
+
+/* ---------- catering y salón ---------- */
+.catering{padding:112px 0}
+.catering .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+.collage{position:relative;display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:end}
+.collage img{width:100%;object-fit:cover;border-radius:18px;box-shadow:0 30px 60px -36px rgba(43,29,20,.7)}
+.collage img:first-child{aspect-ratio:1/1}
+.collage img:last-child{aspect-ratio:34/60;margin-bottom:-36px}
+.catering .btn{margin-top:30px}
+@media (max-width:860px){.catering .wrap{grid-template-columns:1fr;gap:72px}.collage{order:2}}
+
+/* ---------- armá tu pedido: la bolsa de papel ---------- */
+.pedido{padding:40px 0 112px;background:var(--harina-2)}
+.pedido .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.pedido-text{position:sticky;top:calc(var(--header) + 32px)}
+.steps{list-style:none;counter-reset:paso;margin:34px 0 0;padding:0;display:grid;gap:20px}
+.steps li{counter-increment:paso;display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:start}
+.steps li::before{content:counter(paso);grid-row:span 2;width:44px;height:44px;border-radius:50%;background:var(--dulce);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:19px}
+.steps b{font-family:var(--display);font-weight:400;font-size:20px}
+.steps span{color:var(--muted)}
+.bolsa{position:relative;margin-top:16px;background:var(--kraft);color:var(--kraft-ink);border-radius:0 0 10px 10px;padding:56px clamp(20px, 3.4vw, 40px) 34px;display:grid;gap:22px;
+  background-image:linear-gradient(90deg, rgba(74,48,22,.09), transparent 7%, transparent 93%, rgba(74,48,22,.09)),
+                   linear-gradient(180deg, rgba(74,48,22,.12), transparent 30px);
+  box-shadow:0 2px 3px rgba(74,48,22,.15), 0 40px 70px -38px rgba(74,48,22,.7)}
+/* el borde dentado de la bolsa */
+.bolsa::before{content:"";position:absolute;left:0;right:0;top:-11px;height:12px;
+  background:linear-gradient(135deg, transparent 50%, var(--kraft) 50%) 0 0/16px 12px repeat-x, linear-gradient(225deg, transparent 50%, var(--kraft) 50%) 0 0/16px 12px repeat-x}
+.bolsa-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.bolsa-top b{display:block;font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1}
+.bolsa-top small{font-size:14px;color:#6B4C2A}
+.sello{width:78px;height:78px;border-radius:50%;object-fit:cover;flex:none;mix-blend-mode:multiply;filter:sepia(.6) contrast(1.1);opacity:.85;transform:rotate(-10deg);box-shadow:0 0 0 3px var(--kraft), 0 0 0 5px rgba(74,48,22,.5)}
+.bolsa fieldset{border:0;margin:0;padding:0;min-width:0}
+.bolsa legend,.bolsa .f > label{display:block;font-weight:600;font-size:14.5px;margin-bottom:8px;padding:0}
+.f{display:flex;flex-direction:column;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bolsa input[type=number],.bolsa input[type=date],.bolsa input[type=text],.bolsa select{height:48px;border-radius:10px;border:1.5px solid rgba(74,48,22,.25);background:#FBF5EA;padding:0 14px;font:inherit;color:var(--ink);width:100%;min-width:0}
+.bolsa input::placeholder{color:#8A6E50}
+.bolsa input:focus,.bolsa select:focus{outline:none;border-color:var(--dulce);box-shadow:0 0 0 3px rgba(142,79,34,.22)}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick label{cursor:pointer}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick span{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 17px;border-radius:999px;background:#FBF5EA;box-shadow:inset 0 0 0 1.5px rgba(74,48,22,.2);font-weight:500;font-size:15px;
+  transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out), padding .16s var(--ease-out)}
+.pick span svg{width:0;height:16px;opacity:0;transform:scale(.6);transition:opacity .16s ease, transform .2s var(--ease-out), width .16s var(--ease-out);margin-right:-8px}
+.pick input:checked + span{background:var(--dulce);color:#fff;box-shadow:none;padding-left:13px}
+.pick input:checked + span svg{width:16px;opacity:1;transform:none;margin-right:0}
+.pick input:focus-visible + span{outline:3px solid var(--dulce);outline-offset:2px}
+.pick label:active span{transform:scale(.97)}
+.otro{justify-self:start;height:44px;padding:0 18px;font-size:15px;background:#FBF5EA;color:var(--kraft-ink);box-shadow:inset 0 0 0 1.5px rgba(74,48,22,.3)}
+@media (hover:hover) and (pointer:fine){.otro:hover{box-shadow:inset 0 0 0 1.5px var(--kraft-ink)}}
+.otro svg{width:16px;height:16px}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.items:empty{display:none}
+.items li{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#FBF5EA;border-radius:10px;padding:8px 8px 8px 14px;font-weight:500;font-size:15px;
+  animation:item-entra .22s var(--ease-out)}
+.items button{flex:none;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:var(--kraft-ink);cursor:pointer;display:grid;place-items:center}
+.items button:hover{background:rgba(74,48,22,.1)}
+.items button svg{width:16px;height:16px}
+@keyframes item-entra{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.preview{background:#fff;border-radius:12px 12px 12px 4px;padding:14px 16px;box-shadow:0 1px 2px rgba(74,48,22,.15)}
+.preview small{display:block;font-size:13px;color:#7A5C3A;margin-bottom:6px}
+.preview p{white-space:pre-line;font-size:15px;color:var(--ink)}
+.bolsa .send{width:100%;height:58px;font-size:17px}
+.aviso{font-size:14px;color:#6B4C2A;margin-top:-8px}
+@media (max-width:860px){.pedido .wrap{grid-template-columns:1fr;gap:40px}.pedido-text{position:static}}
+@media (max-width:420px){.two:not(.keep){grid-template-columns:1fr}}
+
+/* ---------- dónde estamos ---------- */
+.visit{padding:112px 0}
+.visit .card{display:grid;grid-template-columns:1fr 1.1fr;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(43,29,20,.06), 0 30px 70px -40px rgba(43,29,20,.5)}
+.visit .info{padding:clamp(28px, 4vw, 52px)}
+.visit dl{margin:28px 0 32px;display:grid;gap:18px}
+.visit dt{font-size:14px;color:var(--muted)}
+.visit dd{margin:2px 0 0;font-weight:600;font-size:18px}
+.visit dd a{text-decoration:none}
+.visit iframe{width:100%;height:100%;min-height:400px;border:0;filter:saturate(.85) sepia(.08)}
+@media (max-width:860px){.visit .card{grid-template-columns:1fr}.visit iframe{min-height:300px}}
+
+footer{padding:36px 0 120px;color:var(--muted);font-size:14px;border-top:1px solid rgba(43,29,20,.08)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink);font-weight:600}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.6s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+/* dos ondas que salen cada tanto, como un llamado, y después descansan */
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 2.6s infinite}
+.wa::after{animation-delay:3s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(43,29,20,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero h1 span,.hero .lead,.hero .ctas,.where,.vidriera,.letras,.wa{animation:suave .4s ease both}
+  .empanado{animation:none;display:none}
+  .vidrio > img{animation:none}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .js .pz-escribe{clip-path:none;transition:none}
+  .items li{animation:none}
+  .producto img,.cartel{transition:none}
+}
+@keyframes suave{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="La Hispano Argentina, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>La Hispano Argentina<small>Panadería y confitería en Los Polvorines</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#mostrador">Mostrador</a><a href="#menu">Menú del día</a><a href="#tortas">Tortas</a><a href="#pan-dulce">Pan dulce</a><a href="#pedido">Armá tu pedido</a>
+    </nav>
+    <a class="btn btn-main" href="https://wa.me/5491158993342" target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuMovil"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menuMovil" aria-label="Menú">
+  <a href="#mostrador">Mostrador</a><a href="#menu">Menú del día</a><a href="#tortas">Tortas</a><a href="#pan-dulce">Pan dulce</a><a href="#catering">Catering y salón</a><a href="#pedido">Armá tu pedido</a><a href="#local">Dónde estamos</a>
+  <a class="btn btn-main" href="https://wa.me/5491158993342" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos por WhatsApp</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1><span>Lo de siempre,</span> <span>recién horneado.</span></h1>
+        <p class="lead">Panadería, confitería y cafetería en Los Polvorines desde 1987. Mirá el mostrador y encargá por WhatsApp.</p>
+        <div class="ctas">
+          <a class="btn btn-main" href="#pedido">Armá tu pedido</a>
+          <a class="btn btn-ghost" href="#menu">Menú del día</a>
+        </div>
+        <p class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Ing. Huergo 3453, Los Polvorines</p>
+      </div>
+      <div class="vidriera">
+        <div class="vidrio">
+          <img src="img/hero.jpg" alt="Café con leche y medialunas con azúcar impalpable" width="854" height="1067" fetchpriority="high">
+          <div class="empanado" aria-hidden="true"></div>
+          <svg class="letras" viewBox="0 0 412 532" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><path id="arcoPath" d="M 56 206 A 150 150 0 0 1 356 206"/></defs>
+            <text class="arco"><textPath href="#arcoPath" startOffset="50%" text-anchor="middle">LA HISPANO ARGENTINA</textPath></text>
+            <text class="sub" x="206" y="172" text-anchor="middle">Panadería, confitería</text>
+            <text class="sub" x="206" y="196" text-anchor="middle">y cafetería</text>
+            <text class="desde" x="206" y="508" text-anchor="middle">DESDE 1987</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mostrador" id="mostrador">
+    <div class="wrap">
+      <div class="head">
+        <h2>Hoy en el mostrador.</h2>
+        <p>Lo que sale de nuestro horno, con su cartelito. Tocá un producto y lo sumás a tu pedido.</p>
+      </div>
+      <div class="vitrina">
+        <div class="estante">
+          <a class="producto" href="#pedido" data-pedir="Pan"><img src="img/foto-03.jpg" alt="" width="96" height="96"><div><h3>Pan</h3><p>Para la mesa de todos los días.</p><span class="sumar"><svg aria-hidden="true"><use href="#plus"/></svg>Encargar</span></div><span class="cartel">Precio: <b>consultá</b></span></a>
+          <a class="producto" href="#pedido" data-pedir="Facturas"><img src="img/foto-07.jpg" alt="" width="96" height="96"><div><h3>Facturas</h3><p>Medialunas y facturas para el desayuno y la merienda.</p><span class="sumar"><svg aria-hidden="true"><use href="#plus"/></svg>Encargar</span></div><span class="cartel">Precio: <b>consultá</b></span></a>
+          <a class="producto" href="#pedido" data-pedir="Torta"><img src="img/foto-05.jpg" alt="" width="96" height="96"><div><h3>Tortas</h3><p>Para cumpleaños y festejos, por encargo.</p><span class="sumar"><svg aria-hidden="true"><use href="#plus"/></svg>Encargar</span></div><span class="cartel">Precio: <b>consultá</b></span></a>
+          <a class="producto" href="#pedido" data-pedir="Bombones"><img src="img/foto-06.jpg" alt="" width="96" height="96"><div><h3>Bombones</h3><p>Para regalar o para darte un gusto.</p><span class="sumar"><svg aria-hidden="true"><use href="#plus"/></svg>Encargar</span></div><span class="cartel">Precio: <b>consultá</b></span></a>
+          <a class="producto" href="#pedido" data-pedir="Masas y galletitas"><img src="img/foto-08.jpg" alt="" width="96" height="96"><div><h3>Masas y galletitas</h3><p>Para acompañar el mate o el café.</p><span class="sumar"><svg aria-hidden="true"><use href="#plus"/></svg>Encargar</span></div><span class="cartel">Precio: <b>consultá</b></span></a>
+          <a class="producto" href="#pedido" data-pedir="Budines"><img src="img/foto-04.jpg" alt="" width="96" height="96"><div><h3>Budines</h3><p>Y para las fiestas, pan dulce.</p><span class="sumar"><svg aria-hidden="true"><use href="#plus"/></svg>Encargar</span></div><span class="cartel">Precio: <b>consultá</b></span></a>
+        </div>
+      </div>
+      <div class="vitrina-pie">
+        <p>¿Buscás algo que no está acá? Preguntanos, seguro lo tenemos o lo hacemos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="menu-side">
+        <div class="head">
+          <h2>El menú del día, en el pizarrón.</h2>
+          <p>Fijate qué hay hoy antes de salir de casa, y si querés te lo guardamos.</p>
+        </div>
+        <a class="btn btn-main" id="menuWa" href="https://wa.me/5491158993342?text=Hola%20La%20Hispano!%20%C2%BFQu%C3%A9%20hay%20hoy%20en%20el%20men%C3%BA%20del%20d%C3%ADa%3F" target="_blank" rel="noopener">
+          <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Preguntar qué hay hoy
+        </a>
+        <img src="img/medialunas.jpg" alt="Medialunas doradas sobre una tabla de madera" loading="lazy" width="1100" height="619">
+      </div>
+      <div class="pizarron" id="pizarron">
+        <div class="pz-top pz-escribe">
+          <h3>Menú del día</h3>
+          <span class="pz-fecha" id="pzFecha">Hoy</span>
+        </div>
+        <ul class="pz-lista">
+          <li class="pz-escribe"><b>Desayunos y meriendas</b><i></i><span>café con medialunas</span></li>
+          <li class="pz-escribe"><b>Al mediodía</b><i></i><span>el plato del día</span></li>
+          <li class="pz-escribe"><b>Sándwiches</b><i></i><span>de miga y club</span></li>
+          <li class="pz-escribe"><b>Para la tarde</b><i></i><span>tortas y masas</span></li>
+        </ul>
+        <p class="pz-pie pz-escribe">¿Qué salió hoy? <a href="https://wa.me/5491158993342?text=Hola%20La%20Hispano!%20%C2%BFQu%C3%A9%20hay%20hoy%20en%20el%20men%C3%BA%20del%20d%C3%ADa%3F" target="_blank" rel="noopener">Preguntanos</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tortas" id="tortas">
+    <div class="wrap">
+      <figure>
+        <img src="img/torta.jpg" alt="Torta decorada con frutillas, merenguitos y chocolate en una vitrina" loading="lazy" width="1300" height="910">
+      </figure>
+      <div>
+        <div class="head">
+          <h2>Tortas para tu festejo.</h2>
+          <p>Cumpleaños, bautismos, aniversarios. Pasanos tres datos y te confirmamos por WhatsApp.</p>
+        </div>
+        <ul class="checks">
+          <li><svg aria-hidden="true"><use href="#check"/></svg><span>Para cuántas personas es.</span></li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg><span>El sabor y el relleno que te gustan.</span></li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg><span>El día que la pasás a buscar.</span></li>
+        </ul>
+        <a class="btn btn-main" href="#pedido" data-pedir="Torta">Encargar una torta</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pandulce" id="pan-dulce">
+    <img src="img/pan-dulce.jpg" alt="" loading="lazy" width="1600" height="1067">
+    <div class="wrap">
+      <div class="head">
+        <h2>Pan dulce para las fiestas.</h2>
+        <p>Reservalo con tiempo y retiralo el día que elijas. Así no te quedás sin el tuyo.</p>
+      </div>
+      <p class="faltan" id="faltan" hidden><b id="faltanN"></b><span id="faltanTxt">días para Nochebuena</span></p>
+      <div><a class="btn btn-main" href="#pedido" data-pedir="Pan dulce">Reservar pan dulce</a></div>
+    </div>
+  </section>
+
+  <section class="catering" id="catering">
+    <div class="wrap">
+      <div>
+        <div class="head">
+          <h2>Catering y salón de fiestas.</h2>
+          <p>Sándwiches de miga, pancitos rellenos y todo lo dulce para tu evento. Y si te falta el lugar, tenemos salón.</p>
+        </div>
+        <a class="btn btn-main" href="#pedido" data-pedir="Catering">Consultar por catering</a>
+      </div>
+      <div class="collage">
+        <img src="img/catering-pancitos.jpg" alt="Bandeja de pancitos con semillas rellenos de salame y queso" loading="lazy" width="640" height="640">
+        <img src="img/catering-miga.jpg" alt="Sándwiches de miga de jamón y queso" loading="lazy" width="340" height="600">
+      </div>
+    </div>
+  </section>
+
+  <section class="pedido" id="pedido">
+    <div class="wrap">
+      <div class="pedido-text">
+        <div class="head"><h2>Armá tu pedido.</h2>
+          <p>Elegí qué querés, cuánto y para cuándo. El mensaje te queda listo para mandar por WhatsApp.</p></div>
+        <ol class="steps">
+          <li><b>Elegí del mostrador</b><span>Podés sumar varios productos al mismo pedido.</span></li>
+          <li><b>Decinos para cuándo</b><span>El día y si pasás a la mañana o a la tarde.</span></li>
+          <li><b>Mandalo por WhatsApp</b><span>Te respondemos para confirmarlo.</span></li>
+        </ol>
+      </div>
+      <form class="bolsa" id="pedidoForm" novalidate>
+        <div class="bolsa-top"><div><b>Tu pedido</b><small>La Hispano Argentina, Ing. Huergo 3453</small></div><img class="sello" src="img/perfil.jpg" alt=""></div>
+        <fieldset class="f">
+          <legend>¿Qué querés encargar?</legend>
+          <div class="pick" id="productos">
+            <label><input type="radio" name="prod" value="Pan" checked><span><svg aria-hidden="true"><use href="#check"/></svg>Pan</span></label>
+            <label><input type="radio" name="prod" value="Facturas"><span><svg aria-hidden="true"><use href="#check"/></svg>Facturas</span></label>
+            <label><input type="radio" name="prod" value="Torta"><span><svg aria-hidden="true"><use href="#check"/></svg>Torta</span></label>
+            <label><input type="radio" name="prod" value="Masas y galletitas"><span><svg aria-hidden="true"><use href="#check"/></svg>Masas y galletitas</span></label>
+            <label><input type="radio" name="prod" value="Bombones"><span><svg aria-hidden="true"><use href="#check"/></svg>Bombones</span></label>
+            <label><input type="radio" name="prod" value="Budines"><span><svg aria-hidden="true"><use href="#check"/></svg>Budines</span></label>
+            <label><input type="radio" name="prod" value="Sándwiches de miga"><span><svg aria-hidden="true"><use href="#check"/></svg>Sándwiches de miga</span></label>
+            <label><input type="radio" name="prod" value="Pan dulce"><span><svg aria-hidden="true"><use href="#check"/></svg>Pan dulce</span></label>
+            <label><input type="radio" name="prod" value="Catering"><span><svg aria-hidden="true"><use href="#check"/></svg>Catering</span></label>
+          </div>
+        </fieldset>
+        <div class="two keep">
+          <div class="f"><label for="cant">Cantidad</label><input id="cant" type="number" min="0.5" max="999" step="0.5" value="1" inputmode="decimal"></div>
+          <div class="f"><label for="unidad">Medida</label>
+            <select id="unidad"><option value="kilos">Kilos</option><option value="docenas">Docenas</option><option value="unidades">Unidades</option><option value="personas">Personas</option></select></div>
+        </div>
+        <div class="f"><label for="detalle">Detalle (opcional)</label><input id="detalle" type="text" placeholder="Francés, de campo, lactal…"></div>
+        <button class="btn otro" type="button" id="sumarOtro"><svg aria-hidden="true"><use href="#plus"/></svg>Sumar otro producto</button>
+        <ul class="items" id="items" aria-label="Productos del pedido"></ul>
+        <div class="two">
+          <div class="f"><label for="fecha">¿Para qué día?</label><input id="fecha" type="date"></div>
+          <fieldset class="f">
+            <legend>¿A qué hora pasás?</legend>
+            <div class="pick">
+              <label><input type="radio" name="franja" value="a la mañana" checked><span><svg aria-hidden="true"><use href="#check"/></svg>Mañana</span></label>
+              <label><input type="radio" name="franja" value="a la tarde"><span><svg aria-hidden="true"><use href="#check"/></svg>Tarde</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="f"><label for="nombre">Tu nombre (opcional)</label><input id="nombre" type="text" autocomplete="given-name"></div>
+        <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><p id="pedidoPrev"></p></div>
+        <button class="btn btn-main send" type="submit"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Enviar pedido por WhatsApp</button>
+        <p class="aviso">Los precios y la disponibilidad te los confirmamos por WhatsApp.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="visit" id="local">
+    <div class="wrap">
+      <div class="card">
+        <div class="info">
+          <div class="head"><h2>Pasá a buscarlo.</h2></div>
+          <dl>
+            <div><dt>Dirección</dt><dd>Ing. Huergo 3453, Los Polvorines</dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5491158993342" target="_blank" rel="noopener">11 5899-3342</a></dd></div>
+            <div><dt>Horarios</dt><dd>Consultá por WhatsApp</dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://instagram.com/lahispanoarg" target="_blank" rel="noopener">@lahispanoarg</a></dd></div>
+          </dl>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ingeniero%20Huergo%203453%2C%20Los%20Polvorines" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        </div>
+        <iframe title="Mapa: La Hispano Argentina, Ing. Huergo 3453, Los Polvorines" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Ingeniero%20Huergo%203453%2C%20Los%20Polvorines%2C%20Buenos%20Aires&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>La Hispano Argentina. Panadería, confitería y cafetería en Los Polvorines desde 1987. <a href="https://instagram.com/lahispanoarg" target="_blank" rel="noopener">@lahispanoarg</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5491158993342" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 11 5899-3342">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>11 5899-3342</small></span>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+var WA = '5491158993342';
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  // Menú del celular
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menuMovil');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // La fecha de hoy, escrita en el pizarrón
+  var hoy = new Date();
+  var dia = hoy.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+  document.getElementById('pzFecha').textContent = dia.charAt(0).toUpperCase() + dia.slice(1).replace(',', '');
+
+  // Cuántos días faltan para Nochebuena (solo de octubre a diciembre)
+  var mes = hoy.getMonth();
+  if (mes >= 9 && mes <= 11) {
+    var noche = new Date(hoy.getFullYear(), 11, 24), base = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+    var n = Math.round((noche - base) / 86400000);
+    if (n > 0) {
+      document.getElementById('faltanN').textContent = n;
+      document.getElementById('faltanTxt').textContent = n === 1 ? 'día para Nochebuena' : 'días para Nochebuena';
+      document.getElementById('faltan').hidden = false;
+    }
+  }
+
+  var pz = document.getElementById('pizarron');
+  if (!('IntersectionObserver' in window)) { pz.classList.add('in'); return; }
+  // Encabezado con fondo cuando dejás la portada
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+
+  // La tiza escribe los renglones uno detrás de otro
+  pz.querySelectorAll('.pz-escribe').forEach(function (el, i) { el.style.transitionDelay = (i * 140) + 'ms'; });
+  var io = new IntersectionObserver(function (es) {
+    if (es[0].isIntersecting) { pz.classList.add('in'); io.disconnect(); }
+  }, { threshold: .35 });
+  io.observe(pz);
+})();
+
+// Armá tu pedido: arma el mensaje y lo abre en WhatsApp
+(function () {
+  var form = document.getElementById('pedidoForm'); if (!form) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var prev = $('pedidoPrev'), lista = $('items'), items = [];
+  var MEDIDAS = { kilos: ['kilo', 'kilos'], docenas: ['docena', 'docenas'], unidades: ['unidad', 'unidades'], personas: ['persona', 'personas'] };
+  var PROD = {
+    'Pan': { u: 'kilos', n: 1, ph: 'Francés, de campo, lactal…' },
+    'Facturas': { u: 'docenas', n: 1, ph: 'Mitad medialunas, mitad surtidas…' },
+    'Torta': { u: 'personas', n: 15, ph: 'Sabor, relleno, un nombre para escribir…' },
+    'Masas y galletitas': { u: 'kilos', n: 0.5, ph: 'Masas finas, secas, galletitas…' },
+    'Bombones': { u: 'unidades', n: 12, ph: 'Para regalar, en caja…' },
+    'Budines': { u: 'unidades', n: 1, ph: 'Sabor que te gusta…' },
+    'Sándwiches de miga': { u: 'docenas', n: 2, ph: 'Jamón y queso, surtidos…' },
+    'Pan dulce': { u: 'unidades', n: 1, ph: 'Con frutas, con chips, sin frutas…' },
+    'Catering': { u: 'personas', n: 30, ph: 'Tipo de evento, si necesitás el salón…' }
+  };
+  function val(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+  function num(n) { return String(n).replace('.', ','); }
+  function linea(it) {
+    var m = MEDIDAS[it.u], cant;
+    if (it.u === 'personas') cant = 'para ' + num(it.n) + ' ' + (it.n === 1 ? m[0] : m[1]);
+    else if (it.n === 0.5 && it.u === 'kilos') cant = 'medio kilo';
+    else if (it.n === 0.5 && it.u === 'docenas') cant = 'media docena';
+    else cant = num(it.n) + ' ' + (it.n === 1 ? m[0] : m[1]);
+    return it.p + ': ' + cant + (it.d ? ' (' + it.d + ')' : '');
+  }
+  function actual() {
+    return { p: val('prod'), n: Math.max(0.5, Math.round((parseFloat($('cant').value) || 1) * 2) / 2), u: $('unidad').value, d: $('detalle').value.trim() };
+  }
+  function fechaTxt() {
+    var v = $('fecha').value; if (!v) return '';
+    var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    return dias[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+  }
+  function texto() {
+    var todos = items.concat([actual()]);
+    var l = ['¡Hola La Hispano! Quiero hacer un pedido:'];
+    todos.forEach(function (it) { l.push('- ' + linea(it)); });
+    var f = fechaTxt();
+    l.push(f ? 'Lo paso a buscar el ' + f + ', ' + val('franja') + '.' : 'Lo paso a buscar ' + val('franja') + ', el día lo coordinamos.');
+    if ($('nombre').value.trim()) l.push('Soy ' + $('nombre').value.trim() + '.');
+    return l.join('\n');
+  }
+  function pintarItems() {
+    lista.innerHTML = '';
+    items.forEach(function (it, i) {
+      var li = document.createElement('li');
+      var s = document.createElement('span'); s.textContent = linea(it);
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Quitar ' + it.p);
+      b.innerHTML = '<svg aria-hidden="true"><use href="#x"/></svg>';
+      b.addEventListener('click', function () { items.splice(i, 1); pintarItems(); sync(); });
+      li.appendChild(s); li.appendChild(b); lista.appendChild(li);
+    });
+  }
+  function aplicarProducto() {
+    var c = PROD[val('prod')]; if (!c) return;
+    $('unidad').value = c.u; $('cant').value = c.n; $('detalle').placeholder = c.ph; $('detalle').value = '';
+  }
+  function sync() { prev.textContent = texto(); }
+  function elegir(p) {
+    var r = form.querySelector('input[name="prod"][value="' + p + '"]');
+    if (r) { r.checked = true; aplicarProducto(); sync(); }
+  }
+  // fecha mínima: hoy
+  var h = new Date(), mm = String(h.getMonth() + 1).padStart(2, '0'), dd = String(h.getDate()).padStart(2, '0');
+  $('fecha').min = h.getFullYear() + '-' + mm + '-' + dd;
+
+  form.addEventListener('change', function (e) { if (e.target.name === 'prod') aplicarProducto(); sync(); });
+  form.addEventListener('input', sync);
+  $('sumarOtro').addEventListener('click', function () {
+    items.push(actual()); pintarItems();
+    // pasa al siguiente producto para que no se repita el mismo
+    var radios = Array.prototype.slice.call(form.querySelectorAll('input[name="prod"]'));
+    var i = radios.findIndex(function (r) { return r.checked; });
+    var usados = items.map(function (it) { return it.p; });
+    for (var k = 1; k <= radios.length; k++) { var r = radios[(i + k) % radios.length]; if (usados.indexOf(r.value) === -1) { r.checked = true; break; } }
+    aplicarProducto(); sync();
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(texto()), '_blank', 'noopener');
+  });
+  document.querySelectorAll('[data-pedir]').forEach(function (a) {
+    a.addEventListener('click', function () { elegir(a.getAttribute('data-pedir')); });
+  });
+  aplicarProducto(); sync();
+})();
+</script>
+</body>
+</html>
