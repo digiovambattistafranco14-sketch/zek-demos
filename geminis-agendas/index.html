@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Géminis | Agendas y cuadernos personalizados</title>
+<meta name="description" content="Agendas 2027, agenda docente, perpetua, diario íntimo, cuadernos y libretas personalizadas. Mercado Pago y envíos a todo el país.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Géminis | Agendas y cuadernos personalizados">
+<meta property="og:description" content="Agendas 2027, docentes, perpetuas, diarios íntimos y libretas. Personalizadas, con Mercado Pago y envíos a todo el país.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/geminis-agendas/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/geminis-agendas/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FCF8FA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Figtree:wght@400;500;600;700&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<style>
+/* Concepto: la agenda misma. La portada abre la tapa y la hoja de "Datos personales" ya viene escrita con lo que es Géminis;
+   el catálogo son los separadores de colores; los tamaños van a escala (A5 sobre A4); lo que trae por dentro se tilda;
+   las fotos del taller van pegadas con cinta washi; el pedido se arma como una lista y sale por mensaje.
+   Bordes: papel 4-6px, botones en píldora, paneles 22px. */
+:root{
+  --hoja:#FCF8FA;       /* papel blanco rosado */
+  --hoja-2:#F4EAF0;
+  --tinta:#3A3145;      /* tinta ciruela */
+  --suave:#695E73;
+  --linea:#E8DCE6;      /* renglones */
+  --rosa:#F6C9D6;       /* los pasteles del logo */
+  --lavanda:#DCCFF2;
+  --celeste:#C6E0F3;
+  --menta:#CDEBDD;
+  --manteca:#F6E7B8;
+  --acento:#B23C68;     /* frambuesa: el único color de acción */
+  --acento-hondo:#962F56;
+  --boli:#34407A;       /* birome azul para lo escrito a mano */
+  --err:#B3261E;
+  --display:'Josefin Sans', 'Century Gothic', system-ui, sans-serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mano:'Reenie Beanie', 'Segoe Print', cursive;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--hoja);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:600;letter-spacing:-0.01em;text-wrap:balance}
+h2{font-size:clamp(34px, 4.6vw, 52px);line-height:1.05}
+p{margin:0}
+::selection{background:var(--rosa);color:var(--tinta)}
+:focus-visible{outline:3px solid var(--acento);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.lead{font-size:19px;color:var(--suave);max-width:52ch;margin-top:16px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ico{width:20px;height:20px;flex:none}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 24px;border:0;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-acento{background:var(--acento);color:#fff;box-shadow:0 10px 24px -12px rgba(150,47,86,.8)}
+.btn-linea{color:var(--tinta);background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1.5px rgba(58,49,69,.25)}
+@media (hover:hover) and (pointer:fine){
+  .btn-acento:hover{background:var(--acento-hondo)}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(252,248,250,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(58,49,69,.08), 0 10px 30px -18px rgba(58,49,69,.3)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 2px #fff, 0 4px 12px -4px rgba(58,49,69,.35)}
+.brand span{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.1;letter-spacing:.16em;text-transform:uppercase;padding-top:3px}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12.5px;color:var(--suave);letter-spacing:0;text-transform:none;margin-top:1px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(58,49,69,.06)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(58,49,69,.06);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--tinta);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:#fff;border-radius:18px;padding:10px;box-shadow:0 24px 60px -20px rgba(58,49,69,.45);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;visibility:hidden;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.sheet-menu a.item-m{display:block;padding:14px 16px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:22px;text-decoration:none}
+.sheet-menu a.item-m:active{background:var(--hoja-2)}
+.sheet-menu .btn{display:flex;margin-top:6px;width:100%}
+@media (max-width:900px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+@media (max-width:520px){:root{--header:64px}.brand img{width:40px;height:40px}}
+
+/* ---------- portada: la agenda se abre ---------- */
+.hero{position:relative;padding:calc(var(--header) + 40px) 0 80px;overflow:hidden;
+  background:radial-gradient(circle, #DCCBDA 1.1px, transparent 1.6px) 0 0/22px 22px, var(--hoja)}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(transparent, var(--hoja));pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);align-items:center;gap:32px;min-height:min(640px, calc(100dvh - var(--header) - 120px))}
+.hero h1{font-weight:600;font-size:clamp(52px, 6.3vw, 86px);line-height:.95;letter-spacing:.12em;text-transform:uppercase;margin-right:-.12em;padding-top:.08em}
+.hero .firma{display:block;font-family:var(--mano);font-size:clamp(34px, 4vw, 46px);line-height:1;color:var(--acento);transform:rotate(-3deg);transform-origin:left;margin:8px 0 0 4px}
+.hero .bajada{font-size:20px;color:var(--suave);max-width:31ch;margin-top:24px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-txt > *{animation:subir .7s var(--ease-out) both}
+.hero-txt > :nth-child(2){animation-delay:.08s}.hero-txt > :nth-child(3){animation-delay:.16s}.hero-txt > :nth-child(4){animation-delay:.24s}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.escena{display:grid;place-items:center;padding:10px 0}
+.libro{--W:min(290px, 22vw);--H:calc(var(--W) * 1.414);--L:calc(var(--W) * .15);
+  position:relative;width:calc(var(--W) * 2);height:var(--H);perspective:2400px;
+  animation:centrar 1.35s var(--ease-in-out) .9s both, aparecer-libro .6s var(--ease-out) both}
+@keyframes centrar{from{transform:translateX(-25%)}to{transform:none}}
+@keyframes aparecer-libro{from{opacity:0}to{opacity:1}}
+.libro::before{content:"";position:absolute;left:4%;right:2%;bottom:-18px;height:30px;border-radius:50%;background:radial-gradient(closest-side, rgba(58,49,69,.28), transparent);filter:blur(4px);
+  transform-origin:right center;animation:sombra 1.35s var(--ease-in-out) .9s both}
+@keyframes sombra{from{transform:scaleX(.52)}to{transform:none}}
+.pagina{position:absolute;left:50%;top:0;width:50%;height:100%;background:#fff;border-radius:2px 6px 6px 2px;z-index:1;
+  box-shadow:0 1px 2px rgba(58,49,69,.1), 0 26px 50px -28px rgba(58,49,69,.55);
+  padding:calc(var(--W) * .1) calc(var(--W) * .07) 0 calc(var(--W) * .13);
+  background-image:repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--L) - 1px), var(--linea) calc(var(--L) - 1px), var(--linea) var(--L));
+  background-position:0 calc(var(--W) * .1 + var(--L) * 1.6)}
+.pagina h2{font-family:var(--display);font-size:max(10px, calc(var(--W) * .048));font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acento);height:calc(var(--L) * 1.6);display:flex;align-items:center}
+.datos-p{list-style:none;margin:0;padding:0}
+.datos-p li{position:relative;height:var(--L);display:flex;align-items:flex-end;padding-bottom:calc(var(--L) * .06);white-space:nowrap}
+.datos-p .lab{position:absolute;left:0;top:calc(var(--L) * .07);font-size:max(8px, calc(var(--W) * .033));line-height:1;font-weight:600;color:#9A8FA3}
+.datos-p .val{font-family:var(--mano);font-size:calc(var(--L) * .7);line-height:1;color:var(--boli);padding-left:calc(var(--W) * .05);
+  clip-path:inset(-30% 100% -30% 0);animation:escribir .5s linear both;animation-delay:calc(2.05s + var(--i) * .16s)}
+@keyframes escribir{to{clip-path:inset(-30% -4% -30% 0)}}
+.tapa{position:absolute;left:50%;top:0;width:50%;height:100%;z-index:2;transform-origin:left center;transform-style:preserve-3d;
+  animation:abrir 1.35s var(--ease-in-out) .9s both}
+@keyframes abrir{from{transform:rotateY(0)}to{transform:rotateY(-174deg)}}
+.cara{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden;border-radius:2px 6px 6px 2px}
+.frente{background:#3F7E9C;box-shadow:0 26px 50px -28px rgba(58,49,69,.6)}
+.frente img{width:100%;height:100%;object-fit:cover}
+.frente::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg, rgba(0,0,0,.18), transparent 12%, transparent 80%, rgba(255,255,255,.12))}
+.dorso{transform:rotateY(180deg);border-radius:6px 2px 2px 6px;display:grid;place-items:center;
+  background:radial-gradient(circle, rgba(255,255,255,.7) 1.4px, transparent 2px) 0 0/16px 16px, var(--rosa);
+  box-shadow:inset -10px 0 18px -12px rgba(58,49,69,.35)}
+.dorso img{width:46%;border-radius:50%;background:#fff;box-shadow:0 0 0 calc(var(--W) * .02) #fff, 0 10px 24px -12px rgba(58,49,69,.5)}
+.espiral{position:absolute;left:50%;top:3.5%;bottom:3.5%;width:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+.espiral i{display:block;width:calc(var(--W) * .12);height:calc(var(--W) * .036);margin-left:calc(var(--W) * -.06);border-radius:50%;
+  border:max(2px, calc(var(--W) * .009)) solid #4A4152;border-left-color:#7A7083;box-shadow:0 1px 1px rgba(0,0,0,.15)}
+@media (max-width:900px){
+  .hero{padding-top:calc(var(--header) + 28px);padding-bottom:40px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px;min-height:0}
+  .hero .bajada{font-size:18px}
+  .libro{--W:min(46vw, 260px)}
+}
+@media (max-width:520px){
+  .hero .ctas .btn{flex:1 1 auto}
+}
+
+/* ---------- catálogo: separadores de colores ---------- */
+.catalogo{padding:72px 0 104px}
+.carpeta{margin-top:44px}
+.pestanas{display:flex;gap:6px;padding:0 10px;overflow-x:auto;scrollbar-width:none;position:relative;z-index:1}
+.pestanas::-webkit-scrollbar{display:none}
+.pestana{flex:none;height:54px;padding:0 22px;border:0;border-radius:14px 14px 0 0;background:var(--c);color:var(--tinta);cursor:pointer;
+  font:600 16px/1 var(--body);opacity:.62;transform:translateY(8px);transition:transform .2s var(--ease-out), opacity .2s ease}
+.pestana[aria-selected="true"]{opacity:1;transform:none}
+@media (hover:hover) and (pointer:fine){.pestana[aria-selected="false"]:hover{opacity:.85;transform:translateY(4px)}}
+.hoja-cat{position:relative;background:#fff;border-radius:6px;border-top:10px solid var(--c);padding:30px clamp(18px, 3.4vw, 44px) 36px;
+  box-shadow:0 1px 2px rgba(58,49,69,.08), 0 40px 80px -48px rgba(58,49,69,.45)}
+.hoja-cat[hidden]{display:none}
+.hoja-cat.entra{animation:hoja-entra .22s var(--ease-out)}
+@keyframes hoja-entra{from{opacity:.4}to{opacity:1}}
+.nota-mano{font-family:var(--mano);font-size:27px;line-height:1.1;color:var(--boli);max-width:40ch}
+.productos{display:grid;grid-template-columns:1fr 1fr;gap:30px 48px;margin:26px 0 0;padding:0;list-style:none}
+.prod{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:start}
+.prod .th{width:96px;height:96px;border-radius:6px;object-fit:cover;background:var(--hoja-2);box-shadow:0 1px 2px rgba(58,49,69,.12)}
+.th-tapa{display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.06em;color:var(--tinta);
+  background:radial-gradient(circle at 9px 50%, var(--tinta) 0 2.2px, transparent 2.8px) 0 0/100% 12px repeat-y, var(--c)}
+.prod .th.th-tapa,.item .th.th-tapa{background:radial-gradient(circle at 9px 50%, var(--tinta) 0 2.2px, transparent 2.8px) 0 0/100% 12px repeat-y, var(--c)}
+.th-tapa span{padding:4px 0 0 10px}
+.prod h3{font-size:22px;line-height:1.1;padding-top:3px}
+.prod p{font-size:15.5px;color:var(--suave);margin-top:6px;max-width:38ch}
+.prod .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px}
+.precio{font-size:14px;font-weight:600;color:var(--suave)}
+.chip{display:inline-block;font-size:13px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--hoja-2);color:var(--tinta)}
+@media (max-width:820px){
+  .productos{grid-template-columns:1fr;gap:28px}
+  .prod{grid-template-columns:80px 1fr;gap:14px}
+  .prod .th{width:80px;height:80px}
+}
+
+/* agregar: el botón se vuelve − cantidad + */
+.add{display:inline-grid;justify-items:start}
+.add > *{grid-area:1 / 1}
+.agregar{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;background:var(--acento);color:#fff;cursor:pointer;font:600 15px/1 var(--body);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s, background-color .2s ease}
+.agregar svg{width:18px;height:18px;flex:none}
+.agregar:active{transform:scale(.97)}
+.cant{display:inline-flex;align-items:center;height:44px;border-radius:999px;background:#fff;color:var(--acento);box-shadow:inset 0 0 0 1.5px var(--acento);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s}
+.cant button{width:44px;height:44px;flex:none;border:0;border-radius:50%;background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out), opacity .15s ease}
+.cant button svg{width:18px;height:18px}
+.cant button:active{transform:scale(.9)}
+.cant button:disabled{opacity:.35;cursor:default;transform:none}
+.cant output{min-width:2.2ch;text-align:center;font-weight:700;font-size:18px;color:var(--tinta);font-variant-numeric:tabular-nums}
+.add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.96);visibility:hidden;pointer-events:none;
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear .16s}
+@media (hover:hover) and (pointer:fine){
+  .agregar:hover{background:var(--acento-hondo)}
+  .cant button:not(:disabled):hover{background:rgba(178,60,104,.1)}
+}
+
+/* ---------- por dentro: la lista que se tilda ---------- */
+.dentro{padding:24px 0 112px}
+.dentro .wrap{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:72px;align-items:center}
+.collage{position:relative;height:560px}
+.foto{position:absolute;margin:0;background:#fff;padding:10px 10px 12px;border-radius:4px;box-shadow:0 2px 4px rgba(58,49,69,.1), 0 30px 60px -34px rgba(58,49,69,.55)}
+.foto img{width:100%;height:100%;object-fit:cover;border-radius:2px}
+.foto figcaption{font-family:var(--mano);font-size:24px;line-height:1.05;color:var(--boli);padding:8px 4px 0}
+.cinta{position:absolute;width:118px;height:32px;top:-14px;left:50%;margin-left:-59px;background:var(--rosa);opacity:.88;transform:rotate(-4deg);
+  clip-path:polygon(0 0, 100% 0, 96% 20%, 100% 40%, 96% 60%, 100% 80%, 96% 100%, 0 100%, 4% 80%, 0 60%, 4% 40%, 0 20%)}
+.f-2027{left:0;top:10px;width:62%;transform:rotate(-3deg)}
+.f-2027 .img{aspect-ratio:361/474}
+.f-impresora{right:0;bottom:0;width:46%;transform:rotate(4deg)}
+.f-impresora .img{aspect-ratio:361/440}
+.f-impresora .cinta{background:var(--celeste);transform:rotate(5deg)}
+.check{list-style:none;margin:30px 0 0;padding:0;
+  background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 51px, var(--linea) 51px, var(--linea) 52px)}
+.check li{display:flex;align-items:center;gap:14px;height:52px;font-size:19px;font-weight:500}
+.check svg{width:28px;height:28px;flex:none;overflow:visible}
+.check .caja{fill:none;stroke:#C9BCCB;stroke-width:1.6}
+.check .tilde{fill:none;stroke:var(--acento);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:32;stroke-dashoffset:0}
+.js .check:not(.in) .tilde{stroke-dashoffset:32}
+.js .check .tilde{transition:stroke-dashoffset .42s var(--ease-out);transition-delay:calc(var(--i) * 90ms)}
+.extras{margin-top:28px}
+.extras p{font-family:var(--mano);font-size:28px;color:var(--boli);line-height:1}
+.stickers{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.sticker{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;font-weight:600;font-size:15.5px;background:var(--c);box-shadow:0 1px 0 rgba(255,255,255,.8) inset, 0 6px 14px -8px rgba(58,49,69,.45)}
+.sticker:nth-child(1){transform:rotate(-2deg)}.sticker:nth-child(2){transform:rotate(1.5deg)}.sticker:nth-child(3){transform:rotate(-1deg)}
+@media (max-width:900px){
+  .dentro .wrap{grid-template-columns:1fr;gap:48px}
+  .collage{height:min(118vw, 520px);order:2}
+}
+
+/* ---------- tamaños a escala y anillados ---------- */
+.medida{padding:0 0 112px}
+.medida .grilla{display:grid;grid-template-columns:auto minmax(0, 1fr);gap:56px 72px;margin-top:44px;align-items:start}
+.escala{--mm:1.5px;position:relative;width:calc(210 * var(--mm));height:calc(297 * var(--mm))}
+.a4,.a5{position:absolute;border-radius:4px;padding:14px 16px;box-shadow:0 1px 2px rgba(58,49,69,.1), 0 24px 50px -30px rgba(58,49,69,.5)}
+.a4{inset:0;background:var(--lavanda)}
+.a5{left:0;bottom:0;width:calc(148 * var(--mm));height:calc(210 * var(--mm));background:var(--rosa);transform:rotate(-2deg);transform-origin:left bottom}
+.a4 b,.a5 b{display:block;font-family:var(--display);font-weight:700;font-size:44px;line-height:1;padding-top:6px}
+.a4 small,.a5 small{display:block;font-size:14px;font-weight:600;color:var(--suave)}
+.a4 .rot{position:absolute;right:16px;top:14px;text-align:right}
+.usos{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px}
+.usos h3{font-size:24px}
+.usos ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.usos li{display:flex;gap:10px;align-items:baseline;font-size:17px}
+.usos li::before{content:"";width:9px;height:9px;flex:none;border-radius:2px;background:var(--c);transform:translateY(-1px)}
+.anillados{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;padding-top:36px;margin-top:-8px;box-shadow:0 -1px 0 var(--linea)}
+.anillados h3{font-size:24px;margin-top:18px}
+.anillados p{color:var(--suave);font-size:16px;margin-top:6px}
+.muestra{display:flex;gap:7px;height:46px;align-items:center;padding:0 4px}
+.muestra i{display:block;width:13px;height:40px;border-radius:50%;border:3px solid var(--c);border-right-color:color-mix(in srgb, var(--c) 70%, #fff)}
+.muestra.doble{gap:9px}
+.muestra.doble i{width:14px;height:40px;border:0;border-radius:7px;background:linear-gradient(90deg, transparent 0 1px, var(--c) 1px 4px, transparent 4px 10px, var(--c) 10px 13px, transparent 13px)}
+@media (max-width:980px){
+  .medida .grilla{grid-template-columns:1fr;gap:40px}
+  .escala{--mm:1.2px;margin-inline:auto}
+  .anillados{grid-column:auto;margin-top:0}
+}
+@media (max-width:560px){
+  .escala{--mm:1.05px}
+  .a4 b,.a5 b{font-size:34px}
+  .usos,.anillados{grid-template-columns:1fr}
+}
+
+/* ---------- tu nombre en la tapa ---------- */
+.nombre-tapa{padding:0 0 112px}
+.banda{display:grid;grid-template-columns:auto minmax(0, 1fr);gap:clamp(32px, 6vw, 80px);align-items:center;background:var(--hoja-2);border-radius:22px;padding:clamp(28px, 5vw, 64px)}
+.mini-tapa{position:relative;width:236px;aspect-ratio:1/1.414;border-radius:3px 8px 8px 3px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 22px 0 34px;text-align:center;
+  background:radial-gradient(circle, rgba(255,255,255,.75) 1.5px, transparent 2.1px) 0 0/16px 16px, var(--celeste);
+  box-shadow:0 1px 2px rgba(58,49,69,.12), 0 34px 60px -30px rgba(58,49,69,.55);transform:rotate(-3deg)}
+.mini-tapa .anillos{position:absolute;left:-7px;top:12px;bottom:12px;display:flex;flex-direction:column;justify-content:space-between}
+.mini-tapa .anillos i{display:block;width:26px;height:8px;border-radius:50%;border:2px solid #4A4152;border-left-color:#7A7083}
+.mini-tapa .nom{font-family:var(--mano);font-size:58px;line-height:.9;color:var(--tinta);overflow-wrap:anywhere;max-width:100%}
+.mini-tapa .anio{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.3em;margin-top:12px;margin-right:-.3em;color:var(--acento)}
+.banda p{color:var(--suave);max-width:46ch;margin-top:14px}
+.campo-nombre{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:flex-end}
+.campo-nombre .f{flex:1 1 220px}
+.campo-nombre label{display:block;font-weight:600;font-size:14.5px;margin-bottom:8px}
+.campo-nombre input{width:100%;height:54px;border-radius:12px;border:1.5px solid rgba(58,49,69,.22);background:#fff;padding:0 16px;font:inherit;font-size:17px;color:var(--tinta);
+  transition:border-color .15s ease, box-shadow .15s ease}
+.campo-nombre input:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px rgba(178,60,104,.18)}
+.campo-nombre input::placeholder{color:#857A8E}
+.ok-nombre{font-size:14.5px;font-weight:600;color:var(--acento);margin-top:10px;min-height:22px}
+@media (max-width:760px){
+  .banda{grid-template-columns:1fr;justify-items:center;text-align:left}
+  .banda > div:last-child{justify-self:stretch}
+  .mini-tapa{width:200px}
+  .campo-nombre .btn{width:100%}
+}
+
+/* ---------- del taller: álbum con cinta washi ---------- */
+.taller{padding:0 0 112px}
+.album{columns:3 260px;column-gap:30px;margin-top:48px}
+.pega{position:relative;break-inside:avoid;padding-top:16px;margin:0 0 30px;transform:rotate(var(--r, 0deg))}
+.pega > .cinta{top:2px;z-index:1}
+.album .foto{position:relative;display:block}
+.album .foto img{height:auto}
+.pega:nth-child(3n+2) > .cinta{background:var(--lavanda);transform:rotate(3deg)}
+.pega:nth-child(3n) > .cinta{background:var(--menta);transform:rotate(-2deg)}
+.mensaje{position:relative;background:var(--manteca);border-radius:3px;padding:26px 22px 18px;box-shadow:0 2px 4px rgba(58,49,69,.08), 0 22px 40px -28px rgba(58,49,69,.5)}
+.mensaje blockquote{margin:0;font-family:var(--mano);font-size:31px;line-height:1.05;color:var(--tinta)}
+.mensaje small{display:block;margin-top:12px;font-size:13.5px;color:var(--suave)}
+@media (max-width:620px){.album{columns:2 150px;column-gap:16px}.pega{margin-bottom:22px}.foto figcaption{font-size:21px}.mensaje blockquote{font-size:26px}}
+
+/* ---------- cómo pedir + tu pedido ---------- */
+.pedir{padding:0 0 112px}
+.pedir .wrap{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:64px;align-items:start}
+.pasos{list-style:none;counter-reset:paso;margin:36px 0 0;padding:0;display:grid;gap:24px}
+.pasos li{counter-increment:paso;display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:start}
+.pasos li::before{content:counter(paso);grid-row:span 2;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mano);font-size:36px;line-height:1;color:var(--acento);box-shadow:inset 0 0 0 2px var(--acento);padding-top:4px}
+.pasos b{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.15;padding-top:4px}
+.pasos span{color:var(--suave);margin-top:4px}
+.tarjeta{position:relative;background:#fff;border-radius:6px;padding:28px clamp(20px, 3vw, 36px) 30px;display:grid;gap:20px;border-top:10px solid var(--rosa);
+  box-shadow:0 1px 2px rgba(58,49,69,.08), 0 40px 80px -46px rgba(58,49,69,.5)}
+.tarjeta .t-top b{display:block;font-family:var(--display);font-weight:600;font-size:30px;line-height:1.05}
+.tarjeta .t-top small{color:var(--suave);font-size:14.5px}
+.res-txt{color:var(--suave);max-width:42ch}
+.res-btn{width:100%;margin-top:18px}
+.res-lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.res-lista li{display:flex;align-items:center;gap:12px;font-weight:500}
+.res-lista img,.res-lista .th-tapa{width:44px;height:44px;border-radius:6px;object-fit:cover;flex:none;font-size:11px}
+.res-lista .th-tapa{background:radial-gradient(circle at 6px 50%, var(--tinta) 0 1.6px, transparent 2.2px) 0 0/100% 9px repeat-y, var(--c)}
+.res-lista .n{font-weight:700;font-size:18px;min-width:1.6ch;color:var(--acento)}
+@media (max-width:900px){.pedir .wrap{grid-template-columns:1fr;gap:44px}}
+
+footer{padding:36px 0 130px;color:var(--suave);font-size:14.5px;box-shadow:0 -1px 0 var(--linea)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--tinta);font-weight:600}
+
+/* ---------- botón flotante de contacto: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 3.2s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa .i-wa{display:none;fill:currentColor;width:34px;height:34px}
+.con-wa .wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.con-wa .wa .i-wa{display:block}.con-wa .wa .i-ig{display:none}
+/* dos ondas que salen cada tanto, como un llamado, y después descansan */
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 4.2s infinite}
+.con-wa .wa::before,.con-wa .wa::after{background:#25D366}
+.wa::after{animation-delay:4.6s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(58,49,69,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--suave)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+
+/* ---------- botón del pedido: flotante en compu, barra abajo en el celular ---------- */
+.badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--acento);color:#fff;
+  font:700 12.5px/22px var(--body);text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--hoja)}
+.cart-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 6px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:52px;height:52px;border:0;border-radius:50%;cursor:pointer;background:var(--tinta);color:#fff;display:grid;place-items:center;
+  box-shadow:0 3px 6px rgba(58,49,69,.2), 0 14px 30px -10px rgba(58,49,69,.6);
+  opacity:0;transform:translateY(10px) scale(.92);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s, background-color .2s ease}
+.cart-fab.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s, background-color .2s ease}
+.cart-fab svg{width:26px;height:26px}
+.cart-fab:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.cart-fab:hover{background:#2A2333}}
+.cart-bar{display:none}
+@media (max-width:640px){
+  .cart-fab{display:none}
+  .cart-bar{display:flex;position:fixed;left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 70px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+    height:58px;align-items:center;gap:10px;padding:0 12px 0 18px;border:0;border-radius:999px;cursor:pointer;background:var(--tinta);color:#fff;font:600 16px/1 var(--body);
+    box-shadow:0 3px 6px rgba(58,49,69,.2), 0 16px 34px -10px rgba(58,49,69,.6);
+    transform:translateY(calc(100% + 32px));visibility:hidden;transition:transform .26s var(--ease-out), visibility 0s linear .26s}
+  .cart-bar.on{transform:none;visibility:visible;transition:transform .26s var(--ease-out), visibility 0s}
+  .cart-bar:active{transform:scale(.98)}
+  .cart-bar svg{width:24px;height:24px;flex:none}
+  .cart-bar .badge{position:static;margin-left:auto;min-width:34px;height:34px;padding:0 10px;font-size:15px;line-height:34px;background:#fff;color:var(--tinta);box-shadow:none}
+}
+
+/* ---------- el panel del pedido: de costado en compu, hoja desde abajo en el celular ---------- */
+html.carrito-abierto{overflow:hidden}
+.carrito{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;overflow:hidden;color:var(--tinta)}
+.carrito::backdrop{background:transparent}
+.velo{position:absolute;inset:0;background:rgba(42,35,51,.45);opacity:0;transition:opacity .24s ease}
+.cajon{position:absolute;top:0;right:0;bottom:0;width:min(460px, 100%);display:flex;flex-direction:column;background:var(--hoja);border-radius:22px 0 0 22px;
+  box-shadow:-30px 0 60px -30px rgba(42,35,51,.5);transform:translateX(100%);transition:transform .3s var(--ease-drawer)}
+.carrito.open .velo{opacity:1}
+.carrito.open .cajon{transform:none}
+.cajon-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 14px 24px}
+.cajon-cab h2{font-size:34px;line-height:1}
+.cajon-sub{margin-top:6px;font-size:14px;color:var(--suave)}
+.cerrar{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--hoja-2);color:var(--tinta);display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out)}
+.cerrar svg{width:20px;height:20px}
+.cerrar:active{transform:scale(.92)}
+@media (hover:hover) and (pointer:fine){.cerrar:hover{background:#EADCE5}}
+.cajon-cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 24px 24px}
+.cajon-pie{padding:14px 20px max(16px, env(safe-area-inset-bottom)) 24px;background:var(--hoja);box-shadow:0 -1px 0 rgba(58,49,69,.1)}
+@media (max-width:640px){
+  .cajon{top:auto;left:0;width:100%;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);border-radius:22px 22px 0 0;
+    box-shadow:0 -30px 60px -30px rgba(42,35,51,.5);transform:translateY(100%)}
+  .cajon-cab{padding:20px 16px 12px 20px}
+  .cajon-cuerpo{padding:4px 16px 20px 20px}
+  .cajon-pie{padding-left:20px;padding-right:16px}
+}
+.vacio{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 0 8px}
+.vacio .nota-mano{font-size:30px}
+.vacio h3{font-size:26px;line-height:1.1}
+.vacio p{color:var(--suave);max-width:34ch}
+.vacio .btn{margin-top:10px}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:10px;
+  box-shadow:0 1px 2px rgba(58,49,69,.08);transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.item.sale{opacity:0;transform:translateX(16px)}
+.item .th{width:56px;height:56px;border-radius:8px;object-fit:cover;background:var(--hoja-2)}
+.item .th-tapa{font-size:12px}
+.item-txt{min-width:0}
+.item-txt b{display:block;font-family:var(--display);font-weight:600;font-size:17.5px;line-height:1.15}
+.quitar{margin-top:2px;min-height:30px;padding:0;border:0;background:none;color:var(--suave);font:500 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (hover:hover) and (pointer:fine){.quitar:hover{color:var(--tinta)}}
+.item .cant{height:40px;background:var(--hoja);box-shadow:none}
+.item .cant button{width:40px;height:40px}
+.item .cant output{font-size:16px}
+.vaciar{display:block;margin:12px 0 0 auto;min-height:32px;padding:0;border:0;background:none;color:var(--suave);font:500 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.datos{display:grid;gap:18px;margin-top:22px;padding-top:22px;box-shadow:0 -1px 0 rgba(58,49,69,.12)}
+.datos > h3{font-size:24px;line-height:1}
+.datos fieldset{border:0;margin:0;padding:0;min-width:0}
+.datos legend,.datos .f > label{display:block;font-weight:600;font-size:14.5px;color:var(--tinta);margin-bottom:8px;padding:0}
+.opc{font-weight:400;color:var(--suave)}
+.f{display:flex;flex-direction:column;min-width:0}
+.datos input[type=text],.datos input[type=tel],.datos input[type=date],.datos textarea{min-height:48px;border-radius:12px;border:1.5px solid rgba(58,49,69,.22);background:#fff;padding:0 14px;
+  font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+.datos textarea{padding:12px 14px;min-height:80px;resize:vertical;line-height:1.45}
+.datos input::placeholder,.datos textarea::placeholder{color:#857A8E}
+.datos input:focus,.datos textarea:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px rgba(178,60,104,.18)}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.13)}
+.err{color:var(--err);font-size:13.5px;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick label{cursor:pointer}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick span{display:inline-flex;align-items:center;height:42px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(58,49,69,.16);font-weight:500;font-size:15px;
+  transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
+.pick span svg{width:16px;height:16px;margin-right:7px;display:none}
+.pick input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
+.pick input:checked + span svg{display:block}
+.pick input:focus-visible + span{outline:3px solid var(--acento);outline-offset:2px}
+.pick label:active span{transform:scale(.97)}
+.datos .f-tapa input[type=text]{font-family:var(--mano);font-size:28px;color:var(--boli)}
+.prev{background:#fff;border-radius:14px;padding:4px 16px}
+.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px;color:var(--acento)}
+.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:2px 0 14px}
+.enviar{width:100%;height:56px;font-size:17px;background:var(--acento);color:#fff;box-shadow:0 10px 24px -12px rgba(150,47,86,.8)}
+.con-wa .enviar{background:#25D366;color:#073B2A;box-shadow:0 10px 24px -12px rgba(7,94,84,.7)}
+@media (hover:hover) and (pointer:fine){.enviar:hover{background:var(--acento-hondo)}.con-wa .enviar:hover{background:#1EBE5A}}
+.nota{margin-top:8px;font-size:13.5px;color:var(--suave);text-align:center}
+.aviso{font-size:14.5px;color:var(--acento);font-weight:600;text-align:center}
+.aviso:not(:empty){margin-top:8px}
+.aviso.mal{color:var(--err)}
+
+/* ---------- menos movimiento: la agenda ya está abierta y escrita ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero-txt > *,.wa,.libro{animation:aparecer .4s ease both}
+  .libro::before{animation:none}
+  .tapa{animation:none;transform:rotateY(-174deg)}
+  .datos-p .val{animation:none;clip-path:none}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .js .check .tilde{transition:none;stroke-dashoffset:0}
+  .pestana{transition:opacity .2s ease}
+  .pestana,.pestana[aria-selected="false"]:hover{transform:none}
+  .hoja-cat.entra{animation:none}
+  .cajon{transform:none !important;opacity:0;transition:opacity .18s ease}
+  .carrito.open .cajon{opacity:1}
+  .add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar,.cart-fab,.item.sale{transform:none}
+  .cart-fab.on{transform:none}
+  .cart-bar,.cart-bar.on{transform:none;opacity:0;transition:opacity .18s ease, visibility 0s linear .18s}
+  .cart-bar.on{opacity:1;transition:opacity .18s ease, visibility 0s}
+  .sheet-menu{transform:none}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="cruz" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="tilde" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="agenda" viewBox="0 0 24 24"><rect x="6" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 7h4M3.5 12h4M3.5 17h4M10.5 8h6M10.5 11.5h6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Géminis, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>Géminis<small>Agendas y cuadernos</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#agendas">Agendas</a><a href="#por-dentro">Por dentro</a><a href="#medidas">Tamaños</a><a href="#taller">Del taller</a><a href="#pedir">Cómo pedir</a>
+    </nav>
+    <a class="btn btn-acento" data-contacto href="https://ig.me/m/geminisagendas" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a class="item-m" href="#agendas">Agendas</a><a class="item-m" href="#por-dentro">Por dentro</a><a class="item-m" href="#medidas">Tamaños</a><a class="item-m" href="#taller">Del taller</a><a class="item-m" href="#pedir">Cómo pedir</a>
+  <a class="btn btn-acento" data-contacto href="https://ig.me/m/geminisagendas" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-txt">
+        <h1>Géminis</h1>
+        <span class="firma">agendas y cuadernitos</span>
+        <p class="bajada">Agendas, cuadernos y libretas personalizadas. Pagás con Mercado Pago y te las enviamos a todo el país.</p>
+        <div class="ctas">
+          <a class="btn btn-acento" href="#agendas">Ver agendas 2027</a>
+          <a class="btn btn-linea" data-contacto href="https://ig.me/m/geminisagendas" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+        </div>
+      </div>
+      <div class="escena">
+        <div class="libro">
+          <div class="pagina">
+            <h2>Datos personales</h2>
+            <ul class="datos-p">
+              <li style="--i:0"><span class="lab">Nombre</span><span class="val">Géminis</span></li>
+              <li style="--i:1"><span class="lab">Hacemos</span><span class="val">agendas y cuadernos</span></li>
+              <li style="--i:2"><span class="lab">Tapa</span><span class="val">con tu nombre</span></li>
+              <li style="--i:3"><span class="lab">Pago</span><span class="val">Mercado Pago</span></li>
+              <li style="--i:4"><span class="lab">Envíos</span><span class="val">a todo el país</span></li>
+              <li style="--i:5"><span class="lab">Instagram</span><span class="val">@geminisagendas</span></li>
+            </ul>
+          </div>
+          <div class="tapa" aria-hidden="true">
+            <div class="cara frente"><img src="img/tapa-magia.jpg" alt="" width="288" height="494" fetchpriority="high"></div>
+            <div class="cara dorso"><img src="img/perfil.jpg" alt=""></div>
+          </div>
+          <div class="espiral" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalogo" id="agendas">
+    <div class="wrap">
+      <h2>Elegí la tuya.</h2>
+      <p class="lead">Agendas 2027, cuadernos para docentes, libretas y regalos. Agregá lo que te guste y te pasamos el precio por mensaje.</p>
+
+      <div class="carpeta">
+        <div class="pestanas" role="tablist" aria-label="Rubros">
+          <button class="pestana" role="tab" id="t-agendas" aria-controls="p-agendas" aria-selected="true" style="--c:var(--rosa)">Agendas 2027</button>
+          <button class="pestana" role="tab" id="t-docentes" aria-controls="p-docentes" aria-selected="false" tabindex="-1" style="--c:var(--lavanda)">Para docentes</button>
+          <button class="pestana" role="tab" id="t-trabajo" aria-controls="p-trabajo" aria-selected="false" tabindex="-1" style="--c:var(--celeste)">Para tu trabajo</button>
+          <button class="pestana" role="tab" id="t-cuadernos" aria-controls="p-cuadernos" aria-selected="false" tabindex="-1" style="--c:var(--menta)">Cuadernos y libretas</button>
+          <button class="pestana" role="tab" id="t-regalos" aria-controls="p-regalos" aria-selected="false" tabindex="-1" style="--c:var(--manteca)">Para regalar</button>
+        </div>
+
+        <div class="hoja-cat" role="tabpanel" id="p-agendas" aria-labelledby="t-agendas" style="--c:var(--rosa)">
+          <p class="nota-mano">Las tres traen lo mismo por dentro. Elegí cómo te gusta ver tus días.</p>
+          <ul class="productos">
+            <li class="prod" data-item="diaria"><img class="th" src="img/pagina-2027.jpg" alt="Página de calendario 2027 de una agenda Géminis" loading="lazy">
+              <div><h3>Agenda 2027 diaria</h3><p>Un día por hoja, con espacio para escribir todas tus actividades.</p>
+              <div class="meta"><span class="chip">A5</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="diaria"></div></div></div></li>
+            <li class="prod" data-item="dos-dias"><img class="th" src="img/tapa-pinceladas.jpg" alt="Agenda 2027 con tapa de pinceladas de colores" loading="lazy">
+              <div><h3>Agenda 2027 dos días por hoja</h3><p>Dos días en cada hoja, con lugar de sobra para anotar tu día.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="dos-dias"></div></div></div></li>
+            <li class="prod" data-item="semana"><img class="th" src="img/tapa-dado.jpg" alt="Agenda 2027 con tapa de un dado azul" loading="lazy">
+              <div><h3>Agenda 2027 semana a la vista</h3><p>Abrís y tenés los 7 días juntos. En diseño vertical u horizontal.</p>
+              <div class="meta"><span class="chip">A5</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="semana"></div></div></div></li>
+            <li class="prod" data-item="perpetua"><span class="th th-tapa" style="--c:var(--rosa)"><span>∞</span></span>
+              <div><h3>Agenda perpetua</h3><p>Sin año impreso: la empezás cuando quieras.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="perpetua"></div></div></div></li>
+            <li class="prod" data-item="planner"><img class="th" src="img/planner-mensual.jpg" alt="Hojas de un planner mensual" loading="lazy">
+              <div><h3>Planner mensual</h3><p>Todo el mes de un vistazo, para planificar.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="planner"></div></div></div></li>
+          </ul>
+        </div>
+
+        <div class="hoja-cat" role="tabpanel" id="p-docentes" aria-labelledby="t-docentes" style="--c:var(--lavanda)" hidden>
+          <p class="nota-mano">Para el aula, la preceptoría y la dirección.</p>
+          <ul class="productos">
+            <li class="prod" data-item="agenda-docente"><span class="th th-tapa" style="--c:var(--lavanda)"><span>Profe</span></span>
+              <div><h3>Agenda docente</h3><p>Para organizar tu año escolar.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="agenda-docente"></div></div></div></li>
+            <li class="prod" data-item="cuaderno-docente"><span class="th th-tapa" style="--c:var(--lavanda)"><span>A4</span></span>
+              <div><h3>Cuaderno docente</h3><p>Tamaño A4.</p>
+              <div class="meta"><span class="chip">A4</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="cuaderno-docente"></div></div></div></li>
+            <li class="prod" data-item="cuaderno-profes"><span class="th th-tapa" style="--c:var(--lavanda)"><span>A4</span></span>
+              <div><h3>Cuaderno para profes</h3><p>Tamaño A4.</p>
+              <div class="meta"><span class="chip">A4</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="cuaderno-profes"></div></div></div></li>
+            <li class="prod" data-item="preceptores"><span class="th th-tapa" style="--c:var(--lavanda)"><span>A4</span></span>
+              <div><h3>Cuaderno para preceptores</h3><p>Tamaño A4.</p>
+              <div class="meta"><span class="chip">A4</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="preceptores"></div></div></div></li>
+            <li class="prod" data-item="directivos"><span class="th th-tapa" style="--c:var(--lavanda)"><span>A5</span></span>
+              <div><h3>Agenda directivos</h3><p>Tamaño A5.</p>
+              <div class="meta"><span class="chip">A5</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="directivos"></div></div></div></li>
+            <li class="prod" data-item="eoe"><img class="th" src="img/agenda-eoe.jpg" alt="Agenda E.O.E. y planners de Géminis" loading="lazy">
+              <div><h3>Agenda E.O.E.</h3><p>Para equipos de orientación escolar.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="eoe"></div></div></div></li>
+          </ul>
+        </div>
+
+        <div class="hoja-cat" role="tabpanel" id="p-trabajo" aria-labelledby="t-trabajo" style="--c:var(--celeste)" hidden>
+          <p class="nota-mano">Agendas pensadas para lo que hacés.</p>
+          <ul class="productos">
+            <li class="prod" data-item="emprendedor"><span class="th th-tapa" style="--c:var(--celeste)"><span>A5</span></span>
+              <div><h3>Agenda emprendedor/a</h3><p>Tamaño A5.</p>
+              <div class="meta"><span class="chip">A5</span><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="emprendedor"></div></div></div></li>
+            <li class="prod" data-item="odontologica"><img class="th" src="img/odontologica.jpg" alt="Tapa de la agenda odontológica" loading="lazy">
+              <div><h3>Agenda odontológica</h3><p>Agenda profesional para odontología.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="odontologica"></div></div></div></li>
+            <li class="prod" data-item="pasteleria"><img class="th" src="img/pasteleria.jpg" alt="Hoja de recetas de la agenda pastelería, con ingredientes y preparación" loading="lazy">
+              <div><h3>Agenda pastelería</h3><p>Con hojas para tus recetas: ingredientes, preparación y tiempos. Está en preparación.</p>
+              <div class="meta"><span class="precio">Consultá cuándo sale</span></div><div class="meta"><div class="add" data-item="pasteleria"></div></div></div></li>
+          </ul>
+        </div>
+
+        <div class="hoja-cat" role="tabpanel" id="p-cuadernos" aria-labelledby="t-cuadernos" style="--c:var(--menta)" hidden>
+          <p class="nota-mano">Para escribir, dibujar, pintar o anotar las jugadas.</p>
+          <ul class="productos">
+            <li class="prod" data-item="diario"><span class="th th-tapa" style="--c:var(--menta)"><span>Diario</span></span>
+              <div><h3>Diario íntimo</h3><p>Para escribir lo tuyo, día a día.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="diario"></div></div></div></li>
+            <li class="prod" data-item="libretas"><img class="th" src="img/libretas.jpg" alt="Dos libretas anilladas con tapas de flores y rayas" loading="lazy">
+              <div><h3>Libretas</h3><p>Distintos diseños y tamaños. Tapa dura anillada o tapa blanda encolada.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="libretas"></div></div></div></li>
+            <li class="prod" data-item="basquet"><img class="th" src="img/basquet.jpg" alt="Cuaderno de básquet con la cancha impresa" loading="lazy">
+              <div><h3>Cuaderno de básquet</h3><p>Con la cancha impresa para armar las jugadas.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="basquet"></div></div></div></li>
+            <li class="prod" data-item="pintar"><img class="th" src="img/libros-pintar.jpg" alt="Libros para pintar con dibujos para chicos" loading="lazy">
+              <div><h3>Libros para pintar</h3><p>Con dibujos para colorear, y pueden llevar el nombre en la tapa.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="pintar"></div></div></div></li>
+            <li class="prod" data-item="stickers"><img class="th" src="img/stickers.jpg" alt="Sticker ilustrado de una nena con sombrero" loading="lazy">
+              <div><h3>Stickers</h3><p>Para decorar tus agendas y cuadernos.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="stickers"></div></div></div></li>
+          </ul>
+        </div>
+
+        <div class="hoja-cat" role="tabpanel" id="p-regalos" aria-labelledby="t-regalos" style="--c:var(--manteca)" hidden>
+          <p class="nota-mano">Para regalar en fechas importantes, a tus clientes o a tu persona favorita.</p>
+          <ul class="productos">
+            <li class="prod" data-item="album"><img class="th" src="img/compartiendo-juntos.jpg" alt="Hoja del álbum Compartiendo Juntos" loading="lazy">
+              <div><h3>Álbum Compartiendo Juntos</h3><p>Para guardar momentos, fotos, anécdotas y planes con esa persona que querés. Tapa dura laminada.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="album"></div></div></div></li>
+            <li class="prod" data-item="personalizada"><img class="th" src="img/personalizada.jpg" alt="Agenda con el nombre de la clienta en la tapa" loading="lazy">
+              <div><h3>Agenda con tu nombre</h3><p>La tapa con tu nombre o el de quien la recibe.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="personalizada"></div></div></div></li>
+            <li class="prod" data-item="souvenir"><img class="th" src="img/libreta-amarilla.jpg" alt="Libreta amarilla con el logo de Géminis" loading="lazy">
+              <div><h3>Libretas para souvenir o empresas</h3><p>Con logo, dibujos o frases, en bolsitas individuales. Más de 20 unidades, pedilas con anticipación.</p>
+              <div class="meta"><span class="precio">Consultá el precio</span></div><div class="meta"><div class="add" data-item="souvenir"></div></div></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dentro" id="por-dentro">
+    <div class="wrap">
+      <div class="collage">
+        <figure class="foto f-2027"><span class="cinta" aria-hidden="true"></span><div class="img"><img src="img/pagina-2027.jpg" alt="Calendario 2027 impreso en una agenda anillada" loading="lazy"></div><figcaption>Agenda 2027</figcaption></figure>
+        <figure class="foto f-impresora"><span class="cinta" aria-hidden="true"></span><div class="img"><img src="img/impresora.jpg" alt="La impresora sacando las hojas de una agenda 2027" loading="lazy"></div><figcaption>El sonido que me gusta</figcaption></figure>
+      </div>
+      <div>
+        <h2>Todo lo que trae tu agenda 2027.</h2>
+        <ul class="check" id="check">
+          <li style="--i:0"><svg viewBox="0 0 28 28" aria-hidden="true"><rect class="caja" x="2" y="2" width="24" height="24" rx="5"/><path class="tilde" d="M7 14.5c2 1.6 3.4 3.4 4.6 5.6C14 14 17.6 9.4 23 5.5"/></svg>Hoja de datos personales</li>
+          <li style="--i:1"><svg viewBox="0 0 28 28" aria-hidden="true"><rect class="caja" x="2" y="2" width="24" height="24" rx="5"/><path class="tilde" d="M7 14.5c2 1.6 3.4 3.4 4.6 5.6C14 14 17.6 9.4 23 5.5"/></svg>Calendario anual 2027 y 2028</li>
+          <li style="--i:2"><svg viewBox="0 0 28 28" aria-hidden="true"><rect class="caja" x="2" y="2" width="24" height="24" rx="5"/><path class="tilde" d="M7 14.5c2 1.6 3.4 3.4 4.6 5.6C14 14 17.6 9.4 23 5.5"/></svg>Calendario mensual</li>
+          <li style="--i:3"><svg viewBox="0 0 28 28" aria-hidden="true"><rect class="caja" x="2" y="2" width="24" height="24" rx="5"/><path class="tilde" d="M7 14.5c2 1.6 3.4 3.4 4.6 5.6C14 14 17.6 9.4 23 5.5"/></svg>Objetivos mensuales</li>
+          <li style="--i:4"><svg viewBox="0 0 28 28" aria-hidden="true"><rect class="caja" x="2" y="2" width="24" height="24" rx="5"/><path class="tilde" d="M7 14.5c2 1.6 3.4 3.4 4.6 5.6C14 14 17.6 9.4 23 5.5"/></svg>Planilla de gastos mensuales</li>
+          <li style="--i:5"><svg viewBox="0 0 28 28" aria-hidden="true"><rect class="caja" x="2" y="2" width="24" height="24" rx="5"/><path class="tilde" d="M7 14.5c2 1.6 3.4 3.4 4.6 5.6C14 14 17.6 9.4 23 5.5"/></svg>Hojas de notas</li>
+        </ul>
+        <div class="extras">
+          <p>y viene con...</p>
+          <div class="stickers">
+            <span class="sticker" style="--c:var(--rosa)">Tapa dura laminada</span>
+            <span class="sticker" style="--c:var(--celeste)">Sobre</span>
+            <span class="sticker" style="--c:var(--manteca)">Lapicera de regalo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="medida" id="medidas">
+    <div class="wrap">
+      <h2>A4 o A5, y el anillado que más te guste.</h2>
+      <div class="grilla">
+        <div class="escala" role="img" aria-label="Comparación a escala: una hoja A5 es la mitad de una A4">
+          <div class="a4"><div class="rot"><b>A4</b><small>21 x 29,7 cm</small></div></div>
+          <div class="a5"><b>A5</b><small>14,8 x 21 cm</small></div>
+        </div>
+        <div>
+          <div class="usos">
+            <div style="--c:var(--lavanda)">
+              <h3>En A4</h3>
+              <ul><li>Cuaderno docente</li><li>Cuaderno para profes</li><li>Cuaderno para preceptores</li></ul>
+            </div>
+            <div style="--c:var(--rosa)">
+              <h3>En A5</h3>
+              <ul><li>Agenda diaria y semana a la vista</li><li>Agenda emprendedor/a</li><li>Agenda directivos</li></ul>
+            </div>
+          </div>
+          <div class="anillados" style="margin-top:40px">
+            <div>
+              <div class="muestra" aria-hidden="true"><i style="--c:#F2A9BF"></i><i style="--c:#F2A9BF"></i><i style="--c:#C4B0EA"></i><i style="--c:#C4B0EA"></i><i style="--c:#9CC8EA"></i><i style="--c:#9CC8EA"></i><i style="--c:#A8DCC3"></i><i style="--c:#A8DCC3"></i></div>
+              <h3>Espiralado</h3>
+              <p>El clásico, en colores pastel.</p>
+            </div>
+            <div>
+              <div class="muestra doble" aria-hidden="true"><i style="--c:#4A4152"></i><i style="--c:#4A4152"></i><i style="--c:#B23C68"></i><i style="--c:#B23C68"></i><i style="--c:#9AA3AE"></i><i style="--c:#9AA3AE"></i><i style="--c:#3F7E9C"></i><i style="--c:#3F7E9C"></i></div>
+              <h3>Doble alambre</h3>
+              <p>En varios colores.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nombre-tapa" id="tu-nombre">
+    <div class="wrap">
+      <div class="banda">
+        <div class="mini-tapa" aria-hidden="true">
+          <div class="anillos"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="nom" id="nomTapa">Tu nombre</span>
+          <span class="anio">2027</span>
+        </div>
+        <div>
+          <h2>Con tu nombre en la tapa.</h2>
+          <p>Escribí el nombre y mirá cómo queda. Esta tapa es de muestra: el diseño final lo charlamos por mensaje.</p>
+          <form class="campo-nombre" id="formNombre">
+            <div class="f"><label for="nombrePrueba">Nombre para la tapa</label><input id="nombrePrueba" type="text" maxlength="22" autocomplete="off" placeholder="Ej: Vero"></div>
+            <button class="btn btn-acento" type="submit">Agregar al pedido</button>
+          </form>
+          <p class="ok-nombre" id="okNombre" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="taller" id="taller">
+    <div class="wrap">
+      <h2>Recién salidas de la impresora.</h2>
+      <p class="lead">Impresión, tapa y anillado: así van saliendo los pedidos.</p>
+      <div class="album">
+        <div class="pega" style="--r:-1.5deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/impresora.jpg" alt="Impresora sacando las hojas de una agenda" loading="lazy" width="361" height="640"><figcaption>Agenda 2027 en proceso, dos días por hoja</figcaption></figure></div>
+        <div class="pega" style="--r:1.5deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/tapa-dado.jpg" alt="Agenda 2027 con tapa de un dado azul" loading="lazy" width="361" height="530"><figcaption>Tapa dura laminada A5</figcaption></figure></div>
+        <div class="pega" style="--r:-2deg"><span class="cinta" aria-hidden="true"></span><div class="mensaje"><blockquote>“En verdad nunca había tenido una agenda de trabajo como esta.”</blockquote><small>Mensaje que nos llegó, de las historias de @geminisagendas</small></div></div>
+        <div class="pega" style="--r:2deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/libretas.jpg" alt="Dos libretas anilladas" loading="lazy" width="361" height="270"><figcaption>Libretas para regalar</figcaption></figure></div>
+        <div class="pega" style="--r:-1deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/pasteleria.jpg" alt="Hoja de recetas de la agenda pastelería" loading="lazy" width="361" height="640"><figcaption>Agenda pastelería en proceso</figcaption></figure></div>
+        <div class="pega" style="--r:1deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/tapa-pinceladas.jpg" alt="Agenda con tapa de pinceladas de colores" loading="lazy" width="361" height="476"><figcaption>Tapa dura anillada</figcaption></figure></div>
+        <div class="pega" style="--r:-2deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/compartiendo-juntos.jpg" alt="Álbum Compartiendo Juntos" loading="lazy" width="361" height="504"><figcaption>Álbum Compartiendo Juntos</figcaption></figure></div>
+        <div class="pega" style="--r:1.5deg"><span class="cinta" aria-hidden="true"></span><div class="mensaje"><blockquote>“Una genialidad mundial. Súper agradecida.”</blockquote><small>Mensaje de una clienta, de las historias de @geminisagendas</small></div></div>
+        <div class="pega" style="--r:1deg"><span class="cinta" aria-hidden="true"></span><figure class="foto"><img src="img/tapa-magia.jpg" alt="Agenda con la frase Todo lo que hacemos con amor se convierte en magia" loading="lazy" width="288" height="494"><figcaption>Todo lo que hacemos con amor se convierte en magia</figcaption></figure></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pedir" id="pedir">
+    <div class="wrap">
+      <div>
+        <h2>Cómo hacer tu pedido.</h2>
+        <ol class="pasos">
+          <li><b>Armá tu pedido acá</b><span>Agregá lo que quieras y mandanos la lista. Consultá el precio antes de reservar.</span></li>
+          <li><b>Reservá con el 50% de seña</b><span>Los pedidos de agendas y cuadernos se reservan con la mitad. Aceptamos Mercado Pago.</span></li>
+          <li><b>Te la enviamos</b><span>Hacemos envíos a todo el país. Libretas: más de 20 unidades, con anticipación.</span></li>
+        </ol>
+      </div>
+      <div class="tarjeta" id="resumen">
+        <div class="t-top"><b>Tu pedido</b><small>Géminis, agendas y cuadernos</small></div>
+        <div id="resVacio">
+          <p class="res-txt">Todavía no agregaste nada. Tocá <b>Agregar</b> en las agendas y cuadernos que te gusten.</p>
+          <a class="btn btn-acento res-btn" href="#agendas">Ver agendas 2027</a>
+        </div>
+        <div id="resLleno" hidden>
+          <ul class="res-lista" id="resLista"></ul>
+          <button class="btn btn-acento res-btn" type="button" data-abrir-carrito>Completar datos y enviar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Géminis. Agendas, cuadernos y libretas personalizadas. <a href="https://instagram.com/geminisagendas" target="_blank" rel="noopener">@geminisagendas</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" data-contacto href="https://ig.me/m/geminisagendas" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram" id="flotante">
+  <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
+  <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small id="tipSub">@geminisagendas, por mensaje directo</small></span>
+</a>
+
+<button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu pedido">
+  <svg aria-hidden="true"><use href="#agenda"/></svg><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver pedido">
+  <svg aria-hidden="true"><use href="#agenda"/></svg><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<dialog class="carrito" id="carrito" aria-labelledby="carritoTit">
+  <div class="velo" data-cerrar aria-hidden="true"></div>
+  <div class="cajon">
+    <div class="cajon-cab">
+      <div><h2 id="carritoTit">Tu pedido</h2><p class="cajon-sub" id="carritoSub">Géminis, agendas y cuadernos</p></div>
+      <button type="button" class="cerrar" id="cerrarCarrito" data-cerrar aria-label="Cerrar tu pedido"><svg aria-hidden="true"><use href="#cruz"/></svg></button>
+    </div>
+    <div class="cajon-cuerpo" id="cajonCuerpo">
+      <div class="vacio" id="vacio">
+        <p class="nota-mano">Tu lista está en blanco.</p>
+        <h3>Todavía no elegiste nada.</h3>
+        <p>Mirá las agendas 2027, los cuadernos para docentes y las libretas, y tocá Agregar en lo que te guste.</p>
+        <a class="btn btn-acento" href="#agendas" data-ir="agendas">Ver agendas 2027</a>
+      </div>
+      <div id="lleno" hidden>
+        <ul class="lista" id="lista" aria-label="Lo que elegiste"></ul>
+        <button type="button" class="vaciar" id="vaciar">Vaciar pedido</button>
+        <form class="datos" id="datos" novalidate>
+          <h3>Tus datos</h3>
+          <div class="f"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+          <div class="f"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 11 2345-6789" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+          <fieldset class="f">
+            <legend>¿Cómo lo recibís?</legend>
+            <div class="pick">
+              <label><input type="radio" name="entrega" value="envio" checked><span><svg aria-hidden="true"><use href="#tilde"/></svg>Envío</span></label>
+              <label><input type="radio" name="entrega" value="coordinar"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Lo coordinamos por mensaje</span></label>
+            </div>
+          </fieldset>
+          <div class="f" id="locWrap"><label for="loc">Localidad y provincia</label><input id="loc" name="loc" type="text" autocomplete="address-level2" placeholder="Ej: Mar del Plata, Buenos Aires" aria-describedby="err-loc"><small class="err" id="err-loc"></small></div>
+          <div class="f f-tapa"><label for="tapaNombre">Nombre para la tapa <span class="opc">(opcional)</span></label><input id="tapaNombre" name="tapaNombre" type="text" maxlength="40" placeholder="Ej: Vero"></div>
+          <fieldset class="f">
+            <legend>Anillado <span class="opc">(opcional)</span></legend>
+            <div class="pick" id="anillos">
+              <label><input type="radio" name="anillado" value="espiralado en color pastel"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Espiralado pastel</span></label>
+              <label><input type="radio" name="anillado" value="doble alambre"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Doble alambre</span></label>
+            </div>
+          </fieldset>
+          <div class="f"><label for="fecha">¿Para cuándo la necesitás? <span class="opc">(opcional)</span></label><input id="fecha" name="fecha" type="date"></div>
+          <div class="f"><label for="aclar">Aclaraciones <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Colores, frases, logo, cantidad de libretas…"></textarea></div>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+        </form>
+      </div>
+    </div>
+    <div class="cajon-pie" id="cajonPie" hidden>
+      <button class="btn enviar" type="submit" form="datos" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Enviar pedido por Instagram</span></button>
+      <p class="nota" id="nota">Copiamos tu pedido y abrimos el chat de @geminisagendas. Solo tenés que pegarlo.</p>
+      <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+// =====================================================================================
+//  WHATSAPP DE GÉMINIS: poné el número acá y TODA la página pasa a WhatsApp.
+//  Formato: 549 + característica + número, sin espacios, sin + ni guiones (ej. '5491123456789').
+//  Mientras esté vacío, el pedido se copia al portapapeles y se abre el chat de Instagram
+//  (@geminisagendas). Con el número, el carrito abre wa.me con el pedido ya escrito,
+//  y el botón flotante y "Escribinos" también van a WhatsApp.
+// =====================================================================================
+var WA = '';
+var IG_DM = 'https://ig.me/m/geminisagendas';
+document.documentElement.classList.add('js');
+if (WA) {
+  document.documentElement.classList.add('con-wa');
+  document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
+  document.querySelectorAll('.btn use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
+  document.getElementById('flotante').setAttribute('aria-label', 'Escribinos por WhatsApp');
+  document.getElementById('tipSub').textContent = 'Por WhatsApp';
+}
+
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  // Menú del celular
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Separadores del catálogo
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.pestana'));
+  function elegir(tab, foco) {
+    tabs.forEach(function (t) {
+      var on = t === tab, p = document.getElementById(t.getAttribute('aria-controls'));
+      t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1;
+      if (on && p.hidden) { p.hidden = false; p.classList.remove('entra'); void p.offsetWidth; p.classList.add('entra'); }
+      else if (!on) p.hidden = true;
+    });
+    if (foco) tab.focus();
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { elegir(t); });
+    t.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+      if (j === null) return;
+      e.preventDefault(); elegir(tabs[(j + tabs.length) % tabs.length], true);
+    });
+  });
+  window.elegirPestana = function (id) { var t = document.getElementById('t-' + id); if (t) elegir(t); };
+
+  if (!('IntersectionObserver' in window)) { document.getElementById('check').classList.add('in'); return; }
+  // Encabezado con fondo cuando dejás la portada
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  // La lista de "por dentro" se tilda cuando llegás
+  var chk = document.getElementById('check');
+  var io = new IntersectionObserver(function (es) {
+    if (es[0].isIntersecting) { chk.classList.add('in'); io.disconnect(); }
+  }, { threshold: .4 });
+  io.observe(chk);
+})();
+
+// Tu pedido: agregar desde el catálogo, revisar en el panel y mandarlo armado
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var html = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var calma = function () { return !!(mq && mq.matches); };
+  var CLAVE = 'geminis-pedido-v1';
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+
+  // El catálogo sale de la página: nombre, foto o tapita de color, y en qué separador está
+  var CAT = {};
+  document.querySelectorAll('.prod[data-item]').forEach(function (li) {
+    var img = li.querySelector('img.th'), tapa = li.querySelector('.th-tapa'), panel = li.closest('.hoja-cat');
+    CAT[li.getAttribute('data-item')] = {
+      nombre: li.querySelector('h3').textContent.trim(),
+      img: img ? img.getAttribute('src') : '',
+      tag: tapa ? tapa.textContent.trim() : '',
+      color: tapa ? tapa.style.getPropertyValue('--c') : '',
+      tab: panel ? panel.id.replace('p-', '') : 'agendas'
+    };
+  });
+
+  var estado = { items: [], datos: {} };
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && Array.isArray(g.items)) {
+      g.items.forEach(function (it) {
+        var n = it && Math.floor(+it.n);
+        if (it && CAT[it.id] && n > 0) estado.items.push({ id: it.id, n: Math.min(99, n) });
+      });
+      if (g.datos && typeof g.datos === 'object') estado.datos = g.datos;
+    }
+  } catch (e) {}
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {} }
+  function idx(id) { for (var i = 0; i < estado.items.length; i++) if (estado.items[i].id === id) return i; return -1; }
+  function cant(id) { var i = idx(id); return i < 0 ? 0 : estado.items[i].n; }
+  function total() { return estado.items.reduce(function (a, it) { return a + it.n; }, 0); }
+
+  var dlg = $('carrito'), form = $('datos'), lista = $('lista');
+  var fab = $('cartFab'), bar = $('cartBar');
+
+  var MAS = '<svg aria-hidden="true"><use href="#mas"/></svg>', MENOS = '<svg aria-hidden="true"><use href="#menos"/></svg>';
+  function stepper(n, etiqueta) {
+    return '<div class="cant" role="group" aria-label="' + etiqueta + '">' +
+      '<button type="button" data-d="-1" aria-label="Uno menos">' + MENOS + '</button>' +
+      '<output>' + n + '</output>' +
+      '<button type="button" data-d="1" aria-label="Uno más">' + MAS + '</button></div>';
+  }
+  document.querySelectorAll('.add[data-item]').forEach(function (box) {
+    var id = box.getAttribute('data-item'); if (!CAT[id]) return;
+    box.innerHTML = '<button type="button" class="agregar" aria-label="Agregar ' + CAT[id].nombre + ' al pedido">' + MAS + 'Agregar</button>' +
+      stepper(0, CAT[id].nombre + ' en tu pedido');
+  });
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function thumb(id, cls) {
+    var c = CAT[id];
+    return c.img ? '<img class="' + cls + '" src="' + c.img + '" alt="" loading="lazy">'
+      : '<span class="' + cls + ' th-tapa" style="--c:' + esc(c.color || 'var(--rosa)') + '"><span>' + esc(c.tag) + '</span></span>';
+  }
+
+  var totalAntes = total();
+  function render() {
+    var t = total();
+    document.querySelectorAll('.add[data-item]').forEach(function (box) {
+      var n = cant(box.getAttribute('data-item'));
+      box.setAttribute('data-n', String(n));
+      var o = box.querySelector('output'); if (o) o.textContent = n;
+      var menos = box.querySelector('[data-d="-1"]'); if (menos) menos.setAttribute('aria-label', n === 1 ? 'Quitar del pedido' : 'Uno menos');
+    });
+    document.querySelectorAll('[data-total]').forEach(function (b) { b.textContent = t; });
+    fab.classList.toggle('on', t > 0); bar.classList.toggle('on', t > 0);
+    fab.setAttribute('aria-label', 'Ver tu pedido (' + t + ')');
+    bar.setAttribute('aria-label', 'Ver pedido (' + t + ')');
+    if (t > totalAntes) pulsar(totalAntes > 0);
+    totalAntes = t;
+
+    $('vacio').hidden = t > 0; $('lleno').hidden = t === 0; $('cajonPie').hidden = t === 0;
+    $('carritoSub').textContent = t ? (t === 1 ? '1 cosa elegida' : t + ' cosas elegidas') : 'Géminis, agendas y cuadernos';
+    Array.prototype.forEach.call(lista.querySelectorAll('.item:not(.sale)'), function (li) {
+      if (!cant(li.getAttribute('data-item'))) {
+        li.classList.add('sale');
+        setTimeout(function () { li.remove(); }, calma() ? 0 : 180);
+      }
+    });
+    estado.items.forEach(function (it) {
+      var li = lista.querySelector('.item[data-item="' + it.id + '"]:not(.sale)');
+      if (!li) {
+        li = document.createElement('li'); li.className = 'item'; li.setAttribute('data-item', it.id);
+        li.innerHTML = thumb(it.id, 'th') + '<div class="item-txt"><b></b><button type="button" class="quitar" data-quitar>Quitar</button></div>' +
+          stepper(it.n, 'Cantidad de ' + esc(CAT[it.id].nombre));
+        lista.appendChild(li);
+      }
+      li.querySelector('b').textContent = CAT[it.id].nombre;
+      li.querySelector('output').textContent = it.n;
+      li.querySelector('[data-d="-1"]').disabled = it.n <= 1;
+      li.querySelector('[data-d="1"]').disabled = it.n >= 99;
+      li.querySelector('[data-quitar]').setAttribute('aria-label', 'Quitar ' + CAT[it.id].nombre + ' del pedido');
+    });
+
+    $('resVacio').hidden = t > 0; $('resLleno').hidden = t === 0;
+    $('resLista').innerHTML = estado.items.map(function (it) {
+      return '<li>' + thumb(it.id, '') + '<span class="n">' + it.n + '</span>' + esc(CAT[it.id].nombre) + '</li>';
+    }).join('');
+
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+
+  function pulsar(yaEstaba) {
+    if (calma()) return;
+    document.querySelectorAll('.badge[data-total]').forEach(function (b) {
+      if (b.animate) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)', offset: .35 }, { transform: 'scale(1)' }], { duration: 340, easing: EASE });
+    });
+    if (yaEstaba && fab.animate && getComputedStyle(fab).display !== 'none') {
+      fab.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.08)', offset: .35 }, { transform: 'scale(1)' }], { duration: 300, easing: EASE });
+    }
+  }
+  function anunciar(txt) {
+    var el = dlg.open ? $('aviso') : $('anuncio');
+    el.classList.remove('mal');
+    el.textContent = ''; setTimeout(function () { el.textContent = txt; }, 30);
+  }
+  function setCant(id, n, callado) {
+    n = Math.max(0, Math.min(99, n));
+    var i = idx(id);
+    if (i < 0 && n > 0) estado.items.push({ id: id, n: n });
+    else if (i >= 0 && n === 0) estado.items.splice(i, 1);
+    else if (i >= 0) estado.items[i].n = n;
+    render();
+    if (!callado) anunciar(n ? CAT[id].nombre + ': ' + n + ' en tu pedido.' : 'Quitaste ' + CAT[id].nombre + ' del pedido.');
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.agregar, [data-d], [data-quitar], [data-abrir-carrito], [data-cerrar], [data-ir], #vaciar');
+    if (!b) return;
+    var cont = b.closest('[data-item]'), id = cont && cont.getAttribute('data-item');
+    if (b.classList.contains('agregar')) {
+      setCant(id, 1);
+      var mas = cont.querySelector('[data-d="1"]'); if (mas) mas.focus();
+    } else if (b.hasAttribute('data-d')) {
+      var n = cant(id) + (+b.getAttribute('data-d'));
+      setCant(id, n);
+      if (n <= 0 && cont.classList.contains('add')) cont.querySelector('.agregar').focus();
+    } else if (b.hasAttribute('data-quitar')) {
+      var vecino = cont.nextElementSibling || cont.previousElementSibling;
+      setCant(id, 0);
+      if (vecino && !vecino.classList.contains('sale')) vecino.querySelector('[data-quitar]').focus();
+      else if (!total()) $('vacio').querySelector('a').focus();
+    } else if (b.id === 'vaciar') {
+      estado.items = []; render(); anunciar('Vaciaste el pedido.');
+      $('vacio').querySelector('a').focus();
+    } else if (b.hasAttribute('data-abrir-carrito')) {
+      abrir(b);
+    } else if (b.hasAttribute('data-cerrar')) {
+      cerrar();
+    } else if (b.hasAttribute('data-ir')) {
+      e.preventDefault();
+      cerrar(b.getAttribute('data-ir'));
+    }
+  });
+
+  var abridor = null, timer = 0, irA = null;
+  function abrir(desde) {
+    clearTimeout(timer);
+    abridor = desde || document.activeElement;
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      html.classList.add('carrito-abierto');
+      $('aviso').textContent = '';
+      $('cajonCuerpo').scrollTop = 0;
+      void dlg.offsetWidth;
+    }
+    dlg.scrollTop = 0;
+    dlg.classList.add('open');
+    $('cerrarCarrito').focus({ preventScroll: true });
+  }
+  // el foco no tiene que desplazar el panel mientras entra desde abajo
+  dlg.addEventListener('scroll', function () { if (dlg.scrollTop || dlg.scrollLeft) { dlg.scrollTop = 0; dlg.scrollLeft = 0; } });
+  function cerrar(destino) {
+    if (!dlg.open) return;
+    irA = destino || null;
+    dlg.classList.remove('open');
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (dlg.open && !dlg.classList.contains('open')) { if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); alCerrar(); } } }, calma() ? 180 : 300);
+  }
+  function alCerrar() {
+    dlg.classList.remove('open');
+    html.classList.remove('carrito-abierto');
+    if (irA) {
+      var sec = $(irA); irA = null;
+      if (sec) {
+        sec.scrollIntoView({ behavior: calma() ? 'auto' : 'smooth', block: 'start' });
+        var primero = sec.querySelector('.hoja-cat:not([hidden]) .agregar'); if (primero) primero.focus({ preventScroll: true });
+      }
+    } else if (abridor && document.contains(abridor) && abridor.getClientRects().length) {
+      abridor.focus({ preventScroll: true });
+    }
+  }
+  dlg.addEventListener('close', alCerrar);
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); cerrar(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); cerrar(); return; }
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(dlg.querySelectorAll('button, a[href], input, textarea, summary, [tabindex]:not([tabindex="-1"])'),
+      function (el) { return !el.disabled && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden'; });
+    if (!f.length) return;
+    var pri = f[0], ult = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); }
+    else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+  });
+
+  // ----- tus datos -----
+  var campos = ['nombre', 'tel', 'loc', 'tapaNombre', 'fecha', 'aclar'];
+  function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function leer() {
+    var d = {};
+    campos.forEach(function (c) { d[c] = $(c).value.replace(/\s+/g, ' ').trim(); });
+    d.entrega = radio('entrega') || 'envio'; d.anillado = radio('anillado');
+    return d;
+  }
+  function hoyISO() { var h = new Date(); return h.getFullYear() + '-' + ('0' + (h.getMonth() + 1)).slice(-2) + '-' + ('0' + h.getDate()).slice(-2); }
+  $('fecha').min = hoyISO();
+  (function restaurar() {
+    var d = estado.datos || {};
+    campos.forEach(function (c) { if (typeof d[c] === 'string') $(c).value = d[c]; });
+    if ($('fecha').value && $('fecha').value < $('fecha').min) $('fecha').value = '';
+    var en = form.querySelector('input[name="entrega"][value="' + (d.entrega === 'coordinar' ? 'coordinar' : 'envio') + '"]'); if (en) en.checked = true;
+    if (d.anillado) { var an = form.querySelector('input[name="anillado"][value="' + d.anillado + '"]'); if (an) an.checked = true; }
+  })();
+  function fechaCorta(v) {
+    var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    if (isNaN(d)) return '';
+    var dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    return dias[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+  }
+  function mensaje(borrador) {
+    var d = leer(), L = ['Hola, Géminis! Quiero consultar por este pedido:'];
+    estado.items.forEach(function (it) { L.push('• ' + it.n + ' x ' + CAT[it.id].nombre); });
+    if (d.tapaNombre) L.push('Nombre para la tapa: ' + d.tapaNombre);
+    if (d.anillado) L.push('Anillado: ' + d.anillado);
+    L.push('');
+    L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
+    L.push('Entrega: ' + (d.entrega === 'envio' ? 'envío a ' + (d.loc || (borrador ? '…' : '')) : 'lo coordinamos por mensaje'));
+    if (d.fecha && fechaCorta(d.fecha)) L.push('La necesito para el ' + fechaCorta(d.fecha));
+    if (d.aclar) L.push('Aclaraciones: ' + d.aclar);
+    L.push('', '¿Me pasan el precio? Sé que se reserva con el 50% de seña. Gracias!');
+    return L.join('\n');
+  }
+  function syncDatos() {
+    $('locWrap').hidden = radio('entrega') !== 'envio';
+    estado.datos = leer();
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+  form.addEventListener('input', function (e) {
+    var f = e.target.closest('.f');
+    if (f && f.classList.contains('error')) marcar(e.target, '');
+    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
+    syncDatos();
+  });
+  form.addEventListener('change', syncDatos);
+  // el anillado se puede destildar tocándolo de nuevo
+  var anPrev = form.querySelector('input[name="anillado"]:checked');
+  $('anillos').addEventListener('click', function (e) {
+    var r = e.target.closest('input[name="anillado"]'); if (!r) return;
+    if (r === anPrev) { r.checked = false; anPrev = null; } else anPrev = r;
+    syncDatos();
+  });
+
+  function marcar(input, txt) {
+    var f = input.closest('.f'), err = $('err-' + input.id);
+    f.classList.toggle('error', !!txt);
+    if (txt) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    if (err) err.textContent = txt;
+  }
+  function validar() {
+    var malos = [], d = leer();
+    var chequeo = [
+      ['nombre', d.nombre ? '' : 'Poné tu nombre así sabemos de quién es el pedido.'],
+      ['tel', !d.tel ? 'Poné tu teléfono para que te pasemos el precio.'
+        : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : ''],
+      ['loc', d.entrega === 'envio' && !d.loc ? 'Poné la localidad y la provincia adonde va el envío.' : '']
+    ];
+    chequeo.forEach(function (c) { marcar($(c[0]), c[1]); if (c[1]) malos.push($(c[0])); });
+    return malos;
+  }
+
+  // ----- tu nombre en la tapa (sección de muestra) -----
+  var nomIn = $('nombrePrueba'), nomTapa = $('nomTapa');
+  if (estado.datos.tapaNombre) nomIn.value = estado.datos.tapaNombre;
+  function pintarNombre() { nomTapa.textContent = nomIn.value.trim() || 'Tu nombre'; }
+  nomIn.addEventListener('input', function () { pintarNombre(); $('okNombre').textContent = ''; });
+  pintarNombre();
+  $('formNombre').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = nomIn.value.replace(/\s+/g, ' ').trim();
+    if (!v) { $('okNombre').textContent = 'Escribí un nombre para la tapa.'; nomIn.focus(); return; }
+    $('tapaNombre').value = v;
+    if (!cant('personalizada')) setCant('personalizada', 1, true); else render();
+    syncDatos();
+    $('okNombre').textContent = 'Listo: sumamos una agenda con "' + v + '" a tu pedido.';
+  });
+
+  // ----- enviar -----
+  var envBtn = $('enviar');
+  if (WA) {
+    envBtn.querySelector('use').setAttribute('href', '#wa');
+    envBtn.querySelector('span').textContent = 'Enviar pedido por WhatsApp';
+    $('nota').textContent = 'Se abre WhatsApp con tu pedido escrito. Solo falta tocar enviar.';
+  }
+  function abrirLink(url) {
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    dlg.appendChild(a); a.click(); a.remove();
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      dlg.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!total()) return;
+    var aviso = $('aviso');
+    var malos = validar();
+    if (malos.length) {
+      aviso.classList.add('mal');
+      aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.';
+      malos[0].focus();
+      return;
+    }
+    aviso.classList.remove('mal');
+    var msg = mensaje(false);
+    if (WA) {
+      abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg));
+      aviso.textContent = 'Abrimos WhatsApp con tu pedido.';
+      return;
+    }
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu pedido: pegalo en el chat.';
+      else { aviso.textContent = 'No pudimos copiarlo solo: copialo de "Ver cómo llega el mensaje" y pegalo en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
+  });
+
+  render();
+  syncDatos();
+})();
+</script>
+</body>
+</html>
