@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Paraíso Terra | Espacio natural para eventos y bienestar en Paraná</title>
+<meta name="description" content="Un espacio natural en Paraná, Entre Ríos, para retiros, talleres y celebraciones. Conectá con la naturaleza y con tu esencia.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paraíso Terra | Espacio natural en Paraná">
+<meta property="og:description" content="Retiros, talleres y celebraciones en un parque con árboles, quincho y pileta. Una experiencia mágica en Paraná, Entre Ríos.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/paraiso-terra/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/paraiso-terra/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1E3257">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/foto-08.jpg">
+<style>
+/* Concepto: un día en el parque de Paraíso Terra. La portada amanece (la foto se abre en un arco mientras sale el sol),
+   la página atardece mientras bajás y en las celebraciones ya es de noche. Colores del ave del paraíso de su logo:
+   el naranja de la flor y el azul de sus destacados, sobre el verde del parque. */
+:root{
+  --rocio:#E7ECDD;      /* la mañana en el parque */
+  --rocio-2:#DCE3CF;
+  --monte:#22291D;      /* texto: verde de monte muy oscuro */
+  --musgo:#4C5940;      /* texto secundario */
+  --salvia:#5E7148;
+  --tierra:#7A4A2A;     /* el marrón del sello */
+  --atardecer:#F0D8B6;
+  --noche:#1E3257;      /* el azul de sus destacados */
+  --noche-2:#172745;
+  --luna:#EEF1E6;       /* texto claro de noche */
+  --flor:#EE8130;       /* naranja del ave del paraíso: el único acento */
+  --display:'Young Serif', Georgia, serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--rocio);color:var(--monte);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-0.015em;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--flor);color:var(--monte)}
+:focus-visible{outline:3px solid var(--flor);outline-offset:3px;border-radius:8px}
+section[id]{scroll-margin-top:calc(var(--header) + 8px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+
+/* ---------- botones (todos en píldora) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:0;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-noche{background:var(--noche);color:#fff;box-shadow:0 12px 26px -14px rgba(30,50,87,.9)}
+.btn-linea{color:var(--monte);box-shadow:inset 0 0 0 1.5px rgba(34,41,29,.28)}
+.btn-flor{background:var(--flor);color:var(--monte);box-shadow:0 14px 30px -14px rgba(238,129,48,.8)}
+@media (hover:hover) and (pointer:fine){
+  .btn-noche:hover{background:var(--noche-2)}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--monte)}
+  .btn-flor:hover{background:#F39147}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(231,236,221,.82);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(34,41,29,.08), 0 10px 30px -18px rgba(34,41,29,.35)}
+.top.dark{background:rgba(23,39,69,.78);color:var(--luna);box-shadow:0 1px 0 rgba(255,255,255,.06), 0 10px 30px -18px rgba(0,0,0,.6)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.7), 0 4px 12px -4px rgba(0,0,0,.35)}
+.brand span{font-family:var(--display);font-size:18px;line-height:1.1}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12.5px;opacity:.75;margin-top:2px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(127,140,110,.16)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.top.dark .btn-noche{background:var(--flor);color:var(--monte)}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(127,140,110,.18);color:inherit;cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:#F7F9F2;border-radius:20px;padding:10px;box-shadow:0 24px 60px -20px rgba(23,39,69,.5);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:block;padding:14px 16px;border-radius:12px;font-family:var(--display);font-size:20px;text-decoration:none;color:var(--monte)}
+.sheet-menu a:active{background:var(--rocio)}
+.sheet-menu .btn{display:flex;margin-top:6px;font-family:var(--body);font-size:16px;color:#fff}
+@media (max-width:900px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+
+/* ---------- portada: amanece en el parque ---------- */
+.hero{padding:calc(var(--header) + 40px) 0 88px;overflow:hidden;min-height:min(100dvh, 940px);display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(3.2rem, 8vw, 6.6rem);line-height:.98;letter-spacing:-0.03em;color:var(--monte)}
+.hero h1 span{display:block}
+.hero .lead{margin-top:26px;font-size:clamp(17px, 1.6vw, 20px);color:var(--musgo);max-width:40ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.where{display:flex;align-items:center;gap:8px;margin-top:30px;font-weight:500;font-size:15px;color:var(--musgo)}
+.where svg{width:18px;height:18px;flex:none;color:var(--tierra)}
+.stage{position:relative;justify-self:end;width:min(470px, 100%);aspect-ratio:47/58}
+.sun{position:absolute;right:-6%;top:-2%;width:46%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 36%, #F7A85A 0%, var(--flor) 58%, #E36F22 100%);box-shadow:0 0 80px 10px rgba(238,129,48,.35)}
+.arch{position:absolute;left:0;bottom:0;width:86%;height:94%;border-radius:999px 999px 28px 28px;overflow:hidden;background:var(--rocio-2);
+  box-shadow:0 2px 4px rgba(34,41,29,.08), 0 40px 70px -36px rgba(34,41,29,.6)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:40% 60%}
+.seal{position:absolute;left:-18px;bottom:30px;width:96px;height:96px;border-radius:50%;box-shadow:0 0 0 4px var(--rocio), 0 14px 30px -12px rgba(34,41,29,.55)}
+/* el momento de la página */
+@keyframes amanecer{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes enfocar{from{transform:scale(1.16)}to{transform:scale(1)}}
+@keyframes sale-sol{from{opacity:0;transform:translateY(70%) scale(.92)}to{opacity:1;transform:none}}
+@keyframes subir{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes sello{from{opacity:0;transform:rotate(-24deg) scale(.9)}to{opacity:1;transform:none}}
+.sun{animation:sale-sol 1.9s var(--ease-out) .15s both}
+.arch{animation:amanecer 1.4s var(--ease-in-out) .35s both}
+.arch img{animation:enfocar 2.2s var(--ease-out) .35s both}
+.seal{animation:sello .7s var(--ease-out) 1.55s both}
+.hero h1 span{animation:subir .8s var(--ease-out) both}
+.hero h1 span:nth-child(1){animation-delay:.55s}
+.hero h1 span:nth-child(2){animation-delay:.65s}
+.hero .lead{animation:subir .8s var(--ease-out) .8s both}
+.hero .ctas{animation:subir .8s var(--ease-out) .9s both}
+.where{animation:subir .8s var(--ease-out) 1s both}
+@media (max-width:860px){
+  .hero{padding:calc(var(--header) + 20px) 0 64px;min-height:0}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .stage{order:-1;justify-self:center;width:min(300px, 74%)}
+  .hero h1{font-size:clamp(2.9rem, 13vw, 4rem)}
+  .hero .lead{margin-top:18px}
+  .hero .ctas{margin-top:26px}
+  .seal{width:76px;height:76px;left:-12px;bottom:22px}
+}
+
+/* ---------- el espacio ---------- */
+.space{padding:72px 0 120px}
+.space .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.space h2,.day h2,.plan h2,.where-sec h2{font-size:clamp(2.1rem, 4.4vw, 3.4rem);line-height:1.05}
+.space p.txt{margin-top:22px;font-size:18px;color:var(--musgo);max-width:46ch}
+.space .ig{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-weight:600;text-decoration-thickness:1.5px;text-underline-offset:4px;color:var(--tierra)}
+.ig svg{width:18px;height:18px}
+.rings{position:relative;height:440px}
+.ring{position:absolute;margin:0;text-align:center}
+.ring .ph{width:fit-content;margin-inline:auto;border-radius:50%;padding:5px;background:var(--rocio);box-shadow:0 0 0 2.5px var(--c, var(--salvia))}
+.ring img{width:var(--s);height:var(--s);border-radius:50%;object-fit:cover}
+.ring figcaption{margin-top:12px;font-weight:600;font-size:15px;color:var(--musgo)}
+.ring:nth-child(1){--s:136px;--c:var(--salvia);left:4%;top:8%}
+.ring:nth-child(2){--s:118px;--c:var(--tierra);left:44%;top:0}
+.ring:nth-child(3){--s:128px;--c:var(--noche);left:22%;top:52%}
+.ring:nth-child(4){--s:120px;--c:var(--flor);left:66%;top:42%}
+@media (max-width:860px){
+  .space{padding:40px 0 88px}
+  .space .wrap{grid-template-columns:1fr;gap:40px}
+  .rings{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;justify-items:center}
+  .ring{position:static}
+  .ring:nth-child(n){--s:min(132px, 36vw)}
+}
+
+/* ---------- encuentros: la tarde ---------- */
+.day{padding:24px 0 40px;background:linear-gradient(180deg, var(--rocio) 0%, var(--rocio) 22%, var(--atardecer) 100%)}
+.day .head{max-width:640px}
+.day .head p{margin-top:16px;font-size:18px;color:var(--musgo)}
+.row{display:grid;align-items:center;gap:56px;margin-top:80px}
+.row h3{font-size:clamp(1.8rem, 3.2vw, 2.5rem);line-height:1.08}
+.row p{margin-top:14px;font-size:17.5px;color:var(--musgo);max-width:44ch}
+.to-form{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;color:var(--noche);text-decoration-thickness:1.5px;text-underline-offset:4px}
+.retiros{grid-template-columns:.7fr 1.3fr}
+.retiros .pic{justify-self:center;width:min(300px, 100%);aspect-ratio:9/15;border-radius:160px 160px 22px 22px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(34,41,29,.6)}
+.talleres{grid-template-columns:1fr 1.15fr}
+.talleres .pic{border-radius:22px;overflow:hidden;aspect-ratio:1/1;max-width:560px;justify-self:end;width:100%;box-shadow:0 30px 60px -34px rgba(34,41,29,.6)}
+.pic img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){
+  .row{grid-template-columns:1fr;gap:28px;margin-top:64px}
+  .talleres .pic{order:-1;justify-self:stretch}
+  .retiros .pic{width:min(260px, 70%)}
+}
+/* se hace de noche */
+.dusk{height:clamp(140px, 20vw, 240px);background:linear-gradient(180deg, var(--atardecer) 0%, #D7A889 30%, #8F6C76 55%, #3C4A70 80%, var(--noche) 100%)}
+.night{background:var(--noche);color:var(--luna)}
+.celebrar{padding:8px 0 120px}
+.celebrar .pic{border-radius:22px;overflow:hidden;aspect-ratio:21/9;box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.celebrar .pic img{object-position:50% 35%}
+.celebrar .txt{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:end}
+.celebrar h3{font-size:clamp(1.8rem, 3.2vw, 2.5rem);line-height:1.08}
+.celebrar p{font-size:17.5px;color:rgba(238,241,230,.82);max-width:44ch}
+.celebrar .to-form{color:var(--flor)}
+@media (max-width:860px){.celebrar .pic{aspect-ratio:4/3}.celebrar .txt{grid-template-columns:1fr;gap:12px;margin-top:28px}}
+
+/* ---------- organizá tu encuentro ---------- */
+.plan{padding:40px 0 120px}
+.plan .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.plan .intro{position:sticky;top:calc(var(--header) + 32px)}
+.plan .intro p{margin-top:20px;font-size:18px;color:rgba(238,241,230,.82);max-width:40ch}
+.plan .who{display:flex;align-items:center;gap:14px;margin-top:32px;font-weight:500;color:var(--luna)}
+.plan .who img{width:56px;height:56px;border-radius:50%;box-shadow:0 0 0 3px rgba(238,241,230,.25)}
+.card{background:#F6F8F0;color:var(--monte);border-radius:24px;padding:clamp(22px, 3.4vw, 40px);box-shadow:0 40px 80px -40px rgba(0,0,0,.75)}
+.f{display:grid;gap:8px;margin:0 0 20px;border:0;padding:0;min-width:0}
+.f > label,.f legend{font-weight:600;font-size:15px;padding:0;margin-bottom:0}
+.f legend{margin-bottom:10px}
+.f input,.f textarea{width:100%;font:500 16px/1.4 var(--body);color:var(--monte);background:#fff;border:1.5px solid #C7CFBA;border-radius:12px;padding:13px 14px;transition:border-color .2s ease, box-shadow .2s ease}
+.f textarea{min-height:92px;resize:vertical}
+.f input::placeholder,.f textarea::placeholder{color:#6E7766}
+.f input:focus,.f textarea:focus{outline:0;border-color:var(--noche);box-shadow:0 0 0 3px rgba(30,50,87,.18)}
+.f .err{display:none;font-size:14px;font-weight:600;color:#A3361B}
+.f.bad input{border-color:#A3361B}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.pick{display:flex;flex-wrap:wrap;gap:10px}
+.pick label{position:relative;cursor:pointer}
+.pick input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.pick span{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border-radius:999px;font-weight:600;font-size:15.5px;background:#fff;box-shadow:inset 0 0 0 1.5px #C7CFBA;transition:background-color .18s ease, box-shadow .18s ease, color .18s ease}
+.pick span svg{width:16px;height:16px;display:none}
+.pick input:checked + span{background:var(--noche);color:#fff;box-shadow:none}
+.pick input:checked + span svg{display:block}
+.pick input:focus-visible + span{outline:3px solid var(--flor);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.pick label:hover span{box-shadow:inset 0 0 0 1.5px var(--musgo)}.pick label:hover input:checked + span{box-shadow:none}}
+.preview{margin:6px 0 20px;padding:16px 18px;border-radius:16px;background:var(--rocio)}
+.preview small{display:block;font-weight:600;font-size:13px;color:var(--musgo);margin-bottom:6px}
+.preview p{white-space:pre-line;font-size:15px;line-height:1.5}
+.send{width:100%;height:58px;background:#25D366;color:#073B2C;font-size:16.5px}
+@media (hover:hover) and (pointer:fine){.send:hover{background:#2FE072}}
+@media (max-width:860px){
+  .plan{padding:24px 0 96px}
+  .plan .wrap{grid-template-columns:1fr;gap:36px}
+  .plan .intro{position:static}
+}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+
+/* ---------- dónde estamos ---------- */
+.where-sec{padding:0 0 110px}
+.where-sec .box{border-top:1px solid rgba(238,241,230,.16);padding-top:72px;display:grid;grid-template-columns:1fr 1.2fr;gap:56px}
+.where-sec dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:30px 32px}
+.where-sec dt{font-size:14px;color:rgba(238,241,230,.65)}
+.where-sec dd{margin:4px 0 0;font-weight:600;font-size:19px}
+.where-sec dd a{text-decoration-thickness:1.5px;text-underline-offset:4px}
+.where-sec .btn{margin-top:34px}
+@media (max-width:860px){.where-sec .box{grid-template-columns:1fr;gap:32px;padding-top:56px}.where-sec dl{grid-template-columns:1fr}}
+
+footer{background:var(--noche-2);color:rgba(238,241,230,.72);padding:34px 0 120px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--luna);font-weight:600}
+
+/* ---------- aparece con calma al bajar ---------- */
+.js .calm{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease-out), transform .9s var(--ease-out)}
+.js .calm.in{opacity:1;transform:none}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.2s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 3.2s infinite}
+.wa::after{animation-delay:3.6s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--monte);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(34,41,29,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--musgo)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .sun,.arch,.seal,.hero h1 span,.hero .lead,.hero .ctas,.where,.wa{animation:aparecer .4s ease both}
+  .arch img{animation:none}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .js .calm{transform:none;transition:opacity .4s ease}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Paraíso Terra, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>Paraíso Terra<small>Espacio natural en Paraná</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#espacio">El espacio</a><a href="#encuentros">Encuentros</a><a href="#organiza">Organizá</a><a href="#donde">Dónde estamos</a>
+    </nav>
+    <a class="btn btn-noche" href="https://wa.me/5493434470315" target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a href="#espacio">El espacio</a><a href="#encuentros">Encuentros</a><a href="#organiza">Organizá tu encuentro</a><a href="#donde">Dónde estamos</a>
+  <a class="btn btn-noche" href="https://wa.me/5493434470315" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos por WhatsApp</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1><span>Paraíso</span><span>Terra</span></h1>
+        <p class="lead">Un espacio natural en Paraná para retiros, talleres y celebraciones. Conectá con la naturaleza y con tu esencia.</p>
+        <div class="ctas">
+          <a class="btn btn-noche" href="#organiza">Organizá tu encuentro</a>
+          <a class="btn btn-linea" href="#espacio">Conocé el espacio</a>
+        </div>
+        <p class="where"><svg aria-hidden="true"><use href="#pin"/></svg>Paraná, Entre Ríos</p>
+      </div>
+      <div class="stage">
+        <div class="sun" aria-hidden="true"></div>
+        <div class="arch"><img src="img/foto-08.jpg" alt="Amarilis rojas en el parque de Paraíso Terra, con el quincho de techo de paja atrás" width="640" height="640" fetchpriority="high"></div>
+        <img class="seal" src="img/perfil.jpg" alt="Sello de Paraíso Terra: una experiencia mágica" width="96" height="96">
+      </div>
+    </div>
+  </section>
+
+  <section class="space" id="espacio">
+    <div class="wrap">
+      <div class="calm">
+        <h2>Un parque para bajar un cambio.</h2>
+        <p class="txt">Árboles grandes, mucho verde, un quincho con techo de paja, la pileta y flores por todos lados. Y un espacio cubierto para las prácticas.</p>
+        <a class="ig" href="https://instagram.com/paraiso.terra" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg>Ver más en @paraiso.terra</a>
+      </div>
+      <div class="rings">
+        <figure class="ring calm"><div class="ph"><img src="img/foto-04.jpg" alt="La pileta bajo un árbol grande" loading="lazy" width="150" height="150"></div><figcaption>La pileta</figcaption></figure>
+        <figure class="ring calm"><div class="ph"><img src="img/foto-05.jpg" alt="Azaleas en flor" loading="lazy" width="150" height="150"></div><figcaption>Las azaleas</figcaption></figure>
+        <figure class="ring calm"><div class="ph"><img src="img/foto-06.jpg" alt="Letras gigantes que dicen LOVE en el parque" loading="lazy" width="150" height="150"></div><figcaption>Para celebrar</figcaption></figure>
+        <figure class="ring calm"><div class="ph"><img src="img/foto-07.jpg" alt="Un perro basset al lado de la pileta" loading="lazy" width="150" height="150"></div><figcaption>Compañía de cuatro patas</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="day" id="encuentros">
+    <div class="wrap">
+      <div class="head calm">
+        <h2>Retiros, talleres y celebraciones.</h2>
+        <p>Desde temprano hasta que se prenden las luces.</p>
+      </div>
+      <div class="row retiros">
+        <div class="pic calm"><img src="img/foto-11.jpg" alt="Una práctica de yoga en el espacio cubierto, con un perro echado sobre la alfombra" loading="lazy" width="360" height="640"></div>
+        <div class="calm">
+          <h3>Retiros y bienestar</h3>
+          <p>Yoga, meditación y encuentros para estar en calma, con verde alrededor. Traé tu grupo o sumate a lo que se arma acá.</p>
+          <a class="to-form" href="#organiza" data-pedir="Retiro">Consultar por un retiro</a>
+        </div>
+      </div>
+      <div class="row talleres">
+        <div class="calm">
+          <h3>Talleres</h3>
+          <p>Terapeutas y facilitadores dan sus talleres en el parque, como el de Nuevas Constelaciones con SB Holística. Si querés dar el tuyo, contanos.</p>
+          <a class="to-form" href="#organiza" data-pedir="Taller">Consultar por un taller</a>
+        </div>
+        <div class="pic calm"><img src="img/foto-12.jpg" alt="Un grupo en el parque de Paraíso Terra, con el quincho y la pileta atrás" loading="lazy" width="640" height="640"></div>
+      </div>
+    </div>
+  </section>
+  <div class="dusk" aria-hidden="true"></div>
+
+  <div class="night">
+    <section class="celebrar" aria-labelledby="t-celebrar">
+      <div class="wrap">
+        <div class="pic calm"><img src="img/celebrar.jpg" alt="Guirnalda de luces entre los árboles al caer la noche" loading="lazy" width="1400" height="934"></div>
+        <div class="txt calm">
+          <h3 id="t-celebrar">Celebraciones al aire libre</h3>
+          <div>
+            <p>Para festejar en el parque, bajo los árboles. Contanos qué querés celebrar y lo vemos juntos.</p>
+            <a class="to-form" href="#organiza" data-pedir="Celebración">Consultar por una celebración</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plan" id="organiza">
+      <div class="wrap">
+        <div class="intro calm">
+          <h2>Contanos qué tenés en mente.</h2>
+          <p>Completá esto y te queda el mensaje listo para mandar por WhatsApp. Así te respondemos más rápido.</p>
+          <div class="who"><img src="img/perfil.jpg" alt="" width="56" height="56"><span>Del otro lado te responde Ursula.</span></div>
+        </div>
+        <form class="card calm" id="planForm" novalidate>
+          <fieldset class="f">
+            <legend>¿Qué querés organizar?</legend>
+            <div class="pick">
+              <label><input type="radio" name="tipo" value="Retiro" checked><span><svg aria-hidden="true"><use href="#ok"/></svg>Un retiro</span></label>
+              <label><input type="radio" name="tipo" value="Taller"><span><svg aria-hidden="true"><use href="#ok"/></svg>Un taller</span></label>
+              <label><input type="radio" name="tipo" value="Celebración"><span><svg aria-hidden="true"><use href="#ok"/></svg>Una celebración</span></label>
+              <label><input type="radio" name="tipo" value="Otro"><span><svg aria-hidden="true"><use href="#ok"/></svg>Otra cosa</span></label>
+            </div>
+          </fieldset>
+          <div class="f"><label for="sobre" id="sobreLbl">¿De qué se trata?</label><input id="sobre" placeholder="Yoga, meditación, un retiro de fin de semana…"></div>
+          <div class="two">
+            <div class="f"><label for="cuando">¿Para cuándo?</label><input id="cuando" placeholder="Ej: un sábado de diciembre"></div>
+            <div class="f"><label for="personas">¿Cuántas personas, más o menos?</label><input id="personas" type="number" min="1" max="999" inputmode="numeric" placeholder="Ej: 15"></div>
+          </div>
+          <div class="two">
+            <div class="f" id="fNombre"><label for="nombre">Tu nombre</label><input id="nombre" autocomplete="name" required aria-describedby="eNombre"><span class="err" id="eNombre">Escribí tu nombre así sabemos con quién hablamos.</span></div>
+            <div class="f" id="fTel"><label for="tel">Tu teléfono</label><input id="tel" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="eTel" placeholder="Ej: 343 412-3456"><span class="err" id="eTel">Escribí un teléfono para que te podamos responder.</span></div>
+          </div>
+          <div class="f"><label for="extra">Algo más que quieras contarnos (opcional)</label><textarea id="extra" placeholder="Si necesitás el quincho, si van a comer, horarios…"></textarea></div>
+          <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><p id="planPrev"></p></div>
+          <button class="btn send" type="submit"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Enviar consulta por WhatsApp</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="where-sec" id="donde">
+      <div class="wrap">
+        <div class="box">
+          <div class="calm"><h2>Estamos en Paraná, Entre Ríos.</h2>
+            <a class="btn btn-flor" href="https://wa.me/5493434470315?text=Hola%20Para%C3%ADso%20Terra!%20Me%20pasan%20la%20direcci%C3%B3n%3F" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Pedir la dirección</a></div>
+          <dl class="calm">
+            <div><dt>Dirección</dt><dd>Consultá por WhatsApp</dd></div>
+            <div><dt>Horarios</dt><dd>Según el encuentro. Consultá por WhatsApp</dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5493434470315" target="_blank" rel="noopener">0343 15 447-0315</a></dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://instagram.com/paraiso.terra" target="_blank" rel="noopener">@paraiso.terra</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Paraíso Terra. Un espacio natural para eventos y bienestar en Paraná, Entre Ríos. <a href="https://instagram.com/paraiso.terra" target="_blank" rel="noopener">@paraiso.terra</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5493434470315" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 0343 15 447-0315">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>0343 15 447-0315</small></span>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  // Menú del celular
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var calm = document.querySelectorAll('.calm');
+  if (!('IntersectionObserver' in window)) { calm.forEach(function (el) { el.classList.add('in'); }); return; }
+
+  // Encabezado translúcido al bajar; de noche se pone azul
+  var night = document.querySelector('.night'), pastTop = false, inNight = false;
+  function paint() { top.classList.toggle('scrolled', pastTop && !inNight); top.classList.toggle('dark', inNight); }
+  new IntersectionObserver(function (es) { pastTop = !es[0].isIntersecting; paint(); }).observe(sentinel);
+  new IntersectionObserver(function (es) { inNight = es[0].isIntersecting; paint(); }, { rootMargin: '0px 0px -92% 0px' }).observe(night);
+
+  // El resto aparece con calma, una vez
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var sibs = e.target.parentNode.querySelectorAll(':scope > .calm');
+      var i = Array.prototype.indexOf.call(sibs, e.target);
+      e.target.style.transitionDelay = (Math.max(0, i) * 80) + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  calm.forEach(function (el) { io.observe(el); });
+})();
+
+// Organizá tu encuentro: arma el mensaje y lo abre en WhatsApp
+(function () {
+  var form = document.getElementById('planForm'); if (!form) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var ayuda = {
+    'Retiro': ['¿De qué se trata?', 'Yoga, meditación, un retiro de fin de semana…'],
+    'Taller': ['¿Qué taller querés dar?', 'Constelaciones, cerámica, respiración…'],
+    'Celebración': ['¿Qué querés festejar?', 'Un cumpleaños, un aniversario…'],
+    'Otro': ['Contanos qué tenés en mente', 'Una reunión, un día de campo…']
+  };
+  var art = { 'Retiro': 'un retiro', 'Taller': 'un taller', 'Celebración': 'una celebración', 'Otro': 'un encuentro' };
+  function tipo() { var r = form.querySelector('input[name="tipo"]:checked'); return r ? r.value : 'Retiro'; }
+  function v(id) { return $(id).value.trim(); }
+  function texto() {
+    var t = tipo(), l = ['Hola Paraíso Terra! Quiero consultar por ' + art[t] + '.'];
+    if (v('sobre')) l.push('Se trata de: ' + v('sobre') + '.');
+    if (v('cuando')) l.push('Para: ' + v('cuando') + '.');
+    var n = parseInt($('personas').value, 10);
+    if (n > 0) l.push('Seríamos unas ' + n + (n === 1 ? ' persona.' : ' personas.'));
+    if (v('extra')) l.push(v('extra'));
+    if (v('nombre') || v('tel')) l.push('Soy ' + (v('nombre') || '…') + (v('tel') ? ', mi teléfono es ' + v('tel') : '') + '.');
+    return l.join('\n');
+  }
+  function sync() {
+    var a = ayuda[tipo()];
+    $('sobreLbl').textContent = a[0]; $('sobre').placeholder = a[1];
+    $('planPrev').textContent = texto();
+  }
+  function check(id, box) {
+    var ok = v(id).length > (id === 'tel' ? 5 : 0);
+    $(box).classList.toggle('bad', !ok);
+    $(id).setAttribute('aria-invalid', String(!ok));
+    return ok;
+  }
+  form.addEventListener('input', function (e) {
+    if (e.target.id === 'nombre' && $('fNombre').classList.contains('bad')) check('nombre', 'fNombre');
+    if (e.target.id === 'tel' && $('fTel').classList.contains('bad')) check('tel', 'fTel');
+    sync();
+  });
+  form.addEventListener('change', sync);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = check('nombre', 'fNombre'), b = check('tel', 'fTel');
+    if (!a) { $('nombre').focus(); return; }
+    if (!b) { $('tel').focus(); return; }
+    window.open('https://wa.me/5493434470315?text=' + encodeURIComponent(texto()), '_blank', 'noopener');
+  });
+  document.querySelectorAll('[data-pedir]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var r = form.querySelector('input[name="tipo"][value="' + link.getAttribute('data-pedir') + '"]');
+      if (r) { r.checked = true; sync(); }
+    });
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
