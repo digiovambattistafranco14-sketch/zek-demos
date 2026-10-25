@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Club de la Tinta | Multiespacio de tatuajes y piercing en Salta</title>
+<meta name="description" content="Tatuajes, piercing, cursos de tatuaje y piercing y venta de insumos en Córdoba 285, Salta capital. Contanos tu idea y consultá por tu tatuaje.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Club de la Tinta | Multiespacio en Salta">
+<meta property="og:description" content="Tatuajes, piercing, cursos e insumos en Córdoba 285, Salta capital. Contanos tu idea.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/club-de-la-tinta/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/club-de-la-tinta/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F3F7F7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
+<style>
+/* Concepto: una gota de tinta en el agua. El logo del club vive sobre una acuarela de agua, menta y lila;
+   en la portada cae una gota de tinta, el color se abre en el agua y el logo se dibuja encima (el único
+   momento fuerte de la página). El multiespacio se recorre como las salas del club, y la consulta del
+   tatuaje se arma como una ficha de socio que termina en el chat.
+   Tipografías de la marca: Montserrat (el "CLUB DE LA" y los flyers) y una caligráfica como su "Tinta".
+   Radios: botones y opciones en píldora, tarjetas 22px, campos 14px. */
+:root{
+  --papel:#F3F7F7;      /* papel frío, el blanco del agua */
+  --papel-2:#E7EFEF;
+  --tinta:#17151F;      /* la tinta negra del logo */
+  --gris:#55525F;
+  --agua:#9FDCD8;       /* la acuarela del logo */
+  --menta:#C6EFD9;
+  --lila:#BDB5EF;
+  --cielo:#A9C5F1;
+  --violeta:#4C47B0;    /* acento: selección, enlaces, foco */
+  --linea:rgba(23,21,31,.12);
+  --err:#B42335;
+  --display:'Montserrat', system-ui, sans-serif;
+  --script:'Satisfy', 'Brush Script MT', cursive;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:76px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--display);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--lila);color:var(--tinta)}
+:focus-visible{outline:3px solid var(--violeta);outline-offset:3px;border-radius:8px}
+section[id]{scroll-margin-top:calc(var(--header) + 8px)}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+h2{font-weight:700;font-size:clamp(2rem, 4vw, 3.05rem);line-height:1.05;letter-spacing:-0.025em}
+.bajada{margin-top:14px;color:var(--gris);font-size:17.5px;max-width:52ch}
+svg.i{width:20px;height:20px;flex:none}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font:600 16px/1 var(--display);text-decoration:none;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-tinta{background:var(--tinta);color:#fff;box-shadow:0 12px 26px -14px rgba(23,21,31,.7)}
+.btn-borde{background:rgba(255,255,255,.55);color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(23,21,31,.28)}
+@media (hover:hover) and (pointer:fine){
+  .btn-tinta:hover{background:#2C2838}
+  .btn-borde:hover{background:#fff;box-shadow:inset 0 0 0 1.5px var(--tinta)}
+}
+.btn .i-wa{display:none}
+.con-wa .btn .i-wa{display:block}.con-wa .btn .i-ig{display:none}
+
+/* ---------- el logo del club, recreado: triángulo invertido, -CLUB- cortando la línea de arriba, DE LA y Tinta ---------- */
+/* Todo se mide en em: cambiando el font-size del .logo se escala entero. */
+.logo{position:relative;display:block;width:10em;height:8.7em;color:var(--tinta);flex:none}
+.logo .tri{position:absolute;left:0;top:.62em;width:10em;height:8.08em;overflow:visible}
+.logo .tri path{fill:none;stroke:currentColor;stroke-width:2.3;stroke-linejoin:miter;stroke-linecap:butt}
+.logo .l-club,.logo .l-dela{position:absolute;left:0;right:0;text-align:center;font-family:var(--display);font-weight:500;font-size:1em;line-height:1;letter-spacing:.13em;text-transform:uppercase;padding-left:.13em}
+.logo .l-club{top:.42em}
+.logo .l-dela{top:1.72em}
+.logo .l-tinta{position:absolute;left:-.13em;right:-.13em;top:.66em;text-align:center;font-family:var(--script);font-weight:400;font-size:3.95em;line-height:1;letter-spacing:-.01em;padding-right:.08em}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;
+  transition:background-color .3s ease, box-shadow .3s ease}
+.top.scrolled{background:rgba(243,247,247,.8);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);
+  box-shadow:0 1px 0 var(--linea), 0 14px 30px -24px rgba(23,21,31,.45)}
+@media (prefers-reduced-transparency: reduce){.top.scrolled{background:var(--papel);-webkit-backdrop-filter:none;backdrop-filter:none}}
+.top .wrap{display:flex;align-items:center;gap:22px}
+.marca{display:flex;align-items:center;gap:14px;text-decoration:none;border-radius:10px}
+.marca .logo{font-size:6.8px}
+.marca .que{display:flex;flex-direction:column;line-height:1.25}
+.marca .que b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.marca .que small{font-size:13px;color:var(--gris);font-weight:500}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{position:relative;text-decoration:none;font-weight:500;font-size:15px;padding:10px 12px;border-radius:10px}
+.links a::after{content:"";position:absolute;left:12px;right:12px;bottom:5px;height:2px;border-radius:2px;background:var(--tinta);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease-out)}
+.links a.activo::after{transform:scaleX(1)}
+@media (hover:hover) and (pointer:fine){.links a:hover::after{transform:scaleX(1)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1.5px rgba(23,21,31,.2);color:var(--tinta);cursor:pointer;place-items:center;
+  transition:background-color .2s ease, transform .16s var(--ease-out)}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"]{background:var(--tinta);color:#fff;box-shadow:none}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.menu-btn:active{transform:scale(.95)}
+.sheet{position:fixed;top:calc(var(--header) - 6px);left:12px;right:12px;z-index:49;background:#fff;border-radius:22px;padding:8px 8px 12px;
+  box-shadow:0 1px 2px rgba(23,21,31,.1), 0 30px 60px -24px rgba(23,21,31,.5);
+  transform-origin:top right;opacity:0;transform:translateY(-6px) scale(.98);visibility:hidden;pointer-events:none;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.sheet.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.sheet a.item{display:block;padding:15px 14px;font-weight:600;font-size:21px;letter-spacing:-.01em;text-decoration:none;border-radius:14px}
+.sheet a.item + a.item{border-top:1px solid var(--linea)}
+.sheet a.item:active{background:var(--papel)}
+.sheet .btn{display:flex;width:100%;margin-top:8px}
+@media (max-width:960px){
+  .links,.top .btn,.marca .que small{display:none}
+  .menu-btn{display:grid}
+}
+@media (max-width:520px){
+  :root{--header:68px}
+  .marca .logo{font-size:5.9px}
+  .marca .que b{font-size:14px}
+}
+
+/* ---------- portada: la gota de tinta cae y la acuarela se abre ---------- */
+.hero{position:relative;padding:calc(var(--header) + 36px) 0 72px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:center}
+.hero-txt{position:relative;z-index:1}
+.estampa{position:relative;width:max-content;margin-left:clamp(0px, 3vw, 40px)}
+.hero h1 .logo{font-size:clamp(27px, 4.1vw, 46px);position:relative;z-index:2}
+.agua{position:absolute;left:50%;top:50%;width:190%;aspect-ratio:1.3;transform:translate(-50%,-50%);z-index:0;pointer-events:none}
+.agua .b{position:absolute;border-radius:46% 54% 58% 42% / 48% 41% 59% 52%}
+.agua .b1{inset:12% 30% 18% 6%;background:radial-gradient(closest-side, rgba(159,220,216,.95), rgba(159,220,216,.6) 55%, rgba(159,220,216,0))}
+.agua .b2{inset:6% 6% 26% 34%;background:radial-gradient(closest-side, rgba(189,181,239,.95), rgba(189,181,239,.55) 55%, rgba(189,181,239,0))}
+.agua .b3{inset:38% 18% 2% 22%;background:radial-gradient(closest-side, rgba(169,197,241,.9), rgba(169,197,241,.5) 55%, rgba(169,197,241,0))}
+.agua .b4{inset:22% 52% 30% 0;background:radial-gradient(closest-side, rgba(198,239,217,1), rgba(198,239,217,.6) 55%, rgba(198,239,217,0))}
+.gota,.onda{position:absolute;left:50%;top:52%;z-index:1;pointer-events:none;opacity:0}
+.gota{width:16px;height:22px;margin:-11px 0 0 -8px;background:var(--tinta);border-radius:50% 50% 50% 50% / 62% 62% 38% 38%}
+.onda{width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(23,21,31,.35)}
+.hero .lead{margin-top:30px;font-size:clamp(17px, 1.45vw, 19.5px);line-height:1.55;color:#34313D;max-width:36ch;font-weight:500}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-foto{position:relative;justify-self:end;width:min(100%, 380px)}
+.hero-foto img{width:100%;height:auto;aspect-ratio:9 / 14;object-fit:cover;object-position:50% 40%;border-radius:200px 200px 22px 22px;box-shadow:0 30px 60px -30px rgba(23,21,31,.45)}
+.hero-foto p{margin-top:12px;font-size:14px;color:var(--gris);text-align:center}
+
+@media (prefers-reduced-motion: no-preference){
+  .gota{animation:gota-cae .62s cubic-bezier(.55,0,1,.45) .25s both, gota-toca .16s var(--ease-out) .87s forwards}
+  .onda{animation:onda 1s var(--ease-out) .86s both}
+  .agua .b{animation:abrir 1.9s var(--ease-out) both}
+  .agua .b1{animation-delay:.86s}.agua .b2{animation-delay:.98s}.agua .b4{animation-delay:1.06s}.agua .b3{animation-delay:1.16s}
+  .logo-h .tri path{stroke-dasharray:1;stroke-dashoffset:1;animation:trazo .8s var(--ease-out) 1.15s forwards}
+  .logo-h .l-club,.logo-h .l-dela{animation:aparecer .5s var(--ease-out) 1.45s both}
+  .logo-h .l-tinta{animation:escribir 1s var(--ease-in-out) 1.45s both}
+  .hero .lead,.hero .ctas{animation:subir .6s var(--ease-out) .2s both}
+  .hero .ctas{animation-delay:.3s}
+  .hero-foto{animation:aparecer .8s var(--ease-out) .1s both}
+}
+@keyframes gota-cae{0%{opacity:0;transform:translateY(-34vh)}12%{opacity:1}100%{opacity:1;transform:translateY(0)}}
+@keyframes gota-toca{to{opacity:0;transform:scale(1.6,.25)}}
+@keyframes onda{0%{opacity:.8;transform:scale(.15)}100%{opacity:0;transform:scale(2.6)}}
+@keyframes abrir{0%{opacity:0;transform:scale(.06) rotate(-24deg)}35%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes trazo{to{stroke-dashoffset:0}}
+@keyframes escribir{0%{clip-path:inset(-30% 100% -40% -10%)}100%{clip-path:inset(-30% -10% -40% -10%)}}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+@keyframes subir{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .hero{padding:calc(var(--header) + 22px) 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .estampa{margin:8px auto 0}
+  .hero-txt{text-align:center}
+  .hero .lead{margin-inline:auto;margin-top:26px}
+  .hero .ctas{justify-content:center}
+  .hero-foto{justify-self:center;width:min(100%, 340px)}
+}
+@media (max-width:420px){
+  .hero .ctas .btn{flex:1 1 100%}
+}
+
+/* ---------- las salas del club (bento) ---------- */
+.club{padding:96px 0 40px}
+.salas{display:grid;grid-template-columns:repeat(12, minmax(0,1fr));gap:16px;margin-top:40px}
+.sala{position:relative;overflow:hidden;border-radius:22px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;min-height:260px;isolation:isolate}
+.sala h3{font-weight:700;font-size:clamp(1.4rem, 2vw, 1.7rem);line-height:1.1;letter-spacing:-.02em;overflow-wrap:break-word}
+.sala p{margin-top:10px;font-size:16px;line-height:1.55;max-width:40ch}
+.sala .ir{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:600;font-size:15px;text-decoration:none;width:max-content;
+  padding-bottom:3px;box-shadow:inset 0 -1.5px 0 currentColor}
+.sala .ir svg{width:16px;height:16px;transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.sala .ir:hover svg{transform:translateX(3px)}}
+.s-tatu{grid-column:span 7;min-height:400px;
+  background:radial-gradient(60% 70% at 18% 20%, rgba(198,239,217,.95), transparent 70%),
+             radial-gradient(55% 65% at 85% 30%, rgba(189,181,239,.9), transparent 70%),
+             radial-gradient(70% 70% at 60% 100%, rgba(159,220,216,.9), transparent 70%), #DDEBF0}
+.s-tatu .marca-agua{position:absolute;right:-30px;top:-34px;font-size:30px;opacity:.13;z-index:-1}
+.s-tatu h3{font-size:clamp(2rem, 3.4vw, 2.7rem)}
+.s-cursos{grid-column:span 5;color:#fff;min-height:400px;
+  background:radial-gradient(55% 45% at 100% 0%, rgba(189,181,239,.55), transparent 70%),
+             radial-gradient(60% 50% at 0% 100%, rgba(159,220,216,.35), transparent 70%), var(--tinta)}
+.s-cursos .lema{margin:62px 0 auto;padding-bottom:24px;font-family:var(--script);font-size:clamp(2.6rem, 4vw, 3.4rem);line-height:1.05;color:#E9E4FF;opacity:.95}
+.s-insumos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.s-insumos::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg, rgba(23,21,31,.1) 0%, rgba(23,21,31,.35) 40%, rgba(23,21,31,.88) 100%)}
+.s-pierc{grid-column:span 4;background:#fff;box-shadow:inset 0 0 0 1px var(--linea)}
+.s-insumos{grid-column:span 4;color:#fff}
+.s-insumos img{object-position:50% 60%}
+.s-micro{grid-column:span 4;background:linear-gradient(160deg, var(--lila), var(--cielo))}
+.sala .arriba{position:absolute;top:26px;left:30px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.7)}
+.sala .arriba svg{width:22px;height:22px}
+.s-cursos .arriba,.s-insumos .arriba{background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.s-pierc .arriba{background:var(--papel-2)}
+@media (max-width:960px){
+  .s-tatu,.s-cursos{grid-column:span 12}
+  .s-pierc{grid-column:span 6}.s-insumos{grid-column:span 6}.s-micro{grid-column:span 12}
+}
+@media (max-width:640px){
+  .club{padding:72px 0 24px}
+  .salas{gap:12px;margin-top:30px}
+  .sala{padding:24px;min-height:220px}
+  .sala .arriba{top:22px;left:24px}
+  .s-tatu{min-height:300px}.s-cursos{min-height:330px}
+  .s-tatu .marca-agua{display:none}
+  .s-pierc,.s-insumos{grid-column:span 12}
+  .s-insumos{min-height:280px}
+}
+
+/* ---------- trabajos ---------- */
+.trabajos{padding:80px 0 40px}
+.galeria{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:22px;margin-top:40px;align-items:start}
+.galeria figure{margin:0}
+.galeria figure:nth-child(2){margin-top:64px}
+.galeria figure:nth-child(3){margin-top:28px}
+.galeria img{width:100%;height:auto;aspect-ratio:3 / 4;object-fit:cover;border-radius:22px;background:var(--papel-2)}
+.galeria figcaption{margin-top:12px;font-size:15px;color:var(--gris)}
+.mas-ig{display:flex;align-items:center;gap:14px;margin-top:40px;width:max-content;max-width:100%;text-decoration:none;padding:14px 22px 14px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--linea);
+  transition:box-shadow .2s ease}
+.mas-ig .ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)}
+.mas-ig .ico svg{width:22px;height:22px}
+.mas-ig b{display:block;font-size:15.5px}
+.mas-ig small{display:block;font-size:14px;color:var(--gris)}
+@media (hover:hover) and (pointer:fine){.mas-ig:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
+@media (max-width:760px){
+  .trabajos{padding:64px 0 24px}
+  .galeria{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding:0 20px 8px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria figure{flex:0 0 72%;scroll-snap-align:center;margin-top:0 !important}
+  .mas-ig{margin-top:26px}
+}
+
+/* ---------- consulta: la ficha del club ---------- */
+.consulta{padding:96px 0}
+.consulta-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;margin-top:40px;align-items:start}
+.campos{display:grid;gap:28px}
+.f > label,.f legend{display:block;font-weight:600;font-size:15px;margin-bottom:10px;padding:0}
+.f .opc{font-weight:400;color:var(--gris)}
+.f .ayuda{margin-top:8px;font-size:14px;color:var(--gris)}
+fieldset.f{border:0;margin:0;padding:0;min-width:0}
+.f input[type=text],.f input[type=tel],.f input[type=date],.f textarea{width:100%;font:500 16px/1.4 var(--display);color:var(--tinta);background:#fff;border:1.5px solid rgba(23,21,31,.22);border-radius:14px;padding:14px 16px;
+  transition:border-color .15s ease, box-shadow .15s ease}
+.f textarea{min-height:110px;resize:vertical}
+.f input::placeholder,.f textarea::placeholder{color:#76737F}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--violeta);box-shadow:0 0 0 3px rgba(76,71,176,.18)}
+.f.error input{border-color:var(--err)}
+.err{color:var(--err);font-size:14px;font-weight:600;margin-top:7px}
+.err:empty{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{display:inline-flex;align-items:center;height:44px;padding:0 17px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(23,21,31,.18);font-weight:500;font-size:15px;
+  transition:background-color .15s ease, color .15s ease, box-shadow .15s ease, transform .12s var(--ease-out)}
+.chips input:checked + span{background:var(--tinta);color:#fff;box-shadow:none}
+.chips input:focus-visible + span{outline:3px solid var(--violeta);outline-offset:2px}
+.chips label:active span{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.chips input:not(:checked) + span:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}}
+.fecha{margin-top:10px;max-width:260px}
+.fecha[hidden]{display:none}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.check{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:15.5px;line-height:1.45}
+.check input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--tinta)}
+
+.lado{position:sticky;top:calc(var(--header) + 20px)}
+.ficha{position:relative;overflow:hidden;border-radius:22px;padding:26px 26px 22px;isolation:isolate;
+  background:radial-gradient(70% 60% at 10% 0%, rgba(198,239,217,1), transparent 70%),
+             radial-gradient(60% 60% at 100% 20%, rgba(189,181,239,.95), transparent 70%),
+             radial-gradient(80% 60% at 50% 110%, rgba(169,197,241,.9), transparent 70%), #E3EEF2;
+  box-shadow:0 30px 60px -36px rgba(23,21,31,.5)}
+.ficha-cab{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1.5px solid rgba(23,21,31,.16)}
+.ficha-cab .logo{font-size:4.6px}
+.ficha-cab b{display:block;font-size:17px;letter-spacing:-.01em}
+.ficha-cab small{display:block;font-size:13.5px;color:#3E3B48}
+.ficha dl{margin:16px 0 0;display:grid;gap:12px}
+.ficha dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:baseline}
+.ficha dt{font-size:13.5px;color:#3E3B48}
+.ficha dd{margin:0;font-weight:600;font-size:15.5px;line-height:1.4;overflow-wrap:anywhere}
+.ficha dd.falta{color:rgba(23,21,31,.4);font-weight:500}
+.enviar{margin-top:18px}
+.enviar .btn{width:100%;height:58px;font-size:16.5px}
+.enviar .btn .i-wa{display:none}
+.con-wa .enviar .btn .i-wa{display:block}.con-wa .enviar .btn .i-ig{display:none}
+.nota{margin-top:12px;font-size:14px;color:var(--gris);text-align:center}
+.aviso{margin-top:10px;font-weight:600;font-size:15px;text-align:center;color:#1F6B4E}
+.aviso:empty{display:none}
+.aviso.mal{color:var(--err)}
+.prev{margin-top:12px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--linea)}
+.prev summary{cursor:pointer;min-height:46px;display:flex;align-items:center;padding:0 16px;font-weight:600;font-size:14.5px;color:var(--violeta);list-style:none}
+.prev summary::-webkit-details-marker{display:none}
+.prev summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s var(--ease-out)}
+.prev[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+.prev p{padding:0 16px 16px;white-space:pre-wrap;font-size:14.5px;line-height:1.55;color:#34313D}
+@media (prefers-reduced-motion: no-preference){
+  .ficha dd.cambio{animation:entra-dato .22s var(--ease-out)}
+}
+@keyframes entra-dato{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (max-width:900px){
+  .consulta{padding:72px 0}
+  .consulta-grid{grid-template-columns:1fr;gap:34px}
+  .lado{position:static}
+}
+@media (max-width:520px){.dos{grid-template-columns:1fr}.ficha{padding:22px 20px 20px}.ficha dl div{grid-template-columns:84px 1fr}}
+
+/* ---------- dónde ---------- */
+.donde{padding:40px 0 104px}
+.donde-caja{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:end;padding:48px;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px var(--linea)}
+.donde .dir{font-weight:800;font-size:clamp(2.3rem, 5.4vw, 4.4rem);line-height:1;letter-spacing:-.04em;margin-top:18px}
+.donde .ciudad{margin-top:10px;font-size:19px;font-weight:500;color:var(--gris)}
+.datos{display:grid;gap:18px}
+.datos .dato b{display:block;font-size:15px}
+.datos .dato span{display:block;color:var(--gris);font-size:15.5px}
+.datos .dato a{font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 currentColor}
+.datos .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+@media (max-width:860px){
+  .donde{padding:24px 0 80px}
+  .donde-caja{grid-template-columns:1fr;padding:30px 24px;gap:30px}
+}
+
+/* ---------- pie ---------- */
+.pie{padding:44px 0 120px;border-top:1px solid var(--linea)}
+.pie .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px}
+.pie .logo{font-size:7px}
+.pie ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px}
+.pie ul a{text-decoration:none;font-weight:500}
+@media (hover:hover) and (pointer:fine){.pie ul a:hover{text-decoration:underline;text-underline-offset:3px}}
+.pie .zek{width:100%;font-size:14px;color:var(--gris)}
+.pie .zek a{font-weight:600}
+
+/* ---------- botón flotante de contacto: solo el ícono ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:61;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.6s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa .i-wa{display:none;width:34px;height:34px}
+.con-wa .wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.con-wa .wa .i-wa{display:block}.con-wa .wa .i-ig{display:none}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;animation:wa-onda 5s var(--ease-out) 3.6s infinite}
+.con-wa .wa::before,.con-wa .wa::after{background:#25D366}
+.wa::after{animation-delay:4s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(23,21,31,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--gris)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+
+/* ---------- menos movimiento: sin caídas ni rebotes, todo aparece con un fundido ---------- */
+@media (prefers-reduced-motion: reduce){
+  .gota,.onda{display:none}
+  .wa{animation:aparecer .4s ease both}
+  .wa::before,.wa::after{animation:none;display:none}
+  .wa:hover svg{animation:none}
+  .btn,.chips span,.sheet{transition-property:opacity, background-color, color, box-shadow}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.030-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884 2.640 0 5.122 1.030 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.450-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.050 0C5.495 0 .160 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.480-8.413z" fill="currentColor"/></symbol>
+  <symbol id="der" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></g></symbol>
+  <symbol id="aguja" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5l6 6-9.5 9.5-6-6z"/><path d="M5 13l-2.5 8.5L11 19"/><path d="M16 9.5l-6 6"/></g></symbol>
+  <symbol id="aro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M18.5 9.5a6.5 6.5 0 1 1-4-5.9"/><circle cx="16.3" cy="4.4" r="2"/></g></symbol>
+  <symbol id="libro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5v13"/></g></symbol>
+  <symbol id="caja" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/></g></symbol>
+  <symbol id="ojo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.8"/><path d="M5 5.5c2-1.5 4.5-2 7-2"/></g></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Club de la Tinta, ir al inicio">
+      <span class="logo" aria-hidden="true">
+        <svg class="tri" viewBox="0 0 100 82"><path d="M31 3 H3 L50 79 L97 3 H69"/></svg>
+        <span class="l-club">Club</span><span class="l-dela">de la</span><span class="l-tinta">Tinta</span>
+      </span>
+      <span class="que" aria-hidden="true"><b>Multiespacio</b><small>Tatuajes y piercing en Salta</small></span>
+    </a>
+    <nav class="links" id="links" aria-label="Secciones">
+      <a href="#club">El club</a><a href="#trabajos">Trabajos</a><a href="#consulta">Consultá</a><a href="#donde">Dónde estamos</a>
+    </nav>
+    <a class="btn btn-tinta" data-contacto href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener">
+      <svg class="i i-ig" aria-hidden="true"><use href="#ig"/></svg><svg class="i i-wa" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Abrir menú"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet" id="sheet" aria-label="Menú">
+  <a class="item" href="#club">El club</a>
+  <a class="item" href="#trabajos">Trabajos</a>
+  <a class="item" href="#consulta">Consultá tu tatuaje</a>
+  <a class="item" href="#donde">Dónde estamos</a>
+  <a class="btn btn-tinta" data-contacto href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener">
+    <svg class="i i-ig" aria-hidden="true"><use href="#ig"/></svg><svg class="i i-wa" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+  </a>
+</nav>
+
+<main id="principal">
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-txt">
+        <div class="estampa">
+          <div class="agua" aria-hidden="true"><span class="b b1"></span><span class="b b2"></span><span class="b b4"></span><span class="b b3"></span></div>
+          <span class="onda" aria-hidden="true"></span>
+          <span class="gota" aria-hidden="true"></span>
+          <h1 aria-label="Club de la Tinta">
+            <span class="logo logo-h" aria-hidden="true">
+              <svg class="tri" viewBox="0 0 100 82"><path d="M31 3 H3 L50 79 L97 3 H69" pathLength="1"/></svg>
+              <span class="l-club">Club</span><span class="l-dela">de la</span><span class="l-tinta">Tinta</span>
+            </span>
+          </h1>
+        </div>
+        <p class="lead">Multiespacio de tatuajes y piercing en Salta capital. Cursos todo el año y venta de insumos.</p>
+        <div class="ctas">
+          <a class="btn btn-tinta" href="#consulta">Consultá tu tatuaje</a>
+          <a class="btn btn-borde" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <figure class="hero-foto" style="margin:0">
+        <img src="img/foto-11.jpg" width="361" height="640" alt="Tatuaje fine line de lirios a lo largo de la columna, hecho en el estudio." fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <section class="club" id="club">
+    <div class="wrap">
+      <h2>Qué hay en el club</h2>
+      <p class="bajada">Un mismo lugar para tatuarte, hacerte un piercing, aprender el oficio y comprar tus insumos.</p>
+      <div class="salas">
+        <article class="sala s-tatu">
+          <span class="marca-agua logo" aria-hidden="true"><svg class="tri" viewBox="0 0 100 82"><path d="M31 3 H3 L50 79 L97 3 H69"/></svg></span>
+          <span class="arriba" aria-hidden="true"><svg><use href="#aguja"/></svg></span>
+          <h3>Tatuajes</h3>
+          <p>Traé tu idea, una foto de referencia o solo la zona donde lo querés. Lo charlamos y coordinamos el turno.</p>
+          <a class="ir" href="#consulta">Consultá tu tatuaje<svg aria-hidden="true"><use href="#der"/></svg></a>
+        </article>
+        <article class="sala s-cursos">
+          <p class="lema" aria-hidden="true">De aprendiz a artista</p>
+          <span class="arriba" aria-hidden="true"><svg><use href="#libro"/></svg></span>
+          <h3>Cursos de tatuaje y piercing</h3>
+          <p>Teóricos y prácticos, todo el año.</p>
+          <a class="ir" data-tema="los cursos de tatuaje y piercing" href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener">Consultá por los cursos<svg aria-hidden="true"><use href="#der"/></svg></a>
+        </article>
+        <article class="sala s-pierc">
+          <span class="arriba" aria-hidden="true"><svg><use href="#aro"/></svg></span>
+          <h3>Piercing</h3>
+          <p>Venta y colocación. Joyería en acero quirúrgico y titanio grado implante.</p>
+          <a class="ir" data-tema="un piercing" href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener">Consultá por piercing<svg aria-hidden="true"><use href="#der"/></svg></a>
+        </article>
+        <article class="sala s-insumos">
+          <img src="img/insumos-1.jpg" width="1100" height="733" alt="" loading="lazy">
+          <span class="arriba" aria-hidden="true"><svg><use href="#caja"/></svg></span>
+          <h3>Venta de insumos</h3>
+          <p>Para tatuaje y piercing: por unidad, en blíster o en kit.</p>
+          <a class="ir" data-tema="insumos" href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener">Consultá por insumos<svg aria-hidden="true"><use href="#der"/></svg></a>
+        </article>
+        <article class="sala s-micro">
+          <span class="arriba" aria-hidden="true"><svg><use href="#ojo"/></svg></span>
+          <h3>Micropigmentación</h3>
+          <p>Cejas, ojos, labios y capilar.</p>
+          <a class="ir" href="https://instagram.com/micropigmentacionsalta" target="_blank" rel="noopener">@micropigmentacionsalta<svg aria-hidden="true"><use href="#der"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trabajos" id="trabajos">
+    <div class="wrap">
+      <h2>Trabajos del club</h2>
+      <p class="bajada">Algunos de los trabajos que salieron del estudio.</p>
+      <div class="galeria">
+        <figure><img src="img/foto-10.jpg" width="361" height="640" alt="Tatuaje en negro y grises de un rostro de mujer con flores, en el muslo." loading="lazy"><figcaption>Rostro con flores, en el muslo.</figcaption></figure>
+        <figure><img src="img/foto-12.jpg" width="480" height="640" alt="Bandada de murciélagos tatuada en las costillas." loading="lazy"><figcaption>Murciélagos en las costillas.</figcaption></figure>
+        <figure><img src="img/foto-09.jpg" width="361" height="640" alt="Joya para piercing de ombligo con corazón y cadenas, sobre la mesa del estudio." loading="lazy"><figcaption>Joyería para piercing de ombligo.</figcaption></figure>
+      </div>
+      <a class="mas-ig" href="https://instagram.com/clubdelatinta.multiespacio" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true"><svg><use href="#ig"/></svg></span>
+        <span><b>Ver más en @clubdelatinta.multiespacio</b><small>Los trabajos nuevos, en el Instagram del club.</small></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="consulta" id="consulta">
+    <div class="wrap">
+      <h2>Contanos tu idea</h2>
+      <p class="bajada">Completá la ficha y tu consulta llega armada a nuestro chat. Solo pedimos tu nombre y tu teléfono.</p>
+      <form class="consulta-grid" id="form" novalidate>
+        <div class="campos">
+          <div class="f">
+            <label for="idea">Tu idea o estilo <span class="opc">(opcional)</span></label>
+            <textarea id="idea" name="idea" maxlength="400" placeholder="Por ejemplo: unas flores en línea fina, un retrato, una frase..."></textarea>
+          </div>
+          <fieldset class="f">
+            <legend>Zona del cuerpo</legend>
+            <div class="chips">
+              <label><input type="radio" name="zona" value="Brazo"><span>Brazo</span></label>
+              <label><input type="radio" name="zona" value="Antebrazo"><span>Antebrazo</span></label>
+              <label><input type="radio" name="zona" value="Mano"><span>Mano</span></label>
+              <label><input type="radio" name="zona" value="Pierna"><span>Pierna</span></label>
+              <label><input type="radio" name="zona" value="Espalda"><span>Espalda</span></label>
+              <label><input type="radio" name="zona" value="Costillas"><span>Costillas</span></label>
+              <label><input type="radio" name="zona" value="Cuello"><span>Cuello</span></label>
+              <label><input type="radio" name="zona" value="Otra zona"><span>Otra</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="f">
+            <legend>Tamaño aproximado</legend>
+            <div class="chips">
+              <label><input type="radio" name="tam" value="Chico, hasta 5 cm"><span>Chico, hasta 5 cm</span></label>
+              <label><input type="radio" name="tam" value="Mediano, de 5 a 15 cm"><span>Mediano, 5 a 15 cm</span></label>
+              <label><input type="radio" name="tam" value="Grande, más de 15 cm"><span>Grande, más de 15 cm</span></label>
+              <label><input type="radio" name="tam" value="Todavía no sé"><span>No sé todavía</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="f" id="f-dia">
+            <legend>Día preferido</legend>
+            <div class="chips">
+              <label><input type="radio" name="dia" value="antes"><span>Cuanto antes</span></label>
+              <label><input type="radio" name="dia" value="fecha"><span>Elegir un día</span></label>
+            </div>
+            <div class="fecha" id="fechaBox" hidden>
+              <label class="sr" for="fecha">Fecha</label>
+              <input type="date" id="fecha" name="fecha">
+            </div>
+            <p class="err" id="err-fecha"></p>
+          </fieldset>
+          <label class="check"><input type="checkbox" id="ref" name="ref"><span>Tengo una foto de referencia para mandar por el chat</span></label>
+          <div class="dos">
+            <div class="f" id="f-nombre">
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="60" required aria-describedby="err-nombre">
+              <p class="err" id="err-nombre"></p>
+            </div>
+            <div class="f" id="f-tel">
+              <label for="tel">Tu teléfono</label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" maxlength="25" placeholder="387 512 3456" required aria-describedby="err-tel">
+              <p class="err" id="err-tel"></p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="lado" aria-label="Tu ficha de consulta">
+          <div class="ficha">
+            <div class="ficha-cab">
+              <span class="logo" aria-hidden="true"><svg class="tri" viewBox="0 0 100 82"><path d="M31 3 H3 L50 79 L97 3 H69"/></svg><span class="l-club">Club</span><span class="l-dela">de la</span><span class="l-tinta">Tinta</span></span>
+              <span><b>Ficha de consulta</b><small>Se completa mientras escribís</small></span>
+            </div>
+            <dl>
+              <div><dt>Idea</dt><dd id="t-idea" class="falta">Sin completar</dd></div>
+              <div><dt>Zona</dt><dd id="t-zona" class="falta">Sin completar</dd></div>
+              <div><dt>Tamaño</dt><dd id="t-tam" class="falta">Sin completar</dd></div>
+              <div><dt>Día</dt><dd id="t-dia" class="falta">Sin completar</dd></div>
+              <div><dt>Nombre</dt><dd id="t-nombre" class="falta">Sin completar</dd></div>
+            </dl>
+          </div>
+          <div class="enviar">
+            <button class="btn btn-tinta" type="submit" id="bEnviar">
+              <svg class="i i-ig" aria-hidden="true"><use href="#ig"/></svg><svg class="i i-wa" aria-hidden="true"><use href="#wa"/></svg><span id="bTxt">Enviar consulta por Instagram</span>
+            </button>
+            <p class="nota" id="nota">Al enviarla copiamos tu consulta y se abre nuestro chat de Instagram: pegala y mandala.</p>
+            <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+            <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </section>
+
+  <section class="donde" id="donde">
+    <div class="wrap">
+      <div class="donde-caja">
+        <div>
+          <h2>Dónde estamos</h2>
+          <p class="dir">Córdoba 285</p>
+          <p class="ciudad">Salta capital</p>
+        </div>
+        <div class="datos">
+          <div class="dato"><b>Horarios</b><span>Coordinamos el día y el horario por mensaje.</span></div>
+          <div class="dato"><b>Instagram</b><span><a href="https://instagram.com/clubdelatinta.multiespacio" target="_blank" rel="noopener">@clubdelatinta.multiespacio</a></span></div>
+          <div class="btns">
+            <a class="btn btn-borde" href="https://www.google.com/maps/search/?api=1&query=C%C3%B3rdoba%20285%2C%20Salta%2C%20Argentina" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
+            <a class="btn btn-tinta" data-contacto href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener"><svg class="i i-ig" aria-hidden="true"><use href="#ig"/></svg><svg class="i i-wa" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie" id="pie">
+  <div class="wrap">
+    <span class="logo" role="img" aria-label="Club de la Tinta"><svg class="tri" viewBox="0 0 100 82" aria-hidden="true"><path d="M31 3 H3 L50 79 L97 3 H69"/></svg><span class="l-club" aria-hidden="true">Club</span><span class="l-dela" aria-hidden="true">de la</span><span class="l-tinta" aria-hidden="true">Tinta</span></span>
+    <ul>
+      <li><a href="https://instagram.com/clubdelatinta.multiespacio" target="_blank" rel="noopener">@clubdelatinta.multiespacio</a></li>
+      <li><a href="https://instagram.com/micropigmentacionsalta" target="_blank" rel="noopener">@micropigmentacionsalta</a></li>
+      <li><a href="https://instagram.com/hdms.tienda" target="_blank" rel="noopener">@hdms.tienda</a></li>
+      <li>Córdoba 285, Salta capital</li>
+    </ul>
+    <p class="zek">Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" data-contacto href="https://ig.me/m/clubdelatinta.multiespacio" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram" id="flotante">
+  <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
+  <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small id="tipSub">Por mensaje directo</small></span>
+</a>
+
+<script>
+// =====================================================================================
+//  WHATSAPP DEL CLUB: poné el número acá y TODA la página pasa a WhatsApp.
+//  Formato: 549 + característica + número, sin espacios, sin + ni guiones (ej. '5493875123456').
+//  Mientras esté vacío, la consulta se copia al portapapeles y se abre el chat de Instagram
+//  (@clubdelatinta.multiespacio). Con el número, el botón abre wa.me con la consulta ya escrita,
+//  y el botón flotante, "Escribinos" y los "Consultá por..." también van a WhatsApp.
+// =====================================================================================
+var WA = '';
+var IG_DM = 'https://ig.me/m/clubdelatinta.multiespacio';
+
+document.documentElement.classList.add('js');
+if (WA) {
+  document.documentElement.classList.add('con-wa');
+  document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
+  document.querySelectorAll('[data-tema]').forEach(function (a) {
+    a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola, Club de la Tinta! Quería consultar por ' + a.getAttribute('data-tema') + '.');
+  });
+  document.getElementById('flotante').setAttribute('aria-label', 'Escribinos por WhatsApp');
+  document.getElementById('tipSub').textContent = 'Por WhatsApp';
+  document.getElementById('bTxt').textContent = 'Enviar consulta por WhatsApp';
+  document.getElementById('nota').textContent = 'Al enviarla se abre WhatsApp con tu consulta escrita. Solo falta tocar enviar.';
+}
+
+var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+function calma() { return !!(mq && mq.matches); }
+
+// Encabezado translúcido al bajar, la sección marcada en el menú y el menú del celular
+(function () {
+  var top = document.getElementById('top'), btn = document.getElementById('menuBtn'), menu = document.getElementById('sheet');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) setMenu(false); });
+  if (!('IntersectionObserver' in window)) return;
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  var links = Array.prototype.slice.call(document.querySelectorAll('#links a')), vistas = {};
+  var obs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { vistas[e.target.id] = e.isIntersecting; });
+    var activa = '';
+    links.forEach(function (a) { var id = a.getAttribute('href').slice(1); if (!activa && vistas[id]) activa = id; });
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + activa;
+      a.classList.toggle('activo', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) obs.observe(s); });
+})();
+
+// La ficha de consulta: se completa mientras escribís y termina en el chat
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('form'), CLAVE = 'cdlt-consulta';
+  var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  $('fecha').min = iso(hoy);
+  function limpio(v) { return (v || '').replace(/\s+/g, ' ').trim(); }
+  function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function leer() {
+    return { idea: limpio($('idea').value), zona: radio('zona'), tam: radio('tam'), dia: radio('dia'), fecha: $('fecha').value,
+      ref: $('ref').checked, nombre: limpio($('nombre').value), tel: limpio($('tel').value) };
+  }
+  function fechaTexto(v) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return '';
+    var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    try { return d.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }); } catch (e) { return p[2] + '/' + p[1]; }
+  }
+  function diaTexto(d) { return d.dia === 'antes' ? 'cuanto antes' : d.dia === 'fecha' ? fechaTexto(d.fecha) : ''; }
+  function cap(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : ''; }
+  function telOk(t) { return t.replace(/\D/g, '').length >= 8; }
+
+  function mensaje(borrador) {
+    var d = leer(), L = ['Hola, Club de la Tinta! Quiero consultar por un tatuaje:', ''];
+    function linea(et, v) { if (v) L.push(et + ': ' + v); else if (borrador) L.push(et + ': ...'); }
+    linea('Idea', d.idea);
+    linea('Zona', d.zona);
+    linea('Tamaño', d.tam);
+    linea('Día preferido', diaTexto(d));
+    L.push('Nombre: ' + (d.nombre || (borrador ? '...' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '...' : '')));
+    if (d.ref) L.push('', 'Tengo una foto de referencia, se la mando por acá.');
+    L.push('', '¿Me cuentan cómo seguimos? Gracias.');
+    return L.join('\n');
+  }
+  window.__consulta = mensaje; // para revisar el armado del mensaje
+
+  function pon(id, txt) {
+    var el = $(id), nuevo = txt || 'Sin completar';
+    if (el.textContent === nuevo) return;
+    el.textContent = nuevo; el.classList.toggle('falta', !txt);
+    el.classList.remove('cambio');
+    if (txt && !calma()) { void el.offsetWidth; el.classList.add('cambio'); }
+  }
+  function render() {
+    var d = leer();
+    pon('t-idea', d.idea.length > 90 ? d.idea.slice(0, 88) + '...' : d.idea);
+    pon('t-zona', d.zona);
+    pon('t-tam', d.tam);
+    pon('t-dia', cap(diaTexto(d)));
+    pon('t-nombre', d.nombre);
+    $('fechaBox').hidden = d.dia !== 'fecha';
+    $('msgPrev').textContent = mensaje(true);
+    try { localStorage.setItem(CLAVE, JSON.stringify(d)); } catch (e) {}
+  }
+
+  // lo que dejaste a medias la otra vez
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && typeof g === 'object') {
+      ['idea', 'nombre', 'tel'].forEach(function (k) { if (typeof g[k] === 'string') $(k).value = g[k]; });
+      ['zona', 'tam', 'dia'].forEach(function (k) {
+        if (typeof g[k] !== 'string' || !g[k]) return;
+        form.querySelectorAll('input[name="' + k + '"]').forEach(function (r) { if (r.value === g[k]) r.checked = true; });
+      });
+      if (typeof g.fecha === 'string' && g.fecha >= $('fecha').min) $('fecha').value = g.fecha;
+      $('ref').checked = !!g.ref;
+    }
+  } catch (e) {}
+  render();
+
+  function marcar(k, txt) {
+    var f = $('f-' + k);
+    if (f) f.classList.toggle('error', !!txt);
+    var el = $(k);
+    if (txt) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+    $('err-' + k).textContent = txt;
+  }
+  function validar() {
+    var d = leer(), primero = null;
+    if (d.dia === 'fecha' && !d.fecha) { marcar('fecha', 'Elegí la fecha, o marcá "Cuanto antes".'); primero = primero || $('fecha'); } else marcar('fecha', '');
+    if (!d.nombre) { marcar('nombre', 'Poné tu nombre para la consulta.'); primero = primero || $('nombre'); } else marcar('nombre', '');
+    if (!d.tel) { marcar('tel', 'Poné tu teléfono para que te podamos responder.'); primero = primero || $('tel'); }
+    else if (!telOk(d.tel)) { marcar('tel', 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.'); primero = primero || $('tel'); }
+    else marcar('tel', '');
+    if (primero) { primero.focus(); return false; }
+    return true;
+  }
+
+  form.addEventListener('input', function (e) {
+    var k = e.target.name;
+    if ((k === 'nombre' || k === 'tel' || k === 'fecha') && $('err-' + k).textContent) marcar(k, '');
+    $('aviso').textContent = ''; $('aviso').classList.remove('mal');
+    render();
+  });
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'dia' && e.target.value === 'fecha') { render(); $('fecha').focus(); return; }
+    render();
+  });
+
+  function abrirLink(url) { var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove(); }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var aviso = $('aviso');
+    aviso.classList.remove('mal');
+    if (!validar()) { aviso.textContent = 'Faltan datos: revisá lo marcado en rojo.'; aviso.classList.add('mal'); return; }
+    var msg = mensaje(false);
+    if (WA) { abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg)); aviso.textContent = 'Abrimos WhatsApp con tu consulta.'; return; }
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu consulta: pegala en el chat y mandala.';
+      else { aviso.textContent = 'No pudimos copiarla sola: copiala de "Ver cómo llega el mensaje" y pegala en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
+  });
+})();
+</script>
+</body>
+</html>
