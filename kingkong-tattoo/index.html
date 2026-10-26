@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>King Kong Tattoo | Tatuajes de Juanka Bulacio</title>
+<meta name="description" content="Tatuajes de Juanka Bulacio: realismo en negro y gris, color, lettering y flores. Contanos tu idea y armá tu consulta desde la web.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230D130F'/%3E%3Ccircle cx='32' cy='32' r='22' fill='%23E9572B' opacity='.18'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='900' font-size='34' fill='%23E6E8E1' text-anchor='middle'%3EKK%3C/text%3E%3C/svg%3E">
+<link rel="alternate icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="King Kong Tattoo | Tatuajes de Juanka Bulacio">
+<meta property="og:description" content="Realismo, color, lettering y flores. Contanos tu idea y armá tu consulta desde la web.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/kingkong-tattoo/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/kingkong-tattoo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D130F">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* King Kong Tattoo: la selva de noche.
+   La marca de Juanka es la letra gótica de su bio y de su lettering, el gorila y el corazón prendido fuego,
+   y una frase: "No hay nada que puedan hacer para impedir que yo brille".
+   El momento fuerte: la portada arranca a oscuras, como la selva de noche, y una linterna barre la foto
+   hasta clavarse en el ojo del tigre. El resto de la página queda en calma; la luz vuelve, suave,
+   cuando pasás el mouse por los trabajos. */
+@property --x{syntax:'<percentage>';inherits:true;initial-value:44%}
+@property --y{syntax:'<percentage>';inherits:true;initial-value:49%}
+@property --r{syntax:'<length>';inherits:true;initial-value:330px}
+:root{
+  --noche:#0D130F;       /* la selva de noche: negro con verde adentro */
+  --noche-2:#121A15;
+  --fronda:#18231C;      /* el follaje */
+  --musgo:#2B3A2F;
+  --hueso:#E6E8E1;       /* texto principal */
+  --helecho:#9DB099;     /* texto secundario */
+  --helecho-2:#7F927B;
+  --fuego:#E9572B;       /* la brasa del corazón prendido fuego */
+  --fuego-2:#F26A3F;
+  --linea:rgba(230,232,225,.12);
+  --err:#FF8A70;
+  --gotica:'Grenze Gotisch', 'Old English Text MT', Georgia, serif;
+  --texto:'Hanken Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:76px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--noche)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--noche);color:var(--hueso);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--gotica);font-weight:700;line-height:.95;letter-spacing:0;text-wrap:balance}
+::selection{background:var(--fuego);color:var(--noche)}
+:focus-visible{outline:3px solid var(--fuego);outline-offset:3px}
+[id]{scroll-margin-top:calc(var(--header) + 10px)}
+.wrap{width:min(1240px, 100% - 48px);margin-inline:auto}
+.ico{width:20px;height:20px;flex:none}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- botones: rectos, como un trazo de máquina ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:0;border-radius:2px;cursor:pointer;
+  font:700 16px/1 var(--texto);letter-spacing:.01em;text-decoration:none;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-fuego{background:var(--fuego);color:var(--noche)}
+.btn-linea{background:transparent;color:var(--hueso);box-shadow:inset 0 0 0 1.5px rgba(230,232,225,.4)}
+@media (hover:hover) and (pointer:fine){
+  .btn-fuego:hover{background:var(--fuego-2)}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--hueso)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top);transition:background-color .3s ease, box-shadow .3s ease}
+.top.scrolled{background:rgba(13,19,15,.78);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 1px 0 var(--linea)}
+@media (prefers-reduced-transparency: reduce){.top.scrolled{background:var(--noche);-webkit-backdrop-filter:none;backdrop-filter:none}}
+.barra{height:var(--header);display:flex;align-items:center;gap:24px}
+/* la marca: King Kong en gótica, como su bio, con la raya y "tattoo" abajo */
+.marca{display:inline-grid;justify-items:center;text-decoration:none;color:var(--hueso);line-height:1;flex:none}
+.marca b{font-family:var(--gotica);font-weight:800;font-size:31px;line-height:.82;letter-spacing:.01em;padding-bottom:3px}
+.marca i{display:block;width:100%;height:2px;background:var(--fuego)}
+.marca small{font-size:10.5px;font-weight:600;letter-spacing:.52em;margin-right:-.52em;padding-top:5px;color:var(--helecho)}
+.marca-lado{display:flex;flex-direction:column;line-height:1.2;font-size:13.5px;color:var(--helecho);padding-left:18px;box-shadow:inset 1px 0 0 var(--linea)}
+.marca-lado b{color:var(--hueso);font-weight:600;font-size:14.5px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{position:relative;text-decoration:none;font-weight:600;font-size:15px;padding:12px 14px;color:#C6CDC2;transition:color .2s ease}
+.links a::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--fuego);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease-out)}
+.links a.activo{color:var(--hueso)}
+.links a.activo::after,.links a:focus-visible::after{transform:scaleX(1)}
+@media (hover:hover) and (pointer:fine){.links a:hover{color:var(--hueso)}.links a:hover::after{transform:scaleX(1)}}
+.acciones{display:flex;align-items:center;gap:10px}
+.acciones .btn{height:46px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;width:46px;height:46px;border:0;border-radius:2px;background:rgba(230,232,225,.08);color:var(--hueso);cursor:pointer;place-items:center;flex:none;
+  transition:background-color .2s ease, transform .16s var(--ease-out)}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;transition:transform .25s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"]{background:var(--hueso);color:var(--noche)}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.menu-btn:active{transform:scale(.95)}
+.menu{position:fixed;top:calc(env(safe-area-inset-top) + var(--header));left:0;right:0;z-index:49;background:var(--noche-2);padding:6px 24px 24px;
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.8), inset 0 1px 0 var(--linea);opacity:0;transform:translateY(-6px);visibility:hidden;pointer-events:none;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.menu.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.menu .item-m{display:block;padding:14px 0;font-family:var(--gotica);font-weight:700;font-size:34px;line-height:1;text-decoration:none}
+.menu .item-m + .item-m{box-shadow:inset 0 1px 0 var(--linea)}
+.menu .dato{margin:12px 0 18px;font-size:15px;color:var(--helecho)}
+.menu .btns{display:grid;gap:8px}
+.menu .btn{width:100%}
+@media (max-width:1020px){.links,.b-escribinos{display:none}.acciones{margin-left:auto}.menu-btn{display:grid}}
+@media (max-width:760px){.marca-lado{display:none}}
+@media (max-width:480px){
+  :root{--header:66px}
+  .wrap{width:min(1240px, 100% - 32px)}
+  .marca b{font-size:27px}
+  .marca small{font-size:9.5px}
+  .acciones .btn{padding:0 14px;font-size:14.5px}
+}
+@media (max-width:340px){.acciones .btn-fuego{display:none}}
+
+/* =====================================================================================
+   PORTADA: la selva a oscuras y la linterna que encuentra el ojo del tigre
+   ===================================================================================== */
+.hero{position:relative;min-height:min(100svh, 920px);display:flex;align-items:center;padding:calc(env(safe-area-inset-top) + var(--header) + 24px) 0 56px;overflow:hidden;
+  background:radial-gradient(120% 80% at 80% 40%, #142019 0%, var(--noche) 60%)}
+.hero-in{display:grid;grid-template-columns:minmax(0, 1.08fr) minmax(0, .92fr);gap:clamp(32px, 5vw, 80px);align-items:center}
+.hero-txt{position:relative;z-index:2}
+.hero h1{display:flex;flex-direction:column}
+.hero h1 .gigante{font-size:clamp(5.4rem, 14.2vw, 12.6rem);font-weight:800;line-height:.8;letter-spacing:-.005em}
+.hero h1 .gigante + .gigante{margin-left:.32em}
+.hero h1 .tattoo{font-family:var(--texto);font-weight:600;font-size:clamp(15px, 1.3vw, 17px);letter-spacing:.42em;margin-top:26px;color:var(--helecho);line-height:1}
+.hero .lead{margin-top:26px;max-width:32ch;font-size:clamp(18px, 1.55vw, 21px);line-height:1.5;color:#C9D0C5}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* la linterna */
+.linterna{position:relative;justify-self:end;width:min(100%, 470px);aspect-ratio:3/4;max-height:calc(100svh - var(--header) - 90px);
+  --x:6%;--y:96%;--r:0px;background:#070A08;overflow:hidden;box-shadow:0 0 0 1px rgba(230,232,225,.08), 0 40px 90px -40px rgba(0,0,0,.9)}
+.linterna img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.linterna .apagada{filter:brightness(.16) saturate(.35)}
+.linterna .prendida{-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, #000 38%, rgba(0,0,0,.55) 62%, transparent 100%);
+          mask-image:radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, #000 38%, rgba(0,0,0,.55) 62%, transparent 100%)}
+/* el halo cálido de la luz, por encima, apenas */
+.linterna::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;
+  background:radial-gradient(circle calc(var(--r) * .7) at var(--x) var(--y), rgba(255,190,140,.38), transparent 70%)}
+.linterna.prende{animation:barrido 2.3s var(--ease-in-out) .35s both}
+.linterna.lista{--x:44%;--y:49%;--r:300px}
+.linterna.sigue{transition:--x .6s var(--ease-out), --y .6s var(--ease-out), --r .6s var(--ease-out)}
+@keyframes barrido{
+  0%{--x:6%;--y:96%;--r:0px}
+  12%{--x:12%;--y:84%;--r:120px}
+  48%{--x:78%;--y:24%;--r:140px}
+  76%{--x:44%;--y:49%;--r:130px}
+  100%{--x:44%;--y:49%;--r:300px}
+}
+/* el texto entra una sola vez, rápido, sin robarle la escena a la luz */
+@keyframes subir{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+.hero .lead,.hero .ctas,.hero h1 .tattoo{animation:subir .7s var(--ease-out) both}
+.hero h1 .tattoo{animation-delay:.08s}.hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}
+
+@media (max-width:900px){
+  .hero{min-height:auto;padding:calc(env(safe-area-inset-top) + var(--header) + 8px) 0 52px;align-items:flex-start}
+  .hero-in{grid-template-columns:1fr;gap:0}
+  .linterna{order:-1;justify-self:stretch;width:100%;max-height:none;aspect-ratio:auto;height:min(44svh, 400px)}
+  .linterna img{object-position:50% 46%}
+  .hero-txt{margin-top:-.62em;padding-top:0}
+  .hero h1 .gigante{font-size:clamp(4rem, 20vw, 7rem);text-shadow:0 2px 24px rgba(13,19,15,.85)}
+  .hero h1 .tattoo{margin-top:18px}
+  .hero .lead{margin-top:18px}
+  .hero .ctas{margin-top:26px}
+}
+@media (max-width:480px){
+  .hero .ctas{display:grid;grid-template-columns:1fr}
+  .hero .ctas .btn{width:100%}
+}
+
+/* ---------- la frase de su bio ---------- */
+.frase{padding:120px 0 128px;background:var(--noche-2);box-shadow:inset 0 1px 0 var(--linea)}
+.frase blockquote{margin:0}
+.frase blockquote p{max-width:17ch;font-family:var(--gotica);font-weight:600;font-size:clamp(2.7rem, 6vw, 5.4rem);line-height:1.02;text-wrap:balance}
+.frase .firma{display:flex;align-items:center;gap:14px;margin-top:34px;color:var(--helecho);font-size:16px}
+.frase .firma img{width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--noche-2), 0 0 0 3.5px var(--fuego)}
+.frase .firma b{display:block;color:var(--hueso);font-weight:600}
+.frase .wrap{display:grid;grid-template-columns:minmax(0, 1fr) auto;gap:48px;align-items:end}
+.frase .brasa{width:120px;height:120px;color:var(--fuego);opacity:.9}
+@media (max-width:700px){.frase{padding:84px 0 88px}.frase .wrap{grid-template-columns:1fr}.frase .brasa{display:none}}
+
+/* ---------- trabajos: colgados a distintas alturas, como de las lianas ---------- */
+.trabajos{padding:120px 0 150px}
+.cab h2{font-size:clamp(3.2rem, 7vw, 6rem)}
+.cab p{margin-top:18px;max-width:46ch;color:var(--helecho);font-size:18px}
+.galeria{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:56px clamp(16px, 2.4vw, 32px);margin-top:64px;align-items:start}
+.galeria figure{margin:0}
+.galeria > :nth-child(4n+2){margin-top:84px}
+.galeria > :nth-child(4n+3){margin-top:28px}
+.galeria > :nth-child(4n+4){margin-top:120px}
+.galeria .foto{position:relative;overflow:hidden;background:var(--fronda);aspect-ratio:3/4}
+.galeria .foto img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9);transition:filter .3s ease}
+.galeria figcaption{margin-top:14px;font-size:15px;line-height:1.4;color:var(--helecho)}
+.galeria figcaption b{display:block;font-family:var(--gotica);font-weight:700;font-size:26px;line-height:1;color:var(--hueso);margin-bottom:4px}
+@media (hover:hover) and (pointer:fine){.galeria figure:hover .foto img{filter:none}}
+.mas-ig{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:3/4;padding:24px;text-decoration:none;color:var(--hueso);
+  box-shadow:inset 0 0 0 1.5px var(--musgo);transition:box-shadow .2s ease, background-color .2s ease}
+.mas-ig svg{width:34px;height:34px;color:var(--fuego)}
+.mas-ig b{font-family:var(--gotica);font-weight:700;font-size:clamp(28px, 2.6vw, 36px);line-height:1}
+.mas-ig span{display:block;margin-top:10px;color:var(--helecho);font-size:15px;overflow-wrap:anywhere}
+@media (hover:hover) and (pointer:fine){.mas-ig:hover{box-shadow:inset 0 0 0 1.5px var(--fuego);background:rgba(233,87,43,.05)}}
+@media (max-width:900px){
+  .trabajos{padding:84px 0 110px}
+  .galeria{grid-template-columns:repeat(2, minmax(0, 1fr));gap:34px 16px;margin-top:44px}
+  .galeria > :nth-child(n){margin-top:0}
+  .galeria > :nth-child(2n){margin-top:56px}
+  .galeria figcaption{font-size:14px}
+  .galeria figcaption b{font-size:22px}
+  .mas-ig{padding:16px}
+  .mas-ig b{font-size:24px}
+  .mas-ig span{font-size:13.5px}
+}
+
+/* ---------- estilos: lo que hace, con un trabajo de cada uno ---------- */
+.estilos{padding:120px 0 128px;background:var(--fronda)}
+.estilos ul{list-style:none;margin:56px 0 0;padding:0}
+.estilos li{display:grid;grid-template-columns:120px minmax(0, 1fr) auto;gap:28px;align-items:center;padding:24px 0;box-shadow:0 1px 0 rgba(230,232,225,.1)}
+.estilos li:first-child{box-shadow:0 -1px 0 rgba(230,232,225,.1), 0 1px 0 rgba(230,232,225,.1)}
+.estilos li img{width:120px;height:120px;object-fit:cover;filter:brightness(.88)}
+.estilos h3{font-size:clamp(2.2rem, 4vw, 3.4rem);line-height:1}
+.estilos li p{margin-top:8px;color:var(--helecho);max-width:50ch}
+.estilos .btn{height:48px;padding:0 20px;font-size:15px}
+@media (max-width:700px){
+  .estilos{padding:84px 0 92px}
+  .estilos ul{margin-top:40px}
+  .estilos li{grid-template-columns:84px minmax(0, 1fr);gap:8px 18px;padding:20px 0;align-items:start}
+  .estilos li img{width:84px;height:104px;grid-row:span 2}
+  .estilos li .btn{grid-column:2;justify-self:start;margin-top:8px;height:44px;padding:0 16px;font-size:14.5px}
+  .estilos li p{font-size:15.5px}
+}
+
+/* =====================================================================================
+   LA CONSULTA: el formulario a la izquierda, el mensaje que se va armando a la derecha
+   ===================================================================================== */
+.consulta{padding:120px 0 136px;background:var(--noche)}
+.c-grid{display:grid;grid-template-columns:minmax(0, 1fr) 380px;gap:clamp(40px, 7vw, 110px);align-items:start;margin-top:56px}
+.campo{border:0;margin:0;padding:0;min-width:0}
+.campo + .campo{margin-top:38px}
+.campo > legend,.campo > label,.f > label{display:block;padding:0;font-weight:700;font-size:17px;margin-bottom:12px;color:var(--hueso)}
+.opc{font-weight:400;color:var(--helecho-2);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:block}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:flex;align-items:center;min-height:46px;padding:0 16px;font-weight:600;font-size:15.5px;cursor:pointer;color:#D3D9CF;background:rgba(230,232,225,.03);
+  box-shadow:inset 0 0 0 1.5px var(--musgo);transition:background-color .15s ease, color .15s ease, box-shadow .15s ease}
+.chip input:checked + span{background:var(--hueso);color:var(--noche);box-shadow:none}
+.chip input:focus-visible + span{outline:3px solid var(--fuego);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.chip input:not(:checked) + span:hover{box-shadow:inset 0 0 0 1.5px var(--helecho)}}
+.c-form input[type=text],.c-form input[type=tel],.c-form input[type=date],.c-form textarea{width:100%;min-height:54px;border-radius:2px;border:1.5px solid var(--musgo);background:#0A0F0C;
+  padding:0 15px;font:inherit;font-size:16px;color:var(--hueso);transition:border-color .15s ease, box-shadow .15s ease;color-scheme:dark}
+.c-form textarea{padding:13px 15px;min-height:104px;resize:vertical;line-height:1.5}
+.c-form ::placeholder{color:#7D8A79}
+.c-form input:focus,.c-form textarea:focus{outline:none;border-color:var(--hueso);box-shadow:0 0 0 3px rgba(230,232,225,.14)}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fecha{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fecha input[type=date]{max-width:240px}
+.f{display:flex;flex-direction:column;min-width:0}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(255,138,112,.14)}
+.err{display:block;color:var(--err);font-size:14.5px;font-weight:600;margin-top:8px}
+.err:empty{display:none}
+.ayuda{margin-top:8px;font-size:14.5px;color:var(--helecho-2)}
+
+/* el mensaje: una hoja clara, como el papel donde se dibuja el diseño */
+.c-lado{position:sticky;top:calc(var(--header) + 24px)}
+.hoja{background:var(--hueso);color:var(--noche);padding:28px 26px 26px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.hoja h3{font-size:34px;line-height:1}
+.hoja .para{margin-top:6px;font-size:14.5px;color:#4A5547}
+.hoja pre{margin:20px 0 0;padding:18px 0 0;border-top:1.5px dashed rgba(13,19,15,.25);white-space:pre-wrap;word-break:break-word;font:500 15.5px/1.55 var(--texto);color:#1C2620;min-height:220px}
+.hoja .falta{color:#8A9386}
+.c-btn{width:100%;margin-top:22px;height:58px;font-size:16.5px}
+.c-btn[aria-disabled="true"]{background:#5A6557;color:#C9D0C5}
+.con-wa .c-btn.btn-fuego:not([aria-disabled="true"]){background:#25D366;color:#06210F}
+.c-nota{display:flex;gap:10px;margin-top:14px;font-size:14.5px;line-height:1.45;color:var(--helecho)}
+.c-nota svg{width:18px;height:18px;flex:none;color:var(--fuego);margin-top:2px}
+.aviso{font-size:15px;font-weight:600;color:var(--hueso)}
+.aviso:not(:empty){margin-top:14px}
+.aviso.mal{color:var(--err)}
+@media (max-width:960px){
+  .consulta{padding:84px 0 96px}
+  .c-grid{grid-template-columns:1fr;gap:48px;margin-top:40px}
+  .c-lado{position:static}
+}
+@media (max-width:560px){.dos{grid-template-columns:1fr}.chip span{font-size:15px;padding:0 14px}.fecha input[type=date]{max-width:none}}
+
+/* ---------- cierre ---------- */
+.cierre{padding:110px 0 120px;background:var(--fronda);box-shadow:inset 0 1px 0 var(--linea)}
+.cierre .wrap{display:grid;grid-template-columns:minmax(0, 1fr) auto;gap:40px;align-items:end}
+.cierre h2{font-size:clamp(3rem, 6.4vw, 5.6rem)}
+.cierre p{margin-top:18px;color:var(--helecho);font-size:18px;max-width:44ch}
+.cierre .ctas{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:820px){.cierre{padding:80px 0 88px}.cierre .wrap{grid-template-columns:1fr}}
+@media (max-width:480px){.cierre .ctas{display:grid}.cierre .ctas .btn{width:100%}}
+
+/* ---------- pie ---------- */
+footer{background:var(--noche);padding:72px 0 calc(32px + env(safe-area-inset-bottom));font-size:15px;color:var(--helecho)}
+.pie{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;align-items:flex-start;padding-bottom:44px;box-shadow:0 1px 0 var(--linea)}
+.pie .marca b{font-size:44px}
+.pie .marca small{font-size:12px}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pie li a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#D3D9CF}
+.pie li svg{width:18px;height:18px;color:var(--helecho)}
+@media (hover:hover) and (pointer:fine){.pie li a:hover{color:var(--hueso)}}
+.pie-baja{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;padding-top:24px;font-size:14px}
+.pie-baja a{color:var(--hueso);font-weight:600}
+@media (max-width:560px){footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}}
+
+/* ---------- botón flotante: solo el ícono (Instagram mientras no haya WhatsApp) ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.6s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa .i-wa{display:none;width:34px;height:34px}
+.con-wa .wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.con-wa .wa .i-wa{display:block}.con-wa .wa .i-ig{display:none}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;animation:wa-onda 5s var(--ease-out) 3.6s infinite}
+.con-wa .wa::before,.con-wa .wa::after{background:#25D366}
+.wa::after{animation-delay:4s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:#151A16;font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:10px;box-shadow:0 10px 30px -12px rgba(0,0,0,.6);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:#566052}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+
+/* ---------- menos movimiento: la luz ya prendida, sin barrido ni ondas ---------- */
+@media (prefers-reduced-motion: reduce){
+  .linterna.prende{animation:none}
+  .linterna{--x:44%;--y:49%;--r:300px}
+  .linterna.sigue{transition:none}
+  .hero .lead,.hero .ctas,.hero h1 .tattoo,.wa{animation:aparecer .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .links a::after{transition:none}
+  .menu{transform:none;transition-property:opacity, visibility}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+  <symbol id="msj" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="foto" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14"/><circle cx="12" cy="12" r="3.4"/><path d="M8 5l1.5-2h5L16 5"/></g></symbol>
+  <!-- el corazón prendido fuego de su bio -->
+  <symbol id="brasa" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"><path d="M32 56C18 46 8 37 8 25.5 8 18 13.6 12.5 20.4 12.5c5 0 9 2.8 11.6 7.1 2.6-4.3 6.6-7.1 11.6-7.1C50.4 12.5 56 18 56 25.5 56 37 46 46 32 56z"/><path d="M32 46c-6-3.6-9-8-9-12.4 0-4.8 3.6-7 5.6-11.6 1.4 3.4 3.6 4.6 3.6 4.6s.6-3.6 3.8-6.6c1 5.2 5 8.4 5 13.6C41 38 38 42.4 32 46z"/></g></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap barra">
+    <a class="marca" href="#inicio" aria-label="King Kong Tattoo, ir al inicio">
+      <b aria-hidden="true">King Kong</b><i aria-hidden="true"></i><small aria-hidden="true">tattoo</small>
+    </a>
+    <span class="marca-lado"><b>Juanka Bulacio</b>Tatuajes con turno</span>
+    <nav class="links" id="links" aria-label="Secciones">
+      <a href="#trabajos">Trabajos</a><a href="#estilos">Estilos</a><a href="#consulta">Consulta</a>
+    </nav>
+    <div class="acciones">
+      <a class="btn btn-linea b-escribinos" data-contacto href="https://ig.me/m/kingkongtattoo_369" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+      <a class="btn btn-fuego" href="#consulta">Consultar</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+    </div>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Menú">
+  <a class="item-m" href="#trabajos">Trabajos</a><a class="item-m" href="#estilos">Estilos</a><a class="item-m" href="#consulta">Consulta</a>
+  <p class="dato">Tatuajes de Juanka Bulacio. Dirección y horarios, por mensaje.</p>
+  <div class="btns">
+    <a class="btn btn-fuego" href="#consulta">Consultar tatuaje</a>
+    <a class="btn btn-linea" data-contacto href="https://ig.me/m/kingkongtattoo_369" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+  </div>
+</nav>
+
+<main id="principal">
+  <section class="hero" id="inicio">
+    <div class="wrap hero-in">
+      <div class="hero-txt">
+        <h1><span class="gigante">King</span><span class="gigante">Kong</span><span class="tattoo">tattoo</span></h1>
+        <p class="lead">Tatuajes de Juanka Bulacio. Realismo, lettering y flores, en negro y gris o a color.</p>
+        <div class="ctas">
+          <a class="btn btn-fuego" href="#consulta">Consultar tatuaje</a>
+          <a class="btn btn-linea" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <div class="linterna" id="linterna" role="img" aria-label="Tatuaje realista a color de la cara de un tigre, con el ojo en primer plano">
+        <img class="apagada" src="img/foto-07.jpg" alt="" width="361" height="640" fetchpriority="high">
+        <img class="prendida" src="img/foto-07.jpg" alt="" width="361" height="640">
+      </div>
+    </div>
+  </section>
+
+  <section class="frase" aria-label="La frase de Juanka">
+    <div class="wrap">
+      <blockquote>
+        <p>“No hay nada que puedan hacer para impedir que yo brille.”</p>
+        <div class="firma"><img src="img/perfil.jpg" alt="" width="100" height="100" loading="lazy"><span><b>Juanka Bulacio</b>King Kong Tattoo</span></div>
+      </blockquote>
+      <svg class="brasa" aria-hidden="true"><use href="#brasa"/></svg>
+    </div>
+  </section>
+
+  <section class="trabajos" id="trabajos">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Trabajos</h2>
+        <p>Algunos tatuajes recién terminados. Hay más en el Instagram.</p>
+      </div>
+      <div class="galeria">
+        <figure><div class="foto"><img src="img/foto-06.jpg" alt="Tatuaje realista de un águila en negro y gris sobre la pierna" width="480" height="640" loading="lazy"></div>
+          <figcaption><b>Águila</b>Realismo en negro y gris</figcaption></figure>
+        <figure><div class="foto"><img src="img/foto-09.jpg" alt="Tatuaje ornamental de filigranas en sombras sobre el antebrazo" width="489" height="640" loading="lazy"></div>
+          <figcaption><b>Filigrana</b>Ornamental en sombras</figcaption></figure>
+        <figure><div class="foto"><img src="img/foto-11.jpg" alt="Manga de flores y mariposa en negro y gris sobre el antebrazo" width="360" height="640" loading="lazy"></div>
+          <figcaption><b>Flores</b>Manga en negro y gris</figcaption></figure>
+        <figure><div class="foto"><img src="img/foto-08.jpg" alt="Lettering del nombre Guillermina en cursiva sobre letras góticas sombreadas" width="480" height="640" loading="lazy"></div>
+          <figcaption><b>Guillermina</b>Lettering con sombra</figcaption></figure>
+        <figure><div class="foto"><img src="img/foto-10.jpg" alt="Lettering en cursiva con color sobre el antebrazo" width="361" height="640" loading="lazy"></div>
+          <figcaption><b>Letras a color</b>Lettering con degradé</figcaption></figure>
+        <figure><div class="foto"><img src="img/foto-05.jpg" alt="Tatuador trabajando en el cuello de un cliente" width="512" height="640" loading="lazy"></div>
+          <figcaption><b>En el estudio</b>Un cuello en proceso</figcaption></figure>
+        <figure><div class="foto"><img src="img/foto-07.jpg" alt="Tatuaje realista a color de un tigre" width="361" height="640" loading="lazy"></div>
+          <figcaption><b>Tigre</b>Realismo a color</figcaption></figure>
+        <a class="mas-ig" href="https://www.instagram.com/kingkongtattoo_369/" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#ig"/></svg>
+          <div><b>Ver más</b><span>@kingkongtattoo_369</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="estilos" id="estilos">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Estilos</h2>
+        <p>Elegí uno y lo sumamos a tu consulta. Si no sabés cuál va con tu idea, lo charlamos.</p>
+      </div>
+      <ul>
+        <li><img src="img/foto-06.jpg" alt="" width="480" height="640" loading="lazy">
+          <div><h3>Realismo</h3><p>Animales, caras y miradas con volumen, en negro y gris.</p></div>
+          <a class="btn btn-linea" href="#consulta" data-estilo="Realismo en negro y gris">Consultar</a></li>
+        <li><img src="img/foto-07.jpg" alt="" width="361" height="640" loading="lazy">
+          <div><h3>Color</h3><p>Realismo a todo color, como el tigre de la portada.</p></div>
+          <a class="btn btn-linea" href="#consulta" data-estilo="Color">Consultar</a></li>
+        <li><img src="img/foto-08.jpg" alt="" width="480" height="640" loading="lazy">
+          <div><h3>Lettering</h3><p>Nombres y frases a mano, con sombra o con color.</p></div>
+          <a class="btn btn-linea" href="#consulta" data-estilo="Lettering">Consultar</a></li>
+        <li><img src="img/foto-11.jpg" alt="" width="360" height="640" loading="lazy">
+          <div><h3>Ornamental y flores</h3><p>Filigranas, flores y mangas que cierran el brazo.</p></div>
+          <a class="btn btn-linea" href="#consulta" data-estilo="Ornamental y flores">Consultar</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="consulta" id="consulta">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Tu consulta</h2>
+        <p>Contanos la idea, dónde va y más o menos de qué tamaño. Te respondemos por mensaje con el diseño y el turno.</p>
+      </div>
+      <div class="c-grid">
+        <form class="c-form" id="form" novalidate>
+          <fieldset class="campo">
+            <legend>¿Qué estilo buscás?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="estilo" value="Realismo en negro y gris"><span>Realismo</span></label>
+              <label class="chip"><input type="radio" name="estilo" value="Color"><span>Color</span></label>
+              <label class="chip"><input type="radio" name="estilo" value="Lettering"><span>Lettering</span></label>
+              <label class="chip"><input type="radio" name="estilo" value="Ornamental y flores"><span>Ornamental y flores</span></label>
+              <label class="chip"><input type="radio" name="estilo" value="Todavía no sé"><span>Todavía no sé</span></label>
+            </div>
+          </fieldset>
+          <div class="campo f">
+            <label for="idea">Tu idea <span class="opc">(opcional)</span></label>
+            <textarea id="idea" name="idea" maxlength="600" placeholder="Ej.: la cara de un león mirando de frente, o el nombre de mi hija"></textarea>
+            <p class="ayuda">Si tenés una foto de referencia, mandala en el mismo chat.</p>
+          </div>
+          <fieldset class="campo">
+            <legend>¿En qué zona?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="zona" value="Brazo"><span>Brazo</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Antebrazo"><span>Antebrazo</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Mano"><span>Mano</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Cuello"><span>Cuello</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Pecho"><span>Pecho</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Espalda"><span>Espalda</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Pierna"><span>Pierna</span></label>
+              <label class="chip"><input type="radio" name="zona" value="Otra zona"><span>Otra</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="campo">
+            <legend>Tamaño aproximado</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="tam" value="Chico (hasta 10 cm)"><span>Chico, hasta 10 cm</span></label>
+              <label class="chip"><input type="radio" name="tam" value="Mediano (10 a 20 cm)"><span>Mediano, 10 a 20 cm</span></label>
+              <label class="chip"><input type="radio" name="tam" value="Grande (más de 20 cm)"><span>Grande, más de 20 cm</span></label>
+              <label class="chip"><input type="radio" name="tam" value="Manga o pieza completa"><span>Manga o pieza completa</span></label>
+            </div>
+          </fieldset>
+          <div class="campo f">
+            <label for="dia">Día preferido <span class="opc">(opcional)</span></label>
+            <div class="fecha">
+              <input type="date" id="dia" name="dia">
+              <label class="chip"><input type="checkbox" id="cualquiera" name="cualquiera"><span>Cualquier día</span></label>
+            </div>
+          </div>
+          <div class="campo dos">
+            <div class="f" id="fNombre">
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="60" required aria-describedby="errNombre">
+              <span class="err" id="errNombre" aria-live="polite"></span>
+            </div>
+            <div class="f" id="fTel">
+              <label for="tel">Tu teléfono</label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="Ej.: 11 2345 6789" required aria-describedby="errTel">
+              <span class="err" id="errTel" aria-live="polite"></span>
+            </div>
+          </div>
+        </form>
+
+        <aside class="c-lado" aria-label="Tu mensaje">
+          <div class="hoja">
+            <h3>Tu mensaje</h3>
+            <p class="para" id="para">Llega a @kingkongtattoo_369 así:</p>
+            <pre id="msg" aria-live="off"></pre>
+          </div>
+          <button type="submit" form="form" class="btn btn-fuego c-btn" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig" id="enviarIco"/></svg><span id="enviarTxt">Enviar por Instagram</span></button>
+          <p class="c-nota"><svg aria-hidden="true"><use href="#msj"/></svg><span id="nota">Copiamos tu mensaje y se abre el chat de Instagram: lo pegás y lo mandás.</span></p>
+          <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre" aria-label="Contacto">
+    <div class="wrap">
+      <div>
+        <h2>¿Tenés una idea?</h2>
+        <p>Escribinos y la vemos. La dirección del estudio y los horarios te los pasamos por mensaje.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-fuego" href="#consulta">Consultar tatuaje</a>
+        <a class="btn btn-linea" data-contacto href="https://ig.me/m/kingkongtattoo_369" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="pie">
+  <div class="wrap">
+    <div class="pie">
+      <div>
+        <a class="marca" href="#inicio" aria-label="King Kong Tattoo, volver arriba"><b aria-hidden="true">King Kong</b><i aria-hidden="true"></i><small aria-hidden="true">tattoo</small></a>
+        <p style="margin-top:18px">Tatuajes de Juanka Bulacio.</p>
+      </div>
+      <ul>
+        <li><a href="https://www.instagram.com/kingkongtattoo_369/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg>@kingkongtattoo_369</a></li>
+        <li><a data-contacto href="https://ig.me/m/kingkongtattoo_369" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#msj"/></svg>Escribinos</a></li>
+        <li><a href="#consulta"><svg aria-hidden="true"><use href="#foto"/></svg>Armar mi consulta</a></li>
+      </ul>
+    </div>
+    <div class="pie-baja">
+      <span>King Kong Tattoo</span>
+      <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" data-contacto href="https://ig.me/m/kingkongtattoo_369" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram" id="flotante">
+  <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
+  <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small id="tipSub">Por mensaje directo</small></span>
+</a>
+
+<script>
+// =====================================================================================
+//  WHATSAPP DEL ESTUDIO: poné el número acá y TODA la página pasa a WhatsApp.
+//  Formato: 549 + característica + número, sin espacios, sin + ni guiones (ej. '5491123456789').
+//  Mientras esté vacío, la consulta se copia al portapapeles y se abre el chat de Instagram
+//  (@kingkongtattoo_369). Con el número, el botón abre wa.me con la consulta ya escrita,
+//  y el botón flotante y "Escribinos" también van a WhatsApp.
+// =====================================================================================
+var WA = '';
+var IG_DM = 'https://ig.me/m/kingkongtattoo_369';
+
+var $ = function (id) { return document.getElementById(id); };
+if (WA) {
+  document.documentElement.classList.add('con-wa');
+  document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
+  document.querySelectorAll('[data-contacto] use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
+  $('flotante').setAttribute('aria-label', 'Escribinos por WhatsApp');
+  $('tipSub').textContent = 'Por WhatsApp';
+  $('enviarIco').setAttribute('href', '#wa');
+  $('enviarTxt').textContent = 'Enviar por WhatsApp';
+  $('nota').textContent = 'Se abre WhatsApp con tu consulta escrita. Solo falta tocar enviar.';
+  $('para').textContent = 'Llega a WhatsApp así:';
+}
+var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+function calma() { return !!(mq && mq.matches); }
+
+// ---------- encabezado: translúcido al bajar, sección activa y menú del celular ----------
+(function () {
+  var top = $('top'), btn = $('menuBtn'), menu = $('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) setMenu(false); });
+  if (!('IntersectionObserver' in window)) return;
+  var s = document.createElement('div');
+  s.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(s);
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(s);
+  var links = document.querySelectorAll('#links a');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  ['inicio', 'trabajos', 'estilos', 'consulta'].forEach(function (id) { var el = $(id); if (el) io.observe(el); });
+})();
+
+// ---------- la linterna: barre la foto y se clava en el ojo; después sigue al mouse ----------
+(function () {
+  var l = $('linterna');
+  function lista() {
+    l.classList.remove('prende'); l.classList.add('lista');
+    if (calma() || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    requestAnimationFrame(function () { l.classList.add('sigue'); });
+    l.addEventListener('pointermove', function (e) {
+      var r = l.getBoundingClientRect();
+      l.style.setProperty('--x', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      l.style.setProperty('--y', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      l.style.setProperty('--r', '240px');
+    });
+    l.addEventListener('pointerleave', function () { l.style.removeProperty('--x'); l.style.removeProperty('--y'); l.style.removeProperty('--r'); });
+  }
+  var soporta = !!(window.CSS && CSS.supports && (CSS.supports('mask-image', 'radial-gradient(circle, #000, transparent)') || CSS.supports('-webkit-mask-image', 'radial-gradient(circle, #000, transparent)')));
+  if (calma() || !soporta) { lista(); return; }
+  l.classList.add('prende');
+  l.addEventListener('animationend', function (e) { if (e.animationName === 'barrido') lista(); });
+})();
+
+// ---------- la consulta ----------
+(function () {
+  var form = $('form'), msgEl = $('msg'), btn = $('enviar'), aviso = $('aviso');
+  var intento = false;
+  var dia = $('dia'), cualquiera = $('cualquiera');
+  var hoy = new Date(); hoy.setMinutes(hoy.getMinutes() - hoy.getTimezoneOffset());
+  dia.min = hoy.toISOString().slice(0, 10);
+
+  function val(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function fechaLinda(s) {
+    if (!s) return '';
+    var p = s.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    if (isNaN(d)) return '';
+    try { return d.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }); } catch (e) { return s; }
+  }
+  function digitos(s) { return (s || '').replace(/\D/g, ''); }
+  function errNombre() { return $('nombre').value.trim().length < 2 ? 'Poné tu nombre.' : ''; }
+  function errTel() { var d = digitos($('tel').value); return d.length < 8 ? 'Poné un teléfono con característica (al menos 8 números).' : ''; }
+
+  function datos() {
+    var d = {
+      estilo: val('estilo'), idea: $('idea').value.trim(), zona: val('zona'), tam: val('tam'),
+      dia: cualquiera.checked ? 'Cualquier día' : fechaLinda(dia.value),
+      nombre: $('nombre').value.trim(), tel: $('tel').value.trim()
+    };
+    return d;
+  }
+  function mensaje(d, conHuecos) {
+    var falta = conHuecos ? '…' : 'a definir';
+    var l = ['¡Hola King Kong Tattoo! Quiero consultar por un tatuaje.', ''];
+    l.push('Estilo: ' + (d.estilo || falta));
+    if (d.idea) l.push('Idea: ' + d.idea);
+    l.push('Zona: ' + (d.zona || falta));
+    l.push('Tamaño: ' + (d.tam || falta));
+    l.push('Día preferido: ' + (d.dia || (conHuecos ? '…' : 'a coordinar')));
+    l.push('');
+    l.push('Nombre: ' + (d.nombre || falta));
+    l.push('Teléfono: ' + (d.tel || falta));
+    l.push('');
+    l.push('Si tengo una foto de referencia, te la paso por acá.');
+    return l.join('\n');
+  }
+  function render() {
+    var d = datos();
+    msgEl.textContent = mensaje(d, true);
+    var ok = !errNombre() && !errTel();
+    btn.setAttribute('aria-disabled', ok ? 'false' : 'true');
+    if (intento) {
+      $('errNombre').textContent = errNombre(); $('fNombre').classList.toggle('error', !!errNombre());
+      $('errTel').textContent = errTel(); $('fTel').classList.toggle('error', !!errTel());
+    }
+  }
+  form.addEventListener('input', function () { aviso.textContent = ''; aviso.classList.remove('mal'); render(); });
+  form.addEventListener('change', function (e) {
+    if (e.target === cualquiera && cualquiera.checked) dia.value = '';
+    if (e.target === dia && dia.value) cualquiera.checked = false;
+    render();
+  });
+
+  // "Consultar" de cada estilo: lo marca en el formulario
+  document.querySelectorAll('[data-estilo]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var r = form.querySelector('input[name="estilo"][value="' + a.getAttribute('data-estilo') + '"]');
+      if (r) { r.checked = true; render(); }
+    });
+  });
+
+  function abrirLink(url) { var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove(); }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  window.armarMensaje = function () { return mensaje(datos(), false); };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    intento = true; render();
+    if (errNombre()) { $('nombre').focus(); aviso.textContent = 'Falta tu nombre para mandar la consulta.'; aviso.classList.add('mal'); return; }
+    if (errTel()) { $('tel').focus(); aviso.textContent = 'Falta un teléfono válido para mandar la consulta.'; aviso.classList.add('mal'); return; }
+    aviso.classList.remove('mal');
+    var msg = mensaje(datos(), false);
+    if (WA) { abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg)); aviso.textContent = 'Abrimos WhatsApp con tu consulta.'; return; }
+    copiar(msg).then(function (ok) {
+      aviso.textContent = ok ? 'Copiamos tu consulta: pegala en el chat y mandala.' : 'No pudimos copiarla sola: copiá el mensaje de arriba y pegalo en el chat.';
+      abrirLink(IG_DM);
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
