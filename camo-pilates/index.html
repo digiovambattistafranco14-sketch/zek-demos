@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CAMO Pilates | Centro de pilates en Juana Koslay, San Luis</title>
+<meta name="description" content="Pilates Reformer, Spring Board y Fusión de lunes a viernes, de 7 a 12 y de 14 a 21. También kinesiología y RPG. Juana Koslay, San Luis.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CAMO Pilates | Centro de pilates en Juana Koslay">
+<meta property="og:description" content="Reformer, Spring Board y Fusión, de lunes a viernes. Reservá tu clase por WhatsApp.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/camo-pilates/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/camo-pilates/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#B3A190">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concepto: el reformer. La portada es un carro que se desliza sobre su riel y estira los resortes (un solo movimiento).
+   Los horarios van a escala sobre un riel de 7 a 21. Colores del logo: el taupe del fondo, el loto blanco con un pétalo naranja y uno rosa.
+   Tipografía condensada y alta como el "CAMO" de su logo. */
+:root{
+  --taupe:#B3A190;      /* fondo del logo */
+  --taupe-deep:#7B6C5F;
+  --taupe-ink:#3F3731;  /* texto */
+  --stone:#F2EFEB;      /* pared del estudio */
+  --stone-2:#E6E0D9;
+  --muted:#6A5F56;
+  --orange:#F4A45B;     /* pétalo naranja */
+  --pink:#EE97BE;       /* pétalo rosa */
+  --wood:#C99A63;
+  --display:'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--stone);color:var(--taupe-ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:700;letter-spacing:-0.005em;line-height:.98;text-wrap:balance}
+h2{font-size:clamp(2.4rem, 5vw, 3.6rem)}
+p{margin:0}
+::selection{background:var(--pink);color:var(--taupe-ink)}
+:focus-visible{outline:3px solid var(--taupe-ink);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-family:inherit;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-ink{background:var(--taupe-ink);color:#fff}
+.btn-white{background:#fff;color:var(--taupe-ink)}
+.btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7)}
+.btn-wa{background:#25D366;color:#073B2A}
+@media (hover:hover) and (pointer:fine){
+  .btn-ink:hover{background:#2B2521}
+  .btn-white:hover{background:var(--stone)}
+  .btn-line:hover{box-shadow:inset 0 0 0 1.5px #fff;background:rgba(255,255,255,.08)}
+  .btn-wa:hover{background:#1FBE5B}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;color:#fff;transition:background-color .25s ease, box-shadow .25s ease, color .25s ease}
+.top.scrolled{color:var(--taupe-ink);background:rgba(242,239,235,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(63,55,49,.08), 0 10px 30px -18px rgba(63,55,49,.35)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.brand span{font-family:var(--display);font-weight:700;font-size:21px;line-height:1;letter-spacing:.01em}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12.5px;opacity:.85;letter-spacing:0;margin-top:3px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(127,112,99,.16)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(255,255,255,.18);cursor:pointer;place-items:center;color:inherit}
+.top.scrolled .menu-btn{background:rgba(63,55,49,.07)}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:#fff;border-radius:18px;padding:10px;box-shadow:0 24px 60px -20px rgba(63,55,49,.5);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:block;padding:13px 16px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:22px;text-decoration:none}
+.sheet-menu a:active{background:var(--stone)}
+.sheet-menu .btn{display:flex;font-family:var(--body);font-size:16px;margin-top:6px;padding:0}
+@media (max-width:900px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+
+/* ---------- portada ---------- */
+.hero{background:var(--taupe);color:#fff;padding:calc(var(--header) + 40px) 0 72px;overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:end}
+.hero h1{font-weight:700}
+.hero h1 .word{display:block;font-size:clamp(6.5rem, 15vw, 12.5rem);line-height:.82;letter-spacing:.01em}
+.hero h1 .what{display:block;font-weight:500;font-size:clamp(1.6rem, 2.6vw, 2.2rem);letter-spacing:.02em;margin-top:14px}
+.hero .lead{margin-top:22px;font-size:clamp(17px, 1.5vw, 19px);max-width:40ch;color:rgba(255,255,255,.94)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.lotus{width:62px;height:auto;margin-bottom:22px}
+
+/* el reformer: riel, resortes y carro */
+.reformer{position:relative;padding-bottom:30px}
+.machine{display:flex;align-items:center;position:relative}
+.footbar{width:14px;align-self:stretch;margin:18% 0;border-radius:8px;background:#fff;flex:none;box-shadow:0 6px 16px -8px rgba(40,30,20,.5)}
+.springs{width:var(--springs, 96px);flex:none;display:flex;flex-direction:column;justify-content:center;gap:9px;transform-origin:left center}
+.springs i{display:block;height:7px;border-radius:4px;background:repeating-linear-gradient(90deg, var(--c) 0 3px, transparent 3px 6px)}
+.springs i:nth-child(1){--c:var(--orange)}
+.springs i:nth-child(2){--c:#fff}
+.springs i:nth-child(3){--c:var(--pink)}
+.springs i:nth-child(4){--c:#fff}
+.carriage{flex:1;min-width:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px -28px rgba(40,30,20,.7);background:var(--taupe-deep)}
+.carriage img{width:100%;height:100%;object-fit:cover}
+.rail{position:absolute;left:0;right:0;bottom:6px;height:8px;border-radius:4px;background:linear-gradient(var(--wood), #A97C4A)}
+.rail::before,.rail::after{content:"";position:absolute;bottom:-14px;width:22px;height:16px;background:#A97C4A;border-radius:0 0 4px 4px}
+.rail::before{left:6%}.rail::after{right:6%}
+
+@media (prefers-reduced-motion: no-preference){
+  .hero .lotus,.hero h1 .word,.hero h1 .what,.hero .lead,.hero .ctas{animation:subir .7s var(--ease-out) both}
+  .hero h1 .word{animation-delay:.05s}.hero h1 .what{animation-delay:.12s}.hero .lead{animation-delay:.2s}.hero .ctas{animation-delay:.28s}
+  .reformer .carriage{animation:carro 1.5s var(--ease-in-out) .35s both}
+  .reformer .springs{animation:estira 1.5s var(--ease-in-out) .35s both}
+}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* el carro arranca pegado a la barra (resortes cerrados), se desliza, pasa un poco y vuelve, como con resortes */
+@keyframes carro{
+  0%{transform:translateX(calc(var(--springs, 96px) * -0.7))}
+  62%{transform:translateX(10px)}
+  80%{transform:translateX(-3px)}
+  100%{transform:none}
+}
+@keyframes estira{
+  0%{transform:translateX(0) scaleX(.3)}
+  62%{transform:scaleX(1.1)}
+  80%{transform:scaleX(.97)}
+  100%{transform:none}
+}
+
+/* ---------- clases ---------- */
+.classes{padding:110px 0 100px}
+.classes .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.classes .pic{position:sticky;top:calc(var(--header) + 24px);border-radius:18px;overflow:hidden;aspect-ratio:4/5}
+.classes .pic img{width:100%;height:100%;object-fit:cover}
+.classes h2{margin-bottom:14px}
+.classes .intro{color:var(--muted);max-width:46ch}
+.class-list{list-style:none;margin:36px 0 0;padding:0}
+.class-list li{padding:28px 0;border-top:1.5px solid var(--stone-2);display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center}
+.class-list h3{font-size:clamp(2rem, 3.6vw, 2.7rem);display:flex;align-items:center;gap:14px}
+.class-list h3 .coil{width:46px;height:8px;border-radius:4px;background:repeating-linear-gradient(90deg, var(--c) 0 3px, transparent 3px 6px);flex:none}
+.class-list p{grid-column:1;color:var(--muted);max-width:48ch}
+.class-list a{grid-column:2;grid-row:1 / span 2;font-weight:600;font-size:15px;text-decoration:none;padding:10px 18px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(63,55,49,.25);transition:box-shadow .2s ease, background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.class-list a:hover{box-shadow:inset 0 0 0 1.5px var(--taupe-ink)}}
+.class-list a:active{transform:scale(.97)}
+
+/* ---------- kinesiología ---------- */
+.kine{background:var(--taupe-deep);color:#fff;padding:72px 0}
+.kine .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center}
+.kine img{width:96px;height:96px;border-radius:24px}
+.kine h2{font-size:clamp(2.2rem, 4.2vw, 3.1rem)}
+.kine p{margin-top:10px;color:rgba(255,255,255,.88);max-width:52ch}
+.kine .nums{display:flex;flex-direction:column;gap:10px}
+.kine .btn{height:50px}
+
+/* ---------- reservar ---------- */
+.book{padding:110px 0}
+.book .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.book .side h2{margin-bottom:16px}
+.book .side p{color:var(--muted);max-width:40ch}
+.book .side .alt{margin-top:22px;font-size:15px}
+.book .side .alt a{font-weight:600}
+.card-form{background:#fff;border-radius:22px;padding:34px;box-shadow:0 1px 0 rgba(63,55,49,.06), 0 30px 60px -36px rgba(63,55,49,.45)}
+.f{display:grid;gap:8px;margin:0 0 22px;border:0;padding:0;min-width:0}
+.f legend,.f label.lb{font-weight:600;font-size:15px;padding:0;margin-bottom:8px}
+.f legend small,.f label.lb small{font-weight:500;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;background:var(--stone);font-weight:500;font-size:15px;cursor:pointer;
+  transition:background-color .16s ease, color .16s ease, transform .12s var(--ease-out)}
+.chips input:checked + span{background:var(--taupe-ink);color:#fff}
+.chips input:focus-visible + span{outline:3px solid var(--taupe-ink);outline-offset:2px}
+.chips label:active span{transform:scale(.97)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:16px;color:var(--taupe-ink);background:var(--stone);border:1.5px solid transparent;border-radius:12px;padding:13px 14px;transition:border-color .16s ease, background-color .16s ease}
+textarea{min-height:88px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#857A70}
+input:focus,textarea:focus{outline:none;border-color:var(--taupe-ink);background:#fff}
+.err{color:#A3322B;font-size:14px;font-weight:500;display:none}
+.f.bad input{border-color:#A3322B}
+.f.bad .err{display:block}
+.preview{background:#E7F7EC;border-radius:14px;padding:14px 16px;margin:4px 0 20px;font-size:14.5px;white-space:pre-line;color:#14382A}
+.preview small{display:block;font-weight:600;font-size:13px;color:#2D6A4C;margin-bottom:4px}
+.send{width:100%;height:58px;font-size:17px}
+
+/* ---------- comunidad ---------- */
+.community{background:#fff;padding:110px 0}
+.community .head{max-width:620px}
+.community .head p{margin-top:14px;color:var(--muted)}
+.mosaic{display:grid;grid-template-columns:repeat(12, 1fr);grid-auto-rows:120px;gap:14px;margin-top:44px}
+.mosaic figure{margin:0;border-radius:16px;overflow:hidden;position:relative;background:var(--stone-2)}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;color:#fff;font-weight:600;font-size:14.5px;background:linear-gradient(transparent, rgba(40,32,26,.72))}
+.m1{grid-column:1 / span 4;grid-row:span 4}
+.m2{grid-column:5 / span 5;grid-row:span 2}
+.m2 img{object-position:center 100%}
+.m3{grid-column:10 / span 3;grid-row:span 4}
+.m4{grid-column:5 / span 5;grid-row:span 2}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.note{border-radius:16px;padding:26px 28px;background:var(--stone)}
+.note h3{font-size:1.9rem}
+.note p{margin-top:8px;color:var(--muted);max-width:44ch}
+.note.club{background:var(--taupe);color:#fff}
+.note.club p{color:rgba(255,255,255,.9)}
+.ig-link{display:inline-block;margin-top:26px;font-weight:600}
+
+/* ---------- visitanos ---------- */
+.visit{padding:110px 0 90px}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.visit h2{margin-bottom:12px}
+.visit .addr{color:var(--muted)}
+.hours{margin-top:38px}
+.hours h3{font-size:1.9rem;margin-bottom:6px}
+.hours .days{color:var(--muted);font-size:15px}
+.track{position:relative;height:46px;margin-top:20px;border-radius:10px;background:var(--stone-2)}
+.track .on{position:absolute;top:0;bottom:0;border-radius:10px;background:linear-gradient(90deg, var(--orange), var(--pink));transform-origin:left center;display:flex;align-items:center;padding:0 12px;font-weight:600;font-size:14px;color:var(--taupe-ink);white-space:nowrap;overflow:hidden}
+.track .am{left:0;width:calc(5 / 14 * 100%)}
+.track .pm{left:calc(7 / 14 * 100%);width:50%}
+.ticks{position:relative;height:22px;margin-top:6px;font-size:13px;color:var(--muted)}
+.ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.ticks span:first-child{transform:none}
+.ticks span:last-child{transform:translateX(-100%)}
+.hours .foot{margin-top:14px;font-size:15px;color:var(--muted)}
+.visit .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn-ghost{color:var(--taupe-ink);box-shadow:inset 0 0 0 1.5px rgba(63,55,49,.25)}
+@media (hover:hover) and (pointer:fine){.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--taupe-ink)}}
+.map{border:0;width:100%;height:100%;min-height:420px;border-radius:18px;background:var(--stone-2)}
+.js .track .on{transform:scaleX(0);transition:transform 1s var(--ease-out)}
+.js .track .pm{transition-delay:.25s}
+.js .hours.in .track .on{transform:none}
+
+footer{background:var(--taupe-ink);color:rgba(255,255,255,.8);padding:36px 0 120px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#fff;font-weight:600}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.9s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 2.9s infinite}
+.wa::after{animation-delay:3.3s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--taupe-ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(63,55,49,.5);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+
+/* ---------- celular ---------- */
+@media (max-width:900px){
+  .hero{padding:calc(var(--header) + 28px) 0 56px}
+  .hero .wrap,.classes .wrap,.book .wrap,.visit .wrap{grid-template-columns:1fr;gap:40px}
+  .reformer{--springs:58px}
+  .classes,.book,.community,.visit{padding:80px 0}
+  .classes .pic{position:relative;top:0;aspect-ratio:16/10}
+  .kine .wrap{grid-template-columns:1fr;gap:22px}
+  .kine img{width:72px;height:72px;border-radius:18px}
+  .kine .nums{flex-direction:row;flex-wrap:wrap}
+  .map{min-height:320px}
+  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+  .mosaic figure{grid-column:auto;grid-row:auto}
+  .m1,.m3{aspect-ratio:9/14}
+  .mosaic .m2,.mosaic .m4{grid-column:1 / -1;aspect-ratio:16/10}
+  .mosaic .m3{order:-1}.mosaic .m1{order:-2}
+  .notes{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .wrap{width:calc(100% - 32px)}
+  .hero .ctas .btn{flex:1 1 100%}
+  .card-form{padding:22px 18px;border-radius:18px}
+  .two{grid-template-columns:1fr;gap:0}
+  .class-list li{grid-template-columns:1fr}
+  .class-list a{grid-column:1;grid-row:auto;justify-self:start;margin-top:6px}
+  .track .on{font-size:12.5px;padding:0 8px}
+  .wa{width:58px;height:58px}.wa svg{width:31px;height:31px}
+}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero .lotus,.hero h1 .word,.hero h1 .what,.hero .lead,.hero .ctas,.reformer{animation:suave .4s ease both}
+  .wa{animation:suave .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .js .track .on{transform:none;transition:none}
+}
+@keyframes suave{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="loto" viewBox="0 0 64 44"><g fill="none" stroke-width="2.6" stroke-linejoin="round"><path d="M32 41C20 34 14 22 18 8c8 6 14 18 14 33z" stroke="var(--orange)"/><path d="M32 41c12-7 18-19 14-33-8 6-14 18-14 33z" stroke="var(--pink)"/><path d="M32 41C24 30 24 14 32 3c8 11 8 27 0 38z" stroke="#fff"/><path d="M32 41C20 42 8 36 3 24c10-2 22 4 29 17z" stroke="#fff"/><path d="M32 41c12 1 24-5 29-17-10-2-22 4-29 17z" stroke="#fff"/></g></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="CAMO Pilates, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="42" height="42">
+      <span>CAMO Pilates<small>Centro de pilates en Juana Koslay</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#clases">Clases</a><a href="#kinesiologia">Kinesiología</a><a href="#reservar">Reservar</a><a href="#comunidad">Comunidad</a><a href="#ubicacion">Horarios y ubicación</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/5492665020030" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a href="#clases">Clases</a><a href="#kinesiologia">Kinesiología y RPG</a><a href="#reservar">Reservar</a><a href="#comunidad">Comunidad</a><a href="#ubicacion">Horarios y ubicación</a>
+  <a class="btn btn-wa" href="https://wa.me/5492665020030" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos por WhatsApp</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <svg class="lotus" viewBox="0 0 64 44" aria-hidden="true"><use href="#loto"/></svg>
+        <h1><span class="word">CAMO</span><span class="what">Centro de pilates en Juana Koslay</span></h1>
+        <p class="lead">Cuidar tu cuerpo hoy es bienestar para mañana. Reformer, Spring Board y Fusión, de lunes a viernes.</p>
+        <div class="ctas">
+          <a class="btn btn-white" href="#reservar">Reservá tu clase</a>
+          <a class="btn btn-line" href="#ubicacion">Ver horarios</a>
+        </div>
+      </div>
+      <div class="reformer" aria-hidden="true">
+        <div class="machine">
+          <span class="footbar"></span>
+          <span class="springs"><i></i><i></i><i></i><i></i></span>
+          <div class="carriage"><img src="img/stock-06.jpg" alt="" width="1400" height="1050" fetchpriority="high"></div>
+        </div>
+        <span class="rail"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="classes" id="clases">
+    <div class="wrap">
+      <figure class="pic" style="margin:0"><img src="img/stock-04.jpg" alt="Alumna trabajando con las correas del reformer" loading="lazy"></figure>
+      <div>
+        <h2>Elegí tu clase.</h2>
+        <p class="intro">Tres formas de hacer pilates en el mismo estudio. Si no sabés por cuál empezar, te ayudamos a elegir.</p>
+        <ul class="class-list">
+          <li>
+            <h3><span class="coil" style="--c:var(--orange)"></span>Reformer</h3>
+            <p>La máquina clásica del pilates: un carro que se desliza sobre su riel y resortes que regulan la resistencia.</p>
+            <a href="#reservar" data-pedir="Reformer">Reservar</a>
+          </li>
+          <li>
+            <h3><span class="coil" style="--c:var(--pink)"></span>Spring Board</h3>
+            <p>Una tabla en la pared con resortes y manijas. Se trabaja de pie, sentado o en la colchoneta.</p>
+            <a href="#reservar" data-pedir="Spring Board">Reservar</a>
+          </li>
+          <li>
+            <h3><span class="coil" style="--c:var(--taupe-deep)"></span>Fusión</h3>
+            <p>Una clase que combina distintos elementos. Preguntanos cómo es y si es para vos.</p>
+            <a href="#reservar" data-pedir="Fusión">Reservar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="kine" id="kinesiologia">
+    <div class="wrap">
+      <img src="img/perfil.jpg" alt="" width="96" height="96">
+      <div>
+        <h2>Kinesiología y RPG</h2>
+        <p>En CAMO también atienden kinesiología y RPG (reeducación postural global). Los turnos se piden a estos números.</p>
+      </div>
+      <div class="nums">
+        <a class="btn btn-white" href="https://wa.me/5492364722153" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>236 472-2153</a>
+        <a class="btn btn-white" href="https://wa.me/5492664319342" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>266 431-9342</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="reservar">
+    <div class="wrap">
+      <div class="side">
+        <h2>Reservá tu lugar por WhatsApp.</h2>
+        <p>Elegí la clase, el turno y los días que te quedan cómodos. El mensaje te queda armado y nos llega directo.</p>
+        <p class="alt">¿Preferís hablar? Escribinos al <a href="https://wa.me/5492665020030" target="_blank" rel="noopener">266 502-0030</a>.</p>
+      </div>
+      <form class="card-form" id="reserva" novalidate>
+        <fieldset class="f">
+          <legend>¿Qué clase querés hacer?</legend>
+          <div class="chips">
+            <label><input type="radio" name="clase" value="Reformer" checked><span>Reformer</span></label>
+            <label><input type="radio" name="clase" value="Spring Board"><span>Spring Board</span></label>
+            <label><input type="radio" name="clase" value="Fusión"><span>Fusión</span></label>
+            <label><input type="radio" name="clase" value="No sé, quiero que me asesoren"><span>No sé, asesorame</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f">
+          <legend>¿En qué turno?</legend>
+          <div class="chips">
+            <label><input type="radio" name="turno" value="a la mañana (7 a 12)" checked><span>Mañana, 7 a 12</span></label>
+            <label><input type="radio" name="turno" value="a la tarde (14 a 21)"><span>Tarde, 14 a 21</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f">
+          <legend>¿Qué días? <small>(podés marcar varios)</small></legend>
+          <div class="chips">
+            <label><input type="checkbox" name="dia" value="lunes"><span>Lun</span></label>
+            <label><input type="checkbox" name="dia" value="martes"><span>Mar</span></label>
+            <label><input type="checkbox" name="dia" value="miércoles"><span>Mié</span></label>
+            <label><input type="checkbox" name="dia" value="jueves"><span>Jue</span></label>
+            <label><input type="checkbox" name="dia" value="viernes"><span>Vie</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f">
+          <legend>¿Ya hiciste pilates?</legend>
+          <div class="chips">
+            <label><input type="radio" name="exp" value="primera" checked><span>Es mi primera vez</span></label>
+            <label><input type="radio" name="exp" value="ya"><span>Sí, ya hice</span></label>
+          </div>
+        </fieldset>
+        <div class="two">
+          <div class="f" id="fNombre"><label class="lb" for="nombre">Tu nombre</label><input type="text" id="nombre" autocomplete="name" required><span class="err">Poné tu nombre así te saludamos.</span></div>
+          <div class="f" id="fTel"><label class="lb" for="tel">Tu teléfono</label><input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="Ej: 266 4xx xxxx" required><span class="err">Poné un teléfono para confirmarte el lugar.</span></div>
+        </div>
+        <div class="f"><label class="lb" for="nota">Aclaraciones <small>(opcional)</small></label><textarea id="nota" placeholder="Alguna lesión, si estás embarazada, si venís con alguien…"></textarea></div>
+        <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><span id="prev"></span></div>
+        <button class="btn btn-wa send" type="submit"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Enviar reserva por WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="community" id="comunidad">
+    <div class="wrap">
+      <div class="head">
+        <h2>Esto es CAMO.</h2>
+        <p>El estudio, la gente que viene a entrenar y las salidas que armamos juntos.</p>
+      </div>
+      <div class="mosaic">
+        <figure class="m1"><img src="img/foto-09.jpg" alt="Profe y alumnos chicos sentados en un reformer del estudio, con el logo de CAMO atrás" loading="lazy"><figcaption>En el estudio</figcaption></figure>
+        <figure class="m2"><img src="img/foto-10.jpg" alt="Los reformers de madera del estudio CAMO" loading="lazy"><figcaption>Nuestros reformers</figcaption></figure>
+        <figure class="m3"><img src="img/foto-11.jpg" alt="Alumnas de CAMO caminando juntas al aire libre" loading="lazy"><figcaption>CAMO en movimiento</figcaption></figure>
+        <figure class="m4"><img src="img/stock-02.jpg" alt="Ejercicio de pie sobre el reformer" loading="lazy" style="object-position:center 35%"></figure>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h3>CAMO en movimiento</h3>
+          <p>Salidas al aire libre con la comunidad: naturaleza, café y movimiento. Enterate de la próxima en nuestro Instagram.</p>
+        </div>
+        <div class="note club">
+          <h3>Club CAMO</h3>
+          <p>Siendo alumna o alumno tenés beneficios en locales adheridos. Preguntanos cuáles son.</p>
+        </div>
+      </div>
+      <a class="ig-link" href="https://instagram.com/camo.pilatesjk" target="_blank" rel="noopener">Ver @camo.pilatesjk en Instagram</a>
+    </div>
+  </section>
+
+  <section class="visit" id="ubicacion">
+    <div class="wrap">
+      <div>
+        <h2>Te esperamos en Juana Koslay.</h2>
+        <p class="addr">CAMO Centro de Pilates, Juana Koslay, San Luis.</p>
+        <div class="hours" id="hours">
+          <h3>Horarios de clases</h3>
+          <p class="days">De lunes a viernes</p>
+          <div class="track" role="img" aria-label="Clases de 7 a 12 y de 14 a 21">
+            <span class="on am">Mañana</span>
+            <span class="on pm">Tarde</span>
+          </div>
+          <div class="ticks" aria-hidden="true">
+            <span style="left:0">7 hs</span>
+            <span style="left:calc(5 / 14 * 100%)">12</span>
+            <span style="left:50%">14</span>
+            <span style="left:100%">21 hs</span>
+          </div>
+          <p class="foot">Para fines de semana y feriados, consultá por WhatsApp.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-ink" href="https://maps.app.goo.gl/AtKcPw6Ln5ifaz299" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn-ghost" href="https://wa.me/5492665020030" target="_blank" rel="noopener">266 502-0030</a>
+        </div>
+      </div>
+      <iframe class="map" title="Mapa: CAMO Centro de Pilates, Juana Koslay, San Luis" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=CAMO%20Centro%20de%20Pilates%2C%20Juana%20Koslay%2C%20San%20Luis&z=15&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>CAMO Centro de Pilates, Juana Koslay, San Luis. <a href="https://instagram.com/camo.pilatesjk" target="_blank" rel="noopener">@camo.pilatesjk</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5492665020030" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 266 502-0030">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>266 502-0030</small></span>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:40px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var hours = document.getElementById('hours');
+  if (!('IntersectionObserver' in window)) { hours.classList.add('in'); return; }
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  // Los horarios se "cargan" sobre el riel cuando llegás
+  var io = new IntersectionObserver(function (es) {
+    if (es[0].isIntersecting) { hours.classList.add('in'); io.disconnect(); }
+  }, { threshold: .5 });
+  io.observe(hours);
+})();
+
+// Reserva: arma el mensaje y lo abre en WhatsApp
+(function () {
+  var form = document.getElementById('reserva'); if (!form) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'camo-reserva';
+  function val(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function dias() { return Array.prototype.map.call(form.querySelectorAll('input[name="dia"]:checked'), function (i) { return i.value; }); }
+  function lista(a) { return a.length > 1 ? a.slice(0, -1).join(', ') + ' y ' + a[a.length - 1] : a[0]; }
+  function texto() {
+    var d = dias(), l = ['¡Hola CAMO! Quiero reservar una clase.'];
+    l.push('Clase: ' + val('clase'));
+    l.push('Turno: ' + val('turno'));
+    l.push('Días: ' + (d.length ? lista(d) : 'los que tengan lugar'));
+    l.push(val('exp') === 'primera' ? 'Es mi primera vez.' : 'Ya hice pilates antes.');
+    l.push('Nombre: ' + ($('nombre').value.trim() || '...'));
+    l.push('Teléfono: ' + ($('tel').value.trim() || '...'));
+    if ($('nota').value.trim()) l.push('Aclaraciones: ' + $('nota').value.trim());
+    return l.join('\n');
+  }
+  function guardar() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ clase: val('clase'), turno: val('turno'), dias: dias(), exp: val('exp'), nombre: $('nombre').value, tel: $('tel').value, nota: $('nota').value }));
+    } catch (e) {}
+  }
+  function cargar() {
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (!s) return;
+      ['clase', 'turno', 'exp'].forEach(function (n) { var r = form.querySelector('input[name="' + n + '"][value="' + s[n] + '"]'); if (r) r.checked = true; });
+      (s.dias || []).forEach(function (d) { var r = form.querySelector('input[name="dia"][value="' + d + '"]'); if (r) r.checked = true; });
+      $('nombre').value = s.nombre || ''; $('tel').value = s.tel || ''; $('nota').value = s.nota || '';
+    } catch (e) {}
+  }
+  function sync() { $('prev').textContent = texto(); guardar(); }
+  function check(id, ok) { $(id).classList.toggle('bad', !ok); return ok; }
+  form.addEventListener('input', function (e) {
+    if (e.target.id === 'nombre') check('fNombre', true);
+    if (e.target.id === 'tel') check('fTel', true);
+    sync();
+  });
+  form.addEventListener('change', sync);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var okN = check('fNombre', $('nombre').value.trim().length > 1);
+    var okT = check('fTel', $('tel').value.replace(/\D/g, '').length >= 8);
+    if (!okN) { $('nombre').focus(); return; }
+    if (!okT) { $('tel').focus(); return; }
+    window.open('https://wa.me/5492665020030?text=' + encodeURIComponent(texto()), '_blank', 'noopener');
+  });
+  document.querySelectorAll('[data-pedir]').forEach(function (a) {
+    a.addEventListener('click', function () { var r = form.querySelector('input[name="clase"][value="' + a.getAttribute('data-pedir') + '"]'); if (r) { r.checked = true; sync(); } });
+  });
+  cargar(); sync();
+})();
+</script>
+</body>
+</html>
