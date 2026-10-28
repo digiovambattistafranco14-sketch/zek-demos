@@ -106,12 +106,12 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
   .menu .menu-wa svg{width:20px;height:20px;fill:currentColor}
 }
 @media (min-width:901px){.menu .menu-wa{display:none}}
-@media (max-width:420px){.marca span{display:none}}
+@media (max-width:420px){.top .marca span{display:none}}
 
 /* ---------- portada: el mate que se pinta solo ---------- */
-.hero{padding:calc(var(--header) + 40px) 0 70px;min-height:min(100dvh, 860px);display:flex;align-items:center}
+.hero{padding:calc(var(--header) + 32px) 0 60px;min-height:min(100dvh, 800px);display:flex;align-items:center}
 .hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.hero h1{font-weight:900;font-size:clamp(40px,5.6vw,72px);line-height:1.02;letter-spacing:-.035em;max-width:11ch}
+.hero h1{font-weight:900;font-size:clamp(40px,5vw,66px);line-height:1.03;letter-spacing:-.035em;max-width:13ch}
 .hero-sub{margin-top:22px;font-size:19px;color:var(--tinta-2);max-width:38ch}
 .hero-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
 .hero-txt > *{animation:subir .7s var(--ease-out) both}
@@ -121,7 +121,7 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 
 .lienzo{position:relative;width:min(100%, 540px);justify-self:end;aspect-ratio:1/1.04}
 .lienzo > svg{width:100%;height:100%;overflow:visible}
-.lienzo .foto-real{position:absolute;left:-6%;bottom:-2%;width:40%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--papel);
+.lienzo .foto-real{position:absolute;left:-12%;bottom:-6%;width:34%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--papel);
   box-shadow:0 0 0 6px var(--papel), 0 24px 40px -18px rgba(42,28,34,.55);transform:rotate(-6deg);animation:asoma .7s var(--ease-out) 3.1s both}
 .lienzo .foto-real img{width:100%;height:100%;object-fit:cover}
 @keyframes asoma{from{opacity:0;transform:translateY(18px) rotate(-2deg)}to{opacity:1;transform:rotate(-6deg)}}
@@ -137,7 +137,7 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 @keyframes bombilla{to{opacity:1;transform:none}}
 .m-virola{opacity:0;animation:fundir .4s ease 1.0s forwards}
 @keyframes fundir{to{opacity:1}}
-.pincel{offset-path:path("M88 176 L312 196 L84 236 L318 258 L96 300 L300 322 L150 352");offset-rotate:0deg;offset-distance:0%;opacity:0;
+.pincel{offset-path:path("M88 170 L312 188 L84 226 L318 246 L92 286 L306 306 L140 334");offset-rotate:0deg;offset-distance:0%;opacity:0;
   animation:pintar 1.35s cubic-bezier(.45,.05,.4,1) 1.05s forwards, irse .35s ease 2.4s forwards}
 @keyframes pintar{0%{offset-distance:0%;opacity:1}100%{offset-distance:100%;opacity:1}}
 @keyframes irse{from{opacity:1}to{opacity:0;transform:translate(40px,-30px)}}
@@ -204,6 +204,11 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 .cant output{font-weight:700;font-variant-numeric:tabular-nums;min-width:2ch;text-align:center;font-size:15px}
 .add[data-n="0"] .cant{opacity:0;transform:scale(.95);pointer-events:none;visibility:hidden}
 .add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.95);pointer-events:none;visibility:hidden}
+.prod.ancha{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:center;padding-top:6px}
+.prod.ancha .foto{aspect-ratio:16/10}
+.prod.ancha .prod-txt{padding-top:0;max-width:46ch}
+.prod.ancha .empuje{margin-top:14px}
+.prod.ancha .add{max-width:280px}
 .medida-arte{width:100%;height:100%;display:grid;place-items:center;background:var(--lila)}
 .medida-arte svg{width:78%;height:auto}
 .cat-pie{margin-top:44px;color:var(--tinta-2);font-size:16px}
@@ -211,6 +216,7 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 .prod.marcado .foto{animation:marcar 1.4s var(--ease-out)}
 @keyframes marcar{0%,40%{box-shadow:0 0 0 4px var(--barro)}100%{box-shadow:0 0 0 0 transparent}}
 @media (max-width:980px){.grilla{grid-template-columns:1fr 1fr;gap:28px 16px}}
+@media (max-width:560px){.prod.ancha{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px;align-items:start}.prod.ancha .foto{aspect-ratio:1/1}.prod.ancha .add{max-width:none}}
 @media (max-width:560px){
   .catalogo{padding:64px 0 72px;border-radius:26px 26px 0 0}
   .grilla{grid-template-columns:1fr 1fr;gap:26px 12px}
@@ -227,7 +233,7 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 .retratos{padding:100px 0;background:var(--lila)}
 .retratos .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 .retratos figure{margin:0;position:relative}
-.retratos figure img{width:100%;border-radius:18px;aspect-ratio:720/680;object-fit:cover}
+.retratos figure img{width:100%;height:auto;border-radius:18px;aspect-ratio:720/680;object-fit:cover}
 .retratos figure::before{content:"";position:absolute;inset:-14px 26px auto -14px;height:70%;border-radius:18px;background:var(--violeta);opacity:.18;z-index:-1;transform:rotate(-2deg)}
 .retratos-txt{display:grid;gap:18px}
 .retratos-txt > p{color:var(--tinta-2);font-size:18px}
@@ -257,7 +263,7 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 
 /* ---------- el taller ---------- */
 .taller{padding:30px 0 110px}
-.taller-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:14px;margin-top:40px}
+.taller-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:14px;margin-top:40px}
 .taller-grid figure{margin:0;border-radius:18px;overflow:hidden;background:var(--lila)}
 .taller-grid img{width:100%;height:100%;object-fit:cover}
 .t-txt{grid-column:1 / span 3;grid-row:1 / span 2;display:grid;align-content:center;gap:16px;padding-right:20px}
@@ -284,7 +290,8 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 footer{padding:46px 0 calc(110px + env(safe-area-inset-bottom));background:var(--tinta);color:rgba(253,252,253,.75);font-size:15px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 30px}
 footer .marca{color:var(--papel)}
-footer .marca span{color:rgba(253,252,253,.7)}
+footer .marca svg{width:64px;height:64px}
+footer .marca span{color:rgba(253,252,253,.7);white-space:normal}
 footer a{color:var(--papel);text-underline-offset:3px}
 .pie-links{display:flex;flex-wrap:wrap;gap:8px 22px}
 
@@ -480,11 +487,11 @@ html.carrito-abierto{overflow:hidden}
       </div>
 
       <div class="lienzo">
-        <svg viewBox="0 0 400 416" role="img" aria-label="Un mate celeste que se pinta solo con margaritas, flores violetas, estrellas doradas y una luna, sobre una tabla redonda de pino">
+        <svg viewBox="0 0 400 416" role="img" aria-label="Un mate celeste que se pinta solo con margaritas, flores violetas, estrellas doradas, una luna y un sol, sobre una tabla redonda de pino">
           <defs>
-            <clipPath id="cuerpo"><path d="M116 152 C 92 196, 84 252, 112 300 C 132 334, 162 352, 200 352 C 238 352, 268 334, 288 300 C 316 252, 308 196, 284 152 Z"/></clipPath>
+            <clipPath id="cuerpo"><path d="M122 150 C 96 184, 86 232, 102 274 C 116 312, 150 336, 200 336 C 250 336, 284 312, 298 274 C 314 232, 304 184, 278 150 Z"/></clipPath>
             <mask id="barrido" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="416">
-              <path class="m-pincel-trazo" pathLength="1" d="M88 176 L312 196 L84 236 L318 258 L96 300 L300 322 L150 352" stroke="#fff" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path class="m-pincel-trazo" pathLength="1" d="M88 170 L312 188 L84 226 L318 246 L92 286 L306 306 L140 334" stroke="#fff" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
             </mask>
           </defs>
           <!-- tabla redonda de pino, como sus carteles -->
@@ -493,48 +500,51 @@ html.carrito-abierto{overflow:hidden}
             <path d="M30 150 C 120 136, 250 160, 372 140"/><path d="M14 214 C 110 202, 260 226, 388 206"/><path d="M26 282 C 140 270, 250 292, 376 274"/><path d="M60 340 C 150 330, 250 350, 342 336"/><path d="M62 90 C 150 80, 250 100, 338 86"/>
           </g>
           <!-- gotas de pintura sobre la tabla -->
-          <g>
-            <ellipse class="gota" style="--i:0" cx="62" cy="120" rx="15" ry="11" fill="var(--violeta)" transform="rotate(-18 62 120)"/>
-            <ellipse class="gota" style="--i:1" cx="342" cy="118" rx="13" ry="10" fill="var(--rosa)" transform="rotate(20 342 118)"/>
-            <ellipse class="gota" style="--i:2" cx="352" cy="300" rx="14" ry="11" fill="var(--oro)" transform="rotate(-10 352 300)"/>
-            <ellipse class="gota" style="--i:3" cx="300" cy="372" rx="11" ry="8" fill="var(--hoja)" transform="rotate(14 300 372)"/>
-          </g>
-          <!-- sombra del mate -->
-          <ellipse cx="200" cy="356" rx="88" ry="12" fill="rgba(42,28,34,.18)"/>
-          <!-- base celeste, la pincelada la barre -->
+          <path class="gota" style="--i:0" d="M48 116 c 6 -12, 26 -12, 30 -2 c 4 10, -6 18, -18 16 c -10 -2, -16 -6, -12 -14z" fill="var(--violeta)"/>
+          <path class="gota" style="--i:1" d="M330 110 c 8 -8, 24 -4, 24 6 c 0 10, -12 14, -20 10 c -8 -4, -10 -10, -4 -16z" fill="var(--rosa)"/>
+          <path class="gota" style="--i:2" d="M338 292 c 6 -10, 26 -8, 28 2 c 2 10, -10 16, -20 14 c -10 -2, -12 -8, -8 -16z" fill="var(--oro)"/>
+          <path class="gota" style="--i:3" d="M292 368 c 4 -8, 20 -8, 20 0 c 0 8, -8 12, -14 10 c -6 -2, -8 -6, -6 -10z" fill="var(--hoja)"/>
+          <!-- sombra -->
+          <ellipse cx="200" cy="364" rx="78" ry="10" fill="rgba(42,28,34,.18)"/>
+          <!-- base celeste: la pincelada la barre -->
           <g clip-path="url(#cuerpo)">
-            <rect x="80" y="140" width="240" height="220" fill="var(--celeste)" mask="url(#barrido)"/>
-            <!-- sol dorado abajo a la derecha, como el de su mate -->
-            <g class="m-adorno" style="--i:0">
-              <circle cx="262" cy="318" r="34" fill="var(--oro)"/>
-              <g stroke="var(--oro)" stroke-width="5" stroke-linecap="round"><path d="M262 272v-12"/><path d="M226 290l-9-8"/><path d="M298 290l9-8"/><path d="M214 320h-12"/></g>
-            </g>
+            <rect x="80" y="140" width="240" height="210" fill="var(--celeste)" mask="url(#barrido)"/>
+            <!-- sol dorado, como el de su mate celeste -->
+            <g transform="translate(262 298)"><g class="m-adorno" style="--i:0">
+              <circle r="30" fill="var(--oro)"/>
+              <g stroke="var(--oro)" stroke-width="5" stroke-linecap="round"><path d="M0 -40v-10"/><path d="M-30 -27l-8 -7"/><path d="M30 -27l8 -7"/><path d="M-40 2h-10"/></g>
+            </g></g>
             <!-- margaritas -->
-            <g class="m-adorno" style="--i:1" transform="translate(150 214)">
-              <g fill="#fff"><ellipse rx="7" ry="17" cy="-14"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(45)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(90)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(135)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(180)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(225)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(270)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(315)"/></g>
-              <circle r="9" fill="var(--oro)"/>
-            </g>
-            <g class="m-adorno" style="--i:3" transform="translate(236 238) scale(.7)">
-              <g fill="#fff"><ellipse rx="7" ry="17" cy="-14"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(45)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(90)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(135)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(180)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(225)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(270)"/><ellipse rx="7" ry="17" cy="-14" transform="rotate(315)"/></g>
-              <circle r="9" fill="var(--oro)"/>
-            </g>
-            <!-- flores violetas y rosa con hojas -->
-            <path class="m-linea" style="--i:2" pathLength="1" d="M128 300 C 140 280, 150 268, 170 262" stroke="var(--hoja)" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <g class="m-adorno" style="--i:4" transform="translate(126 296)">
+            <g transform="translate(150 206)"><g class="m-adorno" style="--i:1">
+              <g fill="#fff"><ellipse rx="7" ry="16" cy="-13"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(45)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(90)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(135)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(180)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(225)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(270)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(315)"/></g>
+              <circle r="8.5" fill="var(--oro)"/>
+            </g></g>
+            <g transform="translate(236 232) scale(.7)"><g class="m-adorno" style="--i:3">
+              <g fill="#fff"><ellipse rx="7" ry="16" cy="-13"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(45)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(90)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(135)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(180)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(225)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(270)"/><ellipse rx="7" ry="16" cy="-13" transform="rotate(315)"/></g>
+              <circle r="8.5" fill="var(--oro)"/>
+            </g></g>
+            <!-- tallo, flor violeta y rosa con hojas -->
+            <path class="m-linea" style="--i:2" pathLength="1" d="M128 284 C 140 266, 152 254, 174 248" stroke="var(--hoja)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <g transform="translate(126 282)"><g class="m-adorno" style="--i:4">
               <g fill="var(--violeta)"><circle cy="-10" r="9"/><circle cx="9.5" cy="-3" r="9"/><circle cx="6" cy="8" r="9"/><circle cx="-6" cy="8" r="9"/><circle cx="-9.5" cy="-3" r="9"/></g><circle r="5" fill="var(--oro)"/>
-            </g>
-            <g class="m-adorno" style="--i:5" transform="translate(196 290)">
-              <circle r="17" fill="var(--rosa)"/><path d="M-9 -2 C -4 -12, 6 -12, 9 -2 C 4 6, -4 6, -9 -2Z" fill="#E77BA6"/><path d="M-5 4 C 0 -2, 5 0, 6 6" stroke="#8E1F52" stroke-width="2.5" fill="none"/>
-            </g>
-            <path class="m-adorno" style="--i:6" d="M168 262 c 10 -14, 26 -14, 30 -10 c -6 10, -20 14, -30 10z" fill="var(--hoja)"/>
-            <path class="m-adorno" style="--i:6" d="M214 300 c 14 -6, 26 0, 28 6 c -10 6, -22 4, -28 -6z" fill="var(--hoja)"/>
+            </g></g>
+            <g transform="translate(192 284)"><g class="m-adorno" style="--i:5">
+              <circle r="16" fill="var(--rosa)"/><path d="M-9 -2 C -4 -12, 6 -12, 9 -2 C 4 6, -4 6, -9 -2Z" fill="#E77BA6"/><path d="M-5 4 C 0 -2, 5 0, 6 6" stroke="#8E1F52" stroke-width="2.5" fill="none"/>
+            </g></g>
+            <path class="m-adorno" style="--i:6" d="M172 248 c 10 -14, 26 -14, 30 -10 c -6 10, -20 14, -30 10z" fill="var(--hoja)"/>
+            <path class="m-adorno" style="--i:6" d="M208 296 c 14 -6, 26 0, 28 6 c -10 6, -22 4, -28 -6z" fill="var(--hoja)"/>
             <!-- estrellas y luna -->
-            <path class="m-adorno" style="--i:7" d="M268 196 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z" fill="var(--oro)"/>
-            <path class="m-adorno" style="--i:8" d="M118 248 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5z" fill="var(--oro)"/>
-            <path class="m-adorno" style="--i:9" d="M200 176 a 18 18 0 1 0 22 26 a 14 14 0 1 1 -22 -26z" fill="var(--oro)"/>
+            <path class="m-adorno" style="--i:7" d="M270 186 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z" fill="var(--oro)"/>
+            <path class="m-adorno" style="--i:8" d="M116 236 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5z" fill="var(--oro)"/>
+            <path class="m-adorno" style="--i:9" d="M206 170 a 18 18 0 1 0 22 26 a 14 14 0 1 1 -22 -26z" fill="var(--oro)"/>
           </g>
           <!-- contorno del mate -->
-          <path class="m-contorno" pathLength="1" d="M116 152 C 92 196, 84 252, 112 300 C 132 334, 162 352, 200 352 C 238 352, 268 334, 288 300 C 316 252, 308 196, 284 152" fill="none" stroke="var(--tinta)" stroke-width="4" stroke-linecap="round"/>
+          <path class="m-contorno" pathLength="1" d="M122 150 C 96 184, 86 232, 102 274 C 116 312, 150 336, 200 336 C 250 336, 284 312, 298 274 C 314 232, 304 184, 278 150" fill="none" stroke="var(--tinta)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- base de alpaca -->
+          <g class="m-virola">
+            <path d="M160 332 h80 l10 24 a 6 6 0 0 1 -6 6 h-88 a 6 6 0 0 1 -6 -6 z" fill="#C9CED6" stroke="var(--tinta)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M162 348 h76" stroke="#E6E9ED" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+          </g>
           <!-- bombilla -->
           <g class="m-bombilla">
             <path d="M236 150 L 292 52 C 296 44, 304 42, 314 46" fill="none" stroke="#B8BEC6" stroke-width="9" stroke-linecap="round"/>
@@ -542,8 +552,8 @@ html.carrito-abierto{overflow:hidden}
           </g>
           <!-- virola -->
           <g class="m-virola">
-            <rect x="106" y="132" width="188" height="24" rx="12" fill="#C9CED6" stroke="var(--tinta)" stroke-width="3"/>
-            <path d="M120 144 h160" stroke="#E6E9ED" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+            <rect x="108" y="130" width="184" height="24" rx="12" fill="#C9CED6" stroke="var(--tinta)" stroke-width="3"/>
+            <path d="M122 142 h156" stroke="#E6E9ED" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
           </g>
           <!-- el pincel que pinta -->
           <g class="pincel" aria-hidden="true">
@@ -737,7 +747,7 @@ var PRODUCTOS = [
   { id: 'retrato-tabla', cat: 'retratos', nombre: 'Retrato de mascotas en madera', det: 'Una o varias mascotas, pintadas a mano sobre tabla de madera maciza.', img: 'img/web/retrato-tabla.webp', alt: 'Gatitos retratados a mano sobre una tabla de madera', pers: 'mascota' },
   { id: 'retrato-circular', cat: 'retratos', nombre: 'Retrato circular de 25 cm', img: 'img/web/retrato-gato.webp', alt: 'Retrato pintado a mano de un gato atigrado', pers: 'mascota',
     variantes: [['mascota', 'De mascota', 'Tu mascota pintada a mano, en formato circular.', 'mascota'], ['ilustrado', 'Ilustrado', 'Retrato ilustrado de personas, en formato circular.', 'pintado']] },
-  { id: 'cartel', cat: 'carteles', nombre: 'Cartel de bienvenida', det: 'Nombres, flores, lunas y estrellas, pintados a mano para tu casa.', img: 'img/web/cartel.webp', alt: 'Cartel redondo de madera con el nombre Shazmin, margaritas y rosas', pers: 'frase' },
+  { id: 'cartel', cat: 'carteles', nombre: 'Cartel de bienvenida', det: 'Nombres, flores, lunas y estrellas, pintados a mano para tu casa.', img: 'img/web/cartel-card.webp', pos: '0% 50%', alt: 'Cartel redondo de madera con los nombres Isis y Shazmin, margaritas y rosas', pers: 'frase' },
   { id: 'matera', cat: 'materas', nombre: 'Matera', det: 'Amplia y cómoda, con división para el termo y la bombilla.', img: 'img/web/matera-termo.webp', alt: 'Matera marrón colgando, al aire libre', pers: 'ninguna' },
   { id: 'a-medida', cat: 'medida', nombre: 'Pedido a medida', det: 'Grabado láser, una frase, otro objeto. Contame la idea y lo vemos.', img: '', alt: '', pers: 'laser' }
 ];
@@ -766,8 +776,8 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
       return '<button type="button" data-var="' + p.id + ':' + v[0] + '" aria-pressed="' + (i === 0) + '">' + esc(v[1]) + '</button>';
     }).join('') + '</div>' : '';
     var det = p.variantes ? p.variantes[0][2] : p.det;
-    return '<article class="prod" id="p-' + p.id + '" data-cat="' + p.cat + '" style="--c:' + COLOR_CAT[p.cat] + '">' +
-      '<div class="foto">' + (p.img ? '<img src="' + p.img + '" alt="' + esc(p.alt) + '" loading="lazy" decoding="async" width="800" height="1000">' : ARTE_MEDIDA) + '</div>' +
+    return '<article class="prod' + (p.id === 'a-medida' ? ' ancha' : '') + '" id="p-' + p.id + '" data-cat="' + p.cat + '" style="--c:' + COLOR_CAT[p.cat] + '">' +
+      '<div class="foto">' + (p.img ? '<img src="' + p.img + '"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + ' alt="' + esc(p.alt) + '" loading="lazy" decoding="async" width="800" height="1000">' : ARTE_MEDIDA) + '</div>' +
       '<div class="prod-txt"><h3>' + n + '</h3>' + vars + '<p class="det" data-det>' + esc(det) + '</p>' +
       '<div class="empuje"><p class="precio">Consultá precio</p>' +
       '<div class="add" data-item="' + first + '" data-n="0">' +
@@ -835,7 +845,7 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
   $('regalo').checked = !!estado.datos.regalo;
   function entrega() { var r = form.querySelector('[name=entrega]:checked'); return r ? r.value : 'correo'; }
   var ENTREGA = {
-    correo: { label: 'Localidad y provincia', ph: 'Ej: Rosario, Santa Fe', nota: 'El envío por Correo Argentino se paga aparte. Te paso el costo.', req: true, txt: 'Envío por Correo Argentino a ' },
+    correo: { label: 'Localidad y provincia', ph: 'Ej: Rosario, Santa Fe', nota: 'Envío a bajo costo por Correo Argentino. Te paso cuánto sale.', req: true, txt: 'Envío por Correo Argentino a ' },
     moto: { label: 'Dirección y localidad', ph: 'Ej: Calle 844 1234, San Francisco Solano', nota: 'Te confirmo si llego a tu zona y el costo.', req: true, txt: 'Moto mensajería a ' },
     encuentro: { label: 'Zona que te queda cómoda', ph: 'Ej: Quilmes centro', nota: 'Coordinamos el punto por WhatsApp.', req: false, txt: 'Punto de encuentro en Zona Sur' },
     retiro: { req: false, txt: 'Retiro en San Francisco Solano' }
