@@ -186,6 +186,22 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 .prod h3{font-size:19px}
 .prod .det{margin-top:6px;color:var(--tinta-2);font-size:15.5px;line-height:1.5}
 .prod .precio{margin-top:10px;font-weight:600;font-size:15px;color:var(--barro-osc)}
+.prod .precio.con{font:800 21px/1.2 var(--marca);color:var(--tinta);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.prod .precio s{font:500 15px var(--body);color:var(--tinta-2);margin-left:6px;white-space:nowrap;display:inline-block}
+@media (max-width:560px){.prod .precio.con{font-size:18px}.prod .precio s{font-size:13.5px;margin-left:4px}}
+.nota-prod{display:flex;gap:6px;align-items:flex-start;margin-top:8px;font-size:14px;line-height:1.4;color:var(--barro-osc);font-weight:500}
+.nota-prod .ph{margin-top:2px;flex:none}
+.promo{position:absolute;top:12px;left:12px;padding:6px 12px;border-radius:999px;background:var(--rosa);color:#fff;font:700 13px/1 var(--body)}
+.grilla.filtrada .prod.ancha{grid-column:1 / -1}
+.totales{margin-top:14px;padding:14px 4px 0;border-top:1px dashed rgba(42,28,34,.25);display:grid;gap:4px}
+.totales .fila-t{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.totales .fila-t span{font-weight:700;font-size:17px}
+.totales strong{font:800 26px/1 var(--marca);font-variant-numeric:tabular-nums}
+.totales small{color:var(--tinta-2);font-size:13.5px}
+.item .sub{position:absolute;top:12px;right:14px;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.item{position:relative}
+.item .nom{padding-right:90px}
+.cart-fab .monto,.cart-bar .monto{font-variant-numeric:tabular-nums;white-space:nowrap;opacity:.9}
 .var{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .var button{height:36px;padding:0 14px;border-radius:999px;border:0;cursor:pointer;background:var(--pared);color:var(--tinta);font:600 14px/1 var(--body);transition:background-color .15s ease, color .15s ease}
 .var button[aria-pressed="true"]{background:var(--barro-claro);color:var(--barro-osc);box-shadow:inset 0 0 0 1.5px var(--barro)}
@@ -204,8 +220,8 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 .cant output{font-weight:700;font-variant-numeric:tabular-nums;min-width:2ch;text-align:center;font-size:15px}
 .add[data-n="0"] .cant{opacity:0;transform:scale(.95);pointer-events:none;visibility:hidden}
 .add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.95);pointer-events:none;visibility:hidden}
-.prod.ancha{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:center;padding-top:6px}
-.prod.ancha .foto{aspect-ratio:16/10}
+.prod.ancha{grid-column:span 2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:center;padding-top:6px}
+.prod.ancha .foto{aspect-ratio:4/3}
 .prod.ancha .prod-txt{padding-top:0;max-width:46ch}
 .prod.ancha .empuje{margin-top:14px}
 .prod.ancha .add{max-width:280px}
@@ -215,7 +231,7 @@ section{scroll-margin-top:calc(var(--header) + 8px)}
 .cat-pie a{color:var(--barro-osc);font-weight:600;text-underline-offset:3px}
 .prod.marcado .foto{animation:marcar 1.4s var(--ease-out)}
 @keyframes marcar{0%,40%{box-shadow:0 0 0 4px var(--barro)}100%{box-shadow:0 0 0 0 transparent}}
-@media (max-width:980px){.grilla{grid-template-columns:1fr 1fr;gap:28px 16px}}
+@media (max-width:980px){.grilla{grid-template-columns:1fr 1fr;gap:28px 16px}.prod.ancha{grid-column:1 / -1}}
 @media (max-width:560px){.prod.ancha{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px;align-items:start}.prod.ancha .foto{aspect-ratio:1/1}.prod.ancha .add{max-width:none}}
 @media (max-width:560px){
   .catalogo{padding:64px 0 72px;border-radius:26px 26px 0 0}
@@ -564,7 +580,7 @@ html.carrito-abierto{overflow:hidden}
             </g>
           </g>
         </svg>
-        <figure class="foto-real" style="margin:0"><img src="img/web/mate-pintado.webp" alt="Un mate celeste con un sol pintado a mano, recién cebado" width="800" height="814"></figure>
+        <figure class="foto-real" style="margin:0"><img src="img/web/mateando-01.webp" alt="Mate camionero con el retrato de un perro pintado a mano" width="800" height="1063"></figure>
       </div>
     </div>
   </section>
@@ -585,7 +601,7 @@ html.carrito-abierto{overflow:hidden}
     <div class="wrap">
       <div class="cat-cab">
         <h2 id="catTit">Catálogo</h2>
-        <p>Todo se hace a pedido. Agregá lo que te guste, contame tu idea y te paso el precio por WhatsApp.</p>
+        <p>Los precios son los de su catálogo de WhatsApp. Lo personalizado se hace a pedido: agregalo, contame tu idea y te confirmo precio y tiempos.</p>
       </div>
       <div class="filtros" id="filtros" role="group" aria-label="Filtrar el catálogo"></div>
       <div class="grilla" id="grilla"></div>
@@ -598,12 +614,12 @@ html.carrito-abierto{overflow:hidden}
       <figure><img src="img/web/gatos-todos.webp" alt="Tabla de madera con nueve gatitos retratados a mano, apoyada en un atril" width="720" height="680" loading="lazy" decoding="async"></figure>
       <div class="retratos-txt">
         <h2 id="retTit">Tu mascota, pintada a mano</h2>
-        <p>Uno, dos o nueve. En tabla de madera o en formato circular de 25 cm. Me mandás la foto por WhatsApp y la pinto pincelada por pincelada.</p>
+        <p>En tu mate camionero, imperial o perita, o en una tabla de madera. Me mandás la foto por WhatsApp y la pinto pincelada por pincelada.</p>
         <blockquote>
           <p>“Fueron horas de trabajo, muchos detalles, paciencia, pinceladas y sobre todo, muchísimo amor por lo que hago.”</p>
           <cite>Milagros, sobre el retrato de nueve gatitos</cite>
         </blockquote>
-        <a class="btn btn-barro" href="#catalogo" data-filtrar="retratos"><i class="ph ph-paw-print" aria-hidden="true"></i>Ver retratos</a>
+        <a class="btn btn-barro" href="#catalogo" data-filtrar="personalizados"><i class="ph ph-paw-print" aria-hidden="true"></i>Ver mates con retrato</a>
       </div>
     </div>
   </section>
@@ -669,10 +685,10 @@ html.carrito-abierto{overflow:hidden}
 </a>
 
 <button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu pedido">
-  <i class="ph ph-shopping-bag" aria-hidden="true"></i><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+  <i class="ph ph-shopping-bag" aria-hidden="true"></i><span>Ver pedido</span><span class="monto" data-monto></span><span class="badge" data-total aria-hidden="true">0</span>
 </button>
 <button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver tu pedido">
-  <i class="ph ph-shopping-bag" aria-hidden="true"></i><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+  <i class="ph ph-shopping-bag" aria-hidden="true"></i><span>Ver pedido</span><span class="monto" data-monto></span><span class="badge" data-total aria-hidden="true">0</span>
 </button>
 <p class="sr" id="anuncio" aria-live="polite"></p>
 
@@ -693,6 +709,7 @@ html.carrito-abierto{overflow:hidden}
       <div id="lleno" hidden>
         <ul class="lista" id="lista" aria-label="Lo que elegiste"></ul>
         <div class="foto-aviso" id="fotoAviso" hidden><svg aria-hidden="true"><use href="#wa"/></svg><p>La foto de tu mascota mandámela por WhatsApp, en el mismo chat que se abre con el pedido. Mientras más clara y de frente, mejor queda el retrato.</p></div>
+        <div class="totales"><div class="fila-t"><span>Total</span><strong id="totalMonto">$ 0</strong></div><small id="totalNota"></small></div>
         <button type="button" class="vaciar" id="vaciar">Vaciar pedido</button>
         <form class="form" id="datos" novalidate>
           <h3>Tus datos</h3>
@@ -718,7 +735,7 @@ html.carrito-abierto{overflow:hidden}
     </div>
     <div class="cajon-pie" id="cajonPie" hidden>
       <button class="btn enviar" type="submit" form="datos" id="enviar"><svg aria-hidden="true"><use href="#wa"/></svg><span>Enviar pedido por WhatsApp</span></button>
-      <p class="nota">Se abre WhatsApp con tu pedido armado. Te paso precio y tiempos por ahí.</p>
+      <p class="nota">Se abre WhatsApp con tu pedido y el total. Te confirmo precios, tiempos y envío por ahí.</p>
       <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
     </div>
   </div>
@@ -736,35 +753,78 @@ var IDEA_PH = {
   frase: 'Ej: "Bienvenidos" con los nombres Luna y Atenea',
   ninguna: 'Color o detalle que prefieras'
 };
-var CATS = [['todo', 'Todo', 'var(--tinta-2)'], ['mates', 'Mates', 'var(--celeste)'], ['retratos', 'Retratos', 'var(--rosa)'], ['carteles', 'Carteles', 'var(--oro)'], ['materas', 'Materas', 'var(--barro)'], ['medida', 'A medida', 'var(--violeta)']];
+// Categorías = colecciones de su catálogo de WhatsApp (más dos grupos para lo que figura solo en "Todos los artículos").
+var CATS = [
+  ['todo', 'Todos los artículos', 'var(--tinta-2)'],
+  ['personalizados', 'Mates personalizados', 'var(--rosa)'],
+  ['algarrobo', 'Mates algarrobo', 'var(--barro)'],
+  ['grabados', 'Grabados personalizados', 'var(--oro)'],
+  ['bombillas', 'Bombillas', 'var(--celeste)'],
+  ['calabaza', 'Calabaza y cuero', 'var(--hoja)'],
+  ['canastas', 'Canastas y termos', 'var(--violeta)'],
+  ['medida', 'A medida', 'var(--violeta)']
+];
 var COLOR_CAT = {}; CATS.forEach(function (c) { COLOR_CAT[c[0]] = c[2]; });
 
-// Productos reales de sus publicaciones de Instagram. Sin precios en sus textos: "Consultá precio".
+// Catálogo real de WhatsApp Business de Mateando Juntos (wa.me/c/5491123087815). Precios en pesos solo donde figuran.
+var DIEZ = '10 días de anticipación mínima.';
 var PRODUCTOS = [
-  { id: 'mate-pintado', cat: 'mates', nombre: 'Mate pintado a mano', det: 'Con el diseño, los colores o el nombre que elijas.', img: 'img/web/mate-pintado.webp', alt: 'Mate celeste pintado a mano con un sol', pers: 'pintado' },
-  { id: 'combo', cat: 'mates', nombre: 'Combo Perdón', img: 'img/web/combos.webp', alt: 'Los tres combos Perdón: básico, estándar y premium', pers: 'ninguna',
-    variantes: [['basico', 'Básico', 'Mate camionero de algarrobo + bombilla pico de loro.'], ['estandar', 'Estándar', 'Mate imperial de algarrobo + bombilla pico de loro.'], ['premium', 'Premium', 'Mate torpedo de calabaza y base + bombilla pico de loro.']] },
-  { id: 'retrato-tabla', cat: 'retratos', nombre: 'Retrato de mascotas en madera', det: 'Una o varias mascotas, pintadas a mano sobre tabla de madera maciza.', img: 'img/web/retrato-tabla.webp', alt: 'Gatitos retratados a mano sobre una tabla de madera', pers: 'mascota' },
-  { id: 'retrato-circular', cat: 'retratos', nombre: 'Retrato circular de 25 cm', img: 'img/web/retrato-gato.webp', alt: 'Retrato pintado a mano de un gato atigrado', pers: 'mascota',
-    variantes: [['mascota', 'De mascota', 'Tu mascota pintada a mano, en formato circular.', 'mascota'], ['ilustrado', 'Ilustrado', 'Retrato ilustrado de personas, en formato circular.', 'pintado']] },
-  { id: 'cartel', cat: 'carteles', nombre: 'Cartel de bienvenida', det: 'Nombres, flores, lunas y estrellas, pintados a mano para tu casa.', img: 'img/web/cartel-card.webp', pos: '0% 50%', alt: 'Cartel redondo de madera con los nombres Isis y Shazmin, margaritas y rosas', pers: 'frase' },
-  { id: 'matera', cat: 'materas', nombre: 'Matera', det: 'Amplia y cómoda, con división para el termo y la bombilla.', img: 'img/web/matera-termo.webp', alt: 'Matera marrón colgando, al aire libre', pers: 'ninguna' },
-  { id: 'a-medida', cat: 'medida', nombre: 'Pedido a medida', det: 'Grabado láser, una frase, otro objeto. Contame la idea y lo vemos.', img: '', alt: '', pers: 'laser' }
+  { id: 'camionero-retrato', cat: 'personalizados', nombre: 'Camionero + retrato/silueta', det: 'Mate camionero de algarrobo con virola de acero y el retrato de tu mascota o una silueta a elección. Incluye bombilla pico de loro de regalo.', nota: DIEZ + ' Si es más de una mascota, consultá.', img: 'mateando-01', alt: 'Mate camionero con el retrato pintado de un perro blanco y marrón', pers: 'mascota' },
+  { id: 'imperial-retrato', cat: 'personalizados', nombre: 'Imperial + retrato/silueta', det: 'Mate imperial de algarrobo con virola de acero y el retrato de tu mascota o una silueta a elección. Incluye bombilla pico de loro de regalo.', nota: DIEZ + ' Si es más de una mascota, consultá.', img: 'mateando-02', alt: 'Mate imperial con el retrato pintado de un perro negro', pers: 'mascota' },
+  { id: 'perita-retrato', cat: 'personalizados', nombre: 'Perita algarrobo + retrato/silueta', det: 'Mate perita de algarrobo con el retrato de tu mascota o una silueta a elección. Incluye bombilla de color de regalo y packaging.', nota: DIEZ + ' Si es más de una mascota, consultá.', img: 'mateando-20', alt: 'Mate perita con el retrato pintado de un perro', pers: 'mascota' },
+  { id: 'camionero-diseno', cat: 'personalizados', nombre: 'Camionero + diseño personalizado', det: 'Camionero de algarrobo con virola de acero. Diseño personalizado a elección (flores, dibujo animado, frases, etc.). Incluye bombilla pico de loro de regalo.', nota: DIEZ, img: 'mateando-03', alt: 'Mate camionero pintado con la frase La mejor abuela del mundo', pers: 'pintado' },
+  { id: 'imperial-diseno', cat: 'personalizados', nombre: 'Imperial + diseño personalizado', det: 'Imperial de algarrobo con virola de acero. Diseño personalizado a elección (flores, dibujo animado, frases, etc.). Incluye bombilla de regalo.', nota: DIEZ, img: 'mateando-19', alt: 'Mate imperial rosa pintado con ojos turcos y hojas', pers: 'pintado' },
+  { id: 'promo-peritas', cat: 'personalizados', nombre: 'Mates en promo', det: 'Mates peritas de algarrobo con diseños personalizados a mano. Elegí el tuyo y llevate una bombilla de regalo.', precio: 15000, antes: 20000, img: 'mateando-15', alt: 'Mate perita pintado con Stitch y flores celestes', pers: 'pintado' },
+  { id: 'set-pink', cat: 'personalizados', nombre: 'Set pink', det: 'Set de mate + azucarera + bombilla de regalo, ideal para regalar o regalarse. Pintado con acrílicos y protegido para su larga vida útil.', precio: 25000, antes: 30000, img: 'mateando-16', alt: 'Mate y azucarera de madera pintados con rosas rosadas', pers: 'ninguna' },
+  { id: 'canasta-personalizada', cat: 'personalizados', nombre: 'Canasta personalizada', det: 'De cuerina con manija reforzada, con el diseño que más te guste (excepto retratos).', nota: '1 semana de anticipación mínima.', img: 'mateando-17', alt: 'Canasta matera negra de cuerina con un paisaje pintado', pers: 'pintado',
+    variantes: [['cuadrada', 'Cuadrada'], ['ovalada', 'Ovalada']] },
+  { id: 'camionero-algarrobo', cat: 'algarrobo', nombre: 'Camionero de algarrobo', det: 'Con virola de acero. Incluye bombilla pico de loro de regalo.', img: 'mateando-05', alt: 'Mate camionero de algarrobo con bombilla, junto a un termo', pers: 'ninguna' },
+  { id: 'imperial-algarrobo', cat: 'algarrobo', nombre: 'Imperial de algarrobo', det: 'Con virola de acero. Incluye bombilla pico de loro de regalo.', img: 'mateando-06', alt: 'Mate imperial de algarrobo en una caja de regalo con luces', pers: 'ninguna' },
+  { id: 'bolita-base', cat: 'algarrobo', nombre: 'Mate bolita con base', det: 'Mate bolita de algarrobo con base de cuero. Ideal para los que usan poca yerba. Incluye bombilla chata de regalo.', nota: 'La base se puede personalizar (consultá el costo extra).', img: 'mateando-21', alt: 'Mate bolita de algarrobo con base de cuero y bombilla chata', pers: 'ninguna' },
+  { id: 'perita-virola', cat: 'algarrobo', nombre: 'Perita con virola', det: 'Nuevo mate perita de algarrobo con virola de alpaca cincelada. Poca yerba y mucho estilo. Incluye bombilla chata de acero de regalo.', img: '', arte: 'perita', pers: 'ninguna' },
+  { id: 'grabado-virola', cat: 'grabados', nombre: 'Grabado personalizado (virola)', det: '¡Personalizá tu mate a tu gusto! Fechas, logos, nombres y símbolos.', nota: 'Entregas de lunes a viernes.', precio: 12000, img: 'mateando-08', alt: 'Virola blanca grabada con escudos y la leyenda Coronados de gloria', pers: 'laser' },
+  { id: 'imperial-grabado', cat: 'grabados', nombre: 'Imperial + grabado personalizado', det: 'Imperial de algarrobo con grabado personalizado (frase, logo, nombre o emoji) + bombilla pico de loro de regalo.', img: 'mateando-09', alt: 'Mate imperial de algarrobo con virola grabada', pers: 'laser' },
+  { id: 'camionero-grabado', cat: 'grabados', nombre: 'Camionero + grabado personalizado', det: 'Camionero de algarrobo con grabado personalizado (frases, logo, nombres o emojis) + bombilla de regalo.', img: 'mateando-10', alt: 'Mate camionero de algarrobo con virola grabada y bombilla', pers: 'laser' },
+  { id: 'bombilla-pico', cat: 'bombillas', nombre: 'Bombilla pico de loro', det: 'De acero inoxidable con pala.', precio: 6000, img: 'mateando-13', alt: 'Tres bombillas pico de loro de acero sobre madera', pers: 'ninguna' },
+  { id: 'bombilla-alpaca', cat: 'bombillas', nombre: 'Bombilla alpaca', det: 'Pico de loro y pala de alpaca, ideal para combinar con tu mate.', precio: 15000, img: 'mateando-18', alt: 'Bombilla de alpaca junto a un mate', pers: 'ninguna' },
+  { id: 'bombilla-color', cat: 'bombillas', nombre: 'Bombilla color', det: 'Bombilla para mate de aluminio.', nota: 'Consultá los colores disponibles.', precio: 1000, img: '', arte: 'bombillas', pers: 'ninguna' },
+  { id: 'torpedo-calabaza', cat: 'calabaza', nombre: 'Torpedo calabaza y base', det: 'Nuevo torpedo de calabaza con base de cuero crudo y virola de alpaca cincelada. Incluye bombilla pico de loro de regalo.', img: 'mateando-22', alt: 'Mate torpedo de calabaza con virola cincelada y bombilla', pers: 'ninguna' },
+  { id: 'imperial-calabaza', cat: 'calabaza', nombre: 'Imperial calabaza', det: 'Imperial de cuero con interior de calabaza y virola de acero. Incluye bombilla de regalo.', nota: 'Por pedido.', precio: 40000, img: 'mateando-26', alt: 'Mate imperial de cuero negro en una caja de regalo', pers: 'ninguna',
+    variantes: [['negro', 'Negro'], ['borravino', 'Borravino']] },
+  { id: 'canasta-ovalada', cat: 'canastas', nombre: 'Canasta matera ovalada', det: 'Canasta ovalada rígida de cuerina, con división. Ideal para tu equipo matero.', nota: 'Por pedido.', precio: 20000, img: 'mateando-24', alt: 'Canasta matera ovalada de cuerina negra en la playa', pers: 'ninguna' },
+  { id: 'termo-stanley', cat: 'canastas', nombre: 'Termo símil Stanley', det: 'Con pico cebador y 3 sellos.', nota: 'Por pedido. Consultá los colores disponibles.', img: 'mateando-25', alt: 'Termo negro símil Stanley', pers: 'ninguna' },
+  { id: 'a-medida', cat: 'medida', nombre: 'Pedido a medida', det: '¿Otra idea? Un retrato en madera, un cartel, otro objeto. Contame y lo vemos.', img: '', arte: 'medida', pers: 'pintado' }
 ];
+PRODUCTOS.forEach(function (p) { if (p.img) p.img = 'img/web/' + p.img + '.webp'; });
 var POR_ID = {};
 PRODUCTOS.forEach(function (p) {
   if (p.variantes) p.variantes.forEach(function (v) {
-    POR_ID[p.id + ':' + v[0]] = { id: p.id + ':' + v[0], base: p, nombre: p.nombre + ' ' + v[1], det: v[2], img: p.img, pers: v[3] || p.pers };
+    POR_ID[p.id + ':' + v[0]] = { id: p.id + ':' + v[0], base: p, nombre: p.nombre + ' (' + v[1].toLowerCase() + ')', det: p.det, img: p.img, pers: p.pers, precio: p.precio || 0 };
   });
-  else POR_ID[p.id] = { id: p.id, base: p, nombre: p.nombre, det: p.det, img: p.img, pers: p.pers };
+  else POR_ID[p.id] = { id: p.id, base: p, nombre: p.nombre, det: p.det, img: p.img, pers: p.pers, precio: p.precio || 0 };
 });
 
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-var ARTE_MEDIDA = '<div class="medida-arte"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="78" fill="var(--madera)"/>' +
-  '<path d="M48 84 C 80 70, 120 96, 152 80" stroke="var(--violeta)" stroke-width="14" stroke-linecap="round" fill="none"/>' +
-  '<path d="M52 112 C 84 100, 118 124, 148 110" stroke="var(--rosa)" stroke-width="14" stroke-linecap="round" fill="none"/>' +
-  '<path d="M60 138 C 88 130, 116 146, 140 136" stroke="var(--oro)" stroke-width="14" stroke-linecap="round" fill="none"/>' +
-  '<path d="M150 42 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z" fill="var(--tinta)"/></svg></div>';
+function plata(n) { return '$ ' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+// tarjetas sin foto: ilustraciones simples sobre tabla de pino
+var ARTES = {
+  medida: '<path d="M48 84 C 80 70, 120 96, 152 80" stroke="var(--violeta)" stroke-width="14" stroke-linecap="round" fill="none"/>' +
+    '<path d="M52 112 C 84 100, 118 124, 148 110" stroke="var(--rosa)" stroke-width="14" stroke-linecap="round" fill="none"/>' +
+    '<path d="M60 138 C 88 130, 116 146, 140 136" stroke="var(--oro)" stroke-width="14" stroke-linecap="round" fill="none"/>' +
+    '<path d="M150 42 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z" fill="var(--tinta)"/>',
+  bombillas: [['var(--rosa)', -24], ['var(--celeste)', -8], ['var(--oro)', 8], ['var(--violeta)', 24]].map(function (b) {
+    return '<g transform="translate(' + (100 + b[1] * 1.6) + ' 100) rotate(' + (b[1] / 2) + ')"><path d="M0 -62 C 0 -70, 8 -74, 14 -70" stroke="' + b[0] + '" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M0 -62 V 46" stroke="' + b[0] + '" stroke-width="7" stroke-linecap="round"/><ellipse cy="56" rx="9" ry="13" fill="' + b[0] + '"/></g>';
+  }).join(''),
+  perita: '<path d="M70 66 C 58 92, 56 126, 72 148 C 84 164, 116 164, 128 148 C 144 126, 142 92, 130 66 Z" fill="#B9773F" stroke="var(--tinta)" stroke-width="4" stroke-linejoin="round"/>' +
+    '<rect x="64" y="54" width="72" height="16" rx="8" fill="#C9CED6" stroke="var(--tinta)" stroke-width="3.5"/>' +
+    '<path d="M72 62 h56" stroke="#8A919B" stroke-width="2.5" stroke-dasharray="3 5"/>' +
+    '<path d="M110 56 L 138 20 C 140 16, 146 15, 150 18" stroke="#B8BEC6" stroke-width="6" stroke-linecap="round" fill="none"/>'
+};
+function arte(k) { return '<div class="medida-arte"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="var(--madera)"/>' + ARTES[k] + '</svg></div>'; }
+function precioHTML(p) {
+  if (!p.precio) return '<p class="precio">Consultá precio</p>';
+  return '<p class="precio con">' + plata(p.precio) + (p.antes ? ' <s><span class="sr">antes </span>' + plata(p.antes) + '</s>' : '') + '</p>';
+}
 var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph ph-minus" aria-hidden="true"></i>';
 
 /* ---------- catálogo ---------- */
@@ -775,11 +835,12 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
     var vars = p.variantes ? '<div class="var" role="group" aria-label="Elegí la versión de ' + n + '">' + p.variantes.map(function (v, i) {
       return '<button type="button" data-var="' + p.id + ':' + v[0] + '" aria-pressed="' + (i === 0) + '">' + esc(v[1]) + '</button>';
     }).join('') + '</div>' : '';
-    var det = p.variantes ? p.variantes[0][2] : p.det;
     return '<article class="prod' + (p.id === 'a-medida' ? ' ancha' : '') + '" id="p-' + p.id + '" data-cat="' + p.cat + '" style="--c:' + COLOR_CAT[p.cat] + '">' +
-      '<div class="foto">' + (p.img ? '<img src="' + p.img + '"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + ' alt="' + esc(p.alt) + '" loading="lazy" decoding="async" width="800" height="1000">' : ARTE_MEDIDA) + '</div>' +
-      '<div class="prod-txt"><h3>' + n + '</h3>' + vars + '<p class="det" data-det>' + esc(det) + '</p>' +
-      '<div class="empuje"><p class="precio">Consultá precio</p>' +
+      '<div class="foto">' + (p.img ? '<img src="' + p.img + '" alt="' + esc(p.alt) + '" loading="lazy" decoding="async" width="800" height="1000">' : arte(p.arte)) +
+        (p.antes ? '<span class="promo">Promo</span>' : '') + '</div>' +
+      '<div class="prod-txt"><h3>' + n + '</h3>' + vars + '<p class="det">' + esc(p.det) + '</p>' +
+      (p.nota ? '<p class="nota-prod"><i class="ph ph-info" aria-hidden="true"></i>' + esc(p.nota) + '</p>' : '') +
+      '<div class="empuje">' + precioHTML(p) +
       '<div class="add" data-item="' + first + '" data-n="0">' +
         '<button type="button" class="agregar">' + MAS + 'Agregar</button>' +
         '<div class="cant" role="group"><button type="button" data-d="-1" aria-label="Uno menos">' + MENOS + '</button><output>0</output><button type="button" data-d="1" aria-label="Uno más">' + MAS + '</button></div>' +
@@ -793,12 +854,12 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
   function filtrar(f) {
     filtros.querySelectorAll('[data-f]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-f') === f)); });
     grilla.querySelectorAll('.prod').forEach(function (a) { a.hidden = !(f === 'todo' || a.getAttribute('data-cat') === f); });
+    grilla.classList.toggle('filtrada', f !== 'todo');
   }
   filtros.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) filtrar(b.getAttribute('data-f')); });
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-filtrar]'); if (a) filtrar(a.getAttribute('data-filtrar'));
   });
-  window.__filtrar = filtrar;
 })();
 
 /* ---------- menú y encabezado ---------- */
@@ -836,6 +897,8 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
   function idx(id) { for (var i = 0; i < estado.items.length; i++) if (estado.items[i].id === id) return i; return -1; }
   function cant(id) { var i = idx(id); return i < 0 ? 0 : estado.items[i].n; }
   function unidades() { return estado.items.reduce(function (a, it) { return a + it.n; }, 0); }
+  function monto() { return estado.items.reduce(function (a, it) { return a + it.n * POR_ID[it.id].precio; }, 0); }
+  function sinPrecio() { return estado.items.reduce(function (a, it) { return a + (POR_ID[it.id].precio ? 0 : it.n); }, 0); }
   function hayMascota() { return estado.items.some(function (it) { return it.pers === 'mascota'; }); }
 
   var dlg = $('carrito'), form = $('datos'), lista = $('lista'), fab = $('cartFab'), bar = $('cartBar');
@@ -864,10 +927,14 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
     var d = estado.datos, l = ['¡Hola Milagros! Vi la web de Mateando Juntos y quiero hacer este pedido:', ''];
     estado.items.forEach(function (it) {
       var p = POR_ID[it.id];
-      l.push('• ' + it.n + ' x ' + p.nombre + (p.base.variantes ? ' (' + p.det.replace(/\.$/, '') + ')' : ''));
+      l.push('• ' + it.n + ' x ' + p.nombre + ': ' + (p.precio ? plata(p.precio * it.n) + (it.n > 1 ? ' (' + plata(p.precio) + ' c/u)' : '') : 'precio a confirmar'));
       l.push('   Personalización: ' + PERS[it.pers]);
       if (it.idea) l.push('   Mi idea: ' + it.idea);
     });
+    l.push('');
+    var sinP = sinPrecio();
+    if (monto()) l.push('TOTAL: ' + plata(monto()) + (sinP ? ' + ' + (sinP === 1 ? '1 producto' : sinP + ' productos') + ' a confirmar' : ''));
+    else l.push('TOTAL: a confirmar');
     l.push('');
     l.push('Nombre: ' + (d.nombre || ''));
     l.push('Teléfono: ' + (d.tel || ''));
@@ -879,16 +946,17 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
     if (d.regalo) l.push('Es para regalar');
     if (d.aclar) l.push('Algo más: ' + d.aclar);
     if (hayMascota()) l.push('', 'Ahora te mando por acá la foto de mi mascota.');
-    l.push('', '¿Me pasás el precio y los tiempos? ¡Gracias!');
+    l.push('', sinP ? '¿Me confirmás los precios que faltan y los tiempos? ¡Gracias!' : '¿Me confirmás disponibilidad y tiempos? ¡Gracias!');
     return l.join('\n');
   }
 
   function itemHTML(it) {
     var p = POR_ID[it.id], n = esc(p.nombre), uid = it.id.replace(/[^a-z0-9]/gi, '-');
-    var img = p.img ? '<img class="mini" src="' + p.img + '" alt="" width="64" height="80" loading="lazy">' : '<div class="mini" aria-hidden="true">' + ARTE_MEDIDA + '</div>';
+    var img = p.img ? '<img class="mini" src="' + p.img + '" alt="" width="64" height="80" loading="lazy">' : '<div class="mini" aria-hidden="true">' + arte(p.base.arte) + '</div>';
     var opts = Object.keys(PERS).map(function (k) { return '<option value="' + k + '"' + (k === it.pers ? ' selected' : '') + '>' + PERS[k] + '</option>'; }).join('');
     return '<li class="item" data-item="' + it.id + '">' + img +
-      '<div><div class="nom"><b>' + n + '</b>' + (p.base.variantes ? '<span>' + esc(p.det) + '</span>' : '') + '</div>' +
+      '<div><div class="nom"><b>' + n + '</b><span>' + (p.precio ? plata(p.precio) + ' c/u' : 'Precio a confirmar') + '</span></div>' +
+      '<span class="sub">' + (p.precio ? plata(p.precio * it.n) : 'A confirmar') + '</span>' +
       '<div class="fila"><div class="cant" role="group" aria-label="Cantidad de ' + n + '"><button type="button" data-d="-1" aria-label="Uno menos"' + (it.n <= 1 ? ' disabled' : '') + '>' + MENOS + '</button><output>' + it.n + '</output><button type="button" data-d="1" aria-label="Uno más"' + (it.n >= 20 ? ' disabled' : '') + '>' + MAS + '</button></div>' +
       '<button type="button" class="quitar" data-quitar aria-label="Quitar ' + n + ' del pedido">Quitar</button></div></div>' +
       '<div class="pers"><label for="pers-' + uid + '">¿Cómo lo personalizamos?</label><select id="pers-' + uid + '" data-pers>' + opts + '</select>' +
@@ -916,6 +984,10 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
     $('carritoSub').textContent = t ? (t === 1 ? '1 producto' : t + ' productos') : 'Mateando Juntos';
     if (rehacerLista !== false) lista.innerHTML = estado.items.map(itemHTML).join('');
     $('fotoAviso').hidden = !hayMascota();
+    var m = monto(), sp = sinPrecio();
+    $('totalMonto').textContent = m ? plata(m) : 'A confirmar';
+    $('totalNota').textContent = sp ? (m ? 'Más ' + (sp === 1 ? '1 producto' : sp + ' productos') + ' con precio a confirmar. ' : '') + 'Te paso el precio de lo personalizado por WhatsApp.' : 'El envío se cotiza aparte.';
+    document.querySelectorAll('[data-monto]').forEach(function (b) { b.textContent = m ? plata(m) : ''; b.hidden = !m; });
     $('msgPrev').textContent = mensaje();
     guardar();
   }
@@ -944,7 +1016,6 @@ var MAS = '<i class="ph ph-plus" aria-hidden="true"></i>', MENOS = '<i class="ph
     if (b.hasAttribute('data-var')) {
       var card = b.closest('.prod'), vid = b.getAttribute('data-var');
       card.querySelectorAll('[data-var]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-      card.querySelector('[data-det]').textContent = POR_ID[vid].det;
       card.querySelector('.add').setAttribute('data-item', vid);
       render(false);
     } else if (b.classList.contains('agregar')) {
