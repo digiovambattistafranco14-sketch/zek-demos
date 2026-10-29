@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soca | Tatuadora fine line en San Isidro</title>
+<meta name="description" content="Tatuajes fine line y lettering en un estudio privado de San Isidro, Buenos Aires.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141315">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Soca | Tatuadora fine line en San Isidro">
+<meta property="og:description" content="Tatuajes fine line y lettering en un estudio privado de San Isidro. Contale tu idea y pedí tu turno.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/soca-tattoo/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/soca-tattoo/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/foto-07.jpg">
+<style>
+:root{
+  --tinta:#141315; --carbon:#1e1c1f; --linea:#2f2c30;
+  --hueso:#eee8e3; --gris:#a29ba0; --rojo:#e23b4a; --rojo-osc:#c42b3a;
+  --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --script:"Pinyon Script", cursive; --sans:"Hanken Grotesk", system-ui, sans-serif;
+  --head:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+section[id]{scroll-margin-top:calc(var(--head) + 12px)}
+body{background:var(--tinta);color:var(--hueso);font-family:var(--sans);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:3px;border-radius:4px}
+h2{font-weight:300;font-size:clamp(34px, 4.6vw, 58px);line-height:1.05;letter-spacing:-.025em;max-width:16ch}
+.lead{color:var(--gris);max-width:46ch;font-size:18px}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font:500 16px/1 var(--sans);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
+  transition:transform .16s var(--ease-out), background-color .2s ease, border-color .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-rojo{background:var(--rojo);color:#fff}
+.btn-linea{border-color:#4a4549;color:var(--hueso)}
+@media (hover:hover) and (pointer:fine){
+  .btn-rojo:hover{background:var(--rojo-osc)}
+  .btn-linea:hover{border-color:var(--hueso)}
+}
+.ig-ico{width:18px;height:18px;flex:none}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;height:var(--head);transition:background-color .3s ease, border-color .3s ease;border-bottom:1px solid transparent}
+.top.scrolled{background:rgba(20,19,21,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom-color:rgba(255,255,255,.07)}
+.top .wrap{height:100%;display:flex;align-items:center;gap:24px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.marca img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+.marca b{display:block;font-family:var(--script);font-weight:400;font-size:30px;line-height:.9}
+.marca small{display:block;font-size:13px;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu{display:flex;gap:28px;list-style:none}
+.menu a{text-decoration:none;font-size:15px;color:#d7d0cb;transition:color .2s ease}
+@media (hover:hover){.menu a:hover{color:#fff}}
+.top .btn{height:44px;padding:0 20px;font-size:15px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid #4a4549;background:none;color:var(--hueso);cursor:pointer;place-items:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:transform .2s var(--ease-out), opacity .2s ease}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+@media (max-width:860px){
+  .top .btn{display:none}
+  .menu-btn{display:grid}
+  .menu{position:fixed;top:var(--head);left:0;right:0;flex-direction:column;gap:0;background:rgba(20,19,21,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    padding:8px 20px 22px;border-bottom:1px solid var(--linea);
+    opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+  .menu.open{opacity:1;transform:none;pointer-events:auto}
+  .menu li a{display:block;padding:14px 0;font-size:19px;border-bottom:1px solid var(--linea)}
+  .menu li:last-child a{border:0;color:var(--rojo)}
+  .top:has(.menu.open){background:rgba(20,19,21,.96)}
+}
+@media (min-width:861px){.menu .solo-cel{display:none}}
+
+/* ---------- portada: el nombre se traza como con la aguja ---------- */
+.hero{min-height:100dvh;display:grid;align-items:center;padding:calc(var(--head) + 24px) 0 48px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.firma{position:relative;display:inline-block;font-family:var(--script);font-weight:400;font-size:clamp(110px, 15vw, 210px);line-height:1.15;padding:0 .12em .08em 0;margin-left:-.04em}
+.firma .tinta{display:block;clip-path:inset(-30% -20% -40% -10%)}
+.aguja{position:absolute;inset:0;pointer-events:none;opacity:0}
+.aguja::after{content:"";position:absolute;right:0;top:18%;height:70%;width:1.5px;background:var(--rojo);box-shadow:0 0 0 .5px rgba(226,59,74,.25)}
+.hero h1{font-weight:300;font-size:clamp(26px, 3vw, 38px);line-height:1.15;letter-spacing:-.02em;margin-top:6px}
+.hero .lead{margin-top:18px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-foto{position:relative;justify-self:end;width:min(100%, 460px)}
+.hero-foto img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
+.hero-foto::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1px solid rgba(226,59,74,.55);border-radius:2px;z-index:-1}
+
+@media (prefers-reduced-motion:no-preference){
+  .firma .tinta{animation:trazar 1.7s var(--ease-in-out) .25s both}
+  .aguja{animation:aguja 1.7s var(--ease-in-out) .25s both}
+  .hero h1,.hero .lead,.hero .ctas{animation:subir .7s var(--ease-out) both}
+  .hero h1{animation-delay:1.35s}.hero .lead{animation-delay:1.45s}.hero .ctas{animation-delay:1.55s}
+  .hero-foto{animation:aparecer 1s var(--ease-out) .5s both}
+}
+@keyframes trazar{from{clip-path:inset(-30% 110% -40% -10%)}to{clip-path:inset(-30% -20% -40% -10%)}}
+@keyframes aguja{0%{opacity:1;transform:translateX(-100%)}88%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(0)}}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes aparecer{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+
+/* ---------- lettering ---------- */
+.sec{padding:clamp(80px, 11vw, 140px) 0}
+.lettering .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+.lettering .txt{grid-column:1 / span 5;align-self:center}
+.lettering .txt p{margin-top:20px}
+.lettering .f1{grid-column:6 / span 4}
+.lettering .f2{grid-column:10 / span 3;margin-bottom:-60px}
+.lettering figure img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
+
+/* trazo al aparecer: la foto se descubre de arriba abajo, como una línea que baja */
+.js .trazo img{clip-path:inset(0 0 100% 0);transition:clip-path 1s var(--ease-out)}
+.js .trazo.in img{clip-path:inset(0 0 0 0)}
+
+/* ---------- hoja de flash ---------- */
+.flash{background:var(--carbon);border-block:1px solid var(--linea)}
+.flash h2{max-width:20ch}
+.flash .lead{margin-top:16px}
+.hoja{display:grid;grid-template-columns:repeat(6, 1fr);gap:0;margin-top:56px;border:1px solid var(--linea)}
+.pieza{padding:22px 18px 16px;border-right:1px solid var(--linea);display:flex;flex-direction:column;align-items:center;gap:12px}
+.pieza:last-child{border-right:0}
+.pieza img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:2px;filter:grayscale(.15)}
+.pieza span{font-family:var(--script);font-size:26px;line-height:1;color:#cfc8c3}
+
+/* ---------- color ---------- */
+.rojo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;background:var(--carbon);border-radius:2px;overflow:hidden}
+.rojo figure img{width:100%;height:100%;min-height:420px;object-fit:cover}
+.rojo .txt{padding:clamp(32px, 6vw, 80px);display:flex;flex-direction:column;justify-content:center}
+.rojo .txt p{margin-top:18px}
+.rojo .txt .btn{margin-top:30px;align-self:flex-start}
+
+/* ---------- estudio ---------- */
+.estudio .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:56px;align-items:center}
+.estudio figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+.estudio dl{margin-top:30px;display:grid;gap:20px}
+.estudio dt{font-size:14px;color:var(--gris)}
+.estudio dd{font-size:19px;margin-top:2px}
+.estudio dd a{color:var(--hueso);text-decoration-color:var(--rojo);text-underline-offset:4px}
+
+/* ---------- turno ---------- */
+.turno{background:var(--carbon);border-top:1px solid var(--linea)}
+.turno .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.turno .txt{position:sticky;top:calc(var(--head) + 40px)}
+.turno .txt p{margin-top:18px}
+form{display:grid;gap:22px}
+.campo{display:grid;gap:8px}
+.campo>label,.grupo legend{font-size:15px;font-weight:500;color:var(--hueso)}
+.grupo{border:0;display:grid;gap:10px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+input[type=text],input[type=tel],input[type=number],textarea{width:100%;background:var(--tinta);border:1px solid #47424a;border-radius:10px;color:var(--hueso);font:400 17px/1.4 var(--sans);padding:13px 14px;transition:border-color .2s ease}
+textarea{min-height:110px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#8b8489}
+input:focus,textarea:focus{outline:none;border-color:var(--rojo)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chips span{display:inline-block;padding:10px 16px;border:1px solid #47424a;border-radius:999px;font-size:15px;transition:background-color .2s ease, border-color .2s ease, color .2s ease}
+.chips input:checked+span{background:var(--hueso);border-color:var(--hueso);color:var(--tinta)}
+.chips input:focus-visible+span{outline:2px solid var(--rojo);outline-offset:2px}
+.ayuda{font-size:14px;color:var(--gris)}
+.error{font-size:14px;color:#ff8a94;min-height:0}
+.error:empty{display:none}
+.previa{background:var(--tinta);border:1px dashed #4a4549;border-radius:10px;padding:16px;font-size:15px;color:#d7d0cb;white-space:pre-line}
+.enviar{justify-content:center;width:100%;height:56px;font-size:17px}
+.ok{font-size:15px;color:var(--hueso);background:rgba(226,59,74,.12);border:1px solid rgba(226,59,74,.4);border-radius:10px;padding:12px 14px}
+.ok[hidden]{display:none}
+
+/* ---------- pie ---------- */
+footer{padding:40px 0 120px;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--hueso);font-weight:500}
+
+/* ---------- botón flotante (Instagram: no tiene WhatsApp publicado) ---------- */
+.flot{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:var(--rojo);display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(120,20,30,.3), 0 16px 34px -10px rgba(120,20,30,.7);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:flot-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.2s both}
+.flot img{width:30px;height:30px;position:relative;z-index:1}
+.flot::before,.flot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--rojo);z-index:0;opacity:0;animation:onda 5s var(--ease-out) 3.2s infinite}
+.flot::after{animation-delay:3.6s}
+.flot .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:var(--hueso);color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(0,0,0,.6);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.flot .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:var(--hueso);transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.flot .tip small{display:block;font-weight:500;font-size:13px;color:#5d575b}
+.flot:active{transform:scale(.94)}
+.flot:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .flot:hover{transform:scale(1.07)}
+  .flot:hover img{animation:sacude .6s var(--ease-out)}
+  .flot:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .flot:hover::before,.flot:hover::after{animation-play-state:paused}
+}
+@keyframes flot-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes sacude{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+
+/* ---------- celular ---------- */
+@media (max-width:980px){
+  .hoja{grid-template-columns:repeat(3, 1fr)}
+  .pieza:nth-child(3n){border-right:0}
+  .pieza:nth-child(-n+3){border-bottom:1px solid var(--linea)}
+}
+@media (max-width:860px){
+  :root{--head:64px}
+  .hero{min-height:auto;padding-top:calc(var(--head) + 20px)}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero-foto{justify-self:start;width:calc(100% - 14px);margin-left:14px}
+  .lettering .wrap{grid-template-columns:1fr 1fr;gap:14px}
+  .lettering .txt{grid-column:1 / -1;margin-bottom:24px}
+  .lettering .f1{grid-column:1}
+  .lettering .f2{grid-column:2;margin:48px 0 0}
+  .rojo .wrap{grid-template-columns:1fr}
+  .rojo figure img{min-height:0;aspect-ratio:4/5;height:auto}
+  .estudio .wrap,.turno .wrap{grid-template-columns:1fr;gap:36px}
+  .turno .txt{position:static}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 32px)}
+  .marca small{font-size:12px}
+  .firma{font-size:clamp(96px, 30vw, 130px)}
+  .ctas .btn{flex:1 1 auto;justify-content:center}
+  .hoja{grid-template-columns:repeat(2, 1fr)}
+  .pieza{border-bottom:1px solid var(--linea)}
+  .pieza:nth-child(3n){border-right:1px solid var(--linea)}
+  .pieza:nth-child(2n){border-right:0}
+  .pieza:nth-last-child(-n+2){border-bottom:0}
+  .dos{grid-template-columns:1fr}
+  .flot{width:58px;height:58px}.flot img{width:27px;height:27px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .js .trazo img{clip-path:none;opacity:0;transition:opacity .4s ease}
+  .js .trazo.in img{opacity:1}
+  .flot{animation:fundido .4s ease both}
+  .flot::before,.flot::after{animation:none}
+  .flot:hover img{animation:none}
+}
+@keyframes fundido{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Soca, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="42" height="42">
+      <span><b>Soca</b><small>Tatuadora fine line en San Isidro</small></span>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="menu" id="menu">
+        <li><a href="#trabajos">Trabajos</a></li>
+        <li><a href="#piezas">Piezas chicas</a></li>
+        <li><a href="#estudio">Estudio</a></li>
+        <li><a href="#turno">Turnos</a></li>
+        <li class="solo-cel"><a href="https://ig.me/m/socatattoo" target="_blank" rel="noopener">Escribinos por Instagram</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-rojo" href="https://ig.me/m/socatattoo" target="_blank" rel="noopener">
+      <img class="ig-ico" src="https://cdn.simpleicons.org/instagram/ffffff" alt="">Escribinos</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <div class="firma" aria-hidden="true"><span class="tinta">Soca</span><span class="aguja"></span></div>
+        <h1>Tatuajes fine line y lettering</h1>
+        <p class="lead">Estudio privado en San Isidro. Contame tu idea y la llevamos a la piel con línea fina.</p>
+        <div class="ctas">
+          <a class="btn btn-rojo" href="#turno">Pedí tu turno</a>
+          <a class="btn btn-linea" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <figure class="hero-foto">
+        <img src="img/foto-07.jpg" alt="Espalda tatuada con lettering fino y un ave sobre los hombros" width="480" height="640">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec lettering" id="trabajos">
+    <div class="wrap">
+      <div class="txt">
+        <h2>Letras que siguen la forma del cuerpo</h2>
+        <p class="lead">Lettering caligráfico, largo y suelto, que corre por la espalda, el brazo o la columna. Traé tu frase y vemos dónde queda mejor.</p>
+      </div>
+      <figure class="f1 trazo"><img src="img/foto-11.jpg" alt="Antebrazo con la frase Solo la emoción me mantiene en lettering fino" width="483" height="640" loading="lazy"></figure>
+      <figure class="f2 trazo"><img src="img/foto-10.jpg" alt="Lettering sobre la columna que termina en dos estrellas" width="480" height="640" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="sec flash" id="piezas">
+    <div class="wrap">
+      <h2>Piezas chicas, con el mismo detalle</h2>
+      <p class="lead">Animales, números, símbolos y firmas. Del tamaño de una moneda, con sombras suaves.</p>
+      <div class="hoja">
+        <div class="pieza trazo"><img src="img/foto-02.jpg" alt="Tortuga marina en el antebrazo" width="150" height="150" loading="lazy"><span>tortuga</span></div>
+        <div class="pieza trazo"><img src="img/foto-06.jpg" alt="Retrato de un perro en línea fina" width="150" height="150" loading="lazy"><span>tu perro</span></div>
+        <div class="pieza trazo"><img src="img/foto-04.jpg" alt="Número 78 en letra fina" width="150" height="150" loading="lazy"><span>un número</span></div>
+        <div class="pieza trazo"><img src="img/foto-05.jpg" alt="Copa del mundo en el antebrazo" width="150" height="150" loading="lazy"><span>la Copa</span></div>
+        <div class="pieza trazo"><img src="img/foto-03.jpg" alt="Escultura con alas en el brazo" width="150" height="150" loading="lazy"><span>una escultura</span></div>
+        <div class="pieza trazo"><img src="img/foto-01.jpg" alt="Lettering sobre la pierna, en blanco y negro" width="150" height="150" loading="lazy"><span>una firma</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rojo">
+    <div class="wrap">
+      <figure class="trazo"><img src="img/foto-09.jpg" alt="Flor en línea roja con lettering negro en el antebrazo" width="480" height="640" loading="lazy"></figure>
+      <div class="txt">
+        <h2>También en rojo</h2>
+        <p class="lead">Una línea de color sobre el negro. Si tenés una idea en color, consultá por mensaje.</p>
+        <a class="btn btn-linea" href="#turno">Pedí tu turno</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec estudio" id="estudio">
+    <div class="wrap">
+      <figure class="trazo"><img src="img/estudio.jpg" alt="Soca en su estudio, con pared de ladrillo y luz de la tarde" width="640" height="480" loading="lazy"></figure>
+      <div>
+        <h2>Un estudio privado</h2>
+        <p class="lead" style="margin-top:18px">Se atiende con turno. Escribime y coordinamos.</p>
+        <dl>
+          <div><dt>Dónde</dt><dd>San Isidro, Buenos Aires</dd></div>
+          <div><dt>Dirección y horarios</dt><dd>Consultá por mensaje</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://instagram.com/socatattoo" target="_blank" rel="noopener">@socatattoo</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec turno" id="turno">
+    <div class="wrap">
+      <div class="txt">
+        <h2>Pedí tu turno</h2>
+        <p class="lead">Contame la idea, la zona y el tamaño. Armamos el mensaje y lo mandás por Instagram.</p>
+      </div>
+      <form id="turnoForm" novalidate>
+        <div class="campo">
+          <label for="idea">Tu idea</label>
+          <textarea id="idea" name="idea" placeholder="Por ejemplo: una frase en lettering, el nombre de alguien, mi perro..."></textarea>
+        </div>
+        <fieldset class="grupo">
+          <legend>Estilo</legend>
+          <div class="chips">
+            <label><input type="radio" name="estilo" value="Lettering" checked><span>Lettering</span></label>
+            <label><input type="radio" name="estilo" value="Fine line / dibujo"><span>Fine line</span></label>
+            <label><input type="radio" name="estilo" value="Con color"><span>Con color</span></label>
+            <label><input type="radio" name="estilo" value="No sé, quiero asesorarme"><span>No sé todavía</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="grupo">
+          <legend>Zona del cuerpo</legend>
+          <div class="chips">
+            <label><input type="radio" name="zona" value="Antebrazo" checked><span>Antebrazo</span></label>
+            <label><input type="radio" name="zona" value="Brazo"><span>Brazo</span></label>
+            <label><input type="radio" name="zona" value="Espalda"><span>Espalda</span></label>
+            <label><input type="radio" name="zona" value="Columna"><span>Columna</span></label>
+            <label><input type="radio" name="zona" value="Pierna"><span>Pierna</span></label>
+            <label><input type="radio" name="zona" value="Otra zona"><span>Otra</span></label>
+          </div>
+        </fieldset>
+        <div class="dos">
+          <div class="campo">
+            <label for="tam">Tamaño aproximado (cm)</label>
+            <input type="number" id="tam" name="tam" min="1" max="100" inputmode="numeric" placeholder="Ej. 8">
+          </div>
+          <div class="campo">
+            <label for="cuando">¿Para cuándo?</label>
+            <input type="text" id="cuando" name="cuando" placeholder="Ej. fines de noviembre">
+          </div>
+        </div>
+        <div class="dos">
+          <div class="campo">
+            <label for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+            <p class="error" id="errNombre"></p>
+          </div>
+          <div class="campo">
+            <label for="tel">Tu teléfono</label>
+            <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" placeholder="11 2345 6789" required>
+            <p class="error" id="errTel"></p>
+          </div>
+        </div>
+        <div class="campo">
+          <p class="ayuda">Así va a quedar tu mensaje</p>
+          <div class="previa" id="previa" aria-live="polite"></div>
+        </div>
+        <button class="btn btn-rojo enviar" type="submit">
+          <img class="ig-ico" src="https://cdn.simpleicons.org/instagram/ffffff" alt="">Enviar por Instagram</button>
+        <p class="ok" id="ok" hidden>Copiamos tu mensaje. Pegalo en el chat de Instagram que se abrió.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Soca, tatuadora fine line. San Isidro, Buenos Aires.</span>
+    <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+  </div>
+</footer>
+
+<a class="flot" href="https://ig.me/m/socatattoo" target="_blank" rel="noopener" aria-label="Escribinos por Instagram a @socatattoo">
+  <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="">
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>@socatattoo por Instagram</small></span>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var top = document.getElementById('top');
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var trazos = Array.prototype.slice.call(document.querySelectorAll('.trazo'));
+  if (!('IntersectionObserver' in window)) { trazos.forEach(function (t) { t.classList.add('in'); }); return; }
+
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+
+  // Cada foto se descubre como una línea que baja, una detrás de otra
+  var io = new IntersectionObserver(function (es) {
+    var n = 0;
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.querySelector('img').style.transitionDelay = (n++ * 70) + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  trazos.forEach(function (t) { io.observe(t); });
+})();
+
+// Pedido de turno: arma el mensaje, lo copia y abre el chat de Instagram
+(function () {
+  var form = document.getElementById('turnoForm'); if (!form) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'soca-turno';
+  function val(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+  function texto() {
+    var l = ['Hola Soca! Quiero sacar turno para un tatuaje.'];
+    var idea = $('idea').value.trim();
+    l.push('Idea: ' + (idea || 'te la cuento por acá'));
+    l.push('Estilo: ' + val('estilo'));
+    l.push('Zona: ' + val('zona'));
+    if ($('tam').value) l.push('Tamaño aprox.: ' + Math.max(1, +$('tam').value) + ' cm');
+    if ($('cuando').value.trim()) l.push('Para: ' + $('cuando').value.trim());
+    var n = $('nombre').value.trim(), t = $('tel').value.trim();
+    if (n || t) l.push('Soy ' + (n || '...') + (t ? ', mi teléfono es ' + t : '') + '.');
+    return l.join('\n');
+  }
+  function guardar() {
+    try {
+      var d = {}; Array.prototype.forEach.call(form.elements, function (el) {
+        if (!el.name) return; if (el.type === 'radio') { if (el.checked) d[el.name] = el.value; } else d[el.name] = el.value;
+      });
+      localStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function cargar() {
+    try {
+      var d = JSON.parse(localStorage.getItem(KEY) || 'null'); if (!d) return;
+      Object.keys(d).forEach(function (k) {
+        var els = form.querySelectorAll('[name="' + k + '"]');
+        Array.prototype.forEach.call(els, function (el) { if (el.type === 'radio') el.checked = el.value === d[k]; else el.value = d[k]; });
+      });
+    } catch (e) {}
+  }
+  function sync() { $('previa').textContent = texto(); guardar(); }
+  function copiar(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).catch(function () { viejo(t); });
+    viejo(t); return Promise.resolve();
+  }
+  function viejo(t) {
+    try { var a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', ''); a.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove(); } catch (e) {}
+  }
+  cargar(); sync();
+  form.addEventListener('input', sync); form.addEventListener('change', sync);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = $('nombre'), t = $('tel'), bien = true;
+    $('errNombre').textContent = ''; $('errTel').textContent = '';
+    n.removeAttribute('aria-invalid'); t.removeAttribute('aria-invalid');
+    if (!n.value.trim()) { $('errNombre').textContent = 'Escribí tu nombre.'; n.setAttribute('aria-invalid', 'true'); bien = false; }
+    if (t.value.replace(/\D/g, '').length < 8) { $('errTel').textContent = 'Escribí un teléfono con código de área.'; t.setAttribute('aria-invalid', 'true'); bien = false; }
+    if (!bien) { (n.value.trim() ? t : n).focus(); return; }
+    copiar(texto()).then(function () { $('ok').hidden = false; });
+    var w = window.open('https://ig.me/m/socatattoo', '_blank');
+    if (w) { try { w.opener = null; } catch (err) {} } else setTimeout(function () { location.href = 'https://ig.me/m/socatattoo'; }, 400);
+  });
+})();
+</script>
+</body>
+</html>
