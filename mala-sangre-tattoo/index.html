@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mala Sangre Tattoo Studio | Tatuaje y peluquería en Rivadavia 141 Oeste</title>
+<meta name="description" content="Tatuajes a color, realismo y línea negra, peluquería y alquiler de box para tatuador o piercer. Rivadavia 141 Oeste, a una cuadra de plaza 25.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mala Sangre Tattoo Studio">
+<meta property="og:description" content="Tatuaje y peluquería en Rivadavia 141 Oeste. Contanos tu idea y pedí tu turno.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/mala-sangre-tattoo/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/mala-sangre-tattoo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F6F3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concepto: un tatuaje se hace en dos pasadas, primero la línea y después el relleno.
+   En la portada el nombre del estudio se "tatúa" así y al final cae la aguja roja del logo.
+   Cada tatuador tiene su book, y el turno se pide con una ficha que arma el mensaje. */
+:root{
+  --paper:#F6F6F3;      /* el blanco del logo */
+  --paper-2:#EBEBE7;
+  --ink:#151416;        /* la tinta negra */
+  --muted:#5A5760;
+  --blood:#B3141B;      /* la aguja roja del logo */
+  --blood-deep:#8C0F15;
+  --line:rgba(21,20,22,.14);
+  --display:'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --body:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:900;text-transform:uppercase;letter-spacing:.005em;line-height:.92;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--blood);color:#fff}
+:focus-visible{outline:3px solid var(--blood);outline-offset:3px;border-radius:4px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.ig-ico{width:20px;height:20px;flex:none}
+
+/* ---------- botones (pill), fotos y bloques con 4px ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;font:600 16px/1 var(--body);text-decoration:none;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--blood);color:#fff;box-shadow:0 12px 26px -14px rgba(179,20,27,.9)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(21,20,22,.3)}
+@media (hover:hover) and (pointer:fine){
+  .btn-red:hover{background:var(--blood-deep)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(246,246,243,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 var(--line), 0 10px 30px -20px rgba(21,20,22,.35)}
+.top .wrap{display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px var(--ink)}
+.brand span{font-family:var(--display);font-weight:900;font-size:21px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.brand small{display:block;margin-top:3px;font-family:var(--body);font-weight:500;font-size:12.5px;color:var(--muted);text-transform:none;letter-spacing:0}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 13px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(21,20,22,.07)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:999px;background:rgba(21,20,22,.07);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:#fff;border-radius:16px;padding:10px;box-shadow:0 24px 60px -20px rgba(21,20,22,.5);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:block;padding:13px 16px;border-radius:10px;font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;text-decoration:none}
+.sheet-menu a:active{background:var(--paper)}
+.sheet-menu .btn{display:flex;margin-top:6px;font-family:var(--body);font-size:16px;text-transform:none}
+@media (max-width:900px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+
+/* ---------- portada: el nombre se tatúa ---------- */
+.hero{min-height:100dvh;padding:calc(var(--header) + 24px) 0 48px;display:flex;align-items:center;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.title{width:100%;max-width:560px;height:auto;display:block;overflow:visible}
+.title text{font-family:var(--display);font-weight:900;font-size:200px;fill:var(--ink);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;paint-order:stroke}
+.needle{fill:var(--blood)}
+.hero .lead{margin-top:18px;font-size:clamp(17px, 1.6vw, 19px);color:var(--muted);max-width:40ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.where{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:15px;color:var(--muted)}
+.where svg{width:18px;height:18px;flex:none;color:var(--blood)}
+.skin{position:relative;margin:0;justify-self:end;width:min(420px, 100%)}
+.skin img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%;border-radius:4px;background:var(--paper-2)}
+.skin figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
+.skin figcaption b{color:var(--ink);font-weight:600}
+/* el momento: línea, relleno, aguja */
+@keyframes linea{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+@keyframes relleno{from{fill-opacity:0}to{fill-opacity:1}}
+@keyframes gotear{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.title text{stroke-dasharray:900;animation:linea 1.7s var(--ease-in-out) .15s both, relleno .6s var(--ease-out) 1.55s both}
+.title text + text{animation-delay:.45s, 1.75s}
+.needle{animation:gotear .55s var(--ease-out) 2.2s both}
+.hero .lead,.hero .ctas,.where{animation:subir .7s var(--ease-out) both}
+.hero .lead{animation-delay:1.9s}.hero .ctas{animation-delay:2s}.where{animation-delay:2.1s}
+.skin{animation:subir .9s var(--ease-out) .3s both}
+@media (max-width:900px){
+  .hero{min-height:0;padding-top:calc(var(--header) + 28px)}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .skin{justify-self:start;width:min(420px, 100%)}
+}
+
+/* ---------- los tatuadores: un book por cada uno ---------- */
+.artists{padding:112px 0 96px}
+.head{max-width:620px}
+.head h2{font-size:clamp(2.6rem, 6vw, 4.6rem)}
+.head p{margin-top:16px;color:var(--muted);font-size:18px;max-width:52ch}
+.book{display:grid;grid-template-columns:minmax(0, 4fr) minmax(0, 8fr);gap:48px;margin-top:72px;padding-top:28px;box-shadow:0 -2px 0 var(--ink)}
+.book + .book{margin-top:96px}
+.book-info h3{font-size:clamp(2.4rem, 4.6vw, 3.8rem)}
+.book-info p{margin-top:14px;color:var(--muted);max-width:34ch}
+.book-info .styles{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+.book-info .styles li{font-size:14px;font-weight:500;padding:6px 12px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.pages{display:grid;gap:16px;align-items:start}
+.book-info{position:sticky;top:calc(var(--header) + 28px);align-self:start}
+.pages figure{margin:0}
+.pages img{width:100%;height:auto;object-fit:cover;border-radius:4px;background:var(--paper-2)}
+.pages figcaption{margin-top:10px;font-size:14px;color:var(--muted)}
+.pages-freddy{grid-template-columns:1fr 1fr}
+.pages-freddy img{aspect-ratio:9/14}
+.pages-freddy figure:last-child{margin-top:72px}
+.pages-fran{grid-template-columns:1.1fr .9fr;grid-template-rows:auto auto}
+.pages-fran .big{grid-row:span 2}
+.pages-fran .big img{aspect-ratio:4/5}
+.pages-fran figure:not(.big) img{aspect-ratio:1/1}
+.book-fran .pages{order:-1}
+.book-fran{grid-template-columns:minmax(0, 8fr) minmax(0, 4fr)}
+/* las fotos del book aparecen tranquilas al llegar */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease-out), transform .7s var(--ease-out)}
+.js .reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .book,.book-fran{grid-template-columns:1fr;gap:28px}
+  .book-fran .pages{order:0}
+  .book-info{position:static}
+  .book-fran .book-info{order:-1}
+  .pages-freddy figure:last-child{margin-top:40px}
+}
+@media (max-width:520px){
+  .pages-fran{grid-template-columns:1fr 1fr}
+  .pages-fran .big{grid-column:span 2;grid-row:auto}
+  .pages-fran .big img{aspect-ratio:4/5}
+}
+
+/* ---------- peluquería y box ---------- */
+.more{padding:24px 0 112px}
+.more .grid{display:grid;grid-template-columns:5fr 7fr;gap:20px}
+.cell{border-radius:4px;overflow:hidden;position:relative}
+.hair{background:var(--ink);color:#F6F6F3;min-height:620px;display:flex;align-items:flex-end;isolation:isolate}
+.hair img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hair::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top, rgba(21,20,22,.94) 8%, rgba(21,20,22,.2) 62%, rgba(21,20,22,0))}
+.hair .txt{padding:clamp(24px, 3.4vw, 40px)}
+.hair h2{font-size:clamp(2.6rem, 5vw, 4rem)}
+.hair p{margin-top:12px;color:rgba(246,246,243,.84);max-width:34ch}
+.hair .btn{margin-top:22px;height:48px;background:#F6F6F3;color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.hair .btn:hover{background:#fff}}
+.box{background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);padding:clamp(24px, 3.4vw, 40px);display:grid;grid-template-columns:1fr .82fr;gap:32px;align-items:start}
+.box h2{font-size:clamp(2.4rem, 4.4vw, 3.6rem)}
+.box p{margin-top:14px;color:var(--muted)}
+.box ul{list-style:none;margin:22px 0 26px;padding:0;display:grid;gap:12px}
+.box li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-weight:500}
+.box li svg{width:20px;height:20px;color:var(--blood);margin-top:2px}
+.box .btn{height:48px}
+.box .photo{margin:0}
+.box .photo img{width:100%;aspect-ratio:9/15;object-fit:cover;border-radius:4px}
+.box .photo figcaption{margin-top:10px;font-size:14px;color:var(--muted)}
+.crew{display:flex;gap:10px;margin-top:28px}
+.crew img{width:76px;height:76px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff, 0 0 0 3.5px var(--line)}
+@media (max-width:900px){
+  .more .grid{grid-template-columns:1fr}
+  .hair{min-height:520px}
+}
+@media (max-width:560px){
+  .box{grid-template-columns:1fr}
+  .box .photo{max-width:240px}
+}
+
+/* ---------- la ficha de turno ---------- */
+.turno{background:var(--paper-2);padding:112px 0}
+.turno .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.turno-text{position:sticky;top:calc(var(--header) + 32px)}
+.turno-text .note{margin-top:28px;padding-left:16px;box-shadow:inset 3px 0 0 var(--blood);color:var(--muted);max-width:40ch}
+.ficha{background:#fff;border-radius:4px;padding:clamp(22px, 3.4vw, 40px);box-shadow:0 2px 2px rgba(21,20,22,.05), 0 30px 70px -40px rgba(21,20,22,.55);display:grid;gap:22px}
+.ficha-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:18px;box-shadow:0 2px 0 var(--ink)}
+.ficha-top b{font-family:var(--display);font-weight:900;font-size:30px;text-transform:uppercase;line-height:1}
+.ficha-top small{display:block;margin-top:4px;color:var(--muted);font-size:14px}
+.ficha-top img{width:56px;height:56px;border-radius:50%;box-shadow:0 0 0 1.5px var(--ink)}
+.ficha fieldset{border:0;margin:0;padding:0;min-width:0}
+.ficha legend,.f > label{display:block;font-weight:600;font-size:14.5px;color:var(--ink);margin-bottom:8px;padding:0}
+.f{display:flex;flex-direction:column;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ficha input:not([type=radio]),.ficha textarea{border-radius:10px;border:1.5px solid rgba(21,20,22,.2);background:#FAFAF8;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);width:100%;height:50px}
+.ficha textarea{height:auto;min-height:96px;padding:12px 14px;resize:vertical}
+.ficha input::placeholder,.ficha textarea::placeholder{color:#7C7982}
+.ficha input:focus,.ficha textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,20,22,.12)}
+.ficha .bad input{border-color:var(--blood)}
+.err{display:none;margin-top:6px;font-size:14px;font-weight:500;color:var(--blood)}
+.bad .err{display:block}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick label{cursor:pointer;position:relative}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick span{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;background:#FAFAF8;box-shadow:inset 0 0 0 1.5px rgba(21,20,22,.2);font-weight:500;font-size:15px;
+  transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
+.pick input:checked + span{background:var(--ink);color:#fff;box-shadow:none}
+.pick input:focus-visible + span{outline:3px solid var(--blood);outline-offset:2px}
+.pick label:active span{transform:scale(.97)}
+.pick-big span{height:52px;padding:0 22px;font-family:var(--display);font-weight:800;font-size:22px;text-transform:uppercase}
+.preview{background:var(--paper);border-radius:12px 12px 12px 4px;padding:14px 16px}
+.preview small{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.preview p{white-space:pre-line;font-size:15px}
+.ficha .send{width:100%;height:58px;font-size:17px}
+.sent{display:none;font-size:15px;font-weight:500;padding:12px 14px;border-radius:10px;background:#F3E3E4;color:var(--blood-deep)}
+.sent.show{display:block}
+@media (max-width:900px){
+  .turno .wrap{grid-template-columns:1fr;gap:40px}
+  .turno-text{position:static}
+}
+@media (max-width:440px){.two{grid-template-columns:1fr}}
+
+/* ---------- dónde estamos ---------- */
+.visit{padding:112px 0}
+.visit .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.visit h2{font-size:clamp(2.8rem, 6vw, 4.8rem)}
+.visit dl{margin:32px 0 32px;display:grid;gap:20px}
+.visit dt{font-size:14px;color:var(--muted)}
+.visit dd{margin:2px 0 0;font-weight:600;font-size:19px}
+.visit dd a{text-decoration:none;box-shadow:inset 0 -2px 0 var(--blood)}
+.visit .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.visit iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:4px;filter:grayscale(.9) contrast(1.05);background:var(--paper-2)}
+@media (max-width:900px){.visit .wrap{grid-template-columns:1fr;gap:36px}}
+
+footer{background:var(--ink);color:#C9C7CC;padding:40px 0 120px;font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .name{font-family:var(--display);font-weight:900;font-size:28px;text-transform:uppercase;color:#F6F6F3;line-height:1}
+footer a{color:#F6F6F3;font-weight:600}
+
+/* ---------- botón flotante: mensaje directo (no hay WhatsApp en su perfil) ---------- */
+.fab{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:var(--blood);color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(140,15,21,.25), 0 16px 34px -10px rgba(140,15,21,.65);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:fab-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 3s both}
+.fab svg{width:32px;height:32px;position:relative;z-index:1}
+.fab::before,.fab::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--blood);z-index:0;opacity:0;
+  animation:fab-onda 5s var(--ease-out) 4s infinite}
+.fab::after{animation-delay:4.4s}
+.fab .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(21,20,22,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.fab .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.fab .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.fab:active{transform:scale(.94)}
+.fab:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .fab:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(140,15,21,.25), 0 22px 44px -10px rgba(140,15,21,.75)}
+  .fab:hover svg{animation:fab-sacude .6s var(--ease-out)}
+  .fab:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .fab:hover::before,.fab:hover::after{animation-play-state:paused}
+}
+@keyframes fab-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes fab-onda{0%{opacity:.42;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes fab-sacude{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.fab{width:58px;height:58px}.fab svg{width:29px;height:29px}}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .title text{animation:none;stroke-dasharray:none}
+  .needle{animation:none}
+  .hero .lead,.hero .ctas,.where,.skin,.fab{animation:suave .4s ease both}
+  .fab::before,.fab::after{animation:none}
+  .fab:hover svg{animation:none}
+  .js .reveal{transform:none;transition:opacity .4s ease}
+}
+@keyframes suave{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.25" fill="currentColor"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Mala Sangre, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>Mala Sangre<small>Tatuaje y peluquería</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#tatuadores">Tatuajes</a><a href="#peluqueria">Peluquería</a><a href="#box">Box</a><a href="#turno">Pedí tu turno</a><a href="#donde">Dónde</a>
+    </nav>
+    <a class="btn btn-red" href="https://ig.me/m/mala.sangre.tattoo" target="_blank" rel="noopener"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a href="#tatuadores">Tatuajes</a><a href="#peluqueria">Peluquería</a><a href="#box">Box</a><a href="#turno">Pedí tu turno</a><a href="#donde">Dónde</a>
+  <a class="btn btn-red" href="https://ig.me/m/mala.sangre.tattoo" target="_blank" rel="noopener"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1>
+          <svg class="title" id="title" viewBox="0 0 640 400" role="img" aria-label="Mala Sangre">
+            <text id="t1" x="0" y="172">MALA</text>
+            <text id="t2" x="0" y="372">SANGRE</text>
+            <path class="needle" id="needle" d="M0 0h30l-11 196c-.3 5-7.7 5-8 0Z" transform="translate(470 18)"/>
+          </svg>
+        </h1>
+        <p class="lead">Tatuajes a color, realismo y línea negra. Y peluquería, en el mismo estudio.</p>
+        <div class="ctas">
+          <a class="btn btn-red" href="#turno">Pedí tu turno</a>
+          <a class="btn btn-ghost" href="#tatuadores">Ver trabajos</a>
+        </div>
+        <p class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Rivadavia 141 Oeste, a una cuadra de plaza 25</p>
+      </div>
+      <figure class="skin">
+        <img src="img/foto-04.jpg" alt="Tatuaje a color en el muslo: dos rostros de mujer y una máscara roja" width="640" height="640" fetchpriority="high">
+        <figcaption>Tatuado por <b>Freddy Solares</b></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="artists" id="tatuadores">
+    <div class="wrap">
+      <div class="head">
+        <h2>Quién te tatúa</h2>
+        <p>Cada tatuador tiene su mano. Mirá sus trabajos y elegí con quién hacerte el tuyo.</p>
+      </div>
+
+      <article class="book">
+        <div class="book-info">
+          <h3>Freddy Solares</h3>
+          <p>Color fuerte y retratos con mucho detalle.</p>
+          <ul class="styles"><li>Color</li><li>Realismo</li><li>Negro y grises</li></ul>
+        </div>
+        <div class="pages pages-freddy">
+          <figure class="reveal"><img src="img/foto-06.jpg" alt="Manga con dos retratos realistas en el antebrazo" loading="lazy"><figcaption>Retratos en el antebrazo</figcaption></figure>
+          <figure class="reveal"><img src="img/foto-09.jpg" alt="Tres tiburones en negro y grises sobre el antebrazo" loading="lazy"><figcaption>Tiburones en negro y grises</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="book book-fran">
+        <div class="pages pages-fran">
+          <figure class="big reveal"><img src="img/foto-10.jpg" alt="Dragón con alas abiertas tatuado en la espalda baja" loading="lazy"><figcaption>Dragón en la espalda</figcaption></figure>
+          <figure class="reveal"><img src="img/foto-12.jpg" alt="Calavera punk en línea negra y puntillismo" loading="lazy"><figcaption>Calavera en línea negra</figcaption></figure>
+          <figure class="reveal"><img src="img/foto-08.jpg" alt="Fran dibujando un diseño en la tablet" loading="lazy"><figcaption>El diseño, antes de la piel</figcaption></figure>
+        </div>
+        <div class="book-info">
+          <h3>Fran Trigo</h3>
+          <p>Línea limpia y sombra punteada, del dibujo a la piel.</p>
+          <ul class="styles"><li>Línea negra</li><li>Puntillismo</li><li>Ilustración</li></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="more" aria-label="Peluquería y alquiler de box">
+    <div class="wrap grid">
+      <article class="cell hair" id="peluqueria">
+        <img src="img/foto-05.jpg" alt="Clienta de pelo largo y rizado en el sillón de la peluquería" loading="lazy">
+        <div class="txt">
+          <h2>También peluquería</h2>
+          <p>En el mismo estudio. Consultá por turnos y trabajos.</p>
+          <a class="btn" href="#turno" data-pedir="peluqueria">Pedí turno</a>
+        </div>
+      </article>
+      <article class="cell box" id="box">
+        <div>
+          <h2>Alquiler de box</h2>
+          <p>Para tatuador o piercer que necesita un lugar para trabajar.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Por hora o por día</span></li>
+            <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Con todas las comodidades y servicios</span></li>
+            <li><svg aria-hidden="true"><use href="#ok"/></svg><span>En el microcentro, a una cuadra de plaza 25</span></li>
+          </ul>
+          <a class="btn btn-ghost" href="#turno" data-pedir="box">Consultar el box</a>
+          <div class="crew">
+            <img src="img/foto-02.jpg" alt="Tatuador trabajando en el estudio" loading="lazy" width="76" height="76">
+            <img src="img/foto-01.jpg" alt="Tatuador concentrado en una sesión" loading="lazy" width="76" height="76">
+          </div>
+        </div>
+        <figure class="photo"><img src="img/foto-07.jpg" alt="El box: camilla negra, espejo y cuadros en la pared" loading="lazy"><figcaption>El box, listo para trabajar</figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="turno" id="turno">
+    <div class="wrap">
+      <div class="turno-text">
+        <div class="head"><h2>Pedí tu turno</h2>
+          <p>Completá la ficha y el mensaje te queda armado. Así te responden más rápido.</p></div>
+        <p class="note">Precios y fechas los charlás directo con el estudio. Si tenés una foto o un dibujo de referencia, mandalo en el mismo chat.</p>
+      </div>
+      <form class="ficha" id="ficha" novalidate>
+        <div class="ficha-top"><div><b>Ficha de turno</b><small>Mala Sangre, Rivadavia 141 Oeste</small></div><img src="img/perfil.jpg" alt=""></div>
+        <fieldset class="f">
+          <legend>¿Qué querés hacerte?</legend>
+          <div class="pick pick-big">
+            <label><input type="radio" name="tipo" value="tatuaje" checked><span>Tatuaje</span></label>
+            <label><input type="radio" name="tipo" value="peluqueria"><span>Peluquería</span></label>
+            <label><input type="radio" name="tipo" value="box"><span>Alquilar el box</span></label>
+          </div>
+        </fieldset>
+
+        <div class="opt" data-opt="tatuaje">
+          <div style="display:grid;gap:22px">
+            <div class="f"><label for="idea">Contanos tu idea</label><textarea id="idea" placeholder="Un dragón, un retrato, unas letras…"></textarea></div>
+            <div class="f"><label for="zona">¿En qué parte del cuerpo?</label><input id="zona" placeholder="Antebrazo, espalda, pierna…"></div>
+            <fieldset class="f"><legend>Tamaño</legend>
+              <div class="pick">
+                <label><input type="radio" name="tam" value="chico"><span>Chico</span></label>
+                <label><input type="radio" name="tam" value="mediano" checked><span>Mediano</span></label>
+                <label><input type="radio" name="tam" value="grande"><span>Grande</span></label>
+                <label><input type="radio" name="tam" value="una manga o la espalda"><span>Manga o espalda</span></label>
+              </div></fieldset>
+            <fieldset class="f"><legend>¿Color o negro?</legend>
+              <div class="pick">
+                <label><input type="radio" name="color" value="a color"><span>A color</span></label>
+                <label><input type="radio" name="color" value="en negro y grises"><span>Negro y grises</span></label>
+                <label><input type="radio" name="color" value="" checked><span>Que me aconsejen</span></label>
+              </div></fieldset>
+            <fieldset class="f"><legend>¿Con quién?</legend>
+              <div class="pick">
+                <label><input type="radio" name="quien" value="Freddy Solares"><span>Freddy Solares</span></label>
+                <label><input type="radio" name="quien" value="Fran Trigo"><span>Fran Trigo</span></label>
+                <label><input type="radio" name="quien" value="" checked><span>Me da igual</span></label>
+              </div></fieldset>
+          </div>
+        </div>
+        <div class="opt" data-opt="peluqueria" hidden>
+          <div class="f"><label for="pelo">¿Qué te querés hacer?</label><input id="pelo" placeholder="Un corte, color, un peinado…"></div>
+        </div>
+        <div class="opt" data-opt="box" hidden>
+          <div style="display:grid;gap:22px">
+            <fieldset class="f"><legend>Sos</legend>
+              <div class="pick">
+                <label><input type="radio" name="oficio" value="tatuador" checked><span>Tatuador</span></label>
+                <label><input type="radio" name="oficio" value="piercer"><span>Piercer</span></label>
+              </div></fieldset>
+            <fieldset class="f"><legend>Lo necesito</legend>
+              <div class="pick">
+                <label><input type="radio" name="por" value="por hora" checked><span>Por hora</span></label>
+                <label><input type="radio" name="por" value="por día"><span>Por día</span></label>
+              </div></fieldset>
+          </div>
+        </div>
+
+        <div class="f"><label for="cuando">¿Para cuándo? (opcional)</label><input id="cuando" placeholder="Esta semana, un sábado, en diciembre…"></div>
+        <div class="two">
+          <div class="f" id="fNombre"><label for="nombre">Tu nombre</label><input id="nombre" autocomplete="given-name" required><span class="err">Poné tu nombre.</span></div>
+          <div class="f" id="fTel"><label for="tel">Tu teléfono</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" required><span class="err">Poné un teléfono para que te contesten.</span></div>
+        </div>
+        <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><p id="prev"></p></div>
+        <button class="btn btn-red send" type="submit" id="sendBtn"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg><span id="sendTxt">Enviar por Instagram</span></button>
+        <p class="sent" id="sent" role="status">Copiamos tu mensaje. Pegalo en el chat de Mala Sangre que se abrió y mandalo.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="visit" id="donde">
+    <div class="wrap">
+      <div>
+        <h2>Vení al estudio</h2>
+        <dl>
+          <div><dt>Dirección</dt><dd>Rivadavia 141 Oeste<br>Microcentro, a una cuadra de plaza 25</dd></div>
+          <div><dt>Horarios</dt><dd>Consultá por mensaje</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://instagram.com/mala.sangre.tattoo" target="_blank" rel="noopener">@mala.sangre.tattoo</a></dd></div>
+        </dl>
+        <div class="ctas">
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Rivadavia%20141%20Oeste%2C%20San%20Juan" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+      <iframe title="Mapa: Mala Sangre Tattoo Studio, Rivadavia 141 Oeste" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Rivadavia%20141%20Oeste%2C%20San%20Juan&z=16&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><p class="name">Mala Sangre</p><p style="margin-top:6px">Tatuaje y peluquería. <a href="https://instagram.com/mala.sangre.tattoo" target="_blank" rel="noopener">@mala.sangre.tattoo</a></p></div>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="fab" href="https://ig.me/m/mala.sangre.tattoo" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram">
+  <svg aria-hidden="true"><use href="#ig"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>@mala.sangre.tattoo</small></span>
+</a>
+
+<script>
+// Si el estudio pasa un WhatsApp, poné el número acá (ej. '5492641234567') y la ficha manda por WhatsApp.
+var WHATSAPP = '';
+var IG_DM = 'https://ig.me/m/mala.sangre.tattoo';
+document.documentElement.classList.add('js');
+
+// El título se ajusta a la medida real de la letra y la aguja queda al lado de MALA, como en el logo
+(function () {
+  var svg = document.getElementById('title'), t1 = document.getElementById('t1'), t2 = document.getElementById('t2'), nd = document.getElementById('needle');
+  function fit() {
+    try {
+      var a = t1.getBBox(), b = t2.getBBox();
+      var nx = a.x + a.width + 18, ny = a.y + 18;
+      nd.setAttribute('transform', 'translate(' + nx + ' ' + ny + ')');
+      var w = Math.max(b.x + b.width, nx + 30) + 6, h = b.y + b.height * .86;
+      svg.setAttribute('viewBox', '0 ' + Math.floor(a.y - 4) + ' ' + Math.ceil(w) + ' ' + Math.ceil(h - a.y + 4));
+    } catch (e) {}
+  }
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { items.forEach(function (f) { f.classList.add('in'); }); return; }
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var sib = Array.prototype.indexOf.call(e.target.parentNode.children, e.target);
+      e.target.style.transitionDelay = (sib * 80) + 'ms';
+      e.target.classList.add('in'); io.unobserve(e.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function (f) { io.observe(f); });
+})();
+
+// Ficha de turno: arma el mensaje y lo manda por Instagram (o WhatsApp si hay número)
+(function () {
+  var form = document.getElementById('ficha'); if (!form) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'malasangre-ficha';
+  function val(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function v(id) { return $(id).value.trim(); }
+  if (WHATSAPP) $('sendTxt').textContent = 'Enviar por WhatsApp';
+
+  try {
+    var g = JSON.parse(localStorage.getItem(KEY) || '{}');
+    if (g.nombre) $('nombre').value = g.nombre;
+    if (g.tel) $('tel').value = g.tel;
+  } catch (e) {}
+
+  function texto() {
+    var t = val('tipo'), L = [];
+    if (t === 'tatuaje') {
+      L.push('Hola Mala Sangre! Quiero un turno para tatuarme.');
+      if (v('idea')) L.push('Idea: ' + v('idea'));
+      if (v('zona')) L.push('Zona: ' + v('zona'));
+      L.push('Tamaño: ' + val('tam') + (val('color') ? ', ' + val('color') : '') + '.');
+      L.push(val('quien') ? 'Me gustaría hacerlo con ' + val('quien') + '.' : 'Me da igual con quién.');
+    }
+    if (t === 'peluqueria') {
+      L.push('Hola Mala Sangre! Quiero un turno de peluquería.');
+      if (v('pelo')) L.push('Me quiero hacer: ' + v('pelo'));
+    }
+    if (t === 'box') L.push('Hola Mala Sangre! Soy ' + val('oficio') + ' y quiero consultar por el alquiler del box ' + val('por') + '.');
+    if (v('cuando')) L.push('Para cuándo: ' + v('cuando'));
+    var quien = [];
+    if (v('nombre')) quien.push('Me llamo ' + v('nombre'));
+    if (v('tel')) quien.push('mi teléfono es ' + v('tel'));
+    if (quien.length) L.push(quien.join(' y ') + '.');
+    return L.join('\n');
+  }
+  function sync() {
+    var t = val('tipo');
+    form.querySelectorAll('.opt').forEach(function (o) { o.hidden = o.getAttribute('data-opt') !== t; });
+    $('prev').textContent = texto();
+    try { localStorage.setItem(KEY, JSON.stringify({ nombre: v('nombre'), tel: v('tel') })); } catch (e) {}
+  }
+  function check(id, wrap) { var ok = !!v(id) && (id !== 'tel' || v('tel').replace(/\D/g, '').length >= 6); $(wrap).classList.toggle('bad', !ok); return ok; }
+  function copiar(txt) {
+    try { if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(txt); return; } } catch (e) {}
+    try { var ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); } catch (e) {}
+  }
+  form.addEventListener('input', function (e) {
+    if (e.target.id === 'nombre') $('fNombre').classList.remove('bad');
+    if (e.target.id === 'tel') $('fTel').classList.remove('bad');
+    sync();
+  });
+  form.addEventListener('change', sync);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = check('nombre', 'fNombre'), b = check('tel', 'fTel');
+    if (!a) { $('nombre').focus(); return; }
+    if (!b) { $('tel').focus(); return; }
+    var txt = texto();
+    if (WHATSAPP) { window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt), '_blank', 'noopener'); return; }
+    copiar(txt);
+    $('sent').classList.add('show');
+    window.open(IG_DM, '_blank', 'noopener');
+  });
+  document.querySelectorAll('[data-pedir]').forEach(function (a) {
+    a.addEventListener('click', function () { var r = form.querySelector('input[name="tipo"][value="' + a.getAttribute('data-pedir') + '"]'); if (r) { r.checked = true; sync(); } });
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
