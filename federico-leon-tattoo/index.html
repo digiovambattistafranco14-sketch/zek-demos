@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Federico León Tattoo | Tatuajes en Quilmes Oeste</title>
+<meta name="description" content="Tatuajes en estudio privado en Quilmes Oeste. Color, negro, fine line, oriental y geométrico. Contanos tu idea por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Federico León Tattoo | Tatuajes en Quilmes Oeste">
+<meta property="og:description" content="Estudio privado en Quilmes Oeste. Contanos tu idea y la llevamos del calco a la piel.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/federico-leon-tattoo/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/federico-leon-tattoo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ECEBEF">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concepto: del calco a la piel. La portada muestra el dragón como stencil violeta y la hoja se despega;
+   los trabajos cuelgan como una hoja de flash; el proceso corre por una línea de calco; el tamaño se elige a escala. */
+:root{
+  --paper:#ECEBEF;      /* papel de calco, frío */
+  --paper-2:#E1E0E6;
+  --sheet:#F7F7F9;
+  --ink:#18161C;        /* tinta negra */
+  --muted:#5C5866;
+  --stencil:#4A3D9A;    /* el violeta del papel de transferencia */
+  --stencil-deep:#382D7C;
+  --stencil-soft:rgba(74,61,154,.12);
+  --display:'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --body:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:900;margin:0;letter-spacing:-0.01em;line-height:.95;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--stencil);color:#fff}
+:focus-visible{outline:3px solid var(--stencil);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+.head h2{font-size:clamp(2.6rem, 6vw, 4.4rem)}
+.head p{margin-top:16px;color:var(--muted);max-width:52ch;font-size:18px}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-family:var(--body);
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-ink{background:var(--ink);color:#fff;box-shadow:0 10px 24px -14px rgba(24,22,28,.9)}
+.btn-ghost{color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1.5px rgba(24,22,28,.25)}
+@media (hover:hover) and (pointer:fine){
+  .btn-ink:hover{background:var(--stencil-deep)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(236,235,239,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(24,22,28,.08), 0 10px 30px -18px rgba(24,22,28,.35)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff, 0 4px 12px -4px rgba(0,0,0,.35)}
+.brand span{font-family:var(--display);font-weight:900;font-size:21px;line-height:1;letter-spacing:.005em}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0;margin-top:3px}
+.links{display:flex;gap:4px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(24,22,28,.06)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(24,22,28,.07);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:var(--sheet);border-radius:18px;padding:10px;box-shadow:0 24px 60px -20px rgba(24,22,28,.5);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:block;padding:12px 16px;border-radius:12px;font-family:var(--display);font-weight:800;font-size:24px;text-decoration:none}
+.sheet-menu a:active{background:var(--paper)}
+.sheet-menu .btn{display:flex;justify-content:center;margin-top:6px;font-family:var(--body);font-size:16px;font-weight:600}
+@media (max-width:860px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+
+/* ---------- portada ---------- */
+.hero{padding:calc(var(--header) + 40px) 0 80px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(4.2rem, 11vw, 9.4rem);line-height:.84;letter-spacing:-0.015em}
+.hero h1 span{display:block}
+.hero .lead{margin-top:28px;font-size:clamp(17px, 1.6vw, 20px);color:var(--muted);max-width:40ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.skin{position:relative;justify-self:end;width:min(430px, 100%);aspect-ratio:482/596;border-radius:6px;overflow:hidden;
+  box-shadow:0 2px 4px rgba(24,22,28,.08), 0 40px 70px -34px rgba(24,22,28,.6)}
+.skin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+/* la hoja de calco: la misma foto pasada a stencil violeta */
+.calco{position:absolute;inset:0;isolation:isolate;clip-path:inset(0 0 0 0)}
+.calco img{filter:grayscale(1) contrast(2.4) brightness(1.18)}
+.calco::after{content:"";position:absolute;inset:0;background:var(--stencil);mix-blend-mode:lighten}
+.borde{position:absolute;top:0;bottom:0;left:0;width:36px;margin-left:-18px;pointer-events:none;opacity:0;
+  background:linear-gradient(90deg, rgba(24,22,28,0), rgba(24,22,28,.28) 45%, rgba(255,255,255,.75) 52%, rgba(255,255,255,0))}
+.js .calco{animation:despegar 1.5s var(--ease-in-out) .9s both}
+.js .borde{animation:borde 1.5s var(--ease-in-out) .9s both}
+@keyframes despegar{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(0 0 0 100%)}}
+@keyframes borde{0%{opacity:1;transform:translateX(0)}92%{opacity:1}100%{opacity:0;transform:translateX(min(430px, 100vw))}}
+.hero h1 span,.hero .lead,.hero .ctas{animation:subir .7s var(--ease-out) both}
+.hero h1 span:nth-child(2){animation-delay:.06s}
+.hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}
+@keyframes subir{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (max-width:860px){
+  .hero{padding-top:calc(var(--header) + 24px);padding-bottom:56px}
+  .hero .wrap{grid-template-columns:1fr;gap:28px}
+  .skin{order:-1;justify-self:stretch;width:100%;max-width:none;aspect-ratio:auto;height:min(46svh, 420px)}
+  .skin img{object-position:50% 18%}
+  .hero h1{font-size:clamp(3.6rem, 19vw, 5.4rem)}
+  .hero .lead{margin-top:18px}
+  .hero .ctas{margin-top:24px}
+  .js .borde{animation-name:borde-m}
+}
+@keyframes borde-m{0%{opacity:1;transform:translateX(0)}92%{opacity:1}100%{opacity:0;transform:translateX(100vw)}}
+@media (max-width:420px){.hero .ctas .btn{flex:1 1 100%;justify-content:center}}
+
+/* ---------- hoja de flash ---------- */
+.flash{padding:96px 0 104px}
+.flash .head{margin-bottom:56px}
+.board{display:grid;grid-template-columns:repeat(6, 1fr);gap:44px 36px;align-items:start}
+.pieza{margin:0;position:relative;background:var(--sheet);padding:12px 12px 16px;border-radius:3px;box-shadow:0 1px 2px rgba(24,22,28,.08), 0 24px 40px -28px rgba(24,22,28,.55)}
+.pieza::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:24px;margin-left:-42px;background:rgba(200,198,210,.72);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(24,22,28,.08)}
+.pieza .ph{position:relative;overflow:hidden;border-radius:2px;background:var(--paper-2)}
+.pieza img{width:100%;height:100%;object-fit:cover}
+.pieza figcaption{margin-top:12px;font-family:var(--display);font-weight:800;font-size:22px;line-height:1.05}
+.pieza figcaption small{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:var(--muted);margin-top:4px}
+.p1{grid-column:1 / span 3;transform:rotate(-1.2deg)}
+.p1 .ph{aspect-ratio:1}
+.p2{grid-column:4 / span 3;transform:rotate(1.4deg);margin-top:40px}
+.p2 .ph{aspect-ratio:507/640}
+.p3{grid-column:1 / span 2;transform:rotate(1deg);margin-top:-20px}
+.p3 .ph{aspect-ratio:482/596}
+.p3 img{object-position:50% 0}
+.p4{grid-column:3 / span 2;transform:rotate(-1.6deg);margin-top:30px}
+.p4 .ph{aspect-ratio:1}
+.p5{grid-column:5 / span 2;transform:rotate(.8deg);margin-top:-6px}
+.p5 .ph{aspect-ratio:1}
+/* al llegar, el violeta del calco se limpia y queda la tinta */
+.js .pieza .ph::after{content:"";position:absolute;inset:0;background:var(--stencil);mix-blend-mode:lighten;opacity:.9;transition:opacity .7s var(--ease-out) var(--d, 0ms)}
+.js .pieza img{filter:grayscale(1) contrast(1.8);transition:filter .7s var(--ease-out)}
+.js .pieza.in .ph::after{opacity:0}
+.js .pieza.in img{filter:none}
+.flash-foot{margin-top:56px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+.flash-foot p{color:var(--muted)}
+@media (max-width:860px){
+  .board{grid-template-columns:1fr 1fr;gap:36px 18px}
+  .p1,.p2{grid-column:span 2;margin-top:0}
+  .p2{width:86%;justify-self:end}
+  .p1{width:92%}
+  .p3,.p4,.p5{grid-column:span 1;margin-top:0}
+  .p5{grid-column:1 / span 2;width:70%;justify-self:center}
+  .pieza figcaption{font-size:19px}
+}
+
+/* ---------- proceso: la línea de calco ---------- */
+.proceso{padding:96px 0;background:var(--sheet)}
+.pasos{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4, 1fr);gap:28px;position:relative}
+.pasos::before{content:"";position:absolute;left:28px;right:28px;top:27px;border-top:2px dashed var(--stencil);opacity:.55}
+.paso{position:relative}
+.paso .n{position:relative;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--sheet);box-shadow:inset 0 0 0 2px var(--stencil);color:var(--stencil);font-family:var(--display);font-weight:900;font-size:26px}
+.paso h3{margin-top:22px;font-size:30px;line-height:1}
+.paso p{margin-top:10px;color:var(--muted);font-size:16px;max-width:30ch}
+.paso img{margin-top:18px;width:120px;height:120px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 6px #fff, 0 14px 24px -14px rgba(24,22,28,.6)}
+.paso:nth-child(2) img{transform:rotate(-2deg)}.paso:nth-child(3) img{transform:rotate(2deg)}.paso:nth-child(4) img{transform:rotate(-1deg)}
+@media (max-width:860px){
+  .pasos{grid-template-columns:1fr;gap:36px;padding-left:0}
+  .pasos::before{left:27px;right:auto;top:28px;bottom:28px;border-top:0;border-left:2px dashed var(--stencil)}
+  .paso{display:grid;grid-template-columns:56px 1fr;column-gap:20px}
+  .paso h3{margin-top:10px}
+  .paso > *:not(.n){grid-column:2}
+  .paso .n{grid-row:1 / span 3}
+  .paso img{width:104px;height:104px}
+}
+
+/* ---------- tu idea (formulario) ---------- */
+.idea{padding:104px 0}
+.idea .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.idea .head{position:sticky;top:calc(var(--header) + 32px)}
+.idea .head .alt{margin-top:24px;font-size:16px;color:var(--muted)}
+.idea .head .alt a{color:var(--ink);font-weight:600}
+form{background:var(--sheet);border-radius:20px;padding:32px;box-shadow:0 1px 2px rgba(24,22,28,.06), 0 30px 60px -40px rgba(24,22,28,.5);display:grid;gap:24px}
+.f{display:grid;gap:8px;border:0;margin:0;padding:0;min-width:0}
+.f > label,.f > legend{font-weight:600;font-size:15px;padding:0}
+.f > legend{margin-bottom:8px}
+.f input[type=text],.f input[type=tel],.f textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid #C9C7D1;border-radius:12px;padding:13px 14px;transition:border-color .15s ease, box-shadow .15s ease}
+.f textarea{min-height:104px;resize:vertical}
+.f input::placeholder,.f textarea::placeholder{color:#6E6A78}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--stencil);box-shadow:0 0 0 3px var(--stencil-soft)}
+.f .err{display:none;color:#A3212B;font-size:14px;font-weight:500}
+.f.bad input{border-color:#A3212B}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;height:42px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #C9C7D1;font-size:15px;font-weight:500;cursor:pointer;transition:background-color .15s ease, color .15s ease, box-shadow .15s ease}
+.chips input:checked + span{background:var(--ink);color:#fff;box-shadow:none}
+.chips input:focus-visible + span{outline:3px solid var(--stencil);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.chips label:hover input:not(:checked) + span{box-shadow:inset 0 0 0 1.5px var(--ink)}}
+/* el tamaño, a escala en pantalla */
+.medida{display:grid;grid-template-columns:1fr auto;gap:12px 16px;align-items:center}
+.medida input[type=range]{width:100%;accent-color:var(--stencil);height:28px}
+.medida output{font-family:var(--display);font-weight:900;font-size:30px;min-width:3.4ch;text-align:right}
+.escala{grid-column:1 / -1;position:relative;height:270px;padding-bottom:28px;border-radius:12px;background:
+  repeating-linear-gradient(90deg, rgba(24,22,28,.14) 0 1px, transparent 1px 1cm) bottom left / 100% 10px no-repeat, #fff;
+  box-shadow:inset 0 0 0 1.5px #E0DFE6;overflow:hidden;display:grid;place-items:center}
+.escala .marco{width:5cm;height:5cm;border:2px dashed var(--stencil);border-radius:4px;background:var(--stencil-soft);transition:width .18s var(--ease-out), height .18s var(--ease-out)}
+.escala small{position:absolute;left:12px;right:12px;bottom:14px;font-size:13px;color:var(--muted);text-align:center}
+.preview{background:var(--paper);border-radius:14px;padding:16px 18px;font-size:15px;color:var(--muted)}
+.preview small{display:block;font-weight:600;color:var(--ink);margin-bottom:6px;font-size:14px}
+.preview p{white-space:pre-line;color:var(--ink)}
+form .send{justify-self:start;height:56px}
+@media (max-width:860px){
+  .idea{padding:80px 0}
+  .idea .wrap{grid-template-columns:1fr;gap:36px}
+  .idea .head{position:static}
+  form{padding:22px 18px;border-radius:18px}
+  form .send{justify-self:stretch;justify-content:center}
+}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+
+/* ---------- la frase ---------- */
+.frase{padding:24px 0 96px}
+.frase blockquote{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(3rem, 9.5vw, 8.6rem);line-height:.88;letter-spacing:-0.01em;max-width:13ch}
+.frase blockquote span{display:block}
+.frase blockquote span:last-child{color:transparent;-webkit-text-stroke:2px var(--stencil)}
+.frase p{margin-top:24px;color:var(--muted)}
+
+/* ---------- dónde ---------- */
+.donde{padding:0 0 104px}
+.donde .card{display:grid;grid-template-columns:1fr 1.1fr;border-radius:22px;overflow:hidden;background:var(--sheet);box-shadow:0 1px 2px rgba(24,22,28,.06), 0 30px 60px -40px rgba(24,22,28,.5)}
+.donde .info{padding:44px}
+.donde dl{margin:28px 0 32px;display:grid;gap:18px}
+.donde dt{font-size:14px;color:var(--muted);font-weight:500}
+.donde dd{margin:2px 0 0;font-size:19px;font-weight:600}
+.donde iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.7) contrast(1.05)}
+@media (max-width:860px){
+  .donde .card{grid-template-columns:1fr}
+  .donde .info{padding:28px 22px}
+  .donde iframe{min-height:280px}
+}
+
+footer{padding:36px 0 120px;color:var(--muted);font-size:14px;border-top:1px solid rgba(24,22,28,.08)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink);font-weight:600}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.6s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 3.6s infinite}
+.wa::after{animation-delay:4s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(24,22,28,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero h1 span,.hero .lead,.hero .ctas,.wa{animation:aparecer .4s ease both}
+  .js .calco{animation:aparecer-out .6s ease .4s both}
+  .js .borde{animation:none;opacity:0}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .escala .marco{transition:none}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+@keyframes aparecer-out{from{opacity:1}to{opacity:0}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol></svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Federico León Tattoo, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="42" height="42">
+      <span>Federico León<small>Tatuajes en Quilmes Oeste</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#trabajos">Trabajos</a><a href="#proceso">Cómo es</a><a href="#idea">Tu idea</a><a href="#donde">Dónde</a>
+    </nav>
+    <a class="btn btn-ink" href="https://wa.me/5491151220521" target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a href="#trabajos">Trabajos</a><a href="#proceso">Cómo es</a><a href="#idea">Tu idea</a><a href="#donde">Dónde</a>
+  <a class="btn btn-ink" href="https://wa.me/5491151220521" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1><span>Federico</span> <span>León</span></h1>
+        <p class="lead">Tatuajes en estudio privado, en Quilmes Oeste. Color, negro, fine line y oriental. Traé tu idea y la pasamos del calco a la piel.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="#idea">Contanos tu idea</a>
+          <a class="btn btn-ghost" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <div class="skin">
+        <img src="img/foto-09.jpg" alt="Dragón oriental en rojo con flores en negro, tatuado en toda la espalda" width="482" height="640" fetchpriority="high">
+        <div class="calco" aria-hidden="true"><img src="img/foto-09.jpg" alt="" width="482" height="640"></div>
+        <div class="borde" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flash" id="trabajos">
+    <div class="wrap">
+      <div class="head">
+        <h2>Salido de la camilla</h2>
+        <p>Algunos trabajos recientes. Lo nuevo aparece primero en Instagram.</p>
+      </div>
+      <div class="board">
+        <figure class="pieza p1"><div class="ph"><img src="img/foto-07.jpg" alt="Vaporeon en celeste, tatuado en la pantorrilla" width="640" height="640" loading="lazy"></div><figcaption>Vaporeon<small>A color, en la pantorrilla</small></figcaption></figure>
+        <figure class="pieza p2"><div class="ph"><img src="img/foto-08.jpg" alt="Retrato a color de Juan Manuel de Rosas con lettering" width="507" height="640" loading="lazy"></div><figcaption>Retrato a color<small>Con lettering a los costados</small></figcaption></figure>
+        <figure class="pieza p3"><div class="ph"><img src="img/foto-11.jpg" alt="Manga floral en línea fina, del hombro a la muñeca" width="482" height="640" loading="lazy"></div><figcaption>Manga floral<small>Línea fina</small></figcaption></figure>
+        <figure class="pieza p4"><div class="ph"><img src="img/foto-10.jpg" alt="Kewpie disfrazada de calabaza con la frase Qué te pasa calabaza" width="640" height="640" loading="lazy"></div><figcaption>¿Qué te pasa calabaza?<small>Color y lettering</small></figcaption></figure>
+        <figure class="pieza p5"><div class="ph"><img src="img/foto-12.jpg" alt="Balanza, espada y laurel con la palabra Virtus en el antebrazo" width="640" height="640" loading="lazy"></div><figcaption>Virtus<small>Negro, en el antebrazo</small></figcaption></figure>
+      </div>
+      <div class="flash-foot">
+        <p>Hay muchos más en su perfil.</p>
+        <a class="btn btn-ghost" href="https://instagram.com/federicoleontattoo" target="_blank" rel="noopener">Ver @federicoleontattoo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proceso" id="proceso">
+    <div class="wrap">
+      <div class="head">
+        <h2>De la idea a la piel</h2>
+        <p>Así llega un tatuaje desde tu cabeza hasta el brazo.</p>
+      </div>
+      <ol class="pasos">
+        <li class="paso"><span class="n">1</span><h3>Nos contás</h3><p>Por WhatsApp: la idea, la zona, el tamaño y fotos de referencia si tenés.</p></li>
+        <li class="paso"><span class="n">2</span><h3>Boceto</h3><p>La idea se dibuja en papel, a la medida de tu cuerpo.</p><img src="img/foto-05.jpg" alt="Bocetos de tatuajes sobre la mesa: mandala y lobo" width="150" height="150" loading="lazy"></li>
+        <li class="paso"><span class="n">3</span><h3>Calco y sesión</h3><p>Pasamos el diseño a la piel y tatuamos en el estudio, sin apuro.</p><img src="img/foto-04.jpg" alt="Federico tatuando un brazo en el estudio" width="150" height="150" loading="lazy"></li>
+        <li class="paso"><span class="n">4</span><h3>Cuidados</h3><p>Te llevás las indicaciones para que cicatrice bien. Preguntá por la crema del estudio.</p><img src="img/foto-01.jpg" alt="Potes de crema con la marca Federico León Tattoo" width="150" height="150" loading="lazy"></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="idea" id="idea">
+    <div class="wrap">
+      <div class="head">
+        <h2>Contanos tu idea</h2>
+        <p>Completá lo que sepas y te armamos el mensaje para WhatsApp. Precio y turno los charlamos por ahí.</p>
+        <p class="alt">¿Preferís hablar directo? <a href="https://wa.me/5491151220521" target="_blank" rel="noopener">11 5122-0521</a></p>
+      </div>
+      <form id="ideaForm" novalidate>
+        <div class="f"><label for="ideaTxt">¿Qué te querés tatuar?</label><textarea id="ideaTxt" placeholder="Ej: un dragón oriental en rojo, una frase, una flor de nacimiento..."></textarea></div>
+        <fieldset class="f">
+          <legend>¿En qué zona?</legend>
+          <div class="chips">
+            <label><input type="radio" name="zona" value="Brazo"><span>Brazo</span></label>
+            <label><input type="radio" name="zona" value="Antebrazo" checked><span>Antebrazo</span></label>
+            <label><input type="radio" name="zona" value="Pierna"><span>Pierna</span></label>
+            <label><input type="radio" name="zona" value="Espalda"><span>Espalda</span></label>
+            <label><input type="radio" name="zona" value="Costillas"><span>Costillas</span></label>
+            <label><input type="radio" name="zona" value="Otra zona"><span>Otra</span></label>
+          </div>
+        </fieldset>
+        <div class="f">
+          <label for="cm">Tamaño aproximado</label>
+          <div class="medida">
+            <input type="range" id="cm" min="2" max="40" value="6" step="1" aria-describedby="escalaTxt">
+            <output id="cmOut" for="cm">6 cm</output>
+            <div class="escala" aria-hidden="true"><small id="escalaTxt">Más o menos así, a escala en pantalla</small><div class="marco" id="marco"></div></div>
+          </div>
+        </div>
+        <fieldset class="f">
+          <legend>¿Color o negro?</legend>
+          <div class="chips">
+            <label><input type="radio" name="tinta" value="Negro y grises" checked><span>Negro y grises</span></label>
+            <label><input type="radio" name="tinta" value="Color"><span>Color</span></label>
+            <label><input type="radio" name="tinta" value="No sé, lo vemos"><span>No sé, lo vemos</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f">
+          <legend>¿Es tu primer tatuaje?</legend>
+          <div class="chips">
+            <label><input type="radio" name="primero" value="si"><span>Sí, el primero</span></label>
+            <label><input type="radio" name="primero" value="no" checked><span>No</span></label>
+          </div>
+        </fieldset>
+        <div class="two">
+          <div class="f" id="fNombre"><label for="nombre">Tu nombre</label><input type="text" id="nombre" autocomplete="given-name" required><span class="err">Poné tu nombre así sabemos quién escribe.</span></div>
+          <div class="f" id="fTel"><label for="tel">Tu teléfono</label><input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="Ej: 11 2345-6789" required><span class="err">Poné un teléfono para coordinar el turno.</span></div>
+        </div>
+        <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><p id="msgPrev"></p></div>
+        <button class="btn btn-ink send" type="submit"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="frase" aria-label="La frase del estudio">
+    <div class="wrap">
+      <blockquote><span>El que abandona</span><span>no tiene premio.</span></blockquote>
+      <p>Federico León</p>
+    </div>
+  </section>
+
+  <section class="donde" id="donde">
+    <div class="wrap">
+      <div class="card">
+        <div class="info">
+          <div class="head"><h2>Estudio privado</h2></div>
+          <dl>
+            <div><dt>Zona</dt><dd>Quilmes Oeste</dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5491151220521" target="_blank" rel="noopener">11 5122-0521</a></dd></div>
+            <div><dt>Turnos y horarios</dt><dd>Consultá por WhatsApp</dd></div>
+          </dl>
+          <a class="btn btn-ink" href="https://wa.me/5491151220521" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+        </div>
+        <iframe title="Mapa de Quilmes Oeste" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Quilmes%20Oeste%2C%20Buenos%20Aires&z=14&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Federico León Tattoo. Estudio privado en Quilmes Oeste. <a href="https://instagram.com/federicoleontattoo" target="_blank" rel="noopener">@federicoleontattoo</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5491151220521" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 11 5122-0521">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>11 5122-0521</small></span>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  // Menú del celular
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var piezas = Array.prototype.slice.call(document.querySelectorAll('.pieza'));
+  if (!('IntersectionObserver' in window)) { piezas.forEach(function (p) { p.classList.add('in'); }); return; }
+  // Encabezado translúcido cuando dejás la portada
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  // En la hoja de flash, el violeta del calco se limpia y queda la tinta
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var d = (piezas.indexOf(e.target) % 3) * 70 + 'ms';
+      e.target.querySelector('img').style.transitionDelay = d;
+      e.target.querySelector('.ph').style.setProperty('--d', d);
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: .3, rootMargin: '0px 0px -40px 0px' });
+  piezas.forEach(function (p) { io.observe(p); });
+})();
+
+// Tu idea: arma el mensaje y lo abre en WhatsApp
+(function () {
+  var form = document.getElementById('ideaForm'); if (!form) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'fl-tattoo-idea';
+  function val(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+  function setVal(name, v) { var r = form.querySelector('input[name="' + name + '"][value="' + v + '"]'); if (r) r.checked = true; }
+
+  // Recordar lo que escribió, por si vuelve
+  try {
+    var g = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (g) { $('ideaTxt').value = g.idea || ''; $('nombre').value = g.nombre || ''; $('tel').value = g.tel || ''; if (g.cm) $('cm').value = g.cm; setVal('zona', g.zona); setVal('tinta', g.tinta); setVal('primero', g.primero); }
+  } catch (e) {}
+  function guardar() {
+    try { localStorage.setItem(KEY, JSON.stringify({ idea: $('ideaTxt').value, nombre: $('nombre').value, tel: $('tel').value, cm: $('cm').value, zona: val('zona'), tinta: val('tinta'), primero: val('primero') })); } catch (e) {}
+  }
+
+  function texto() {
+    var l = ['Hola Federico! Me quiero tatuar.'];
+    var idea = $('ideaTxt').value.trim();
+    l.push('Idea: ' + (idea || 'te la cuento por acá') + '.');
+    l.push('Zona: ' + val('zona') + '.');
+    l.push('Tamaño aproximado: ' + $('cm').value + ' cm.');
+    l.push('Tinta: ' + val('tinta') + '.');
+    if (val('primero') === 'si') l.push('Es mi primer tatuaje.');
+    var n = $('nombre').value.trim(), t = $('tel').value.trim();
+    if (n || t) l.push('Soy ' + (n || '...') + (t ? ', mi teléfono es ' + t : '') + '.');
+    l.push('Si tengo fotos de referencia, te las mando por acá.');
+    return l.join('\n');
+  }
+  function escala() {
+    var cm = +$('cm').value;
+    $('cmOut').textContent = cm + ' cm';
+    var box = $('marco').parentNode, real = cm * 37.8;
+    var max = Math.min(box.clientWidth - 32, box.clientHeight - 64), lado = Math.min(real, max);
+    $('marco').style.width = lado + 'px'; $('marco').style.height = lado + 'px';
+    $('escalaTxt').textContent = real > max ? 'A ' + cm + ' cm ya no entra en la pantalla' : 'Más o menos así, a escala en pantalla';
+  }
+  function sync() { escala(); $('msgPrev').textContent = texto(); guardar(); }
+  function check(id, wrap) { var ok = $(id).value.trim().length > (id === 'tel' ? 5 : 0); $(wrap).classList.toggle('bad', !ok); return ok; }
+
+  form.addEventListener('input', function (e) {
+    if (e.target.id === 'nombre' && $('fNombre').classList.contains('bad')) check('nombre', 'fNombre');
+    if (e.target.id === 'tel' && $('fTel').classList.contains('bad')) check('tel', 'fTel');
+    sync();
+  });
+  form.addEventListener('change', sync);
+  window.addEventListener('resize', escala);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = check('nombre', 'fNombre'), b = check('tel', 'fTel');
+    if (!a) { $('nombre').focus(); return; }
+    if (!b) { $('tel').focus(); return; }
+    window.open('https://wa.me/5491151220521?text=' + encodeURIComponent(texto()), '_blank', 'noopener');
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
