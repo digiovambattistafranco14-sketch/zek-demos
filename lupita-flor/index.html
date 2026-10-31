@@ -86,11 +86,11 @@ button{cursor:pointer}
 .portada p{font-size:clamp(1.06rem,1.5vw,1.25rem);max-width:30em;margin-top:22px}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .ramo{position:relative;width:min(100%,calc((100dvh - var(--alto-header)) * .86),660px);aspect-ratio:5/6;justify-self:center;align-self:center}
-.ramo img,.ramo svg{position:absolute;display:block}
+.ramo img,.ramo svg{position:absolute;display:block;height:auto}
 .pieza{left:calc(var(--x)*1% - var(--w)*.5%);top:calc(var(--y)*1%);width:calc(var(--w)*1%);transform:rotate(var(--r));
   animation:colocar .72s var(--ease-out) both;animation-delay:calc(var(--d)*1ms)}
-.k-atras{left:5%;top:3%;width:90%;animation:abrir .8s var(--ease-out) both;transform-origin:50% 100%;filter:drop-shadow(0 18px 24px rgba(23,75,64,.2))}
-.k-frente{left:14%;top:43%;width:72%;height:51%;object-fit:fill;animation:envolver .85s var(--ease-out) 1.45s both;transform-origin:50% 100%;filter:drop-shadow(0 -8px 12px rgba(60,35,10,.35))}
+.k-atras{left:5%;top:3%;width:90%;height:91%!important;object-fit:fill;animation:abrir .8s var(--ease-out) both;transform-origin:50% 100%;filter:drop-shadow(0 18px 24px rgba(23,75,64,.2))}
+.k-frente{left:14%;top:43%;width:72%;height:51%!important;object-fit:fill;animation:envolver .85s var(--ease-out) 1.45s both;transform-origin:50% 100%;filter:drop-shadow(0 -8px 12px rgba(60,35,10,.35))}
 .ramo svg.sello{left:38%;top:51%;width:24%;height:auto;filter:drop-shadow(0 4px 8px rgba(60,35,10,.35));animation:sellar .42s var(--ease-out) 2.15s both}
 @keyframes colocar{from{opacity:0;transform:translateY(-16%) rotate(calc(var(--r) - 14deg)) scale(.86)}to{opacity:1;transform:rotate(var(--r))}}
 @keyframes abrir{from{opacity:0;transform:scale(.72,.82)}to{opacity:1;transform:none}}
@@ -151,8 +151,8 @@ button{cursor:pointer}
 .novias{background:var(--verde-hondo);color:#F4EAF0}
 .novias h2,.novias h3{color:#fff}
 .novias-in{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1fr);gap:clamp(30px,6vw,80px);align-items:start}
-.novias-fotos{position:relative;padding-bottom:18%}
-.novias-fotos img{border-radius:var(--r-foto)}
+.novias-fotos{position:sticky;top:96px;padding-bottom:18%}
+.novias-fotos img{border-radius:var(--r-foto);height:auto}
 .novias-fotos .f1{width:82%;aspect-ratio:4/5;object-fit:cover}
 .novias-fotos .f2{position:absolute;right:0;bottom:0;width:48%;aspect-ratio:4/5;object-fit:cover;box-shadow:0 0 0 7px var(--verde-hondo)}
 .novias p.intro{color:#E9DCE4}
@@ -180,14 +180,14 @@ input:focus-visible,textarea:focus-visible{outline:3px solid var(--verde-boton);
 .ficha .btn{grid-column:1/-1;width:100%}
 .aviso{grid-column:1/-1;font-size:14.5px;color:var(--verde-boton);font-weight:500}
 .aviso:empty{display:none}
-@media (max-width:900px){.novias-in{grid-template-columns:1fr}.novias-fotos{max-width:520px}}
+@media (max-width:900px){.novias-in{grid-template-columns:1fr}.novias-fotos{max-width:520px;position:relative;top:auto}}
 @media (max-width:520px){.ficha{grid-template-columns:1fr}}
 
 /* Eventos */
 .tira{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(240px,27vw,350px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px max(20px,calc((100vw - 1240px)/2)) 18px;margin-top:40px;scrollbar-color:var(--verde) transparent;scrollbar-width:thin}
 .tira figure{margin:0;scroll-snap-align:center}
 .tira figure:nth-child(even){margin-top:34px}
-.tira img{border-radius:var(--r-foto);width:100%;aspect-ratio:3/4;object-fit:cover}
+.tira img{border-radius:var(--r-foto);width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
 .tira figcaption{margin-top:9px;font-size:15.5px;line-height:1.35}
 .tira-cta{margin-top:22px}
 
@@ -292,7 +292,7 @@ body.quieto{overflow:hidden}
   <symbol id="logo" viewBox="0 0 200 200">
     <circle cx="100" cy="100" r="98" fill="#F2DDE9"/>
     <path d="M26 138A82 82 0 1 1 158 42" fill="none" stroke="#3F8F7A" stroke-width="2.2" stroke-linecap="round"/>
-    <path id="arco-logo" d="M30 124A74 74 0 0 1 168 71" fill="none"/>
+    <path id="arco-logo" d="M28 120A74.7 74.7 0 1 1 172 120" fill="none"/>
     <text font-family="Fredoka,sans-serif" font-size="14.5" font-weight="500" fill="#2E7B67" letter-spacing=".5"><textPath href="#arco-logo" startOffset="50%" text-anchor="middle">ramos naturales y secos</textPath></text>
     <text x="100" y="113" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="59" font-weight="700" fill="#3F8F7A" stroke="#3F8F7A" stroke-width="2.4" stroke-linejoin="round" letter-spacing="-.5">Lupita</text>
     <text x="102" y="146" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="31" font-weight="500" fill="#3F8F7A" letter-spacing="1">Flor</text>
@@ -393,7 +393,6 @@ body.quieto{overflow:hidden}
     <p class="intro">Iglesias, salones, comuniones, mesas dulces e inauguraciones. Vos elegís y del resto nos ocupamos.</p>
   </div>
   <div class="tira" tabindex="0" aria-label="Fotos de eventos">
-    <figure><img src="img/ceremonia-pasillo.webp" alt="Bancos de iglesia decorados con flores blancas y tela" loading="lazy" width="720" height="999"><figcaption>Bancos de la iglesia, con flores y tela blanca.</figcaption></figure>
     <figure><img src="img/ceremonia-altar.webp" alt="Arreglo blanco con liliums y rosas sobre el altar" loading="lazy" width="720" height="871"><figcaption>Arreglo blanco para el altar.</figcaption></figure>
     <figure><img src="img/ceremonia-columna.webp" alt="Columna de follaje y flores blancas en un salón" loading="lazy" width="720" height="998"><figcaption>Columna de follaje y flores en el salón.</figcaption></figure>
     <figure><img src="img/ceremonia-blanco.webp" alt="Rosas y alstroemerias blancas de cerca" loading="lazy" width="720" height="960"><figcaption>Rosas y flores blancas, de cerca.</figcaption></figure>
