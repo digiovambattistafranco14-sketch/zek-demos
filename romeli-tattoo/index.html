@@ -1,0 +1,1149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Romeli Piercing & Tattoo | Villa María, Córdoba</title>
+<meta name="description" content="Piercing con acero quirúrgico, joyas y tatuajes en el Paseo de la Villa, locales 22 y 24, Villa María. Pedí tu turno por WhatsApp.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Romeli Piercing & Tattoo | Villa María">
+<meta property="og:description" content="Piercings, joyas de acero quirúrgico y tatuajes. Paseo de la Villa, locales 22 y 24. Pedí tu turno por WhatsApp.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/romeli-tattoo/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/romeli-tattoo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6DDD3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concepto: el exhibidor de joyas. La portada brilla como el acero cuando le da la luz (el destello de sus historias destacadas);
+   las zonas de piercing son tapas de historias como las suyas; las joyas se cuelgan en un exhibidor negro como el del local;
+   el turno es una tarjetita con sus reglas. */
+:root{
+  --blush:#F6DDD3;      /* el durazno rosado del logo */
+  --blush-2:#EFCBBE;
+  --shell:#FCF2EE;      /* fondo claro, rosado */
+  --ink:#2A1C22;        /* el negro ciruela del exhibidor */
+  --ink-2:#3A2830;
+  --muted:#6E5A60;
+  --rose:#B24C6C;       /* acento: rosa profundo */
+  --rose-deep:#8F3754;
+  --gold:#C99B4E;       /* el brillito del logo, solo para destellos */
+  --steel:#D9D4D8;
+  --display:'DM Serif Display', Georgia, serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --header:72px;
+  --arch:999px 999px 18px 18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--shell);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-0.01em;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--rose);color:#fff}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+.head{max-width:620px}
+.head h2{font-size:clamp(2.1rem, 4.4vw, 3.4rem);line-height:1.04}
+.head p{margin-top:14px;color:var(--muted);font-size:18px;max-width:52ch}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:0;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-ink{background:var(--ink);color:var(--blush);box-shadow:0 12px 26px -14px rgba(42,28,34,.8)}
+.btn-rose{background:var(--rose);color:#fff;box-shadow:0 12px 26px -14px rgba(178,76,108,.9)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(42,28,34,.25)}
+@media (hover:hover) and (pointer:fine){
+  .btn-ink:hover{background:var(--ink-2)}
+  .btn-rose:hover{background:var(--rose-deep)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(252,242,238,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(42,28,34,.07), 0 10px 30px -18px rgba(42,28,34,.3)}
+.top .wrap{display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px #fff, 0 4px 12px -4px rgba(42,28,34,.35)}
+.brand span{font-family:var(--display);font-size:21px;line-height:1}
+.brand small{display:block;margin-top:3px;font-family:var(--body);font-weight:500;font-size:12.5px;color:var(--muted)}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 13px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(42,28,34,.06)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(42,28,34,.06);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:#fff;border-radius:20px;padding:10px;box-shadow:0 24px 60px -20px rgba(42,28,34,.45);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;visibility:hidden;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.sheet-menu a{display:block;padding:14px 16px;border-radius:12px;font-family:var(--display);font-size:22px;text-decoration:none}
+.sheet-menu a:active{background:var(--shell)}
+.sheet-menu .btn{display:flex;margin-top:6px;font-family:var(--body);font-size:16px}
+@media (max-width:900px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+
+/* ---------- portada ---------- */
+.hero{position:relative;padding:calc(var(--header) + 48px) 0 88px;overflow:hidden;background:
+  radial-gradient(70% 60% at 85% 10%, rgba(239,203,190,.9), transparent 70%),
+  radial-gradient(60% 50% at 0% 100%, rgba(246,221,211,.9), transparent 70%), var(--shell)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(4.2rem, 11vw, 9.2rem);line-height:.9;letter-spacing:-0.035em;position:relative;display:inline-block;padding-bottom:.06em}
+/* el destello: una franja de luz cruza el nombre como sobre el acero */
+.hero h1 .name{display:inline-block;color:var(--ink);
+  background:linear-gradient(105deg, var(--ink) 0 40%, #F7E7DF 47%, #fff 50%, #E9C9A0 53%, var(--ink) 60% 100%) 120% 0 / 260% 100% no-repeat;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{display:block;margin-top:14px;font-family:var(--display);font-style:italic;font-size:clamp(1.6rem, 3.2vw, 2.5rem);line-height:1.08;letter-spacing:-0.01em;color:var(--rose-deep);padding-bottom:4px}
+.hero .lead{margin-top:20px;font-size:clamp(17px, 1.5vw, 19px);color:var(--muted);max-width:42ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.where{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:15px;color:var(--muted)}
+.where svg{width:18px;height:18px;flex:none;color:var(--rose)}
+.spark{position:absolute;width:var(--s, 28px);height:var(--s, 28px);color:var(--gold);pointer-events:none}
+.spark svg{width:100%;height:100%;fill:currentColor}
+.h-s1{--s:34px;top:-6px;right:-22px}
+.h-s2{--s:18px;top:30px;right:-44px}
+.h-s3{--s:22px;bottom:16%;left:-26px}
+.vitrina{position:relative;justify-self:center;width:min(420px, 100%)}
+.vitrina .arch{position:relative;aspect-ratio:3/4;border-radius:var(--arch);overflow:hidden;background:var(--ink);
+  box-shadow:0 0 0 10px #fff, 0 0 0 11px rgba(42,28,34,.08), 0 40px 70px -30px rgba(42,28,34,.55)}
+.vitrina .arch img{width:100%;height:100%;object-fit:cover}
+.vitrina .tag{position:absolute;left:-18px;bottom:44px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 18px 40px -18px rgba(42,28,34,.5);font-size:14px;color:var(--muted);max-width:210px}
+.vitrina .tag b{display:block;font-family:var(--display);font-weight:400;font-size:20px;line-height:1.1;color:var(--ink)}
+.v-s1{--s:40px;top:-14px;left:-16px}
+.v-s2{--s:22px;top:22%;right:-26px}
+.v-s3{--s:16px;bottom:-8px;right:30%}
+
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes destello{from{background-position:120% 0}to{background-position:-20% 0}}
+@keyframes brillo{0%{opacity:0;transform:scale(.4) rotate(-30deg)}55%{opacity:1;transform:scale(1.15) rotate(8deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes titila{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
+@keyframes abrir{from{clip-path:inset(100% 0 0 0 round 999px 999px 18px 18px)}to{clip-path:inset(0 0 0 0 round 999px 999px 18px 18px)}}
+.hero h1,.hero .lead,.hero .ctas,.where{animation:subir .7s var(--ease-out) both}
+.hero .lead{animation-delay:.12s}.hero .ctas{animation-delay:.18s}.where{animation-delay:.24s}
+.hero h1 .name{animation:destello 1.7s var(--ease-in-out) .55s both}
+.vitrina .arch{animation:abrir 1s var(--ease-out) .1s both}
+.vitrina .tag{animation:subir .6s var(--ease-out) .8s both}
+.spark{animation:brillo .6s var(--ease-out) both}
+.h-s1{animation-delay:1.25s}.h-s2{animation-delay:1.4s}.h-s3{animation-delay:.95s}
+.v-s1{animation-delay:.7s}.v-s2{animation-delay:.85s}.v-s3{animation-delay:1s}
+.h-s1 svg,.v-s1 svg{animation:titila 3.6s ease-in-out 2.2s 2}
+@media (max-width:900px){
+  .hero{padding:calc(var(--header) + 24px) 0 64px}
+  .hero .wrap{grid-template-columns:1fr;gap:48px}
+  .vitrina{width:min(330px, 84%)}
+  .vitrina .tag{left:-8%}
+}
+
+/* ---------- zonas: tapas como sus historias destacadas ---------- */
+.zonas{padding:112px 0 104px}
+.zonas-grid{display:grid;grid-template-columns:auto 1fr;gap:56px;margin-top:52px;align-items:start}
+.tapas{display:grid;grid-template-columns:repeat(2, 132px);gap:18px 22px;margin:0;padding:0;list-style:none}
+.tapa{display:flex;flex-direction:column;align-items:center;gap:10px;padding:0;border:0;background:none;cursor:pointer;font:600 15px/1.2 var(--body);color:var(--ink);text-align:center}
+.tapa .cover{width:112px;height:112px;border-radius:50%;padding:4px;background:#fff;box-shadow:0 0 0 2px rgba(42,28,34,.1);transition:box-shadow .2s ease, transform .16s var(--ease-out)}
+.tapa:active .cover{transform:scale(.96)}
+.tapa[aria-selected="true"] .cover{box-shadow:0 0 0 3px var(--rose)}
+@media (hover:hover) and (pointer:fine){.tapa:hover .cover{box-shadow:0 0 0 2px var(--ink)}.tapa[aria-selected="true"]:hover .cover{box-shadow:0 0 0 3px var(--rose)}}
+/* la estrella difusa de sus tapas, hecha con CSS */
+.estrella{position:relative;display:grid;place-items:center;overflow:hidden;background:#F5EEE9;color:var(--ink);isolation:isolate}
+.estrella::before{content:"";position:absolute;inset:14%;z-index:-1;background:#4A3A3A;filter:blur(9px);
+  clip-path:polygon(50% 0, 61% 26%, 85% 15%, 74% 39%, 100% 50%, 74% 61%, 85% 85%, 61% 74%, 50% 100%, 39% 74%, 15% 85%, 26% 61%, 0 50%, 26% 39%, 15% 15%, 39% 26%)}
+.tapa .estrella{width:100%;height:100%;border-radius:50%}
+.tapa .estrella::before{inset:10%;filter:blur(6px)}
+.tapa .estrella b{font-family:var(--display);font-weight:400;font-size:17px;line-height:1;color:#fff;padding:0 6px}
+.panel{display:grid;grid-template-columns:.9fr 1.1fr;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px -40px rgba(42,28,34,.45);min-height:420px}
+.panel .estrella{min-height:100%;aspect-ratio:auto}
+.panel .estrella::before{inset:12% 8%;filter:blur(22px)}
+.panel .estrella h3{font-size:clamp(2.2rem, 3.6vw, 3.2rem);line-height:1;color:#fff;text-align:center;padding:0 16px}
+.panel .estrella small{display:block;margin-top:12px;font:600 12px/1 var(--body);letter-spacing:.14em;color:rgba(255,255,255,.85)}
+.panel .estrella .spark{position:absolute;color:#fff}
+.p-s1{--s:22px;top:28%;left:16%}.p-s2{--s:14px;bottom:30%;right:18%}
+.panel-txt{padding:clamp(28px, 4vw, 48px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.panel-txt p{color:var(--muted);font-size:18px;max-width:40ch}
+.panel-txt ul{list-style:none;margin:4px 0 8px;padding:0;display:grid;gap:10px}
+.panel-txt li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-weight:500}
+.panel-txt li svg{width:18px;height:18px;margin-top:4px;color:var(--rose)}
+.panel-txt .btn{align-self:flex-start}
+.panel-cuerpo{transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.panel-cuerpo.cambia{opacity:0;transform:translateY(6px)}
+@media (max-width:900px){
+  .zonas{padding:88px 0 80px}
+  .zonas-grid{grid-template-columns:1fr;gap:32px;margin-top:36px}
+  .tapas{display:flex;overflow-x:auto;gap:16px;margin-inline:-20px;padding:4px 20px 8px;scrollbar-width:none;scroll-snap-type:x proximity}
+  .tapas::-webkit-scrollbar{display:none}
+  .tapas li{flex:none;scroll-snap-align:start}
+  .tapa{width:92px}
+  .tapa .cover{width:84px;height:84px;padding:3px}
+  .tapa .estrella b{font-size:14px}
+  .panel{grid-template-columns:1fr;min-height:0}
+  .panel .estrella{min-height:220px}
+}
+
+/* ---------- el exhibidor de joyas (la única sección oscura) ---------- */
+.joyas{padding:0 0 112px}
+.exhibidor{position:relative;background:var(--ink);color:#F6ECE8;border-radius:min(240px, 30vw) min(240px, 30vw) 28px 28px;padding:clamp(72px, 9vw, 120px) clamp(18px, 4vw, 56px) clamp(28px, 4vw, 48px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.08), 0 50px 90px -50px rgba(42,28,34,.8)}
+.exhibidor .head{margin:0 auto;text-align:center}
+.exhibidor .head p{color:#CDBBC0;margin-inline:auto}
+.estantes{display:grid;grid-template-columns:repeat(6, 1fr);gap:18px;margin-top:52px}
+.joya{grid-column:span 2;position:relative;background:#35252C;border-radius:18px;padding:12px 12px 18px;display:flex;flex-direction:column;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.joya .foto{aspect-ratio:1;border-radius:12px;overflow:hidden;background:#1F1418}
+.joya .foto img{width:100%;height:100%;object-fit:cover}
+.joya .txt{padding:16px 6px 0;flex:1}
+.joya h3{font-size:26px;line-height:1.05}
+.joya p{margin-top:6px;color:#CDBBC0;font-size:15.5px}
+.joya .pie{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;padding:0 6px}
+.consulta{font-size:14px;color:#CDBBC0}
+.joya-txt{grid-column:span 3;flex-direction:row;align-items:center;gap:18px;padding:22px}
+.joya-txt .icono{flex:none;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:rgba(246,221,211,.08);color:var(--blush)}
+.joya-txt .icono svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.joya-txt .txt{padding:0}
+.joya-txt .pie{flex-direction:column;align-items:flex-end;padding:0;margin:0}
+.estantes-pie{display:flex;justify-content:center;margin-top:30px;color:#CDBBC0;font-size:15px;text-align:center}
+/* las joyas se cuelgan en el exhibidor a medida que aparecen */
+.js .joya{opacity:0;transform:translateY(-10px) rotate(-2.5deg);transform-origin:50% 0;transition:opacity .5s var(--ease-out), transform .6s var(--ease-out)}
+.js .joya.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .estantes{grid-template-columns:1fr 1fr;gap:12px}
+  .joya,.joya-txt{grid-column:span 1}
+  .joya-txt{grid-column:span 2}
+  .joya h3{font-size:22px}
+  .joya .pie{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:520px){
+  .estantes{grid-template-columns:1fr}
+  .joya,.joya-txt{grid-column:auto}
+  .joya{flex-direction:row;gap:14px;padding:12px;align-items:center}
+  .joya .foto{width:104px;flex:none}
+  .joya .txt{padding:0}
+  .joya .pie{margin:12px 0 0;padding:0}
+  .joya-wrap{flex:1;min-width:0}
+  .joya-txt{flex-direction:column;align-items:flex-start}
+  .joya-txt .pie{align-items:flex-start}
+}
+
+/* ---------- agregar: el botón se vuelve − cantidad + ---------- */
+.add{display:inline-grid;justify-items:start}
+.add > *{grid-area:1 / 1}
+.agregar{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;background:var(--blush);color:var(--ink);cursor:pointer;font:600 15px/1 var(--body);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s, background-color .2s ease}
+.agregar svg,.cant button svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.agregar:active{transform:scale(.97)}
+.cant{display:inline-flex;align-items:center;height:44px;border-radius:999px;background:transparent;color:var(--blush);box-shadow:inset 0 0 0 1.5px var(--blush);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s}
+.cant button{width:44px;height:44px;flex:none;border:0;border-radius:50%;background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out), opacity .15s ease}
+.cant button:active{transform:scale(.9)}
+.cant button:disabled{opacity:.35;cursor:default;transform:none}
+.cant output{min-width:2.2ch;text-align:center;font-weight:700;font-size:18px;font-variant-numeric:tabular-nums}
+.add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.96);visibility:hidden;pointer-events:none;
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear .16s}
+@media (hover:hover) and (pointer:fine){
+  .agregar:hover{background:#fff}
+  .cant button:not(:disabled):hover{background:rgba(246,221,211,.14)}
+}
+
+/* ---------- tatuajes ---------- */
+.tattoo{padding:0 0 112px}
+.tattoo .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.collage{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:end}
+.collage img{width:100%;object-fit:cover;border-radius:20px;box-shadow:0 30px 60px -36px rgba(42,28,34,.6)}
+.collage .c1{aspect-ratio:4/5;object-position:60% 50%}
+.collage .c2{aspect-ratio:3/4;margin-bottom:48px;object-position:30% 50%}
+.tattoo ul{list-style:none;margin:26px 0 32px;padding:0;display:grid;gap:14px}
+.tattoo li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:17px}
+.tattoo li svg{width:22px;height:22px;color:var(--rose);margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:900px){
+  .tattoo .wrap{grid-template-columns:1fr;gap:40px}
+  .tattoo .txt-col{order:-1}
+}
+
+/* ---------- tarjeta de turno ---------- */
+.turno{padding:104px 0 112px;background:var(--blush)}
+.turno .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.turno-txt{position:sticky;top:calc(var(--header) + 32px)}
+.reglas{margin-top:32px;background:rgba(255,255,255,.55);border-radius:20px;padding:22px 22px 20px}
+.reglas b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
+.reglas ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+.reglas li{display:grid;grid-template-columns:20px 1fr;gap:10px;color:var(--ink-2)}
+.reglas li svg{width:16px;height:16px;margin-top:5px;color:var(--rose)}
+.reglas small{display:block;margin-top:14px;color:var(--muted);font-size:14px}
+.tarjeta{position:relative;background:#fff;border-radius:28px;padding:clamp(22px, 3.4vw, 40px);display:grid;gap:22px;box-shadow:0 2px 3px rgba(42,28,34,.06), 0 40px 80px -40px rgba(42,28,34,.5)}
+.t-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:20px;box-shadow:0 1px 0 rgba(42,28,34,.1)}
+.t-top b{display:block;font-family:var(--display);font-weight:400;font-size:30px;line-height:1}
+.t-top small{display:block;margin-top:6px;color:var(--muted);font-size:14px}
+.t-top img{width:64px;height:64px;border-radius:50%;flex:none;box-shadow:0 0 0 2px var(--blush)}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend,.f > label{display:block;font-weight:600;font-size:14.5px;color:var(--ink);margin-bottom:8px;padding:0}
+.opc{font-weight:400;color:var(--muted)}
+.f{display:flex;flex-direction:column;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input[type=text],input[type=tel],input[type=date],select,textarea{min-height:50px;border-radius:14px;border:1.5px solid rgba(42,28,34,.2);background:var(--shell);padding:0 14px;
+  font:inherit;font-size:16px;color:var(--ink);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+textarea{padding:12px 14px;min-height:84px;resize:vertical;line-height:1.45}
+input::placeholder,textarea::placeholder{color:#857077}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px rgba(178,76,108,.2)}
+.f.error input{border-color:#B3261E;box-shadow:0 0 0 3px rgba(179,38,30,.13)}
+.err{color:#A3241C;font-size:13.5px;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.help{margin-top:6px;font-size:13.5px;color:var(--muted)}
+.help:empty{display:none}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick label{cursor:pointer}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick span{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;background:var(--shell);box-shadow:inset 0 0 0 1.5px rgba(42,28,34,.16);font-weight:500;font-size:15px;
+  transition:background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s var(--ease-out)}
+.pick span svg{width:16px;height:16px;margin-right:7px;display:none;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.pick input:checked + span{background:var(--ink);color:var(--blush);box-shadow:none}
+.pick input:checked + span svg{display:block}
+.pick input:focus-visible + span{outline:3px solid var(--rose);outline-offset:2px}
+.pick label:active span{transform:scale(.97)}
+.preview{background:var(--shell);border-radius:16px 16px 16px 4px;padding:14px 16px}
+.preview small{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.preview p{white-space:pre-line;font-size:15px}
+.tarjeta .send{width:100%;height:58px;font-size:17px}
+.aviso{font-size:14px;font-weight:600;color:var(--muted);text-align:center}
+.aviso:empty{display:none}
+.aviso.mal{color:#A3241C}
+@media (max-width:900px){
+  .turno{padding:80px 0 88px}
+  .turno .wrap{grid-template-columns:1fr;gap:36px}
+  .turno-txt{position:static}
+}
+@media (max-width:440px){.two{grid-template-columns:1fr}}
+
+/* ---------- historias destacadas ---------- */
+.historias{padding:104px 0 40px}
+.burbujas{display:flex;gap:22px;margin:40px 0 0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.burbujas::-webkit-scrollbar{display:none}
+.burbujas a{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;font-size:14px;font-weight:500;width:104px}
+.burbujas img{width:96px;height:96px;border-radius:50%;padding:4px;background:#fff;box-shadow:0 0 0 2px var(--blush-2);transition:transform .16s var(--ease-out), box-shadow .2s ease}
+.burbujas a:active img{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.burbujas a:hover img{box-shadow:0 0 0 2px var(--rose)}}
+.ig-link{display:inline-block;margin-top:26px;font-weight:600;text-decoration:none;box-shadow:inset 0 -2px 0 var(--rose);padding-bottom:2px}
+
+/* ---------- el local ---------- */
+.local{padding:64px 0 112px}
+.local .card{display:grid;grid-template-columns:.8fr 1fr 1.1fr;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -40px rgba(42,28,34,.5)}
+.local .frente{position:relative;min-height:100%;background:var(--ink)}
+.local .frente img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.local .info{padding:clamp(26px, 3.6vw, 44px)}
+.estado{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 14px;border-radius:999px;background:var(--shell);font-weight:600;font-size:14.5px}
+.estado i{width:9px;height:9px;border-radius:50%;background:#9A8A8F}
+.estado.abierto i{background:#2E9E5B;box-shadow:0 0 0 4px rgba(46,158,91,.16)}
+.local dl{margin:24px 0 28px;display:grid;gap:16px}
+.local dt{font-size:14px;color:var(--muted)}
+.local dd{margin:2px 0 0;font-weight:600;font-size:17px}
+.local dd a{text-decoration:none}
+.horas{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;font-weight:500}
+.horas span:nth-child(odd){color:var(--muted);font-weight:500}
+.local iframe{width:100%;height:100%;min-height:420px;border:0;filter:saturate(.8)}
+@media (max-width:1000px){
+  .local .card{grid-template-columns:1fr 1fr}
+  .local .frente{grid-row:span 2;min-height:360px}
+  .local iframe{min-height:300px}
+}
+@media (max-width:700px){
+  .local .card{grid-template-columns:1fr}
+  .local .frente{grid-row:auto;min-height:300px}
+}
+
+footer{padding:36px 0 130px;color:var(--muted);font-size:14px;box-shadow:0 -1px 0 rgba(42,28,34,.08)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink);font-weight:600}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.8s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 2.8s infinite}
+.wa::after{animation-delay:3.2s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(42,28,34,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- botón del pedido: flotante en compu, barra abajo en el celular ---------- */
+.badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--rose);color:#fff;
+  font:700 12.5px/22px var(--body);text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--shell)}
+.cart-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 6px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:52px;height:52px;border:0;border-radius:50%;cursor:pointer;background:var(--ink);color:var(--blush);display:grid;place-items:center;
+  box-shadow:0 3px 6px rgba(42,28,34,.2), 0 14px 30px -10px rgba(42,28,34,.6);
+  opacity:0;transform:translateY(10px) scale(.92);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s, background-color .2s ease}
+.cart-fab.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s, background-color .2s ease}
+.cart-fab svg,.cart-bar svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cart-fab:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.cart-fab:hover{background:var(--ink-2)}}
+.cart-bar{display:none}
+@media (max-width:640px){
+  .cart-fab{display:none}
+  .cart-bar{display:flex;position:fixed;left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 72px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+    height:58px;align-items:center;gap:10px;padding:0 12px 0 18px;border:0;border-radius:999px;cursor:pointer;background:var(--ink);color:var(--blush);font:600 16px/1 var(--body);
+    box-shadow:0 3px 6px rgba(42,28,34,.2), 0 16px 34px -10px rgba(42,28,34,.6);
+    transform:translateY(calc(100% + 32px));visibility:hidden;transition:transform .26s var(--ease-out), visibility 0s linear .26s}
+  .cart-bar.on{transform:none;visibility:visible;transition:transform .26s var(--ease-out), visibility 0s}
+  .cart-bar:active{transform:scale(.98)}
+  .cart-bar svg{width:24px;height:24px;flex:none}
+  .cart-bar .badge{position:static;margin-left:auto;min-width:34px;height:34px;padding:0 10px;font-size:15px;line-height:34px;background:var(--blush);color:var(--ink);box-shadow:none}
+}
+
+/* ---------- el panel del pedido: de costado en compu, hoja desde abajo en el celular ---------- */
+html.carrito-abierto{overflow:hidden}
+.carrito{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;overflow:hidden;color:var(--ink)}
+.carrito::backdrop{background:transparent}
+.velo{position:absolute;inset:0;background:rgba(42,28,34,.45);opacity:0;transition:opacity .24s ease}
+.cajon{position:absolute;top:0;right:0;bottom:0;width:min(460px, 100%);display:flex;flex-direction:column;background:var(--shell);border-radius:26px 0 0 26px;
+  box-shadow:-30px 0 60px -30px rgba(42,28,34,.5);transform:translateX(100%);transition:transform .3s var(--ease-drawer)}
+.carrito.open .velo{opacity:1}
+.carrito.open .cajon{transform:none}
+.cajon-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 14px 24px}
+.cajon-cab h2{font-size:36px;line-height:1}
+.cajon-sub{margin-top:6px;font-size:14px;color:var(--muted)}
+.cerrar{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--blush);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out)}
+.cerrar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.cerrar:active{transform:scale(.92)}
+@media (hover:hover) and (pointer:fine){.cerrar:hover{background:var(--blush-2)}}
+.cajon-cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 24px 24px}
+.cajon-pie{padding:14px 20px max(16px, env(safe-area-inset-bottom)) 24px;background:var(--shell);box-shadow:0 -1px 0 rgba(42,28,34,.1);display:grid;gap:8px}
+.cajon-pie .btn{width:100%;height:56px}
+.nota{font-size:13.5px;color:var(--muted);text-align:center}
+@media (max-width:640px){
+  .cajon{top:auto;left:0;width:100%;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);border-radius:26px 26px 0 0;
+    box-shadow:0 -30px 60px -30px rgba(42,28,34,.5);transform:translateY(100%)}
+  .cajon-cab{padding:20px 16px 12px 20px}
+  .cajon-cuerpo{padding:4px 16px 20px 20px}
+  .cajon-pie{padding-left:20px;padding-right:16px}
+}
+.vacio{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 0 8px}
+.vacio h3{font-size:28px;line-height:1.05}
+.vacio p{color:var(--muted);max-width:34ch}
+.vacio .btn{margin-top:10px}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:18px;padding:10px;
+  box-shadow:0 1px 2px rgba(42,28,34,.08);transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.item.sale{opacity:0;transform:translateX(16px)}
+.item .th{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--blush)}
+.item .th-ico{display:grid;place-items:center;color:var(--rose)}
+.item .th-ico svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.item-txt{min-width:0}
+.item-txt b{display:block;font-family:var(--display);font-weight:400;font-size:20px;line-height:1.1}
+.quitar,.vaciar{min-height:30px;padding:0;border:0;background:none;color:var(--muted);font:500 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.vaciar{display:block;margin:12px 0 0 auto}
+@media (hover:hover) and (pointer:fine){.quitar:hover,.vaciar:hover{color:var(--ink)}}
+.item .cant{height:40px;background:var(--shell);box-shadow:none;color:var(--ink)}
+.item .cant button{width:40px;height:40px}
+.item .cant output{font-size:16px}
+.datos{display:grid;gap:18px;margin-top:22px;padding-top:22px;box-shadow:0 -1px 0 rgba(42,28,34,.12)}
+.datos > h3{font-size:26px;line-height:1}
+.datos input[type=text],.datos input[type=tel],.datos input[type=date],.datos textarea{background:#fff}
+.datos .pick span{background:#fff}
+details.prev summary{cursor:pointer;font-weight:600;font-size:14.5px;color:var(--rose-deep)}
+details.prev p{margin-top:10px;white-space:pre-line;font-size:14.5px;background:#fff;border-radius:14px;padding:12px 14px}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero h1,.hero .lead,.hero .ctas,.where,.vitrina .tag,.spark,.wa{animation:aparecer .4s ease both}
+  .hero h1 .name{animation:none;background:none;-webkit-text-fill-color:var(--ink)}
+  .vitrina .arch{animation:none}
+  .h-s1 svg,.v-s1 svg{animation:none}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .js .joya{transform:none;transition:opacity .3s ease}
+  .panel-cuerpo{transition:opacity .15s ease}.panel-cuerpo.cambia{transform:none}
+  .cajon,.carrito.open .cajon{transform:none;opacity:0;transition:opacity .18s ease}
+  .carrito.open .cajon{opacity:1}
+  .add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar,.cart-fab,.cart-fab.on,.item.sale{transform:none}
+  .cart-bar,.cart-bar.on{transform:none;opacity:0;transition:opacity .18s ease, visibility 0s linear .18s}
+  .cart-bar.on{opacity:1;transition:opacity .18s ease, visibility 0s}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+  <symbol id="destello" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol>
+  <symbol id="tilde" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="cruz" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <!-- un aro con una piedra: el ícono del pedido de joyas -->
+  <symbol id="aro" viewBox="0 0 32 32"><circle cx="16" cy="18" r="9"/><path d="M16 9V4"/><circle cx="16" cy="27" r="2.4"/></symbol>
+  <symbol id="cadena" viewBox="0 0 32 32"><rect x="3" y="11" width="12" height="8" rx="4"/><rect x="17" y="11" width="12" height="8" rx="4"/><path d="M12 15h8"/></symbol>
+  <symbol id="bolita" viewBox="0 0 32 32"><circle cx="16" cy="9" r="4"/><path d="M16 13v15"/><circle cx="16" cy="28" r="1.6"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Romeli, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>Romeli<small>Piercing &amp; tattoo en Villa María</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#piercings">Piercings</a><a href="#joyas">Joyas</a><a href="#tattoo">Tattoo</a><a href="#turno">Turnos</a><a href="#local">El local</a>
+    </nav>
+    <a class="btn btn-ink" href="https://wa.me/5493534273891" target="_blank" rel="noopener"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a href="#piercings">Piercings</a><a href="#joyas">Joyas</a><a href="#tattoo">Tattoo</a><a href="#turno">Turnos</a><a href="#local">El local</a>
+  <a class="btn btn-ink" href="https://wa.me/5493534273891" target="_blank" rel="noopener"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Escribinos por WhatsApp</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1><span class="name">Romeli</span><span class="sub">Piercing &amp; tattoo en Villa María</span>
+          <span class="spark h-s1" aria-hidden="true"><svg><use href="#destello"/></svg></span>
+          <span class="spark h-s2" aria-hidden="true"><svg><use href="#destello"/></svg></span>
+          <span class="spark h-s3" aria-hidden="true"><svg><use href="#destello"/></svg></span>
+        </h1>
+        <p class="lead">Colocación de piercings con acero quirúrgico, joyas para cambiar y tatuajes. Pedí tu turno y te esperamos.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="#turno">Pedí tu turno</a>
+          <a class="btn btn-ghost" href="#joyas">Ver joyas</a>
+        </div>
+        <p class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Paseo de la Villa, locales 22 y 24</p>
+      </div>
+      <div class="vitrina">
+        <div class="arch"><img src="img/foto-12.jpg" alt="Exhibidor negro con joyas de piercing: tops con piedras, lunas, flores y cadenitas" width="480" height="640" fetchpriority="high"></div>
+        <p class="tag"><b>Joyas nuevas</b>Tops con piedras, lunas, flores y cadenitas.</p>
+        <span class="spark v-s1" aria-hidden="true"><svg><use href="#destello"/></svg></span>
+        <span class="spark v-s2" aria-hidden="true"><svg><use href="#destello"/></svg></span>
+        <span class="spark v-s3" aria-hidden="true"><svg><use href="#destello"/></svg></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="zonas" id="piercings">
+    <div class="wrap">
+      <div class="head">
+        <h2>¿Dónde te lo hacés?</h2>
+        <p>Elegí la zona, mirá qué tenés que saber y pedí tu turno. Si no está en la lista, preguntanos.</p>
+      </div>
+      <div class="zonas-grid">
+        <ul class="tapas" role="tablist" aria-label="Zonas de piercing">
+          <li><button class="tapa" role="tab" id="t-oreja" aria-controls="panelZona" aria-selected="true" data-zona="oreja"><span class="cover"><span class="estrella"><b>Helix Tragus</b></span></span>Oreja</button></li>
+          <li><button class="tapa" role="tab" id="t-ombligo" aria-controls="panelZona" aria-selected="false" tabindex="-1" data-zona="ombligo"><span class="cover"><span class="estrella"><b>Ombligo</b></span></span>Ombligo</button></li>
+          <li><button class="tapa" role="tab" id="t-nipples" aria-controls="panelZona" aria-selected="false" tabindex="-1" data-zona="nipples"><span class="cover"><span class="estrella"><b>Nipples</b></span></span>Nipples</button></li>
+          <li><button class="tapa" role="tab" id="t-micro" aria-controls="panelZona" aria-selected="false" tabindex="-1" data-zona="micro"><span class="cover"><span class="estrella"><b>Micro dermal</b></span></span>Microdermal</button></li>
+        </ul>
+        <div class="panel" id="panelZona" role="tabpanel" aria-labelledby="t-oreja">
+          <div class="estrella"><div><h3 id="zTit">Helix y tragus</h3><small>ROMELI</small></div>
+            <span class="spark p-s1" aria-hidden="true"><svg><use href="#destello"/></svg></span><span class="spark p-s2" aria-hidden="true"><svg><use href="#destello"/></svg></span></div>
+          <div class="panel-txt"><div class="panel-cuerpo" id="zCuerpo">
+            <p id="zTxt"></p>
+            <ul id="zLista"></ul>
+          </div>
+            <a class="btn btn-rose" href="#turno" id="zBtn">Pedí tu turno</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="joyas" id="joyas">
+    <div class="wrap">
+      <div class="exhibidor">
+        <div class="head">
+          <h2>El exhibidor</h2>
+          <p>Joyas de acero quirúrgico para estrenar o cambiar la que tenés. Agregá las que te gusten y te pasamos precio y stock por WhatsApp.</p>
+        </div>
+        <div class="estantes">
+          <article class="joya" data-item="argollas">
+            <div class="foto"><img src="img/foto-08.jpg" alt="Argollas y clickers de acero con piedritas" loading="lazy"></div>
+            <div class="joya-wrap"><div class="txt"><h3>Argollas y clickers</h3><p>Lisas, con piedritas y con detalles.</p></div>
+            <div class="pie"><span class="consulta">Consultá precio</span><div class="add" data-item="argollas"></div></div></div>
+          </article>
+          <article class="joya" data-item="barras">
+            <div class="foto"><img src="img/foto-09.jpg" alt="Barras industrial con corazones de colores" loading="lazy"></div>
+            <div class="joya-wrap"><div class="txt"><h3>Barras industrial</h3><p>Con corazones y piedras de colores.</p></div>
+            <div class="pie"><span class="consulta">Consultá precio</span><div class="add" data-item="barras"></div></div></div>
+          </article>
+          <article class="joya" data-item="tops">
+            <div class="foto"><img src="img/foto-12.jpg" alt="Tops con forma de estrella, luna y flor" loading="lazy" style="object-position:50% 12%;transform:scale(1.35);transform-origin:50% 0"></div>
+            <div class="joya-wrap"><div class="txt"><h3>Tops y colgantes</h3><p>Estrellas, lunas, flores y cadenitas.</p></div>
+            <div class="pie"><span class="consulta">Consultá precio</span><div class="add" data-item="tops"></div></div></div>
+          </article>
+          <article class="joya joya-txt" data-item="cadenas">
+            <span class="icono" aria-hidden="true"><svg><use href="#cadena"/></svg></span>
+            <div class="txt"><h3>Cadenas y dijes</h3><p>Para sumarle a tu look. Preguntá qué modelos hay.</p></div>
+            <div class="pie"><span class="consulta">Consultá</span><div class="add" data-item="cadenas"></div></div>
+          </article>
+          <article class="joya joya-txt" data-item="repuestos">
+            <span class="icono" aria-hidden="true"><svg><use href="#bolita"/></svg></span>
+            <div class="txt"><h3>Repuestos</h3><p>¿Se te perdió la bolita o el top? Traé tu joya y buscamos el repuesto.</p></div>
+            <div class="pie"><span class="consulta">Consultá</span><div class="add" data-item="repuestos"></div></div>
+          </article>
+        </div>
+        <p class="estantes-pie">Lo nuevo lo subimos a Instagram. Lo podés ver en el local, de lunes a sábado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tattoo" id="tattoo">
+    <div class="wrap">
+      <div class="collage">
+        <img class="c1" src="img/stock-7.jpg" alt="Tatuadora trabajando con la máquina" loading="lazy">
+        <img class="c2" src="img/stock-10.jpg" alt="Tatuaje de línea fina en proceso" loading="lazy">
+      </div>
+      <div class="txt-col">
+        <div class="head"><h2>También tatuamos.</h2>
+          <p>Traé tu idea, una foto de referencia o la zona donde lo querés, y lo charlamos.</p></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/><path d="M14 6l3 3"/></svg><span>Mandanos tu idea por WhatsApp antes de venir.</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Te pasamos fecha y lo que sale según el tamaño.</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-7-10.3A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7 2.7C19 16.6 12 21 12 21z"/></svg><span>El turno se reserva con seña.</span></li>
+        </ul>
+        <a class="btn btn-ink" href="#turno" data-turno="tatuaje">Pedí tu turno</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="turno" id="turno">
+    <div class="wrap">
+      <div class="turno-txt">
+        <div class="head"><h2>Pedí tu turno.</h2>
+          <p>Completá la tarjeta y se arma el mensaje para mandarnos por WhatsApp. Te respondemos con el día y la hora.</p></div>
+        <div class="reglas">
+          <b>Antes de venir</b>
+          <ul>
+            <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#tilde"/></svg><span>Los turnos se reservan con seña, sin excepciones.</span></li>
+            <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#tilde"/></svg><span>Hay 15 minutos de tolerancia. Si llegás más tarde, el turno se cancela y la seña no se devuelve.</span></li>
+            <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#tilde"/></svg><span>Para cancelar o cambiar el turno, avisá con 24 horas de anticipación.</span></li>
+          </ul>
+          <small>El valor de la seña, consultalo por WhatsApp.</small>
+        </div>
+      </div>
+      <form class="tarjeta" id="turnoForm" novalidate>
+        <div class="t-top"><div><b>Tarjeta de turno</b><small>Romeli, Paseo de la Villa, locales 22 y 24</small></div><img src="img/perfil.jpg" alt=""></div>
+        <fieldset class="f">
+          <legend>¿Qué te querés hacer?</legend>
+          <div class="pick">
+            <label><input type="radio" name="tipo" value="piercing" checked><span><svg aria-hidden="true"><use href="#tilde"/></svg>Piercing</span></label>
+            <label><input type="radio" name="tipo" value="tatuaje"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Tatuaje</span></label>
+          </div>
+        </fieldset>
+        <div class="f" data-opt="piercing"><label for="zona">Zona</label>
+          <select id="zona"><option value="Helix">Helix</option><option value="Tragus">Tragus</option><option value="Lóbulo">Lóbulo</option><option value="Ombligo">Ombligo</option><option value="Nipples">Nipples</option><option value="Microdermal">Microdermal</option><option value="Otra zona">Otra zona (te cuento)</option></select></div>
+        <div class="f" data-opt="tatuaje" hidden><label for="idea">Contanos tu idea</label><textarea id="idea" placeholder="Qué te querés tatuar, en qué zona y más o menos de qué tamaño"></textarea>
+          <p class="help">Si tenés una foto de referencia, mandala en el chat.</p></div>
+        <div class="two">
+          <div class="f"><label for="dia">Día que te queda bien <span class="opc">(opcional)</span></label><input id="dia" type="date" aria-describedby="diaHelp"><p class="help" id="diaHelp"></p></div>
+          <fieldset class="f">
+            <legend>¿Mañana o tarde?</legend>
+            <div class="pick">
+              <label><input type="radio" name="franja" value="a la mañana" checked><span><svg aria-hidden="true"><use href="#tilde"/></svg>Mañana</span></label>
+              <label><input type="radio" name="franja" value="a la tarde"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Tarde</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="f"><label for="tNombre">Tu nombre</label><input id="tNombre" type="text" autocomplete="given-name" required aria-describedby="err-tNombre"><small class="err" id="err-tNombre"></small></div>
+        <div class="preview" aria-live="polite"><small>Así llega tu mensaje</small><p id="turnoPrev"></p></div>
+        <button class="btn btn-ink send" type="submit"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Enviar por WhatsApp</button>
+        <p class="aviso" id="turnoAviso" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="historias" id="historias">
+    <div class="wrap">
+      <div class="head"><h2>Más en sus historias.</h2>
+        <p>Trabajos, joyas y clientes, ordenados por zona en el Instagram del local.</p></div>
+      <ul class="burbujas">
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-03.jpg" alt="" loading="lazy">Tattos</a></li>
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-02.jpg" alt="" loading="lazy">Ombligo</a></li>
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-10.jpg" alt="" loading="lazy">Helix/Tragus</a></li>
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-06.jpg" alt="" loading="lazy">Nipples</a></li>
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-07.jpg" alt="" loading="lazy">Microdermal</a></li>
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-04.jpg" alt="" loading="lazy">Insumos</a></li>
+        <li><a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener"><img src="img/foto-05.jpg" alt="" loading="lazy">Ustedes</a></li>
+      </ul>
+      <a class="ig-link" href="https://instagram.com/romelitattoo" target="_blank" rel="noopener">Ver @romelitattoo en Instagram</a>
+    </div>
+  </section>
+
+  <section class="local" id="local">
+    <div class="wrap">
+      <div class="card">
+        <div class="frente"><img src="img/foto-11.jpg" alt="Frente del local de Romeli Piercing y Tattoo en el Paseo de la Villa" loading="lazy"></div>
+        <div class="info">
+          <div class="head"><h2>Vení al local.</h2></div>
+          <p class="estado" id="estado" hidden><i aria-hidden="true"></i><span></span></p>
+          <dl>
+            <div><dt>Dirección</dt><dd>Paseo de la Villa, locales 22 y 24, Villa María, Córdoba</dd></div>
+            <div><dt>Horarios</dt><dd class="horas"><span>Lunes a viernes</span><span>9:30 a 12 y 17 a 20</span><span>Sábados</span><span>10 a 12:30 y 17 a 20</span></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5493534273891" target="_blank" rel="noopener">353 427-3891</a></dd></div>
+          </dl>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Romeli%20Piercing%20and%20Tattoo%2C%20Villa%20Mar%C3%ADa" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        </div>
+        <iframe title="Mapa: Romeli Piercing and Tattoo, Paseo de la Villa, Villa María" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=-32.412051,-63.243885&z=17&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Romeli Piercing &amp; Tattoo, Villa María. <a href="https://instagram.com/romelitattoo" target="_blank" rel="noopener">@romelitattoo</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5493534273891" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 353 427-3891">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>353 427-3891</small></span>
+</a>
+
+<button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu pedido">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#aro"/></svg><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver pedido">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#aro"/></svg><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<dialog class="carrito" id="carrito" aria-labelledby="carritoTit">
+  <div class="velo" data-cerrar aria-hidden="true"></div>
+  <div class="cajon">
+    <div class="cajon-cab">
+      <div><h2 id="carritoTit">Tu pedido</h2><p class="cajon-sub" id="carritoSub">Joyas de Romeli</p></div>
+      <button type="button" class="cerrar" id="cerrarCarrito" data-cerrar aria-label="Cerrar tu pedido"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#cruz"/></svg></button>
+    </div>
+    <div class="cajon-cuerpo" id="cajonCuerpo">
+      <div class="vacio" id="vacio">
+        <h3>Todavía no elegiste nada.</h3>
+        <p>Mirá el exhibidor y tocá Agregar en las joyas que te gusten.</p>
+        <a class="btn btn-ink" href="#joyas" data-ir="joyas">Ir al exhibidor</a>
+      </div>
+      <div id="lleno" hidden>
+        <ul class="lista" id="lista" aria-label="Lo que elegiste"></ul>
+        <button type="button" class="vaciar" id="vaciar">Vaciar pedido</button>
+        <form class="datos" id="datos" novalidate>
+          <h3>Tus datos</h3>
+          <div class="f"><label for="nombre">Nombre</label><input id="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+          <div class="f"><label for="tel">Teléfono</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 353 412-3456" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+          <fieldset class="f">
+            <legend>¿Cómo la querés?</legend>
+            <div class="pick">
+              <label><input type="radio" name="modo" value="retiro" checked><span><svg aria-hidden="true"><use href="#tilde"/></svg>La retiro en el local</span></label>
+              <label><input type="radio" name="modo" value="colocacion"><span><svg aria-hidden="true"><use href="#tilde"/></svg>Que me la pongan</span></label>
+            </div>
+          </fieldset>
+          <div class="f"><label for="fecha">¿Cuándo pasás? <span class="opc">(opcional)</span></label><input id="fecha" type="date"></div>
+          <div class="f"><label for="aclar">Aclaraciones <span class="opc">(opcional)</span></label><textarea id="aclar" placeholder="Para qué zona es, color de la piedra, medida…"></textarea></div>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+        </form>
+      </div>
+    </div>
+    <div class="cajon-pie" id="cajonPie" hidden>
+      <button class="btn btn-ink" type="submit" form="datos" id="enviar"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Enviar pedido por WhatsApp</button>
+      <p class="nota">Se abre WhatsApp con tu pedido escrito. Solo falta tocar enviar.</p>
+      <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+var WA = '5493534273891';
+document.documentElement.classList.add('js');
+function abrirLink(url) {
+  var a = document.createElement('a');
+  a.href = url; a.target = '_blank'; a.rel = 'noopener';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+var calma = (function () { var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null; return function () { return !!(mq && mq.matches); }; })();
+
+// ----- encabezado, menú y joyas que se cuelgan -----
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var joyas = Array.prototype.slice.call(document.querySelectorAll('.joya'));
+  if (!('IntersectionObserver' in window)) { joyas.forEach(function (j) { j.classList.add('in'); }); return; }
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.style.transitionDelay = (joyas.indexOf(e.target) % 3) * 80 + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: .2, rootMargin: '0px 0px -40px 0px' });
+  joyas.forEach(function (j) { io.observe(j); });
+})();
+
+// ----- zonas de piercing -----
+var ZONAS = {
+  oreja: { tit: 'Helix y tragus', zona: 'Helix', txt: 'En el cartílago de la oreja: el helix va en el borde de arriba y el tragus en la parte chiquita que está delante del oído.',
+    lista: ['Colocación con acero quirúrgico.', 'Elegís la joya del exhibidor.', '¿Lóbulo? También, pedilo en el turno.'] },
+  ombligo: { tit: 'Ombligo', zona: 'Ombligo', txt: 'Un clásico. Elegís la joya en el local y te la colocamos ese mismo día de tu turno.',
+    lista: ['Colocación con acero quirúrgico.', 'Joyas con piedras y colgantes.', 'Para cambiarla, tenemos repuestos.'] },
+  nipples: { tit: 'Nipples', zona: 'Nipples', txt: 'Escribinos antes por WhatsApp: te contamos qué joyas hay y te damos turno.',
+    lista: ['Colocación con acero quirúrgico.', 'Turno con seña, como todos.', 'Consultá tus dudas por privado.'] },
+  micro: { tit: 'Microdermal', zona: 'Microdermal', txt: 'Una joya que queda fija sobre la piel, en la zona que elijas. Preguntanos dónde se puede hacer.',
+    lista: ['Colocación con acero quirúrgico.', 'Contanos la zona que tenés en mente.', 'Tops para cambiarle la cara.'] }
+};
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tapa'));
+  var panel = document.getElementById('panelZona'), cuerpo = document.getElementById('zCuerpo');
+  var TILDE = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#tilde"/></svg>';
+  var actual = 'oreja';
+  function pintar(id) {
+    var z = ZONAS[id];
+    document.getElementById('zTit').textContent = z.tit;
+    document.getElementById('zTxt').textContent = z.txt;
+    document.getElementById('zLista').innerHTML = z.lista.map(function (l) { return '<li>' + TILDE + '<span>' + l + '</span></li>'; }).join('');
+    document.getElementById('zBtn').setAttribute('data-zona', z.zona);
+  }
+  function elegir(tab, foco) {
+    var id = tab.getAttribute('data-zona'); if (id === actual) return;
+    actual = id;
+    tabs.forEach(function (t) { var on = t === tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
+    panel.setAttribute('aria-labelledby', tab.id);
+    if (foco) tab.focus();
+    if (calma()) { pintar(id); return; }
+    cuerpo.classList.add('cambia');
+    setTimeout(function () { pintar(id); cuerpo.classList.remove('cambia'); }, 160);
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { elegir(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+      if (!d) return; e.preventDefault();
+      elegir(tabs[(i + d + tabs.length) % tabs.length], true);
+    });
+  });
+  pintar('oreja');
+})();
+
+// ----- tarjeta de turno -----
+(function () {
+  var form = document.getElementById('turnoForm');
+  var $ = function (id) { return document.getElementById(id); };
+  function val(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function hoyISO() { var h = new Date(); return h.getFullYear() + '-' + ('0' + (h.getMonth() + 1)).slice(-2) + '-' + ('0' + h.getDate()).slice(-2); }
+  $('dia').min = hoyISO();
+  var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  function fecha(v) { if (!v) return null; var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]); return isNaN(d) ? null : d; }
+  function texto() {
+    var t = val('tipo'), L = ['Hola Romeli! Quiero pedir un turno.'];
+    if (t === 'piercing') L.push('Piercing: ' + $('zona').value + '.');
+    else L.push('Tatuaje: ' + ($('idea').value.trim() || 'les cuento la idea por acá') + '.');
+    var d = fecha($('dia').value);
+    L.push('Me queda bien ' + (d ? 'el ' + DIAS[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1) + ' ' : '') + val('franja') + '.');
+    if ($('tNombre').value.trim()) L.push('Soy ' + $('tNombre').value.trim() + '.');
+    L.push('¿Qué disponibilidad tienen y cuánto es la seña?');
+    return L.join('\n');
+  }
+  function sync() {
+    var t = val('tipo');
+    form.querySelectorAll('[data-opt]').forEach(function (o) { o.hidden = o.getAttribute('data-opt') !== t; });
+    var d = fecha($('dia').value);
+    $('diaHelp').textContent = d && d.getDay() === 0 ? 'Los domingos el local está cerrado. Elegí otro día.' : '';
+    $('turnoPrev').textContent = texto();
+  }
+  form.addEventListener('input', function (e) {
+    if (e.target.id === 'tNombre' && e.target.value.trim()) { e.target.closest('.f').classList.remove('error'); $('err-tNombre').textContent = ''; e.target.removeAttribute('aria-invalid'); $('turnoAviso').textContent = ''; }
+    sync();
+  });
+  form.addEventListener('change', sync);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = $('tNombre'), aviso = $('turnoAviso');
+    if (!n.value.trim()) {
+      n.closest('.f').classList.add('error'); n.setAttribute('aria-invalid', 'true');
+      $('err-tNombre').textContent = 'Poné tu nombre así sabemos de quién es el turno.';
+      aviso.classList.add('mal'); aviso.textContent = 'Falta completar tu nombre.'; n.focus(); return;
+    }
+    var d = fecha($('dia').value);
+    if (d && d.getDay() === 0) { aviso.classList.add('mal'); aviso.textContent = 'Los domingos está cerrado: elegí otro día.'; $('dia').focus(); return; }
+    aviso.classList.remove('mal'); aviso.textContent = 'Abrimos WhatsApp con tu mensaje.';
+    abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(texto()));
+  });
+  // los botones "Pedí tu turno" de las zonas y de tatuajes dejan la tarjeta lista
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('#zBtn, [data-turno]'); if (!b) return;
+    if (b.id === 'zBtn') {
+      form.querySelector('input[name="tipo"][value="piercing"]').checked = true;
+      var z = b.getAttribute('data-zona'); if (z) $('zona').value = z;
+    } else form.querySelector('input[name="tipo"][value="tatuaje"]').checked = true;
+    sync();
+  });
+  sync();
+})();
+
+// ----- abierto ahora (horario de Córdoba) -----
+(function () {
+  var el = document.getElementById('estado'); if (!el) return;
+  var H = { 1: [[570, 720], [1020, 1200]], 2: [[570, 720], [1020, 1200]], 3: [[570, 720], [1020, 1200]], 4: [[570, 720], [1020, 1200]], 5: [[570, 720], [1020, 1200]], 6: [[600, 750], [1020, 1200]] };
+  function hm(m) { var h = Math.floor(m / 60), mm = m % 60; return h + (mm ? ':' + ('0' + mm).slice(-2) : ''); }
+  try {
+    var p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Argentina/Cordoba', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+    var o = {}; p.forEach(function (x) { o[x.type] = x.value; });
+    var dia = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(o.weekday), min = (+o.hour % 24) * 60 + (+o.minute);
+    var hoy = H[dia] || [], txt = '', abierto = false;
+    hoy.forEach(function (r) { if (min >= r[0] && min < r[1]) { abierto = true; txt = 'Abierto ahora, hasta las ' + hm(r[1]); } });
+    if (!abierto) {
+      var prox = hoy.filter(function (r) { return r[0] > min; })[0];
+      if (prox) txt = 'Cerrado ahora. Abre hoy a las ' + hm(prox[0]);
+      else { var d = dia, i = 0; do { d = (d + 1) % 7; i++; } while (!H[d] && i < 7); txt = 'Cerrado ahora. Abre ' + (i === 1 ? 'mañana' : 'el lunes') + ' a las ' + hm(H[d][0][0]); }
+    }
+    el.querySelector('span').textContent = txt; el.classList.toggle('abierto', abierto); el.hidden = false;
+  } catch (e) {}
+})();
+
+// ----- tu pedido de joyas -----
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var html = document.documentElement;
+  var CLAVE = 'romeli-pedido-v1';
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+  var CAT = {
+    argollas:  { uno: 'Argolla o clicker', varios: 'Argollas o clickers', img: 'img/foto-08.jpg' },
+    barras:    { uno: 'Barra industrial', varios: 'Barras industrial', img: 'img/foto-09.jpg' },
+    tops:      { uno: 'Top o colgante', varios: 'Tops o colgantes', img: 'img/foto-12.jpg' },
+    cadenas:   { uno: 'Cadena o dije', varios: 'Cadenas o dijes', ico: 'cadena' },
+    repuestos: { uno: 'Repuesto', varios: 'Repuestos', ico: 'bolita' }
+  };
+  var nombre = function (id, n) { return n === 1 ? CAT[id].uno : CAT[id].varios; };
+  var estado = { items: [], datos: {} };
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && Array.isArray(g.items)) {
+      g.items.forEach(function (it) { var n = it && Math.floor(+it.n); if (it && CAT[it.id] && n > 0) estado.items.push({ id: it.id, n: Math.min(99, n) }); });
+      if (g.datos && typeof g.datos === 'object') estado.datos = g.datos;
+    }
+  } catch (e) {}
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {} }
+  function idx(id) { for (var i = 0; i < estado.items.length; i++) if (estado.items[i].id === id) return i; return -1; }
+  function cant(id) { var i = idx(id); return i < 0 ? 0 : estado.items[i].n; }
+  function total() { return estado.items.reduce(function (a, it) { return a + it.n; }, 0); }
+  var dlg = $('carrito'), form = $('datos'), lista = $('lista'), fab = $('cartFab'), bar = $('cartBar');
+
+  var MAS = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#mas"/></svg>', MENOS = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#menos"/></svg>';
+  function stepper(n, etiqueta) {
+    return '<div class="cant" role="group" aria-label="' + etiqueta + '">' +
+      '<button type="button" data-d="-1" aria-label="Uno menos">' + MENOS + '</button><output>' + n + '</output>' +
+      '<button type="button" data-d="1" aria-label="Uno más">' + MAS + '</button></div>';
+  }
+  document.querySelectorAll('.add[data-item]').forEach(function (box) {
+    var id = box.getAttribute('data-item'); if (!CAT[id]) return;
+    box.innerHTML = '<button type="button" class="agregar" aria-label="Agregar ' + CAT[id].uno + ' al pedido">' + MAS + 'Agregar</button>' + stepper(0, CAT[id].uno + ' en tu pedido');
+  });
+  function thumb(id) {
+    return CAT[id].img ? '<img class="th" src="' + CAT[id].img + '" alt="" loading="lazy">'
+      : '<span class="th th-ico"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#' + CAT[id].ico + '"/></svg></span>';
+  }
+  var totalAntes = total();
+  function render() {
+    var t = total();
+    document.querySelectorAll('.add[data-item]').forEach(function (box) {
+      var n = cant(box.getAttribute('data-item'));
+      box.setAttribute('data-n', String(n));
+      var o = box.querySelector('output'); if (o) o.textContent = n;
+      var menos = box.querySelector('[data-d="-1"]'); if (menos) menos.setAttribute('aria-label', n === 1 ? 'Quitar del pedido' : 'Uno menos');
+    });
+    document.querySelectorAll('[data-total]').forEach(function (b) { b.textContent = t; });
+    fab.classList.toggle('on', t > 0); bar.classList.toggle('on', t > 0);
+    fab.setAttribute('aria-label', 'Ver tu pedido (' + t + ')'); bar.setAttribute('aria-label', 'Ver pedido (' + t + ')');
+    if (t > totalAntes) pulsar(totalAntes > 0);
+    totalAntes = t;
+    $('vacio').hidden = t > 0; $('lleno').hidden = t === 0; $('cajonPie').hidden = t === 0;
+    $('carritoSub').textContent = t ? (t === 1 ? '1 joya elegida' : t + ' joyas elegidas') : 'Joyas de Romeli';
+    Array.prototype.forEach.call(lista.querySelectorAll('.item:not(.sale)'), function (li) {
+      if (!cant(li.getAttribute('data-item'))) { li.classList.add('sale'); setTimeout(function () { li.remove(); }, calma() ? 0 : 180); }
+    });
+    estado.items.forEach(function (it) {
+      var li = lista.querySelector('.item[data-item="' + it.id + '"]:not(.sale)');
+      if (!li) {
+        li = document.createElement('li'); li.className = 'item'; li.setAttribute('data-item', it.id);
+        li.innerHTML = thumb(it.id) + '<div class="item-txt"><b></b><button type="button" class="quitar" data-quitar>Quitar</button></div>' + stepper(it.n, 'Cantidad de ' + CAT[it.id].uno);
+        lista.appendChild(li);
+      }
+      li.querySelector('b').textContent = nombre(it.id, it.n);
+      li.querySelector('output').textContent = it.n;
+      li.querySelector('[data-d="-1"]').disabled = it.n <= 1;
+      li.querySelector('[data-d="1"]').disabled = it.n >= 99;
+      li.querySelector('[data-quitar]').setAttribute('aria-label', 'Quitar ' + nombre(it.id, it.n) + ' del pedido');
+    });
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+  function pulsar(yaEstaba) {
+    if (calma()) return;
+    document.querySelectorAll('.badge[data-total]').forEach(function (b) {
+      if (b.animate) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)', offset: .35 }, { transform: 'scale(1)' }], { duration: 340, easing: EASE });
+    });
+    if (yaEstaba && fab.animate && getComputedStyle(fab).display !== 'none') fab.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.08)', offset: .35 }, { transform: 'scale(1)' }], { duration: 300, easing: EASE });
+  }
+  function anunciar(txt) { var el = dlg.open ? $('aviso') : $('anuncio'); el.classList.remove('mal'); el.textContent = ''; setTimeout(function () { el.textContent = txt; }, 30); }
+  function setCant(id, n) {
+    n = Math.max(0, Math.min(99, n));
+    var i = idx(id);
+    if (i < 0 && n > 0) estado.items.push({ id: id, n: n });
+    else if (i >= 0 && n === 0) estado.items.splice(i, 1);
+    else if (i >= 0) estado.items[i].n = n;
+    render();
+    anunciar(n ? nombre(id, n) + ': ' + n + ' en tu pedido.' : 'Quitaste ' + CAT[id].uno + ' del pedido.');
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.agregar, [data-d], [data-quitar], [data-abrir-carrito], [data-cerrar], [data-ir], #vaciar');
+    if (!b) return;
+    var cont = b.closest('[data-item]'), id = cont && cont.getAttribute('data-item');
+    if (b.classList.contains('agregar')) { setCant(id, 1); var mas = cont.querySelector('[data-d="1"]'); if (mas) mas.focus(); }
+    else if (b.hasAttribute('data-d')) { var n = cant(id) + (+b.getAttribute('data-d')); setCant(id, n); if (n <= 0 && cont.classList.contains('add')) cont.querySelector('.agregar').focus(); }
+    else if (b.hasAttribute('data-quitar')) {
+      var vecino = cont.nextElementSibling || cont.previousElementSibling;
+      setCant(id, 0);
+      if (vecino && !vecino.classList.contains('sale')) vecino.querySelector('[data-quitar]').focus(); else if (!total()) $('vacio').querySelector('a').focus();
+    }
+    else if (b.id === 'vaciar') { estado.items = []; render(); anunciar('Vaciaste el pedido.'); $('vacio').querySelector('a').focus(); }
+    else if (b.hasAttribute('data-abrir-carrito')) abrir(b);
+    else if (b.hasAttribute('data-cerrar')) cerrar();
+    else if (b.hasAttribute('data-ir')) { e.preventDefault(); cerrar(b.getAttribute('data-ir')); }
+  });
+  var abridor = null, timer = 0, irA = null;
+  function abrir(desde) {
+    clearTimeout(timer);
+    abridor = desde || document.activeElement;
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      html.classList.add('carrito-abierto');
+      $('aviso').textContent = ''; $('cajonCuerpo').scrollTop = 0;
+      void dlg.offsetWidth;
+    }
+    dlg.classList.add('open');
+    $('cerrarCarrito').focus();
+  }
+  function cerrar(destino) {
+    if (!dlg.open) return;
+    irA = destino || null;
+    dlg.classList.remove('open');
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (dlg.open && !dlg.classList.contains('open')) { if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); alCerrar(); } } }, calma() ? 180 : 300);
+  }
+  function alCerrar() {
+    dlg.classList.remove('open'); html.classList.remove('carrito-abierto');
+    if (irA) { var sec = $(irA); irA = null; if (sec) { sec.scrollIntoView({ behavior: calma() ? 'auto' : 'smooth', block: 'start' }); var p = sec.querySelector('.agregar'); if (p) p.focus({ preventScroll: true }); } }
+    else if (abridor && document.contains(abridor) && abridor.getClientRects().length) abridor.focus({ preventScroll: true });
+  }
+  dlg.addEventListener('close', alCerrar);
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); cerrar(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); cerrar(); return; }
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(dlg.querySelectorAll('button, a[href], input, textarea, summary, [tabindex]:not([tabindex="-1"])'),
+      function (el) { return !el.disabled && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden'; });
+    if (!f.length) return;
+    var pri = f[0], ult = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); }
+    else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+  });
+
+  var campos = ['nombre', 'tel', 'fecha', 'aclar'];
+  function radio(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function leer() { var d = {}; campos.forEach(function (c) { d[c] = $(c).value.replace(/\s+/g, ' ').trim(); }); d.modo = radio('modo') || 'retiro'; return d; }
+  function hoyISO() { var h = new Date(); return h.getFullYear() + '-' + ('0' + (h.getMonth() + 1)).slice(-2) + '-' + ('0' + h.getDate()).slice(-2); }
+  $('fecha').min = hoyISO();
+  (function restaurar() {
+    var d = estado.datos || {};
+    campos.forEach(function (c) { if (typeof d[c] === 'string') $(c).value = d[c]; });
+    if ($('fecha').value && $('fecha').value < $('fecha').min) $('fecha').value = '';
+    var m = form.querySelector('input[name="modo"][value="' + (d.modo === 'colocacion' ? 'colocacion' : 'retiro') + '"]'); if (m) m.checked = true;
+  })();
+  function fechaCorta(v) {
+    var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]); if (isNaN(d)) return '';
+    return ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'][d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+  }
+  function mensaje(borrador) {
+    var d = leer(), L = ['Hola Romeli! Quiero consultar por estas joyas:'];
+    estado.items.forEach(function (it) { L.push('• ' + it.n + ' ' + nombre(it.id, it.n)); });
+    L.push('');
+    L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
+    var modo = d.modo === 'colocacion' ? 'quiero que me la coloquen (pido turno)' : 'la retiro en el local';
+    if (d.fecha && fechaCorta(d.fecha)) modo += ', el ' + fechaCorta(d.fecha);
+    L.push('Cómo: ' + modo);
+    if (d.aclar) L.push('Aclaraciones: ' + d.aclar);
+    L.push('', '¿Me pasan precio y si tienen? Gracias.');
+    return L.join('\n');
+  }
+  function syncDatos() { estado.datos = leer(); $('msgPrev').textContent = mensaje(true); guardar(); }
+  function marcar(input, txt) {
+    var f = input.closest('.f'), err = $('err-' + input.id);
+    f.classList.toggle('error', !!txt);
+    if (txt) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    if (err) err.textContent = txt;
+  }
+  form.addEventListener('input', function (e) {
+    var f = e.target.closest('.f'); if (f && f.classList.contains('error')) marcar(e.target, '');
+    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
+    syncDatos();
+  });
+  form.addEventListener('change', syncDatos);
+  function validar() {
+    var malos = [], d = leer();
+    [['nombre', d.nombre ? '' : 'Poné tu nombre así sabemos de quién es el pedido.'],
+     ['tel', !d.tel ? 'Poné tu teléfono para que te respondamos.' : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : '']
+    ].forEach(function (c) { marcar($(c[0]), c[1]); if (c[1]) malos.push($(c[0])); });
+    return malos;
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!total()) return;
+    var aviso = $('aviso'), malos = validar();
+    if (malos.length) { aviso.classList.add('mal'); aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.'; malos[0].focus(); return; }
+    aviso.classList.remove('mal');
+    abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(mensaje(false)));
+    aviso.textContent = 'Abrimos WhatsApp con tu pedido.';
+  });
+  render();
+  syncDatos();
+})();
+</script>
+</body>
+</html>
