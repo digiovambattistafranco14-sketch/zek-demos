@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Henko Art Studio | Tatuajes en Comodoro Rivadavia</title>
+<meta name="description" content="Tatuajes a medida en Comodoro Rivadavia, barrio Pueyrredón. Garantía de por vida. Pedí tu presupuesto por Instagram.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Henko Art Studio | Tatuajes en Comodoro Rivadavia">
+<meta property="og:description" content="Tatuajes a medida con garantía de por vida. Mirá los trabajos y pedí tu presupuesto.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/henko-art-tattoo/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/henko-art-tattoo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFD21F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concepto: la pared del estudio. Henko tiene un mural de manchas amarillas con borde magenta, y la marca sale de ahí.
+   En la portada las manchas se expanden como pintura fresca y aparece la foto de una sesión (el único momento fuerte).
+   Los trabajos cuelgan sobre esa pared y el presupuesto se arma con las preguntas de su propio flyer.
+   Radios: botones en píldora, fotos y tarjetas 24px, manchas con borde orgánico. */
+:root{
+  --amarillo:#FFD21F;   /* el amarillo del mural y del logo */
+  --amarillo-2:#FFE15C;
+  --papel:#FFF6CF;
+  --magenta:#C8238E;    /* botones: texto blanco con contraste AA */
+  --magenta-2:#A81A76;
+  --rosa:#EC6FBF;       /* el borde de las manchas */
+  --uva:#3A0F3A;        /* texto */
+  --uva-2:#6A3466;
+  --header:72px;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --mancha:62% 38% 55% 45% / 48% 60% 40% 52%;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+[id]{scroll-margin-top:calc(var(--header) + 16px)}
+body{margin:0;background:var(--amarillo);color:var(--uva);font:400 17px/1.6 Figtree, system-ui, sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--uva);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:"Big Shoulders Display", Impact, sans-serif;font-weight:900;line-height:.92;margin:0;text-transform:uppercase;letter-spacing:.005em}
+h2{font-size:clamp(44px, 6.4vw, 84px);text-wrap:balance}
+p{margin:0}
+.ig-ico{width:20px;height:20px;flex:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;
+  font:600 17px/1 Figtree, sans-serif;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-m{background:var(--magenta);color:#fff;box-shadow:0 10px 24px -12px rgba(120,10,80,.7)}
+.btn-l{background:transparent;color:var(--uva);box-shadow:inset 0 0 0 2px var(--uva)}
+@media (hover:hover) and (pointer:fine){
+  .btn-m:hover{background:var(--magenta-2)}
+  .btn-l:hover{background:rgba(58,15,58,.07)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(255,210,31,.82);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:0 1px 0 rgba(58,15,58,.1), 0 10px 30px -20px rgba(58,15,58,.45)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px var(--rosa)}
+.brand span{font-family:"Big Shoulders Display", sans-serif;font-weight:900;font-size:24px;line-height:1;text-transform:uppercase}
+.brand small{display:block;font:500 13px/1.3 Figtree, sans-serif;text-transform:none;color:var(--uva-2);margin-top:3px}
+.links{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.links a{text-decoration:none;font-weight:600;font-size:16px;padding:6px 0;background:linear-gradient(var(--magenta),var(--magenta)) left bottom/0 2px no-repeat;transition:background-size .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.links a:hover{background-size:100% 2px}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:0;background:var(--uva);color:var(--amarillo);cursor:pointer;place-items:center}
+.menu-btn svg{width:22px;height:22px}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:var(--papel);border-radius:24px;padding:10px;
+  box-shadow:0 24px 60px -20px rgba(58,15,58,.5);opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;pointer-events:none;
+  transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:flex;align-items:center;gap:10px;padding:15px 16px;border-radius:16px;text-decoration:none;font-weight:600;font-size:18px}
+.sheet-menu a:active{background:rgba(58,15,58,.07)}
+.sheet-menu .btn{margin-top:6px;width:100%}
+@media (max-width:860px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+
+/* ---------- portada: la pared ---------- */
+.hero{min-height:100dvh;padding:calc(var(--header) + 40px) 0 64px;display:flex;align-items:center;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px, 5vw, 72px);align-items:center}
+.hero h1{font-size:clamp(68px, 10.5vw, 150px);line-height:.84}
+.hero h1 small{display:block;font-size:.42em;line-height:1;margin-top:.18em;color:var(--magenta)}
+.hero .lead{margin-top:26px;font-size:clamp(18px, 1.6vw, 21px);max-width:30ch;color:var(--uva)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+.pared{position:relative;aspect-ratio:4/5;max-width:520px;width:100%;justify-self:end;border-radius:28px;background:var(--rosa);overflow:hidden;
+  box-shadow:0 40px 80px -40px rgba(120,10,80,.7)}
+.pared .m{position:absolute;background:var(--amarillo);border:5px solid var(--magenta);border-radius:var(--mancha)}
+.pared .m:nth-child(1){width:44%;height:34%;left:-8%;top:-6%}
+.pared .m:nth-child(2){width:30%;height:22%;right:6%;top:4%;border-radius:45% 55% 38% 62% / 55% 42% 58% 45%}
+.pared .m:nth-child(3){width:36%;height:30%;left:-10%;top:40%;border-radius:38% 62% 60% 40% / 45% 38% 62% 55%}
+.pared .m:nth-child(4){width:40%;height:28%;right:-12%;top:34%;border-radius:55% 45% 40% 60% / 40% 60% 42% 58%}
+.pared .m:nth-child(5){width:34%;height:26%;left:4%;bottom:-8%;border-radius:60% 40% 50% 50% / 50% 45% 55% 50%}
+.pared .m:nth-child(6){width:30%;height:22%;right:-4%;bottom:6%}
+.pared .m:nth-child(7){width:14%;height:11%;left:44%;top:-2%;border-radius:50%}
+.pared figure{position:absolute;inset:11% 17% 9%;margin:0;border-radius:24px;overflow:hidden;box-shadow:0 0 0 5px var(--magenta), 0 30px 50px -24px rgba(58,15,58,.8)}
+.pared figure img{width:100%;height:100%;object-fit:cover}
+
+/* el momento: la pintura se expande y aparece la sesión */
+@media (prefers-reduced-motion: no-preference){
+  .pared .m{animation:pintar .9s var(--ease-out) both}
+  .pared .m:nth-child(2){animation-delay:.08s}.pared .m:nth-child(3){animation-delay:.16s}.pared .m:nth-child(4){animation-delay:.22s}
+  .pared .m:nth-child(5){animation-delay:.3s}.pared .m:nth-child(6){animation-delay:.36s}.pared .m:nth-child(7){animation-delay:.42s}
+  .pared figure{animation:aparece .8s var(--ease-out) .55s both}
+  .hero h1,.hero .lead,.ctas{animation:sube .7s var(--ease-out) both}
+  .hero .lead{animation-delay:.1s}.ctas{animation-delay:.18s}
+}
+@keyframes pintar{from{opacity:0;transform:scale(.55) rotate(-8deg)}to{opacity:1;transform:none}}
+@keyframes aparece{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes sube{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .hero{min-height:auto;padding:calc(var(--header) + 24px) 0 56px}
+  .hero .wrap{grid-template-columns:1fr}
+  .pared{justify-self:center;max-width:400px}
+}
+
+/* ---------- trabajos ---------- */
+.trabajos{padding:72px 0 104px}
+.trabajos h2{max-width:12ch}
+.trabajos .intro{margin-top:16px;max-width:46ch;font-size:18px}
+.muro{margin-top:44px;display:grid;grid-template-columns:1.15fr .85fr .9fr;grid-template-rows:auto auto;gap:22px;align-items:start}
+.obra{margin:0}
+.obra .foto{border-radius:24px;overflow:hidden;background:var(--amarillo-2);box-shadow:0 0 0 4px var(--uva)}
+.obra img{width:100%;height:100%;object-fit:cover}
+.obra figcaption{margin-top:12px;font-weight:600;font-size:16px}
+.obra.a{grid-row:span 2}
+.obra.a .foto{aspect-ratio:3/4}
+.obra.b .foto{aspect-ratio:9/14}
+.obra.b{margin-top:56px}
+.obra.c .foto{aspect-ratio:9/13}
+.ver-ig{grid-column:2 / 4;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:26px 28px;border-radius:24px;background:var(--uva);color:var(--amarillo);text-decoration:none;
+  transition:transform .18s var(--ease-out)}
+.ver-ig strong{font-family:"Big Shoulders Display", sans-serif;font-weight:900;font-size:clamp(28px, 3vw, 38px);text-transform:uppercase;line-height:1}
+.ver-ig span{display:block;color:#F6D9EC;font-size:15px;margin-top:6px}
+.ver-ig .ig-ico{width:40px;height:40px}
+.ver-ig:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.ver-ig:hover{transform:translateY(-2px)}}
+@media (max-width:860px){
+  .muro{grid-template-columns:1fr 1fr;gap:16px}
+  .obra.a{grid-column:1 / 3;grid-row:auto}
+  .obra.b{margin-top:0}
+  .ver-ig{grid-column:1 / 3}
+}
+
+/* ---------- garantía ---------- */
+.garantia{position:relative;overflow:hidden;background:var(--rosa);color:var(--uva);padding:96px 0}
+.garantia .m{position:absolute;background:var(--amarillo);border:5px solid var(--magenta);border-radius:var(--mancha);opacity:.95}
+.garantia .m.u{width:260px;height:200px;left:-80px;top:-60px}
+.garantia .m.d{width:220px;height:170px;right:-50px;bottom:-60px;border-radius:45% 55% 38% 62% / 55% 42% 58% 45%}
+.garantia .m.t{width:90px;height:70px;right:18%;top:24px;border-radius:50%}
+.garantia .wrap{position:relative;max-width:820px;text-align:center}
+.garantia h2{font-size:clamp(56px, 9vw, 120px)}
+.garantia p{margin:20px auto 0;max-width:40ch;font-size:19px;font-weight:500}
+.garantia .btn{margin-top:28px}
+
+/* ---------- presupuesto ---------- */
+.presu{padding:104px 0}
+.presu .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px, 5vw, 72px);align-items:start}
+.presu h2{max-width:11ch}
+.presu .intro{margin-top:18px;font-size:18px;max-width:38ch}
+.necesito{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+.necesito li{display:flex;gap:14px;align-items:flex-start;font-size:17px}
+.necesito li::before{content:"";flex:none;width:22px;height:18px;margin-top:4px;background:var(--papel);border:3px solid var(--magenta);border-radius:var(--mancha)}
+.ficha{background:var(--papel);border-radius:24px;padding:clamp(22px, 3.5vw, 40px);box-shadow:0 0 0 4px var(--uva), 0 30px 60px -36px rgba(58,15,58,.7)}
+.ficha h3{font-size:34px}
+.ficha .sub{margin-top:6px;color:var(--uva-2);font-size:15px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.campo{display:grid;gap:7px}
+.campo.full{grid-column:1 / 3}
+label,legend{font-weight:600;font-size:15px}
+.req{color:var(--magenta)}
+input,select,textarea{width:100%;font:500 16px/1.4 Figtree, sans-serif;color:var(--uva);background:#fff;border:2px solid #CFB9C9;border-radius:14px;padding:12px 14px;
+  transition:border-color .15s ease, box-shadow .15s ease}
+textarea{min-height:104px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#8A6E86}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--magenta);box-shadow:0 0 0 4px rgba(200,35,142,.18)}
+input[aria-invalid="true"]{border-color:#B3261E}
+.err{color:#B3261E;font-size:14px;font-weight:600;min-height:0}
+.err:empty{display:none}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:9px}
+.opciones{display:flex;flex-wrap:wrap;gap:8px}
+.opciones label{position:relative}
+.opciones input{position:absolute;opacity:0;width:1px;height:1px}
+.opciones span{display:inline-flex;align-items:center;height:42px;padding:0 16px;border-radius:999px;background:#fff;border:2px solid #CFB9C9;font-weight:600;font-size:15px;cursor:pointer;
+  transition:background-color .15s ease, border-color .15s ease, color .15s ease}
+.opciones input:checked + span{background:var(--uva);border-color:var(--uva);color:var(--amarillo)}
+.opciones input:focus-visible + span{outline:3px solid var(--magenta);outline-offset:2px}
+.ficha .btn{width:100%;margin-top:24px}
+.nota{margin-top:12px;font-size:14px;color:var(--uva-2);text-align:center}
+.ok{margin-top:14px;padding:14px 16px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 2px var(--magenta);font-weight:600;font-size:15px}
+@media (max-width:860px){
+  .presu .wrap{grid-template-columns:1fr}
+  .campos{grid-template-columns:1fr}
+  .campo.full{grid-column:auto}
+}
+
+/* ---------- dónde ---------- */
+.donde{padding:0 0 112px}
+.donde .card{display:grid;grid-template-columns:1fr 1.1fr;border-radius:24px;overflow:hidden;background:var(--papel);box-shadow:0 0 0 4px var(--uva)}
+.donde .info{padding:clamp(26px, 4vw, 52px)}
+.donde dl{margin:26px 0 30px;display:grid;gap:18px}
+.donde dt{font-size:14px;color:var(--uva-2)}
+.donde dd{margin:2px 0 0;font-weight:600;font-size:18px}
+.donde iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+@media (max-width:860px){.donde .card{grid-template-columns:1fr}.donde iframe{min-height:280px}}
+
+footer{padding:32px 0 120px;font-size:14px;color:var(--uva-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--uva);font-weight:600}
+
+/* ---------- botón flotante: Instagram, solo el ícono ---------- */
+.flot{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:var(--magenta);color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(120,10,80,.25), 0 16px 34px -10px rgba(120,10,80,.65);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.6s both}
+.flot img{width:30px;height:30px;position:relative;z-index:1}
+.flot::before,.flot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--magenta);z-index:0;opacity:0;animation:onda 5s var(--ease-out) 2.6s infinite}
+.flot::after{animation-delay:3s}
+.flot .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:var(--papel);color:var(--uva);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(58,15,58,.5);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.flot .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:var(--papel);transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.flot .tip small{display:block;font-weight:500;font-size:13px;color:var(--uva-2)}
+.flot:active{transform:scale(.94)}
+.flot:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .flot:hover{transform:scale(1.07)}
+  .flot:hover img{animation:sacude .6s var(--ease-out)}
+  .flot:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .flot:hover::before,.flot:hover::after{animation-play-state:paused}
+}
+@keyframes entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes sacude{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.flot{width:58px;height:58px}.flot img{width:28px;height:28px}}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .flot{animation:suave .4s ease both}
+  .flot::before,.flot::after{animation:none}
+  .flot:hover img{animation:none}
+}
+@keyframes suave{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Henko Art Studio, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>Henko Art Studio<small>Tatuajes en Comodoro Rivadavia</small></span>
+    </a>
+    <nav aria-label="Secciones">
+      <ul class="links">
+        <li><a href="#trabajos">Trabajos</a></li>
+        <li><a href="#presupuesto">Presupuesto</a></li>
+        <li><a href="#donde">Dónde</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-m" href="https://ig.me/m/henko.art.tattoo" target="_blank" rel="noopener">
+      <img class="ig-ico" src="https://cdn.simpleicons.org/instagram/ffffff" alt="">Escribinos</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+<div class="sheet-menu" id="menu">
+  <a href="#trabajos">Trabajos</a>
+  <a href="#presupuesto">Presupuesto</a>
+  <a href="#donde">Dónde</a>
+  <a class="btn btn-m" href="https://ig.me/m/henko.art.tattoo" target="_blank" rel="noopener">
+    <img class="ig-ico" src="https://cdn.simpleicons.org/instagram/ffffff" alt="">Escribinos</a>
+</div>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1>Henko<small>Art Studio</small></h1>
+        <p class="lead">Tatuajes a medida en Comodoro Rivadavia, barrio Pueyrredón.</p>
+        <div class="ctas">
+          <a class="btn btn-m" href="#presupuesto">Pedí tu presupuesto</a>
+          <a class="btn btn-l" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <div class="pared">
+        <i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i>
+        <figure><img src="img/foto-09.jpg" alt="Tatuando una pierna en el estudio, frente al mural amarillo y magenta" width="360" height="640" fetchpriority="high"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="trabajos" id="trabajos">
+    <div class="wrap">
+      <h2>Trabajos del estudio</h2>
+      <p class="intro">Línea fina, diseños propios y piezas a medida. Estos son algunos; hay muchos más en Instagram.</p>
+      <div class="muro">
+        <figure class="obra a">
+          <div class="foto"><img src="img/foto-10.jpg" alt="Tatuaje de mariposa en línea fina en el pecho" width="480" height="640" loading="lazy"></div>
+          <figcaption>Mariposa en línea fina</figcaption>
+        </figure>
+        <figure class="obra b">
+          <div class="foto"><img src="img/foto-11.jpg" alt="Tatuaje mínimo del número 11 en el brazo" width="360" height="640" loading="lazy"></div>
+          <figcaption>Mini tattoo en el brazo</figcaption>
+        </figure>
+        <figure class="obra c">
+          <div class="foto"><img src="img/foto-12.jpg" alt="Dos personas sonriendo frente al mural del estudio" width="361" height="640" loading="lazy"></div>
+          <figcaption>El mural del estudio</figcaption>
+        </figure>
+        <a class="ver-ig" href="https://instagram.com/henko.art.tattoo" target="_blank" rel="noopener">
+          <div><strong>Mirá todos los trabajos</strong><span>@henko.art.tattoo en Instagram</span></div>
+          <img class="ig-ico" src="https://cdn.simpleicons.org/instagram/FFD21F" alt="">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="garantia" aria-labelledby="g-tit">
+    <i class="m u" aria-hidden="true"></i><i class="m d" aria-hidden="true"></i><i class="m t" aria-hidden="true"></i>
+    <div class="wrap">
+      <h2 id="g-tit">Garantía de por vida</h2>
+      <p>Cada tatuaje del estudio tiene garantía de por vida. Consultá cómo funciona cuando pidas tu turno.</p>
+      <a class="btn btn-m" href="#presupuesto">Pedí tu presupuesto</a>
+    </div>
+  </section>
+
+  <section class="presu" id="presupuesto">
+    <div class="wrap">
+      <div>
+        <h2>¿Querés saber cuánto vale tu tattoo?</h2>
+        <p class="intro">Para cotizarlo bien y rápido, contanos:</p>
+        <ul class="necesito">
+          <li>Qué idea tenés, y una imagen de referencia si la tenés.</li>
+          <li>En qué parte del cuerpo va.</li>
+          <li>Un tamaño aproximado, en centímetros.</li>
+          <li>Si lo querés en negro o a color.</li>
+        </ul>
+      </div>
+
+      <form class="ficha" id="ficha" novalidate>
+        <h3>Tu consulta</h3>
+        <p class="sub">Hacé tu consulta hoy, antes de que te olvides.</p>
+        <div class="campos">
+          <div class="campo">
+            <label for="nombre">Nombre <span class="req">*</span></label>
+            <input id="nombre" name="nombre" autocomplete="given-name" required>
+            <p class="err" id="errNombre"></p>
+          </div>
+          <div class="campo">
+            <label for="tel">Teléfono <span class="req">*</span></label>
+            <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="297 400-0000" required>
+            <p class="err" id="errTel"></p>
+          </div>
+          <div class="campo full">
+            <label for="idea">Tu idea <span class="req">*</span></label>
+            <textarea id="idea" name="idea" placeholder="Ej.: una mariposa en línea fina, con algo de sombra"></textarea>
+            <p class="err" id="errIdea"></p>
+          </div>
+          <div class="campo">
+            <label for="zona">Parte del cuerpo</label>
+            <select id="zona" name="zona">
+              <option value="">Elegí una</option>
+              <option>Brazo</option><option>Antebrazo</option><option>Mano</option><option>Pierna</option><option>Tobillo o pie</option>
+              <option>Espalda</option><option>Pecho</option><option>Costillas</option><option>Cuello</option><option>Otra</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="cm">Tamaño aproximado (cm)</label>
+            <input id="cm" name="cm" inputmode="numeric" placeholder="Ej.: 8 x 5">
+          </div>
+          <fieldset class="campo full">
+            <legend>Color</legend>
+            <div class="opciones">
+              <label><input type="radio" name="color" value="Negro"><span>Negro</span></label>
+              <label><input type="radio" name="color" value="A color"><span>A color</span></label>
+              <label><input type="radio" name="color" value="No sé todavía"><span>No sé todavía</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <button class="btn btn-m" type="submit"><img class="ig-ico" src="https://cdn.simpleicons.org/instagram/ffffff" alt="">Enviar por Instagram</button>
+        <p class="nota">Copiamos tu consulta y se abre el chat de @henko.art.tattoo. Pegala y sumá tu imagen de referencia.</p>
+        <p class="ok" id="ok" role="status" hidden>Listo, tu consulta está copiada. Pegala en el chat de Instagram.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="donde" id="donde">
+    <div class="wrap">
+      <div class="card">
+        <div class="info">
+          <h2>Dónde estamos</h2>
+          <dl>
+            <div><dt>Zona</dt><dd>Barrio Pueyrredón, Comodoro Rivadavia</dd></div>
+            <div><dt>Tatúa</dt><dd><a href="https://instagram.com/humanaamarilla" target="_blank" rel="noopener">@humanaamarilla</a></dd></div>
+            <div><dt>Horarios y dirección exacta</dt><dd>Consultá por Instagram</dd></div>
+          </dl>
+          <a class="btn btn-m" href="https://ig.me/m/henko.art.tattoo" target="_blank" rel="noopener">
+            <img class="ig-ico" src="https://cdn.simpleicons.org/instagram/ffffff" alt="">Escribinos</a>
+        </div>
+        <iframe title="Mapa del barrio Pueyrredón, Comodoro Rivadavia" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Barrio+Pueyrred%C3%B3n,+Comodoro+Rivadavia,+Chubut&z=14&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Henko Art Studio, Comodoro Rivadavia</span>
+    <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+  </div>
+</footer>
+
+<a class="flot" href="https://ig.me/m/henko.art.tattoo" target="_blank" rel="noopener" aria-label="Escribinos por Instagram a @henko.art.tattoo">
+  <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="">
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>@henko.art.tattoo por Instagram</small></span>
+</a>
+
+<script>
+(function () {
+  var top = document.getElementById('top');
+  var marca = document.createElement('div');
+  marca.style.cssText = 'position:absolute;top:8px;height:1px;width:1px';
+  document.body.prepend(marca);
+  new IntersectionObserver(function (e) { top.classList.toggle('scrolled', !e[0].isIntersecting); }).observe(marca);
+
+  var btn = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
+  function cerrar() { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Abrir menú'); }
+  btn.addEventListener('click', function () {
+    var abre = !menu.classList.contains('open');
+    menu.classList.toggle('open', abre); btn.setAttribute('aria-expanded', String(abre)); btn.setAttribute('aria-label', abre ? 'Cerrar menú' : 'Abrir menú');
+  });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) cerrar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('ficha'), CLAVE = 'henko-consulta';
+  function datos() {
+    var c = form.querySelector('input[name="color"]:checked');
+    return { nombre: $('nombre').value, tel: $('tel').value, idea: $('idea').value, zona: $('zona').value, cm: $('cm').value, color: c ? c.value : '' };
+  }
+  function texto() {
+    var d = datos(), l = ['Hola Henko! Quiero consultar por un tatuaje.', '', 'Nombre: ' + d.nombre.trim(), 'Teléfono: ' + d.tel.trim(), 'Idea: ' + d.idea.trim()];
+    if (d.zona) l.push('Parte del cuerpo: ' + d.zona);
+    if (d.cm.trim()) l.push('Tamaño aproximado: ' + d.cm.trim() + ' cm');
+    if (d.color) l.push('Color: ' + d.color);
+    l.push('', 'Te mando la imagen de referencia por acá.');
+    return l.join('\n');
+  }
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(datos())); } catch (e) {} }
+  function cargar() {
+    try {
+      var d = JSON.parse(localStorage.getItem(CLAVE) || 'null'); if (!d) return;
+      ['nombre', 'tel', 'idea', 'zona', 'cm'].forEach(function (k) { if (d[k]) $(k).value = d[k]; });
+      if (d.color) { var r = form.querySelector('input[name="color"][value="' + d.color + '"]'); if (r) r.checked = true; }
+    } catch (e) {}
+  }
+  function copiar(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).catch(function () { viejo(t); });
+    viejo(t); return Promise.resolve();
+  }
+  function viejo(t) {
+    try { var a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', ''); a.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove(); } catch (e) {}
+  }
+  cargar();
+  form.addEventListener('input', guardar); form.addEventListener('change', guardar);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var campos = [['nombre', 'errNombre', 'Escribí tu nombre.', function (v) { return v.trim(); }],
+                  ['tel', 'errTel', 'Escribí un teléfono con código de área.', function (v) { return v.replace(/\D/g, '').length >= 8; }],
+                  ['idea', 'errIdea', 'Contanos qué te querés tatuar.', function (v) { return v.trim(); }]];
+    var primero = null;
+    campos.forEach(function (c) {
+      var el = $(c[0]), ok = c[3](el.value);
+      $(c[1]).textContent = ok ? '' : c[2];
+      if (ok) el.removeAttribute('aria-invalid'); else { el.setAttribute('aria-invalid', 'true'); primero = primero || el; }
+    });
+    if (primero) { primero.focus(); return; }
+    copiar(texto()).then(function () { $('ok').hidden = false; });
+    var w = window.open('https://ig.me/m/henko.art.tattoo', '_blank');
+    if (w) { try { w.opener = null; } catch (err) {} } else setTimeout(function () { location.href = 'https://ig.me/m/henko.art.tattoo'; }, 400);
+  });
+})();
+</script>
+</body>
+</html>
