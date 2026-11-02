@@ -42,6 +42,7 @@
   --arch:999px 999px 18px 18px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--shell);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -106,7 +107,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .hero h1{font-size:clamp(4.2rem, 11vw, 9.2rem);line-height:.9;letter-spacing:-0.035em;position:relative;display:inline-block;padding-bottom:.06em}
 /* el destello: una franja de luz cruza el nombre como sobre el acero */
 .hero h1 .name{display:inline-block;color:var(--ink);
-  background:linear-gradient(105deg, var(--ink) 0 40%, #F7E7DF 47%, #fff 50%, #E9C9A0 53%, var(--ink) 60% 100%) 120% 0 / 260% 100% no-repeat;
+  background:linear-gradient(105deg, var(--ink) 0 40%, #F7E7DF 47%, #fff 50%, #E9C9A0 53%, var(--ink) 60% 100%) 100% 0 / 260% 100% no-repeat;
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero .sub{display:block;margin-top:14px;font-family:var(--display);font-style:italic;font-size:clamp(1.6rem, 3.2vw, 2.5rem);line-height:1.08;letter-spacing:-0.01em;color:var(--rose-deep);padding-bottom:4px}
 .hero .lead{margin-top:20px;font-size:clamp(17px, 1.5vw, 19px);color:var(--muted);max-width:42ch}
@@ -129,7 +130,7 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 .v-s3{--s:16px;bottom:-8px;right:30%}
 
 @keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes destello{from{background-position:120% 0}to{background-position:-20% 0}}
+@keyframes destello{from{background-position:100% 0}to{background-position:0 0}}
 @keyframes brillo{0%{opacity:0;transform:scale(.4) rotate(-30deg)}55%{opacity:1;transform:scale(1.15) rotate(8deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes titila{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
 @keyframes abrir{from{clip-path:inset(100% 0 0 0 round 999px 999px 18px 18px)}to{clip-path:inset(0 0 0 0 round 999px 999px 18px 18px)}}
@@ -160,16 +161,16 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 @media (hover:hover) and (pointer:fine){.tapa:hover .cover{box-shadow:0 0 0 2px var(--ink)}.tapa[aria-selected="true"]:hover .cover{box-shadow:0 0 0 3px var(--rose)}}
 /* la estrella difusa de sus tapas, hecha con CSS */
 .estrella{position:relative;display:grid;place-items:center;overflow:hidden;background:#F5EEE9;color:var(--ink);isolation:isolate}
-.estrella::before{content:"";position:absolute;inset:14%;z-index:-1;background:#4A3A3A;filter:blur(9px);
-  clip-path:polygon(50% 0, 61% 26%, 85% 15%, 74% 39%, 100% 50%, 74% 61%, 85% 85%, 61% 74%, 50% 100%, 39% 74%, 15% 85%, 26% 61%, 0 50%, 26% 39%, 15% 15%, 39% 26%)}
+.estrella::before{content:"";position:absolute;inset:14%;z-index:-1;filter:blur(9px);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon fill='%234A3A3A' points='50,0 61,26 85,15 74,39 100,50 74,61 85,85 61,74 50,100 39,74 15,85 26,61 0,50 26,39 15,15 39,26'/%3E%3C/svg%3E") center / 100% 100% no-repeat}
 .tapa .estrella{width:100%;height:100%;border-radius:50%}
-.tapa .estrella::before{inset:10%;filter:blur(6px)}
-.tapa .estrella b{font-family:var(--display);font-weight:400;font-size:17px;line-height:1;color:#fff;padding:0 6px}
+.tapa .estrella::before{inset:2%;filter:blur(5px)}
+.tapa .estrella b{font-family:var(--display);font-weight:400;font-size:15px;line-height:1;color:#fff;padding:0 14px;text-shadow:0 0 10px rgba(42,28,34,.7)}
 .panel{display:grid;grid-template-columns:.9fr 1.1fr;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px -40px rgba(42,28,34,.45);min-height:420px}
 .panel .estrella{min-height:100%;aspect-ratio:auto}
-.panel .estrella::before{inset:12% 8%;filter:blur(22px)}
-.panel .estrella h3{font-size:clamp(2.2rem, 3.6vw, 3.2rem);line-height:1;color:#fff;text-align:center;padding:0 16px}
-.panel .estrella small{display:block;margin-top:12px;font:600 12px/1 var(--body);letter-spacing:.14em;color:rgba(255,255,255,.85)}
+.panel .estrella::before{inset:6% 4%;filter:blur(18px)}
+.panel .estrella h3{font-size:clamp(1.9rem, 3vw, 2.6rem);line-height:1;color:#fff;text-align:center;padding:0 16px;max-width:7em;margin-inline:auto;text-shadow:0 0 18px rgba(42,28,34,.6)}
+.panel .estrella small{display:block;text-align:center;margin-top:12px;font:600 12px/1 var(--body);letter-spacing:.14em;color:rgba(255,255,255,.85)}
 .panel .estrella .spark{position:absolute;color:#fff}
 .p-s1{--s:22px;top:28%;left:16%}.p-s2{--s:14px;bottom:30%;right:18%}
 .panel-txt{padding:clamp(28px, 4vw, 48px);display:flex;flex-direction:column;justify-content:center;gap:16px}
@@ -183,12 +184,13 @@ section[id]{scroll-margin-top:calc(var(--header) + 12px)}
 @media (max-width:900px){
   .zonas{padding:88px 0 80px}
   .zonas-grid{grid-template-columns:1fr;gap:32px;margin-top:36px}
-  .tapas{display:flex;overflow-x:auto;gap:16px;margin-inline:-20px;padding:4px 20px 8px;scrollbar-width:none;scroll-snap-type:x proximity}
+  .tapas{display:flex;overflow-x:auto;gap:16px;margin-inline:-20px;padding:4px 20px 8px;scroll-padding-inline:20px;scrollbar-width:none;scroll-snap-type:x proximity}
   .tapas::-webkit-scrollbar{display:none}
   .tapas li{flex:none;scroll-snap-align:start}
   .tapa{width:92px}
   .tapa .cover{width:84px;height:84px;padding:3px}
-  .tapa .estrella b{font-size:14px}
+  .tapa .estrella b{font-size:12.5px;padding:0 10px}
+  .collage .c2{margin-bottom:32px}
   .panel{grid-template-columns:1fr;min-height:0}
   .panel .estrella{min-height:220px}
 }
