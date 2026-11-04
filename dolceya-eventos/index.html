@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Dolceya Eventos | Pastelería artesanal en Mar del Plata</title>
+<meta name="description" content="Tortas para eventos y pastelería artesanal de Yami y Gabi en Irala 7218, Mar del Plata. Encargá tu torta por WhatsApp.">
+<meta property="og:title" content="Dolceya Eventos | Tortas para eventos en Mar del Plata">
+<meta property="og:description" content="Pastelería artesanal, hecho con amor. Encargá tu torta o armá tu pedido de la vitrina por WhatsApp.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#fff7f9">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,500;0,700;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/vitrina.jpg">
+<style>
+:root{
+  --negro:#221d20;        /* el negro del cartel redondo */
+  --tinta:#3a3236;
+  --gris:#6e6268;
+  --rosa:#c8346f;         /* la pared rosa del local, para botones */
+  --rosa-vivo:#f26a9d;    /* el cupcake del logo */
+  --algodon:#fde6ee;      /* el fondo de sus historias */
+  --glaseado:#fff7f9;
+  --vidrio:rgba(255,255,255,.62);
+  --header:72px;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --r:18px;               /* tarjetas y fotos */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--glaseado);color:var(--tinta);font:400 17px/1.6 Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:"Zilla Slab",Georgia,serif;color:var(--negro);margin:0;line-height:1.05;letter-spacing:-.01em}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1180px, 100% - 40px);margin:0 auto}
+:focus-visible{outline:3px solid var(--rosa);outline-offset:3px;border-radius:6px}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+
+/* ---------- botones (todos en píldora) ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 24px;border-radius:999px;border:0;font:600 16px/1 Outfit,sans-serif;
+  text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .14s var(--ease-out), background-color .2s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-rosa{background:var(--rosa);color:#fff;box-shadow:0 10px 24px -12px rgba(200,52,111,.8)}
+.btn-negro{background:var(--negro);color:#fff}
+.btn-linea{background:transparent;color:var(--negro);box-shadow:inset 0 0 0 2px var(--negro)}
+.btn-wa{background:#25D366;color:#0b3d22}
+@media (hover:hover) and (pointer:fine){
+  .btn-rosa:hover{background:#b02a60}
+  .btn-negro:hover{background:#3d3438}
+  .btn-linea:hover{background:var(--negro);color:#fff}
+  .btn-wa:hover{background:#1fbd5a}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(255,247,249,.82);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:0 1px 0 rgba(34,29,32,.07), 0 12px 30px -20px rgba(120,40,70,.35)}
+.top .wrap{display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px #fff}
+.brand span{font:700 19px/1.1 "Zilla Slab",serif;color:var(--negro)}
+.brand small{display:block;font:500 13px/1.3 Outfit,sans-serif;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.links{display:flex;gap:26px}
+.links a{text-decoration:none;font-weight:500;font-size:15.5px;color:var(--tinta)}
+@media (hover:hover) and (pointer:fine){.links a:hover{color:var(--rosa)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 10px -4px rgba(34,29,32,.3);cursor:pointer;place-items:center}
+.menu-btn span{display:grid;gap:5px}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--negro);border-radius:2px;transition:transform .2s var(--ease-out), opacity .15s ease}
+.menu-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 4px);left:14px;right:14px;z-index:49;background:#fff;border-radius:var(--r);padding:8px;
+  box-shadow:0 24px 60px -20px rgba(120,40,70,.45);display:grid;opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;
+  pointer-events:none;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:600;font-size:17px;color:var(--negro)}
+.sheet-menu a:active{background:var(--algodon)}
+@media (max-width:960px){
+  .links,.top .btn-wa{display:none}
+  .menu-btn{display:grid}
+}
+@media (max-width:420px){.brand small{max-width:52vw}}
+
+/* ---------- portada: la vitrina se desempaña ---------- */
+.hero{padding:calc(var(--header) + 36px) 0 64px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:78%;background:var(--algodon);border-radius:0 0 48% 52% / 0 0 12% 12%;z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px, 4.3vw, 60px);font-weight:700;line-height:1.06;letter-spacing:-.02em;max-width:none}
+.hero h1 .l{display:block;white-space:nowrap}
+@media (max-width:1100px){.hero h1 .l{display:inline;white-space:normal}.hero h1{max-width:13ch}}
+.hero .lead{font-size:19px;color:var(--tinta);max-width:40ch;margin:22px 0 30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-foto{position:relative;justify-self:end;width:min(100%, 470px)}
+.vidrio{position:relative;aspect-ratio:901/1350;border-radius:220px 220px var(--r) var(--r);overflow:hidden;background:#e9dde2;
+  box-shadow:0 30px 70px -30px rgba(120,40,70,.55), inset 0 0 0 1px rgba(255,255,255,.5)}
+.vidrio img{width:100%;height:100%;object-fit:cover;object-position:50% 78%}
+/* el empañado: una capa lechosa que se limpia de izquierda a derecha, como pasarle el trapo al vidrio frío */
+.empanado{position:absolute;inset:0;background:linear-gradient(160deg, rgba(255,255,255,.72), rgba(253,230,238,.6));
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);clip-path:inset(0 0 0 0);pointer-events:none}
+.js .empanado{animation:limpiar 1.25s var(--ease-out) .45s both}
+@keyframes limpiar{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(0 0 0 100%)}}
+.no-js .empanado,.empanado.listo{display:none}
+.reflejo{position:absolute;inset:0;background:linear-gradient(115deg, transparent 38%, rgba(255,255,255,.28) 46%, transparent 54%);pointer-events:none}
+.sello{position:absolute;left:-26px;bottom:44px;width:96px;height:96px;border-radius:50%;box-shadow:0 0 0 5px var(--glaseado), 0 18px 30px -12px rgba(34,29,32,.55);
+  transform:rotate(-8deg)}
+.js .sello{animation:sellar .5s var(--ease-out) 1.45s both}
+@keyframes sellar{from{opacity:0;transform:rotate(-20deg) scale(.9)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
+.hero .datos{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:28px;color:var(--gris);font-size:15px}
+.hero .datos b{color:var(--negro);font-weight:600}
+@media (max-width:860px){
+  .hero{padding-top:calc(var(--header) + 20px)}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero-foto{justify-self:center;width:min(100%, 420px)}
+  .vidrio{aspect-ratio:4/5}
+  .sello{left:-8px;width:80px;height:80px}
+  .hero .lead{font-size:18px}
+}
+@media (max-width:420px){.ctas .btn{flex:1 1 100%;justify-content:center}}
+
+/* ---------- tortas para eventos ---------- */
+.eventos{padding:96px 0}
+.eventos .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.eventos h2,.vitrina h2,.encargo h2,.local h2{font-size:clamp(34px, 4.2vw, 54px)}
+.eventos .intro{max-width:46ch;margin:18px 0 32px;color:var(--tinta)}
+.foto-torta{border-radius:var(--r);overflow:hidden;aspect-ratio:1;box-shadow:0 26px 60px -32px rgba(120,40,70,.6)}
+.foto-torta img{width:100%;height:100%;object-fit:cover}
+.foto-torta + p{margin:12px 2px 0;color:var(--gris);font-size:14.5px}
+.ocasiones{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px;margin:0;padding:0;list-style:none}
+.ocasiones h3{font-size:22px;margin-bottom:6px}
+.ocasiones p{margin:0;color:var(--gris);font-size:15.5px}
+.ocasiones a{color:var(--rosa);font-weight:600}
+@media (max-width:860px){
+  .eventos{padding:72px 0}
+  .eventos .wrap{grid-template-columns:1fr;gap:36px}
+  .eventos .foto{order:-1}
+}
+@media (max-width:520px){.ocasiones{grid-template-columns:1fr;gap:22px}}
+
+/* ---------- la vitrina (catálogo) ---------- */
+.vitrina{padding:96px 0;background:var(--negro);color:#f4e9ee;position:relative}
+.vitrina h2{color:#fff}
+.vitrina .intro{color:#d8c6ce;max-width:52ch;margin:16px 0 40px}
+.vitrina-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.vitrina-foto{position:sticky;top:calc(var(--header) + 24px)}
+.mapa{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:901/1100}
+.mapa img{width:100%;height:100%;object-fit:cover;object-position:50% 85%}
+.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:rgba(255,255,255,.92);box-shadow:0 0 0 4px rgba(242,106,157,.55), 0 6px 14px rgba(0,0,0,.35);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease}
+.pin::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--rosa)}
+.pin.on{transform:scale(1.25);box-shadow:0 0 0 8px rgba(242,106,157,.6), 0 6px 14px rgba(0,0,0,.35)}
+.mapa-nota{margin:12px 2px 0;color:#bfaeb6;font-size:14px}
+.etiquetas{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.etq{position:relative;background:#fff;color:var(--tinta);border-radius:var(--r);padding:22px 20px 18px 22px;display:flex;flex-direction:column;
+  transition:box-shadow .2s ease, transform .2s var(--ease-out)}
+.etq::before{content:"";position:absolute;top:16px;right:18px;width:11px;height:11px;border-radius:50%;background:var(--negro);box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+.etq.on{box-shadow:0 0 0 3px var(--rosa-vivo)}
+.etq h3{font-size:22px;padding-right:22px}
+.etq p{margin:6px 0 14px;font-size:15px;color:var(--gris);flex:1}
+.etq .pie{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1.5px dashed #ead6de;padding-top:12px}
+.precio{font-weight:600;color:var(--negro);font-size:15px}
+.etq .btn{height:40px;padding:0 16px;font-size:15px}
+.cant{display:inline-flex;align-items:center;height:40px;border-radius:999px;background:var(--algodon);color:var(--negro)}
+.cant button{width:40px;height:40px;border:0;background:none;font:600 20px/1 Outfit,sans-serif;color:var(--negro);cursor:pointer;border-radius:50%}
+.cant button:active{background:rgba(200,52,111,.15)}
+.cant output{min-width:22px;text-align:center;font-weight:700}
+.etq.destacada{grid-column:1 / -1;background:var(--algodon)}
+.etq.destacada .pie{border-color:#f0c6d6}
+@media (max-width:960px){
+  .vitrina-grid{grid-template-columns:1fr}
+  .vitrina-foto{position:relative;top:auto;max-width:520px}
+  .mapa{aspect-ratio:4/5}
+}
+@media (max-width:860px){.vitrina{padding:72px 0}}
+@media (max-width:560px){.etiquetas{grid-template-columns:1fr}}
+
+/* ---------- encargá tu torta ---------- */
+.encargo{padding:96px 0}
+.encargo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.encargo .intro{max-width:44ch;margin:16px 0 28px}
+.comanda{position:sticky;top:calc(var(--header) + 24px);background:#fff;border-radius:var(--r);padding:26px 26px 22px;
+  box-shadow:0 24px 50px -30px rgba(120,40,70,.55);border-top:8px solid var(--rosa-vivo)}
+.comanda h3{font-size:20px;margin-bottom:12px}
+.comanda pre{margin:0 0 18px;white-space:pre-wrap;font:500 15.5px/1.6 Outfit,sans-serif;color:var(--tinta);min-height:120px;background:var(--glaseado);border-radius:12px;padding:14px 16px}
+form{display:grid;gap:20px}
+.campo{display:grid;gap:8px}
+.campo label,.campo legend{font-weight:600;color:var(--negro);font-size:15.5px;padding:0}
+.campo small{color:var(--gris);font-size:14px}
+fieldset{border:0;margin:0;padding:0}
+input[type=text],input[type=tel],input[type=date],input[type=number],textarea{width:100%;font:500 16px/1.4 Outfit,sans-serif;color:var(--negro);background:#fff;
+  border:1.5px solid #d9c3cc;border-radius:12px;padding:12px 14px;transition:border-color .15s ease, box-shadow .15s ease}
+input:focus,textarea:focus{outline:0;border-color:var(--rosa);box-shadow:0 0 0 3px rgba(200,52,111,.2)}
+input::placeholder,textarea::placeholder{color:#8c7d84}
+textarea{min-height:96px;resize:vertical}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{display:inline-flex;align-items:center;height:42px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #d9c3cc;
+  font-weight:500;font-size:15px;color:var(--tinta);cursor:pointer;transition:background-color .15s ease, box-shadow .15s ease, color .15s ease}
+.chips input:checked + label{background:var(--negro);color:#fff;box-shadow:none}
+.chips input:focus-visible + label{outline:3px solid var(--rosa);outline-offset:2px}
+.error{color:#a3204f;font-size:14px;font-weight:500;min-height:0}
+.error:empty{display:none}
+.campo.mal input{border-color:#a3204f}
+@media (max-width:900px){
+  .encargo{padding:72px 0}
+  .encargo .wrap{grid-template-columns:1fr;gap:28px}
+  .comanda{position:relative;top:auto}
+}
+@media (max-width:420px){.dos{grid-template-columns:1fr}}
+
+/* ---------- el local ---------- */
+.local{padding:0 0 96px}
+.local .marco{display:grid;grid-template-columns:1.1fr .9fr;background:var(--algodon);border-radius:28px;overflow:hidden}
+.local .fotos{display:grid;grid-template-columns:1.6fr 1fr;gap:6px;min-height:100%}
+.local .fotos img{width:100%;height:100%;object-fit:cover}
+.local .texto{padding:48px 44px}
+.local .texto > p{margin:14px 0 26px;max-width:40ch}
+.horarios{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:0 0 24px;font-size:16px}
+.horarios dt{font-weight:600;color:var(--negro)}
+.horarios dd{margin:0}
+.horarios + p{color:var(--gris);font-size:14px;margin:-14px 0 24px}
+.contacto{display:grid;gap:10px;margin-bottom:26px}
+.contacto a{font-weight:600;color:var(--negro);text-decoration-color:var(--rosa-vivo);text-underline-offset:4px}
+@media (max-width:900px){
+  .local{padding-bottom:72px}
+  .local .marco{grid-template-columns:1fr}
+  .local .fotos{height:360px}
+  .local .texto{padding:34px 24px}
+}
+
+footer{padding:34px 0 130px;color:var(--gris);font-size:14.5px;border-top:1px solid #f0dce4}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:var(--negro);font-weight:600}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.9s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 2.9s infinite}
+.wa::after{animation-delay:3.3s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--negro);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(34,29,32,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--gris)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- carrito de la vitrina ---------- */
+.carro-fab{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:59;
+  width:58px;height:58px;border-radius:50%;border:0;background:var(--negro);color:#fff;display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(34,29,32,.7);opacity:0;transform:translateY(12px) scale(.9);pointer-events:none;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.carro-fab svg{width:26px;height:26px}
+.carro-fab .n{position:absolute;top:-4px;right:-4px;min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:var(--rosa-vivo);color:var(--negro);
+  font:700 13px/24px Outfit,sans-serif;box-shadow:0 0 0 3px var(--glaseado)}
+.hay .carro-fab{opacity:1;transform:none;pointer-events:auto}
+.carro-barra{display:none}
+@media (max-width:640px){
+  .carro-fab{display:none}
+  .carro-barra{display:flex;position:fixed;left:max(14px, env(safe-area-inset-left));right:calc(max(20px, env(safe-area-inset-right)) + 72px);
+    bottom:calc(max(20px, env(safe-area-inset-bottom)) + 4px);z-index:59;height:52px;border-radius:999px;border:0;background:var(--negro);color:#fff;
+    align-items:center;justify-content:center;gap:10px;font:600 16px/1 Outfit,sans-serif;cursor:pointer;box-shadow:0 14px 30px -12px rgba(34,29,32,.7);
+    opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+  .hay .carro-barra{opacity:1;transform:none;pointer-events:auto}
+  .hay footer{padding-bottom:150px}
+}
+.velo{position:fixed;inset:0;z-index:70;background:rgba(34,29,32,.42);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.panel{position:fixed;top:0;right:0;bottom:0;z-index:71;width:min(440px, 100%);background:var(--glaseado);display:flex;flex-direction:column;
+  transform:translateX(100%);visibility:hidden;transition:transform .32s var(--ease-drawer), visibility 0s linear .32s;box-shadow:-20px 0 60px -30px rgba(34,29,32,.5)}
+.abierto .velo{opacity:1;pointer-events:auto}
+.abierto .panel{transform:none;visibility:visible;transition:transform .32s var(--ease-drawer), visibility 0s}
+.panel-cab{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid #f0dce4}
+.panel-cab h2{font-size:26px}
+.cerrar{width:42px;height:42px;border-radius:50%;border:0;background:#fff;font:400 26px/1 Outfit,sans-serif;color:var(--negro);cursor:pointer;box-shadow:0 2px 8px -3px rgba(34,29,32,.3)}
+.panel-cuerpo{overflow:auto;padding:18px 22px;flex:1;display:grid;gap:18px;align-content:start}
+.items{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.items li{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-radius:14px;padding:10px 10px 10px 16px}
+.items li b{font-weight:600;color:var(--negro)}
+.items li small{display:block;color:var(--gris);font-size:13.5px}
+.vacio{color:var(--gris);background:#fff;border-radius:14px;padding:18px}
+.panel-pie{padding:16px 22px calc(16px + env(safe-area-inset-bottom));border-top:1px solid #f0dce4}
+.panel-pie .btn{width:100%;justify-content:center}
+.panel-pie p{margin:10px 0 0;font-size:13.5px;color:var(--gris);text-align:center}
+@media (max-width:640px){
+  .panel{top:auto;left:0;width:100%;max-height:88dvh;border-radius:24px 24px 0 0;transform:translateY(100%)}
+}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .js .empanado{animation:none;display:none}
+  .js .sello{animation:none}
+  .wa{animation:aparecer .3s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .panel,.carro-fab,.carro-barra,.sheet-menu{transition:opacity .2s ease}
+  .panel{transform:none;opacity:0;pointer-events:none}
+  .abierto .panel{opacity:1;pointer-events:auto}
+  .pin,.etq{transition:none}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol>
+<symbol id="caja" viewBox="0 0 24 24"><path d="M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9Zm0 0 2-5h14l2 5M9 13h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Dolceya Eventos, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>Dolceya Eventos<small>Pastelería artesanal en Mar del Plata</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#eventos">Tortas para eventos</a><a href="#vitrina">La vitrina</a><a href="#encargo">Encargá tu torta</a><a href="#local">El local</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/5492234395277" target="_blank" rel="noopener">
+      <svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a href="#eventos">Tortas para eventos</a><a href="#vitrina">La vitrina</a><a href="#encargo">Encargá tu torta</a><a href="#local">El local</a>
+  <a href="https://wa.me/5492234395277" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <h1><span class="l">La torta de tu evento,</span> <span class="l">hecha con amor.</span></h1>
+      <p class="lead">Somos Yami y Gabi, de Dolceya Pastelería. Nuestra especialidad son las tortas para eventos.</p>
+      <div class="ctas">
+        <a class="btn btn-rosa" href="#encargo">Encargá tu torta</a>
+        <a class="btn btn-linea" href="#vitrina">Ver la vitrina</a>
+      </div>
+      <p class="datos"><span><b>Irala 7218</b>, Mar del Plata</span><span>Lunes cerrado</span></p>
+    </div>
+    <div class="hero-foto">
+      <div class="vidrio">
+        <img src="img/vitrina.jpg" alt="La vitrina de Dolceya con tortas, tartas de frutilla, sándwiches de miga y cajas de regalo, frente al cartel del local" width="901" height="1600" fetchpriority="high">
+        <div class="reflejo" aria-hidden="true"></div>
+        <div class="empanado" id="empanado" aria-hidden="true"></div>
+      </div>
+      <img class="sello" src="img/perfil.jpg" alt="" width="96" height="96">
+    </div>
+  </div>
+</section>
+
+<section class="eventos" id="eventos">
+  <div class="wrap">
+    <div class="foto">
+      <div class="foto-torta"><img src="img/mini-tortas.jpg" alt="Una torta de lima, una mini torta de Oreo y otra de maracuyá, de Dolceya" width="600" height="600" loading="lazy"></div>
+      <p>Lima, Oreo y maracuyá, de su catálogo de WhatsApp.</p>
+    </div>
+    <div>
+      <h2>Tortas para eventos</h2>
+      <p class="intro">Es lo que más nos gusta hacer. Contanos qué festejás, para cuántos y la fecha, y la armamos a tu gusto.</p>
+      <ul class="ocasiones">
+        <li><h3>Cumpleaños</h3><p>Tortas decoradas con la temática que elijas, del nombre al número.</p></li>
+        <li><h3>Para compartir</h3><p>Sweet cups en presentación familiar, mini tortas y tartas. Preguntá cuáles hay.</p></li>
+        <li><h3>Cajas para regalar</h3><p>Para fechas especiales, como las que armamos para el Día de la Madre.</p></li>
+        <li><h3>Perniles</h3><p>Para la parte salada del evento, en <a href="https://instagram.com/pernilesdolceya" target="_blank" rel="noopener">@pernilesdolceya</a>.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="vitrina" id="vitrina">
+  <div class="wrap">
+    <h2>La vitrina</h2>
+    <p class="intro">Lo que vas a encontrar en el local. Agregá lo que quieras y mandanos el pedido por WhatsApp. Los precios te los pasamos por ahí.</p>
+    <div class="vitrina-grid">
+      <div class="vitrina-foto">
+        <div class="mapa" id="mapa">
+          <img src="img/vitrina.jpg" alt="Vitrina refrigerada de Dolceya" width="901" height="1600" loading="lazy">
+          <button class="pin" data-p="cajas" style="left:65%;top:28%" aria-label="Ver cajas para regalar"></button>
+          <button class="pin" data-p="torta-vitrina" style="left:74%;top:57%" aria-label="Ver tortas de la vitrina"></button>
+          <button class="pin" data-p="tartas" style="left:40%;top:59%" aria-label="Ver tartas de frutilla"></button>
+          <button class="pin" data-p="miga" style="left:33%;top:71%" aria-label="Ver sándwiches de miga"></button>
+        </div>
+        <p class="mapa-nota">Tocá un punto para ver qué es.</p>
+      </div>
+      <div class="etiquetas" id="etiquetas">
+        <article class="etq destacada" data-p="torta-evento">
+          <h3>Torta para tu evento</h3>
+          <p>Decorada a pedido para cumpleaños y eventos. Elegís la fecha, la cantidad de personas y la idea.</p>
+          <div class="pie"><span class="precio">Presupuesto a medida</span><a class="btn btn-negro" href="#encargo">Encargar</a></div>
+        </article>
+        <article class="etq" data-p="torta-vitrina" data-nombre="Torta de la vitrina">
+          <h3>Tortas de la vitrina</h3>
+          <p>Con chocolate, frutos rojos o merengue, como las que ves en el mostrador.</p>
+          <div class="pie"><span class="precio">Consultar</span><span class="accion"></span></div>
+        </article>
+        <article class="etq" data-p="tartas" data-nombre="Tarta de frutilla">
+          <h3>Tartas de frutilla</h3>
+          <p>Las de la vitrina, con frutillas y su brillo.</p>
+          <div class="pie"><span class="precio">Consultar</span><span class="accion"></span></div>
+        </article>
+        <article class="etq" data-p="mini" data-nombre="Mini torta">
+          <h3>Mini tortas</h3>
+          <p>Como las de lima, de Oreo y de maracuyá. Preguntá cuáles hay.</p>
+          <div class="pie"><span class="precio">Consultar</span><span class="accion"></span></div>
+        </article>
+        <article class="etq" data-p="sweet" data-nombre="Dolce Sweet Cup">
+          <h3>Dolce Sweet Cup</h3>
+          <p>Bizcochuelo en tres leches, relleno y crema. De chocotorta o de durazno, también en presentación familiar.</p>
+          <div class="pie"><span class="precio">Consultar</span><span class="accion"></span></div>
+        </article>
+        <article class="etq" data-p="miga" data-nombre="Sándwiches de miga">
+          <h3>Sándwiches de miga</h3>
+          <p>Para la merienda, la reunión o el evento.</p>
+          <div class="pie"><span class="precio">Consultar</span><span class="accion"></span></div>
+        </article>
+        <article class="etq" data-p="cajas" data-nombre="Caja para regalar">
+          <h3>Cajas para regalar</h3>
+          <p>Cajas y tazas para fechas especiales, como las del Día de la Madre.</p>
+          <div class="pie"><span class="precio">Consultar</span><span class="accion"></span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="encargo" id="encargo">
+  <div class="wrap">
+    <div>
+      <h2>Encargá tu torta</h2>
+      <p class="intro">Completá lo que sepas y te llega armado a nuestro WhatsApp. Te respondemos con el presupuesto.</p>
+      <form id="encargoForm" novalidate>
+        <fieldset class="campo">
+          <legend>¿Qué festejás?</legend>
+          <div class="chips">
+            <input type="radio" name="evento" id="ev1" value="un cumpleaños" checked><label for="ev1">Cumpleaños</label>
+            <input type="radio" name="evento" id="ev2" value="un cumpleaños de 15"><label for="ev2">15 años</label>
+            <input type="radio" name="evento" id="ev3" value="un casamiento"><label for="ev3">Casamiento</label>
+            <input type="radio" name="evento" id="ev4" value="un bautismo o comunión"><label for="ev4">Bautismo o comunión</label>
+            <input type="radio" name="evento" id="ev5" value="otro evento"><label for="ev5">Otro</label>
+          </div>
+        </fieldset>
+        <div class="dos">
+          <div class="campo"><label for="fecha">¿Para cuándo?</label><input type="date" id="fecha"></div>
+          <div class="campo"><label for="personas">¿Para cuántas personas?</label><input type="number" id="personas" min="1" inputmode="numeric" placeholder="Ej.: 30"></div>
+        </div>
+        <div class="campo">
+          <label for="idea">¿Qué te imaginás?</label>
+          <textarea id="idea" placeholder="Sabor, relleno, colores, temática, el nombre o el número que va arriba…"></textarea>
+          <small>Si tenés una foto de referencia, la mandás después por el chat.</small>
+        </div>
+        <fieldset class="campo">
+          <legend>¿Cómo la retirás?</legend>
+          <div class="chips">
+            <input type="radio" name="entrega" id="en1" value="retiro" checked><label for="en1">La retiro en Irala 7218</label>
+            <input type="radio" name="entrega" id="en2" value="envio"><label for="en2">Quiero consultar envío</label>
+          </div>
+        </fieldset>
+        <div class="dos">
+          <div class="campo" id="cNombre"><label for="nombre">Tu nombre</label><input type="text" id="nombre" autocomplete="name"><span class="error" id="eNombre"></span></div>
+          <div class="campo" id="cTel"><label for="tel">Tu teléfono</label><input type="tel" id="tel" autocomplete="tel" inputmode="tel"><span class="error" id="eTel"></span></div>
+        </div>
+      </form>
+    </div>
+    <aside class="comanda" aria-live="polite">
+      <h3>Así nos llega tu mensaje</h3>
+      <pre id="previa"></pre>
+      <button class="btn btn-wa" type="submit" form="encargoForm" style="width:100%;justify-content:center">
+        <svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Pedir presupuesto por WhatsApp
+      </button>
+    </aside>
+  </div>
+</section>
+
+<section class="local" id="local">
+  <div class="wrap">
+    <div class="marco">
+      <div class="fotos">
+        <img src="img/local.jpg" alt="El local de Dolceya Eventos en la esquina, con la pared rosa y el cartel redondo" width="627" height="640" loading="lazy">
+        <img src="img/cocina.jpg" alt="La cocina de Dolceya, con un mate en primer plano" width="361" height="640" loading="lazy">
+      </div>
+      <div class="texto">
+        <h2>Pasá por el local</h2>
+        <p>Estamos en Irala 7218, Mar del Plata. Los lunes está cerrado.</p>
+        <dl class="horarios">
+          <dt>Martes a viernes</dt><dd>9 a 13 y 16 a 19 hs</dd>
+          <dt>Sábados</dt><dd>9 a 13:30 y 16:30 a 19:30 hs</dd>
+          <dt>Domingos</dt><dd>9 a 13:30 hs</dd>
+        </dl>
+        <p>Horarios de sus historias de Instagram. Confirmalos por WhatsApp.</p>
+        <div class="contacto">
+          <a href="https://wa.me/5492234395277" target="_blank" rel="noopener">WhatsApp 223 439-5277</a>
+          <a href="tel:+542236003371">Teléfono 223 600-3371</a>
+          <a href="https://instagram.com/eventos.dolceya" target="_blank" rel="noopener">@eventos.dolceya en Instagram</a>
+        </div>
+        <a class="btn btn-negro" href="https://www.google.com/maps/search/?api=1&query=DOLCEYA%20EVENTOS%20Irala%207218%20Mar%20del%20Plata" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dolceya Eventos. Pastelería artesanal, hecho con amor.</span>
+    <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5492234395277" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 223 439-5277">
+  <svg aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>223 439-5277</small></span>
+</a>
+
+<button class="carro-fab" id="carroFab" aria-label="Ver tu pedido"><svg aria-hidden="true"><use href="#caja"/></svg><span class="n" id="carroN">0</span></button>
+<button class="carro-barra" id="carroBarra"><svg width="22" height="22" aria-hidden="true"><use href="#caja"/></svg><span id="carroTxt">Ver pedido</span></button>
+
+<div class="velo" id="velo"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTit" aria-hidden="true">
+  <div class="panel-cab"><h2 id="panelTit">Tu pedido</h2><button class="cerrar" id="cerrar" aria-label="Cerrar el pedido">×</button></div>
+  <div class="panel-cuerpo">
+    <ul class="items" id="items"></ul>
+    <form id="pedidoForm" novalidate style="gap:16px">
+      <div class="campo" id="pNombreC"><label for="pNombre">Tu nombre</label><input type="text" id="pNombre" autocomplete="name"><span class="error" id="pNombreE"></span></div>
+      <div class="campo" id="pTelC"><label for="pTel">Tu teléfono</label><input type="tel" id="pTel" autocomplete="tel" inputmode="tel"><span class="error" id="pTelE"></span></div>
+      <fieldset class="campo">
+        <legend>Entrega</legend>
+        <div class="chips">
+          <input type="radio" name="pEntrega" id="pe1" value="retiro" checked><label for="pe1">Retiro en el local</label>
+          <input type="radio" name="pEntrega" id="pe2" value="envio"><label for="pe2">Consultar envío</label>
+        </div>
+      </fieldset>
+      <div class="campo"><label for="pDia">¿Para qué día?</label><input type="date" id="pDia"></div>
+      <div class="campo"><label for="pNota">Aclaraciones</label><textarea id="pNota" placeholder="Sabores, cantidades, horario de retiro…"></textarea></div>
+    </form>
+  </div>
+  <div class="panel-pie">
+    <button class="btn btn-wa" type="submit" form="pedidoForm"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Enviar pedido por WhatsApp</button>
+    <p>Te respondemos con los precios y la disponibilidad.</p>
+  </div>
+</aside>
+
+<script>
+document.documentElement.classList.add('js');
+var WA = '5492234395277';
+(function () {
+  // Encabezado translúcido al bajar
+  var top = document.getElementById('top');
+  var s = document.createElement('div');
+  s.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(s);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(s);
+  else top.classList.add('scrolled');
+
+  // El empañado se saca del medio al terminar
+  var emp = document.getElementById('empanado');
+  emp.addEventListener('animationend', function () { emp.classList.add('listo'); });
+
+  // Menú del celular
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Puntos de la vitrina: marcan la etiqueta y al revés
+  var pins = document.querySelectorAll('.pin'), etqs = document.querySelectorAll('.etq');
+  function marcar(p) {
+    pins.forEach(function (x) { x.classList.toggle('on', x.dataset.p === p); });
+    etqs.forEach(function (x) { x.classList.toggle('on', x.dataset.p === p); });
+  }
+  pins.forEach(function (pin) {
+    pin.addEventListener('click', function () {
+      marcar(pin.dataset.p);
+      var e = document.querySelector('.etq[data-p="' + pin.dataset.p + '"]');
+      if (e && window.matchMedia('(max-width:960px)').matches) e.scrollIntoView({ block: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    });
+  });
+  etqs.forEach(function (e) {
+    if (!document.querySelector('.pin[data-p="' + e.dataset.p + '"]')) return;
+    e.addEventListener('mouseenter', function () { marcar(e.dataset.p); });
+    e.addEventListener('focusin', function () { marcar(e.dataset.p); });
+  });
+})();
+
+function telOk(v) { return v.replace(/\D/g, '').length >= 8; }
+function validar(n, t, ids) {
+  var ok = true;
+  [[n, ids[0], ids[1], 'Poné tu nombre así sabemos quién encarga.', function (v) { return v.trim().length > 1; }],
+   [t, ids[2], ids[3], 'Poné un teléfono con característica, por ejemplo 223 555-1234.', telOk]].forEach(function (c) {
+    var bien = c[4](c[0].value);
+    document.getElementById(c[1]).classList.toggle('mal', !bien);
+    document.getElementById(c[2]).textContent = bien ? '' : c[3];
+    if (!bien && ok) { c[0].focus(); ok = false; }
+  });
+  return ok;
+}
+function fechaLinda(v) {
+  if (!v) return '';
+  var p = v.split('-'); return p[2] + '/' + p[1] + '/' + p[0];
+}
+function abrirWA(texto) { window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(texto), '_blank', 'noopener'); }
+
+// Encargá tu torta: arma el mensaje en vivo
+(function () {
+  var f = document.getElementById('encargoForm'), $ = function (id) { return document.getElementById(id); };
+  function val(n) { var r = f.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
+  function texto() {
+    var l = ['Hola Dolceya! Quiero pedir presupuesto para una torta.'];
+    l.push('Es para ' + val('evento') + '.');
+    if ($('fecha').value) l.push('Fecha: ' + fechaLinda($('fecha').value) + '.');
+    if (+$('personas').value > 0) l.push('Somos ' + Math.round(+$('personas').value) + ' personas.');
+    if ($('idea').value.trim()) l.push('Lo que me imagino: ' + $('idea').value.trim());
+    l.push(val('entrega') === 'envio' ? 'Quiero consultar si hacen envío.' : 'La retiro en el local.');
+    var n = $('nombre').value.trim(), t = $('tel').value.trim();
+    if (n || t) l.push('Soy ' + (n || '…') + (t ? ', mi teléfono es ' + t : '') + '.');
+    return l.join('\n');
+  }
+  function sync() { $('previa').textContent = texto(); }
+  f.addEventListener('input', sync); f.addEventListener('change', sync); sync();
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validar($('nombre'), $('tel'), ['cNombre', 'eNombre', 'cTel', 'eTel'])) return;
+    abrirWA(texto());
+  });
+})();
+
+// Carrito de la vitrina, guardado en el navegador
+(function () {
+  var CLAVE = 'dolceya-pedido', st = {};
+  try { st = JSON.parse(window.localStorage.getItem(CLAVE) || '{}') || {}; } catch (e) { st = {}; }
+  function guardar() { try { window.localStorage.setItem(CLAVE, JSON.stringify(st)); } catch (e) { /* sin almacenamiento */ } }
+  var $ = function (id) { return document.getElementById(id); };
+  var etqs = document.querySelectorAll('.etq[data-nombre]');
+  var nombres = {}; etqs.forEach(function (e) { nombres[e.dataset.p] = e.dataset.nombre; });
+  Object.keys(st).forEach(function (k) { if (!nombres[k] || !(st[k] > 0)) delete st[k]; });
+
+  function total() { return Object.keys(st).reduce(function (a, k) { return a + st[k]; }, 0); }
+  function cambiar(p, d) { st[p] = Math.max(0, (st[p] || 0) + d); if (!st[p]) delete st[p]; guardar(); pintar(); }
+  function pintarAccion(e) {
+    var p = e.dataset.p, n = st[p] || 0, a = e.querySelector('.accion'), nom = e.dataset.nombre;
+    if (!n) a.innerHTML = '<button class="btn btn-rosa" data-mas="' + p + '">Agregar</button>';
+    else a.innerHTML = '<span class="cant"><button data-menos="' + p + '" aria-label="Sacar una ' + nom + '">−</button><output aria-live="polite">' + n + '</output><button data-mas="' + p + '" aria-label="Sumar una ' + nom + '">+</button></span>';
+  }
+  function pintar() {
+    var t = total();
+    etqs.forEach(pintarAccion);
+    document.body.classList.toggle('hay', t > 0);
+    $('carroN').textContent = t;
+    $('carroTxt').textContent = 'Ver pedido (' + t + ')';
+    $('carroFab').setAttribute('aria-label', 'Ver tu pedido, ' + t + (t === 1 ? ' producto' : ' productos'));
+    var ks = Object.keys(st);
+    $('items').innerHTML = ks.length ? ks.map(function (k) {
+      return '<li><span><b>' + nombres[k] + '</b><small>Precio a consultar</small></span><span class="cant"><button data-menos="' + k + '" aria-label="Sacar una">−</button><output>' + st[k] + '</output><button data-mas="' + k + '" aria-label="Sumar una">+</button></span></li>';
+    }).join('') : '<li class="vacio">Tu pedido está vacío. Agregá algo de la vitrina y volvé acá.</li>';
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-mas],[data-menos]'); if (!b) return;
+    var enEtq = b.closest('.etq'), p = b.dataset.mas || b.dataset.menos;
+    cambiar(p, b.dataset.mas ? 1 : -1);
+    if (enEtq) { var nb = enEtq.querySelector(b.dataset.mas ? '[data-mas]' : '[data-menos]') || enEtq.querySelector('[data-mas]'); if (nb) nb.focus(); }
+  });
+
+  var ultimo = null;
+  function abrir() { ultimo = document.activeElement; document.body.classList.add('abierto'); $('panel').setAttribute('aria-hidden', 'false'); setTimeout(function () { $('cerrar').focus(); }, 60); }
+  function cerrar() { document.body.classList.remove('abierto'); $('panel').setAttribute('aria-hidden', 'true'); if (ultimo) ultimo.focus(); }
+  $('carroFab').addEventListener('click', abrir); $('carroBarra').addEventListener('click', abrir);
+  $('cerrar').addEventListener('click', cerrar); $('velo').addEventListener('click', cerrar);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.body.classList.contains('abierto')) cerrar(); });
+
+  $('pedidoForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!total()) { $('items').querySelector('li').textContent = 'Agregá al menos un producto de la vitrina para mandar el pedido.'; return; }
+    if (!validar($('pNombre'), $('pTel'), ['pNombreC', 'pNombreE', 'pTelC', 'pTelE'])) return;
+    var ent = document.querySelector('input[name="pEntrega"]:checked').value;
+    var l = ['Hola Dolceya! Quiero hacer este pedido:'];
+    Object.keys(st).forEach(function (k) { l.push('- ' + st[k] + ' x ' + nombres[k]); });
+    if ($('pDia').value) l.push('Para el ' + fechaLinda($('pDia').value) + '.');
+    l.push(ent === 'envio' ? 'Quiero consultar si hacen envío.' : 'Lo retiro en el local.');
+    if ($('pNota').value.trim()) l.push('Aclaraciones: ' + $('pNota').value.trim());
+    l.push('Soy ' + $('pNombre').value.trim() + ', mi teléfono es ' + $('pTel').value.trim() + '.');
+    l.push('¿Me pasan precios y disponibilidad?');
+    abrirWA(l.join('\n'));
+  });
+  pintar();
+})();
+</script>
+</body>
+</html>
