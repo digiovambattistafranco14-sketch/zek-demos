@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>El Sabor de lo Nuestro | Pastelería casera en Santiago del Estero</title>
+<meta name="description" content="Tortas, tartas, budines y dulzuras caseras hechas con amor en Santiago del Estero. Armá tu pedido y mandalo por WhatsApp.">
+<link rel="icon" href="img/logo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="El Sabor de lo Nuestro | Pastelería casera">
+<meta property="og:description" content="Tortas, tartas y dulzuras caseras en Santiago del Estero. Elegí lo que querés y mandá el pedido por WhatsApp.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/el-sabor-de-lo-nuestro/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/el-sabor-de-lo-nuestro/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#4B2716">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.jpg">
+<style>
+/* Concepto: la torta del logo, de verdad. El logo de El Sabor de lo Nuestro es una etiqueta con borde ondulado
+   (como una blonda de cartón) con una torta de frutillas y copitos de dulce de leche. La portada muestra esa misma torta,
+   recortada con el borde ondulado del logo, y la etiqueta se pega encima como el sticker que va en cada caja.
+   La tienda arma "tu caja" y la manda por WhatsApp. */
+:root{
+  --crema:#FBF1DC;      /* fondo: la crema del logo, más clara */
+  --crema-2:#F3E0B8;    /* la crema del logo */
+  --choco:#4B2716;      /* el borde chocolate del logo */
+  --choco-2:#6E3B22;
+  --muted:#7A5240;
+  --dulce:#C47A2C;      /* copitos de dulce de leche */
+  --frutilla:#D62839;   /* la frutilla: único acento */
+  --frutilla-deep:#B01D2D;
+  --rosa:#F7DADD;       /* la cinta "hecha con amor" */
+  --blanco:#FFFCF6;
+  --display:'Fredoka', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --header:72px;
+  --r:18px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--crema);color:var(--choco);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:700;letter-spacing:-0.01em;line-height:1.05;text-wrap:balance}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--frutilla);color:#fff}
+:focus-visible{outline:3px solid var(--frutilla);outline-offset:3px;border-radius:8px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+
+/* ---------- botones (todos pastilla) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:0;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--frutilla);color:#fff;box-shadow:0 12px 26px -14px rgba(176,29,45,.9)}
+.btn-wa{background:#1FAF55;color:#fff;box-shadow:0 12px 26px -14px rgba(7,94,84,.8)}
+.btn-line{color:var(--choco);box-shadow:inset 0 0 0 2px rgba(75,39,22,.25)}
+@media (hover:hover) and (pointer:fine){
+  .btn-main:hover{background:var(--frutilla-deep)}
+  .btn-wa:hover{background:#178F45}
+  .btn-line:hover{box-shadow:inset 0 0 0 2px var(--choco)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(251,241,220,.84);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:0 1px 0 rgba(75,39,22,.08), 0 10px 30px -18px rgba(75,39,22,.35)}
+.top .wrap{display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--blanco), 0 4px 12px -4px rgba(75,39,22,.45)}
+.brand span{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.1;white-space:nowrap}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12.5px;color:var(--muted)}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:600;font-size:15px;padding:8px 13px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(75,39,22,.07)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.cart-top{position:relative;flex:none;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px;border:0;border-radius:999px;background:rgba(75,39,22,.07);cursor:pointer;font-weight:600;font-size:15px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.cart-top:hover{background:rgba(75,39,22,.13)}}
+.cuenta{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--frutilla);color:#fff;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.menu-btn{display:none;width:44px;height:44px;border:0;border-radius:12px;background:rgba(75,39,22,.07);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--choco);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:var(--blanco);border-radius:20px;padding:10px;box-shadow:0 24px 60px -20px rgba(75,39,22,.5);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;visibility:hidden;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.sheet-menu a{display:block;padding:14px 16px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:19px;text-decoration:none}
+.sheet-menu a:active{background:var(--crema)}
+.sheet-menu .btn{display:flex;margin-top:6px;font-family:var(--body);font-size:16px}
+@media (max-width:940px){.links,.top .btn{display:none}.menu-btn{display:grid}.cart-top{margin-left:auto}}
+@media (max-width:420px){.brand small{display:none}.brand span{font-size:15px}.top .wrap{gap:12px}.cart-top .ct-label{display:none}.cart-top{padding:0 10px}}
+
+/* ---------- portada ---------- */
+.hero{padding:calc(var(--header) + 40px) 0 64px;overflow:hidden;min-height:min(100dvh, 860px);display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.4rem, 5vw, 3.9rem);line-height:1;letter-spacing:-0.02em}
+.hero h1 span{display:block}
+.hero .lead{margin-top:22px;font-size:clamp(17px, 1.6vw, 19.5px);color:var(--muted);max-width:40ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .where{display:flex;align-items:center;gap:8px;margin-top:26px;font-size:15px;font-weight:500;color:var(--muted)}
+.hero .where svg{color:var(--frutilla)}
+/* la torta, recortada con el borde ondulado del logo */
+.torta{position:relative;justify-self:center;width:min(540px, 100%);aspect-ratio:1}
+.torta .borde{position:absolute;inset:0;background:var(--choco);clip-path:url(#ondas)}
+.torta .borde-2{position:absolute;inset:3.2%;background:var(--crema-2);clip-path:url(#ondas)}
+.torta .foto{position:absolute;inset:6.4%;clip-path:url(#ondas);overflow:hidden;background:var(--crema-2)}
+.torta .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.sticker{position:absolute;left:-4%;bottom:2%;width:31%;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff;transform:rotate(-9deg);
+  box-shadow:0 2px 3px rgba(75,39,22,.2), 0 18px 34px -14px rgba(75,39,22,.65)}
+.sticker img{width:112%;height:112%;max-width:none;margin:-6%;object-fit:cover}
+/* el momento de la página: la torta aparece girando dentro de su etiqueta, y el sticker se pega */
+@media (prefers-reduced-motion: no-preference){
+  .hero h1 span,.hero .lead,.hero .ctas,.hero .where{animation:subir .7s var(--ease-out) both}
+  .hero h1 span:nth-child(2){animation-delay:.06s}
+  .hero .lead{animation-delay:.14s}.hero .ctas{animation-delay:.2s}.hero .where{animation-delay:.26s}
+  .torta .borde,.torta .borde-2,.torta .foto{animation:etiqueta 1.1s var(--ease-out) .1s both}
+  .torta .borde-2{animation-delay:.16s}
+  .torta .foto{animation-delay:.22s}
+  .torta .foto img{animation:acercar 1.6s var(--ease-out) .22s both}
+  .sticker{animation:pegar .55s cubic-bezier(0.34, 1.4, 0.64, 1) 1.05s both}
+}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes etiqueta{from{opacity:0;transform:scale(.88) rotate(-14deg)}to{opacity:1;transform:none}}
+@keyframes acercar{from{transform:scale(1.16) rotate(8deg)}to{transform:none}}
+@keyframes pegar{from{opacity:0;transform:scale(1.5) rotate(-26deg)}to{opacity:1;transform:rotate(-9deg)}}
+
+/* ---------- títulos de sección ---------- */
+.sec{padding:88px 0}
+.sec-head{max-width:640px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(2rem, 4.2vw, 3.1rem)}
+.sec-head p{margin-top:14px;color:var(--muted);font-size:18px;max-width:52ch}
+/* la fila de copitos de dulce de leche, como el borde de la torta */
+.copitos{height:22px;background:radial-gradient(circle at 50% 100%, var(--dulce) 9px, transparent 9.5px) 0 0/26px 22px repeat-x;opacity:.9}
+
+/* ---------- la tienda ---------- */
+.filtros{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 14px;margin:0 -2px 14px;scroll-snap-type:x proximity}
+.filtros::-webkit-scrollbar{display:none}
+.filtros button{flex:none;scroll-snap-align:start;height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--blanco);box-shadow:inset 0 0 0 1.5px rgba(75,39,22,.16);font-weight:600;font-size:15px;cursor:pointer;
+  transition:background-color .2s ease, color .2s ease, box-shadow .2s ease}
+.filtros button[aria-pressed="true"]{background:var(--choco);color:var(--crema);box-shadow:none}
+@media (hover:hover) and (pointer:fine){.filtros button:not([aria-pressed="true"]):hover{box-shadow:inset 0 0 0 1.5px var(--choco)}}
+.grupo{margin-top:34px}
+.grupo:first-of-type{margin-top:0}
+.grupo > h3{font-size:clamp(1.5rem, 2.6vw, 2rem);margin-bottom:6px}
+.grupo > p{color:var(--muted);margin-bottom:18px;max-width:60ch}
+.grilla{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:18px}
+.prod{display:flex;flex-direction:column;background:var(--blanco);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 2px rgba(75,39,22,.08), 0 18px 36px -26px rgba(75,39,22,.45);transition:box-shadow .2s ease}
+.prod.en-caja{box-shadow:0 0 0 2.5px var(--frutilla), 0 18px 36px -26px rgba(176,29,45,.5)}
+.prod .ph{aspect-ratio:1;background:var(--crema-2);overflow:hidden}
+.prod .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.prod:hover .ph img{transform:scale(1.04)}}
+.prod .tx{display:flex;flex-direction:column;gap:6px;padding:16px 16px 18px;flex:1}
+.prod h4{margin:0;font-family:var(--display);font-weight:600;font-size:20px;line-height:1.15}
+.prod .desc{font-size:15px;color:var(--muted);line-height:1.45}
+.prod .pie{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px}
+.prod.ancha{grid-column:1/-1;flex-direction:row}
+.prod.ancha .ph{flex:0 0 42%;aspect-ratio:auto;height:340px}
+.prod.ancha .tx{justify-content:center;padding:30px 34px;gap:10px}
+.prod.ancha h4{font-size:clamp(24px, 2.6vw, 32px)}
+.prod.ancha .desc{font-size:17px;max-width:44ch}
+.prod.ancha .pie{margin-top:12px;justify-content:flex-start;gap:20px}
+.precio{font-weight:600;font-size:14.5px;color:var(--muted)}
+.gusto{display:grid;gap:4px;margin-top:4px;font-size:13.5px;font-weight:600}
+.gusto select{height:42px;border-radius:12px;border:1.5px solid rgba(75,39,22,.22);background:var(--crema);padding:0 10px;font-size:15px;font-weight:500;color:var(--choco)}
+.add-btn{display:inline-flex;align-items:center;gap:6px;height:42px;padding:0 16px;border:0;border-radius:999px;background:var(--frutilla);color:#fff;font-weight:600;font-size:15px;cursor:pointer;transition:transform .16s var(--ease-out), background-color .2s ease}
+.add-btn .ico{width:18px;height:18px}
+.add-btn:active{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.add-btn:hover{background:var(--frutilla-deep)}}
+.stepper{display:inline-flex;align-items:center;height:42px;border-radius:999px;background:var(--choco);color:var(--crema)}
+.stepper[hidden]{display:none}
+.stepper button{width:42px;height:42px;border:0;border-radius:50%;background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:transform .14s var(--ease-out), background-color .2s ease}
+.stepper button:active{transform:scale(.9)}
+@media (hover:hover) and (pointer:fine){.stepper button:hover{background:rgba(255,255,255,.12)}}
+.stepper .ico{width:18px;height:18px}
+.stepper output{min-width:26px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---------- los fines de semana ---------- */
+.finde{position:relative;background:var(--rosa);margin-top:22px}
+.finde::before{content:"";position:absolute;left:0;right:0;top:-21px;height:22px;background:radial-gradient(circle at 50% 100%, var(--rosa) 13px, transparent 13.5px) 0 0/28px 22px repeat-x}
+.finde .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.finde h2{font-size:clamp(2rem, 4.2vw, 3.1rem)}
+.finde .cita{margin-top:18px;font-size:clamp(19px, 2vw, 23px);line-height:1.45;max-width:34ch}
+.finde ul{list-style:none;margin:24px 0 30px;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.finde li{padding:9px 16px;border-radius:999px;background:var(--blanco);font-weight:600;font-size:15.5px}
+.finde .fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.finde .fotos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.finde .fotos img:last-child{margin-top:44px}
+
+/* ---------- galería ---------- */
+.horno{columns:4 230px;column-gap:14px}
+.horno figure{margin:0 0 14px;break-inside:avoid;border-radius:14px;overflow:hidden;background:var(--crema-2)}
+.horno img{width:100%;height:auto}
+.js .horno figure{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease-out), transform .6s var(--ease-out)}
+.js .horno figure.in{opacity:1;transform:none}
+
+/* ---------- cómo pedir ---------- */
+.pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3, 1fr);gap:0;counter-reset:p;background:var(--blanco);border-radius:24px;overflow:hidden}
+.pasos li{padding:30px 28px 32px;counter-increment:p;position:relative}
+.pasos li + li{box-shadow:inset 1.5px 0 0 rgba(75,39,22,.1)}
+.pasos li::before{content:counter(p);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--crema-2);font-family:var(--display);font-weight:700;font-size:21px;margin-bottom:16px}
+.pasos h3{font-size:22px}
+.pasos p{margin-top:8px;color:var(--muted);font-size:16px}
+
+/* ---------- de ella ---------- */
+.dicho{padding:40px 0 96px}
+.dicho .wrap{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;max-width:960px}
+.dicho img{width:170px;height:170px;border-radius:50%;object-fit:cover;box-shadow:0 18px 36px -20px rgba(75,39,22,.6)}
+.dicho blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(1.7rem, 3.6vw, 2.6rem);line-height:1.15}
+.dicho p{margin-top:14px;color:var(--muted);max-width:56ch}
+
+/* ---------- contacto ---------- */
+.contacto{background:var(--choco);color:var(--crema);padding:80px 0;position:relative}
+.contacto::before{content:"";position:absolute;left:0;right:0;top:-21px;height:22px;background:radial-gradient(circle at 50% 100%, var(--choco) 13px, transparent 13.5px) 0 0/28px 22px repeat-x}
+.contacto .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.contacto h2{font-size:clamp(2rem, 4.2vw, 3.1rem)}
+.contacto .lead{margin-top:14px;font-size:18px;color:#E9D3B4;max-width:44ch}
+.contacto .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.contacto .btn-line{color:var(--crema);box-shadow:inset 0 0 0 2px rgba(251,241,220,.35)}
+@media (hover:hover) and (pointer:fine){.contacto .btn-line:hover{box-shadow:inset 0 0 0 2px var(--crema)}}
+.datos{margin:0;display:grid;gap:18px;background:rgba(251,241,220,.07);border-radius:22px;padding:26px 26px 28px}
+.datos div{display:grid;grid-template-columns:28px 1fr;gap:4px 12px;align-items:start}
+.datos svg{grid-row:span 2;margin-top:3px;color:var(--crema-2)}
+.datos dt{font-size:14px;color:#D9BF9C;font-weight:500}
+.datos dd{margin:0;font-weight:600;font-size:17px}
+.datos a{text-decoration-color:rgba(251,241,220,.4);text-underline-offset:3px}
+
+footer{background:var(--choco);color:#D9BF9C;padding:0 0 130px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-top:26px;box-shadow:inset 0 1px 0 rgba(251,241,220,.12)}
+footer a{color:var(--crema);font-weight:600}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, background-color .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.6s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 2.6s infinite}
+.wa::after{animation-delay:3s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--choco);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(75,39,22,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- botón de la caja (arriba del de WhatsApp; en el celular, barra) ---------- */
+.cart-float{position:fixed;z-index:61;right:max(24px, env(safe-area-inset-right));bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);
+  width:56px;height:56px;border:0;border-radius:50%;background:var(--choco);color:var(--crema);display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(75,39,22,.7);opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);
+  transition:opacity .2s var(--ease-out), transform .24s var(--ease-out), visibility 0s linear .24s, background-color .2s ease}
+.cart-float.ver{opacity:1;visibility:visible;transform:none;transition:opacity .22s var(--ease-out), transform .26s var(--ease-out), background-color .2s ease, visibility 0s}
+.cart-float .ico{width:25px;height:25px}
+.cart-float .cf-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cart-float .cuenta{position:absolute;top:-4px;right:-4px;box-shadow:0 0 0 2px var(--crema)}
+.cart-float:active{transform:scale(.95)}
+@media (hover:hover) and (pointer:fine){.cart-float:hover{background:var(--choco-2)}}
+@media (max-width:640px){
+  .cart-float{left:max(16px, env(safe-area-inset-left));right:calc(max(20px, env(safe-area-inset-right)) + 70px);bottom:max(20px, env(safe-area-inset-bottom));
+    width:auto;height:58px;border-radius:999px;font-weight:700;font-size:16px}
+  .cart-float .ico{width:22px;height:22px}
+  .cart-float .cf-label{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+  .cart-float .cuenta{position:static;box-shadow:none;min-width:26px;height:26px;font-size:14px}
+}
+
+/* ---------- el panel: tu caja ---------- */
+html.caja-abierta{overflow:hidden}
+.caja-fondo{position:fixed;inset:0;z-index:80;background:rgba(75,39,22,.45);opacity:0;visibility:hidden;transition:opacity .24s ease, visibility 0s linear .24s}
+.caja-fondo.open{opacity:1;visibility:visible;transition:opacity .24s ease, visibility 0s}
+.caja{position:fixed;z-index:81;top:0;right:0;bottom:0;width:min(460px, 100% - 24px);display:flex;flex-direction:column;background:var(--crema);
+  box-shadow:-30px 0 60px -30px rgba(75,39,22,.6);transform:translateX(calc(100% + 24px));visibility:hidden;transition:transform .24s var(--ease-drawer), visibility 0s linear .24s}
+.caja.open{transform:none;visibility:visible;transition:transform .32s var(--ease-drawer), visibility 0s}
+.caja:focus{outline:none}
+.caja::before{content:"";position:absolute;top:0;bottom:0;left:-12px;width:13px;background:radial-gradient(circle at 100% 50%, var(--crema) 9px, transparent 9.5px) 0 0/13px 22px repeat-y;pointer-events:none}
+.caja-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 24px 14px}
+.caja-head h2{font-size:30px}
+.caja-head p{margin-top:4px;font-size:14.5px;color:var(--muted)}
+.caja-x{flex:none;width:44px;height:44px;border:0;border-radius:12px;background:rgba(75,39,22,.08);display:grid;place-items:center;cursor:pointer;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.caja-x:hover{background:rgba(75,39,22,.15)}}
+.caja-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:2px 24px 24px}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--blanco);border-radius:14px;padding:8px 10px 8px 8px}
+.item img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.item b{display:block;font-weight:600;font-size:15.5px;line-height:1.25}
+.item small{display:block;color:var(--muted);font-size:13.5px}
+.item .stepper{height:38px}
+.item .stepper button{width:36px;height:38px}
+.caja-acc{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}
+.caja-acc a,.caja-acc button{font-size:14.5px;font-weight:600;background:none;border:0;padding:8px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(75,39,22,.35)}
+.caja-acc button{font-weight:500;color:var(--muted)}
+.form{display:grid;gap:16px;margin-top:18px;padding-top:20px;box-shadow:inset 0 1.5px 0 rgba(75,39,22,.12)}
+.form fieldset{border:0;margin:0;padding:0;min-width:0}
+.form legend,.form .f > label{display:block;font-weight:600;font-size:14.5px;margin-bottom:7px;padding:0}
+.form .f > label i{font-style:normal;font-weight:500;color:var(--muted)}
+.form input[type=text],.form input[type=tel],.form input[type=date],.form textarea{width:100%;height:48px;border-radius:12px;border:1.5px solid rgba(75,39,22,.28);background:var(--blanco);padding:0 14px;font-size:16px;color:var(--choco)}
+.form textarea{height:auto;min-height:80px;padding:12px 14px;resize:vertical;line-height:1.45}
+.form input::placeholder,.form textarea::placeholder{color:#94705A}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--frutilla);box-shadow:0 0 0 3px rgba(214,40,57,.18)}
+.form [aria-invalid="true"]{border-color:#A3241B;box-shadow:0 0 0 3px rgba(163,36,27,.14)}
+.err{margin-top:6px;font-size:13.5px;font-weight:600;color:#A3241B}
+.pick{display:flex;gap:8px;flex-wrap:wrap}
+.pick label{position:relative;cursor:pointer}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.pick span{display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;background:var(--blanco);box-shadow:inset 0 0 0 1.5px rgba(75,39,22,.2);font-weight:600;font-size:15px;transition:background-color .2s ease, color .2s ease}
+.pick input:checked + span{background:var(--choco);color:var(--crema);box-shadow:none}
+.pick input:focus-visible + span{outline:3px solid var(--frutilla);outline-offset:2px}
+.prev{margin-top:18px;background:var(--blanco);border-radius:14px 14px 14px 4px;padding:12px 16px}
+.prev summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--muted)}
+.prev p{margin-top:8px;white-space:pre-line;font-size:14.5px}
+.caja-pie{padding:14px 24px max(18px, env(safe-area-inset-bottom));box-shadow:inset 0 1.5px 0 rgba(75,39,22,.12);display:grid;gap:8px}
+.caja-pie .btn{width:100%}
+.caja-pie .aviso{text-align:center;font-size:13.5px;color:var(--muted)}
+.vacia{display:grid;justify-items:center;gap:10px;padding:40px 8px 28px;text-align:center}
+.vacia .ico{width:60px;height:60px;stroke-width:1.5;color:rgba(75,39,22,.45)}
+.vacia b{font-family:var(--display);font-weight:600;font-size:25px}
+.vacia p{max-width:30ch;color:var(--muted)}
+.vacia .btn{margin-top:8px}
+@media (max-width:640px){
+  .caja{top:auto;left:0;width:100%;max-height:92vh;max-height:92dvh;border-radius:22px 22px 0 0;transform:translateY(calc(100% + 24px))}
+  .caja::before{top:-12px;bottom:auto;left:0;right:0;width:auto;height:13px;background:radial-gradient(circle at 50% 100%, var(--crema) 9px, transparent 9.5px) 0 0/22px 13px repeat-x}
+  .caja-head{padding:20px 18px 12px}
+  .caja-body{padding:2px 18px 20px}
+  .caja-pie{padding:12px 18px max(14px, env(safe-area-inset-bottom))}
+}
+
+/* ---------- celular ---------- */
+@media (max-width:980px){.grilla{grid-template-columns:repeat(3, minmax(0, 1fr))}}
+@media (max-width:860px){
+  .hero{min-height:0;padding-top:calc(var(--header) + 24px)}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .torta{width:min(440px, 92%);order:-1}
+  .finde .wrap,.contacto .wrap{grid-template-columns:1fr;gap:34px}
+  .pasos{grid-template-columns:1fr}
+  .pasos li + li{box-shadow:inset 0 1.5px 0 rgba(75,39,22,.1)}
+  .dicho .wrap{grid-template-columns:1fr;gap:22px}
+  .dicho img{width:120px;height:120px}
+}
+@media (max-width:640px){
+  .sec{padding:64px 0}
+  .grilla{grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px}
+  .prod .tx{padding:12px 12px 14px}
+  .prod h4{font-size:17px}
+  .prod .desc{font-size:14px}
+  .prod .pie{flex-direction:column;align-items:stretch;gap:8px}
+  .add-btn,.prod .stepper{width:100%;justify-content:center}
+  .prod.ancha{flex-direction:column}
+  .prod.ancha .ph{flex:none;aspect-ratio:4/3;height:auto}
+  .prod.ancha .tx{padding:16px 16px 18px}
+  .prod .stepper{justify-content:space-between}
+  .horno{columns:2 140px;column-gap:10px}
+  .horno figure{margin-bottom:10px}
+  .hero .ctas .btn{flex:1 1 auto}
+}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero h1 span,.hero .lead,.hero .ctas,.hero .where,.torta .borde,.torta .borde-2,.torta .foto,.sticker,.wa{animation:aparecer .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .js .horno figure{transform:none;transition:opacity .4s ease}
+  .caja,.caja.open{transform:none;opacity:0;transition:opacity .2s ease, visibility 0s linear .2s}
+  .caja.open{opacity:1;transition:opacity .2s ease, visibility 0s}
+  .cart-float,.cart-float.ver{transform:none}
+  .prod .ph img{transition:none}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><clipPath id="ondas" clipPathUnits="objectBoundingBox"><path d="M0.9970 0.5000 L0.9961 0.5087 L0.9934 0.5172 L0.9890 0.5256 L0.9835 0.5338 L0.9770 0.5417 L0.9701 0.5494 L0.9633 0.5569 L0.9570 0.5642 L0.9516 0.5715 L0.9474 0.5789 L0.9447 0.5864 L0.9436 0.5943 L0.9439 0.6025 L0.9455 0.6111 L0.9482 0.6201 L0.9515 0.6295 L0.9550 0.6391 L0.9582 0.6489 L0.9608 0.6587 L0.9622 0.6682 L0.9622 0.6774 L0.9606 0.6861 L0.9573 0.6941 L0.9523 0.7014 L0.9458 0.7079 L0.9380 0.7136 L0.9293 0.7187 L0.9201 0.7234 L0.9108 0.7277 L0.9018 0.7320 L0.8936 0.7365 L0.8863 0.7414 L0.8803 0.7470 L0.8756 0.7533 L0.8722 0.7606 L0.8699 0.7687 L0.8685 0.7777 L0.8678 0.7874 L0.8674 0.7975 L0.8668 0.8078 L0.8658 0.8180 L0.8639 0.8277 L0.8610 0.8367 L0.8569 0.8447 L0.8514 0.8514 L0.8447 0.8569 L0.8367 0.8610 L0.8277 0.8639 L0.8180 0.8658 L0.8078 0.8668 L0.7975 0.8674 L0.7874 0.8678 L0.7777 0.8685 L0.7687 0.8699 L0.7606 0.8722 L0.7533 0.8756 L0.7470 0.8803 L0.7414 0.8863 L0.7365 0.8936 L0.7320 0.9018 L0.7277 0.9108 L0.7234 0.9201 L0.7187 0.9293 L0.7136 0.9380 L0.7079 0.9458 L0.7014 0.9523 L0.6941 0.9573 L0.6861 0.9606 L0.6774 0.9622 L0.6682 0.9622 L0.6587 0.9608 L0.6489 0.9582 L0.6391 0.9550 L0.6295 0.9515 L0.6201 0.9482 L0.6111 0.9455 L0.6025 0.9439 L0.5943 0.9436 L0.5864 0.9447 L0.5789 0.9474 L0.5715 0.9516 L0.5642 0.9570 L0.5569 0.9633 L0.5494 0.9701 L0.5417 0.9770 L0.5338 0.9835 L0.5256 0.9890 L0.5172 0.9934 L0.5087 0.9961 L0.5000 0.9970 L0.4913 0.9961 L0.4828 0.9934 L0.4744 0.9890 L0.4662 0.9835 L0.4583 0.9770 L0.4506 0.9701 L0.4431 0.9633 L0.4358 0.9570 L0.4285 0.9516 L0.4211 0.9474 L0.4136 0.9447 L0.4057 0.9436 L0.3975 0.9439 L0.3889 0.9455 L0.3799 0.9482 L0.3705 0.9515 L0.3609 0.9550 L0.3511 0.9582 L0.3413 0.9608 L0.3318 0.9622 L0.3226 0.9622 L0.3139 0.9606 L0.3059 0.9573 L0.2986 0.9523 L0.2921 0.9458 L0.2864 0.9380 L0.2813 0.9293 L0.2766 0.9201 L0.2723 0.9108 L0.2680 0.9018 L0.2635 0.8936 L0.2586 0.8863 L0.2530 0.8803 L0.2467 0.8756 L0.2394 0.8722 L0.2313 0.8699 L0.2223 0.8685 L0.2126 0.8678 L0.2025 0.8674 L0.1922 0.8668 L0.1820 0.8658 L0.1723 0.8639 L0.1633 0.8610 L0.1553 0.8569 L0.1486 0.8514 L0.1431 0.8447 L0.1390 0.8367 L0.1361 0.8277 L0.1342 0.8180 L0.1332 0.8078 L0.1326 0.7975 L0.1322 0.7874 L0.1315 0.7777 L0.1301 0.7687 L0.1278 0.7606 L0.1244 0.7533 L0.1197 0.7470 L0.1137 0.7414 L0.1064 0.7365 L0.0982 0.7320 L0.0892 0.7277 L0.0799 0.7234 L0.0707 0.7187 L0.0620 0.7136 L0.0542 0.7079 L0.0477 0.7014 L0.0427 0.6941 L0.0394 0.6861 L0.0378 0.6774 L0.0378 0.6682 L0.0392 0.6587 L0.0418 0.6489 L0.0450 0.6391 L0.0485 0.6295 L0.0518 0.6201 L0.0545 0.6111 L0.0561 0.6025 L0.0564 0.5943 L0.0553 0.5864 L0.0526 0.5789 L0.0484 0.5715 L0.0430 0.5642 L0.0367 0.5569 L0.0299 0.5494 L0.0230 0.5417 L0.0165 0.5338 L0.0110 0.5256 L0.0066 0.5172 L0.0039 0.5087 L0.0030 0.5000 L0.0039 0.4913 L0.0066 0.4828 L0.0110 0.4744 L0.0165 0.4662 L0.0230 0.4583 L0.0299 0.4506 L0.0367 0.4431 L0.0430 0.4358 L0.0484 0.4285 L0.0526 0.4211 L0.0553 0.4136 L0.0564 0.4057 L0.0561 0.3975 L0.0545 0.3889 L0.0518 0.3799 L0.0485 0.3705 L0.0450 0.3609 L0.0418 0.3511 L0.0392 0.3413 L0.0378 0.3318 L0.0378 0.3226 L0.0394 0.3139 L0.0427 0.3059 L0.0477 0.2986 L0.0542 0.2921 L0.0620 0.2864 L0.0707 0.2813 L0.0799 0.2766 L0.0892 0.2723 L0.0982 0.2680 L0.1064 0.2635 L0.1137 0.2586 L0.1197 0.2530 L0.1244 0.2467 L0.1278 0.2394 L0.1301 0.2313 L0.1315 0.2223 L0.1322 0.2126 L0.1326 0.2025 L0.1332 0.1922 L0.1342 0.1820 L0.1361 0.1723 L0.1390 0.1633 L0.1431 0.1553 L0.1486 0.1486 L0.1553 0.1431 L0.1633 0.1390 L0.1723 0.1361 L0.1820 0.1342 L0.1922 0.1332 L0.2025 0.1326 L0.2126 0.1322 L0.2223 0.1315 L0.2313 0.1301 L0.2394 0.1278 L0.2467 0.1244 L0.2530 0.1197 L0.2586 0.1137 L0.2635 0.1064 L0.2680 0.0982 L0.2723 0.0892 L0.2766 0.0799 L0.2813 0.0707 L0.2864 0.0620 L0.2921 0.0542 L0.2986 0.0477 L0.3059 0.0427 L0.3139 0.0394 L0.3226 0.0378 L0.3318 0.0378 L0.3413 0.0392 L0.3511 0.0418 L0.3609 0.0450 L0.3705 0.0485 L0.3799 0.0518 L0.3889 0.0545 L0.3975 0.0561 L0.4057 0.0564 L0.4136 0.0553 L0.4211 0.0526 L0.4285 0.0484 L0.4358 0.0430 L0.4431 0.0367 L0.4506 0.0299 L0.4583 0.0230 L0.4662 0.0165 L0.4744 0.0110 L0.4828 0.0066 L0.4913 0.0039 L0.5000 0.0030 L0.5087 0.0039 L0.5172 0.0066 L0.5256 0.0110 L0.5338 0.0165 L0.5417 0.0230 L0.5494 0.0299 L0.5569 0.0367 L0.5642 0.0430 L0.5715 0.0484 L0.5789 0.0526 L0.5864 0.0553 L0.5943 0.0564 L0.6025 0.0561 L0.6111 0.0545 L0.6201 0.0518 L0.6295 0.0485 L0.6391 0.0450 L0.6489 0.0418 L0.6587 0.0392 L0.6682 0.0378 L0.6774 0.0378 L0.6861 0.0394 L0.6941 0.0427 L0.7014 0.0477 L0.7079 0.0542 L0.7136 0.0620 L0.7187 0.0707 L0.7234 0.0799 L0.7277 0.0892 L0.7320 0.0982 L0.7365 0.1064 L0.7414 0.1137 L0.7470 0.1197 L0.7533 0.1244 L0.7606 0.1278 L0.7687 0.1301 L0.7777 0.1315 L0.7874 0.1322 L0.7975 0.1326 L0.8078 0.1332 L0.8180 0.1342 L0.8277 0.1361 L0.8367 0.1390 L0.8447 0.1431 L0.8514 0.1486 L0.8569 0.1553 L0.8610 0.1633 L0.8639 0.1723 L0.8658 0.1820 L0.8668 0.1922 L0.8674 0.2025 L0.8678 0.2126 L0.8685 0.2223 L0.8699 0.2313 L0.8722 0.2394 L0.8756 0.2467 L0.8803 0.2530 L0.8863 0.2586 L0.8936 0.2635 L0.9018 0.2680 L0.9108 0.2723 L0.9201 0.2766 L0.9293 0.2813 L0.9380 0.2864 L0.9458 0.2921 L0.9523 0.2986 L0.9573 0.3059 L0.9606 0.3139 L0.9622 0.3226 L0.9622 0.3318 L0.9608 0.3413 L0.9582 0.3511 L0.9550 0.3609 L0.9515 0.3705 L0.9482 0.3799 L0.9455 0.3889 L0.9439 0.3975 L0.9436 0.4057 L0.9447 0.4136 L0.9474 0.4211 L0.9516 0.4285 L0.9570 0.4358 L0.9633 0.4431 L0.9701 0.4506 L0.9770 0.4583 L0.9835 0.4662 L0.9890 0.4744 L0.9934 0.4828 L0.9961 0.4913Z"/></clipPath></defs>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <!-- íconos: Tabler Icons (MIT) -->
+  <symbol id="i-caja" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9l-8 4.5l-8-4.5v-9l8-4.5"/><path d="M12 12l8-4.5"/><path d="M12 12v9"/><path d="M12 12l-8-4.5"/><path d="M16 5.25l-8 4.5"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="tacho" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0-6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/></symbol>
+  <symbol id="reloj" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0"/><path d="M16.5 7.5v.01"/></symbol>
+  <symbol id="tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5-2.5l5 2v4a2 2 0 0 1-2 2a16 16 0 0 1-15-15a2 2 0 0 1 2-2"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="El Sabor de lo Nuestro, ir al inicio">
+      <img src="img/logo.jpg" alt="" width="46" height="46">
+      <span>El Sabor de lo Nuestro<small>Pastelería casera</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#productos">Productos</a>
+      <a href="#finde">Los finde</a>
+      <a href="#horno">Fotos</a>
+      <a href="#como">Cómo pedir</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="cart-top" type="button" data-abrir-caja aria-haspopup="dialog" aria-controls="caja">
+      <svg class="ico" aria-hidden="true"><use href="#i-caja"/></svg><span class="ct-label">Tu caja</span><span class="cuenta" aria-hidden="true">0</span>
+    </button>
+    <a class="btn btn-wa" href="https://wa.me/5493855394668" target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuMovil"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menuMovil" aria-label="Menú">
+  <a href="#productos">Productos</a>
+  <a href="#finde">Los finde</a>
+  <a href="#horno">Fotos</a>
+  <a href="#como">Cómo pedir</a>
+  <a href="#contacto">Contacto</a>
+  <a class="btn btn-wa" href="https://wa.me/5493855394668" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1><span>Tortas, tartas</span><span>y dulzuras caseras</span></h1>
+        <p class="lead">Hecho con amor para tus momentos especiales. Elegí lo que querés, armá tu caja y mandá el pedido por WhatsApp.</p>
+        <div class="ctas">
+          <a class="btn btn-main" href="#productos">Ver los productos</a>
+          <a class="btn btn-line" href="https://wa.me/5493855394668" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+        </div>
+        <p class="where"><svg class="ico" aria-hidden="true"><use href="#pin"/></svg>Santiago del Estero</p>
+      </div>
+      <div class="torta">
+        <div class="borde"></div><div class="borde-2"></div>
+        <div class="foto"><img src="img/hero.jpg" alt="Torta con frutillas frescas y copitos de dulce de leche" width="1080" height="1080" fetchpriority="high"></div>
+        <div class="sticker"><img src="img/logo.jpg" alt="" width="400" height="400"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="copitos" aria-hidden="true"></div>
+
+  <section class="sec" id="productos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Elegí y armá tu caja</h2>
+        <p>Tocá Agregar en lo que quieras. Los precios y la disponibilidad te los confirmamos por WhatsApp.</p>
+      </div>
+
+      <div class="filtros" role="toolbar" aria-label="Filtrar productos">
+        <button type="button" data-filtro="todo" aria-pressed="true">Todo</button>
+        <button type="button" data-filtro="tortas" aria-pressed="false">Tortas</button>
+        <button type="button" data-filtro="tartas" aria-pressed="false">Tartas</button>
+        <button type="button" data-filtro="budines" aria-pressed="false">Budines</button>
+        <button type="button" data-filtro="mate" aria-pressed="false">Para el mate</button>
+        <button type="button" data-filtro="fechas" aria-pressed="false">Fechas especiales</button>
+      </div>
+
+      <div class="grupo" data-grupo="tortas">
+        <h3>Tortas</h3>
+        <p>Se hacen por pedido. Contanos para cuántas personas y para qué día.</p>
+        <div class="grilla">
+          <article class="prod" data-id="torta-frutillas" data-nombre="Torta con frutillas" data-img="img/hero.jpg">
+            <div class="ph"><img src="img/hero.jpg" alt="Torta con frutillas frescas y copitos de dulce de leche" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Torta con frutillas</h4><p class="desc">Frutillas frescas arriba y copitos alrededor. La misma que está en el logo.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="torta-chaja" data-nombre="Torta chajá" data-img="img/chaja.jpg">
+            <div class="ph"><img src="img/chaja.jpg" alt="Torta chajá con merengues y duraznos" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Torta chajá</h4><p class="desc">Merengues frescos, bizcochuelo, dulce de leche y el toque justo de durazno.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="torta-chocolatosa" data-nombre="Torta súper chocolatosa" data-img="img/chocolatosa.jpg">
+            <div class="ph"><img src="img/chocolatosa.jpg" alt="Torta súper chocolatosa con copos de crema de chocolate" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Torta súper chocolatosa</h4><p class="desc">Bizcochuelo de chocolate, chantilly, trocitos de chocolate y crema de chocolate.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="torta-vainilla" data-nombre="Torta de vainilla con duraznos" data-img="img/vainilla-durazno.jpg">
+            <div class="ph"><img src="img/vainilla-durazno.jpg" alt="Torta blanca con duraznos arriba" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Torta de vainilla con duraznos</h4><p class="desc">Bizcochuelo de vainilla relleno con crema, duraznos y mucho dulce de leche.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod ancha" data-id="torta-especial" data-nombre="Torta de pedido especial" data-img="img/especial.jpg">
+            <div class="ph"><img src="img/especial.jpg" alt="Torta de cumpleaños en tonos rosa y blanco" loading="lazy" width="1080" height="1255"></div>
+            <div class="tx"><h4>Tu torta, a pedido</h4><p class="desc">Para un cumple o una fecha especial. Agregala y contanos en las aclaraciones la idea, los colores y para cuántas personas es.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="grupo" data-grupo="tartas">
+        <h3>Tartas</h3>
+        <div class="grilla">
+          <article class="prod" data-id="tarta-frutas" data-nombre="Tarta de frutas" data-img="img/tarta-frutas.jpg">
+            <div class="ph"><img src="img/tarta-frutas.jpg" alt="Tarta con fruta fresca picada y copos de crema" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Tarta de frutas</h4><p class="desc">Fruta fresca picada sobre la tarta, con copos de crema en el borde.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="tarta-frutillas" data-nombre="Tarta de frutillas" data-img="img/tarta-frutillas.jpg">
+            <div class="ph"><img src="img/tarta-frutillas.jpg" alt="Tarta de frutillas con copos de crema" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Tarta de frutillas</h4><p class="desc">Frutillas frescas en el centro y un borde de copos de crema.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="tartas-otras" data-nombre="Otras tartas" data-img="img/g-pastafrola.jpg">
+            <div class="ph"><img src="img/g-pastafrola.jpg" alt="Tarta con enrejado de masa" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Otras tartas</h4><p class="desc">Hay más gustos según la semana. Preguntá cuáles hay en las aclaraciones.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="grupo" data-grupo="budines">
+        <h3>Budines</h3>
+        <p>Súper húmedos, frescos y hechos en el día. Todo artesanal.</p>
+        <div class="grilla">
+          <article class="prod" data-id="budin-vainilla" data-nombre="Budín de vainilla y chips" data-img="img/budin-chips.jpg">
+            <div class="ph"><img src="img/budin-chips.jpg" alt="Budín de vainilla con chips de chocolate" loading="lazy" width="1080" height="1440"></div>
+            <div class="tx"><h4>Vainilla y chips</h4><p class="desc">Budín de vainilla con chips de chocolate.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="budin-banana" data-nombre="Budín de banana con chips de chocolate" data-img="img/budin-banana.jpg">
+            <div class="ph"><img src="img/budin-banana.jpg" alt="Budín de banana" loading="lazy" width="1080" height="1440"></div>
+            <div class="tx"><h4>Banana y chips</h4><p class="desc">Banana con chips de chocolate.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="budin-chocolate" data-nombre="Budín de chocolate" data-img="img/budin-chocolate.jpg">
+            <div class="ph"><img src="img/budin-chocolate.jpg" alt="Budín de chocolate" loading="lazy" width="1080" height="1440"></div>
+            <div class="tx"><h4>Chocolate</h4><p class="desc">Budín de chocolate, del día.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="budin-otros" data-nombre="Budín" data-img="img/g-budines.jpg" data-gustos="Naranja|Zanahoria">
+            <div class="ph"><img src="img/g-budines.jpg" alt="Budines glaseados con nueces y chips de chocolate" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Naranja o zanahoria</h4><p class="desc">Elegí el gusto abajo.</p>
+              <label class="gusto">Gusto<select aria-label="Gusto del budín"></select></label>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="grupo" data-grupo="mate">
+        <h3>Para el mate</h3>
+        <div class="grilla">
+          <article class="prod" data-id="bandeja-matera" data-nombre="Bandeja matera" data-img="img/bandeja-matera.jpg">
+            <div class="ph"><img src="img/bandeja-matera.jpg" alt="Bandejas con porciones dulces surtidas" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Bandeja matera</h4><p class="desc">Un surtido de porciones dulces para compartir.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="alfajores" data-nombre="Alfajores de maicena" data-img="img/alfajores.jpg">
+            <div class="ph"><img src="img/alfajores.jpg" alt="Alfajores de maicena con coco, junto a una tarta y un budín" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Alfajores de maicena</h4><p class="desc">Con dulce de leche y coco en el borde.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="cookies" data-nombre="Cookies con chips de chocolate" data-img="img/cookies.jpg">
+            <div class="ph"><img src="img/cookies.jpg" alt="Cookies con chips y hilos de chocolate" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Cookies con chips</h4><p class="desc">Cookies con chips de chocolate.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="grupo" data-grupo="fechas">
+        <h3>Fechas especiales</h3>
+        <p>Para cada fecha se toman pedidos con tiempo. Preguntá si ya están abiertos.</p>
+        <div class="grilla">
+          <article class="prod" data-id="pan-navidad" data-nombre="Pan de Navidad" data-img="img/pan-navidad.jpg">
+            <div class="ph"><img src="img/pan-navidad.jpg" alt="Pan de Navidad con glaseado y frutos secos" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Pan de Navidad</h4><p class="desc">Esponjosos, frescos y hechos con mucho amor.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="rosca" data-nombre="Rosca de Pascuas" data-img="img/rosca.jpg">
+            <div class="ph"><img src="img/rosca.jpg" alt="Rosca de Pascuas con crema pastelera y cerezas" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Rosca de Pascuas</h4><p class="desc">La clásica: masa suave y crema pastelera casera.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+          <article class="prod" data-id="box-dulce" data-nombre="Box dulce" data-img="img/box-madre.jpg">
+            <div class="ph"><img src="img/box-madre.jpg" alt="Caja con lingote de chajá, medialunas, chips y cookies" loading="lazy" width="1080" height="1080"></div>
+            <div class="tx"><h4>Box dulce</h4><p class="desc">El del Día de la Madre: lingote de chajá, chips de jamón y queso, medialunas dulces, cookies y un alfajor.</p>
+              <div class="pie"><span class="precio">Consultar</span><div class="add"></div></div></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finde" id="finde">
+    <div class="wrap sec">
+      <div>
+        <h2>Los finde, hay de todo</h2>
+        <p class="cita">Además de lo que se hace por pedido, los fines de semana hay stock variado.</p>
+        <ul>
+          <li>Bandejas materas</li><li>Budines</li><li>Panes</li><li>Alfajores</li>
+        </ul>
+        <a class="btn btn-wa" href="https://wa.me/5493855394668?text=Hola%20El%20Sabor%20de%20lo%20Nuestro!%20%C2%BFQu%C3%A9%20tienen%20este%20finde%3F" target="_blank" rel="noopener">
+          <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Preguntar qué hay este finde</a>
+      </div>
+      <div class="fotos">
+        <img src="img/g-finde.jpg" alt="Mesa con bandejas de masas, alfajores y pastafrola" loading="lazy" width="1080" height="1080">
+        <img src="img/g-mesa.jpg" alt="Mesa con tartas, budín glaseado y masas" loading="lazy" width="1080" height="1080">
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="horno">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Recién salido del horno</h2>
+        <p>Algunos de los pedidos que salieron de la cocina de El Sabor de lo Nuestro.</p>
+      </div>
+      <div class="horno">
+        <figure><img src="img/g-oreo.jpg" alt="Torta con ganache de chocolate y galletitas" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/g-blanca.jpg" alt="Torta blanca con copos de crema y duraznos" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/g-merengue.jpg" alt="Tarta con copos de merengue" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/chaja-arriba.jpg" alt="Torta chajá vista desde arriba" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/g-roscas.jpg" alt="Roscas de Pascuas con crema y cerezas" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/frutillas-choco.jpg" alt="Torta de chocolate con frutillas, crema y bombones" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/cumple.jpg" alt="Torta de cumpleaños con masas y alfajores alrededor" loading="lazy" width="1080" height="1256"></figure>
+        <figure><img src="img/g-ganache.jpg" alt="Tarta de chocolate con borde de dulce de leche" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/g-bombones.jpg" alt="Caja de alfajores bañados en chocolate" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/panes-navidad.jpg" alt="Panes de Navidad y budines glaseados" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/g-glaseado.jpg" alt="Budín redondo con glaseado" loading="lazy" width="1080" height="1080"></figure>
+        <figure><img src="img/g-cookie.jpg" alt="Cookie partida al medio con chips de chocolate" loading="lazy" width="1080" height="1080"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="como" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Cómo pedir</h2></div>
+      <ol class="pasos">
+        <li><h3>Armás tu caja</h3><p>Tocá Agregar en lo que quieras y sumá las cantidades.</p></li>
+        <li><h3>Lo mandás por WhatsApp</h3><p>Completás tu nombre y el día, y el pedido sale escrito solo.</p></li>
+        <li><h3>Coordinamos</h3><p>Te confirmamos precio, disponibilidad y cómo lo recibís.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="dicho" aria-label="Palabras de El Sabor de lo Nuestro">
+    <div class="wrap">
+      <img src="img/logo.jpg" alt="Logo de El Sabor de lo Nuestro" loading="lazy" width="400" height="400">
+      <div>
+        <blockquote>“Gracias por elegir lo casero.”</blockquote>
+        <p>Pastelería casera desde 2024, en Santiago del Estero. Cada torta, cada tarta y cada pedido lleva dedicación, cariño y muchas horas de trabajo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="wrap">
+      <div>
+        <h2>Pedidos y consultas</h2>
+        <p class="lead">Todo se coordina por WhatsApp. Escribinos con tiempo y contanos qué necesitás.</p>
+        <div class="ctas">
+          <a class="btn btn-wa" href="https://wa.me/5493855394668" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+          <a class="btn btn-line" href="https://instagram.com/elsabordelonuestro28" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>@elsabordelonuestro28</a>
+        </div>
+      </div>
+      <dl class="datos">
+        <div><svg class="ico" aria-hidden="true"><use href="#tel"/></svg><dt>WhatsApp</dt><dd><a href="https://wa.me/5493855394668" target="_blank" rel="noopener">385 539-4668</a></dd></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#pin"/></svg><dt>Dónde</dt><dd>Santiago del Estero</dd></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#reloj"/></svg><dt>Horarios y entregas</dt><dd>Consultá por WhatsApp</dd></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><dt>Instagram</dt><dd><a href="https://instagram.com/elsabordelonuestro28" target="_blank" rel="noopener">@elsabordelonuestro28</a></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>El Sabor de lo Nuestro. Pastelería casera en Santiago del Estero.</p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5493855394668" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 385 539-4668">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>385 539-4668</small></span>
+</a>
+
+<button class="cart-float" id="cartFloat" type="button" data-abrir-caja aria-haspopup="dialog" aria-controls="caja">
+  <svg class="ico" aria-hidden="true"><use href="#i-caja"/></svg><span class="cf-label">Ver pedido</span><span class="cuenta" aria-hidden="true">0</span>
+</button>
+
+<div class="caja-fondo" id="cajaFondo"></div>
+<div class="caja" id="caja" role="dialog" aria-modal="true" aria-labelledby="cajaTit" tabindex="-1">
+  <div class="caja-head">
+    <div><h2 id="cajaTit">Tu caja</h2><p>El pedido sale armado por WhatsApp</p></div>
+    <button class="caja-x" type="button" id="cajaCerrar" aria-label="Cerrar el pedido"><svg class="ico" aria-hidden="true"><use href="#x"/></svg></button>
+  </div>
+  <div class="caja-body">
+    <div class="vacia" id="cajaVacia">
+      <svg class="ico" aria-hidden="true"><use href="#i-caja"/></svg>
+      <b>Tu caja está vacía</b>
+      <p>Tocá Agregar en las tortas, tartas o budines que quieras pedir.</p>
+      <a class="btn btn-main" href="#productos" data-cerrar-caja>Ver los productos</a>
+    </div>
+    <div id="cajaLlena" hidden>
+      <ul class="items" id="cajaItems" aria-label="Productos del pedido"></ul>
+      <div class="caja-acc">
+        <a href="#productos" data-cerrar-caja>Seguir eligiendo</a>
+        <button type="button" id="cajaVaciar">Vaciar la caja</button>
+      </div>
+      <form class="form" id="cajaForm" novalidate>
+        <div class="f"><label for="cNombre">Nombre</label>
+          <input id="cNombre" type="text" autocomplete="name" required aria-describedby="eNombre">
+          <p class="err" id="eNombre" hidden></p></div>
+        <div class="f"><label for="cTel">Teléfono</label>
+          <input id="cTel" type="tel" autocomplete="tel" inputmode="tel" placeholder="385 123-4567" required aria-describedby="eTel">
+          <p class="err" id="eTel" hidden></p></div>
+        <div class="f"><label for="cFecha">¿Para qué día? <i>(opcional)</i></label><input id="cFecha" type="date"></div>
+        <fieldset class="f">
+          <legend>¿Cómo lo recibís?</legend>
+          <div class="pick">
+            <label><input type="radio" name="cEntrega" value="Lo retiro" checked><span>Lo retiro</span></label>
+            <label><input type="radio" name="cEntrega" value="Quiero consultar el envío"><span>Consultar envío</span></label>
+          </div>
+        </fieldset>
+        <div class="f"><label for="cNotas">Aclaraciones <i>(opcional)</i></label>
+          <textarea id="cNotas" rows="2" placeholder="Para cuántas personas, un mensaje en la torta, colores…"></textarea></div>
+      </form>
+      <details class="prev"><summary>Ver cómo llega el mensaje</summary><p id="cajaPrev"></p></details>
+    </div>
+  </div>
+  <div class="caja-pie" id="cajaPie" hidden>
+    <button class="btn btn-wa" type="submit" form="cajaForm"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Enviar pedido por WhatsApp</button>
+    <p class="aviso">Los precios y la disponibilidad te los confirmamos por WhatsApp.</p>
+  </div>
+</div>
+<p class="sr" id="cajaAviso" aria-live="polite"></p>
+
+<script>
+document.documentElement.classList.add('js');
+var WA = '5493855394668';
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  // Menú del celular
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menuMovil');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Filtros de la tienda
+  var chips = document.querySelectorAll('[data-filtro]'), grupos = document.querySelectorAll('[data-grupo]');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var f = c.getAttribute('data-filtro');
+      chips.forEach(function (o) { o.setAttribute('aria-pressed', String(o === c)); });
+      grupos.forEach(function (g) { g.hidden = !(f === 'todo' || g.getAttribute('data-grupo') === f); });
+    });
+  });
+
+  var figs = document.querySelectorAll('.horno figure');
+  if (!('IntersectionObserver' in window)) { figs.forEach(function (f) { f.classList.add('in'); }); return; }
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = [].indexOf.call(figs, e.target) % 4;
+      e.target.style.transitionDelay = (i * 60) + 'ms';
+      e.target.classList.add('in'); io.unobserve(e.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  figs.forEach(function (f) { io.observe(f); });
+})();
+
+// Tu caja: cada producto tiene su Agregar, todo se junta en la caja y sale por WhatsApp
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+  var CLAVE = 'elsabor-caja-v1';
+  var caja = $('caja');
+
+  // Catálogo: solo lo que está en la página
+  var CAT = {};
+  document.querySelectorAll('.prod[data-id]').forEach(function (el) {
+    var g = el.getAttribute('data-gustos');
+    CAT[el.getAttribute('data-id')] = { nombre: el.getAttribute('data-nombre'), img: el.getAttribute('data-img'), gustos: g ? g.split('|') : null, el: el };
+  });
+
+  var st = { items: [], nombre: '', tel: '', fecha: '', entrega: 'Lo retiro', notas: '' };
+  function hoyISO() { var h = new Date(); return h.getFullYear() + '-' + String(h.getMonth() + 1).padStart(2, '0') + '-' + String(h.getDate()).padStart(2, '0'); }
+  function cargar() {
+    try {
+      var d = JSON.parse(window.localStorage.getItem(CLAVE) || 'null');
+      if (!d || typeof d !== 'object') return;
+      if (Array.isArray(d.items)) d.items.forEach(function (it) {
+        var c = it && CAT[it.id];
+        if (!c || typeof it.q !== 'number' || !(it.q >= 1) || it.q > 99) return;
+        if (c.gustos ? c.gustos.indexOf(it.g) < 0 : it.g) return;
+        st.items.push({ id: it.id, g: it.g || null, q: Math.round(it.q) });
+      });
+      ['nombre', 'tel', 'notas'].forEach(function (k) { if (typeof d[k] === 'string') st[k] = d[k].slice(0, 400); });
+      if (typeof d.fecha === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d.fecha) && d.fecha >= hoyISO()) st.fecha = d.fecha;
+      if (d.entrega === 'Lo retiro' || d.entrega === 'Quiero consultar el envío') st.entrega = d.entrega;
+    } catch (e) { /* sin almacenamiento: la caja empieza vacía */ }
+  }
+  function guardar() { try { window.localStorage.setItem(CLAVE, JSON.stringify(st)); } catch (e) { /* nada */ } }
+  function clave(id, g) { return id + (g ? '|' + g : ''); }
+  function buscar(k) { for (var i = 0; i < st.items.length; i++) if (clave(st.items[i].id, st.items[i].g) === k) return i; return -1; }
+  function nombre(it) { return CAT[it.id].nombre + (it.g ? ' (' + it.g + ')' : ''); }
+  function avisar(t) { var a = $('cajaAviso'); a.textContent = ''; setTimeout(function () { a.textContent = t; }, 30); }
+  function total() { return st.items.reduce(function (s, it) { return s + it.q; }, 0); }
+
+  function agregar(id, g) {
+    var i = buscar(clave(id, g));
+    if (i < 0) { st.items.push({ id: id, g: g, q: 1 }); i = st.items.length - 1; } else st.items[i].q = Math.min(99, st.items[i].q + 1);
+    avisar(nombre(st.items[i]) + ': ' + st.items[i].q + '. Está en tu caja.');
+    guardar(); pintar(); latir();
+  }
+  function mover(k, dir) {
+    var i = buscar(k); if (i < 0) return;
+    var it = st.items[i], q = it.q + dir;
+    if (q < 1) { st.items.splice(i, 1); avisar(nombre(it) + ' salió de tu caja.'); }
+    else { it.q = Math.min(99, q); avisar(nombre(it) + ': ' + it.q + '.'); }
+    guardar(); pintar(); if (dir > 0) latir();
+  }
+  function latir() {
+    if (REDUCE) return;
+    document.querySelectorAll('.cuenta').forEach(function (b) {
+      if (!b.animate || !b.offsetParent) return;
+      b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.4)', offset: .35 }, { transform: 'scale(1)' }], { duration: 360, easing: EASE });
+    });
+  }
+
+  function stepper(n, q, k) {
+    return '<div class="stepper" data-k="' + k + '">' +
+      '<button type="button" data-act="menos" aria-label="' + (q <= 1 ? 'Quitar ' + n + ' de la caja' : 'Restar ' + n) + '"><svg class="ico" aria-hidden="true"><use href="' + (q <= 1 ? '#tacho' : '#menos') + '"/></svg></button>' +
+      '<output>' + q + '</output>' +
+      '<button type="button" data-act="mas" aria-label="Sumar ' + n + '"><svg class="ico" aria-hidden="true"><use href="#plus"/></svg></button></div>';
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  // Controles de cada producto
+  Object.keys(CAT).forEach(function (id) {
+    var c = CAT[id], el = c.el, sel = el.querySelector('select');
+    if (sel && c.gustos) sel.innerHTML = c.gustos.map(function (g) { return '<option>' + esc(g) + '</option>'; }).join('');
+    if (sel) sel.addEventListener('change', function () { pintarProd(id, false); });
+    el.querySelector('.add').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      var g = sel ? sel.value : null, k = clave(id, g);
+      if (b.getAttribute('data-act') === 'agregar') agregar(id, g);
+      else mover(k, b.getAttribute('data-act') === 'mas' ? 1 : -1);
+      pintarProd(id, b.getAttribute('data-act') === 'agregar');
+      var nb = el.querySelector('.add [data-act="' + (b.getAttribute('data-act') === 'agregar' ? 'mas' : b.getAttribute('data-act')) + '"]') || el.querySelector('.add-btn');
+      if (nb) nb.focus();
+    });
+  });
+  function pintarProd(id, animar) {
+    var c = CAT[id], el = c.el, sel = el.querySelector('select'), g = sel ? sel.value : null, i = buscar(clave(id, g)), box = el.querySelector('.add');
+    var n = c.nombre + (g ? ' ' + g : '');
+    if (i < 0) box.innerHTML = '<button type="button" class="add-btn" data-act="agregar" aria-label="Agregar ' + esc(n) + ' a la caja"><svg class="ico" aria-hidden="true"><use href="#plus"/></svg>Agregar</button>';
+    else {
+      box.innerHTML = stepper(esc(n), st.items[i].q, esc(clave(id, g)));
+      if (animar && !REDUCE && box.firstChild.animate) box.firstChild.animate([{ opacity: 0, transform: 'scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 180, easing: EASE });
+    }
+    el.classList.toggle('en-caja', st.items.some(function (it) { return it.id === id; }));
+  }
+
+  function mensaje() {
+    var l = ['Hola El Sabor de lo Nuestro! Quiero hacer un pedido:'];
+    st.items.forEach(function (it) { l.push('• ' + it.q + ' x ' + nombre(it)); });
+    l.push('');
+    if (st.nombre.trim()) l.push('Nombre: ' + st.nombre.trim());
+    if (st.tel.trim()) l.push('Teléfono: ' + st.tel.trim());
+    if (st.fecha) { var p = st.fecha.split('-'); l.push('Para el día: ' + p[2] + '/' + p[1] + '/' + p[0]); }
+    l.push('Entrega: ' + st.entrega);
+    if (st.notas.trim()) l.push('Aclaraciones: ' + st.notas.trim());
+    l.push('', '¿Me pasás el precio y si está disponible? Gracias!');
+    return l.join('\n');
+  }
+
+  function pintar() {
+    var n = total();
+    document.querySelectorAll('.cuenta').forEach(function (b) { b.textContent = n; });
+    $('cartFloat').classList.toggle('ver', n > 0);
+    $('cartFloat').setAttribute('aria-label', 'Ver tu caja, ' + n + (n === 1 ? ' producto' : ' productos'));
+    document.querySelector('.cart-top').setAttribute('aria-label', 'Tu caja, ' + n + (n === 1 ? ' producto' : ' productos'));
+    var lleno = st.items.length > 0;
+    $('cajaVacia').hidden = lleno; $('cajaLlena').hidden = !lleno; $('cajaPie').hidden = !lleno;
+    $('cajaItems').innerHTML = st.items.map(function (it) {
+      var c = CAT[it.id];
+      return '<li class="item"><img src="' + c.img + '" alt=""><div><b>' + esc(c.nombre) + '</b><small>' + (it.g ? esc(it.g) + ' · ' : '') + 'Precio a consultar</small></div>' + stepper(esc(nombre(it)), it.q, esc(clave(it.id, it.g))) + '</li>';
+    }).join('');
+    $('cajaPrev').textContent = mensaje();
+    Object.keys(CAT).forEach(function (id) { pintarProd(id, false); });
+  }
+
+  $('cajaItems').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var k = b.closest('.stepper').getAttribute('data-k').replace(/&amp;/g, '&');
+    mover(k, b.getAttribute('data-act') === 'mas' ? 1 : -1);
+    var s = $('cajaItems').querySelector('.stepper[data-k="' + CSS.escape(k) + '"] [data-act="' + b.getAttribute('data-act') + '"]');
+    (s || $('cajaCerrar')).focus();
+  });
+  $('cajaVaciar').addEventListener('click', function () { st.items = []; guardar(); pintar(); avisar('Vaciaste la caja.'); $('cajaCerrar').focus(); });
+
+  // Formulario
+  var f = { nombre: $('cNombre'), tel: $('cTel'), fecha: $('cFecha'), notas: $('cNotas') };
+  f.fecha.min = hoyISO();
+  function leer() {
+    st.nombre = f.nombre.value; st.tel = f.tel.value; st.fecha = f.fecha.value; st.notas = f.notas.value;
+    var r = document.querySelector('input[name="cEntrega"]:checked'); st.entrega = r ? r.value : 'Lo retiro';
+    $('cajaPrev').textContent = mensaje(); guardar();
+  }
+  $('cajaForm').addEventListener('input', leer);
+  $('cajaForm').addEventListener('change', leer);
+  function error(campo, idErr, txt) {
+    var e = $(idErr);
+    if (txt) { e.textContent = txt; e.hidden = false; campo.setAttribute('aria-invalid', 'true'); }
+    else { e.hidden = true; campo.removeAttribute('aria-invalid'); }
+  }
+  $('cajaForm').addEventListener('submit', function (e) {
+    e.preventDefault(); leer();
+    var malN = !st.nombre.trim(), digitos = st.tel.replace(/\D/g, ''), malT = digitos.length < 8;
+    error(f.nombre, 'eNombre', malN ? 'Escribí tu nombre para saber de quién es el pedido.' : '');
+    error(f.tel, 'eTel', malT ? (digitos.length ? 'Revisá el teléfono: tiene que tener al menos 8 números.' : 'Escribí un teléfono para coordinar el pedido.') : '');
+    if (malN) { f.nombre.focus(); return; }
+    if (malT) { f.tel.focus(); return; }
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(mensaje()), '_blank', 'noopener');
+  });
+
+  // Abrir y cerrar la caja
+  var ultimo = null;
+  function abrir() {
+    ultimo = document.activeElement;
+    caja.classList.add('open'); $('cajaFondo').classList.add('open'); document.documentElement.classList.add('caja-abierta');
+    setTimeout(function () { caja.focus(); }, 30);
+  }
+  function cerrar(volver) {
+    if (!caja.classList.contains('open')) return;
+    caja.classList.remove('open'); $('cajaFondo').classList.remove('open'); document.documentElement.classList.remove('caja-abierta');
+    if (volver !== false && ultimo && ultimo.focus) ultimo.focus();
+  }
+  document.querySelectorAll('[data-abrir-caja]').forEach(function (b) { b.addEventListener('click', abrir); });
+  $('cajaCerrar').addEventListener('click', function () { cerrar(); });
+  $('cajaFondo').addEventListener('click', function () { cerrar(); });
+  caja.addEventListener('click', function (e) { if (e.target.closest('[data-cerrar-caja]')) cerrar(false); });
+  document.addEventListener('keydown', function (e) {
+    if (!caja.classList.contains('open')) return;
+    if (e.key === 'Escape') { cerrar(); return; }
+    if (e.key !== 'Tab') return;
+    var foc = [].filter.call(caja.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,summary'), function (x) { return x.offsetParent !== null; });
+    if (!foc.length) return;
+    var a = foc[0], z = foc[foc.length - 1];
+    if (e.shiftKey && (document.activeElement === a || document.activeElement === caja)) { e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+  });
+
+  cargar();
+  f.nombre.value = st.nombre; f.tel.value = st.tel; f.fecha.value = st.fecha; f.notas.value = st.notas;
+  document.querySelectorAll('input[name="cEntrega"]').forEach(function (r) { r.checked = r.value === st.entrega; });
+  pintar();
+})();
+</script>
+</body>
+</html>
