@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>The Rock Skull | Cuadros de rock con discos de oro y platino</title>
+<meta name="description" content="Cuadros de rock con discos de oro y platino. Envíos a todo el país y todos los medios de pago. Belgrano.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Rock Skull | Cuadros de rock">
+<meta property="og:description" content="Discos de oro y platino enmarcados de tus bandas. Envíos a todo el país y todos los medios de pago.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/the-rock-skull/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/the-rock-skull/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1A1A1D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
+<style>
+/* Concepto: la pared donde cuelgan los cuadros. En la portada el disco de oro sale de atrás del marco y gira hasta frenar,
+   como cuando sacás un vinilo de la funda. El catálogo es la pared; cada cuadro lleva su placa grabada,
+   como las placas doradas y plateadas de los cuadros reales. Letra gótica por el logo de la calavera; el oro y la plata salen de los discos. */
+:root{
+  --pared:#E4E3DF;       /* la pared clara de las fotos */
+  --pared-2:#D6D4CF;
+  --muro:#B9B5AF;        /* el gris de la pared en las fotos, de fondo de cada cuadro */
+  --marco:#1A1A1D;       /* el marco negro */
+  --tinta:#1E1E21;
+  --suave:#55555B;
+  --oro:#C9A247;         /* el disco y la placa dorada */
+  --oro-claro:#EBD38C;
+  --oro-osc:#7A5E1F;
+  --plata:#BFC2C7;
+  --display:'Pirata One', 'Old English Text MT', Georgia, serif;
+  --body:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--pared);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:.005em;line-height:1.02;text-wrap:balance}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--marco);color:var(--oro-claro)}
+:focus-visible{outline:3px solid var(--oro-osc);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:20px;height:20px;flex:none}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font-weight:650;font-size:16px;font-stretch:105%;text-decoration:none;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-negro{background:var(--marco);color:#F4F3F0;box-shadow:0 12px 26px -14px rgba(26,26,29,.9)}
+.btn-linea{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(30,30,33,.3)}
+@media (hover:hover) and (pointer:fine){
+  .btn-negro:hover{background:#2C2C31}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(228,227,223,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(30,30,33,.08), 0 10px 30px -18px rgba(30,30,33,.35)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--marco), 0 4px 12px -4px rgba(0,0,0,.35)}
+.brand span{font-family:var(--display);font-size:24px;line-height:1}
+.brand small{display:block;font-family:var(--body);font-size:12.5px;font-weight:500;color:var(--suave);margin-top:3px}
+.links{display:flex;gap:4px;margin-left:auto}
+.links a{padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:550;font-size:15px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(30,30,33,.07)}}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:0;background:var(--marco);color:#fff;cursor:pointer;place-items:center}
+.menu-btn svg{width:22px;height:22px}
+.menu-movil{position:fixed;top:var(--header);left:12px;right:12px;z-index:49;background:#F1F0ED;border-radius:20px;padding:10px;
+  box-shadow:0 24px 50px -20px rgba(26,26,29,.5);opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top center;visibility:hidden;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s .2s}
+.menu-movil.open{opacity:1;transform:none;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.menu-movil a{display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:600;font-size:17px}
+.menu-movil a.btn{display:flex;margin-top:6px;color:#F4F3F0}
+@media (max-width:860px){
+  .links,.top .wrap > .btn{display:none}
+  .menu-btn{display:grid}
+}
+
+/* ---------- portada ---------- */
+.hero{position:relative;min-height:100dvh;padding:calc(var(--header) + 32px) 0 64px;display:flex;align-items:center;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(52px, 6.6vw, 96px)}
+.hero .lead{margin-top:22px;max-width:30ch;font-size:clamp(17px, 1.5vw, 20px);color:var(--suave)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.donde{margin-top:28px;display:flex;align-items:center;gap:10px;font-size:15px;color:var(--suave)}
+.donde svg{width:18px;height:18px;flex:none}
+
+/* el cuadro colgado y el disco que sale de atrás */
+.rig{position:relative;width:min(560px, 100%);aspect-ratio:1.26;justify-self:end}
+.cuadro-hero{position:absolute;left:0;top:0;width:79%;aspect-ratio:1;z-index:2;border-radius:4px;overflow:hidden;
+  box-shadow:0 2px 4px rgba(26,26,29,.18), 0 40px 70px -30px rgba(26,26,29,.65)}
+.cuadro-hero img{width:100%;height:100%;object-fit:cover}
+.disco{position:absolute;left:12%;top:9%;width:62%;aspect-ratio:1;z-index:1;
+  transform:translateX(56%);animation:sale 1.9s var(--ease-out) .35s both}
+.disco .gira{position:absolute;inset:0;border-radius:50%;
+  background:
+    radial-gradient(circle, transparent 0 33%, rgba(60,40,6,.35) 33.4% 34.2%, transparent 34.6%),
+    repeating-radial-gradient(circle, rgba(255,240,200,0) 0 1.6px, rgba(90,62,12,.22) 1.6px 2.6px),
+    radial-gradient(circle, #E3C374 0 30%, #C29A41 60%, #9C7A2C 100%);
+  box-shadow:0 0 0 1px rgba(90,62,12,.45), 0 30px 60px -28px rgba(26,26,29,.7);
+  animation:gira 1.9s var(--ease-out) .35s both}
+.disco .gira img{position:absolute;left:33%;top:33%;width:34%;height:34%;border-radius:50%;background:#fff;box-shadow:0 0 0 2px rgba(60,40,6,.4)}
+.disco .gira::after{content:"";position:absolute;left:48.6%;top:48.6%;width:2.8%;height:2.8%;border-radius:50%;background:var(--pared-2);box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+/* los brillos no giran: quedan quietos como la luz de la habitación */
+.disco::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 300deg, transparent 0 8%, rgba(255,250,230,.55) 12%, transparent 17% 50%, rgba(255,250,230,.42) 62%, transparent 67%);
+  -webkit-mask:radial-gradient(circle, transparent 0 34%, #000 35%);mask:radial-gradient(circle, transparent 0 34%, #000 35%)}
+@keyframes sale{from{transform:translateX(0)}to{transform:translateX(56%)}}
+@keyframes gira{from{transform:rotate(-540deg)}to{transform:rotate(0)}}
+.hero h1,.hero .lead,.hero .ctas,.hero .donde{animation:subir .7s var(--ease-out) both}
+.hero .lead{animation-delay:.08s}.hero .ctas{animation-delay:.16s}.hero .donde{animation-delay:.24s}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .hero{min-height:auto;padding:calc(var(--header) + 28px) 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .rig{justify-self:start;width:min(480px, 100%)}
+}
+
+/* ---------- placa grabada (como las de los cuadros) ---------- */
+.placa{position:relative;border-radius:3px;padding:12px 16px;color:#3A2C08;
+  background:linear-gradient(135deg, #EFD993 0%, #CBA54C 38%, #E9CF85 55%, #B48E3A 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,248,220,.5), inset 0 0 0 3px rgba(90,62,12,.25), 0 1px 2px rgba(26,26,29,.25)}
+.placa.plata{color:#26282C;background:linear-gradient(135deg, #F2F3F5 0%, #B7BBC1 40%, #E3E5E8 56%, #9DA2A9 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6), inset 0 0 0 3px rgba(40,44,50,.18), 0 1px 2px rgba(26,26,29,.25)}
+
+/* ---------- la pared (catálogo) ---------- */
+.pared{padding:96px 0 104px;background:var(--pared-2)}
+.pared-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.pared h2{font-size:clamp(44px, 5vw, 68px)}
+.pared-cab p{margin-top:12px;max-width:46ch;color:var(--suave)}
+.filtros{display:flex;flex-wrap:wrap;gap:8px}
+.filtros button{height:42px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;background:rgba(30,30,33,.07);font-weight:600;font-size:15px;
+  transition:background-color .2s ease, color .2s ease}
+.filtros button[aria-pressed="true"]{background:var(--marco);color:#F4F3F0}
+@media (hover:hover) and (pointer:fine){.filtros button:not([aria-pressed="true"]):hover{background:rgba(30,30,33,.13)}}
+.grilla{margin-top:44px;display:grid;grid-template-columns:repeat(3, 1fr);gap:44px 32px}
+.item{display:flex;flex-direction:column}
+.item[hidden]{display:none}
+.item figure{margin:0;aspect-ratio:1;background:var(--muro);border-radius:4px;overflow:hidden}
+.item figure img{width:100%;height:100%;object-fit:contain}
+.item .placa{margin:-22px 18px 0;z-index:1}
+.item h3{font-family:var(--body);font-weight:750;font-size:17px;line-height:1.25;letter-spacing:0}
+.item .placa p{font-size:14px;margin-top:2px;opacity:.85}
+.item-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 18px 0}
+.precio{font-weight:600;font-size:15px;color:var(--suave)}
+.agregar{height:44px;min-width:118px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;background:var(--marco);color:#F4F3F0;font-weight:650;font-size:15px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .16s var(--ease-out), background-color .2s ease}
+.agregar svg{width:18px;height:18px}
+.agregar:active{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.agregar:hover{background:#2C2C31}}
+.cant{display:none;align-items:center;height:44px;border-radius:999px;background:#F4F3F0;box-shadow:inset 0 0 0 1.5px var(--marco)}
+.cant button{width:44px;height:44px;border-radius:50%;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;transition:transform .14s var(--ease-out)}
+.cant button:active{transform:scale(.88)}
+.cant svg{width:18px;height:18px}
+.cant output{min-width:30px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.item.en-pedido .agregar{display:none}
+.item.en-pedido .cant{display:inline-flex}
+.otro{margin-top:56px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:26px 28px;border-radius:4px;background:var(--marco);color:#E9E8E4}
+.otro p{font-size:18px;max-width:52ch}
+.otro strong{color:var(--oro-claro);font-weight:650}
+.otro .btn{background:#F4F3F0;color:var(--marco)}
+@media (max-width:980px){.grilla{grid-template-columns:repeat(2, 1fr);gap:40px 22px}}
+@media (max-width:560px){
+  .pared{padding:72px 0 80px}
+  .grilla{grid-template-columns:repeat(2, 1fr);gap:30px 12px;margin-top:32px}
+  .item .placa{margin:-14px 6px 0;padding:8px 10px}
+  .item h3{font-size:14.5px}
+  .item .placa p{font-size:12.5px}
+  .item-pie{flex-direction:column;align-items:stretch;gap:8px;margin:10px 6px 0}
+  .precio{font-size:13.5px}
+  .agregar{width:100%;min-width:0;height:42px;padding:0 12px}
+  .item.en-pedido .cant{display:flex;justify-content:space-between}
+  .cant{height:42px}.cant button{width:42px;height:42px}
+  .filtros button{height:40px;padding:0 14px;font-size:14px}
+}
+
+/* ---------- cómo comprar ---------- */
+.comprar{padding:104px 0}
+.comprar .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.comprar h2{font-size:clamp(44px, 5vw, 68px)}
+.comprar .lead{margin-top:16px;color:var(--suave);max-width:36ch}
+.pasos{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:p}
+.pasos li{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;padding:22px 24px;background:#F1F0ED;border-radius:4px;box-shadow:0 1px 0 rgba(30,30,33,.06)}
+.pasos li::before{counter-increment:p;content:counter(p);font-family:var(--display);font-size:44px;line-height:.9;color:var(--oro-osc);text-align:center}
+.pasos h3{font-family:var(--body);font-weight:750;font-size:19px;letter-spacing:0;line-height:1.25}
+.pasos p{margin-top:4px;color:var(--suave)}
+@media (max-width:860px){.comprar{padding:80px 0}.comprar .wrap{grid-template-columns:1fr;gap:32px}.pasos li{grid-template-columns:40px 1fr;gap:14px;padding:18px}}
+
+/* ---------- contacto ---------- */
+.contacto{padding:0 0 110px}
+.cartel{position:relative;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;padding:56px;border-radius:4px;background:var(--marco);color:#ECEBE7;overflow:hidden}
+.cartel .logo{width:150px;height:150px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px #2A2A2F, 0 0 0 7px rgba(201,162,71,.6)}
+.cartel h2{font-size:clamp(42px, 4.6vw, 64px);color:#F4F3F0}
+.cartel p{margin-top:12px;max-width:44ch;color:#B9B8B3}
+.cartel .ctas{margin-top:26px}
+.cartel .btn-claro{background:#F4F3F0;color:var(--marco)}
+.cartel .btn-linea{color:#F4F3F0;box-shadow:inset 0 0 0 1.5px rgba(244,243,240,.35)}
+@media (hover:hover) and (pointer:fine){.cartel .btn-claro:hover{background:#fff}.cartel .btn-linea:hover{box-shadow:inset 0 0 0 1.5px #F4F3F0}}
+.datos{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:15px;color:#B9B8B3}
+.datos span{display:inline-flex;align-items:center;gap:8px}
+.datos svg{width:18px;height:18px;color:var(--oro)}
+@media (max-width:760px){.cartel{grid-template-columns:1fr;gap:28px;padding:36px 24px}.cartel .logo{width:120px;height:120px}}
+
+footer{padding:30px 0 130px;color:var(--suave);font-size:14px;border-top:1px solid rgba(30,30,33,.1)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--tinta);font-weight:600}
+
+/* ---------- botón flotante de Instagram (no publican WhatsApp): mismo comportamiento que el de WhatsApp aprobado ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.3s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 3.3s infinite}
+.wa::after{animation-delay:3.7s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#F4F3F0;color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(26,26,29,.5);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#F4F3F0;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--suave)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+
+/* ---------- carrito ---------- */
+.cart-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 6px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;background:var(--marco);color:#F4F3F0;display:grid;place-items:center;
+  box-shadow:0 14px 30px -12px rgba(26,26,29,.8);opacity:0;transform:translateY(10px) scale(.95);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s .22s, background-color .2s ease}
+.cart-fab.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s, background-color .2s ease}
+.cart-fab svg{width:24px;height:24px}
+.cart-fab:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.cart-fab:hover{background:#2C2C31}}
+.badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--oro);color:#2A1F05;font-size:12.5px;font-weight:800;line-height:22px;text-align:center;box-shadow:0 0 0 2px var(--pared)}
+.cart-bar{display:none}
+@media (max-width:640px){
+  .cart-fab{display:none}
+  .cart-bar{display:flex;position:fixed;left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 70px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+    height:58px;align-items:center;gap:10px;padding:0 10px 0 18px;border-radius:999px;border:0;cursor:pointer;background:var(--marco);color:#F4F3F0;font-weight:650;font-size:16px;
+    box-shadow:0 16px 34px -14px rgba(26,26,29,.85);transform:translateY(calc(100% + 40px));visibility:hidden;
+    transition:transform .26s var(--ease-out), visibility 0s .26s}
+  .cart-bar.on{transform:none;visibility:visible;transition:transform .26s var(--ease-out), visibility 0s}
+  .cart-bar:active{transform:scale(.98)}
+  .cart-bar svg{width:22px;height:22px;flex:none}
+  .cart-bar .badge{position:static;margin-left:auto;min-width:36px;height:36px;padding:0 10px;font-size:15px;line-height:36px;box-shadow:none}
+}
+
+html.carrito-abierto{overflow:hidden}
+.carrito{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;overflow:hidden;color:var(--tinta)}
+.carrito::backdrop{background:transparent}
+.velo{position:absolute;inset:0;background:rgba(26,26,29,.5);opacity:0;transition:opacity .24s ease}
+.cajon{position:absolute;top:0;right:0;bottom:0;width:min(460px, 100%);display:flex;flex-direction:column;background:#F1F0ED;border-radius:20px 0 0 20px;
+  box-shadow:-30px 0 60px -30px rgba(26,26,29,.6);transform:translateX(100%);transition:transform .34s var(--ease-drawer)}
+.carrito.open .velo{opacity:1}
+.carrito.open .cajon{transform:none}
+.cajon-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 14px 24px}
+.cajon-cab h2{font-size:40px;line-height:1}
+.cajon-sub{margin-top:6px;font-size:14px;color:var(--suave)}
+.cerrar{width:44px;height:44px;border-radius:50%;border:0;background:rgba(30,30,33,.08);cursor:pointer;display:grid;place-items:center;flex:none}
+.cerrar svg{width:20px;height:20px}
+.cajon form{flex:1;min-height:0;display:flex;flex-direction:column}
+.cajon-cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 24px 24px}
+.cajon-pie{padding:14px 20px max(16px, env(safe-area-inset-bottom)) 24px;background:#F1F0ED;box-shadow:0 -1px 0 rgba(30,30,33,.1)}
+@media (max-width:640px){
+  .cajon{top:auto;left:0;width:100%;max-height:calc(100dvh - 40px);border-radius:20px 20px 0 0;transform:translateY(100%)}
+  .cajon-cab{padding:20px 16px 12px 20px}
+  .cajon-cuerpo{padding:4px 16px 20px 20px}
+  .cajon-pie{padding-left:20px;padding-right:16px}
+}
+.vacio{padding:28px 4px;color:var(--suave)}
+.vacio a{font-weight:650;color:var(--tinta)}
+.lineas{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.linea{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center}
+.linea img{width:64px;height:64px;border-radius:4px;object-fit:cover;background:var(--muro)}
+.linea b{display:block;font-size:15.5px;line-height:1.25}
+.linea small{display:block;margin-top:2px;color:var(--suave);font-size:13.5px;line-height:1.35}
+.linea .cant{display:inline-flex;height:40px}
+.linea .cant button{width:40px;height:40px}
+.campos{margin-top:26px;display:grid;gap:16px}
+.campos h3{font-family:var(--body);font-weight:750;font-size:17px;letter-spacing:0}
+.campo{display:grid;gap:6px}
+.campo label,.campo legend{font-weight:600;font-size:14.5px;padding:0}
+.campo .ayuda{font-size:13px;color:var(--suave)}
+.campo input,.campo select,.campo textarea{width:100%;min-height:48px;padding:11px 14px;border-radius:12px;border:1.5px solid #9C9BA0;background:#fff;font-size:16px}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--marco);box-shadow:0 0 0 3px rgba(201,162,71,.45)}
+.campo [aria-invalid="true"]{border-color:#A3261C}
+.error{font-size:13.5px;color:#A3261C;font-weight:600}
+fieldset.campo{border:0;margin:0;padding:0}
+.opciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.opciones label{position:relative;display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #9C9BA0;cursor:pointer;font-weight:600;font-size:15px}
+.opciones input{position:absolute;opacity:0;width:1px;height:1px}
+.opciones input:checked + span{color:#F4F3F0}
+.opciones label:has(input:checked){background:var(--marco);box-shadow:none}
+.opciones label:has(input:focus-visible){outline:3px solid var(--oro-osc);outline-offset:2px}
+.enviar{width:100%;height:56px}
+.nota{margin-top:10px;font-size:13.5px;color:var(--suave);text-align:center}
+.aviso{margin-top:8px;font-size:14px;font-weight:600;text-align:center;min-height:1.2em}
+.aviso.mal{color:#A3261C}
+details.prev{margin-top:20px;font-size:14px}
+details.prev summary{cursor:pointer;font-weight:600}
+details.prev pre{white-space:pre-wrap;font-family:var(--body);background:#fff;border-radius:12px;padding:12px 14px;margin:10px 0 0;font-size:14px;line-height:1.5}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .disco,.disco .gira{animation:none}
+  .hero h1,.hero .lead,.hero .ctas,.hero .donde,.wa{animation:aparece .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .cajon{transform:none !important;opacity:0;transition:opacity .18s ease}
+  .carrito.open .cajon{opacity:1}
+  .menu-movil{transform:none}
+}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="bolsa" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 10V7a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="caja" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5v-9Z M3.5 7.5 12 12l8.5-4.5 M12 12v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="tarjeta" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 10h19M6.5 15h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="hamb" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="The Rock Skull, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span>The Rock Skull<small>Cuadros de rock en Belgrano</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#cuadros">Cuadros</a>
+      <a href="#comprar">Cómo comprar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-negro" data-contacto href="https://ig.me/m/the_rock_skull" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú"><svg aria-hidden="true"><use href="#hamb"/></svg></button>
+  </div>
+</header>
+<nav class="menu-movil" id="menuMovil" aria-label="Menú">
+  <a href="#cuadros">Cuadros</a>
+  <a href="#comprar">Cómo comprar</a>
+  <a href="#contacto">Contacto</a>
+  <a class="btn btn-negro" data-contacto href="https://ig.me/m/the_rock_skull" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <h1>Tus discos favoritos, en oro y platino.</h1>
+      <p class="lead">Cuadros de rock para colgar en tu pared. Envíos a todo el país y todos los medios de pago.</p>
+      <div class="ctas">
+        <a class="btn btn-negro" href="#cuadros">Ver los cuadros</a>
+        <a class="btn btn-linea" data-contacto href="https://ig.me/m/the_rock_skull" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+      </div>
+      <p class="donde"><svg aria-hidden="true"><use href="#pin"/></svg>Belgrano. Enviamos a todo el país.</p>
+    </div>
+    <div class="rig" aria-hidden="true">
+      <div class="disco"><div class="gira"><img src="img/perfil.jpg" alt=""></div></div>
+      <div class="cuadro-hero"><img src="img/foto-01.jpg" alt="" width="640" height="640" fetchpriority="high"></div>
+    </div>
+  </div>
+</section>
+
+<section class="pared" id="cuadros" aria-labelledby="cuadrosTit">
+  <div class="wrap">
+    <div class="pared-cab">
+      <div>
+        <h2 id="cuadrosTit">La pared</h2>
+        <p>Cada cuadro trae el disco, la tapa del álbum y su placa. Agregá los que te gustan y consultanos el precio.</p>
+      </div>
+      <div class="filtros" role="group" aria-label="Filtrar cuadros">
+        <button type="button" data-f="todos" aria-pressed="true">Todos</button>
+        <button type="button" data-f="oro" aria-pressed="false">Discos de oro</button>
+        <button type="button" data-f="platino" aria-pressed="false">Discos de platino</button>
+        <button type="button" data-f="beatles" aria-pressed="false">The Beatles</button>
+      </div>
+    </div>
+
+    <div class="grilla" id="grilla">
+      <article class="item" data-id="artaud" data-tags="oro">
+        <figure><img src="img/foto-01.jpg" alt="Cuadro con disco de oro de Artaud, con la tapa verde del álbum y placa dorada" width="640" height="640" loading="lazy"></figure>
+        <div class="placa"><h3>Artaud</h3><p>Disco de oro</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="white-album" data-tags="platino beatles">
+        <figure><img src="img/foto-04.jpg" alt="Cuadro con disco de platino de The Beatles, el álbum blanco" width="640" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>The Beatles (álbum blanco)</h3><p>Disco de platino</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="magical-mystery-tour" data-tags="oro beatles">
+        <figure><img src="img/foto-05.jpg" alt="Cuadro con disco de oro de Magical Mystery Tour, de The Beatles" width="640" height="640" loading="lazy"></figure>
+        <div class="placa"><h3>Magical Mystery Tour</h3><p>The Beatles. Disco de oro</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="yellow-submarine" data-tags="platino beatles">
+        <figure><img src="img/foto-06.jpg" alt="Cuadro con disco de platino de Yellow Submarine, de The Beatles" width="640" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>Yellow Submarine</h3><p>The Beatles. Disco de platino</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="rubber-soul" data-tags="oro beatles">
+        <figure><img src="img/foto-07.jpg" alt="Cuadro con disco de oro de Rubber Soul, de The Beatles" width="480" height="640" loading="lazy"></figure>
+        <div class="placa"><h3>Rubber Soul</h3><p>The Beatles. Disco de oro</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="help" data-tags="platino beatles">
+        <figure><img src="img/foto-08.jpg" alt="Cuadro con disco de platino de Help!, de The Beatles" width="480" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>Help!</h3><p>The Beatles. Disco de platino</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="hard-days-night" data-tags="platino beatles">
+        <figure><img src="img/foto-09.jpg" alt="Cuadro con disco de platino de A Hard Day's Night, de The Beatles" width="640" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>A Hard Day's Night</h3><p>The Beatles. Disco de platino</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="beatles-for-sale" data-tags="oro beatles">
+        <figure><img src="img/foto-10.jpg" alt="Cuadro con disco de oro de Beatles for Sale" width="640" height="640" loading="lazy"></figure>
+        <div class="placa"><h3>Beatles for Sale</h3><p>The Beatles. Disco de oro</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="with-the-beatles" data-tags="platino beatles">
+        <figure><img src="img/foto-11.jpg" alt="Cuadro con disco de platino de With the Beatles" width="640" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>With the Beatles</h3><p>The Beatles. Disco de platino</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="please-please-me" data-tags="oro beatles">
+        <figure><img src="img/foto-12.jpg" alt="Cuadro con disco de oro de Please Please Me, de The Beatles" width="640" height="640" loading="lazy"></figure>
+        <div class="placa"><h3>Please Please Me</h3><p>The Beatles. Disco de oro</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="lost-in-your-love" data-tags="platino">
+        <figure><img src="img/foto-03.jpg" alt="Cuadro con disco plateado de Lost in Your Love, de DAV-EL, por un millón de vistas en YouTube" width="640" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>Lost in Your Love</h3><p>DAV-EL. Un millón de vistas</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+      <article class="item" data-id="the-sun-the-wine" data-tags="platino">
+        <figure><img src="img/foto-02.jpg" alt="Cuadro apaisado con tres discos de The Sun, The Wine, con placa de 50 millones de vistas" width="640" height="640" loading="lazy"></figure>
+        <div class="placa plata"><h3>The Sun, The Wine</h3><p>Tres discos. 50 millones de vistas</p></div>
+        <div class="item-pie"><span class="precio">Consultar</span><div class="acc"></div></div>
+      </article>
+    </div>
+
+    <div class="otro">
+      <p><strong>¿Buscás otra banda o disco?</strong> Escribinos y te contamos qué tenemos.</p>
+      <a class="btn" data-contacto href="https://ig.me/m/the_rock_skull" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    </div>
+  </div>
+</section>
+
+<section class="comprar" id="comprar" aria-labelledby="comprarTit">
+  <div class="wrap">
+    <div>
+      <h2 id="comprarTit">Cómo comprar</h2>
+      <p class="lead">Sin vueltas: elegís, nos mandás el pedido y coordinamos el pago y el envío por mensaje.</p>
+    </div>
+    <ol class="pasos">
+      <li><div><h3>Elegí tus cuadros</h3><p>Tocá Agregar en los que te gustan. Podés sumar varios.</p></div></li>
+      <li><div><h3>Mandanos el pedido</h3><p>Completá tu nombre y teléfono y el pedido nos llega por mensaje directo de Instagram.</p></div></li>
+      <li><div><h3>Pagá como quieras</h3><p>Aceptamos todos los medios de pago. Te pasamos el precio y lo coordinamos.</p></div></li>
+      <li><div><h3>Te lo enviamos</h3><p>Hacemos envíos a todo el país.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contacto" id="contacto" aria-labelledby="contactoTit">
+  <div class="wrap">
+    <div class="cartel">
+      <img class="logo" src="img/perfil.jpg" alt="Logo de The Rock Skull: una calavera con el nombre en letras de rock" width="150" height="150" loading="lazy">
+      <div>
+        <h2 id="contactoTit">Hablemos de rock</h2>
+        <p>Consultanos precios, envíos o el disco que te falta. Te respondemos por Instagram.</p>
+        <div class="ctas">
+          <a class="btn btn-claro" data-contacto href="https://ig.me/m/the_rock_skull" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+          <a class="btn btn-linea" href="https://instagram.com/the_rock_skull" target="_blank" rel="noopener">Ver @the_rock_skull</a>
+        </div>
+        <div class="datos">
+          <span><svg aria-hidden="true"><use href="#pin"/></svg>Belgrano</span>
+          <span><svg aria-hidden="true"><use href="#caja"/></svg>Envíos a todo el país</span>
+          <span><svg aria-hidden="true"><use href="#tarjeta"/></svg>Todos los medios de pago</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>The Rock Skull. Cuadros de rock. <a href="https://instagram.com/the_rock_skull" target="_blank" rel="noopener">@the_rock_skull</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" data-contacto href="https://ig.me/m/the_rock_skull" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram">
+  <svg aria-hidden="true"><use href="#ig"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>@the_rock_skull, por mensaje directo</small></span>
+</a>
+
+<button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu pedido">
+  <svg aria-hidden="true"><use href="#bolsa"/></svg><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver pedido">
+  <svg aria-hidden="true"><use href="#bolsa"/></svg><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<dialog class="carrito" id="carrito" aria-labelledby="carritoTit">
+  <div class="velo" data-cerrar aria-hidden="true"></div>
+  <div class="cajon">
+    <div class="cajon-cab">
+      <div><h2 id="carritoTit">Tu pedido</h2><p class="cajon-sub" id="carritoSub">The Rock Skull</p></div>
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar el pedido"><svg aria-hidden="true"><use href="#x"/></svg></button>
+    </div>
+    <form id="form" novalidate>
+      <div class="cajon-cuerpo">
+        <div class="vacio" id="vacio">Todavía no agregaste cuadros. <a href="#cuadros" data-cerrar>Mirá la pared</a> y tocá Agregar en los que te gustan.</div>
+        <ul class="lineas" id="lineas"></ul>
+        <div class="campos" id="campos">
+          <h3>Tus datos</h3>
+          <div class="campo">
+            <label for="fNombre">Nombre</label>
+            <input id="fNombre" name="nombre" autocomplete="name" required aria-describedby="eNombre">
+            <span class="error" id="eNombre" hidden>Escribí tu nombre.</span>
+          </div>
+          <div class="campo">
+            <label for="fTel">Teléfono</label>
+            <input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="hTel eTel">
+            <span class="ayuda" id="hTel">Para coordinar el pago y el envío.</span>
+            <span class="error" id="eTel" hidden>Escribí un teléfono con al menos 8 números.</span>
+          </div>
+          <fieldset class="campo">
+            <legend>Entrega</legend>
+            <div class="opciones">
+              <label><input type="radio" name="entrega" value="envio" checked><span>Envío</span></label>
+              <label><input type="radio" name="entrega" value="coordinar"><span>A coordinar</span></label>
+            </div>
+          </fieldset>
+          <div class="campo" id="campoLoc">
+            <label for="fLoc">Localidad y provincia</label>
+            <input id="fLoc" name="localidad" autocomplete="address-level2" aria-describedby="eLoc">
+            <span class="error" id="eLoc" hidden>Contanos a dónde lo enviamos.</span>
+          </div>
+          <div class="campo">
+            <label for="fPago">¿Cómo querés pagar?</label>
+            <select id="fPago" name="pago">
+              <option>Lo charlamos</option>
+              <option>Transferencia</option>
+              <option>Efectivo</option>
+              <option>Tarjeta</option>
+              <option>Otro medio</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="fNotas">Aclaraciones</label>
+            <textarea id="fNotas" name="notas" placeholder="Por ejemplo: es para regalo"></textarea>
+          </div>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><pre id="prevTxt"></pre></details>
+        </div>
+      </div>
+      <div class="cajon-pie">
+        <button class="btn btn-negro enviar" type="submit" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Enviar pedido por Instagram</span></button>
+        <p class="aviso" id="aviso" role="status"></p>
+        <p class="nota">Copiamos tu pedido y se abre el chat de @the_rock_skull. Solo pegalo y mandalo.</p>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+document.documentElement.classList.add('js');
+var IG_DM = 'https://ig.me/m/the_rock_skull';
+
+// Encabezado y menú
+(function () {
+  var top = document.getElementById('top');
+  var marca = document.createElement('div');
+  marca.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(marca);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(marca);
+  else top.classList.add('scrolled');
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menuMovil');
+  function setMenu(o) { menu.classList.toggle('open', o); btn.setAttribute('aria-expanded', String(o)); btn.setAttribute('aria-label', o ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+})();
+
+// Filtros de la pared
+(function () {
+  var bs = document.querySelectorAll('.filtros button'), items = document.querySelectorAll('#grilla .item');
+  bs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.f;
+      bs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      items.forEach(function (it) { it.hidden = f !== 'todos' && (' ' + it.dataset.tags + ' ').indexOf(' ' + f + ' ') < 0; });
+    });
+  });
+})();
+
+// El pedido: Agregar, cantidades, carrito guardado y mensaje para Instagram
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var CLAVE = 'therockskull-pedido-v1';
+  var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var dlg = $('carrito'), form = $('form');
+  var P = {};
+  document.querySelectorAll('#grilla .item').forEach(function (it) {
+    P[it.dataset.id] = { el: it, nombre: it.querySelector('h3').textContent, tipo: it.querySelector('.placa p').textContent, img: it.querySelector('img').getAttribute('src') };
+    it.querySelector('.acc').innerHTML =
+      '<button class="agregar" type="button"><svg aria-hidden="true"><use href="#mas"/></svg>Agregar</button>' +
+      '<div class="cant" role="group" aria-label="Cantidad de ' + P[it.dataset.id].nombre + '">' +
+      '<button type="button" data-d="-1" aria-label="Uno menos"><svg aria-hidden="true"><use href="#menos"/></svg></button>' +
+      '<output aria-live="off">1</output>' +
+      '<button type="button" data-d="1" aria-label="Uno más"><svg aria-hidden="true"><use href="#mas"/></svg></button></div>';
+  });
+
+  var st = { items: {}, nombre: '', tel: '', entrega: 'envio', localidad: '', pago: 'Lo charlamos', notas: '' };
+  try {
+    var d = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (d && typeof d === 'object') {
+      if (d.items && typeof d.items === 'object') Object.keys(d.items).forEach(function (k) { var q = d.items[k]; if (P[k] && typeof q === 'number' && q > 0 && q < 100) st.items[k] = Math.floor(q); });
+      ['nombre', 'tel', 'localidad', 'notas', 'pago'].forEach(function (k) { if (typeof d[k] === 'string') st[k] = d[k].slice(0, 400); });
+      if (d.entrega === 'envio' || d.entrega === 'coordinar') st.entrega = d.entrega;
+    }
+  } catch (e) { /* sin almacenamiento: la página anda igual */ }
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(st)); } catch (e) { /* nada */ } }
+  function total() { var n = 0; for (var k in st.items) n += st.items[k]; return n; }
+  function anunciar(t) { var a = $('anuncio'); a.textContent = ''; setTimeout(function () { a.textContent = t; }, 30); }
+
+  function cambiar(id, d) {
+    var q = (st.items[id] || 0) + d;
+    if (q <= 0) { delete st.items[id]; anunciar(P[id].nombre + ' salió de tu pedido.'); }
+    else { st.items[id] = Math.min(q, 99); anunciar(P[id].nombre + ': ' + st.items[id] + '. Está en tu pedido.'); }
+    guardar(); pintar(); if (d > 0) latir();
+  }
+  function latir() {
+    if (REDUCE) return;
+    document.querySelectorAll('.badge').forEach(function (b) { if (b.animate && b.offsetParent) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.25)' }, { transform: 'scale(1)' }], { duration: 260, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }); });
+  }
+  document.getElementById('grilla').addEventListener('click', function (e) {
+    var it = e.target.closest('.item'); if (!it) return;
+    if (e.target.closest('.agregar')) { cambiar(it.dataset.id, 1); var m = it.querySelector('.cant button[data-d="1"]'); if (m) m.focus(); }
+    var b = e.target.closest('.cant button'); if (b) cambiar(it.dataset.id, +b.dataset.d);
+  });
+  $('lineas').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-d]'); if (!b) return;
+    cambiar(b.closest('li').dataset.id, +b.dataset.d);
+  });
+
+  function pintar() {
+    var n = total();
+    document.querySelectorAll('[data-total]').forEach(function (b) { b.textContent = n; });
+    $('cartFab').classList.toggle('on', n > 0); $('cartBar').classList.toggle('on', n > 0);
+    $('cartFab').setAttribute('aria-label', 'Ver tu pedido, ' + n + (n === 1 ? ' cuadro' : ' cuadros'));
+    $('cartBar').setAttribute('aria-label', 'Ver pedido, ' + n + (n === 1 ? ' cuadro' : ' cuadros'));
+    for (var id in P) {
+      var q = st.items[id] || 0;
+      P[id].el.classList.toggle('en-pedido', q > 0);
+      P[id].el.querySelector('.cant output').textContent = q || 1;
+    }
+    var ul = $('lineas'); ul.innerHTML = '';
+    Object.keys(st.items).forEach(function (id) {
+      var li = document.createElement('li'); li.className = 'linea'; li.dataset.id = id;
+      li.innerHTML = '<img alt="" src="' + P[id].img + '"><div><b></b><small></small></div>' +
+        '<div class="cant" role="group"><button type="button" data-d="-1" aria-label="Uno menos"><svg aria-hidden="true"><use href="#menos"/></svg></button><output>' + st.items[id] + '</output><button type="button" data-d="1" aria-label="Uno más"><svg aria-hidden="true"><use href="#mas"/></svg></button></div>';
+      li.querySelector('b').textContent = P[id].nombre; li.querySelector('small').textContent = P[id].tipo + '. Precio a consultar';
+      li.querySelector('.cant').setAttribute('aria-label', 'Cantidad de ' + P[id].nombre);
+      ul.appendChild(li);
+    });
+    $('vacio').hidden = n > 0; $('campos').hidden = n === 0; $('enviar').disabled = n === 0;
+    $('carritoSub').textContent = n ? n + (n === 1 ? ' cuadro' : ' cuadros') + '. Precio a consultar.' : 'The Rock Skull';
+    $('prevTxt').textContent = mensaje();
+  }
+
+  // Formulario
+  var f = form.elements;
+  f.nombre.value = st.nombre; f.tel.value = st.tel; f.localidad.value = st.localidad; f.notas.value = st.notas; f.pago.value = st.pago;
+  form.querySelector('input[name="entrega"][value="' + st.entrega + '"]').checked = true;
+  function syncLoc() { $('campoLoc').hidden = st.entrega !== 'envio'; }
+  form.addEventListener('input', function () {
+    st.nombre = f.nombre.value; st.tel = f.tel.value; st.localidad = f.localidad.value; st.notas = f.notas.value; st.pago = f.pago.value;
+    st.entrega = form.querySelector('input[name="entrega"]:checked').value; syncLoc(); guardar(); $('prevTxt').textContent = mensaje();
+  });
+  form.addEventListener('change', function () { form.dispatchEvent(new Event('input')); });
+
+  function mensaje() {
+    var l = ['Hola The Rock Skull! Quiero consultar por estos cuadros:'];
+    Object.keys(st.items).forEach(function (id) { l.push('- ' + st.items[id] + ' x ' + P[id].nombre + ' (' + P[id].tipo + ')'); });
+    l.push('');
+    l.push('Nombre: ' + (st.nombre.trim() || '...'));
+    l.push('Teléfono: ' + (st.tel.trim() || '...'));
+    l.push('Entrega: ' + (st.entrega === 'envio' ? 'envío a ' + (st.localidad.trim() || '...') : 'a coordinar'));
+    l.push('Pago: ' + st.pago);
+    if (st.notas.trim()) l.push('Aclaraciones: ' + st.notas.trim());
+    l.push('');
+    l.push('¿Me pasan el precio? Gracias!');
+    return l.join('\n');
+  }
+  function marcar(inp, err, mal) { inp.setAttribute('aria-invalid', String(mal)); $(err).hidden = !mal; }
+  function validar() {
+    var malos = [];
+    var a = !f.nombre.value.trim(); marcar(f.nombre, 'eNombre', a); if (a) malos.push(f.nombre);
+    var b = (f.tel.value.match(/\d/g) || []).length < 8; marcar(f.tel, 'eTel', b); if (b) malos.push(f.tel);
+    var c = st.entrega === 'envio' && !f.localidad.value.trim(); marcar(f.localidad, 'eLoc', c); if (c) malos.push(f.localidad);
+    return malos;
+  }
+
+  // Abrir y cerrar el carrito
+  function abrir() {
+    if (dlg.open) return;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    document.documentElement.classList.add('carrito-abierto');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { dlg.classList.add('open'); }); });
+  }
+  function cerrar() {
+    if (!dlg.open) return;
+    dlg.classList.remove('open');
+    document.documentElement.classList.remove('carrito-abierto');
+    setTimeout(function () { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }, REDUCE ? 180 : 340);
+  }
+  document.querySelectorAll('[data-abrir-carrito]').forEach(function (b) { b.addEventListener('click', abrir); });
+  dlg.addEventListener('click', function (e) { if (e.target.closest('[data-cerrar]')) cerrar(); });
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); cerrar(); });
+
+  function abrirLink(url) { var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; dlg.appendChild(a); a.click(); a.remove(); }
+  function copiarViejo(t) {
+    try { var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      dlg.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok; } catch (e) { return false; }
+  }
+  function copiar(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).then(function () { return true; }, function () { return copiarViejo(t); });
+    return Promise.resolve(copiarViejo(t));
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!total()) return;
+    var aviso = $('aviso'), malos = validar();
+    if (malos.length) { aviso.classList.add('mal'); aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.'; malos[0].focus(); return; }
+    aviso.classList.remove('mal');
+    var msg = mensaje();
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu pedido: pegalo en el chat.';
+      else { aviso.textContent = 'No pudimos copiarlo solo: copialo de "Ver cómo llega el mensaje" y pegalo en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
+  });
+
+  syncLoc();
+  pintar();
+})();
+</script>
+</body>
+</html>
