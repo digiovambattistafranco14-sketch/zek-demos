@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Atelier Raíz | Macramé artesanal en Moreno</title>
+<meta name="description" content="Macramé artesanal hecho a mano en Moreno, Buenos Aires. Portamacetas, tapices de pared y pedidos personalizados.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Atelier Raíz | Macramé artesanal en Moreno">
+<meta property="og:description" content="Portamacetas, tapices y piezas por encargo, hechos a mano con calma y corazón. Elegí y armá tu pedido.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/atelier-raiz/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/atelier-raiz/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EDEFE4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concepto: el barral de macramé. En la portada los cordones bajan del barral de madera, se anudan y la pieza queda
+   colgada, balanceándose hasta frenar. El catálogo es un barral largo con las piezas a distinto largo (como el barral
+   de su clienta con tres mini portamacetas). Cómo pedir es un cordón con tres nudos.
+   Colores: el papel del logo pasado a salvia, la tinta del "ATELIER", la ramita oliva, el hilo crudo y la varilla de madera.
+   Formas: píldora en botones, 14px en fotos y paneles, etiquetas con muesca. */
+:root{
+  --papel:#EDEFE4;
+  --papel-claro:#F7F8F1;
+  --salvia:#DDE2D0;
+  --tinta:#27321F;
+  --suave:#59634F;
+  --linea:#CBD2BC;
+  --oliva:#56693F;       /* la ramita del logo: el único color de acción */
+  --oliva-hondo:#45552F;
+  --hilo:#E6DCCB;        /* el algodón crudo, solo en cordones y etiquetas */
+  --hilo-sombra:#CDBFA8;
+  --madera:#9C7650;
+  --madera-oscura:#6E5236;
+  --err:#A3261C;
+  --display:'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --body:'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --header:72px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:600;text-wrap:balance;letter-spacing:-.005em}
+h2{font-size:clamp(38px, 4.6vw, 56px);line-height:1.05}
+p{margin:0}
+::selection{background:var(--salvia);color:var(--tinta)}
+:focus-visible{outline:3px solid var(--oliva);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.lead{font-size:19px;color:var(--suave);max-width:52ch;margin-top:16px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ico{width:20px;height:20px;flex:none}
+
+/* la varilla de madera */
+.varilla{height:12px;border-radius:6px;background:linear-gradient(180deg, #B38B62 0%, var(--madera) 45%, var(--madera-oscura) 100%);
+  box-shadow:0 6px 10px -6px rgba(39,50,31,.45)}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:0;border-radius:999px;font:600 16px/1 var(--body);letter-spacing:.01em;text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-oliva{background:var(--oliva);color:#fff;box-shadow:0 12px 26px -14px rgba(39,50,31,.8)}
+.btn-linea{color:var(--tinta);background:rgba(247,248,241,.7);box-shadow:inset 0 0 0 1.5px rgba(39,50,31,.3)}
+@media (hover:hover) and (pointer:fine){
+  .btn-oliva:hover{background:var(--oliva-hondo)}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--tinta);background:var(--papel-claro)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(237,239,228,.82);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(39,50,31,.08), 0 10px 30px -18px rgba(39,50,31,.3)}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px var(--papel-claro), 0 4px 12px -4px rgba(39,50,31,.35)}
+.brand span{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.05;letter-spacing:.14em}
+.brand small{display:block;font-family:var(--body);font-weight:400;font-size:13px;color:var(--suave);letter-spacing:.01em;margin-top:3px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:15.5px;padding:8px 14px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(39,50,31,.07)}}
+.top .btn{height:44px;padding:0 20px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border:0;border-radius:12px;background:rgba(39,50,31,.07);cursor:pointer;place-items:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--tinta);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn i + i{margin-top:5px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.sheet-menu{position:fixed;top:calc(var(--header) - 6px);right:16px;left:16px;z-index:49;background:var(--papel-claro);border-radius:18px;padding:10px;box-shadow:0 24px 60px -20px rgba(39,50,31,.45);
+  transform-origin:top right;opacity:0;transform:scale(.97) translateY(-6px);pointer-events:none;visibility:hidden;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+.sheet-menu a.item-m{display:block;padding:14px 16px;border-radius:12px;font-family:var(--display);font-weight:600;font-size:26px;text-decoration:none}
+.sheet-menu a.item-m:active{background:var(--salvia)}
+.sheet-menu .btn{display:flex;margin-top:6px;width:100%}
+@media (max-width:900px){.links,.top .btn{display:none}.menu-btn{display:grid}}
+@media (max-width:520px){:root{--header:64px}.brand img{width:40px;height:40px}.brand span{font-size:18px}}
+
+/* ---------- portada: los cordones bajan, se anudan y la pieza queda colgada ---------- */
+.hero{position:relative;padding:calc(var(--header) + 32px) 0 80px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr);align-items:center;gap:40px;min-height:min(680px, calc(100dvh - var(--header) - 90px))}
+.hero h1{font-size:clamp(46px, 5.4vw, 74px);line-height:1.02;max-width:14ch}
+.hero .bajada{font-size:19.5px;color:var(--suave);max-width:38ch;margin-top:24px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-txt > *{animation:subir .8s var(--ease-out) both;animation-delay:calc(1.5s + var(--i, 0) * 90ms)}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.colgante{position:relative;width:min(330px, 80vw);margin-inline:auto}
+.colgante .varilla{position:relative;z-index:2;width:100%;animation:varilla .7s var(--ease-out) .1s both}
+@keyframes varilla{from{opacity:0;transform:scaleX(.6)}to{opacity:1;transform:none}}
+.cordones{display:block;width:100%;height:92px;margin-top:-6px;overflow:visible}
+.cordones path{fill:none;stroke:var(--hilo);stroke-width:5;stroke-linecap:round;filter:drop-shadow(0 1px 0 var(--hilo-sombra));
+  stroke-dasharray:1;stroke-dashoffset:1;animation:bajar .6s var(--ease-out) .55s forwards}
+.cordones .nudo{fill:var(--hilo);stroke:var(--hilo-sombra);stroke-width:1.2;opacity:0;transform-box:fill-box;transform-origin:center;animation:anudar .35s var(--ease-out) 1.05s forwards}
+@keyframes bajar{to{stroke-dashoffset:0}}
+@keyframes anudar{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.pieza-hero{position:relative;width:78%;margin:-6px auto 0;transform-origin:50% -92px;animation:colgar 1.6s var(--ease-out) 1.05s both}
+.pieza-hero .foto{border-radius:14px;overflow:hidden;background:var(--salvia);aspect-ratio:361/640;
+  box-shadow:0 0 0 8px var(--papel-claro), 0 0 0 9px var(--linea), 0 50px 80px -40px rgba(39,50,31,.55)}
+.pieza-hero img{width:100%;height:100%;object-fit:cover}
+/* la pieza cae y se balancea hasta frenar */
+@keyframes colgar{
+  0%{opacity:0;transform:translateY(-18px) rotate(-5deg)}
+  25%{opacity:1;transform:translateY(0) rotate(3.2deg)}
+  48%{transform:rotate(-1.8deg)}
+  70%{transform:rotate(.9deg)}
+  86%{transform:rotate(-.35deg)}
+  100%{opacity:1;transform:none}
+}
+.colgante figcaption{margin-top:26px;text-align:center;font-size:14.5px;color:var(--suave);animation:subir .6s var(--ease-out) 2.2s both}
+@media (max-width:860px){
+  .hero{padding-top:calc(var(--header) + 18px);padding-bottom:64px}
+  .hero .wrap{grid-template-columns:1fr;gap:30px;min-height:0}
+  .colgante{order:-1;width:min(190px, 50vw)}
+  .cordones{height:48px}
+  .pieza-hero{transform-origin:50% -48px;width:74%}
+  .colgante figcaption{display:none}
+  .hero h1{font-size:clamp(42px, 11.5vw, 56px);max-width:none}
+  .hero .bajada{font-size:18px;margin-top:16px}
+  .hero .ctas{margin-top:24px;padding-right:64px}
+}
+
+/* ---------- el barral: catálogo ---------- */
+.barral{padding:80px 0 104px;background:var(--papel-claro)}
+.barral .varilla.larga{margin-top:56px;width:100%}
+.piezas{list-style:none;margin:0;padding:0 2%;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:28px;align-items:start}
+.pieza{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:var(--cordon, 32px)}
+/* dos cordones desde el barral hasta la pieza */
+.pieza::before,.pieza::after{content:"";position:absolute;top:-4px;height:calc(var(--cordon, 32px) + 6px);width:3px;border-radius:2px;background:var(--hilo);box-shadow:1px 0 0 var(--hilo-sombra)}
+.pieza::before{left:calc(50% - 46px)}
+.pieza::after{right:calc(50% - 46px)}
+.pieza .mini-varilla{display:none}
+.pieza .foto{width:100%;border-radius:14px;overflow:hidden;background:var(--salvia);
+  box-shadow:0 1px 2px rgba(39,50,31,.1), 0 30px 50px -34px rgba(39,50,31,.6)}
+.pieza .foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.pieza:hover .foto img{transform:scale(1.03)}}
+.pieza h3{font-size:30px;line-height:1.05;margin-top:20px}
+.pieza .detalle{font-size:15.5px;color:var(--suave);margin-top:6px;max-width:28ch}
+.pieza .pie{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:16px}
+.precio{font-size:15px;font-weight:600}
+.precio span{color:var(--suave);font-weight:400}
+/* etiqueta colgante (las piezas sin foto propia) */
+.etiqueta{position:relative;width:100%;background:var(--hilo);border-radius:14px;padding:38px 22px 26px;
+  clip-path:polygon(16% 0, 84% 0, 100% 12%, 100% 100%, 0 100%, 0 12%);
+  box-shadow:inset 0 -2px 0 var(--hilo-sombra)}
+.etiqueta::before{content:"";position:absolute;top:13px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--papel-claro);box-shadow:inset 0 1px 2px rgba(39,50,31,.3)}
+.etiqueta h3{margin-top:0}
+.etiqueta.honda{background:var(--oliva);color:#fff;box-shadow:none}
+.etiqueta.honda .detalle,.etiqueta.honda .precio span{color:#E4EAD6}
+.etiqueta.honda::before{background:var(--papel-claro)}
+.etiqueta .flecos{display:flex;justify-content:center;gap:5px;margin-top:20px}
+.etiqueta .flecos i{width:3px;height:var(--l, 26px);border-radius:2px;background:currentColor;opacity:.32}
+.pieza[data-largo="corto"]{--cordon:28px}
+.pieza[data-largo="medio"]{--cordon:58px}
+.pieza[data-largo="largo"]{--cordon:92px}
+.pieza[data-largo="mas"]{--cordon:124px}
+.nota-barral{margin:64px auto 0;max-width:60ch;text-align:center;color:var(--suave);font-size:17px}
+.nota-barral q{font-family:var(--display);font-style:italic;font-weight:500;font-size:24px;line-height:1.3;color:var(--tinta);display:block;margin-bottom:8px;quotes:"\201C" "\201D"}
+@media (max-width:980px){.piezas{grid-template-columns:repeat(2, minmax(0, 1fr));gap:56px 24px;padding:0}.barral .varilla.larga{display:none}
+  .pieza{--cordon:30px !important;padding-top:50px}
+  .pieza .mini-varilla{display:block;position:absolute;top:0;left:50%;width:150px;margin-left:-75px;height:10px}
+  .pieza::before,.pieza::after{top:6px;height:46px}
+  .piezas{margin-top:44px}
+}
+@media (max-width:560px){
+  .piezas{gap:48px 14px}
+  .pieza{padding-top:42px}
+  .pieza .mini-varilla{width:120px;margin-left:-60px}
+  .pieza::before,.pieza::after{height:38px}
+  .pieza::before{left:calc(50% - 36px)}.pieza::after{right:calc(50% - 36px)}
+  .pieza h3{font-size:23px;margin-top:14px}
+  .pieza .detalle{font-size:14px}
+  .etiqueta{padding:34px 12px 20px}
+}
+
+/* agregar: el botón se vuelve − cantidad + */
+.add{display:inline-grid;justify-items:center}
+.add > *{grid-area:1 / 1}
+.agregar{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;background:var(--tinta);color:var(--papel-claro);cursor:pointer;font:600 15px/1 var(--body);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s, background-color .2s ease}
+.agregar svg{width:18px;height:18px;flex:none}
+.agregar:active{transform:scale(.97)}
+.honda .agregar{background:var(--papel-claro);color:var(--tinta)}
+.cant{display:inline-flex;align-items:center;height:44px;border-radius:999px;background:var(--papel-claro);color:var(--oliva);box-shadow:inset 0 0 0 1.5px var(--oliva);
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear 0s}
+.cant button{width:44px;height:44px;flex:none;border:0;border-radius:50%;background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out), opacity .15s ease}
+.cant button svg{width:18px;height:18px}
+.cant button:active{transform:scale(.9)}
+.cant button:disabled{opacity:.35;cursor:default;transform:none}
+.cant output{min-width:2.2ch;text-align:center;font-weight:600;font-size:18px;color:var(--tinta);font-variant-numeric:tabular-nums}
+.add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.96);visibility:hidden;pointer-events:none;
+  transition:opacity .16s var(--ease-out), transform .16s var(--ease-out), visibility 0s linear .16s}
+@media (hover:hover) and (pointer:fine){
+  .agregar:hover{background:var(--oliva)}
+  .honda .agregar:hover{background:#fff}
+  .cant button:not(:disabled):hover{background:rgba(86,105,63,.12)}
+}
+
+/* ---------- desde la raíz ---------- */
+.raiz{padding:110px 0}
+.raiz .wrap{display:grid;grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);gap:64px;align-items:center}
+.collage{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:end}
+.collage figure{margin:0;border-radius:14px;overflow:hidden;background:var(--salvia);box-shadow:0 30px 50px -36px rgba(39,50,31,.6)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage .f1{aspect-ratio:361/640;max-width:300px}
+.collage .f2{aspect-ratio:361/520;max-width:240px;margin-bottom:56px}
+.raiz blockquote{margin:28px 0 0;padding:0 0 0 22px;box-shadow:inset 3px 0 0 var(--hilo-sombra);font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(24px, 2.4vw, 30px);line-height:1.3;max-width:30ch}
+.raiz blockquote p{padding-bottom:2px}
+.raiz .txt > p{color:var(--suave);max-width:46ch;margin-top:22px}
+@media (max-width:860px){
+  .raiz{padding:84px 0}
+  .raiz .wrap{grid-template-columns:1fr;gap:40px}
+  .collage{order:2;max-width:440px}
+  .collage .f2{margin-bottom:36px}
+}
+
+/* ---------- cómo pedir: un cordón con tres nudos ---------- */
+.pedir{padding:100px 0 110px;background:var(--salvia)}
+.pedir .wrap{display:grid;grid-template-columns:minmax(0, .8fr) minmax(0, 1.2fr);gap:56px;align-items:start}
+.nudos{list-style:none;margin:0;padding:6px 0 0;position:relative}
+.nudos::before{content:"";position:absolute;left:21px;top:0;bottom:24px;width:5px;border-radius:3px;background:var(--hilo);box-shadow:1px 0 0 var(--hilo-sombra)}
+.nudos li{position:relative;padding:0 0 46px 76px}
+.nudos li:last-child{padding-bottom:0}
+.nudos .n{position:absolute;left:4px;top:0;width:40px;height:40px;border-radius:50%;background:var(--hilo);box-shadow:inset 0 -3px 0 var(--hilo-sombra), 0 0 0 5px var(--salvia)}
+.nudos .n::before,.nudos .n::after{content:"";position:absolute;left:8px;right:8px;height:3px;border-radius:2px;background:var(--hilo-sombra)}
+.nudos .n::before{top:14px}.nudos .n::after{top:22px}
+.nudos h3{font-size:30px;line-height:1.1}
+.nudos p{color:var(--suave);margin-top:6px;max-width:44ch}
+@media (max-width:860px){.pedir{padding:80px 0}.pedir .wrap{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- escribinos ---------- */
+.contacto{padding:110px 0}
+.banda{display:grid;grid-template-columns:minmax(0, 1fr) auto;gap:40px;align-items:center;background:var(--tinta);color:var(--papel-claro);border-radius:14px;padding:clamp(30px, 5vw, 64px);position:relative;overflow:hidden}
+.banda h2{max-width:16ch}
+.banda > div > p{color:#C9D1BC;max-width:44ch;margin-top:14px}
+.banda .datos-c{display:grid;gap:10px;margin-top:24px;font-size:16px}
+.banda .datos-c span{color:#A7B298}
+.banda .btn{background:var(--papel-claro);color:var(--tinta)}
+@media (hover:hover) and (pointer:fine){.banda .btn:hover{background:var(--hilo)}}
+.banda .flecos{position:absolute;right:clamp(24px, 6vw, 80px);top:0;display:flex;gap:6px;pointer-events:none}
+.banda .flecos i{width:4px;height:var(--l);border-radius:0 0 3px 3px;background:var(--hilo);opacity:.16}
+@media (max-width:760px){.banda{grid-template-columns:1fr}.banda .btn{width:100%}}
+
+footer{padding:36px 0 130px;color:var(--suave);font-size:14.5px;box-shadow:0 -1px 0 var(--linea)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--tinta);font-weight:600}
+
+/* ---------- botón flotante de contacto: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.8s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa .i-wa{display:none;fill:currentColor;width:34px;height:34px}
+.con-wa .wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.con-wa .wa .i-wa{display:block}.con-wa .wa .i-ig{display:none}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 3.8s infinite}
+.con-wa .wa::before,.con-wa .wa::after{background:#25D366}
+.wa::after{animation-delay:4.2s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:var(--papel-claro);color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(39,50,31,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:var(--papel-claro);transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:400;font-size:13px;color:var(--suave)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+
+/* ---------- botón del pedido: flotante en compu, barra abajo en el celular ---------- */
+.badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--oliva);color:#fff;
+  font:600 12.5px/22px var(--body);text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--papel)}
+.cart-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 6px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:52px;height:52px;border:0;border-radius:50%;cursor:pointer;background:var(--tinta);color:var(--papel-claro);display:grid;place-items:center;
+  box-shadow:0 3px 6px rgba(39,50,31,.2), 0 14px 30px -10px rgba(39,50,31,.6);
+  opacity:0;transform:translateY(10px) scale(.92);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s, background-color .2s ease}
+.cart-fab.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s, background-color .2s ease}
+.cart-fab svg{width:25px;height:25px}
+.cart-fab:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.cart-fab:hover{background:var(--oliva)}}
+.cart-bar{display:none}
+@media (max-width:640px){
+  .cart-fab{display:none}
+  .cart-bar{display:flex;position:fixed;left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 70px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+    height:58px;align-items:center;gap:10px;padding:0 12px 0 18px;border:0;border-radius:999px;cursor:pointer;background:var(--tinta);color:var(--papel-claro);font:600 16px/1 var(--body);
+    box-shadow:0 3px 6px rgba(39,50,31,.2), 0 16px 34px -10px rgba(39,50,31,.6);
+    transform:translateY(calc(100% + 32px));visibility:hidden;transition:transform .26s var(--ease-out), visibility 0s linear .26s}
+  .cart-bar.on{transform:none;visibility:visible;transition:transform .26s var(--ease-out), visibility 0s}
+  .cart-bar:active{transform:scale(.98)}
+  .cart-bar svg{width:23px;height:23px;flex:none}
+  .cart-bar .badge{position:static;margin-left:auto;min-width:34px;height:34px;padding:0 10px;font-size:15px;line-height:34px;background:var(--papel-claro);color:var(--tinta);box-shadow:none}
+}
+
+/* ---------- el panel del pedido: de costado en compu, hoja desde abajo en el celular ---------- */
+html.carrito-abierto{overflow:hidden}
+.carrito{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;overflow:hidden;color:var(--tinta)}
+.carrito::backdrop{background:transparent}
+.velo{position:absolute;inset:0;background:rgba(39,50,31,.45);opacity:0;transition:opacity .24s ease}
+.cajon{position:absolute;top:0;right:0;bottom:0;width:min(460px, 100%);display:flex;flex-direction:column;background:var(--papel);border-radius:22px 0 0 22px;
+  box-shadow:-30px 0 60px -30px rgba(39,50,31,.5);transform:translateX(100%);transition:transform .3s var(--ease-drawer)}
+.carrito.open .velo{opacity:1}
+.carrito.open .cajon{transform:none}
+.cajon-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 14px 24px}
+.cajon-cab h2{font-size:36px;line-height:1}
+.cajon-sub{margin-top:6px;font-size:14px;color:var(--suave)}
+.cerrar{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--salvia);color:var(--tinta);display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out)}
+.cerrar svg{width:20px;height:20px}
+.cerrar:active{transform:scale(.92)}
+@media (hover:hover) and (pointer:fine){.cerrar:hover{background:var(--linea)}}
+.cajon-cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 24px 24px}
+.cajon-pie{padding:14px 20px max(16px, env(safe-area-inset-bottom)) 24px;background:var(--papel);box-shadow:0 -1px 0 rgba(39,50,31,.12)}
+@media (max-width:640px){
+  .cajon{top:auto;left:0;width:100%;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);border-radius:22px 22px 0 0;
+    box-shadow:0 -30px 60px -30px rgba(39,50,31,.5);transform:translateY(100%)}
+  .cajon-cab{padding:20px 16px 12px 20px}
+  .cajon-cuerpo{padding:4px 16px 20px 20px}
+  .cajon-pie{padding-left:20px;padding-right:16px}
+}
+.vacio{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 0 8px}
+.vacio h3{font-size:28px;line-height:1.1}
+.vacio p{color:var(--suave);max-width:34ch}
+.vacio .btn{margin-top:10px}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--papel-claro);border-radius:14px;padding:10px;
+  box-shadow:0 1px 2px rgba(39,50,31,.08);transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.item.sale{opacity:0;transform:translateX(16px)}
+.item .th{width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--salvia)}
+.item .th-tag{width:56px;height:56px;border-radius:10px;background:var(--hilo);display:grid;place-items:center;color:var(--madera-oscura)}
+.item .th-tag svg{width:26px;height:26px}
+.item-txt{min-width:0}
+.item-txt b{display:block;font-family:var(--display);font-weight:600;font-size:19px;line-height:1.15}
+.item-txt small{display:block;font-size:13px;color:var(--suave)}
+.quitar{margin-top:2px;min-height:30px;padding:0;border:0;background:none;color:var(--suave);font:400 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (hover:hover) and (pointer:fine){.quitar:hover{color:var(--tinta)}}
+.item .cant{height:40px;background:var(--papel);box-shadow:none}
+.item .cant button{width:40px;height:40px}
+.item .cant output{font-size:16px}
+.vaciar{display:block;margin:12px 0 0 auto;min-height:32px;padding:0;border:0;background:none;color:var(--suave);font:400 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.datos{display:grid;gap:18px;margin-top:22px;padding-top:22px;box-shadow:0 -1px 0 rgba(39,50,31,.14)}
+.datos > h3{font-size:26px;line-height:1}
+.datos .f > label{display:block;font-weight:600;font-size:14.5px;color:var(--tinta);margin-bottom:8px;padding:0}
+.opc{font-weight:400;color:var(--suave)}
+.f{display:flex;flex-direction:column;min-width:0}
+.datos input[type=text],.datos input[type=tel],.datos textarea{min-height:48px;border-radius:12px;border:1.5px solid rgba(39,50,31,.24);background:var(--papel-claro);padding:0 14px;
+  font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+.datos textarea{padding:12px 14px;min-height:88px;resize:vertical;line-height:1.45}
+.datos input::placeholder,.datos textarea::placeholder{color:#737C69}
+.datos input:focus,.datos textarea:focus{outline:none;border-color:var(--oliva);box-shadow:0 0 0 3px rgba(86,105,63,.2)}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(163,38,28,.13)}
+.err{color:var(--err);font-size:13.5px;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.prev{background:var(--papel-claro);border-radius:14px;padding:4px 16px}
+.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px;color:var(--oliva)}
+.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:2px 0 14px}
+.enviar{width:100%;height:56px;font-size:17px;background:var(--oliva);color:#fff;box-shadow:0 10px 24px -12px rgba(39,50,31,.8)}
+.con-wa .enviar{background:#25D366;color:#073B2A;box-shadow:0 10px 24px -12px rgba(7,94,84,.7)}
+@media (hover:hover) and (pointer:fine){.enviar:hover{background:var(--oliva-hondo)}.con-wa .enviar:hover{background:#1EBE5A}}
+.nota{margin-top:8px;font-size:13.5px;color:var(--suave);text-align:center}
+.aviso{font-size:14.5px;color:var(--oliva);font-weight:600;text-align:center}
+.aviso:not(:empty){margin-top:8px}
+.aviso.mal{color:var(--err)}
+
+/* ---------- menos movimiento: la pieza ya está colgada ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero-txt > *,.wa,.colgante figcaption,.colgante .varilla,.pieza-hero{animation:aparecer .4s ease both}
+  .cordones path{animation:none;stroke-dashoffset:0}
+  .cordones .nudo{animation:none;opacity:1}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .pieza .foto img{transition:none}
+  .pieza:hover .foto img{transform:none}
+  .cajon{transform:none !important;opacity:0;transition:opacity .18s ease}
+  .carrito.open .cajon{opacity:1}
+  .add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar,.cart-fab,.item.sale{transform:none}
+  .cart-bar{transform:none;opacity:0;transition:opacity .2s ease, visibility 0s linear .2s}
+  .cart-bar.on{opacity:1;transition:opacity .2s ease, visibility 0s}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 01-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884 2.640 0 5.122 1.030 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.450-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.050 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.480-8.413z"/></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="cruz" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="bolsa" viewBox="0 0 24 24"><path d="M5 8h14l-1 12.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 20.5L5 8z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="tag" viewBox="0 0 24 24"><path d="M8 3h8l3 3v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6l3-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="7.5" r="1.4" fill="currentColor"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Atelier Raíz, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="46" height="46">
+      <span>ATELIER RAÍZ<small>Macramé hecho a mano</small></span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#piezas">Piezas</a>
+      <a href="#raiz">El taller</a>
+      <a href="#pedir">Cómo pedir</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-oliva" data-contacto href="https://ig.me/m/atelier._.raiz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="sheet-menu" id="menu" aria-label="Menú">
+  <a class="item-m" href="#piezas">Piezas</a>
+  <a class="item-m" href="#raiz">El taller</a>
+  <a class="item-m" href="#pedir">Cómo pedir</a>
+  <a class="item-m" href="#contacto">Contacto</a>
+  <a class="btn btn-oliva" data-contacto href="https://ig.me/m/atelier._.raiz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+</nav>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-txt">
+        <h1 style="--i:0">Macramé hecho a mano, con calma y corazón</h1>
+        <p class="bajada" style="--i:1">Portamacetas, tapices y pedidos personalizados, nudo por nudo, desde Moreno.</p>
+        <div class="ctas" style="--i:2">
+          <a class="btn btn-oliva" href="#piezas">Ver piezas</a>
+          <a class="btn btn-linea" data-contacto href="https://ig.me/m/atelier._.raiz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+        </div>
+      </div>
+      <figure class="colgante" aria-label="Portamacetas colgante de Atelier Raíz">
+        <div class="varilla" aria-hidden="true"></div>
+        <svg class="cordones" viewBox="0 0 330 92" preserveAspectRatio="none" aria-hidden="true">
+          <path pathLength="1" d="M40 4 C 70 40, 130 70, 165 86"/>
+          <path pathLength="1" d="M290 4 C 260 40, 200 70, 165 86"/>
+          <ellipse class="nudo" cx="165" cy="84" rx="11" ry="8"/>
+        </svg>
+        <div class="pieza-hero">
+          <div class="foto"><img src="img/foto-04.jpg" alt="Portamacetas largo de macramé en hilo crudo, con una planta, sostenido al sol" width="361" height="640" fetchpriority="high"></div>
+        </div>
+        <figcaption>Portamacetas colgante, en hilo natural</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="barral" id="piezas" aria-labelledby="t-piezas">
+    <div class="wrap">
+      <h2 id="t-piezas">Del barral a tu casa</h2>
+      <p class="lead">Cada pieza se hace a mano en Moreno. Agregá las que te gusten y mandá el pedido: te pasamos precio, colores y tiempos.</p>
+      <div class="varilla larga" aria-hidden="true"></div>
+      <ul class="piezas" id="productos">
+        <li class="pieza" data-item="portamacetas" data-largo="corto">
+          <div class="varilla mini-varilla" aria-hidden="true"></div>
+          <div class="foto" style="aspect-ratio:270/480;max-width:240px"><img src="img/pieza-portamacetas.jpg" alt="Portamacetas de macramé con una suculenta y flecos largos" width="270" height="480" loading="lazy"></div>
+          <h3>Portamacetas colgante</h3><p class="detalle">Largo y con flecos, para colgar tu planta donde más luz tenga.</p>
+          <div class="pie"><p class="precio">Precio: <span>Consultar</span></p><div class="add" data-item="portamacetas"></div></div>
+        </li>
+        <li class="pieza" data-item="mini" data-largo="largo">
+          <div class="varilla mini-varilla" aria-hidden="true"></div>
+          <div class="etiqueta">
+            <h3>Mini portamacetas</h3><p class="detalle">Para cactus y suculentas. Quedan lindos de a varios, colgados del barral.</p>
+            <div class="flecos" aria-hidden="true"><i style="--l:22px"></i><i style="--l:30px"></i><i style="--l:26px"></i><i style="--l:34px"></i><i style="--l:24px"></i></div>
+            <div class="pie"><p class="precio">Precio: <span>Consultar</span></p><div class="add" data-item="mini"></div></div>
+          </div>
+        </li>
+        <li class="pieza" data-item="tapiz" data-largo="medio">
+          <div class="varilla mini-varilla" aria-hidden="true"></div>
+          <div class="foto" style="aspect-ratio:361/480;max-width:260px"><img src="img/pieza-tapiz.jpg" alt="Tapiz de pared de macramé en hilo crudo, colgado de una varilla de madera" width="361" height="480" loading="lazy"></div>
+          <h3>Tapiz de pared</h3><p class="detalle">En hilo natural, colgado de una varilla de madera.</p>
+          <div class="pie"><p class="precio">Precio: <span>Consultar</span></p><div class="add" data-item="tapiz"></div></div>
+        </li>
+        <li class="pieza" data-item="encargo" data-largo="mas" id="encargo">
+          <div class="varilla mini-varilla" aria-hidden="true"></div>
+          <div class="etiqueta honda">
+            <h3>Pieza por encargo</h3><p class="detalle">Hacemos pedidos personalizados. Contanos qué querés, el color del hilo y la medida.</p>
+            <div class="flecos" aria-hidden="true"><i style="--l:28px"></i><i style="--l:20px"></i><i style="--l:32px"></i><i style="--l:24px"></i><i style="--l:30px"></i></div>
+            <div class="pie"><p class="precio">Precio: <span>Consultar</span></p><div class="add" data-item="encargo"></div></div>
+          </div>
+        </li>
+      </ul>
+      <p class="nota-barral"><q>Noviembre llega con pedidos personalizados, nuevos diseños, preparativos navideños y muchas ganas de seguir creciendo.</q>Si pensás regalar algo hecho a mano, escribinos con tiempo.</p>
+    </div>
+  </section>
+
+  <section class="raiz" id="raiz" aria-labelledby="t-raiz">
+    <div class="wrap">
+      <div class="collage">
+        <figure class="f1"><img src="img/foto-12.jpg" alt="La artesana de Atelier Raíz tejiendo macramé sentada en el pasto de su patio" width="361" height="640" loading="lazy"></figure>
+        <figure class="f2"><img src="img/foto-08.jpg" alt="Manos armando un macramé sobre una varilla de madera" width="361" height="640" loading="lazy"></figure>
+      </div>
+      <div class="txt">
+        <h2 id="t-raiz">Desde la raíz, hecho a mano</h2>
+        <blockquote><p>Lo artesanal no es solamente lo que ves terminado, es todo el tiempo, el amor y la dedicación que hay detrás de cada nudo.</p></blockquote>
+        <p>Atelier Raíz es macramé en hilo de algodón, tejido a mano en Moreno, muchas veces al sol del patio. Ya somos más de 2.000 en Instagram acompañando cada pieza.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pedir" id="pedir" aria-labelledby="t-pedir">
+    <div class="wrap">
+      <div>
+        <h2 id="t-pedir">Cómo pedir</h2>
+        <p class="lead">Tres nudos y tu pieza está en camino.</p>
+      </div>
+      <ol class="nudos">
+        <li><span class="n" aria-hidden="true"></span><h3>Elegí tus piezas</h3><p>Tocá Agregar en las que te gusten, o sumá una pieza por encargo y contanos tu idea.</p></li>
+        <li><span class="n" aria-hidden="true"></span><h3>Mandá el pedido</h3><p>Completás tu nombre, tu teléfono y tu localidad, y el pedido sale armado por mensaje.</p></li>
+        <li><span class="n" aria-hidden="true"></span><h3>Coordinamos los detalles</h3><p>Te pasamos precio, colores de hilo, tiempos y cómo te llega.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto" aria-labelledby="t-contacto">
+    <div class="wrap">
+      <div class="banda">
+        <div class="flecos" aria-hidden="true"><i style="--l:70px"></i><i style="--l:96px"></i><i style="--l:82px"></i><i style="--l:110px"></i><i style="--l:76px"></i><i style="--l:92px"></i></div>
+        <div>
+          <h2 id="t-contacto">Pedidos y consultas por mensaje</h2>
+          <p>Escribinos por la pieza que te gustó o por la que tenés en mente.</p>
+          <div class="datos-c">
+            <p><span>Instagram:</span> @atelier._.raiz</p>
+            <p><span>Desde:</span> Moreno, Buenos Aires</p>
+            <p><span>Entregas y horarios:</span> consultá por mensaje</p>
+          </div>
+        </div>
+        <a class="btn" data-contacto href="https://ig.me/m/atelier._.raiz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Atelier Raíz. Macramé artesanal en Moreno. <a href="https://instagram.com/atelier._.raiz" target="_blank" rel="noopener">@atelier._.raiz</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" data-contacto href="https://ig.me/m/atelier._.raiz" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram" id="flotante">
+  <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
+  <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small id="tipSub">@atelier._.raiz, por mensaje directo</small></span>
+</a>
+
+<button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu pedido">
+  <svg aria-hidden="true"><use href="#bolsa"/></svg><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver pedido">
+  <svg aria-hidden="true"><use href="#bolsa"/></svg><span>Ver pedido</span><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<dialog class="carrito" id="carrito" aria-labelledby="carritoTit">
+  <div class="velo" data-cerrar aria-hidden="true"></div>
+  <div class="cajon">
+    <div class="cajon-cab">
+      <div><h2 id="carritoTit">Tu pedido</h2><p class="cajon-sub" id="carritoSub">Atelier Raíz</p></div>
+      <button type="button" class="cerrar" id="cerrarCarrito" data-cerrar aria-label="Cerrar tu pedido"><svg aria-hidden="true"><use href="#cruz"/></svg></button>
+    </div>
+    <div class="cajon-cuerpo" id="cajonCuerpo">
+      <div class="vacio" id="vacio">
+        <h3>Todavía no elegiste ninguna pieza.</h3>
+        <p>Mirá el barral y tocá Agregar en las que te gusten.</p>
+        <a class="btn btn-oliva" href="#piezas" data-ir="piezas">Ver piezas</a>
+      </div>
+      <div id="lleno" hidden>
+        <ul class="lista" id="lista" aria-label="Lo que elegiste"></ul>
+        <button type="button" class="vaciar" id="vaciar">Vaciar pedido</button>
+        <form class="datos" id="datos" novalidate>
+          <h3>Tus datos</h3>
+          <div class="f"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+          <div class="f"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 11 2345-6789" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+          <div class="f"><label for="zona">Tu localidad o barrio</label><input id="zona" name="zona" type="text" autocomplete="address-level2" placeholder="Ej: Moreno centro" required aria-describedby="err-zona"><small class="err" id="err-zona"></small></div>
+          <div class="f"><label for="cuando">¿Para cuándo lo necesitás? <span class="opc">(opcional)</span></label><input id="cuando" name="cuando" type="text" placeholder="Ej: antes de Navidad"></div>
+          <div class="f"><label for="aclar">Colores, medidas o tu idea <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Ej: hilo crudo, para una maceta chica, es para regalar"></textarea></div>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+        </form>
+      </div>
+    </div>
+    <div class="cajon-pie" id="cajonPie" hidden>
+      <button class="btn enviar" type="submit" form="datos" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Enviar pedido por Instagram</span></button>
+      <p class="nota" id="nota">Copiamos tu pedido y abrimos el chat de @atelier._.raiz. Solo tenés que pegarlo.</p>
+      <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+// =====================================================================================
+//  WHATSAPP DE ATELIER RAÍZ: no está publicado en su perfil (los pedidos hoy van por mensaje
+//  privado de Instagram). Poné el número acá y TODA la página pasa a WhatsApp.
+//  Formato: 549 + característica + número, sin espacios, sin + ni guiones (ej. '5491123456789').
+//  Mientras esté vacío, el pedido se copia y se abre el chat de Instagram (@atelier._.raiz).
+// =====================================================================================
+var WA = '';
+var IG_DM = 'https://ig.me/m/atelier._.raiz';
+document.documentElement.classList.add('js');
+if (WA) {
+  document.documentElement.classList.add('con-wa');
+  document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
+  document.querySelectorAll('.btn use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
+  document.getElementById('flotante').setAttribute('aria-label', 'Escribinos por WhatsApp');
+  document.getElementById('tipSub').textContent = 'Por WhatsApp';
+}
+
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  }
+})();
+
+// Tu pedido: agregar desde el barral, revisar en el panel y mandarlo armado
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var html = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var calma = function () { return !!(mq && mq.matches); };
+  var CLAVE = 'atelier-raiz-pedido-v1';
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+
+  var CAT = {};
+  document.querySelectorAll('.pieza[data-item]').forEach(function (li) {
+    var img = li.querySelector('.foto img');
+    CAT[li.getAttribute('data-item')] = {
+      nombre: li.querySelector('h3').textContent.trim(),
+      img: img ? img.getAttribute('src') : ''
+    };
+  });
+
+  var estado = { items: [], datos: {} };
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && Array.isArray(g.items)) {
+      g.items.forEach(function (it) {
+        var n = it && Math.floor(+it.n);
+        if (it && CAT[it.id] && n > 0) estado.items.push({ id: it.id, n: Math.min(99, n) });
+      });
+      if (g.datos && typeof g.datos === 'object') estado.datos = g.datos;
+    }
+  } catch (e) {}
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {} }
+  function idx(id) { for (var i = 0; i < estado.items.length; i++) if (estado.items[i].id === id) return i; return -1; }
+  function cant(id) { var i = idx(id); return i < 0 ? 0 : estado.items[i].n; }
+  function total() { return estado.items.reduce(function (a, it) { return a + it.n; }, 0); }
+
+  var dlg = $('carrito'), form = $('datos'), lista = $('lista');
+  var fab = $('cartFab'), bar = $('cartBar');
+
+  var MAS = '<svg aria-hidden="true"><use href="#mas"/></svg>', MENOS = '<svg aria-hidden="true"><use href="#menos"/></svg>';
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function stepper(n, etiqueta) {
+    return '<div class="cant" role="group" aria-label="' + esc(etiqueta) + '">' +
+      '<button type="button" data-d="-1" aria-label="Uno menos">' + MENOS + '</button>' +
+      '<output>' + n + '</output>' +
+      '<button type="button" data-d="1" aria-label="Uno más">' + MAS + '</button></div>';
+  }
+  document.querySelectorAll('.add[data-item]').forEach(function (box) {
+    var id = box.getAttribute('data-item'); if (!CAT[id]) return;
+    box.innerHTML = '<button type="button" class="agregar" aria-label="Agregar ' + esc(CAT[id].nombre) + ' al pedido">' + MAS + 'Agregar</button>' +
+      stepper(0, CAT[id].nombre + ' en tu pedido');
+  });
+
+  var totalAntes = total();
+  function render() {
+    var t = total();
+    document.querySelectorAll('.add[data-item]').forEach(function (box) {
+      var n = cant(box.getAttribute('data-item'));
+      box.setAttribute('data-n', String(n));
+      var o = box.querySelector('output'); if (o) o.textContent = n;
+      var menos = box.querySelector('[data-d="-1"]'); if (menos) menos.setAttribute('aria-label', n === 1 ? 'Quitar del pedido' : 'Uno menos');
+    });
+    document.querySelectorAll('[data-total]').forEach(function (b) { b.textContent = t; });
+    fab.classList.toggle('on', t > 0); bar.classList.toggle('on', t > 0);
+    fab.setAttribute('aria-label', 'Ver tu pedido (' + t + ')');
+    bar.setAttribute('aria-label', 'Ver pedido (' + t + ')');
+    if (t > totalAntes) pulsar(totalAntes > 0);
+    totalAntes = t;
+
+    $('vacio').hidden = t > 0; $('lleno').hidden = t === 0; $('cajonPie').hidden = t === 0;
+    $('carritoSub').textContent = t ? (t === 1 ? '1 pieza elegida' : t + ' piezas elegidas') : 'Atelier Raíz';
+    Array.prototype.forEach.call(lista.querySelectorAll('.item:not(.sale)'), function (li) {
+      if (!cant(li.getAttribute('data-item'))) {
+        li.classList.add('sale');
+        setTimeout(function () { li.remove(); }, calma() ? 0 : 180);
+      }
+    });
+    estado.items.forEach(function (it) {
+      var li = lista.querySelector('.item[data-item="' + it.id + '"]:not(.sale)');
+      if (!li) {
+        li = document.createElement('li'); li.className = 'item'; li.setAttribute('data-item', it.id);
+        var th = CAT[it.id].img ? '<img class="th" src="' + esc(CAT[it.id].img) + '" alt="" loading="lazy">'
+          : '<span class="th-tag" aria-hidden="true"><svg><use href="#tag"/></svg></span>';
+        li.innerHTML = th +
+          '<div class="item-txt"><b></b><small>Precio a consultar</small><button type="button" class="quitar" data-quitar>Quitar</button></div>' +
+          stepper(it.n, 'Cantidad de ' + CAT[it.id].nombre);
+        lista.appendChild(li);
+      }
+      li.querySelector('b').textContent = CAT[it.id].nombre;
+      li.querySelector('output').textContent = it.n;
+      li.querySelector('[data-d="-1"]').disabled = it.n <= 1;
+      li.querySelector('[data-d="1"]').disabled = it.n >= 99;
+      li.querySelector('[data-quitar]').setAttribute('aria-label', 'Quitar ' + CAT[it.id].nombre + ' del pedido');
+    });
+
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+
+  function pulsar(yaEstaba) {
+    if (calma()) return;
+    document.querySelectorAll('.badge[data-total]').forEach(function (b) {
+      if (b.animate) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)', offset: .35 }, { transform: 'scale(1)' }], { duration: 340, easing: EASE });
+    });
+    if (yaEstaba && fab.animate && getComputedStyle(fab).display !== 'none') {
+      fab.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.08)', offset: .35 }, { transform: 'scale(1)' }], { duration: 300, easing: EASE });
+    }
+  }
+  function anunciar(txt) {
+    var el = dlg.open ? $('aviso') : $('anuncio');
+    el.classList.remove('mal');
+    el.textContent = ''; setTimeout(function () { el.textContent = txt; }, 30);
+  }
+  function setCant(id, n) {
+    n = Math.max(0, Math.min(99, n));
+    var i = idx(id);
+    if (i < 0 && n > 0) estado.items.push({ id: id, n: n });
+    else if (i >= 0 && n === 0) estado.items.splice(i, 1);
+    else if (i >= 0) estado.items[i].n = n;
+    render();
+    anunciar(n ? CAT[id].nombre + ': ' + n + ' en tu pedido.' : 'Quitaste ' + CAT[id].nombre + ' del pedido.');
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.agregar, [data-d], [data-quitar], [data-abrir-carrito], [data-cerrar], [data-ir], #vaciar');
+    if (!b) return;
+    var cont = b.closest('[data-item]'), id = cont && cont.getAttribute('data-item');
+    if (b.classList.contains('agregar')) {
+      setCant(id, 1);
+      if (id === 'encargo') { abrir(b); setTimeout(function () { $('aclar').focus({ preventScroll: false }); }, calma() ? 0 : 320); return; }
+      var mas = cont.querySelector('[data-d="1"]'); if (mas) mas.focus();
+    } else if (b.hasAttribute('data-d')) {
+      var n = cant(id) + (+b.getAttribute('data-d'));
+      setCant(id, n);
+      if (n <= 0 && cont.classList.contains('add')) cont.querySelector('.agregar').focus();
+    } else if (b.hasAttribute('data-quitar')) {
+      var vecino = cont.nextElementSibling || cont.previousElementSibling;
+      setCant(id, 0);
+      if (vecino && !vecino.classList.contains('sale')) vecino.querySelector('[data-quitar]').focus();
+      else if (!total()) $('vacio').querySelector('a').focus();
+    } else if (b.id === 'vaciar') {
+      estado.items = []; render(); anunciar('Vaciaste el pedido.');
+      $('vacio').querySelector('a').focus();
+    } else if (b.hasAttribute('data-abrir-carrito')) {
+      abrir(b);
+    } else if (b.hasAttribute('data-cerrar')) {
+      cerrar();
+    } else if (b.hasAttribute('data-ir')) {
+      e.preventDefault();
+      cerrar(b.getAttribute('data-ir'));
+    }
+  });
+
+  var abridor = null, timer = 0, irA = null;
+  function abrir(desde) {
+    clearTimeout(timer);
+    abridor = desde || document.activeElement;
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      html.classList.add('carrito-abierto');
+      $('aviso').textContent = '';
+      $('cajonCuerpo').scrollTop = 0;
+      void dlg.offsetWidth;
+    }
+    dlg.scrollTop = 0;
+    dlg.classList.add('open');
+    $('cerrarCarrito').focus({ preventScroll: true });
+  }
+  dlg.addEventListener('scroll', function () { if (dlg.scrollTop || dlg.scrollLeft) { dlg.scrollTop = 0; dlg.scrollLeft = 0; } });
+  function cerrar(destino) {
+    if (!dlg.open) return;
+    irA = destino || null;
+    dlg.classList.remove('open');
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (dlg.open && !dlg.classList.contains('open')) { if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); alCerrar(); } } }, calma() ? 180 : 300);
+  }
+  function alCerrar() {
+    dlg.classList.remove('open');
+    html.classList.remove('carrito-abierto');
+    if (irA) {
+      var sec = $(irA); irA = null;
+      if (sec) {
+        sec.scrollIntoView({ behavior: calma() ? 'auto' : 'smooth', block: 'start' });
+        var primero = sec.querySelector('.agregar'); if (primero) primero.focus({ preventScroll: true });
+      }
+    } else if (abridor && document.contains(abridor) && abridor.getClientRects().length) {
+      abridor.focus({ preventScroll: true });
+    }
+  }
+  dlg.addEventListener('close', alCerrar);
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); cerrar(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); cerrar(); return; }
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(dlg.querySelectorAll('button, a[href], input, textarea, summary, [tabindex]:not([tabindex="-1"])'),
+      function (el) { return !el.disabled && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden'; });
+    if (!f.length) return;
+    var pri = f[0], ult = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); }
+    else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+  });
+
+  // ----- tus datos -----
+  var campos = ['nombre', 'tel', 'zona', 'cuando', 'aclar'];
+  function leer() {
+    var d = {};
+    campos.forEach(function (c) { d[c] = $(c).value.replace(/\s+/g, ' ').trim(); });
+    return d;
+  }
+  (function restaurar() {
+    var d = estado.datos || {};
+    campos.forEach(function (c) { if (typeof d[c] === 'string') $(c).value = d[c]; });
+  })();
+  function mensaje(borrador) {
+    var d = leer(), L = ['Hola, Atelier Raíz! Quiero consultar por estas piezas:'];
+    estado.items.forEach(function (it) { L.push('• ' + it.n + ' x ' + CAT[it.id].nombre); });
+    if (d.aclar) L.push('Colores, medidas o idea: ' + d.aclar);
+    L.push('');
+    L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
+    L.push('Localidad: ' + (d.zona || (borrador ? '…' : '')));
+    if (d.cuando) L.push('Para cuándo: ' + d.cuando);
+    L.push('', '¿Me pasás precio y tiempos? Gracias!');
+    return L.join('\n');
+  }
+  function syncDatos() {
+    estado.datos = leer();
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+  form.addEventListener('input', function (e) {
+    var f = e.target.closest('.f');
+    if (f && f.classList.contains('error')) marcar(e.target, '');
+    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
+    syncDatos();
+  });
+  form.addEventListener('change', syncDatos);
+
+  function marcar(input, txt) {
+    var f = input.closest('.f'), err = $('err-' + input.id);
+    f.classList.toggle('error', !!txt);
+    if (txt) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    if (err) err.textContent = txt;
+  }
+  function validar() {
+    var malos = [], d = leer();
+    var chequeo = [
+      ['nombre', d.nombre ? '' : 'Poné tu nombre así sabemos de quién es el pedido.'],
+      ['tel', !d.tel ? 'Poné tu teléfono para coordinar el pedido.'
+        : d.tel.replace(/\D/g, '').length < 8 ? 'Revisá el teléfono: tiene que tener al menos 8 números, con la característica.' : ''],
+      ['zona', d.zona ? '' : 'Poné tu localidad o barrio para coordinar la entrega.']
+    ];
+    chequeo.forEach(function (c) { marcar($(c[0]), c[1]); if (c[1]) malos.push($(c[0])); });
+    return malos;
+  }
+
+  // ----- enviar -----
+  var envBtn = $('enviar');
+  if (WA) {
+    envBtn.querySelector('use').setAttribute('href', '#wa');
+    envBtn.querySelector('span').textContent = 'Enviar pedido por WhatsApp';
+    $('nota').textContent = 'Se abre WhatsApp con tu pedido escrito. Solo falta tocar enviar.';
+  }
+  function abrirLink(url) {
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    dlg.appendChild(a); a.click(); a.remove();
+  }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      dlg.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!total()) return;
+    var aviso = $('aviso');
+    var malos = validar();
+    if (malos.length) {
+      aviso.classList.add('mal');
+      aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.';
+      malos[0].focus();
+      return;
+    }
+    aviso.classList.remove('mal');
+    var msg = mensaje(false);
+    if (WA) {
+      abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg));
+      aviso.textContent = 'Abrimos WhatsApp con tu pedido.';
+      return;
+    }
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu pedido: pegalo en el chat.';
+      else { aviso.textContent = 'No pudimos copiarlo solo: copialo de "Ver cómo llega el mensaje" y pegalo en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
+  });
+
+  render();
+  syncDatos();
+})();
+</script>
+</body>
+</html>
