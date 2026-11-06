@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lo de Gise | Zapatillas y joyas de plata 925</title>
+<meta name="description" content="Zapatillas y joyas de plata 925 elegidas por Gise. Envíos a todo el país.">
+<meta property="og:title" content="Lo de Gise | Zapatillas y joyas de plata 925">
+<meta property="og:description" content="Zapas, chinelas, anillos y cadenas de plata 925. Armá tu pedido y te lo enviamos a todo el país.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/lodegise/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6E9E6">
+<link rel="icon" href="img/perfil.jpg">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/foto-10.jpg">
+<style>
+:root{
+  --paper:#F6E9E6;      /* rosa empolvado, el fondo */
+  --petal:#EDD3CE;      /* superficies */
+  --ink:#2A1F22;        /* texto */
+  --cocoa:#5E4A4E;      /* texto secundario */
+  --rose:#A64A5E;       /* único acento: botones */
+  --rose-dark:#8A3A4D;
+  --gold:#BF9A5A;       /* solo filetes, como el dorado del logo */
+  --white:#FFFAF8;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --r:14px;             /* tarjetas y fotos */
+  --head:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+section[id],[id].ancla{scroll-margin-top:calc(var(--head) + 12px)}
+body{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-optical-sizing:auto;background:var(--paper);color:var(--ink);
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2.5px solid var(--rose);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.ico{width:20px;height:20px;flex:none;fill:currentColor}
+.script{font-family:"Pinyon Script",cursive;font-weight:400}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;
+  text-decoration:none;white-space:nowrap;transition:transform .16s var(--ease-out), background-color .2s ease, color .2s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-rose{background:var(--rose);color:var(--white);box-shadow:0 10px 24px -12px rgba(138,58,77,.8)}
+.btn-line{border:1.5px solid var(--ink);color:var(--ink)}
+@media (hover:hover) and (pointer:fine){
+  .btn-rose:hover{background:var(--rose-dark)}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;height:var(--head);transition:background-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease}
+.top.scrolled{background:rgba(246,233,230,.78);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:0 1px 0 rgba(42,31,34,.08)}
+.top .wrap{height:100%;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.brand b{display:block;font-family:"Pinyon Script",cursive;font-weight:400;font-size:30px;line-height:1}
+.brand small{display:block;font-size:13px;color:var(--cocoa);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{margin-left:auto;display:flex;align-items:center;gap:28px}
+.nav a{text-decoration:none;font-weight:500;font-size:16px}
+.nav a:not(.btn){position:relative}
+.nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.nav a:not(.btn):hover::after{transform:scaleX(1)}}
+.nav .btn{height:44px;padding:0 18px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:50%;place-items:center}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:transform .2s var(--ease-out), background-color .2s ease}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s var(--ease-out)}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:860px){
+  .menu-btn{display:grid}
+  .nav{position:absolute;top:calc(var(--head) - 4px);left:12px;right:12px;flex-direction:column;align-items:stretch;gap:4px;padding:12px;
+    background:var(--white);border-radius:var(--r);box-shadow:0 24px 50px -20px rgba(42,31,34,.45);
+    opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top center;pointer-events:none;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+  .nav.open{opacity:1;transform:none;pointer-events:auto}
+  .nav a:not(.btn){padding:12px 10px;font-size:18px}
+  .nav a:not(.btn)::after{display:none}
+  .nav .btn{justify-content:center;height:50px;margin-top:6px}
+}
+
+/* ---------- portada: la caja se abre ---------- */
+.hero{min-height:100dvh;padding:calc(var(--head) + 28px) 0 56px;display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(42px, 4.9vw, 68px);line-height:1.04;font-weight:800;letter-spacing:-.025em;max-width:15ch}
+.hero .lead{margin-top:22px;font-size:19px;color:var(--cocoa);max-width:40ch}
+.hero .ctas{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.hero .sello{margin-top:36px;display:flex;align-items:center;gap:14px;color:var(--cocoa);font-size:15px}
+.hero .sello svg{width:26px;height:26px;fill:none;stroke:var(--rose);stroke-width:1.6}
+
+.caja{position:relative;width:min(100%, 470px);margin-inline:auto;aspect-ratio:1/1.12;perspective:1200px}
+.caja .base{position:absolute;inset:auto 0 0 0;height:88%;border-radius:var(--r);background:var(--white);padding:14px;
+  box-shadow:0 2px 0 var(--gold) inset, 0 40px 70px -36px rgba(74,40,48,.55)}
+.caja .base img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+/* papel de seda que asoma del borde */
+.caja .seda{position:absolute;left:8%;right:8%;top:calc(12% - 24px);height:30px;background:linear-gradient(180deg,#fff, #f3dfdb);border-radius:6px 6px 0 0;
+  clip-path:polygon(0 100%,6% 30%,14% 70%,24% 10%,36% 60%,48% 0,60% 55%,72% 15%,84% 65%,94% 20%,100% 100%);opacity:.95}
+.caja .tapa{position:absolute;inset:auto 0 0 0;height:88%;border-radius:var(--r);background:var(--ink);color:var(--petal);
+  display:grid;place-items:center;text-align:center;box-shadow:0 0 0 1.5px var(--gold) inset, 0 30px 60px -30px rgba(42,31,34,.7);
+  transform-origin:50% 0;transform:translate(38%, -30%) rotate(9deg) scale(.46)}
+.caja .tapa .script{font-size:clamp(56px, 7vw, 88px);line-height:1;color:#E9C3BC}
+.caja .tapa small{display:block;margin-top:10px;font-size:14px;letter-spacing:.02em;color:#CDAFA9}
+.caja .anillo{position:absolute;left:-9%;bottom:-7%;width:42%;aspect-ratio:1;border-radius:var(--r);overflow:hidden;background:var(--white);padding:8px;
+  box-shadow:0 24px 44px -22px rgba(74,40,48,.6);transform:rotate(-5deg)}
+.caja .anillo img{width:100%;height:100%;object-fit:cover;object-position:45% 72%;transform:scale(1.3);transform-origin:45% 72%;border-radius:8px}
+
+/* La animación: la tapa se levanta y se corre, y aparece lo que hay adentro. Un solo momento fuerte. */
+.js .caja .tapa{animation:abrir 1.25s var(--ease-in-out) .55s both}
+.js .caja .anillo{animation:asomar .7s var(--ease-out) 1.45s both}
+.js .hero h1,.js .hero .lead,.js .hero .ctas,.js .hero .sello{animation:subir .6s var(--ease-out) both}
+.js .hero .lead{animation-delay:.08s}.js .hero .ctas{animation-delay:.16s}.js .hero .sello{animation-delay:.24s}
+@keyframes abrir{
+  0%{transform:none}
+  30%{transform:translateY(-6%) rotate(-1.5deg)}
+  100%{transform:translate(38%, -30%) rotate(9deg) scale(.46)}
+}
+@keyframes asomar{from{opacity:0;transform:translateY(18px) rotate(-5deg) scale(.95)}to{opacity:1;transform:rotate(-5deg)}}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .hero{min-height:auto;padding-top:calc(var(--head) + 20px)}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .hero h1{font-size:clamp(38px, 10.5vw, 54px)}
+  .hero .lead{font-size:17px}
+  .caja{width:min(84%, 380px);margin-right:4%;margin-top:36px}
+  .hero .ctas .btn{flex:1 1 auto;justify-content:center}
+}
+
+/* ---------- tienda ---------- */
+.tienda{padding:96px 0 104px}
+.tienda h2,.pasos h2,.cierre h2{font-size:clamp(32px, 4vw, 50px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.tienda .intro{margin-top:14px;color:var(--cocoa);max-width:52ch}
+.filtros{margin-top:30px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.filtros::-webkit-scrollbar{display:none}
+.filtros button{height:42px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(42,31,34,.22);font-weight:500;font-size:15px;white-space:nowrap;
+  transition:background-color .2s ease, color .2s ease, border-color .2s ease}
+.filtros button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+@media (hover:hover) and (pointer:fine){.filtros button[aria-pressed="false"]:hover{border-color:var(--ink)}}
+.grilla{margin-top:28px;display:grid;grid-template-columns:repeat(4, 1fr);gap:30px 22px}
+.prod{display:flex;flex-direction:column}
+.prod[hidden]{display:none}
+.prod .foto{position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--petal)}
+.prod .foto img{width:100%;height:100%;object-fit:cover;transform:scale(var(--z,1));transition:transform .5s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.prod:hover .foto img{transform:scale(calc(var(--z,1) * 1.035))}}
+.prod .cat{margin-top:14px;font-size:14px;color:var(--cocoa)}
+.prod h3{margin-top:2px;font-size:19px;line-height:1.25;font-weight:700;letter-spacing:-.01em}
+.prod .det{margin-top:4px;font-size:15px;color:var(--cocoa)}
+.prod .pie{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.precio{font-weight:700;font-size:18px}
+.precio s{font-weight:500;font-size:14px;color:var(--cocoa);margin-right:6px}
+.precio.consultar{font-weight:600;font-size:16px;color:var(--cocoa)}
+.agregar{height:42px;padding:0 16px;border-radius:999px;background:var(--rose);color:var(--white);font-weight:600;font-size:15px;
+  transition:background-color .2s ease, transform .16s var(--ease-out)}
+.agregar:active{transform:scale(.96)}
+@media (hover:hover) and (pointer:fine){.agregar:hover{background:var(--rose-dark)}}
+.cant{display:inline-flex;align-items:center;height:42px;border-radius:999px;border:1.5px solid var(--ink)}
+.cant button{width:38px;height:100%;display:grid;place-items:center;font-size:20px;font-weight:600}
+.cant output{min-width:20px;text-align:center;font-weight:700}
+.aviso{margin-top:40px;display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:var(--r);background:var(--petal);max-width:640px}
+.aviso p{font-size:16px}
+.aviso svg{width:26px;height:26px;flex:none;fill:none;stroke:var(--rose);stroke-width:1.7}
+@media (max-width:1020px){.grilla{grid-template-columns:repeat(3, 1fr)}}
+@media (max-width:700px){
+  .tienda{padding:72px 0 80px}
+  .grilla{grid-template-columns:repeat(2, 1fr);gap:26px 14px}
+  .prod h3{font-size:16px}
+  .prod .det{font-size:14px}
+  .prod .pie{flex-direction:column;align-items:stretch;gap:10px}
+  .agregar,.cant{width:100%;justify-content:space-between}
+  .cant button{width:44px}
+}
+
+/* ---------- cómo comprar ---------- */
+.pasos{padding:96px 0;background:var(--white)}
+.pasos .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.pasos figure{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:9/12;max-width:400px}
+.pasos figure img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.pasos ol{list-style:none;margin-top:34px;display:grid;gap:26px;counter-reset:p}
+.pasos li{counter-increment:p;display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start}
+.pasos li::before{content:counter(p);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+  border:1.5px solid var(--gold);font-weight:700;font-size:20px;color:var(--rose)}
+.pasos li b{display:block;font-size:20px;line-height:1.3}
+.pasos li span{display:block;margin-top:4px;color:var(--cocoa);max-width:46ch}
+@media (max-width:860px){
+  .pasos{padding:72px 0}
+  .pasos .wrap{grid-template-columns:1fr;gap:40px}
+  .pasos figure{max-width:none;aspect-ratio:4/4.4}
+}
+
+/* ---------- Gise ---------- */
+.gise{padding:100px 0}
+.gise .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border-radius:22px;overflow:hidden;background:var(--ink);color:var(--petal)}
+.gise .txt{padding:64px 56px;display:flex;flex-direction:column;justify-content:center}
+.gise .script{font-size:clamp(54px, 6vw, 84px);line-height:1;color:#E9C3BC}
+.gise blockquote{margin-top:22px;font-size:clamp(22px, 2.3vw, 30px);line-height:1.3;font-weight:500;max-width:22ch;color:var(--white)}
+.gise p{margin-top:18px;color:#CDAFA9;max-width:40ch}
+.gise .txt .btn{margin-top:30px;align-self:flex-start}
+.gise figure{position:relative;min-height:520px}
+.gise figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+@media (max-width:860px){
+  .gise{padding:72px 0}
+  .gise .wrap{grid-template-columns:1fr}
+  .gise figure{min-height:0;aspect-ratio:1/1;order:-1}
+  .gise .txt{padding:40px 26px 44px}
+}
+
+/* ---------- cierre ---------- */
+.cierre{padding:40px 0 110px;text-align:left}
+.cierre .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;border-top:1.5px solid var(--gold);padding-top:48px}
+.cierre p{margin-top:12px;color:var(--cocoa);max-width:46ch}
+footer{padding:30px 0 130px;font-size:14px;color:var(--cocoa);border-top:1px solid rgba(42,31,34,.1)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{font-weight:600;color:var(--ink)}
+
+/* ---------- botón flotante de contacto: solo el ícono ---------- */
+.fab{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,20,80,.25), 0 16px 34px -10px rgba(150,30,100,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease, bottom .25s var(--ease-out);
+  animation:fab-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.2s both}
+.fab.wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.fab svg{width:32px;height:32px;fill:currentColor;position:relative;z-index:1}
+.fab::before,.fab::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;
+  animation:fab-onda 5s var(--ease-out) 3.2s infinite}
+.fab.wa::before,.fab.wa::after{background:#25D366}
+.fab::after{animation-delay:3.6s}
+.fab .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:var(--white);color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(42,31,34,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.fab .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:var(--white);transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.fab .tip small{display:block;font-weight:500;font-size:13px;color:var(--cocoa)}
+.fab:active{transform:scale(.94)}
+.fab:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .fab:hover{transform:scale(1.07)}
+  .fab:hover svg{animation:fab-suena .6s var(--ease-out)}
+  .fab:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .fab:hover::before,.fab:hover::after{animation-play-state:paused}
+}
+@keyframes fab-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes fab-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes fab-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+
+/* ---------- carrito ---------- */
+.carro-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 80px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  height:56px;padding:0 20px 0 16px;border-radius:999px;background:var(--ink);color:var(--paper);display:flex;align-items:center;gap:10px;font-weight:600;
+  box-shadow:0 18px 36px -16px rgba(42,31,34,.7);margin-bottom:4px;
+  opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out)}
+.carro-fab.ver{opacity:1;transform:none;pointer-events:auto}
+.carro-fab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8}
+.carro-fab .n{min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:var(--rose);color:var(--white);display:grid;place-items:center;font-size:13px}
+.carro-fab .n.pop{animation:pop .3s var(--ease-out)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
+.barra{display:none}
+@media (max-width:700px){
+  .carro-fab{display:none}
+  .barra{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:58;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(246,233,230,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 -1px 0 rgba(42,31,34,.1);
+    transform:translateY(110%);transition:transform .25s var(--ease-out)}
+  .barra.ver{transform:none}
+  .barra button{flex:1;height:52px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:600;font-size:16px}
+  body.con-pedido .fab{bottom:calc(84px + env(safe-area-inset-bottom))}
+  .fab{width:58px;height:58px}.fab svg{width:29px;height:29px}
+}
+
+.velo{position:fixed;inset:0;z-index:70;background:rgba(42,31,34,.42);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.velo.abierto{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;bottom:0;z-index:71;width:min(440px, 100%);background:var(--white);display:flex;flex-direction:column;
+  transform:translateX(100%);visibility:hidden;transition:transform .38s var(--ease-drawer), visibility 0s linear .38s}
+.panel.abierto{transform:none;visibility:visible;transition:transform .38s var(--ease-drawer), visibility 0s;box-shadow:-30px 0 60px -30px rgba(42,31,34,.5)}
+.panel header{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid rgba(42,31,34,.1)}
+.panel header h2{font-size:22px;font-weight:800}
+.cerrar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:26px;line-height:1}
+@media (hover:hover) and (pointer:fine){.cerrar:hover{background:var(--petal)}}
+.panel .cuerpo{flex:1;overflow-y:auto;padding:18px 22px 24px;overscroll-behavior:contain}
+.items{list-style:none;display:grid;gap:14px}
+.items li{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center}
+.items img{width:60px;height:60px;border-radius:10px;object-fit:cover}
+.items b{display:block;font-size:15px;line-height:1.3}
+.items small{color:var(--cocoa);font-size:13px}
+.items .cant{height:36px}
+.items .cant button{width:32px;font-size:18px}
+.vacio{padding:30px 0;color:var(--cocoa)}
+.vacio a{color:var(--rose);font-weight:600}
+form.datos{margin-top:24px;display:grid;gap:14px;padding-top:20px;border-top:1px solid rgba(42,31,34,.1)}
+.campo{display:grid;gap:6px}
+.campo label{font-weight:600;font-size:15px}
+.campo label i{font-style:normal;color:var(--cocoa);font-weight:500}
+.campo input,.campo textarea,.campo select{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid rgba(42,31,34,.28);border-radius:10px;padding:12px 14px;width:100%}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input:focus,.campo textarea:focus,.campo select:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px rgba(166,74,94,.18)}
+.campo .err{color:#9B2335;font-size:14px;display:none}
+.campo.mal input{border-color:#9B2335}
+.campo.mal .err{display:block}
+.entrega{display:flex;gap:8px}
+.entrega label{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;border:1.5px solid rgba(42,31,34,.28);font-weight:500;cursor:pointer}
+.campo .entrega input{accent-color:var(--rose);width:auto;padding:0}
+.entrega label:has(input:checked){border-color:var(--ink);background:var(--paper)}
+.panel footer.acc{padding:16px 22px calc(16px + env(safe-area-inset-bottom));border-top:1px solid rgba(42,31,34,.1);background:var(--white)}
+.panel footer.acc .btn{width:100%;justify-content:center}
+.panel footer.acc p{margin-top:10px;font-size:13px;color:var(--cocoa);text-align:center}
+.ok{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--petal);font-size:14px}
+.ok.ver{display:block}
+@media (max-width:700px){
+  .panel{top:auto;left:0;width:100%;max-height:92dvh;border-radius:20px 20px 0 0;transform:translateY(100%)}
+  .panel.abierto{transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .caja .tapa{animation:abrir-suave .5s ease .3s both}
+  .js .caja .anillo,.js .hero h1,.js .hero .lead,.js .hero .ctas,.js .hero .sello{animation:aparecer .4s ease both}
+  .fab{animation:aparecer .4s ease both}
+  .fab::before,.fab::after{animation:none}
+  .fab:hover svg{animation:none}
+  .panel,.carro-fab,.barra{transition-duration:.01s}
+  .prod .foto img{transition:none}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+@keyframes abrir-suave{from{opacity:1}to{opacity:0;visibility:hidden}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Lo de Gise, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="46" height="46">
+      <span><b>Lo de Gise</b><small>Zapatillas y plata 925</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span></button>
+    <nav class="nav" id="menu" aria-label="Principal">
+      <a href="#tienda">Tienda</a>
+      <a href="#como-comprar">Cómo comprar</a>
+      <a href="#gise">Gise</a>
+      <a class="btn btn-rose" data-contacto href="https://ig.me/m/_lodegise" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1>Tu próximo favorito viene en caja.</h1>
+        <p class="lead">Zapatillas, chinelas y joyas de plata 925 elegidas por Gise. Envíos a todo el país.</p>
+        <div class="ctas">
+          <a class="btn btn-rose" href="#tienda">Ver la tienda</a>
+          <a class="btn btn-line" data-contacto href="https://ig.me/m/_lodegise" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+        </div>
+      </div>
+      <div class="caja" aria-hidden="true">
+        <div class="seda"></div>
+        <div class="base"><img src="img/foto-10.jpg" alt="" width="634" height="640"></div>
+        <div class="anillo"><img src="img/post-07.jpg" alt="" width="640" height="640"></div>
+        <div class="tapa"><div><span class="script">Lo de Gise</span><small>Zapatillas y joyas de plata 925</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tienda" id="tienda">
+    <div class="wrap">
+      <h2>La tienda</h2>
+      <p class="intro">Lo que Gise subió últimamente. Sumá lo que te guste al pedido y te confirma stock y talle por mensaje.</p>
+      <div class="filtros" role="group" aria-label="Filtrar productos">
+        <button type="button" aria-pressed="true" data-f="todo">Todo</button>
+        <button type="button" aria-pressed="false" data-f="zapas">Zapatillas y chinelas</button>
+        <button type="button" aria-pressed="false" data-f="plata">Joyas de plata 925</button>
+      </div>
+      <div class="grilla" id="grilla"></div>
+      <div class="aviso">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.7 1.2 2.6 2.2 3C11 9 11 5.5 12 3Z"/></svg>
+        <p>Muchos modelos son último par o talle único y se agotan rápido. Escribinos para saber qué hay hoy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pasos" id="como-comprar">
+    <div class="wrap">
+      <figure><img src="img/foto-05.jpg" alt="Gise mostrando unas Nike Dunk negras con la pipa dorada" width="360" height="640" loading="lazy"></figure>
+      <div>
+        <h2>Cómo comprar</h2>
+        <ol>
+          <li><div><b>Elegí y sumalo al pedido</b><span>Tocá “Agregar” en lo que te guste. Podés sumar zapas y joyas juntas.</span></div></li>
+          <li><div><b>Mandanos el pedido</b><span>Completás tu nombre y teléfono y nos llega por mensaje. Gise te confirma stock, talle y precio.</span></div></li>
+          <li><div><b>Te lo enviamos</b><span>Hacemos envíos a todo el país.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="gise" id="gise">
+    <div class="wrap">
+      <div class="txt">
+        <span class="script">Gise</span>
+        <blockquote>“Estoy para ayudarte a encontrar tu próximo favorito.”</blockquote>
+        <p>Cada par y cada joya los muestra ella misma en sus videos, así ves cómo quedan antes de pedir.</p>
+        <a class="btn btn-rose" href="https://instagram.com/_lodegise" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Ver los videos</a>
+      </div>
+      <figure><img src="img/foto-06.jpg" alt="Gise con aros y cadena de plata" width="360" height="640" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <div>
+        <h2>¿Buscás un talle o un modelo?</h2>
+        <p>Escribinos y Gise te ayuda a encontrarlo.</p>
+      </div>
+      <a class="btn btn-rose" data-contacto href="https://ig.me/m/_lodegise" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escribinos</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Lo de Gise. Zapatillas y joyas de plata 925, envíos a todo el país. <a href="https://instagram.com/_lodegise" target="_blank" rel="noopener">@_lodegise</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="fab" id="fab" data-contacto href="https://ig.me/m/_lodegise" target="_blank" rel="noopener" aria-label="Escribinos por Instagram a @_lodegise">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>@_lodegise</small></span>
+</a>
+
+<button class="carro-fab" id="carroFab" type="button" aria-label="Ver pedido">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+  Ver pedido <span class="n" id="carroN">0</span>
+</button>
+<div class="barra" id="barra"><button type="button" id="barraBtn">Ver pedido (0)</button></div>
+
+<div class="velo" id="velo"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelT" aria-hidden="true" inert>
+  <header><h2 id="panelT">Tu pedido</h2><button class="cerrar" id="cerrar" type="button" aria-label="Cerrar pedido">×</button></header>
+  <div class="cuerpo">
+    <ul class="items" id="items"></ul>
+    <p class="vacio" id="vacio">Todavía no sumaste nada. <a href="#tienda" id="irTienda">Mirá la tienda</a> y tocá “Agregar”.</p>
+    <form class="datos" id="datos" novalidate>
+      <div class="campo" id="cNombre"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name"><span class="err">Poné tu nombre.</span></div>
+      <div class="campo" id="cTel"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel"><span class="err">Poné un teléfono para coordinar.</span></div>
+      <div class="campo"><span style="font-weight:600;font-size:15px">Entrega</span>
+        <div class="entrega"><label><input type="radio" name="entrega" value="Envío" checked> Envío</label><label><input type="radio" name="entrega" value="Retiro (a coordinar)"> Retiro</label></div>
+      </div>
+      <div class="campo" id="cLugar"><label for="lugar">Localidad y provincia <i>(para el envío)</i></label><input id="lugar" name="lugar" autocomplete="address-level2"></div>
+      <div class="campo"><label for="talle">Talle <i>(zapas o anillos, si aplica)</i></label><input id="talle" name="talle" placeholder="Ej.: 38 o 41 BR"></div>
+      <div class="campo"><label for="nota">Aclaraciones <i>(opcional)</i></label><textarea id="nota" name="nota"></textarea></div>
+    </form>
+  </div>
+  <footer class="acc">
+    <button class="btn btn-rose" id="enviar" type="button"><svg class="ico" aria-hidden="true"><use href="#ig" id="enviarIco"/></svg><span id="enviarTxt">Enviar pedido por Instagram</span></button>
+    <p id="enviarAyuda">Copiamos tu pedido y abrimos el chat con @_lodegise: solo tenés que pegarlo.</p>
+    <div class="ok" id="ok" role="status"></div>
+  </footer>
+</aside>
+
+<script>
+(function () {
+  // Si Gise pasa su WhatsApp, ponelo acá (ej. '5491122334455') y todos los botones pasan a WhatsApp.
+  var WHATSAPP = '';
+  var IG = 'https://ig.me/m/_lodegise';
+
+  var PRODUCTOS = [
+    {id:'dunk', cat:'zapas', catTxt:'Zapatillas', n:'Nike Dunk negras con pipa dorada', d:'Publicadas a $55.000 en octubre.', img:'img/foto-05.jpg', pos:'50% 92%', alt:'Nike Dunk negras con detalles brillantes y la pipa dorada'},
+    {id:'nb', cat:'zapas', catTxt:'Zapatillas', n:'New Balance beige', d:'Último par. Talle 41 BR, sin cambio.', precio:'$70.000', antes:'$80.000', img:'img/foto-07.jpg', pos:'50% 30%', alt:'Zapatillas New Balance beige con medias blancas'},
+    {id:'chinelas', cat:'zapas', catTxt:'Chinelas', n:'Chinelas Nike con abrojo', d:'Ingresaron y se agotan rapidísimo.', img:'img/foto-10.jpg', pos:'50% 50%', alt:'Chinelas Nike negras con abrojo en su caja'},
+    {id:'cadenas', cat:'plata', catTxt:'Plata 925', n:'Cadenas con dije', d:'Varios modelos de dije.', img:'img/foto-11.jpg', pos:'50% 55%', alt:'Cadenas de plata 925 con dijes en un exhibidor'},
+    {id:'bvlgari-blanco', cat:'plata', catTxt:'Plata 925', n:'Anillo estilo Bvlgari, piedra blanca', d:'Talle 19.', img:'img/post-07.jpg', pos:'45% 72%', z:1.35, alt:'Anillo cuadrado estilo Bvlgari con piedra blanca, en su cajita'},
+    {id:'bvlgari-rojo', cat:'plata', catTxt:'Plata 925', n:'Anillo estilo Bvlgari, piedra roja', d:'Plata 925.', img:'img/post-10.jpg', pos:'40% 100%', z:1.9, alt:'Anillo estilo Bvlgari con piedra roja, en su cajita'},
+    {id:'vancleef', cat:'plata', catTxt:'Plata 925', n:'Anillo estilo Van Cleef', d:'Regulable.', img:'img/post-08.jpg', pos:'40% 98%', z:1.75, alt:'Anillo regulable de plata con dos tréboles'},
+    {id:'corazon', cat:'plata', catTxt:'Plata 925', n:'Anillo corazón', d:'Plata 925.', img:'img/post-11.jpg', pos:'32% 96%', z:2, alt:'Anillo fino de plata con un corazón'}
+  ];
+  var porId = {}; PRODUCTOS.forEach(function (p) { porId[p.id] = p; });
+
+  // ----- encabezado y menú -----
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { top.classList.toggle('scrolled', !e[0].isIntersecting); }).observe(sentinel);
+  } else { top.classList.add('scrolled'); }
+  var mBtn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(o) { menu.classList.toggle('open', o); mBtn.setAttribute('aria-expanded', String(o)); mBtn.setAttribute('aria-label', o ? 'Cerrar menú' : 'Abrir menú'); }
+  mBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+
+  // ----- WhatsApp si hay número -----
+  if (WHATSAPP) {
+    document.querySelectorAll('[data-contacto]').forEach(function (a) {
+      a.href = 'https://wa.me/' + WHATSAPP;
+      var u = a.querySelector('use'); if (u) u.setAttribute('href', '#wa');
+    });
+    var fab = document.getElementById('fab'); fab.classList.add('wa'); fab.setAttribute('aria-label', 'Escribinos por WhatsApp');
+    document.getElementById('enviarIco').setAttribute('href', '#wa');
+    document.getElementById('enviarTxt').textContent = 'Enviar pedido por WhatsApp';
+    document.getElementById('enviarAyuda').textContent = 'Se abre WhatsApp con tu pedido armado.';
+  }
+
+  // ----- carrito -----
+  var carro = {};
+  try { carro = JSON.parse(localStorage.getItem('lodegise-pedido') || '{}') || {}; } catch (e) { carro = {}; }
+  Object.keys(carro).forEach(function (k) { if (!porId[k] || !(carro[k] > 0)) delete carro[k]; });
+  function guardar() { try { localStorage.setItem('lodegise-pedido', JSON.stringify(carro)); } catch (e) {} }
+  function total() { var t = 0; for (var k in carro) t += carro[k]; return t; }
+
+  var grilla = document.getElementById('grilla');
+  function precioHTML(p) {
+    if (p.precio) return '<span class="precio">' + (p.antes ? '<s>' + p.antes + '</s>' : '') + p.precio + '</span>';
+    return '<span class="precio consultar">Consultar</span>';
+  }
+  function controlHTML(p) {
+    var c = carro[p.id] || 0;
+    if (!c) return '<button class="agregar" type="button" data-add="' + p.id + '" aria-label="Agregar ' + p.n + ' al pedido">Agregar</button>';
+    return '<span class="cant"><button type="button" data-menos="' + p.id + '" aria-label="Sacar uno">−</button><output aria-live="polite">' + c + '</output><button type="button" data-mas="' + p.id + '" aria-label="Sumar uno">+</button></span>';
+  }
+  grilla.innerHTML = PRODUCTOS.map(function (p) {
+    return '<article class="prod" data-cat="' + p.cat + '">' +
+      '<div class="foto"><img src="' + p.img + '" alt="' + p.alt + '" loading="lazy" style="object-position:' + p.pos + ';transform-origin:' + p.pos + ';--z:' + (p.z || 1) + '"></div>' +
+      '<span class="cat">' + p.catTxt + '</span><h3>' + p.n + '</h3><p class="det">' + p.d + '</p>' +
+      '<div class="pie">' + precioHTML(p) + '<span class="ctl" data-ctl="' + p.id + '">' + controlHTML(p) + '</span></div></article>';
+  }).join('');
+
+  function pintarCtl(id) { var el = grilla.querySelector('[data-ctl="' + id + '"]'); if (el) el.innerHTML = controlHTML(porId[id]); }
+  var nEl = document.getElementById('carroN'), cFab = document.getElementById('carroFab'), barra = document.getElementById('barra'), barraBtn = document.getElementById('barraBtn');
+  function pintarResumen(animar) {
+    var t = total();
+    nEl.textContent = t; barraBtn.textContent = 'Ver pedido (' + t + ')';
+    cFab.classList.toggle('ver', t > 0); barra.classList.toggle('ver', t > 0);
+    document.body.classList.toggle('con-pedido', t > 0);
+    if (animar) { nEl.classList.remove('pop'); void nEl.offsetWidth; nEl.classList.add('pop'); }
+    pintarItems();
+  }
+  function cambiar(id, d) {
+    var v = (carro[id] || 0) + d;
+    if (v <= 0) delete carro[id]; else carro[id] = Math.min(v, 20);
+    guardar(); pintarCtl(id); pintarResumen(d > 0);
+  }
+  function clicCant(e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.add) { cambiar(b.dataset.add, 1); var m = grilla.querySelector('[data-mas="' + b.dataset.add + '"]'); if (m) m.focus(); }
+    else if (b.dataset.mas) cambiar(b.dataset.mas, 1);
+    else if (b.dataset.menos) {
+      var id = b.dataset.menos, ultimo = carro[id] === 1; cambiar(id, -1);
+      if (ultimo) { var a = grilla.querySelector('[data-add="' + id + '"]'); if (a && e.currentTarget === grilla) a.focus(); }
+    }
+  }
+  grilla.addEventListener('click', clicCant);
+
+  // filtros
+  var filtros = document.querySelectorAll('.filtros button');
+  filtros.forEach(function (f) {
+    f.addEventListener('click', function () {
+      filtros.forEach(function (o) { o.setAttribute('aria-pressed', String(o === f)); });
+      grilla.querySelectorAll('.prod').forEach(function (p) { p.hidden = !(f.dataset.f === 'todo' || p.dataset.cat === f.dataset.f); });
+    });
+  });
+
+  // panel
+  var panel = document.getElementById('panel'), velo = document.getElementById('velo'), items = document.getElementById('items'), vacio = document.getElementById('vacio');
+  var antes = null;
+  function pintarItems() {
+    var ids = Object.keys(carro);
+    vacio.style.display = ids.length ? 'none' : 'block';
+    items.innerHTML = ids.map(function (id) {
+      var p = porId[id];
+      return '<li><img src="' + p.img + '" alt="" style="object-position:' + p.pos + '"><div><b>' + p.n + '</b><small>' + (p.precio || 'Consultar') + '</small></div>' +
+        '<span class="cant"><button type="button" data-menos="' + id + '" aria-label="Sacar uno de ' + p.n + '">−</button><output>' + carro[id] + '</output><button type="button" data-mas="' + id + '" aria-label="Sumar uno de ' + p.n + '">+</button></span></li>';
+    }).join('');
+  }
+  items.addEventListener('click', clicCant);
+  function abrir() {
+    antes = document.activeElement;
+    panel.classList.add('abierto'); velo.classList.add('abierto');
+    panel.removeAttribute('inert'); panel.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { document.getElementById('cerrar').focus(); }, 60);
+  }
+  function cerrar() {
+    panel.classList.remove('abierto'); velo.classList.remove('abierto');
+    panel.setAttribute('inert', ''); panel.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (antes && antes.focus) antes.focus();
+  }
+  cFab.addEventListener('click', abrir); barraBtn.addEventListener('click', abrir);
+  document.getElementById('cerrar').addEventListener('click', cerrar);
+  velo.addEventListener('click', cerrar);
+  document.getElementById('irTienda').addEventListener('click', cerrar);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { if (panel.classList.contains('abierto')) cerrar(); setMenu(false); } });
+
+  // envío del pedido
+  var ok = document.getElementById('ok');
+  function campo(idC, idI) { var c = document.getElementById(idC), v = document.getElementById(idI).value.trim(); c.classList.toggle('mal', !v); return v; }
+  document.getElementById('enviar').addEventListener('click', function () {
+    ok.classList.remove('ver');
+    var ids = Object.keys(carro);
+    if (!ids.length) { ok.textContent = 'Sumá al menos un producto desde la tienda.'; ok.classList.add('ver'); return; }
+    var nombre = campo('cNombre', 'nombre'), tel = campo('cTel', 'tel');
+    if (!nombre || !tel) { (nombre ? document.getElementById('tel') : document.getElementById('nombre')).focus(); return; }
+    var entrega = (document.querySelector('input[name="entrega"]:checked') || {}).value || 'Envío';
+    var lugar = document.getElementById('lugar').value.trim(), talle = document.getElementById('talle').value.trim(), nota = document.getElementById('nota').value.trim();
+    var txt = 'Hola Gise! Quiero hacer este pedido:\n' +
+      ids.map(function (id) { var p = porId[id]; return '- ' + carro[id] + ' x ' + p.n + ' (' + (p.precio || 'consultar precio') + ')'; }).join('\n') +
+      '\n\nNombre: ' + nombre + '\nTeléfono: ' + tel + '\nEntrega: ' + entrega +
+      (lugar ? '\nLocalidad: ' + lugar : '') + (talle ? '\nTalle: ' + talle : '') + (nota ? '\nAclaraciones: ' + nota : '');
+    if (WHATSAPP) { window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt), '_blank', 'noopener'); return; }
+    var abrirIG = function () { window.open(IG, '_blank', 'noopener'); };
+    var listo = function () { ok.textContent = 'Listo, copiamos tu pedido. Pegalo en el chat de Instagram que se abrió.'; ok.classList.add('ver'); abrirIG(); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(listo, function () { copiarViejo(txt) ? listo() : mostrar(txt); });
+    } else { copiarViejo(txt) ? listo() : mostrar(txt); }
+  });
+  function copiarViejo(t) {
+    try { var ta = document.createElement('textarea'); ta.value = t; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); var r = document.execCommand('copy'); ta.remove(); return r; } catch (e) { return false; }
+  }
+  function mostrar(t) { ok.textContent = 'Copiá este texto y mandalo por Instagram a @_lodegise: ' + t; ok.classList.add('ver'); window.open(IG, '_blank', 'noopener'); }
+
+  pintarResumen(false);
+})();
+</script>
+</body>
+</html>
