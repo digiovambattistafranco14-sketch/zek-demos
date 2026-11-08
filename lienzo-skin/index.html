@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lienzo Skin | Beauty &amp; Bodycare en Tamayo, Bahoruco</title>
+<meta name="description" content="Cremas, aceites, geles, fragancias, capilar y makeup. Tamayo, Bahoruco. Envíos a todo el país con Vimenpaq. Pide por WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Lienzo Skin | Tu piel, tu mejor lienzo">
+<meta property="og:description" content="Catálogo 2026 con precios: cuidado corporal, capilar, fragancias y makeup. Arma tu pedido y envíalo por WhatsApp.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#6b3a26">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{
+  --choco:#6b3a26;       /* el marrón del logo */
+  --choco-2:#53291a;
+  --rosa:#f5c8da;        /* el rosa de la foto de perfil */
+  --rosa-2:#fbe3ec;
+  --malva:#b98476;       /* el arco del catálogo */
+  --tela:#fdf8f7;        /* el lienzo: blanco apenas rosado */
+  --gondola:#f7f3ef;     /* fondo de las fotos del catálogo */
+  --ink:#3a1d12;
+  --muted:#7a5a4e;
+  --linea:rgba(107,58,38,.14);
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --header:72px;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--tela);color:var(--ink);font-family:"League Spartan",system-ui,sans-serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--choco);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1180px, 100% - 32px);margin-inline:auto}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;color:var(--choco);margin:0;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(34px, 5vw, 56px)}
+.lead{color:var(--muted);max-width:56ch;margin:14px 0 0}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wa-ico{width:20px;height:20px;fill:currentColor;flex:none}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid var(--choco);
+  font-weight:600;font-size:17px;text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-1{background:var(--choco);color:#fff}
+.btn-2{background:transparent;color:var(--choco)}
+@media (hover:hover) and (pointer:fine){
+  .btn-1:hover{background:var(--choco-2);border-color:var(--choco-2)}
+  .btn-2:hover{background:var(--choco);color:#fff}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(253,248,247,.84);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 var(--linea), 0 10px 30px -20px rgba(83,41,26,.35)}
+.top .wrap{display:flex;align-items:center;gap:20px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 2px #fff, 0 4px 12px -4px rgba(83,41,26,.4)}
+.marca b{display:block;font-family:"Young Serif",serif;font-weight:400;font-size:21px;color:var(--choco);line-height:1.05}
+.marca span{min-width:0}
+.marca small{display:block;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{text-decoration:none;font-weight:500;font-size:17px;color:var(--ink);padding:6px 0;background:linear-gradient(var(--choco),var(--choco)) left bottom/0 2px no-repeat;transition:background-size .25s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background-size:100% 2px}}
+.top .btn{min-height:44px;padding:0 18px;font-size:16px}
+.bolsa-top{position:relative;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:2px solid var(--choco);background:transparent;color:var(--choco);cursor:pointer}
+.bolsa-top svg{width:22px;height:22px}
+.cuenta{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--rosa);color:var(--choco-2);font-size:13px;font-weight:700;display:grid;place-items:center;line-height:1}
+.cuenta[data-n="0"]{display:none}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:0;background:var(--rosa-2);color:var(--choco);cursor:pointer;place-items:center}
+.menu-btn svg{width:22px;height:22px}
+.sheet-menu{position:fixed;top:calc(var(--header) - 4px);left:16px;right:16px;z-index:49;background:#fff;border-radius:var(--r);padding:8px;box-shadow:0 24px 60px -20px rgba(83,41,26,.45);
+  opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;pointer-events:none;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.sheet-menu.open{opacity:1;transform:none;pointer-events:auto}
+.sheet-menu a{display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-size:19px;font-weight:500}
+.sheet-menu a:active{background:var(--rosa-2)}
+@media (max-width:900px){
+  .nav,.top .btn-wa-top{display:none}
+  .menu-btn{display:grid}
+  .acciones{margin-left:auto}
+}
+.acciones{display:flex;gap:10px;align-items:center}
+
+/* ---------- portada ---------- */
+.hero{padding:calc(var(--header) + 40px) 0 72px;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(42px, 5.6vw, 82px);line-height:1.02;position:relative;isolation:isolate;padding-bottom:.08em}
+.hero h1 .renglon{display:block;white-space:nowrap}
+/* la pincelada: el gesto del pincel que tiene la L del logo */
+.pincel{position:absolute;left:-2%;top:50%;width:104%;height:56%;z-index:-1;overflow:visible}
+.pincel path{fill:none;stroke:var(--rosa);stroke-width:46;stroke-linecap:round;stroke-linejoin:round}
+.hero .lead{font-size:20px;margin-top:22px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-foto{position:relative;justify-self:end;width:min(100%, 470px)}
+.arco{border-radius:999px 999px var(--r) var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--rosa-2);box-shadow:0 30px 70px -36px rgba(83,41,26,.55)}
+.arco img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-foto .lamina{position:absolute;left:-36px;bottom:34px;width:128px;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 18px 40px -16px rgba(83,41,26,.5);transform:rotate(-6deg);border:5px solid #fff}
+.hero-foto .lamina img{width:100%;height:100%;object-fit:cover}
+@media (prefers-reduced-motion: no-preference){
+  .js .pincel path{stroke-dasharray:1;stroke-dashoffset:1;animation:pintar 1.15s var(--ease-out) .35s forwards}
+  .js .hero h1 .renglon{opacity:0;transform:translateY(16px);animation:subir .7s var(--ease-out) forwards}
+  .js .hero h1 .renglon:nth-child(3){animation-delay:.12s}
+  .js .hero .lead,.js .hero .ctas{opacity:0;animation:subir .6s var(--ease-out) .5s forwards}
+  .js .hero .ctas{animation-delay:.62s}
+  .js .arco{clip-path:inset(100% 0 0 0 round 999px 999px 18px 18px);animation:revelar 1s var(--ease-out) .2s forwards}
+  .js .lamina{opacity:0;animation:caer .7s var(--ease-out) 1.1s forwards}
+}
+@keyframes pintar{to{stroke-dashoffset:0}}
+@keyframes subir{to{opacity:1;transform:none}}
+@keyframes revelar{to{clip-path:inset(0 0 0 0 round 999px 999px 18px 18px)}}
+@keyframes caer{from{opacity:0;transform:translateY(18px) rotate(-14deg)}to{opacity:1;transform:rotate(-6deg)}}
+@media (max-width:520px){.marca small{display:none}}
+@media (max-width:860px){
+  .hero{padding-top:calc(var(--header) + 20px);padding-bottom:48px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero-foto{justify-self:center;width:min(100%, 380px)}
+  .hero-foto .lamina{left:-12px;width:104px}
+  .hero .lead{font-size:18px}
+}
+
+/* ---------- franja de datos ---------- */
+.franja{background:var(--choco);color:#fff}
+.franja .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.franja p{margin:0;padding:22px 24px;font-size:17px;display:flex;gap:12px;align-items:center}
+.franja p + p{border-left:1px solid rgba(255,255,255,.18)}
+.franja svg{width:26px;height:26px;flex:none;stroke:var(--rosa);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.franja b{font-weight:600}
+@media (max-width:760px){
+  .franja .wrap{grid-template-columns:1fr}
+  .franja p{padding:14px 4px}
+  .franja p + p{border-left:0;border-top:1px solid rgba(255,255,255,.18)}
+}
+
+/* ---------- catálogo ---------- */
+.catalogo{padding:96px 0 72px}
+.cat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.paleta{position:sticky;top:var(--header);z-index:20;margin-top:28px;padding:12px 0;background:linear-gradient(var(--tela) 78%, rgba(253,248,247,0))}
+.paleta .chips{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 6px;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.paleta .chips::-webkit-scrollbar{display:none}
+.chip{flex:none;scroll-snap-align:start;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--linea);background:#fff;color:var(--ink);font-weight:500;font-size:16px;cursor:pointer;
+  transition:background-color .2s ease, color .2s ease, border-color .2s ease}
+.chip i{width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.chip[aria-pressed="true"]{background:var(--choco);border-color:var(--choco);color:#fff}
+@media (hover:hover) and (pointer:fine){.chip:not([aria-pressed="true"]):hover{border-color:var(--choco)}}
+.grilla{display:grid;grid-template-columns:repeat(4, 1fr);gap:28px 22px;margin-top:18px}
+@media (max-width:1060px){.grilla{grid-template-columns:repeat(3, 1fr)}}
+@media (max-width:720px){.grilla{grid-template-columns:repeat(2, 1fr);gap:22px 12px}}
+.prod{display:flex;flex-direction:column;min-width:0}
+.prod .foto{position:relative;border-radius:var(--r);overflow:hidden;background:var(--gondola);aspect-ratio:1}
+.prod .foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.prod:hover .foto img{transform:scale(1.04)}}
+.prod .etq{position:absolute;left:10px;top:10px;background:#fff;color:var(--choco);font-size:13px;font-weight:600;padding:5px 10px;border-radius:999px}
+.prod .marca-p{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.prod h3{font-family:"League Spartan",sans-serif;font-weight:600;font-size:18px;line-height:1.2;color:var(--ink);margin:2px 0 0}
+.prod .precio{font-family:"Young Serif",serif;font-size:21px;color:var(--choco);margin:6px 0 0}
+.prod .precio small{font-family:"League Spartan",sans-serif;font-size:14px;color:var(--muted)}
+.prod select{margin-top:10px;width:100%;height:42px;border-radius:12px;border:1.5px solid var(--linea);background:#fff;padding:0 10px;font-size:15px;color:var(--ink)}
+.prod .pie{margin-top:auto;padding-top:12px}
+.add{width:100%;height:46px;border-radius:999px;border:2px solid var(--choco);background:#fff;color:var(--choco);font-weight:600;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:background-color .2s ease, color .2s ease, transform .16s var(--ease-out)}
+.add svg{width:18px;height:18px}
+.add:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.add:hover{background:var(--choco);color:#fff}}
+.stepper{display:flex;align-items:center;justify-content:space-between;height:46px;border-radius:999px;background:var(--choco);color:#fff;padding:0 4px}
+.stepper button{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center}
+.stepper button svg{width:18px;height:18px}
+.stepper output{font-weight:700;font-size:17px}
+.vacio{padding:40px 0;color:var(--muted)}
+
+/* ---------- labios: prueba de color ---------- */
+.labios{padding:40px 0 96px}
+.labios .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.muestra{border-radius:var(--r);overflow:hidden;aspect-ratio:1;box-shadow:0 30px 70px -40px rgba(83,41,26,.6)}
+.muestra img{width:100%;height:100%;object-fit:cover}
+.labios .cap{margin:14px 0 0;color:var(--muted);font-size:16px}
+.tonos{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.tonos li{padding:8px 14px;border-radius:999px;background:var(--rosa-2);color:var(--choco-2);font-size:15px;font-weight:500}
+.rhode{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;margin-top:28px;padding:16px;border-radius:var(--r);background:#fff;border:1px solid var(--linea)}
+.rhode img{width:120px;height:120px;object-fit:cover;border-radius:12px}
+.rhode p{margin:0}
+.rhode b{font-family:"Young Serif",serif;font-weight:400;color:var(--choco);font-size:20px}
+@media (max-width:860px){.labios .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* ---------- combos ---------- */
+.combos{padding:96px 0;background:var(--rosa-2)}
+.carril{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px, 340px);gap:22px;overflow-x:auto;padding:30px 16px 12px;margin:0 -16px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--malva) transparent}
+.combo{scroll-snap-align:start;background:#fff;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 50px -34px rgba(83,41,26,.55)}
+.combo .foto{aspect-ratio:4/5;background:var(--gondola)}
+.combo .foto img{width:100%;height:100%;object-fit:cover}
+.combo .txt{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.combo h3{font-size:22px}
+.combo ul{margin:10px 0 0;padding:0 0 0 18px;color:var(--muted);font-size:16px;line-height:1.4}
+.combo ul li::marker{color:var(--malva)}
+.combo .precio{font-family:"Young Serif",serif;font-size:24px;color:var(--choco);margin:14px 0 0}
+.combo .pie{margin-top:auto;padding-top:14px}
+
+/* ---------- quién ---------- */
+.quien{padding:104px 0}
+.quien .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.quien .foto{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5}
+.quien .foto img{width:100%;height:100%;object-fit:cover}
+.quien p.lead{font-size:20px}
+.frase{margin:36px 0 0;padding:32px 30px;border-radius:var(--r);background:var(--rosa);font-weight:800;font-size:clamp(24px, 3vw, 34px);line-height:1.1;color:var(--choco)}
+.frase cite{display:block;margin-top:16px;font-style:normal;font-weight:600;font-size:16px;text-align:right}
+@media (max-width:860px){.quien .wrap{grid-template-columns:1fr;gap:32px}.quien .foto{max-width:440px}}
+
+/* ---------- cómo pedir ---------- */
+.pedir{padding:96px 0 110px;border-top:1px solid var(--linea)}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:40px 0 0;padding:0;list-style:none;counter-reset:paso}
+.pasos li{counter-increment:paso;padding:26px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--linea)}
+.pasos li::before{content:counter(paso);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--choco);color:#fff;font-family:"Young Serif",serif;font-size:21px;margin-bottom:16px}
+.pasos h3{font-size:24px}
+.pasos p{margin:8px 0 0;color:var(--muted)}
+.contacto{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;margin-top:22px}
+.contacto a,.contacto div{display:flex;gap:14px;align-items:center;padding:20px 22px;border-radius:var(--r);background:var(--choco);color:#fff;text-decoration:none}
+.contacto svg{width:28px;height:28px;flex:none}
+.contacto small{display:block;opacity:.75;font-size:15px}
+.contacto b{font-weight:600;font-size:19px}
+@media (max-width:860px){.pasos,.contacto{grid-template-columns:1fr}}
+
+body > footer{padding:36px 0 130px;color:var(--muted);font-size:15px;border-top:1px solid var(--linea)}
+body > footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+body > footer p{margin:0}
+body > footer a{color:var(--choco);font-weight:600}
+
+/* ---------- bolsa flotante ---------- */
+.bolsa-flot{position:fixed;right:max(24px, env(safe-area-inset-right));bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:59;width:56px;height:56px;border-radius:50%;border:0;background:var(--choco);color:#fff;cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 14px 30px -12px rgba(83,41,26,.7);opacity:0;transform:translateY(12px) scale(.9);pointer-events:none;transition:opacity .25s var(--ease-out), transform .25s var(--ease-out)}
+.bolsa-flot svg{width:24px;height:24px}
+.con-pedido .bolsa-flot{opacity:1;transform:none;pointer-events:auto}
+.barra-pedido{display:none}
+@media (max-width:720px){
+  .bolsa-flot{display:none}
+  .barra-pedido{display:flex;position:fixed;left:12px;right:84px;bottom:max(14px, env(safe-area-inset-bottom));z-index:58;height:56px;border-radius:999px;border:0;background:var(--choco);color:#fff;font-weight:600;font-size:17px;
+    align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 30px -12px rgba(83,41,26,.7);cursor:pointer;
+    opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .25s var(--ease-out), transform .25s var(--ease-out)}
+  .barra-pedido svg{width:22px;height:22px}
+  .con-pedido .barra-pedido{opacity:1;transform:none;pointer-events:auto}
+}
+
+/* ---------- panel del pedido ---------- */
+.velo{position:fixed;inset:0;z-index:80;background:rgba(58,29,18,.42);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.panel{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(440px, 100%);background:var(--tela);display:flex;flex-direction:column;visibility:hidden;
+  transform:translateX(100%);transition:transform .32s cubic-bezier(0.32, 0.72, 0, 1), visibility 0s linear .32s;box-shadow:-20px 0 60px -30px rgba(58,29,18,.6)}
+.abierto .velo{opacity:1;pointer-events:auto}
+.abierto .panel{transform:none;visibility:visible;transition:transform .32s cubic-bezier(0.32, 0.72, 0, 1), visibility 0s}
+.panel header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--linea)}
+.panel header h2{font-size:30px}
+.cerrar{width:44px;height:44px;border-radius:50%;border:0;background:var(--rosa-2);color:var(--choco);cursor:pointer;display:grid;place-items:center}
+.cerrar svg{width:20px;height:20px}
+.panel .cuerpo{flex:1;overflow-y:auto;padding:8px 20px 20px;overscroll-behavior:contain}
+.item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--linea)}
+.item img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:var(--gondola)}
+.item b{display:block;font-weight:600;font-size:16px;line-height:1.2}
+.item small{display:block;color:var(--muted);font-size:14px}
+.item .stepper{height:40px;width:118px}
+.item .stepper button{width:32px;height:32px}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 4px;font-size:18px}
+.total b{font-family:"Young Serif",serif;font-weight:400;font-size:26px;color:var(--choco)}
+.nota-envio{margin:0;color:var(--muted);font-size:15px}
+.form{display:grid;gap:14px;margin-top:20px}
+.campo{display:grid;gap:6px}
+.campo label{font-weight:600;font-size:16px}
+.campo input,.campo textarea{width:100%;min-height:48px;border-radius:12px;border:1.5px solid rgba(107,58,38,.35);background:#fff;padding:10px 14px;font-size:17px;color:var(--ink)}
+.campo input::placeholder,.campo textarea::placeholder{color:#8d7166}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--choco);box-shadow:0 0 0 3px rgba(107,58,38,.18)}
+.campo .err{color:#a1281f;font-size:14px;min-height:0}
+.campo.mal input{border-color:#a1281f}
+.panel footer{padding:16px 20px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--linea);background:#fff}
+.enviar{width:100%;min-height:56px;border-radius:999px;border:0;background:#25D366;color:#073b1d;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:transform .16s var(--ease-out), filter .2s ease}
+.enviar:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.enviar:hover{filter:brightness(.95)}}
+.vacia{padding:40px 0;text-align:center;color:var(--muted)}
+.vacia .btn{margin-top:16px}
+@media (max-width:720px){
+  .panel{top:auto;left:0;width:100%;height:min(92dvh, 760px);border-radius:22px 22px 0 0;transform:translateY(100%)}
+}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.6s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;animation:wa-onda 5s var(--ease-out) 2.6s infinite}
+.wa::after{animation-delay:3s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(58,29,18,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+@media (prefers-reduced-motion: reduce){
+  .wa{animation:suave .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .panel,.velo,.bolsa-flot,.barra-pedido{transition-duration:.01s}
+  .prod .foto img{transition:none}
+}
+@keyframes suave{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="bolsa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M5 12h14"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></g></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Lienzo Skin, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="46" height="46">
+      <span><b>Lienzo Skin</b><small>Beauty &amp; bodycare en Tamayo, Bahoruco</small></span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#combos">Combos</a>
+      <a href="#labios">Labios</a>
+      <a href="#pedir">Cómo pedir</a>
+    </nav>
+    <div class="acciones">
+      <a class="btn btn-1 btn-wa-top" href="https://wa.me/18295844018" target="_blank" rel="noopener"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Escríbenos</a>
+      <button class="bolsa-top" type="button" data-abrir aria-label="Ver tu pedido"><svg aria-hidden="true"><use href="#bolsa"/></svg><span class="cuenta" data-n="0">0</span></button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<nav class="sheet-menu" id="menuMovil" aria-label="Menú">
+  <a href="#catalogo">Catálogo</a>
+  <a href="#combos">Combos</a>
+  <a href="#labios">Labios</a>
+  <a href="#nosotras">Quién está detrás</a>
+  <a href="#pedir">Cómo pedir</a>
+  <a href="https://wa.me/18295844018" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+</nav>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>
+          <svg class="pincel" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M28 120 C 180 96, 320 140, 480 116 S 760 92, 972 108"/></svg>
+          <span class="renglon">Tu piel,</span>
+          <span class="renglon">tu mejor lienzo.</span>
+        </h1>
+        <p class="lead">Cremas, aceites, fragancias, capilar y makeup en Tamayo, Bahoruco. Envíos a todo el país con Vimenpaq.</p>
+        <div class="ctas">
+          <a class="btn btn-1" href="#catalogo">Ver catálogo</a>
+          <a class="btn btn-2" href="https://wa.me/18295844018" target="_blank" rel="noopener"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Escríbenos</a>
+        </div>
+      </div>
+      <figure class="hero-foto" style="margin:0">
+        <div class="arco"><img src="img/duena.jpg" alt="La dueña de Lienzo Skin sentada junto al estante con cremas, geles y lociones" width="1100" height="1389" fetchpriority="high"></div>
+        <div class="lamina"><img src="img/catalogo.jpg" alt="Tapa del Catálogo 2026 de Lienzo Skin" width="800" height="1066" loading="lazy"></div>
+      </figure>
+    </div>
+  </section>
+
+  <div class="franja">
+    <div class="wrap">
+      <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span><b>Envíos nacionales</b> con Vimenpaq</span></p>
+      <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8"/></svg><span><b>Entrega inmediata</b> y productos por encargo</span></p>
+      <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18.5 5.3 15A8 8 0 1 1 9 18.7L4 18.5Z"/></svg><span><b>Pides por WhatsApp</b> o por DM</span></p>
+    </div>
+  </div>
+
+  <section class="catalogo" id="catalogo" aria-labelledby="t-cat">
+    <div class="wrap">
+      <div class="cat-head">
+        <div>
+          <h2 id="t-cat">Catálogo 2026</h2>
+          <p class="lead">Elige lo tuyo, súmalo al pedido y nos llega armado por WhatsApp.</p>
+        </div>
+      </div>
+      <div class="paleta">
+        <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      </div>
+      <div class="grilla" id="grilla" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="labios" id="labios" aria-labelledby="t-lab">
+    <div class="wrap">
+      <figure style="margin:0">
+        <div class="muestra"><img src="img/swatch-kiko.jpg" alt="Seis tonos de lipgloss KIKO probados en el brazo" width="1000" height="999" loading="lazy"></div>
+        <figcaption class="cap">KIKO Milano 3D Hydra Lipgloss, probado en la piel. RD$450.</figcaption>
+      </figure>
+      <div>
+        <h2 id="t-lab">Así se ven en la piel</h2>
+        <p class="lead">Brillito precioso, aroma delicioso y espejito incluido. Y los Rhode Peptide Lip Tint, en estos tonos:</p>
+        <ul class="tonos">
+          <li>Strawberry Glaze</li><li>Guava Spritz</li><li>Peach Pit</li><li>Shortcake</li><li>Vanilla Cake</li><li>Watermelon Slice</li><li>Salty Tan</li>
+        </ul>
+        <div class="rhode">
+          <img src="img/rhode-tint.jpg" alt="Cajas de Rhode Peptide Lip Tint en ocho colores" width="800" height="1000" loading="lazy">
+          <p><b>RD$400 c/u</b><br>Labios jugosos, brillantes y con un toque de color.</p>
+        </div>
+        <div class="ctas"><button class="btn btn-1" type="button" data-ir-cat="labios">Ver todos los labiales</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="combos" id="combos" aria-labelledby="t-com">
+    <div class="wrap">
+      <h2 id="t-com">Combos para consentirte</h2>
+      <p class="lead">Los armamos para que huelas rico, cuides tu piel y le des un toque especial a tu rutina.</p>
+      <div class="carril" id="carril"></div>
+    </div>
+  </section>
+
+  <section class="quien" id="nosotras" aria-labelledby="t-qui">
+    <div class="wrap">
+      <div class="foto"><img src="img/estante.jpg" alt="La dueña de Lienzo Skin junto a su estante de productos" width="1000" height="1258" loading="lazy"></div>
+      <div>
+        <h2 id="t-qui">El corazón detrás de Lienzo Skin</h2>
+        <p class="lead">Un sueño, mil esfuerzos y una meta. Desde Tamayo, Bahoruco, con productos de cuidado facial, corporal, capilar y makeup para que te sientas linda de pies a cabeza.</p>
+        <blockquote class="frase">Si no saben en qué gastarse su quincena, mi emprendimiento está disponible.<cite>@lienzo_skin</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="pedir" id="pedir" aria-labelledby="t-ped">
+    <div class="wrap">
+      <h2 id="t-ped">Cómo pedir</h2>
+      <ol class="pasos">
+        <li><h3>Arma tu pedido</h3><p>Toca «Agregar» en lo que te guste. Elige aroma o tono si tiene.</p></li>
+        <li><h3>Envíalo por WhatsApp</h3><p>Pon tu nombre y a dónde va. El mensaje sale listo, con todo y precios.</p></li>
+        <li><h3>Te llega a casa</h3><p>Te confirmamos disponibilidad y lo enviamos con Vimenpaq a todo el país.</p></li>
+      </ol>
+      <div class="contacto">
+        <a href="https://wa.me/18295844018" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span><small>WhatsApp</small><b>829-584-4018</b></span></a>
+        <a href="https://instagram.com/lienzo_skin" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg><span><small>Instagram</small><b>@lienzo_skin</b></span></a>
+        <div><svg aria-hidden="true"><use href="#pin"/></svg><span><small>Estamos en</small><b>Tamayo, Bahoruco, RD</b></span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Lienzo Skin, beauty &amp; bodycare. Tamayo, Bahoruco, República Dominicana. <a href="https://instagram.com/lienzo_skin" target="_blank" rel="noopener">@lienzo_skin</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<button class="bolsa-flot" type="button" data-abrir aria-label="Ver tu pedido"><svg aria-hidden="true"><use href="#bolsa"/></svg><span class="cuenta" data-n="0">0</span></button>
+<button class="barra-pedido" type="button" data-abrir><svg aria-hidden="true"><use href="#bolsa"/></svg><span id="barraTxt">Ver pedido (0)</span></button>
+
+<a class="wa" href="https://wa.me/18295844018" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp al 829-584-4018">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escríbenos<small>829-584-4018</small></span>
+</a>
+
+<div class="velo" data-cerrar></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="t-pan" aria-hidden="true">
+  <header><h2 id="t-pan">Tu pedido</h2><button class="cerrar" type="button" data-cerrar aria-label="Cerrar el pedido"><svg aria-hidden="true"><use href="#x"/></svg></button></header>
+  <div class="cuerpo">
+    <div id="items"></div>
+    <div id="resumen"></div>
+    <form class="form" id="form" novalidate>
+      <div class="campo"><label for="f-nombre">Tu nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required><span class="err" aria-live="polite"></span></div>
+      <div class="campo"><label for="f-tel">Tu teléfono</label><input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" required><span class="err" aria-live="polite"></span></div>
+      <div class="campo"><label for="f-dest">¿A dónde te lo enviamos?</label><input id="f-dest" name="dest" placeholder="Provincia y ciudad" required><span class="err" aria-live="polite"></span></div>
+      <div class="campo"><label for="f-notas">Aclaraciones (opcional)</label><textarea id="f-notas" name="notas" placeholder="Ej.: si no hay Shortcake, me sirve Peach Pit"></textarea></div>
+    </form>
+  </div>
+  <footer><button class="enviar" type="submit" form="form"><svg class="wa-ico" aria-hidden="true"><use href="#wa"/></svg>Enviar pedido por WhatsApp</button></footer>
+</aside>
+<p class="sr" id="aviso" aria-live="polite"></p>
+
+<script>
+document.documentElement.classList.add('js');
+var WA = '18295844018';
+
+// Todo sale del Catálogo 2026 y de las publicaciones de @lienzo_skin
+var CATS = [
+  { id: 'cuerpo', n: 'Cremas y cuerpo', c: '#c9773f' },
+  { id: 'ducha', n: 'Geles de ducha', c: '#e86a9c' },
+  { id: 'aceites', n: 'Aceites', c: '#8cc63f' },
+  { id: 'fragancias', n: 'Fragancias', c: '#f2a516' },
+  { id: 'labios', n: 'Labios', c: '#c2414f' },
+  { id: 'capilar', n: 'Capilar', c: '#5a3524' },
+  { id: 'facial', n: 'Facial e íntimo', c: '#b6d3a5' },
+  { id: 'depil', n: 'Depilación y desodorantes', c: '#2aa7b8' },
+  { id: 'todo', n: 'Ver todo', c: '#6b3a26' }
+];
+var PRODS = [
+  { id: 'murumuru', c: 'cuerpo', m: 'Deliplus', n: 'Manteca corporal Murumuru', p: 550 },
+  { id: 'olive', c: 'cuerpo', m: 'Deliplus', n: 'Crema corporal Olive', p: 350 },
+  { id: 'anticelulitica', c: 'cuerpo', m: 'Deliplus', n: 'Crema anticelulítica', p: 350 },
+  { id: 'hidrata', c: 'cuerpo', m: 'Deliplus', n: 'Loción Hidrata, aloe vera y ácido hialurónico', p: 500 },
+  { id: 'nutre', c: 'cuerpo', m: 'Deliplus', n: 'Loción Nutre, almendras y cica', p: 600 },
+  { id: 'tulipan-lotion', c: 'cuerpo', m: 'Tulipán Negro', n: 'Body lotion 400 ml', p: 700, v: ['Kiss fresa y nata', 'Karité y aceite de coco'] },
+  { id: 'nivea', c: 'cuerpo', m: 'Nivea', n: 'Nivea Creme', p: 550 },
+  { id: 'exf-coco', c: 'cuerpo', m: 'Deliplus', n: 'Exfoliante Coco', p: 500 },
+  { id: 'exf-chai', c: 'cuerpo', m: 'Deliplus', n: 'Gel exfoliante Té Chai', p: 500 },
+  { id: 'exf-marino', c: 'cuerpo', m: 'Deliplus', n: 'Exfoliante marino, sal del Mar Muerto', p: 600 },
+  { id: 'gel-deliplus', c: 'ducha', m: 'Deliplus', n: 'Gel de baño', p: 400, v: ['Vainilla y miel', 'Granada y frutos silvestres', 'Tiernos recuerdos', 'Avena', 'Olive', 'Coco y lichi'] },
+  { id: 'gel-argan', c: 'ducha', m: 'Deliplus', n: 'Gel de baño Argán', p: 400 },
+  { id: 'gel-tulipan', c: 'ducha', m: 'Tulipán Negro', n: 'Gel de baño y ducha', p: 750, v: ['Candy Fantasy', 'Sugar Melon', 'Fresa y nata'] },
+  { id: 'natural-honey', c: 'ducha', m: 'Natural Honey', n: 'Gel de ducha hidratante Derma Care', p: 500 },
+  { id: 'ac-aloe', c: 'aceites', m: 'Deliplus', n: 'Aceite corporal aloe vera', p: 400 },
+  { id: 'ac-turmeric', c: 'aceites', m: 'Veet Gold', n: 'Turmeric oil, 200 ml', p: 500 },
+  { id: 'ac-rosa', c: 'aceites', m: 'Deliplus', n: 'Aceite de rosa mosqueta', p: 850 },
+  { id: 'ac-romero', c: 'aceites', m: 'Deliplus', n: 'Aceite de romero', p: 500 },
+  { id: 'ac-coco', c: 'aceites', m: 'Hacendado', n: 'Aceite de coco virgen', p: 800 },
+  { id: 'mist', c: 'fragancias', m: 'Deliplus', n: 'Hair & body mist', p: 700, v: ['Vainilla Sunset', 'Pistacho Cream'] },
+  { id: 'mist-encargo', c: 'fragancias', m: 'Deliplus', n: 'Hair & body mist', p: 700, v: ['Peach Bloom', 'Amatista Glow'], e: 'Próximo encargo' },
+  { id: 'set-pistacho', c: 'fragancias', m: 'Deliplus', n: 'Set Pistacho Cream, mist y body milk glitter', p: 1200 },
+  { id: 'set-vainilla', c: 'fragancias', m: 'Deliplus', n: 'Set Vainilla Sunset', p: 1200 },
+  { id: 'rhode-tint', c: 'labios', m: 'Rhode', n: 'Peptide Lip Tint', p: 400, v: ['Strawberry Glaze', 'Guava Spritz', 'Peach Pit', 'Shortcake', 'Vanilla Cake', 'Watermelon Slice', 'Salty Tan'], img: 'rhode-tint.jpg', cover: 1 },
+  { id: 'rhode-treatment', c: 'labios', m: 'Rhode', n: 'Peptide Lip Treatment', p: 350, img: 'rhode-treatment.jpg', cover: 1 },
+  { id: 'kiko', c: 'labios', m: 'KIKO Milano', n: '3D Hydra Lipgloss', p: 450, img: 'kiko.jpg', cover: 1 },
+  { id: 'elf-squeeze', c: 'labios', m: 'e.l.f.', n: 'Squeeze Me lip balm', p: 350, img: 'elf-squeeze.jpg', cover: 1 },
+  { id: 'elf-glow', c: 'labios', m: 'e.l.f.', n: 'Glow Reviver melting lip balm', p: 350, img: 'elf-glow.jpg', cover: 1 },
+  { id: 'sh-deliplus', c: 'capilar', m: 'Deliplus', n: 'Shampoo o acondicionador 1 L', p: 400, v: ['Shampoo', 'Acondicionador'] },
+  { id: 'sh-argan', c: 'capilar', m: 'Deliplus', n: 'Shampoo Argan Oil', p: 400 },
+  { id: 'mask-argan', c: 'capilar', m: 'Deliplus', n: 'Mascarilla Argan Oil', p: 350 },
+  { id: 'pantene', c: 'capilar', m: 'Pantene', n: 'Repara & Protege', p: 500, v: ['Champú', 'Acondicionador'] },
+  { id: 'pantene-mask', c: 'capilar', m: 'Pantene', n: 'Mascarilla Keratina Repara & Protege', p: 450 },
+  { id: 'turbante', c: 'capilar', m: 'Deliplus', n: 'Turbante seca pelo de microfibra', p: 500 },
+  { id: 'facial-clean', c: 'facial', m: 'Deliplus', n: 'Gel limpiador Facial Clean', p: 500 },
+  { id: 'toallitas', c: 'facial', m: 'Deliplus', n: 'Toallitas desmaquillantes Camomila', p: 125 },
+  { id: 'intimo', c: 'facial', m: 'Deliplus', n: 'Gel de higiene íntima', p: 450, v: ['Higiene y bienestar', 'Hidratante'] },
+  { id: 'depil-crema', c: 'depil', m: 'Deliplus', n: 'Crema depilatoria, piel sensible', p: 550 },
+  { id: 'depil-gel', c: 'depil', m: 'Deliplus', n: 'Gel Depil para afeitar, piel sensible', p: 600 },
+  { id: 'sanex', c: 'depil', m: 'Sanex', n: 'Desodorante roll-on', p: 250, v: ['Men Active Control', 'Dermo Extra Control'] },
+  { id: 'dove-spray', c: 'depil', m: 'Dove', n: 'Desodorante spray Advanced Care', p: 450 },
+  { id: 'dove-roll', c: 'depil', m: 'Dove', n: 'Desodorante roll-on Advanced Care', p: 400 }
+];
+var COMBOS = [
+  { id: 'combo-1', n: 'Tu próximo capricho', p: 2100, i: ['Vainilla Sunset body mist', 'Manteca corporal Murumuru', 'Exfoliante Té Chai', 'Gisou Honey Infused Lip Oil'] },
+  { id: 'combo-2', n: 'Un toque de frescura', p: 1500, i: ['Crema corporal Olive', 'Gel de ducha Olive', 'Aceite corporal aloe vera', 'Summer Fridays Lip Butter Balm'] },
+  { id: 'combo-3', n: 'Dulce, coqueta y lista para brillar', p: 1950, i: ['Vainilla Sunset body mist', 'Vainilla Sunset cream mist con brillos', 'e.l.f. Glow Reviver melting balm', 'Halo Glow beauty wand, Magic Hour'] },
+  { id: 'combo-4', n: 'Ese detallito que transforma tu look', p: 1150, i: ['e.l.f. Power Grip primer + 4% niacinamida', 'Laneige Lip Gloss Cinnamon Sugar', 'Rare Beauty Soft Pinch Liquid Blush, Bliss'] },
+  { id: 'combo-5', n: 'Un caprichito para tu lado más cute', p: 1250, i: ['Iluminador corporal Ushas', 'e.l.f. Glow Reviver, Peach Ring', 'Manteca corporal Murumuru'] },
+  { id: 'combo-6', n: 'Piel suave, hidratada y consentida', p: 0, i: ['Exfoliante marino Deliplus', 'Loción Hidrata Deliplus', 'Lip balm e.l.f.'] }
+];
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var CLAVE = 'lienzoskin-pedido-v1';
+  var POR_ID = {};
+  PRODS.forEach(function (p) { POR_ID[p.id] = p; });
+  COMBOS.forEach(function (c) { POR_ID[c.id] = { id: c.id, n: 'Combo «' + c.n + '»', p: c.p, img: c.id + '.jpg', combo: 1 }; });
+  function foto(p) { return 'img/' + (p.img || ('p-' + p.id + '.jpg')); }
+  function rd(n) { return 'RD$' + n.toLocaleString('en-US'); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  // ---------- encabezado y menú ----------
+  var top = $('top'), btn = $('menuBtn'), menu = $('menuMovil');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
+  else top.classList.add('scrolled');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+
+  // ---------- estado del pedido ----------
+  var st = { items: [], nombre: '', tel: '', dest: '', notas: '' };
+  try {
+    var d = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (d && Array.isArray(d.items)) d.items.forEach(function (it) {
+      var p = it && POR_ID[it.id];
+      if (!p || typeof it.q !== 'number' || it.q < 1 || it.q > 99) return;
+      if (it.v && !(p.v && p.v.indexOf(it.v) >= 0)) return;
+      st.items.push({ id: it.id, v: it.v || null, q: Math.floor(it.q) });
+    });
+    if (d) ['nombre', 'tel', 'dest', 'notas'].forEach(function (k) { if (typeof d[k] === 'string') st[k] = d[k].slice(0, 300); });
+  } catch (e) { /* sin almacenamiento: la página anda igual */ }
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(st)); } catch (e) { } }
+  function buscar(id, v) { for (var i = 0; i < st.items.length; i++) if (st.items[i].id === id && (st.items[i].v || null) === (v || null)) return i; return -1; }
+  function total() { return st.items.reduce(function (a, it) { return a + it.q; }, 0); }
+  function avisar(t) { var a = $('aviso'); a.textContent = ''; setTimeout(function () { a.textContent = t; }, 30); }
+  function nombreItem(it) { var p = POR_ID[it.id]; return (p.m && !p.combo ? p.m + ' ' : '') + p.n + (it.v ? ' (' + it.v + ')' : ''); }
+
+  function cambiar(id, v, dq) {
+    var i = buscar(id, v);
+    if (i < 0 && dq > 0) { st.items.push({ id: id, v: v || null, q: 1 }); }
+    else if (i >= 0) { st.items[i].q += dq; if (st.items[i].q < 1) st.items.splice(i, 1); else if (st.items[i].q > 99) st.items[i].q = 99; }
+    var j = buscar(id, v), it = { id: id, v: v };
+    avisar(j < 0 ? nombreItem(it) + ' salió de tu pedido.' : nombreItem(it) + ': ' + st.items[j].q + ' en tu pedido.');
+    guardar(); pintar(); if (dq > 0) latir();
+  }
+  function latir() {
+    if (REDUCE) return;
+    document.querySelectorAll('.cuenta, .barra-pedido').forEach(function (b) {
+      if (b.animate && b.offsetParent) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.18)', offset: .35 }, { transform: 'scale(1)' }], { duration: 340, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+    });
+  }
+
+  // ---------- catálogo ----------
+  var cat = 'cuerpo';
+  var chips = $('chips');
+  chips.innerHTML = CATS.map(function (c) {
+    return '<button class="chip" type="button" data-cat="' + c.id + '" aria-pressed="' + (c.id === cat) + '" style="--c:' + c.c + '"><i aria-hidden="true"></i>' + c.n + '</button>';
+  }).join('');
+  chips.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (b) elegir(b.getAttribute('data-cat')); });
+  function elegir(c) {
+    cat = c;
+    chips.querySelectorAll('.chip').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === c)); });
+    pintarGrilla();
+  }
+  document.querySelectorAll('[data-ir-cat]').forEach(function (b) {
+    b.addEventListener('click', function () { elegir(b.getAttribute('data-ir-cat')); document.getElementById('catalogo').scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' }); });
+  });
+
+  function controlHTML(id, v) {
+    var i = buscar(id, v), p = POR_ID[id];
+    if (i < 0) return '<button class="add" type="button" data-mas aria-label="Agregar ' + esc(p.n) + ' al pedido"><svg aria-hidden="true"><use href="#plus"/></svg>Agregar</button>';
+    return '<div class="stepper"><button type="button" data-menos aria-label="Quitar uno"><svg aria-hidden="true"><use href="#menos"/></svg></button><output>' + st.items[i].q + '</output><button type="button" data-mas aria-label="Sumar uno"><svg aria-hidden="true"><use href="#plus"/></svg></button></div>';
+  }
+  function pintarGrilla() {
+    var lista = PRODS.filter(function (p) { return cat === 'todo' || p.c === cat; });
+    $('grilla').innerHTML = lista.map(function (p) {
+      var sel = p.v ? '<select aria-label="' + (p.c === 'labios' ? 'Tono' : 'Variante') + ' de ' + esc(p.n) + '">' + p.v.map(function (o) { return '<option>' + esc(o) + '</option>'; }).join('') + '</select>' : '';
+      return '<article class="prod" data-id="' + p.id + '">' +
+        '<div class="foto">' + (p.e ? '<span class="etq">' + p.e + '</span>' : '') + '<img src="' + foto(p) + '" alt="' + esc(p.m + ' ' + p.n) + '" width="640" height="640" loading="lazy"></div>' +
+        '<p class="marca-p">' + esc(p.m) + '</p><h3>' + esc(p.n) + '</h3>' +
+        '<p class="precio">' + rd(p.p) + (p.v ? ' <small>c/u</small>' : '') + '</p>' + sel +
+        '<div class="pie">' + controlHTML(p.id, p.v ? p.v[0] : null) + '</div></article>';
+    }).join('');
+  }
+  function varDe(card) { var s = card.querySelector('select'); return s ? s.value : null; }
+  $('grilla').addEventListener('click', function (e) {
+    var card = e.target.closest('.prod'); if (!card) return;
+    var id = card.getAttribute('data-id');
+    if (e.target.closest('[data-mas]')) cambiar(id, varDe(card), 1);
+    else if (e.target.closest('[data-menos]')) cambiar(id, varDe(card), -1);
+  });
+  $('grilla').addEventListener('change', function (e) {
+    var card = e.target.closest('.prod'); if (card) card.querySelector('.pie').innerHTML = controlHTML(card.getAttribute('data-id'), varDe(card));
+  });
+
+  // ---------- combos ----------
+  $('carril').innerHTML = COMBOS.map(function (c) {
+    return '<article class="combo" data-id="' + c.id + '"><div class="foto"><img src="img/' + c.id + '.jpg" alt="Combo ' + esc(c.n) + ': ' + esc(c.i.join(', ')) + '" width="800" height="1000" loading="lazy"></div>' +
+      '<div class="txt"><h3>' + esc(c.n) + '</h3><ul>' + c.i.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+      '<p class="precio">' + (c.p ? rd(c.p) : 'Consultar') + '</p><div class="pie">' + controlHTML(c.id, null) + '</div></div></article>';
+  }).join('');
+  $('carril').addEventListener('click', function (e) {
+    var card = e.target.closest('.combo'); if (!card) return;
+    var id = card.getAttribute('data-id');
+    if (e.target.closest('[data-mas]')) cambiar(id, null, 1);
+    else if (e.target.closest('[data-menos]')) cambiar(id, null, -1);
+  });
+
+  // ---------- panel ----------
+  function pintarPanel() {
+    var box = $('items'), res = $('resumen'), form = $('form'), pie = document.querySelector('.panel footer');
+    if (!st.items.length) {
+      box.innerHTML = '<div class="vacia"><p>Tu pedido está vacío. Agrega lo que te guste del catálogo y aparece acá.</p><a class="btn btn-1" href="#catalogo" data-cerrar>Ver catálogo</a></div>';
+      res.innerHTML = ''; form.hidden = true; pie.hidden = true; return;
+    }
+    form.hidden = false; pie.hidden = false;
+    var suma = 0, consultar = false;
+    box.innerHTML = st.items.map(function (it, i) {
+      var p = POR_ID[it.id], linea = p.p * it.q; suma += linea; if (!p.p) consultar = true;
+      return '<div class="item" data-i="' + i + '"><img src="' + foto(p) + '" alt="" width="64" height="64">' +
+        '<div><b>' + esc(nombreItem(it)) + '</b><small>' + (p.p ? rd(linea) : 'Precio a consultar') + '</small></div>' +
+        '<div class="stepper"><button type="button" data-menos aria-label="Quitar uno"><svg aria-hidden="true"><use href="#menos"/></svg></button><output>' + it.q + '</output><button type="button" data-mas aria-label="Sumar uno"><svg aria-hidden="true"><use href="#plus"/></svg></button></div></div>';
+    }).join('');
+    res.innerHTML = '<div class="total"><span>Total' + (consultar ? ' (sin el combo a consultar)' : '') + '</span><b>' + rd(suma) + '</b></div><p class="nota-envio">El envío se coordina por WhatsApp.</p>';
+  }
+  $('items').addEventListener('click', function (e) {
+    var row = e.target.closest('.item'); if (!row) return;
+    var it = st.items[+row.getAttribute('data-i')]; if (!it) return;
+    if (e.target.closest('[data-mas]')) cambiar(it.id, it.v, 1);
+    else if (e.target.closest('[data-menos]')) cambiar(it.id, it.v, -1);
+  });
+
+  function pintar() {
+    var n = total();
+    document.querySelectorAll('.cuenta').forEach(function (c) { c.textContent = n; c.setAttribute('data-n', n); });
+    $('barraTxt').textContent = 'Ver pedido (' + n + ')';
+    document.body.classList.toggle('con-pedido', n > 0);
+    document.querySelectorAll('.prod, .combo').forEach(function (card) {
+      var s = card.querySelector('select'); card.querySelector('.pie').innerHTML = controlHTML(card.getAttribute('data-id'), s ? s.value : null);
+    });
+    pintarPanel();
+  }
+
+  var panel = $('panel'), ultimo = null;
+  function abrir() {
+    ultimo = document.activeElement; setMenu(false);
+    document.body.classList.add('abierto'); panel.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    setTimeout(function () { panel.querySelector('.cerrar').focus(); }, 60);
+  }
+  function cerrar() {
+    if (!document.body.classList.contains('abierto')) return;
+    document.body.classList.remove('abierto'); panel.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    if (ultimo && ultimo.focus) ultimo.focus();
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-abrir]')) abrir();
+    else if (e.target.closest('[data-cerrar]')) cerrar();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); cerrar(); } });
+
+  // ---------- formulario y mensaje ----------
+  var campos = { nombre: $('f-nombre'), tel: $('f-tel'), dest: $('f-dest'), notas: $('f-notas') };
+  Object.keys(campos).forEach(function (k) {
+    campos[k].value = st[k] || '';
+    campos[k].addEventListener('input', function () { st[k] = campos[k].value; guardar(); var c = campos[k].closest('.campo'); c.classList.remove('mal'); var er = c.querySelector('.err'); if (er) er.textContent = ''; });
+  });
+  var MSJ = { nombre: 'Escribe tu nombre para saber quién pide.', tel: 'Escribe un teléfono para coordinar el envío.', dest: 'Dinos provincia y ciudad para el envío.' };
+  $('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var primero = null;
+    ['nombre', 'tel', 'dest'].forEach(function (k) {
+      var ok = campos[k].value.trim().length > (k === 'tel' ? 6 : 1), c = campos[k].closest('.campo');
+      c.classList.toggle('mal', !ok); c.querySelector('.err').textContent = ok ? '' : MSJ[k];
+      campos[k].setAttribute('aria-invalid', String(!ok));
+      if (!ok && !primero) primero = campos[k];
+    });
+    if (primero) { primero.focus(); return; }
+    var suma = 0, lineas = st.items.map(function (it) {
+      var p = POR_ID[it.id]; suma += p.p * it.q;
+      return '- ' + it.q + ' x ' + nombreItem(it) + ': ' + (p.p ? rd(p.p * it.q) : 'precio a consultar');
+    });
+    var txt = 'Hola Lienzo Skin! Quiero hacer este pedido:\n\n' + lineas.join('\n') +
+      '\n\nTotal: ' + rd(suma) + ' (sin el envío)' +
+      '\n\nNombre: ' + campos.nombre.value.trim() +
+      '\nTeléfono: ' + campos.tel.value.trim() +
+      '\nEnvío a: ' + campos.dest.value.trim() +
+      (campos.notas.value.trim() ? '\nAclaraciones: ' + campos.notas.value.trim() : '');
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+  });
+
+  pintarGrilla();
+  pintar();
+})();
+</script>
+</body>
+</html>
