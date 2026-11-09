@@ -452,6 +452,56 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
   .creditos{text-align:left}
 }
 
+/* ---------- movimiento: scroll suave (Lenis, solo compu) y animaciones de entrada ---------- */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto !important}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent],.lenis.lenis-smooth [data-lenis-prevent-touch]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+.progreso{position:fixed;left:0;right:0;top:0;height:3px;z-index:60;background:var(--rojo);transform-origin:left center;transform:scaleX(0);pointer-events:none;display:none}
+.pal{display:inline-block;overflow:hidden;padding:.14em .05em .32em;margin:-.14em -.05em -.32em}
+.pal > span{display:inline-block}
+.foto figure picture,.moi figure picture{display:block;overflow:hidden}
+.foto figure picture{border-radius:3px}
+.moi figure picture{border-radius:20px;box-shadow:var(--sombra)}
+.moi figure img{box-shadow:none}
+@media (prefers-reduced-motion: no-preference){
+  /* títulos: cada palabra sube detrás de una máscara */
+  .js .titular .pal > span{transform:translateY(112%);transition:transform .85s var(--ease-out);transition-delay:calc(var(--i, 0) * 45ms)}
+  .js .titular.in .pal > span{transform:none}
+  /* la carpeta: los separadores asoman y la hoja sube */
+  .js .carpeta:not(.in) .solapa{transform:translateY(100%);opacity:0}
+  .js .carpeta:not(.in) .hoja{transform:translateY(28px);opacity:0}
+  .js .carpeta.llegando .solapa{transition:transform .6s var(--ease-out), opacity .35s ease}
+  .js .carpeta.llegando .solapa:nth-child(2){transition-delay:.08s}
+  .js .carpeta.llegando .solapa:nth-child(3){transition-delay:.16s}
+  .js .carpeta.llegando .hoja{transition:transform .8s var(--ease-out), opacity .5s ease}
+  /* post-its que se pegan con un rebote leve */
+  .js .postits:not(.in) .postit{opacity:0;transform:translateY(-18px) rotate(calc(var(--r, -1deg) + 4deg)) scale(1.04)}
+  .js .postits.llegando .postit{transition:transform .65s cubic-bezier(0.34, 1.45, 0.64, 1), opacity .3s ease}
+  .js .postits.llegando .postit:nth-child(2){transition-delay:.07s}
+  .js .postits.llegando .postit:nth-child(3){transition-delay:.14s}
+  .js .postits.llegando .postit:nth-child(4){transition-delay:.21s}
+  .js .postits.llegando .postit:nth-child(5){transition-delay:.28s}
+  .js .postits.llegando .postit:nth-child(6){transition-delay:.35s}
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion: no-preference){
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(0) scale(.97)}
+  .js .carpeta.in .solapa[aria-selected="false"]:hover{transform:translateY(2px)}
+}
+/* atado al scroll donde el navegador lo soporta; si no, todo queda quieto */
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .progreso{display:block;animation:progreso linear both;animation-timeline:scroll(root)}
+    .sello svg{animation:girar-scroll linear both;animation-timeline:scroll(root)}
+    .foto figure img,.moi figure img{animation:paralaje linear both;animation-timeline:view();animation-range:cover}
+  }
+}
+@keyframes progreso{to{transform:scaleX(1)}}
+@keyframes girar-scroll{to{transform:rotate(540deg)}}
+@keyframes paralaje{from{transform:translateY(-4%) scale(1.1)}to{transform:translateY(4%) scale(1.1)}}
+
 /* ---------- botón flotante de WhatsApp ---------- */
 .wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:45;
   width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
@@ -487,6 +537,7 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
 </head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
+<div class="progreso" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
   <symbol id="ig" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></symbol>
@@ -552,7 +603,7 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
         <span class="nota-margen" lang="fr">Le français, c'est la vie !</span>
       </div>
 
-      <div class="carpeta">
+      <div class="carpeta llegando">
         <div class="solapas" role="tablist" aria-label="Niveles">
           <button class="solapa" role="tab" id="t-A1" aria-controls="p-A1" aria-selected="true" type="button"><b>A1</b><span>Inicial</span></button>
           <button class="solapa" role="tab" id="t-A2" aria-controls="p-A2" aria-selected="false" tabindex="-1" type="button"><b>A2</b><span>Elemental</span></button>
@@ -733,7 +784,7 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
       </div>
       <!-- Recordatorio: pedir permiso a cada alumno antes de linkear su Instagram.
            Si no hay permiso, poner CONFIG.linkearInstagramAlumnos = false (se muestra solo el usuario, sin link). -->
-      <ul class="postits" id="postits" data-revela></ul>
+      <ul class="postits llegando" id="postits" data-lenis-prevent-touch></ul>
       <a class="mas-ig" data-ig-post href="https://www.instagram.com/p/DOD_uHlgDg_/" target="_blank" rel="noopener">Leé todas las opiniones en Instagram</a>
     </div>
   </section>
@@ -929,6 +980,11 @@ var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
 var waBase = 'https://wa.me/' + CONFIG.whatsapp;
 function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 function setC(k, v) { document.querySelectorAll('[data-c="' + k + '"]').forEach(function (e) { e.textContent = v; }); }
+function irA(el, alTerminar) {
+  var off = -(document.getElementById('top').offsetHeight + 16);
+  if (window.lenisInst) window.lenisInst.scrollTo(el, { offset: off, onComplete: alTerminar });
+  else { el.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); if (alTerminar) setTimeout(alTerminar, quieto ? 0 : 700); }
+}
 var guardado = (function () { try { return JSON.parse(localStorage.getItem('alexa-reserva') || '{}'); } catch (e) { return {}; } })();
 function guardar(k, v) { guardado[k] = v; try { localStorage.setItem('alexa-reserva', JSON.stringify(guardado)); } catch (e) {} }
 
@@ -1007,6 +1063,7 @@ function guardar(k, v) { guardado[k] = v; try { localStorage.setItem('alexa-rese
     abierto = open;
     document.body.classList.toggle('menu-abierto', open); document.body.classList.toggle('bloqueado', open);
     btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    if (window.lenisInst) { if (open) window.lenisInst.stop(); else window.lenisInst.start(); }
     if (open) { var f = menu.querySelector('a'); if (f) f.focus(); } else if (devolverFoco) btn.focus();
     syncWa();
   }
@@ -1024,7 +1081,7 @@ function guardar(k, v) { guardado[k] = v; try { localStorage.setItem('alexa-rese
   });
   window.matchMedia('(min-width: 860px)').addEventListener('change', function (m) { if (m.matches && abierto) setMenu(false); });
 
-  if (!('IntersectionObserver' in window)) { top.classList.add('scrolled'); document.querySelectorAll('[data-revela], .sub, .marca').forEach(function (e) { e.classList.add('in'); }); return; }
+  if (!('IntersectionObserver' in window)) { top.classList.add('scrolled'); document.querySelectorAll('[data-revela], .sub, .marca, .carpeta, .postits').forEach(function (e) { e.classList.add('in'); }); return; }
   new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe(sentinel);
   // El botón flotante se esconde mientras se ve la ficha de reserva o el pie
   var io = new IntersectionObserver(function (es) {
@@ -1036,7 +1093,36 @@ function guardar(k, v) { guardado[k] = v; try { localStorage.setItem('alexa-rese
   var rev = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rev.unobserve(e.target); } });
   }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  // Títulos: cada palabra en su máscara (no se parte nada si se pidió menos movimiento)
+  if (!quieto) document.querySelectorAll('.sec-head h2, .moi h2, .test-cab h2, .reservar h2').forEach(function (h) {
+    var i = 0;
+    Array.prototype.slice.call(h.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+          var o = document.createElement('span'), w = document.createElement('span');
+          o.className = 'pal'; w.textContent = t; w.style.setProperty('--i', i++); o.appendChild(w); frag.appendChild(o);
+        });
+        h.replaceChild(frag, n);
+      } else if (n.nodeType === 1) {
+        var o = document.createElement('span'), w = document.createElement('span');
+        o.className = 'pal'; w.style.setProperty('--i', i++); h.replaceChild(o, n); w.appendChild(n); o.appendChild(w);
+      }
+    });
+    h.classList.add('titular'); rev.observe(h);
+  });
   document.querySelectorAll('[data-revela], .sub, .marca').forEach(function (e) { rev.observe(e); });
+  // Carpeta y post-its: al terminar de llegar se sacan las demoras, así los clics responden al toque
+  var llega = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in'); llega.unobserve(e.target);
+      setTimeout(function () { e.target.classList.remove('llegando'); }, 1100);
+    });
+  }, { threshold: .2 });
+  document.querySelectorAll('.carpeta, .postits').forEach(function (e) { llega.observe(e); });
 })();
 
 // ---------- Separadores de la carpeta: A1, A2, B1 ----------
@@ -1151,11 +1237,32 @@ var ficha = (function () {
     e.preventDefault();
     var n = document.getElementById('pildoraNombre').value.trim();
     ficha.setNombre(n);
-    var destino = document.getElementById('reservar');
-    destino.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' });
     var objetivo = n ? (document.querySelector('#ficha input[name="nivel"]:checked') || document.querySelector('#ficha input[name="nivel"]')) : document.getElementById('nombre');
-    setTimeout(function () { objetivo.focus({ preventScroll: true }); }, quieto ? 0 : 700);
+    irA(document.getElementById('reservar'), function () { objetivo.focus({ preventScroll: true }); });
   });
+})();
+// ---------- Scroll suave (Lenis 1.1.13) solo en compu, nunca con "reducir movimiento" ----------
+(function () {
+  if (quieto || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var sc = document.createElement('script');
+  sc.src = 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'; sc.async = true;
+  sc.onload = function () {
+    if (!window.Lenis) return;
+    var lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true, syncTouch: false });
+    window.lenisInst = lenis;
+    function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    // Anclas internas: respetan el encabezado fijo
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+      var id = a.getAttribute('href'); if (id.length < 2) return;
+      var el = document.getElementById(id.slice(1)); if (!el) return;
+      e.preventDefault();
+      history.pushState(null, '', id);
+      irA(el, function () { if (id === '#contenido') el.focus({ preventScroll: true }); });
+    });
+  };
+  document.head.appendChild(sc);
 })();
 </script>
 </body>
