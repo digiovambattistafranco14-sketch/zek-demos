@@ -17,7 +17,7 @@
 <link rel="icon" href="img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Playwrite+FR+Moderne:wght@300..400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Playwrite+FR+Moderne:wght@300..400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/alexa-escritorio.jpg">
 <style>
 :root{
@@ -281,18 +281,93 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
 @media (max-width:900px){.reservar .wrap{grid-template-columns:1fr;gap:44px}.reservar .intro{position:static}}
 @media (max-width:520px){.ficha-form{padding:24px 18px 22px;border-radius:18px}.opciones{grid-template-columns:1fr}.dos{grid-template-columns:1fr 1fr}}
 
-/* ---------- pie ---------- */
-.pie{background:var(--bleu);color:rgba(255,255,255,.86);padding:80px 0 120px;position:relative;overflow:hidden}
-.pie .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end}
-.pie .adieu{font-size:clamp(40px, 6vw, 84px);line-height:1.35;color:#fff}
-.pie p{margin-top:14px;font-size:17px;max-width:40ch}
-.redes{display:grid;gap:10px;justify-items:start}
-.redes a{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-weight:600;font-size:18px;padding:6px 0}
-.redes svg{width:22px;height:22px;flex:none;fill:currentColor}
+/* ---------- sello giratorio de la portada (inspirado en el sticker de Get-ripe, cta.gallery) ---------- */
+.sello{position:absolute;left:-58px;top:-38px;z-index:4;width:136px;height:136px;border-radius:50%;background:#fff;color:var(--bleu);display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 2px 4px rgba(10,28,74,.08), 0 18px 34px -16px rgba(10,28,74,.55);transform:rotate(-8deg);transition:transform .25s var(--ease-out)}
+.sello svg{position:absolute;inset:0;width:100%;height:100%;animation:girar 22s linear infinite}
+.sello text{font:700 13.5px var(--display);letter-spacing:.09em;fill:var(--bleu)}
+.sello b{position:relative;width:46px;height:46px;border-radius:50%;background:var(--rojo);display:grid;place-items:center}
+.sello b::before{content:"";width:18px;height:9px;border-left:3px solid #fff;border-bottom:3px solid #fff;transform:translateY(-2px) rotate(-48deg);border-radius:1px}
+.sello:active{transform:rotate(-8deg) scale(.96)}
+@media (hover:hover) and (pointer:fine){.sello:hover{transform:rotate(-2deg) scale(1.05)}}
+.js .sello{animation:sello .6s cubic-bezier(0.34, 1.4, 0.64, 1) 2s both}
+@keyframes sello{from{opacity:0;transform:rotate(-30deg) scale(.7)}to{opacity:1;transform:rotate(-8deg)}}
+@keyframes girar{to{transform:rotate(360deg)}}
+@media (max-width:900px){.sello{left:auto;right:-26px;top:-44px;width:116px;height:116px}.sello b{width:40px;height:40px}}
+
+/* ---------- test de nivel guiado (inspirado en el modal de preguntas de Teachable, cta.gallery) ---------- */
+.nivel-sec{padding-top:24px}
+.test{max-width:900px;margin-inline:auto;background:var(--bleu);border-radius:28px;padding:44px;box-shadow:0 30px 60px -30px rgba(0,54,144,.7);position:relative;overflow:hidden}
+.test-cab{text-align:center;color:#fff;max-width:600px;margin:0 auto 30px}
+.test-cab h2{color:#fff;font-size:clamp(30px, 3.6vw, 46px)}
+.test-cab p{margin-top:12px;font-size:18px;color:rgba(255,255,255,.86)}
+.test-hoja{position:relative;background-color:#fff;border-radius:18px;overflow:hidden;min-height:372px;
+  background-image:linear-gradient(to bottom, rgba(0,68,179,.07) 1px, transparent 1px);background-size:100% var(--sq)}
+.test-barra{height:6px;background:rgba(0,68,179,.1)}
+.test-barra i{display:block;height:100%;width:100%;background:var(--rojo);transform-origin:left;transform:scaleX(.3333);transition:transform .45s var(--ease-out)}
+.paso{padding:40px 40px 36px;text-align:center}
+.paso[hidden]{display:none}
+.paso.entra{animation:paso .32s var(--ease-out)}
+@keyframes paso{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.paso-n{font-size:14.5px;font-weight:600;color:var(--rojo-texto)}
+.paso h3{margin:10px auto 0;font-size:clamp(24px, 2.6vw, 32px);max-width:24ch;outline:0}
+.paso .ayuda{margin:10px auto 0;font-size:16px;color:var(--suave);max-width:46ch}
+.resp{display:grid;gap:10px;max-width:440px;margin:28px auto 0}
+.resp-op{appearance:none;cursor:pointer;font:600 17px/1.3 var(--display);color:var(--tinta);background:#fff;border:0;border-radius:999px;padding:16px 22px;
+  box-shadow:inset 0 0 0 1.5px rgba(0,68,179,.28);transition:box-shadow .15s ease, background-color .15s ease, transform .16s var(--ease-out)}
+.resp-op:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.resp-op:hover{background:#F1F6FF;box-shadow:inset 0 0 0 2px var(--bleu)}}
+.volver{appearance:none;border:0;background:none;cursor:pointer;font:600 15px var(--display);color:var(--suave);margin-top:18px;padding:8px 10px;border-radius:8px}
+.volver:hover{color:var(--tinta)}
+.fin-nivel{display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:var(--bleu);color:#fff;font-size:38px;font-weight:800;letter-spacing:-.04em;margin:10px auto 0}
+.fin-datos{margin:12px auto 0;font-size:17px;max-width:46ch}
+.fin-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.fin-nota{margin:18px auto 0;font-size:14.5px;color:var(--suave);max-width:48ch}
+@media (max-width:700px){
+  .nivel-sec{padding-top:8px}
+  .test{padding:30px 14px 14px;border-radius:22px}
+  .test-cab{margin-bottom:22px;padding:0 6px}.test-cab p{font-size:16.5px}
+  .paso{padding:30px 18px 26px}
+  .test-hoja{min-height:0}
+  .fin-ctas .btn{flex:1 1 100%}
+}
+
+/* ---------- cierre: banda de color con resaltador (inspirada en Victory Tennis, cta.gallery) ---------- */
+.pie{background:var(--bleu);color:rgba(255,255,255,.88);padding:0 0 112px;position:relative;overflow:hidden}
+.banda{position:relative;display:grid;grid-template-columns:minmax(0, 1.45fr) minmax(0, .55fr);gap:32px;align-items:center;min-height:560px;padding:96px 0 0}
+.banda-txt{position:relative;z-index:2;padding-bottom:80px}
+.pie .adieu{font-size:clamp(28px, 2.6vw, 36px);line-height:1.4;color:#fff;margin:0 0 14px}
+.banda-tit{color:#fff;font-weight:800;font-stretch:75%;font-variation-settings:"wdth" 75;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(46px, 5.6vw, 84px);line-height:.95}
+.marca{position:relative;display:inline-block;white-space:nowrap;padding:0 .12em;margin:0 -.04em;z-index:0}
+.marca::before{content:"";position:absolute;inset:.08em -.02em .02em;background:var(--rojo);z-index:-1;transform:rotate(-1.2deg);border-radius:4px;transform-origin:left center}
+.js .marca::before{transform:rotate(-1.2deg) scaleX(0);transition:transform .7s var(--ease-out) .15s}
+.js .marca.in::before{transform:rotate(-1.2deg) scaleX(1)}
+.banda-txt > p:not(.adieu){margin-top:22px;font-size:19px;max-width:40ch;color:rgba(255,255,255,.9)}
+.btn-blanco{background:#fff;color:var(--bleu);margin-top:30px;height:60px;padding:0 30px;font-size:18px;box-shadow:0 18px 30px -16px rgba(0,0,0,.45)}
+.btn-blanco .wa-ico{color:#1FAF55}
+@media (hover:hover) and (pointer:fine){.btn-blanco:hover{background:#EAF2FF}}
+.banda-arte{position:relative;align-self:stretch;min-height:320px;clip-path:inset(-600px -600px 0 -600px)}
+.pie-base{position:relative;z-index:2}
+.banda-arte::before{content:"";position:absolute;right:-180px;bottom:-140px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #2F6AD0, #1553BE 60%, #0C49B3)}
+.banda-arte img{position:absolute;right:40px;bottom:30px;width:300px;height:300px;border-radius:50%;transform:rotate(4deg);filter:drop-shadow(0 26px 34px rgba(0,22,70,.45))}
+.pie-base{display:grid;grid-template-columns:1fr auto;gap:24px 48px;align-items:start;padding-top:36px;border-top:1px solid rgba(255,255,255,.2)}
+.redes{display:flex;flex-wrap:wrap;gap:6px 28px}
+.redes a{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;padding:6px 0}
+.redes svg{width:21px;height:21px;flex:none;fill:currentColor}
 @media (hover:hover) and (pointer:fine){.redes a:hover{text-decoration:underline;text-underline-offset:4px}}
-.creditos{margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14.5px;grid-column:1 / -1}
+.creditos{display:grid;gap:4px;font-size:14.5px;text-align:right}
+.creditos p{margin:0}
 .creditos a{color:#fff;font-weight:600}
-@media (max-width:800px){.pie{padding:64px 0 112px}.pie .wrap{grid-template-columns:1fr;gap:32px}.creditos{margin-top:16px;display:grid;gap:4px}.creditos p{margin-top:0}}
+@media (max-width:860px){
+  .banda{grid-template-columns:1fr;min-height:0;padding:72px 0 0;gap:0}
+  .banda-txt{padding-bottom:12px}
+  .banda-arte{min-height:300px;margin-inline:-16px}
+  .banda-arte::before{right:-90px;bottom:-200px;width:440px;height:440px}
+  .banda-arte img{right:28px;bottom:18px;width:220px;height:220px}
+  .pie-base{grid-template-columns:1fr;padding-top:28px}
+  .creditos{text-align:left}
+}
 
 /* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
 .wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
@@ -331,6 +406,11 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
   .wa::before,.wa::after{animation:none}
   .wa:hover svg{animation:none}
   .panel.entra{animation:suave .2s ease}
+  .sello svg{animation:none}
+  .js .sello{animation:suave .4s ease both}
+  .paso.entra{animation:suave .2s ease}
+  .js .marca::before{transform:rotate(-1.2deg);transition:none}
+  .test-barra i{transition:none}
   .btn:active,.wa:active{transform:none}
 }
 @keyframes suave{from{opacity:0}to{opacity:1}}
@@ -350,7 +430,7 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
       <span>Prof Alexa<small>Francés online, estés donde estés</small></span>
     </a>
     <nav class="links" aria-label="Secciones">
-      <a href="#cursos">Cursos</a><a href="#alexa">Sobre mí</a><a href="#alumnos">Alumnos</a><a href="#reservar">Reservar</a>
+      <a href="#cursos">Cursos</a><a href="#nivel">Tu nivel</a><a href="#alexa">Sobre mí</a><a href="#alumnos">Alumnos</a><a href="#reservar">Reservar</a>
     </nav>
     <a class="btn btn-wa" href="https://wa.me/5493814129062" target="_blank" rel="noopener">
       <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribime
@@ -359,7 +439,7 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
   </div>
 </header>
 <nav class="sheet-menu" id="menu" aria-label="Menú">
-  <a href="#cursos">Cursos</a><a href="#alexa">Sobre mí</a><a href="#alumnos">Alumnos</a><a href="#reservar">Reservar</a>
+  <a href="#cursos">Cursos</a><a href="#nivel">Tu nivel</a><a href="#alexa">Sobre mí</a><a href="#alumnos">Alumnos</a><a href="#reservar">Reservar</a>
   <a class="btn btn-wa" href="https://wa.me/5493814129062" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribime por WhatsApp</a>
 </nav>
 
@@ -373,10 +453,14 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
         <p class="lead">Soy Alexa, profe de francés. Clases en vivo de A1 a B1, claras, dinámicas y a tu ritmo.</p>
         <div class="ctas">
           <a class="btn btn-azul" href="#reservar">Reservá tu lugar</a>
-          <a class="btn btn-linea" href="#reservar" data-nivel="test">Test de nivel gratis</a>
+          <a class="btn btn-linea" href="#nivel">Descubrí tu nivel</a>
         </div>
       </div>
       <div class="foto">
+        <a class="sello" href="#nivel" aria-label="Descubrí tu nivel antes de empezar">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ruedo" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#ruedo" textLength="470" lengthAdjust="spacing">TEST DE NIVEL GRATIS • TEST DE NIVEL GRATIS •</textPath></text></svg>
+          <b></b>
+        </a>
         <figure><img src="img/alexa-escritorio.jpg" alt="Alexa sentada en su escritorio, con la compu abierta y un diccionario Le Petit Robert" width="720" height="900" fetchpriority="high"></figure>
         <p class="nota"><span class="mano">Inscripciones abiertas</span><b>Cursos de verano desde el 14 de diciembre</b></p>
       </div>
@@ -510,6 +594,64 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
     </div>
   </section>
 
+
+  <section class="sec nivel-sec" id="nivel">
+    <div class="wrap">
+      <div class="test">
+        <div class="test-cab">
+          <h2>¿No sabés en qué nivel estás?</h2>
+          <p>Respondé hasta tres preguntas y te digo por dónde te conviene arrancar.</p>
+        </div>
+        <div class="test-hoja" id="test">
+          <div class="test-barra" aria-hidden="true"><i id="testBarra"></i></div>
+          <div class="paso" data-paso="1">
+            <p class="paso-n">Pregunta 1 de 3</p>
+            <h3 id="q1">¿Ya estudiaste francés alguna vez?</h3>
+            <div class="resp" role="group" aria-labelledby="q1">
+              <button type="button" class="resp-op" data-ir="A1">No, empiezo de cero</button>
+              <button type="button" class="resp-op" data-ir="2">Sí, un poco</button>
+              <button type="button" class="resp-op" data-ir="2">Sí, bastante</button>
+            </div>
+          </div>
+          <div class="paso" data-paso="2" hidden>
+            <p class="paso-n">Pregunta 2 de 3</p>
+            <h3 id="q2">¿Podés presentarte y hablar de vos en francés?</h3>
+            <p class="ayuda">Por ejemplo: saludar, decir de dónde sos y qué te gusta, manejar números, fechas y horarios.</p>
+            <div class="resp" role="group" aria-labelledby="q2">
+              <button type="button" class="resp-op" data-ir="A1">Todavía no</button>
+              <button type="button" class="resp-op" data-ir="A1">Más o menos</button>
+              <button type="button" class="resp-op" data-ir="3">Sí, sin problema</button>
+            </div>
+            <button type="button" class="volver" data-ir="1">Volver</button>
+          </div>
+          <div class="paso" data-paso="3" hidden>
+            <p class="paso-n">Pregunta 3 de 3</p>
+            <h3 id="q3">¿Podés contar experiencias y hablar de tus proyectos?</h3>
+            <p class="ayuda">Por ejemplo: contar un viaje, decir qué planeás hacer, manejarte en compras y situaciones cotidianas.</p>
+            <div class="resp" role="group" aria-labelledby="q3">
+              <button type="button" class="resp-op" data-ir="A2">Todavía no</button>
+              <button type="button" class="resp-op" data-ir="A2">Más o menos</button>
+              <button type="button" class="resp-op" data-ir="B1">Sí, sin problema</button>
+            </div>
+            <button type="button" class="volver" data-ir="2">Volver</button>
+          </div>
+          <div class="paso" data-paso="fin" hidden aria-live="polite">
+            <p class="paso-n">Tu punto de partida</p>
+            <div class="fin-nivel" id="finNivel">A1</div>
+            <h3 id="finTit">Te conviene arrancar por el A1 Inicial</h3>
+            <p class="fin-datos" id="finDatos"></p>
+            <div class="fin-ctas">
+              <a class="btn btn-azul" href="#reservar" id="finBtn" data-nivel="A1">Reservar mi lugar en A1</a>
+              <a class="btn btn-linea" href="#reservar" data-nivel="test">Prefiero el test gratuito</a>
+            </div>
+            <p class="fin-nota">Es una orientación: Alexa confirma tu nivel con el test de nivelación gratuito antes de empezar.</p>
+            <button type="button" class="volver" data-ir="1">Volver a empezar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec moi" id="alexa">
     <div class="wrap">
       <figure><img src="img/alexa-clase.jpg" alt="Alexa explicando frente a la cámara, con un Bescherelle de conjugación y una torre Eiffel en miniatura en el escritorio" width="720" height="630" loading="lazy"></figure>
@@ -598,18 +740,25 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
 
 <footer class="pie">
   <div class="wrap">
-    <div>
-      <p class="adieu mano" lang="fr">À bientôt !</p>
-      <p>Aprendé francés online, estés donde estés. Te espero en clase.</p>
+    <div class="banda">
+      <div class="banda-txt">
+        <p class="adieu mano" lang="fr">À bientôt !</p>
+        <h2 class="banda-tit">Tu sueño de <span class="marca">aprender francés</span> puede comenzar este verano</h2>
+        <p>Inscripciones abiertas para los cursos de verano. Escribime y te cuento cómo dar el primer paso.</p>
+        <a class="btn btn-blanco" href="https://wa.me/5493814129062" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribime por WhatsApp</a>
+      </div>
+      <div class="banda-arte" aria-hidden="true"><img src="img/logo.jpg" alt="" width="300" height="300" loading="lazy"></div>
     </div>
-    <div class="redes">
-      <a href="https://wa.me/5493814129062" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>381 412-9062</a>
-      <a href="https://instagram.com/profle.frances" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg>@profle.frances</a>
-      <a href="https://www.tiktok.com/@profle.frances" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#tt"/></svg>@profle.frances en TikTok</a>
-    </div>
-    <div class="creditos">
-      <p>Prof. Alexa Staszczuk, profesora de francés.</p>
-      <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+    <div class="pie-base">
+      <div class="redes">
+        <a href="https://wa.me/5493814129062" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>381 412-9062</a>
+        <a href="https://instagram.com/profle.frances" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg>@profle.frances</a>
+        <a href="https://www.tiktok.com/@profle.frances" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#tt"/></svg>TikTok</a>
+      </div>
+      <div class="creditos">
+        <p>Prof. Alexa Staszczuk, profesora de francés.</p>
+        <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+      </div>
     </div>
   </div>
 </footer>
@@ -683,12 +832,11 @@ document.documentElement.classList.add('js');
   });
   sync();
 
-  // Los botones "Quiero el A1", "Test de nivel gratis" dejan el nivel elegido
-  document.querySelectorAll('[data-nivel]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      var r = form.querySelector('input[name="nivel"][value="' + a.getAttribute('data-nivel') + '"]');
-      if (r) { r.checked = true; $('c-nivel').classList.remove('error'); sync(); }
-    });
+  // Los botones "Quiero el A1", los del test y "Prefiero el test gratuito" dejan el nivel elegido en la ficha
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-nivel]'); if (!a) return;
+    var r = form.querySelector('input[name="nivel"][value="' + a.getAttribute('data-nivel') + '"]');
+    if (r) { r.checked = true; $('c-nivel').classList.remove('error'); sync(); }
   });
 
   form.addEventListener('submit', function (e) {
@@ -700,6 +848,41 @@ document.documentElement.classList.add('js');
     if (!ok) { var f = form.querySelector('.error input'); if (f) f.focus(); return; }
     window.open('https://wa.me/5493814129062?text=' + encodeURIComponent(texto()), '_blank', 'noopener');
   });
+})();
+// Test de nivel guiado: hasta tres preguntas y una sugerencia (Alexa lo confirma con su test gratuito)
+(function () {
+  var hoja = document.getElementById('test'); if (!hoja) return;
+  var pasos = Array.prototype.slice.call(hoja.querySelectorAll('.paso')), barra = document.getElementById('testBarra');
+  var DATOS = {
+    A1: ['A1 Inicial', 'Martes y jueves, desde el martes 15 de diciembre. Cuatro meses, online por Google Meet, sin conocimientos previos.'],
+    A2: ['A2 Elemental', 'Martes y jueves a las 18 h, desde el martes 15 de diciembre. Cuatro meses, online por Google Meet.'],
+    B1: ['B1 Intermedio', 'Lunes y miércoles a las 18 h, desde el lunes 14 de diciembre. Cuatro meses, online por Google Meet.']
+  };
+  function ir(dest, foco) {
+    var id = DATOS[dest] ? 'fin' : dest;
+    if (DATOS[dest]) {
+      document.getElementById('finNivel').textContent = dest;
+      document.getElementById('finTit').textContent = 'Te conviene arrancar por el ' + DATOS[dest][0];
+      document.getElementById('finDatos').textContent = DATOS[dest][1];
+      var b = document.getElementById('finBtn'); b.setAttribute('data-nivel', dest); b.textContent = 'Reservar mi lugar en ' + dest;
+    }
+    pasos.forEach(function (p) {
+      var on = p.getAttribute('data-paso') === id;
+      if (on && p.hidden) { p.hidden = false; p.classList.remove('entra'); void p.offsetWidth; p.classList.add('entra'); }
+      else if (!on) p.hidden = true;
+    });
+    barra.style.transform = 'scaleX(' + ({ '1': 1 / 3, '2': 2 / 3, '3': 1, fin: 1 })[id] + ')';
+    if (foco) { var f = hoja.querySelector('.paso:not([hidden]) h3'); if (f) { f.tabIndex = -1; f.focus({ preventScroll: true }); } }
+  }
+  hoja.addEventListener('click', function (e) { var b = e.target.closest('[data-ir]'); if (b) ir(b.getAttribute('data-ir'), true); });
+})();
+
+// El resaltador del cierre se pinta cuando la banda entra en pantalla
+(function () {
+  var m = document.querySelector('.marca'); if (!m) return;
+  if (!('IntersectionObserver' in window)) { m.classList.add('in'); return; }
+  var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { m.classList.add('in'); io.disconnect(); } }, { threshold: .6 });
+  io.observe(m);
 })();
 </script>
 </body>
