@@ -369,6 +369,47 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
   .creditos{text-align:left}
 }
 
+/* ---------- puente: cielo con arco de luz (inspirado en Joindawn, cta.gallery) ---------- */
+.puente{position:relative;overflow:hidden;isolation:isolate;color:#fff;text-align:center;padding:150px 0 132px;
+  background:
+    radial-gradient(120% 70% at 50% 118%, rgba(255,214,170,.38), rgba(255,214,170,0) 55%),
+    radial-gradient(80% 60% at 50% 100%, rgba(90,150,255,.45), rgba(90,150,255,0) 70%),
+    linear-gradient(180deg, #021C5A 0%, #06318F 46%, #1E5BD0 100%)}
+.puente::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.13;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.arco{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.arco .traza{stroke-dasharray:1;stroke-dashoffset:0}
+.arco .estrellas circle{fill:#fff}
+.puente .mano{display:block;font-size:clamp(17px, 1.6vw, 21px);color:#BFD6FF;line-height:1.6}
+.versos{margin:22px 0 0;font-size:clamp(34px, 4.4vw, 60px);font-weight:400;letter-spacing:-.03em;line-height:1.08;color:#fff}
+.versos span{display:block}
+.remate{text-wrap:balance;margin:26px auto 0;font-family:var(--mano);font-size:clamp(20px, 2.2vw, 30px);line-height:1.6;color:#fff;max-width:22em}
+.pildora{margin:40px auto 0;display:flex;align-items:center;gap:6px;width:min(100%, 470px);padding:6px;border-radius:999px;
+  background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32), inset 0 1px 0 rgba(255,255,255,.35), 0 24px 50px -24px rgba(0,10,40,.7);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}
+.pildora label{flex:1;min-width:0;text-align:left}
+.pildora input{width:100%;height:50px;border:0;background:transparent;color:#fff;font:500 17px var(--display);padding:0 18px;border-radius:999px;outline:0}
+.pildora input::placeholder{color:rgba(255,255,255,.72)}
+.pildora:focus-within{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75), inset 0 1px 0 rgba(255,255,255,.35), 0 24px 50px -24px rgba(0,10,40,.7)}
+.pildora button{flex:none;height:50px;padding:0 24px;border:0;border-radius:999px;cursor:pointer;font:650 16.5px var(--display);color:#fff;
+  background:linear-gradient(180deg, #F2404C, #D61A28);box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 22px -10px rgba(214,26,40,.9);
+  transition:transform .16s var(--ease-out), filter .2s ease}
+.pildora button:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.pildora button:hover{filter:brightness(1.07)}}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.pildora{background:rgba(3,30,95,.85)}}
+.js .puente .versos span,.js .puente .remate,.js .puente .pildora{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease-out), transform .7s var(--ease-out)}
+.js .puente.in .versos span,.js .puente.in .remate,.js .puente.in .pildora{opacity:1;transform:none}
+.js .puente.in .versos span:nth-child(1){transition-delay:.35s}
+.js .puente.in .versos span:nth-child(2){transition-delay:.5s}
+.js .puente.in .versos span:nth-child(3){transition-delay:.65s}
+.js .puente.in .remate{transition-delay:.95s}
+.js .puente.in .pildora{transition-delay:1.15s}
+@media (max-width:700px){
+  .puente{padding:112px 0 96px}
+  .pildora input{padding:0 14px;font-size:16px}
+  .pildora button{padding:0 18px}
+}
+
 /* ---------- botón de WhatsApp: solo el ícono, con vida ---------- */
 .wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
   width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
@@ -411,6 +452,7 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
   .paso.entra{animation:suave .2s ease}
   .js .marca::before{transform:rotate(-1.2deg);transition:none}
   .test-barra i{transition:none}
+  .js .puente .versos span,.js .puente .remate,.js .puente .pildora{opacity:1;transform:none;transition:none}
   .btn:active,.wa:active{transform:none}
 }
 @keyframes suave{from{opacity:0}to{opacity:1}}
@@ -686,6 +728,40 @@ input[type=text]:focus,textarea:focus{outline:0;border-color:var(--bleu);backgro
     </div>
   </section>
 
+  <section class="puente" id="puente" aria-labelledby="puenteTit">
+    <svg class="arco" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="luz" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#E4202F" stop-opacity="0"/>
+          <stop offset=".28" stop-color="#E4202F"/>
+          <stop offset=".72" stop-color="#FFC9A0"/>
+          <stop offset="1" stop-color="#FFFFFF"/>
+        </linearGradient>
+        <filter id="halo" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+        <radialGradient id="cabeza"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#FFE3C8" stop-opacity=".9"/><stop offset="1" stop-color="#FFE3C8" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g class="estrellas" opacity=".5">
+        <circle cx="180" cy="120" r="1.2"/><circle cx="330" cy="70" r=".9"/><circle cx="520" cy="150" r="1"/><circle cx="910" cy="96" r="1.3"/>
+        <circle cx="1090" cy="170" r=".9"/><circle cx="1260" cy="80" r="1.1"/><circle cx="1360" cy="190" r=".8"/><circle cx="90" cy="260" r=".9"/>
+        <circle cx="700" cy="60" r=".8"/><circle cx="1180" cy="300" r="1"/>
+      </g>
+      <path class="traza" pathLength="1" d="M-60 430 C 250 -10, 1000 -50, 1300 150" fill="none" stroke="url(#luz)" stroke-width="10" stroke-linecap="round" opacity=".55" filter="url(#halo)"/>
+      <path class="traza" id="trazaArco" pathLength="1" d="M-60 430 C 250 -10, 1000 -50, 1300 150" fill="none" stroke="url(#luz)" stroke-width="2.6" stroke-linecap="round"/>
+      <path class="cola" d="M1300 150 C 1352 190, 1398 240, 1440 300" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
+      <circle class="punta" cx="1300" cy="150" r="22" fill="url(#cabeza)"/>
+      <circle class="punta" cx="1300" cy="150" r="4" fill="#fff"/>
+    </svg>
+    <div class="wrap">
+      <span class="mano">Desde Argentina hacia el mundo</span>
+      <h2 class="versos" id="puenteTit"><span>Para viajar.</span><span>Para trabajar.</span><span>Para estudiar.</span></h2>
+      <p class="remate">Tu próximo comienzo puede ser en francés.</p>
+      <form class="pildora" id="pildora" novalidate>
+        <label><span class="sr">Tu nombre</span><input type="text" id="pildoraNombre" autocomplete="given-name" placeholder="Tu nombre"></label>
+        <button type="submit">Empezar</button>
+      </form>
+    </div>
+  </section>
+
   <section class="sec reservar" id="reservar">
     <div class="wrap">
       <div class="intro">
@@ -883,6 +959,34 @@ document.documentElement.classList.add('js');
   if (!('IntersectionObserver' in window)) { m.classList.add('in'); return; }
   var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { m.classList.add('in'); io.disconnect(); } }, { threshold: .6 });
   io.observe(m);
+})();
+// Puente: el arco de luz se dibuja al entrar y la píldora lleva tu nombre a la ficha
+(function () {
+  var sec = document.getElementById('puente'); if (!sec) return;
+  var trazas = sec.querySelectorAll('.traza'), puntas = sec.querySelectorAll('.punta, .cola');
+  var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function dibujar() {
+    sec.classList.add('in');
+    if (quieto || !trazas[0].animate) return;
+    trazas.forEach(function (t) { t.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 1800, easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'both' }); });
+    puntas.forEach(function (c) { c.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 1300, easing: 'ease-out', fill: 'both' }); });
+  }
+  if (!quieto && trazas[0].animate) {
+    trazas.forEach(function (t) { t.style.strokeDashoffset = '1'; });
+    puntas.forEach(function (c) { c.style.opacity = '0'; });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { dibujar(); io.disconnect(); } }, { threshold: .35 });
+    io.observe(sec);
+  } else dibujar();
+
+  document.getElementById('pildora').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = document.getElementById('pildoraNombre').value.trim(), campo = document.getElementById('nombre');
+    if (n) { campo.value = n; campo.dispatchEvent(new Event('input', { bubbles: true })); campo.dispatchEvent(new Event('change', { bubbles: true })); }
+    document.getElementById('reservar').scrollIntoView({ behavior: quieto ? 'auto' : 'smooth' });
+    setTimeout(function () { (n ? document.querySelector('#ficha input[name="nivel"]') : campo).focus({ preventScroll: true }); }, quieto ? 0 : 650);
+  });
 })();
 </script>
 </body>
