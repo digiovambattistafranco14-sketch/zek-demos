@@ -200,47 +200,80 @@ p{margin:0}
 .solapa[aria-selected="true"]{background:var(--bleu);color:#fff;transform:none}
 @media (hover:hover) and (pointer:fine){.solapa[aria-selected="false"]:hover{transform:translateY(2px);background:#C6DDFC}}
 .hoja{position:relative;z-index:1;background:#fff;border-radius:20px;box-shadow:var(--sombra);border-top:6px solid var(--bleu);overflow:hidden;container-type:inline-size}
-.panel{display:grid;grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr)}
+.panel{display:grid}
 .panel[hidden]{display:none}
 @media (prefers-reduced-motion: no-preference){.panel.entra{animation:panel .26s var(--ease-out)}}
 @keyframes panel{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.panel-txt{padding:44px 48px 48px}
-.nivel{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
-.nivel strong{font-size:96px;line-height:.82;font-weight:800;letter-spacing:-.05em;color:var(--bleu)}
-.nivel h3{font-size:clamp(24px, 2.4vw, 32px);padding-bottom:4px}
-.panel-txt > p{margin-top:20px;font-size:18px;max-width:52ch}
-.aprende{margin-top:30px}
-.aprende h4{margin:0 0 12px;font-size:16px;font-weight:700;letter-spacing:0}
-.aprende .tildes{grid-template-columns:1fr 1fr;gap:12px 28px}
-.panel-ficha{background:var(--papel);padding:40px 40px 40px;border-left:1px solid var(--linea);display:flex;flex-direction:column}
-.chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:6px 12px;border-radius:999px;background:#FDE8EA;color:var(--rojo-texto);font-size:14px;font-weight:650;margin-bottom:10px}
-.ficha{margin:0;display:grid}
-.ficha div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:13px 0;border-bottom:1px dashed rgba(0,68,179,.22)}
-.ficha div:last-child{border-bottom:0}
-.ficha dt{font-size:15px;color:var(--suave);font-weight:500}
-.ficha dd{margin:0;font-size:16.5px;color:var(--tinta);font-weight:600;line-height:1.4}
-.ficha dd small{display:block;font-weight:450;color:var(--suave);font-size:14.5px}
-.panel-ficha .btn{margin-top:26px;width:100%}
+.panel-cab{padding:44px 48px 0}
+.nivel{display:flex;align-items:flex-end;gap:20px}
+.nivel strong{font-size:96px;line-height:.82;font-weight:800;letter-spacing:-.05em;color:var(--bleu);flex:none}
+.nivel-tag{display:block;font-size:15px;font-weight:650;color:var(--rojo-texto);margin-bottom:6px}
+.nivel h3{font-size:clamp(24px, 2.4vw, 32px)}
+.para{margin-top:20px;font-size:18px;line-height:1.6;max-width:58ch}
+.panel-cuerpo{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:24px 56px;padding:36px 48px 40px;align-items:start}
+.bloque-tit{margin:0 0 16px;font-size:16px;font-weight:700;letter-spacing:0;color:var(--tinta)}
+.datos-curso{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dato{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:14px;border-radius:14px;background:var(--papel);box-shadow:inset 0 0 0 1px rgba(0,68,179,.1)}
+.dato.ancho{grid-column:1 / -1}
+.dato svg{width:38px;height:38px;padding:9px;border-radius:10px;background:var(--cielo);stroke:var(--bleu);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dato span{display:block;font-size:13.5px;font-weight:550;color:var(--suave);line-height:1.3}
+.dato b{display:block;margin-top:2px;font-size:16px;font-weight:650;color:var(--tinta);line-height:1.35}
+.dato small{display:block;margin-top:2px;font-size:13.5px;font-weight:450;color:var(--suave);line-height:1.35}
+.aprende .tildes{gap:14px}
+.mas{margin-top:14px}
+.mas summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-weight:650;font-size:15.5px;color:var(--bleu);padding:8px 0;border-radius:8px}
+.mas summary::-webkit-details-marker{display:none}
+.mas summary i{position:relative;width:20px;height:20px;border-radius:50%;background:var(--cielo)}
+.mas summary i::before,.mas summary i::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:2px;margin:-1px 0 0 -4.5px;background:var(--bleu);border-radius:2px;transition:transform .25s var(--ease-out)}
+.mas summary i::after{transform:rotate(90deg)}
+.mas[open] summary i::after{transform:rotate(0)}
+.mas .cerrar,.mas[open] .abrir{display:none}
+.mas[open] .cerrar{display:inline}
+.mas .tildes{margin-top:10px}
+.mas{interpolate-size:allow-keywords}
+.mas::details-content{block-size:0;overflow:hidden;transition:block-size .3s var(--ease-out), content-visibility .3s allow-discrete}
+.mas[open]::details-content{block-size:auto}
+.panel-pie{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:24px 48px;background:var(--papel);border-top:1px dashed rgba(0,68,179,.25)}
+.precio span{display:block;font-size:13.5px;font-weight:550;color:var(--suave)}
+.precio b{display:block;font-size:18px;font-weight:700;color:var(--tinta);line-height:1.3}
+.precio small{display:block;font-size:14px;color:var(--suave)}
+.precio .chip{margin:8px 0 0}
+.chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:6px 12px;border-radius:999px;background:#FDE8EA;color:var(--rojo-texto);font-size:14px;font-weight:650}
+.panel-pie .btn{min-width:220px}
 @container (max-width:900px){
-  .panel{grid-template-columns:1fr}
-  .panel-txt{padding:32px 24px 30px}
-  .panel-ficha{padding:22px 24px 26px;border-left:0;border-top:1px solid var(--linea)}
-  .nivel strong{font-size:76px}
+  .panel-cab{padding:30px 24px 0}
+  .nivel strong{font-size:72px}
+  .panel-cuerpo{grid-template-columns:1fr;gap:32px;padding:28px 24px 30px}
+  .panel-pie{padding:22px 24px}
 }
-@container (max-width:520px){.aprende .tildes{grid-template-columns:1fr}}
+@container (max-width:560px){
+  .nivel{flex-direction:column;align-items:flex-start;gap:14px}
+  .para{font-size:17px}
+  .panel-pie .btn{width:100%}
+}
+@container (max-width:380px){.datos-curso{grid-template-columns:1fr;gap:8px}.dato{grid-template-columns:32px 1fr;gap:10px;padding:10px 12px}.dato svg{width:32px;height:32px;padding:7px}.dato small{display:inline;margin-left:4px}}
+@media (prefers-reduced-motion: reduce){.mas::details-content{transition:none}}
 @media (max-width:600px){
   .solapas{padding-left:10px;gap:4px}
   .solapa{flex-direction:column;align-items:flex-start;gap:0;padding:10px 14px 12px;flex:1}
   .solapa b{font-size:20px}.solapa span{font-size:13.5px}
 }
-.incluye{margin-top:64px;display:grid;grid-template-columns:1fr 1fr minmax(0, .9fr);gap:clamp(28px, 4vw, 48px);align-items:start}
-.incluye h3{font-size:22px;margin-bottom:16px}
-.sena{background:var(--bleu);color:#fff;border-radius:20px;padding:28px 28px 26px}
-.sena .mano{display:block;font-size:20px;line-height:1.5;color:#fff}
-.sena p{margin-top:10px;color:rgba(255,255,255,.9);font-size:16px}
+.incluye{margin-top:72px;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px rgba(0,68,179,.12);overflow:hidden}
+.incluye-cab{padding:34px 40px 0}
+.incluye-cab h3{font-size:clamp(24px, 2.4vw, 30px)}
+.incluye-grupos{display:grid;grid-template-columns:1fr 1fr;gap:28px 64px;padding:26px 40px 34px}
+.incluye h4{margin:0 0 14px;font-size:16px;font-weight:700;letter-spacing:0;color:var(--tinta)}
+.incluye .tildes{gap:14px}
+.sena{display:flex;flex-wrap:wrap;align-items:center;gap:6px 24px;background:var(--bleu);color:#fff;padding:22px 40px}
+.sena .mano{font-size:20px;line-height:1.5;color:#fff;flex:none}
+.sena p{color:rgba(255,255,255,.92);font-size:16px;max-width:60ch}
 .sena p b{color:#fff}
-@media (max-width:980px){.incluye{grid-template-columns:1fr 1fr}.sena{grid-column:1 / -1}}
-@media (max-width:640px){.incluye{grid-template-columns:1fr;gap:36px;margin-top:48px}}
+@media (max-width:760px){
+  .incluye{margin-top:52px}
+  .incluye-cab{padding:28px 22px 0}
+  .incluye-grupos{grid-template-columns:1fr;padding:22px 22px 28px}
+  .sena{padding:20px 22px}
+}
 
 /* ---------- test de nivel guiado ---------- */
 .nivel-sec{padding-top:24px}
@@ -287,6 +320,7 @@ p{margin:0}
 @media (max-width:759px){.moi .wrap{grid-template-columns:1fr}.moi figure{max-width:520px}.moi figure img{aspect-ratio:5/4}.moi figure figcaption{right:10px}}
 
 /* ---------- alumnos: tarjetas tipo post-it ---------- */
+#alumnos{overflow-x:clip}
 .alumnos-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
 .contador{display:flex;align-items:baseline;gap:10px;color:var(--tinta)}
 .contador b{font-size:clamp(44px, 5vw, 64px);font-weight:800;letter-spacing:-.04em;color:var(--bleu);line-height:1}
@@ -611,79 +645,108 @@ html.lenis{scroll-behavior:auto !important}
         </div>
         <div class="hoja">
           <div class="panel" role="tabpanel" id="p-A1" aria-labelledby="t-A1" tabindex="0">
-            <div class="panel-txt">
-              <div class="nivel"><strong>A1</strong><h3>¡Empezá francés desde cero!</h3></div>
-              <p>Un curso pensado para que empieces sin conocimientos previos, aprendas a comunicarte en situaciones de la vida cotidiana y descubras una nueva lengua y cultura.</p>
+            <div class="panel-cab">
+              <div class="nivel"><strong>A1</strong><div><span class="nivel-tag">Nivel inicial</span><h3>¡Empezá francés desde cero!</h3></div></div>
+              <p class="para">Un curso pensado para que empieces sin conocimientos previos, aprendas a comunicarte en situaciones de la vida cotidiana y descubras una nueva lengua y cultura.</p>
+            </div>
+            <div class="panel-cuerpo">
+              <div>
+                <h4 class="bloque-tit">Cómo es la cursada</h4>
+                <ul class="datos-curso" data-ficha="A1"></ul>
+              </div>
               <div class="aprende">
-                <h4>Vas a aprender a:</h4>
+                <h4 class="bloque-tit">Vas a aprender a:</h4>
                 <ul class="tildes">
-                  <li>Presentarte y hablar sobre vos.</li>
-                  <li>Saludar y mantener conversaciones sencillas.</li>
-                  <li>Manejar números, fechas y horarios.</li>
-                  <li>Pedir información y desenvolverte en lo cotidiano.</li>
-                  <li>Comprender expresiones y diálogos simples.</li>
-                  <li>Leer y escribir tus primeras frases en francés.</li>
+                    <li>Presentarte y hablar sobre vos.</li>
+                    <li>Saludar y mantener conversaciones sencillas.</li>
+                    <li>Manejar números, fechas y horarios.</li>
+                    <li>Pedir información y desenvolverte en lo cotidiano.</li>
                 </ul>
+                <details class="mas"><summary><i aria-hidden="true"></i><span class="abrir">Ver 2 más</span><span class="cerrar">Ver menos</span></summary>
+                  <ul class="tildes">
+                    <li>Comprender expresiones y diálogos simples.</li>
+                    <li>Leer y escribir tus primeras frases en francés.</li>
+                  </ul>
+                </details>
               </div>
             </div>
-            <div class="panel-ficha" data-ficha="A1"></div>
+            <div class="panel-pie" data-pie="A1"></div>
           </div>
 
           <div class="panel" role="tabpanel" id="p-A2" aria-labelledby="t-A2" tabindex="0" hidden>
-            <div class="panel-txt">
-              <div class="nivel"><strong>A2</strong><h3>Seguí construyendo tu autonomía</h3></div>
-              <p>Para quienes ya tienen conocimientos y quieren ganar confianza, ampliar el vocabulario y comunicarse con más fluidez. Con especial hincapié en la comprensión y la producción oral.</p>
+            <div class="panel-cab">
+              <div class="nivel"><strong>A2</strong><div><span class="nivel-tag">Nivel elemental</span><h3>Seguí construyendo tu autonomía</h3></div></div>
+              <p class="para">Para quienes ya tienen conocimientos y quieren ganar confianza, ampliar el vocabulario y comunicarse con más fluidez. Con especial hincapié en la comprensión y la producción oral.</p>
+            </div>
+            <div class="panel-cuerpo">
+              <div>
+                <h4 class="bloque-tit">Cómo es la cursada</h4>
+                <ul class="datos-curso" data-ficha="A2"></ul>
+              </div>
               <div class="aprende">
-                <h4>Vas a aprender a:</h4>
+                <h4 class="bloque-tit">Vas a aprender a:</h4>
                 <ul class="tildes">
-                  <li>Expresarte con mayor seguridad en francés.</li>
-                  <li>Comprender conversaciones y audios más complejos.</li>
-                  <li>Leer y escribir textos sencillos con más autonomía.</li>
-                  <li>Hablar de tus experiencias, gustos y proyectos.</li>
-                  <li>Desenvolverte en viajes, compras y el día a día.</li>
-                  <li>Seguir descubriendo la cultura francófona.</li>
+                    <li>Expresarte con mayor seguridad en francés.</li>
+                    <li>Comprender conversaciones y audios más complejos.</li>
+                    <li>Leer y escribir textos sencillos con más autonomía.</li>
+                    <li>Hablar de tus experiencias, gustos y proyectos.</li>
                 </ul>
+                <details class="mas"><summary><i aria-hidden="true"></i><span class="abrir">Ver 2 más</span><span class="cerrar">Ver menos</span></summary>
+                  <ul class="tildes">
+                    <li>Desenvolverte en viajes, compras y el día a día.</li>
+                    <li>Seguir descubriendo la cultura francófona.</li>
+                  </ul>
+                </details>
               </div>
             </div>
-            <div class="panel-ficha" data-ficha="A2"></div>
+            <div class="panel-pie" data-pie="A2"></div>
           </div>
 
           <div class="panel" role="tabpanel" id="p-B1" aria-labelledby="t-B1" tabindex="0" hidden>
-            <div class="panel-txt">
-              <div class="nivel"><strong>B1</strong><h3>Llevá tu francés al siguiente nivel</h3></div>
-              <p>Para trabajar la fluidez y desarrollar estrategias para comprender y producir mensajes más complejos, tanto de forma oral como por escrito.</p>
+            <div class="panel-cab">
+              <div class="nivel"><strong>B1</strong><div><span class="nivel-tag">Nivel intermedio</span><h3>Llevá tu francés al siguiente nivel</h3></div></div>
+              <p class="para">Para trabajar la fluidez y desarrollar estrategias para comprender y producir mensajes más complejos, tanto de forma oral como por escrito.</p>
+            </div>
+            <div class="panel-cuerpo">
+              <div>
+                <h4 class="bloque-tit">Cómo es la cursada</h4>
+                <ul class="datos-curso" data-ficha="B1"></ul>
+              </div>
               <div class="aprende">
-                <h4>Vas a aprender a:</h4>
+                <h4 class="bloque-tit">Vas a aprender a:</h4>
                 <ul class="tildes">
-                  <li>Hablar con más fluidez.</li>
-                  <li>Expresar opiniones y argumentar tus ideas.</li>
-                  <li>Comprender mensajes más complejos.</li>
-                  <li>Producirlos, oralmente y por escrito.</li>
+                    <li>Hablar con más fluidez.</li>
+                    <li>Expresar opiniones y argumentar tus ideas.</li>
+                    <li>Comprender mensajes más complejos.</li>
+                    <li>Producirlos, oralmente y por escrito.</li>
                 </ul>
               </div>
             </div>
-            <div class="panel-ficha" data-ficha="B1"></div>
+            <div class="panel-pie" data-pie="B1"></div>
           </div>
         </div>
       </div>
 
       <div class="incluye" data-revela>
-        <div>
-          <h3>En cada clase</h3>
-          <ul class="tildes">
-            <li>Clases en vivo por Google Meet.</li>
-            <li>Comprensión y producción, oral y escrita.</li>
-            <li>Actividades prácticas para reforzar los contenidos.</li>
-            <li>Material didáctico completo durante la cursada.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Entre clase y clase</h3>
-          <ul class="tildes">
-            <li>Grupo de WhatsApp de apoyo, con consultas diarias.</li>
-            <li>Acompañamiento y orientación en todo el proceso.</li>
-            <li>Certificado al finalizar, según las condiciones de aprobación.</li>
-          </ul>
+        <div class="incluye-cab"><h3>¿Qué incluyen los cursos?</h3></div>
+        <div class="incluye-grupos">
+          <div>
+            <h4>En cada clase</h4>
+            <ul class="tildes">
+              <li>Clases en vivo por Google Meet.</li>
+              <li>Comprensión y producción, oral y escrita.</li>
+              <li>Actividades prácticas para reforzar los contenidos.</li>
+              <li>Material didáctico completo durante la cursada.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Entre clase y clase</h4>
+            <ul class="tildes">
+              <li>Grupo de WhatsApp de apoyo, con consultas diarias.</li>
+              <li>Acompañamiento y orientación en todo el proceso.</li>
+              <li>Certificado al finalizar, según las condiciones de aprobación.</li>
+            </ul>
+          </div>
         </div>
         <div class="sena">
           <span class="mano">Congelá tu precio</span>
@@ -1005,15 +1068,29 @@ function guardar(k, v) { guardado[k] = v; try { localStorage.setItem('alexa-rese
   document.querySelectorAll('[data-ig-post]').forEach(function (a) { a.href = CONFIG.publicacionOpiniones; });
   document.getElementById('waFlotante').setAttribute('aria-label', 'Escribile a Alexa por WhatsApp al ' + CONFIG.whatsappVisible);
 
-  // Ficha de cada nivel
+  // Ficha de cada nivel: grilla de datos y pie con precio + un solo botón
+  var ICO = {
+    dias: '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    hora: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    inicio: '<path d="M6 21V4M6 4h11l-2 4 2 4H6"/>',
+    duracion: '<path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9"/>',
+    modo: '<rect x="3" y="5" width="18" height="11" rx="2"/><path d="M8 20h8M12 16v4"/>'
+  };
+  function dato(ico, et, val, nota, ancho) {
+    return '<li class="dato' + (ancho ? ' ancho' : '') + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + ICO[ico] + '</svg><div><span>' + et + '</span><b>' + val + '</b>' + (nota ? '<small>' + nota + '</small>' : '') + '</div></li>';
+  }
   Object.keys(CONFIG.niveles).forEach(function (k) {
-    var n = CONFIG.niveles[k], box = document.querySelector('[data-ficha="' + k + '"]'); if (!box) return;
-    var filas = [['Días', n.dias], ['Arranca', n.inicioTexto]];
-    filas.push(['Horario', n.horario ? esc(n.horario) : 'A coordinar<small>Te lo confirmo al reservar</small>']);
-    filas.push(['Duración', CONFIG.duracion], ['Modalidad', 'Online por ' + CONFIG.plataforma]);
-    filas.push(['Precio', CONFIG.precio ? esc(CONFIG.precio) + '<small>Reservás con el ' + CONFIG.sena + ' de seña</small>' : 'Congelado con la seña del ' + CONFIG.sena + '<small>Te paso el precio por WhatsApp</small>']);
-    box.innerHTML = (CONFIG.cupos ? '<span class="chip">Cupos limitados</span>' : '') +
-      '<dl class="ficha">' + filas.map(function (f) { return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('') + '</dl>' +
+    var n = CONFIG.niveles[k], box = document.querySelector('[data-ficha="' + k + '"]'), pie = document.querySelector('[data-pie="' + k + '"]');
+    if (!box || !pie) return;
+    box.innerHTML = dato('dias', 'Días', esc(n.dias)) +
+      dato('hora', 'Horario', n.horario ? esc(n.horario) : 'A coordinar', n.horario ? '' : 'Te lo confirmo al reservar') +
+      dato('inicio', 'Arranca', esc(n.inicioTexto)) +
+      dato('duracion', 'Duración', esc(CONFIG.duracion)) +
+      dato('modo', 'Modalidad', 'Online por ' + esc(CONFIG.plataforma), '', true);
+    pie.innerHTML = '<div class="precio"><span>Precio</span>' +
+      (CONFIG.precio ? '<b>' + esc(CONFIG.precio) + '</b><small>Reservás con el ' + CONFIG.sena + ' de seña</small>'
+                     : '<b>Congelado con la seña del ' + CONFIG.sena + '</b><small>Te paso el precio por WhatsApp</small>') +
+      (CONFIG.cupos ? '<span class="chip">Cupos limitados</span>' : '') + '</div>' +
       '<a class="btn btn-azul" href="#reservar" data-nivel="' + k + '">Quiero el ' + k + '</a>';
   });
 
