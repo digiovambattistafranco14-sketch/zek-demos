@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Murillo Navajas | Barbería en San Miguel de Tucumán</title>
+<meta name="description" content="Cortes, degradés y diseños a navaja en Rioja 957, San Miguel de Tucumán. Pedí tu turno online.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Murillo Navajas | Barbería en Tucumán">
+<meta property="og:description" content="No hacemos milagros pero casi. Degradés y diseños a navaja en Rioja 957. Pedí tu turno online.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14120f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/foto-08.jpg">
+<style>
+:root{
+  --negro:#14120f;      /* fondo del logo */
+  --negro-2:#1c1915;
+  --negro-3:#26221c;
+  --oro:#cfa856;        /* el dorado del monograma MN */
+  --oro-hondo:#a9843a;
+  --hueso:#f1ebdf;
+  --texto:#ece5d6;
+  --gris:#a39a8a;
+  --linea:rgba(207,168,86,.22);
+  --display:'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --r:6px;
+  --header:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--negro);color:var(--texto);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:800;line-height:.95;letter-spacing:.005em;text-wrap:balance}
+p{margin:0}
+::selection{background:var(--oro);color:var(--negro)}
+:focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:4px}
+section[id]{scroll-margin-top:calc(var(--header) + 12px)}
+.wrap{width:min(1160px, 100% - 40px);margin-inline:auto}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--oro);color:var(--negro);padding:10px 14px;border-radius:4px;z-index:100;font-weight:700}
+.skip:focus{left:12px}
+.ph{font-size:20px;line-height:1;flex:none}
+
+/* las ondas del logo y de la pared del local, como textura */
+.ondas{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='60' viewBox='0 0 160 60'%3E%3Cpath d='M0 30 C 20 10, 40 10, 60 30 S 100 50, 120 30 S 150 12, 160 22' fill='none' stroke='%23cfa856' stroke-opacity='.07' stroke-width='1.4'/%3E%3C/svg%3E");background-size:160px 30px}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-family:var(--body);
+  transition:transform .16s var(--ease-out), background-color .2s ease, color .2s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-oro{background:var(--oro);color:var(--negro);box-shadow:0 12px 28px -14px rgba(207,168,86,.9)}
+.btn-linea{background:transparent;color:var(--hueso);box-shadow:inset 0 0 0 1.5px rgba(241,235,223,.35)}
+@media (hover:hover) and (pointer:fine){
+  .btn-oro:hover{background:#dcb867}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--oro);color:var(--oro)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;height:var(--header);display:flex;align-items:center;
+  transition:background-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease}
+.top.solido{background:rgba(20,18,15,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 var(--linea)}
+.top .wrap{display:flex;align-items:center;gap:20px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 1.5px var(--oro-hondo)}
+.marca b{display:block;font-family:var(--display);font-weight:800;font-size:22px;line-height:1;color:var(--hueso);letter-spacing:.02em}
+.marca small{display:block;font-size:13px;color:var(--gris);line-height:1.3;margin-top:3px}
+.menu{margin-left:auto;display:flex;align-items:center;gap:26px}
+.menu a{text-decoration:none;font-weight:600;font-size:15px;color:var(--texto);transition:color .2s ease}
+@media (hover:hover) and (pointer:fine){.menu a:not(.btn):hover{color:var(--oro)}}
+.menu .btn{height:44px;padding:0 20px;font-size:15px;color:var(--negro)}
+.hamb{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:0;background:var(--negro-3);color:var(--hueso);cursor:pointer;place-items:center}
+.hamb .ph{font-size:22px}
+@media (max-width:860px){
+  .hamb{display:grid}
+  .menu{position:fixed;top:var(--header);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 22px;
+    background:rgba(20,18,15,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--linea), 0 30px 40px -20px rgba(0,0,0,.6);
+    opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+  .menu.abierto{opacity:1;transform:none;pointer-events:auto}
+  .menu a:not(.btn){padding:15px 2px;font-size:18px;border-bottom:1px solid rgba(241,235,223,.08)}
+  .menu .btn{margin-top:16px;height:52px}
+  .marca small{display:none}
+}
+
+/* ---------- portada: la navaja pasa y deja el nombre ---------- */
+.hero{position:relative;min-height:100dvh;display:flex;align-items:center;padding:calc(var(--header) + 32px) 0 64px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(68px, 10.5vw, 150px);font-weight:900;color:var(--hueso);line-height:.86;letter-spacing:.01em}
+.hero h1 .l{display:block;position:relative;width:max-content;max-width:100%}
+.hero h1 .l2{color:var(--oro)}
+.hero .lema{margin-top:28px;font-size:clamp(19px, 2vw, 23px);line-height:1.4;color:var(--texto);max-width:30ch}
+.hero .lema span{color:var(--gris)}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.foto-hero{position:relative;justify-self:end;width:min(100%, 440px)}
+.foto-hero img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.foto-hero::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1.5px solid var(--oro-hondo);border-radius:var(--r);z-index:-1}
+.foto-hero figcaption{margin-top:24px;font-size:14px;color:var(--gris)}
+
+/* El momento: cada línea del nombre aparece detrás del filo */
+.js .hero h1 .l .t{clip-path:inset(0 100% 0 0);animation:afeitar 1.05s var(--ease-in-out) both}
+.js .hero h1 .l2 .t{animation-delay:.5s}
+.js .hero h1 .l::after{content:"";position:absolute;top:6%;bottom:6%;left:0;width:3px;border-radius:2px;
+  background:linear-gradient(180deg, transparent, #fff3d1 20%, var(--oro) 50%, #fff3d1 80%, transparent);
+  box-shadow:0 0 18px 2px rgba(255,226,150,.55);opacity:0;animation:filo 1.05s var(--ease-in-out) both}
+.js .hero h1 .l2::after{animation-delay:.5s}
+@keyframes afeitar{to{clip-path:inset(0 0 0 0)}}
+@keyframes filo{0%{opacity:0;transform:translateX(0)}8%{opacity:1}88%{opacity:1}100%{opacity:0;transform:translateX(var(--ancho, 600px))}}
+.js .hero .lema,.js .hero .ctas{animation:subir .7s var(--ease-out) both}
+.js .hero .lema{animation-delay:1.2s}
+.js .hero .ctas{animation-delay:1.3s}
+.js .foto-hero{animation:aparecer 1s var(--ease-out) .35s both}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes aparecer{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .hero{min-height:auto;padding:calc(var(--header) + 28px) 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .hero h1{font-size:clamp(64px, 19vw, 104px)}
+  .foto-hero{justify-self:start;width:min(100% - 14px, 400px);margin-left:14px}
+}
+
+/* ---------- secciones ---------- */
+.sec{padding:112px 0}
+.sec h2{font-size:clamp(46px, 6.4vw, 84px);color:var(--hueso)}
+.sec .bajada{margin-top:18px;max-width:52ch;color:var(--gris);font-size:18px}
+@media (max-width:860px){.sec{padding:80px 0}}
+
+/* trabajos: la vidriera de cortes */
+.trabajos{border-top:1px solid var(--linea)}
+.grilla{margin-top:52px;display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:18px}
+.grilla figure{margin:0}
+.grilla img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);background:var(--negro-2)}
+.grilla .g1{grid-row:span 2}
+.grilla .g1 img{aspect-ratio:auto;height:100%;min-height:520px}
+.grilla .g2 img,.grilla .g3 img{aspect-ratio:4/5;height:auto}
+.grilla .g4{grid-column:span 2;display:flex;align-items:center;padding:34px 36px;border-radius:var(--r);background:var(--negro-2);box-shadow:inset 0 0 0 1px var(--linea)}
+.grilla figcaption{margin-top:10px;font-size:15px;color:var(--gris)}
+.grilla .g4 figcaption{margin:0;font-size:clamp(20px, 2.2vw, 26px);color:var(--texto);line-height:1.35;max-width:30ch}
+.grilla .g4 figcaption a{color:var(--oro);font-weight:600;font-size:16px;display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none}
+@media (max-width:860px){
+  .grilla{grid-template-columns:1fr 1fr;gap:12px}
+  .grilla .g1{grid-column:span 2;grid-row:auto}
+  .grilla .g1 img{min-height:0;aspect-ratio:4/5}
+  .grilla .g4{padding:24px 22px}
+  .grilla .g4 figcaption{font-size:18px}
+}
+
+/* servicios: la carta del sillón */
+.carta{margin-top:48px;display:grid;grid-template-columns:repeat(2, 1fr);column-gap:64px}
+.item{display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--linea)}
+.item h3{font-size:clamp(30px, 3.2vw, 40px);color:var(--hueso);font-weight:800}
+.item .precio{font-size:15px;color:var(--oro);font-weight:600;white-space:nowrap}
+.item p{grid-column:1 / -1;color:var(--gris);font-size:16px;max-width:44ch}
+@media (max-width:760px){.carta{grid-template-columns:1fr}}
+
+/* ---------- turnos: el ticket que se va llenando ---------- */
+.turnos{background:var(--negro-2);border-block:1px solid var(--linea)}
+.turnos .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
+.form{margin-top:40px;display:grid;gap:30px}
+.campo > .et{display:block;font-weight:700;font-size:16px;color:var(--hueso);margin-bottom:12px}
+.campo .ayuda{display:block;font-size:14px;color:var(--gris);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;background:var(--negro-3);color:var(--texto);font-weight:600;font-size:15px;cursor:pointer;
+  box-shadow:inset 0 0 0 1.5px rgba(241,235,223,.1);transition:background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .14s var(--ease-out);user-select:none}
+.chip span small{font-weight:500;color:var(--gris);margin-left:6px;transition:color .18s ease}
+.chip input:checked + span{background:var(--oro);color:var(--negro);box-shadow:none}
+.chip input:checked + span small{color:rgba(20,18,15,.7)}
+.chip input:focus-visible + span{outline:2px solid var(--oro);outline-offset:3px}
+.chip span:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.chip input:not(:checked) + span:hover{box-shadow:inset 0 0 0 1.5px var(--oro-hondo)}}
+.dias{display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:8px}
+.dias .chip span{flex-direction:column;justify-content:center;width:100%;min-height:68px;padding:6px 4px;border-radius:var(--r);text-align:center;line-height:1.15}
+.dias .chip span b{font-family:var(--display);font-size:26px;font-weight:800}
+.dias .chip span small{margin:0;font-size:13px}
+@media (max-width:560px){.dias{grid-template-columns:repeat(4, minmax(0, 1fr))}}
+.input{width:100%;height:54px;padding:0 16px;border-radius:var(--r);border:1.5px solid rgba(241,235,223,.18);background:var(--negro);color:var(--hueso);font:500 17px var(--body);transition:border-color .18s ease}
+textarea.input{height:auto;min-height:92px;padding:14px 16px;resize:vertical;line-height:1.5}
+.input::placeholder{color:#8a8274}
+.input:focus{outline:none;border-color:var(--oro)}
+.error{display:none;margin-top:8px;color:#f0a58f;font-size:14px;font-weight:600}
+.campo.mal .error{display:block}
+.campo.mal .input{border-color:#e07b62}
+.enviar{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.enviar .nota{font-size:14px;color:var(--gris);max-width:46ch}
+.aviso{display:none;padding:14px 16px;border-radius:var(--r);background:rgba(207,168,86,.12);box-shadow:inset 0 0 0 1px var(--linea);color:var(--hueso);font-size:15px}
+.aviso.ver{display:block;animation:subir .3s var(--ease-out) both}
+
+.ticket-col{position:sticky;top:calc(var(--header) + 28px)}
+.ticket{position:relative;background:var(--hueso);color:var(--negro);border-radius:var(--r);padding:30px 28px 26px;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.8);transform:rotate(1.2deg);
+  -webkit-mask:radial-gradient(circle 12px at 0 62%, transparent 98%, #000) , radial-gradient(circle 12px at 100% 62%, transparent 98%, #000);
+  -webkit-mask-composite:source-in;mask:radial-gradient(circle 12px at 0 62%, transparent 98%, #000) , radial-gradient(circle 12px at 100% 62%, transparent 98%, #000);mask-composite:intersect}
+.ticket .cab{display:flex;align-items:center;gap:14px;padding-bottom:20px;border-bottom:1.5px dashed rgba(20,18,15,.25)}
+.ticket .cab img{width:56px;height:56px;border-radius:50%}
+.ticket .cab b{display:block;font-family:var(--display);font-size:28px;font-weight:900;line-height:1}
+.ticket .cab small{font-size:14px;color:#5c5446}
+.ticket dl{margin:18px 0 0;display:grid;gap:12px}
+.ticket dl div{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:baseline}
+.ticket dt{font-size:14px;color:#6b6252}
+.ticket dd{margin:0;font-weight:700;font-size:17px;min-height:1.4em}
+.ticket dd.vacio{color:#a49a87;font-weight:500}
+.ticket dd.cambio{animation:sello .32s var(--ease-out)}
+@keyframes sello{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.ticket .pie{margin-top:30px;padding-top:16px;border-top:1.5px dashed rgba(20,18,15,.25);font-size:14px;color:#5c5446;display:flex;gap:8px;align-items:center}
+.ticket .pie .ph{color:var(--oro-hondo)}
+@media (max-width:960px){
+  .turnos .wrap{grid-template-columns:1fr;gap:44px}
+  .ticket-col{position:static;order:2}
+  .ticket{transform:rotate(.6deg)}
+}
+
+/* ---------- dónde ---------- */
+.donde .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.dir{margin-top:26px;font-size:clamp(24px, 2.6vw, 30px);color:var(--hueso);line-height:1.3;font-weight:600}
+.dir small{display:block;font-size:17px;color:var(--gris);font-weight:500;margin-top:6px}
+.donde .bajada{margin-top:22px}
+.donde .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.mapa{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--negro-2);box-shadow:0 0 0 1px var(--linea)}
+.mapa iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(.9) contrast(.9) sepia(.25)}
+@media (max-width:860px){.donde .wrap{grid-template-columns:1fr;gap:36px}}
+
+footer{padding:40px 0 120px;border-top:1px solid var(--linea);color:var(--gris);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--texto);font-weight:600}
+
+/* ---------- botón flotante: mensaje directo por Instagram ---------- */
+.flot{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:var(--oro);color:var(--negro);display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(0,0,0,.3), 0 16px 34px -10px rgba(207,168,86,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:flot-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2s both}
+.flot i{font-size:32px;line-height:1;position:relative;z-index:1}
+.flot::before,.flot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--oro);z-index:0;opacity:0;
+  animation:onda 5s var(--ease-out) 3s infinite}
+.flot::after{animation-delay:3.4s}
+.flot .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:var(--hueso);color:var(--negro);font-weight:700;font-size:15px;
+  padding:10px 14px;border-radius:10px;box-shadow:0 10px 30px -12px rgba(0,0,0,.6);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.flot .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:var(--hueso);transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.flot .tip small{display:block;font-weight:500;font-size:13px;color:#5c5446}
+.flot:active{transform:scale(.94)}
+.flot:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .flot:hover{transform:scale(1.07)}
+  .flot:hover i{animation:sacude .6s var(--ease-out)}
+  .flot:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .flot:hover::before,.flot:hover::after{animation-play-state:paused}
+}
+@keyframes flot-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes sacude{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.flot{width:58px;height:58px}.flot i{font-size:29px}}
+
+/* ---------- Lenis ---------- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  .js .hero h1 .l .t{clip-path:none;animation:none}
+  .js .hero h1 .l::after{display:none}
+  .js .hero .lema,.js .hero .ctas,.js .foto-hero,.flot{animation:fundir .4s ease both}
+  .flot::before,.flot::after{animation:none}
+  .flot:hover i{animation:none}
+  .ticket dd.cambio{animation:none}
+  .ticket{transform:none}
+}
+@keyframes fundir{from{opacity:0}to{opacity:1}}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Murillo Navajas, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span><b>Murillo Navajas</b><small>Barbería en Tucumán</small></span>
+    </a>
+    <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i class="ph ph-list"></i></button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#trabajos">Trabajos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#donde">Dónde estamos</a>
+      <a class="btn btn-oro" href="#turnos"><i class="ph ph-calendar-check"></i>Reservá tu turno</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <section class="hero ondas" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1 aria-label="Murillo Navajas">
+          <span class="l l1" aria-hidden="true"><span class="t">Murillo</span></span>
+          <span class="l l2" aria-hidden="true"><span class="t">Navajas</span></span>
+        </h1>
+        <p class="lema">No hacemos milagros pero casi. <span>Preguntale a tu ex.</span></p>
+        <div class="ctas">
+          <a class="btn btn-oro" href="#turnos"><i class="ph ph-calendar-check"></i>Reservá tu turno</a>
+          <a class="btn btn-linea" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <figure class="foto-hero" style="margin:0">
+        <img src="img/foto-08.jpg" alt="Corte con degradé y diseño en zigzag hecho a navaja" width="512" height="640" fetchpriority="high">
+        <figcaption>Diseño a navaja, Rioja 957.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec trabajos" id="trabajos">
+    <div class="wrap">
+      <h2>Lo que sale del sillón</h2>
+      <p class="bajada">Degradés prolijos y diseños a mano alzada. Cada uno distinto, como cada cabeza.</p>
+      <div class="grilla">
+        <figure class="g1"><img src="img/foto-09.jpg" alt="Diseño freestyle con curvas en la nuca y degradé" loading="lazy" width="512" height="640"><figcaption>Freestyle con curvas</figcaption></figure>
+        <figure class="g2"><img src="img/foto-10.jpg" alt="Diseño en zigzag sobre un degradé bajo" loading="lazy" width="360" height="640"><figcaption>Rayo en zigzag</figcaption></figure>
+        <figure class="g3"><img src="img/foto-12.jpg" alt="Corte texturizado con degradé alto" loading="lazy" width="360" height="640"><figcaption>Degradé con textura</figcaption></figure>
+        <figure class="g4">
+          <figcaption>Hay muchos más trabajos en el Instagram, con videos del paso a paso.
+            <br><a href="https://instagram.com/murillonavajas" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i>Ver @murillonavajas</a></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <h2>Qué te hacemos</h2>
+      <p class="bajada">Elegí uno al pedir el turno. El precio te lo pasamos por mensaje.</p>
+      <div class="carta">
+        <div class="item"><h3>Corte</h3><span class="precio">Consultá</span><p>El corte que traés en la cabeza, o te ayudamos a elegir.</p></div>
+        <div class="item"><h3>Degradé</h3><span class="precio">Consultá</span><p>Bajo, medio o alto, con la transición bien pareja.</p></div>
+        <div class="item"><h3>Diseño a navaja</h3><span class="precio">Consultá</span><p>Rayos, curvas y freestyle marcados a mano sobre el degradé.</p></div>
+        <div class="item"><h3>Barba</h3><span class="precio">Consultá</span><p>Perfilado y terminación a navaja.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec turnos" id="turnos">
+    <div class="wrap">
+      <div>
+        <h2>Sacá tu turno</h2>
+        <p class="bajada">Elegí qué te hacés y qué día te queda bien. Te confirmamos el horario por mensaje.</p>
+        <form class="form" id="form" novalidate>
+          <fieldset class="campo" id="c-servicio" style="border:0;padding:0;margin:0">
+            <legend class="et">¿Qué te hacés?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="servicio" value="Corte"><span>Corte</span></label>
+              <label class="chip"><input type="radio" name="servicio" value="Degradé"><span>Degradé</span></label>
+              <label class="chip"><input type="radio" name="servicio" value="Degradé con diseño"><span>Degradé con diseño</span></label>
+              <label class="chip"><input type="radio" name="servicio" value="Corte y barba"><span>Corte y barba</span></label>
+              <label class="chip"><input type="radio" name="servicio" value="Barba"><span>Barba</span></label>
+            </div>
+            <span class="error">Elegí qué te querés hacer.</span>
+          </fieldset>
+          <fieldset class="campo" id="c-dia" style="border:0;padding:0;margin:0">
+            <legend class="et">¿Qué día?</legend>
+            <div class="chips dias" id="dias"></div>
+            <span class="error">Elegí un día.</span>
+          </fieldset>
+          <fieldset class="campo" style="border:0;padding:0;margin:0">
+            <legend class="et">¿A qué hora te queda mejor?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="franja" value="A la mañana"><span>A la mañana</span></label>
+              <label class="chip"><input type="radio" name="franja" value="A la tarde"><span>A la tarde</span></label>
+              <label class="chip"><input type="radio" name="franja" value="Lo primero que haya" checked><span>Lo primero que haya</span></label>
+            </div>
+          </fieldset>
+          <div class="campo" id="c-nombre">
+            <label class="et" for="nombre">Tu nombre</label>
+            <input class="input" id="nombre" name="nombre" autocomplete="given-name" placeholder="Ej.: Facundo">
+            <span class="error">Poné tu nombre así sabemos a quién esperar.</span>
+          </div>
+          <div class="campo">
+            <label class="et" for="nota">¿Algo más? <span style="font-weight:500;color:var(--gris)">(opcional)</span></label>
+            <textarea class="input" id="nota" name="nota" placeholder="Ej.: quiero un diseño como el del rayo"></textarea>
+          </div>
+          <div class="enviar">
+            <button class="btn btn-oro" type="submit"><i class="ph ph-instagram-logo"></i>Pedir turno</button>
+            <span class="nota">Se abre el chat de Instagram con tu pedido copiado: lo pegás y listo.</span>
+            <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+      <div class="ticket-col" aria-hidden="true">
+        <div class="ticket">
+          <div class="cab">
+            <img src="img/perfil.jpg" alt="">
+            <div><b>Tu turno</b><small>Murillo Navajas, Rioja 957</small></div>
+          </div>
+          <dl>
+            <div><dt>Para</dt><dd id="t-nombre" class="vacio">Tu nombre</dd></div>
+            <div><dt>Servicio</dt><dd id="t-servicio" class="vacio">Elegí uno</dd></div>
+            <div><dt>Día</dt><dd id="t-dia" class="vacio">Elegí el día</dd></div>
+            <div><dt>Horario</dt><dd id="t-franja">Lo primero que haya</dd></div>
+          </dl>
+          <div class="pie"><i class="ph ph-scissors"></i>Te confirmamos la hora por mensaje.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec donde" id="donde">
+    <div class="wrap">
+      <div>
+        <h2>Dónde estamos</h2>
+        <p class="dir">Rioja 957<small>San Miguel de Tucumán</small></p>
+        <p class="bajada">Los días y horarios de atención te los pasamos al pedir el turno.</p>
+        <div class="ctas">
+          <a class="btn btn-oro" href="https://maps.app.goo.gl/7u1SZvKnyrWFLerZ9" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>Cómo llegar</a>
+          <a class="btn btn-linea" href="https://instagram.com/murillonavajas" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i>@murillonavajas</a>
+        </div>
+      </div>
+      <div class="mapa">
+        <iframe title="Mapa: Rioja 957, San Miguel de Tucumán" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=-26.8426557,-65.2156551&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Murillo Navajas Barbería. Rioja 957, San Miguel de Tucumán.</span>
+    <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+  </div>
+</footer>
+
+<a class="flot" href="https://ig.me/m/murillonavajas" target="_blank" rel="noopener" aria-label="Escribinos por Instagram a @murillonavajas">
+  <i class="ph-fill ph-instagram-logo"></i>
+  <span class="tip">¿Te ayudamos? Escribinos<small>@murillonavajas</small></span>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var IG_DM = 'https://ig.me/m/murillonavajas';
+
+// El filo recorre exactamente el ancho de cada línea del nombre
+document.querySelectorAll('.hero h1 .l').forEach(function (l) { l.style.setProperty('--ancho', l.offsetWidth + 'px'); });
+
+function irA(el, alTerminar) {
+  var off = -(document.getElementById('top').offsetHeight + 12);
+  if (window.lenisInst) window.lenisInst.scrollTo(el, { offset: off, duration: 1.1, onComplete: alTerminar });
+  else { el.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); if (alTerminar) setTimeout(alTerminar, quieto ? 0 : 700); }
+}
+
+// Encabezado translúcido al bajar
+(function () {
+  var top = document.getElementById('top');
+  new IntersectionObserver(function (e) { top.classList.toggle('solido', !e[0].isIntersecting); }, { rootMargin: '-80px 0px 0px 0px', threshold: 0 })
+    .observe(document.querySelector('.hero .lema'));
+})();
+
+// Menú del celular
+(function () {
+  var b = document.getElementById('hamb'), m = document.getElementById('menu');
+  function cerrar() { m.classList.remove('abierto'); b.setAttribute('aria-expanded', 'false'); b.innerHTML = '<i class="ph ph-list"></i>'; b.setAttribute('aria-label', 'Abrir menú'); }
+  b.addEventListener('click', function () {
+    var ab = !m.classList.contains('abierto');
+    if (!ab) return cerrar();
+    m.classList.add('abierto'); b.setAttribute('aria-expanded', 'true'); b.innerHTML = '<i class="ph ph-x"></i>'; b.setAttribute('aria-label', 'Cerrar menú');
+  });
+  m.addEventListener('click', function (e) { if (e.target.closest('a')) cerrar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+})();
+
+// ---------- Turnos ----------
+(function () {
+  var DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  var DIAS_L = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var cont = document.getElementById('dias'), hoy = new Date();
+  for (var i = 0; i < 7; i++) {
+    var d = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + i);
+    var corto = i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : DIAS[d.getDay()];
+    var largo = (i === 0 ? 'hoy ' : i === 1 ? 'mañana ' : '') + DIAS_L[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+    var lab = document.createElement('label'); lab.className = 'chip';
+    lab.innerHTML = '<input type="radio" name="dia"><span><small></small><b></b></span>';
+    lab.querySelector('input').value = largo.charAt(0).toUpperCase() + largo.slice(1);
+    lab.querySelector('small').textContent = corto;
+    lab.querySelector('b').textContent = d.getDate();
+    cont.appendChild(lab);
+  }
+
+  var form = document.getElementById('form');
+  var guardado = {};
+  try { guardado = JSON.parse(localStorage.getItem('murillo-turno') || '{}'); } catch (e) {}
+  if (guardado.nombre) document.getElementById('nombre').value = guardado.nombre;
+
+  function val(n) { var x = form.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ''; }
+  function poner(id, texto, vacio) {
+    var dd = document.getElementById(id), nuevo = texto || vacio;
+    if (dd.textContent === nuevo) return;
+    dd.textContent = nuevo; dd.classList.toggle('vacio', !texto);
+    dd.classList.remove('cambio'); void dd.offsetWidth; dd.classList.add('cambio');
+  }
+  function pintar() {
+    poner('t-nombre', document.getElementById('nombre').value.trim(), 'Tu nombre');
+    poner('t-servicio', val('servicio'), 'Elegí uno');
+    poner('t-dia', val('dia'), 'Elegí el día');
+    poner('t-franja', val('franja'), 'Lo primero que haya');
+  }
+  form.addEventListener('input', function (e) {
+    pintar();
+    var c = e.target.closest('.campo'); if (c) c.classList.remove('mal');
+  });
+  pintar();
+
+  function aviso(t) { var a = document.getElementById('aviso'); a.textContent = t; a.classList.remove('ver'); void a.offsetWidth; a.classList.add('ver'); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = document.getElementById('nombre').value.trim(), primero = null;
+    [['c-servicio', !val('servicio')], ['c-dia', !val('dia')], ['c-nombre', !nombre]].forEach(function (p) {
+      var c = document.getElementById(p[0]); c.classList.toggle('mal', p[1]); if (p[1] && !primero) primero = c;
+    });
+    if (primero) {
+      irA(primero, function () { var f = primero.querySelector('input'); if (f) f.focus({ preventScroll: true }); });
+      return;
+    }
+    try { localStorage.setItem('murillo-turno', JSON.stringify({ nombre: nombre })); } catch (err) {}
+    var nota = document.getElementById('nota').value.trim();
+    var msj = 'Hola! Quiero sacar un turno en Murillo Navajas.\n' +
+      'Servicio: ' + val('servicio') + '\n' +
+      'Día: ' + val('dia') + '\n' +
+      'Horario: ' + val('franja') + '\n' +
+      'Nombre: ' + nombre + (nota ? '\nAclaración: ' + nota : '');
+    var abrir = function (copiado) {
+      window.open(IG_DM, '_blank', 'noopener');
+      aviso(copiado ? 'Listo, copiamos tu pedido. Pegalo en el chat de Instagram que se abrió y te confirmamos la hora.'
+                    : 'Se abrió el chat de Instagram. Contanos: ' + msj.replace(/\.?\n/g, '. '));
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msj).then(function () { abrir(true); }, function () { abrir(false); });
+    } else abrir(false);
+  });
+})();
+
+// ---------- Scroll suave: Lenis 1.3.26, lerp 0.09, autoRaf ----------
+(function () {
+  if (quieto) return;
+  var sc = document.createElement('script');
+  sc.src = 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js'; sc.async = true;
+  sc.onload = function () {
+    if (!window.Lenis) return;
+    var lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
+    window.lenisInst = lenis;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+      var id = a.getAttribute('href'); if (id.length < 2) return;
+      var el = document.getElementById(id.slice(1)); if (!el) return;
+      e.preventDefault();
+      history.pushState(null, '', id);
+      irA(el, function () { if (id === '#contenido') el.focus({ preventScroll: true }); });
+    });
+  };
+  document.head.appendChild(sc);
+})();
+</script>
+</body>
+</html>
