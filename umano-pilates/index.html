@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ÜMANO Pilates | Pilates en Palermo Hollywood</title>
+<meta name="description" content="Método Pilates con práctica basada en evidencia y ciencia. Reformer, Mat y Wunda Chair, grupales o individuales. Costa Rica 6043, Palermo Hollywood.">
+<!-- Propuesta de diseño: no indexar hasta que esté en su dominio -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#E3E3E0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="ÜMANO Pilates | Volvé a moverte sin dolor">
+<meta property="og:description" content="Pilates basado en evidencia en Palermo Hollywood. Reformer, Mat y Wunda Chair. Reservá tu primera clase por WhatsApp.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/umano-pilates/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/umano-pilates/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/estudio-luz.jpg">
+<script>
+  // Antes de pintar: si hay JS y no pidieron "reducir movimiento", la portada arranca cerrada para la animación del carro.
+  (function () {
+    var d = document.documentElement; d.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('anim');
+  })();
+</script>
+<style>
+/* Paleta sacada del estudio: hormigón del techo, acero negro de los ventanales y del logo, cuero de las correas del reformer.
+   Esquinas: 4px en todo (como el rectángulo del logo). Círculos solo para el logo del encabezado y el botón de WhatsApp. */
+:root{
+  --bg:#E3E3E0; --sup:#EDEDEB; --tinta:#17181A; --gris:#55585B; --linea:rgba(23,24,26,.14);
+  --cuero:#9A4A26; --cuero-suave:rgba(154,74,38,.12);
+  --barra:#17181A; --barra-txt:#F2F2F0;
+  --r:4px;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
+  --display:"Jost", "Futura", "Century Gothic", sans-serif;
+  --texto:"Hanken Grotesk", system-ui, sans-serif;
+  --wrap:1240px; --gut:clamp(16px, 4vw, 40px); --head:72px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#141517; --sup:#1C1D20; --tinta:#ECECE9; --gris:#A6A9AC; --linea:rgba(236,236,233,.14);
+    --cuero:#D98A5F; --cuero-suave:rgba(217,138,95,.14);
+    --barra:#ECECE9; --barra-txt:#141517;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--cuero);outline-offset:3px;border-radius:2px}
+section[id]{scroll-margin-top:calc(var(--head) + 8px)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.saltar{position:absolute;left:-999px;top:8px;z-index:100;background:var(--tinta);color:var(--bg);padding:10px 14px;border-radius:var(--r)}
+.saltar:focus{left:12px}
+.wa-ico{width:19px;height:19px;flex:none;fill:currentColor}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:var(--r);
+  font:600 16px/1 var(--texto);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
+  transition:transform .14s var(--ease-out), background-color .2s ease, color .2s ease, border-color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-tinta{background:var(--tinta);color:var(--bg)}
+.btn-linea{border-color:var(--linea);color:var(--tinta);background:transparent}
+@media (hover:hover) and (pointer:fine){
+  .btn-tinta:hover{background:var(--cuero);color:#fff}
+  .btn-linea:hover{border-color:var(--tinta)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;height:var(--head);transition:background-color .25s ease, box-shadow .25s ease}
+.top .wrap{height:100%;display:flex;align-items:center;gap:20px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca img{width:44px;height:44px;border-radius:50%;background:#fff;object-fit:cover;box-shadow:0 0 0 1px var(--linea)}
+.marca b{display:block;font:600 18px/1.1 var(--display);letter-spacing:-.01em}
+.marca span{display:block;font-size:13px;color:var(--gris);line-height:1.3;white-space:nowrap}
+.nav{margin-left:auto;display:flex;align-items:center;gap:28px}
+.nav a{font-weight:500;font-size:15px;text-decoration:none;color:var(--gris);transition:color .2s ease}
+.nav a:hover{color:var(--tinta)}
+.top .btn{height:44px;padding:0 18px;font-size:15px}
+.menu-btn{display:none}
+.top.pegado{background:color-mix(in srgb, var(--bg) 80%, transparent);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 var(--linea)}
+@media (max-width:920px){
+  :root{--head:64px}
+  .nav{display:none}
+  .top .btn-head{display:none}
+  .menu-btn{display:inline-flex;margin-left:auto;align-items:center;gap:10px;height:44px;padding:0 14px;border:1px solid var(--linea);border-radius:var(--r);
+    background:transparent;color:var(--tinta);font:600 15px/1 var(--texto);cursor:pointer}
+  .menu-btn i{position:relative;width:16px;height:10px;display:block}
+  .menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .2s var(--ease-out)}
+  .menu-btn i::before{top:1px}.menu-btn i::after{bottom:1px}
+  .top.abierto .menu-btn i::before{transform:translateY(3.5px) rotate(45deg)}
+  .top.abierto .menu-btn i::after{transform:translateY(-3.5px) rotate(-45deg)}
+  .top.abierto{background:var(--bg);box-shadow:0 1px 0 var(--linea)}
+  .panel{position:fixed;left:0;right:0;top:var(--head);background:var(--bg);box-shadow:0 1px 0 var(--linea), 0 30px 40px -30px rgba(0,0,0,.35);
+    padding:8px var(--gut) 24px;display:grid;gap:2px;transform-origin:top center;
+    opacity:0;transform:translateY(-8px);visibility:hidden;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s .2s}
+  .top.abierto .panel{opacity:1;transform:none;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+  .panel a{font:500 22px/1 var(--display);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--linea)}
+  .panel .btn{margin-top:16px;font-family:var(--texto);font-size:16px;padding:0 24px;border:0;height:52px}
+}
+@media (min-width:921px){.panel{display:none}}
+@media (max-width:420px){.marca > span > span{display:none}}
+
+/* ---------- portada: la barra del logo hace de carro del reformer ---------- */
+.hero{min-height:min(100svh, 960px);display:flex;align-items:center;padding:calc(var(--head) + 24px) 0 96px}
+.hero .wrap{width:100%;display:grid;grid-template-columns:minmax(0, 5fr) minmax(0, 7fr);gap:clamp(32px, 5vw, 72px);align-items:center}
+.hero-txt{padding-bottom:24px}
+.hero h1{font-size:clamp(2.7rem, 5.6vw, 4.9rem);line-height:1;font-weight:600;letter-spacing:-.03em}
+.hero .lead{margin-top:22px;font-size:clamp(17px, 1.4vw, 19px);color:var(--gris);max-width:30ch}
+.hero .ctas{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.escena{position:relative}
+.foto-hero{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/3.25;max-height:calc(100svh - var(--head) - 150px);width:100%;background:var(--sup)}
+.foto-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.carro{position:absolute;left:clamp(-44px, -3vw, -16px);bottom:-46px;z-index:2;will-change:transform}
+.carro .barra{display:block;background:var(--barra);color:var(--barra-txt);font:700 clamp(46px, 5.4vw, 78px)/1 var(--display);letter-spacing:.015em;
+  padding:.14em .28em .12em;border-radius:2px}
+.carro .sub{display:block;text-align:center;margin-top:10px;font:600 12px/1 var(--display);letter-spacing:.78em;text-indent:.78em;color:var(--tinta)}
+html.anim .foto-hero{clip-path:inset(0 100% 0 0)}
+html.anim .foto-hero img{transform:scale(1.06)}
+html.anim .hero h1,html.anim .hero .lead,html.anim .hero .ctas{opacity:0;transform:translateY(14px)}
+html.anim.listo .hero h1,html.anim.listo .hero .lead,html.anim.listo .hero .ctas{opacity:1;transform:none;transition:opacity .6s var(--ease-out), transform .6s var(--ease-out)}
+html.anim.listo .hero .lead{transition-delay:.08s}
+html.anim.listo .hero .ctas{transition-delay:.16s}
+@media (max-width:860px){
+  .hero{min-height:0;display:block;padding:calc(var(--head) + 8px) 0 72px}
+  .hero .wrap{grid-template-columns:1fr;gap:0}
+  .escena{order:-1;margin:0 calc(var(--gut) * -1)}
+  .foto-hero{border-radius:0;aspect-ratio:auto;max-height:none;height:min(40svh, 400px)}
+  .carro{left:var(--gut);bottom:-30px}
+  .carro .barra{font-size:44px}
+  .carro .sub{font-size:10px;margin-top:7px}
+  .hero-txt{padding:58px 0 0}
+  .hero h1{font-size:clamp(2.4rem, 10.5vw, 3.2rem)}
+  .hero .lead{margin-top:12px;max-width:34ch;font-size:16px}
+  .hero .ctas{margin-top:22px;display:grid;gap:10px}
+  .hero .ctas .btn{height:50px}
+}
+
+/* ---------- lo que los diferencia ---------- */
+.metodo{padding:clamp(72px, 10vw, 140px) 0}
+.metodo .wrap{display:grid;grid-template-columns:repeat(12, minmax(0, 1fr));grid-template-rows:auto 1fr;gap:clamp(20px, 3vw, 40px)}
+.metodo h2{grid-column:1 / span 7;font-size:clamp(2.2rem, 4.6vw, 4.1rem);line-height:1.04;font-weight:500;letter-spacing:-.025em}
+.metodo .txt{grid-column:1 / span 6;font-size:clamp(17px, 1.5vw, 20px);color:var(--gris);max-width:44ch;align-self:start}
+.metodo .f1{grid-column:9 / span 4;grid-row:1 / span 2;align-self:start;margin-top:8px}
+.metodo .f1 img,.metodo .f2 img{border-radius:var(--r);width:100%;object-fit:cover}
+.metodo .f1 img{aspect-ratio:3/4.2;object-position:50% 70%}
+.hombres{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12, minmax(0, 1fr));gap:inherit;align-items:end;margin-top:clamp(48px, 7vw, 96px);
+  padding-top:clamp(32px, 4vw, 48px);border-top:1px solid var(--linea)}
+.hombres .f2{grid-column:1 / span 4}
+.hombres .f2 img{aspect-ratio:3/3.8;object-position:50% 30%}
+.hombres div{grid-column:6 / span 6;padding-bottom:12px}
+.hombres h3{font-size:clamp(1.6rem, 3.4vw, 3rem);line-height:1.05;font-weight:500;letter-spacing:-.025em}
+.hombres p{margin-top:12px;color:var(--gris);max-width:46ch}
+.hombres a{display:inline-block;margin-top:16px;font-weight:600;color:var(--cuero);text-underline-offset:4px}
+@media (max-width:860px){
+  .metodo .wrap{grid-template-columns:1fr}
+  .metodo h2,.metodo .txt,.metodo .f1,.hombres,.hombres .f2,.hombres div{grid-column:1 / -1;grid-row:auto}
+  .metodo .f1{margin-top:8px}
+  .metodo .f1 img{aspect-ratio:4/4.4}
+  .hombres{grid-template-columns:120px 1fr;gap:18px;align-items:center}
+  .hombres .f2{grid-column:1}
+  .hombres div{grid-column:2}
+  .hombres p{display:none}
+}
+
+/* ---------- aparatos: las fotos corren sobre un riel como el carro ---------- */
+.aparatos{padding:clamp(72px, 10vw, 140px) 0;background:var(--sup)}
+.aparatos .wrap{display:grid;grid-template-columns:minmax(0, 5fr) minmax(0, 6fr);gap:clamp(32px, 6vw, 96px);align-items:center}
+.aparatos h2{font-size:clamp(2rem, 3.6vw, 3.1rem);line-height:1.05}
+.aparatos .intro{margin-top:14px;color:var(--gris);max-width:40ch}
+.tabs{margin-top:clamp(28px, 4vw, 44px);display:grid;border-top:1px solid var(--linea)}
+.tab{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;padding:18px 0;border-bottom:1px solid var(--linea);position:relative}
+.tab b{font:500 clamp(1.6rem, 2.6vw, 2.2rem)/1.1 var(--display);letter-spacing:-.02em;color:var(--gris);transition:color .2s ease}
+.tab .mk{width:28px;height:10px;border-radius:2px;background:var(--cuero);opacity:0;transform:translateX(-10px);transition:opacity .2s var(--ease-out), transform .25s var(--ease-out)}
+.tab[aria-selected="true"] b{color:var(--tinta)}
+.tab[aria-selected="true"] .mk{opacity:1;transform:none}
+.tab:focus-visible{outline:2px solid var(--cuero);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.tab:hover b{color:var(--tinta)}}
+.desc{margin-top:20px;min-height:5.2em;color:var(--gris);max-width:42ch}
+.desc p[hidden]{display:none}
+.riel{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/5;background:var(--bg)}
+.pista{display:flex;height:100%;transition:transform .62s var(--ease-in-out)}
+.pista figure{margin:0;flex:0 0 100%;height:100%}
+.pista img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){
+  .aparatos .wrap{grid-template-columns:1fr}
+  .riel{order:-1;aspect-ratio:4/4.3}
+  .aparatos .head{order:-2}
+  .tabs{grid-template-columns:repeat(3, auto);justify-content:start;gap:8px;border-top:0;margin-top:20px}
+  .tab{grid-template-columns:auto;padding:10px 14px;border:1px solid var(--linea);border-radius:var(--r)}
+  .tab b{font:600 15px/1 var(--texto);letter-spacing:0}
+  .tab .mk{display:none}
+  .tab[aria-selected="true"]{background:var(--tinta);border-color:var(--tinta)}
+  .tab[aria-selected="true"] b{color:var(--bg)}
+  .desc{margin-top:16px;min-height:0}
+}
+
+/* ---------- el estudio ---------- */
+.estudio{padding:clamp(72px, 10vw, 140px) 0 clamp(56px, 8vw, 110px)}
+.estudio h2{font-size:clamp(2rem, 3.6vw, 3.1rem);line-height:1.05;max-width:16ch}
+.galeria{margin-top:clamp(32px, 5vw, 56px);display:grid;grid-template-columns:5fr 4fr 3fr;gap:clamp(14px, 2vw, 24px);align-items:start}
+.galeria figure{margin:0}
+.galeria img{width:100%;object-fit:cover;border-radius:var(--r)}
+.galeria figcaption{margin-top:10px;font-size:14px;color:var(--gris)}
+.galeria .g1 img{aspect-ratio:3/4}
+.galeria .g2{margin-top:clamp(40px, 8vw, 120px)}
+.galeria .g2 img{aspect-ratio:9/14}
+.galeria .g3{margin-top:clamp(12px, 3vw, 40px)}
+.galeria .g3 img{aspect-ratio:9/15}
+@media (max-width:760px){
+  .galeria{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-left:calc(var(--gut) * -1);margin-right:calc(var(--gut) * -1);
+    padding:0 var(--gut) 6px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria figure{flex:0 0 74vw;scroll-snap-align:center;margin:0 !important}
+  .galeria img{aspect-ratio:3/4 !important}
+}
+
+/* ---------- armá tu plan ---------- */
+.plan{padding:clamp(72px, 10vw, 140px) 0;background:var(--sup)}
+.plan .wrap{display:grid;grid-template-columns:minmax(0, 5fr) minmax(0, 6fr);gap:clamp(32px, 6vw, 96px);align-items:start}
+.plan h2{font-size:clamp(2rem, 3.6vw, 3.1rem);line-height:1.05}
+.plan .intro{margin-top:14px;color:var(--gris);max-width:40ch}
+.vista{margin-top:clamp(28px, 4vw, 40px);border:1px solid var(--linea);border-radius:var(--r);padding:20px 22px;background:var(--bg)}
+.vista b{display:block;font-size:14px;font-weight:600;color:var(--gris);margin-bottom:8px}
+.vista p{font-size:16px;line-height:1.55;white-space:pre-line}
+.sticky{position:sticky;top:calc(var(--head) + 24px)}
+form{display:grid;gap:28px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend,.lbl{display:block;font-weight:600;font-size:15px;margin-bottom:10px;padding:0}
+.ops{display:flex;flex-wrap:wrap;gap:8px}
+.op{position:relative}
+.op input{position:absolute;opacity:0;pointer-events:none}
+.op span{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:10px 16px;border:1px solid var(--linea);border-radius:var(--r);
+  font-weight:500;font-size:15px;line-height:1.2;cursor:pointer;background:var(--bg);transition:border-color .15s ease, background-color .15s ease, color .15s ease}
+.op small{font-size:13px;color:var(--gris);font-weight:400}
+.op input:checked + span{border-color:var(--tinta);background:var(--tinta);color:var(--bg)}
+.op input:checked + span small{color:inherit;opacity:.75}
+.op input:focus-visible + span{outline:2px solid var(--cuero);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.op span:hover{border-color:var(--tinta)}}
+/* veces por semana = resortes enganchados */
+.resortes{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:8px}
+.resortes .op span{display:grid;justify-items:start;gap:10px;width:100%;padding:14px 16px}
+.coils{display:grid;gap:4px;height:38px;align-content:center}
+.coil{position:relative;display:block;width:50px;height:9px;margin:0 8px;border-radius:3px;transform-origin:left center;opacity:.5;
+  background:repeating-linear-gradient(90deg, currentColor 0 1.6px, transparent 1.6px 3.6px);
+  transition:transform .26s var(--ease-out), opacity .2s ease}
+.coil::before,.coil::after{content:"";position:absolute;top:50%;width:8px;height:1.6px;margin-top:-.8px;background:currentColor}
+.coil::before{left:-8px}.coil::after{right:-8px}
+.resortes .op input:checked + span .coil{opacity:1;transform:scaleX(1.2)}
+.resortes .op input:checked + span{background:var(--bg);color:var(--tinta);border-color:var(--cuero);box-shadow:inset 0 0 0 1px var(--cuero)}
+.resortes .op input:checked + span .coil{color:var(--cuero)}
+.campo input,.campo textarea{width:100%;font:inherit;font-size:16px;color:var(--tinta);background:var(--bg);border:1px solid var(--linea);border-radius:var(--r);
+  padding:13px 14px;transition:border-color .15s ease}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--tinta);box-shadow:0 0 0 3px var(--cuero-suave)}
+.campo textarea{min-height:92px;resize:vertical}
+.campo input,.campo textarea{scroll-margin-top:calc(var(--head) + 56px)}
+.campo .ayuda{margin-top:6px;font-size:13px;color:var(--gris)}
+.campo .error{margin-top:6px;font-size:14px;color:var(--cuero);font-weight:600;display:none}
+.campo.mal input{border-color:var(--cuero)}
+.campo.mal .error{display:block}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form .btn{width:100%;height:56px;font-size:17px}
+.nota{font-size:14px;color:var(--gris);text-align:center;margin-top:-14px}
+@media (max-width:860px){
+  .plan .wrap{grid-template-columns:1fr}
+  .sticky{position:static}
+  .vista{display:none}
+  .dos{grid-template-columns:1fr}
+}
+
+/* ---------- horarios y cómo llegar ---------- */
+.donde{padding:clamp(72px, 10vw, 140px) 0 clamp(80px, 10vw, 140px)}
+.donde .wrap{display:grid;grid-template-columns:minmax(0, 5fr) minmax(0, 6fr);gap:clamp(32px, 6vw, 96px);align-items:start}
+.donde h2{font-size:clamp(2rem, 3.6vw, 3.1rem);line-height:1.05}
+.estado{margin-top:14px;display:flex;align-items:center;gap:10px;font-weight:600;min-height:1.6em}
+.estado i{width:9px;height:9px;border-radius:50%;background:var(--gris);flex:none}
+.estado.si i{background:#2F8F5B;box-shadow:0 0 0 4px rgba(47,143,91,.16)}
+.semana{margin-top:clamp(24px, 3vw, 36px);display:grid;gap:4px}
+.dia{display:grid;grid-template-columns:92px 1fr 92px;align-items:center;gap:14px;padding:9px 0;font-size:15px}
+.dia > span:first-child{font-weight:600}
+.dia .t{position:relative;height:10px}
+.dia .t i{position:absolute;top:0;bottom:0;border-radius:2px;background:var(--tinta);opacity:.82}
+.dia .h{text-align:right;color:var(--gris);font-variant-numeric:tabular-nums}
+.dia.hoy{color:var(--cuero)}
+.dia.hoy .t i{background:var(--cuero);opacity:1}
+.dia.hoy .h{color:var(--cuero);font-weight:600}
+.eje{display:grid;grid-template-columns:92px 1fr 92px;gap:14px;font-size:12px;color:var(--gris);padding-top:6px;border-top:1px solid var(--linea)}
+.eje div{display:flex;justify-content:space-between}
+.mapa{border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;background:var(--sup);border:1px solid var(--linea)}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+.dir{margin-top:20px;display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}
+.dir img{width:120px;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r)}
+.dir h3{font-size:1.5rem;line-height:1.15;font-weight:500}
+.dir p{color:var(--gris);margin-top:6px}
+.dir .acc{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+.dir .acc .btn{height:46px;padding:0 18px;font-size:15px}
+.google{display:inline-flex;align-items:baseline;gap:8px;margin-top:10px;font-size:15px;text-decoration:none;color:var(--tinta)}
+.google b{font:600 20px/1 var(--display)}
+.google span{color:var(--gris);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:860px){
+  .donde .wrap{grid-template-columns:1fr}
+  .dia,.eje{grid-template-columns:76px 1fr 80px;gap:10px}
+  .dir{grid-template-columns:96px 1fr;gap:16px}
+  .dir img{width:96px}
+}
+
+/* ---------- cierre y pie ---------- */
+.cierre{padding:clamp(64px, 9vw, 120px) 0;border-top:1px solid var(--linea)}
+.cierre .wrap{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:28px}
+.cierre h2{font-size:clamp(2.2rem, 5vw, 4.2rem);line-height:1;letter-spacing:-.03em;max-width:14ch}
+.cierre .ctas{display:flex;flex-wrap:wrap;gap:12px}
+footer{padding:28px 0 calc(110px + env(safe-area-inset-bottom));font-size:14px;color:var(--gris);border-top:1px solid var(--linea)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+footer a{color:var(--tinta);font-weight:600;text-underline-offset:3px}
+
+/* ---------- botón de WhatsApp: solo el ícono, con vida (estándar ZEK) ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.2s both}
+.wa svg{width:34px;height:34px;fill:currentColor;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 3.2s infinite}
+.wa::after{animation-delay:3.6s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:#17181A;font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(20,22,26,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:#55585B}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}}
+
+/* ---------- Lenis ---------- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .wa{animation:subir-suave .4s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .pista{transition:opacity .2s ease}
+  .coil,.tab .mk{transition:opacity .2s ease}
+  .resortes .op input:checked + span .coil{transform:none}
+}
+@keyframes subir-suave{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol></svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="ÜMANO Pilates, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="44" height="44">
+      <span><b>ÜMANO Pilates</b><span>Pilates en Palermo Hollywood</span></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#metodo">Método</a>
+      <a href="#aparatos">Aparatos</a>
+      <a href="#estudio">El estudio</a>
+      <a href="#horarios">Horarios</a>
+    </nav>
+    <a class="btn btn-tinta btn-head" href="https://wa.me/5491127414034?text=Hola%20%C3%9CMANO!%20Quer%C3%ADa%20hacer%20una%20consulta." target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="panel">Menú <i aria-hidden="true"></i></button>
+  </div>
+  <div class="panel" id="panel">
+    <a href="#metodo">Método</a>
+    <a href="#aparatos">Aparatos</a>
+    <a href="#estudio">El estudio</a>
+    <a href="#horarios">Horarios</a>
+    <a class="btn btn-tinta" href="https://wa.me/5491127414034?text=Hola%20%C3%9CMANO!%20Quer%C3%ADa%20hacer%20una%20consulta." target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Escribinos
+    </a>
+  </div>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-txt">
+        <h1>Volvé a moverte sin dolor.</h1>
+        <p class="lead">Método Pilates con práctica basada en evidencia. Reformer, Mat y Wunda Chair, en grupo o individual.</p>
+        <div class="ctas">
+          <a class="btn btn-tinta" href="#plan">Reservá tu clase</a>
+          <a class="btn btn-linea" href="#aparatos">Conocé los aparatos</a>
+        </div>
+      </div>
+      <div class="escena">
+        <div class="foto-hero" id="fotoHero">
+          <img src="img/estudio-luz.jpg" alt="La sala de ÜMANO con los reformers y luz natural entrando por el ventanal" width="1600" height="1200" fetchpriority="high">
+        </div>
+        <div class="carro" id="carro" aria-hidden="true">
+          <span class="barra">ÜMANO</span>
+          <span class="sub">PILATES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metodo" id="metodo">
+    <div class="wrap">
+      <h2>Tu cuerpo no está roto. Está esperando que lo escuches.</h2>
+      <p class="txt">En ÜMANO trabajamos el Método Pilates con una práctica basada en evidencia y ciencia, para que vuelvas a moverte con fuerza, con control y sin dolor.</p>
+      <figure class="f1" style="margin:0">
+        <img src="img/wunda-chair.jpg" alt="Alumna estirando la espalda en la Wunda Chair, con el cartel de ÜMANO iluminado atrás" width="787" height="1400" loading="lazy">
+      </figure>
+      <div class="hombres">
+        <figure class="f2" style="margin:0">
+          <img src="img/reformer-de-pie.jpg" alt="Alumno trabajando de pie sobre el reformer" width="731" height="1300" loading="lazy">
+        </figure>
+        <div>
+          <h3>Cada vez más hombres eligen Pilates. Y no es casualidad.</h3>
+          <p>En sus redes lo muestran con ejemplos: ejercicios, errores comunes y testimonios de alumnos.</p>
+          <a href="https://www.instagram.com/umanopilates/" target="_blank" rel="noopener">Mirá cómo entrenan en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aparatos" id="aparatos">
+    <div class="wrap">
+      <div class="head">
+        <h2>Reformer, Mat y Wunda Chair</h2>
+        <p class="intro">Tres formas de trabajar el mismo método. Si no sabés con cuál empezar, te recomendamos uno.</p>
+        <div class="tabs" role="tablist" aria-label="Aparatos">
+          <button class="tab" role="tab" id="t0" aria-selected="true" aria-controls="riel" data-i="0"><b>Reformer</b><span class="mk" aria-hidden="true"></span></button>
+          <button class="tab" role="tab" id="t1" aria-selected="false" aria-controls="riel" data-i="1" tabindex="-1"><b>Mat</b><span class="mk" aria-hidden="true"></span></button>
+          <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="riel" data-i="2" tabindex="-1"><b>Wunda Chair</b><span class="mk" aria-hidden="true"></span></button>
+        </div>
+        <div class="desc" aria-live="polite">
+          <p data-d="0">Una camilla con carro móvil, correas y resortes. La resistencia se ajusta a tu cuerpo y a tu momento.</p>
+          <p data-d="1" hidden>En colchoneta, con el peso de tu propio cuerpo. Es la base de todo el método.</p>
+          <p data-d="2" hidden>Una silla con pedal y resortes. Pide fuerza, equilibrio y control en muy poco espacio.</p>
+        </div>
+      </div>
+      <div class="riel" id="riel" role="tabpanel" aria-labelledby="t0">
+        <div class="pista" id="pista">
+          <figure><img src="img/reformer.jpg" alt="Alumna en el reformer con la caja, sosteniendo las correas de cuero" width="787" height="1400" loading="lazy"></figure>
+          <figure><img src="img/mat.jpg" alt="Ejercicio de abdominales sobre colchoneta" width="1400" height="928" loading="lazy" style="object-position:38% 50%"></figure>
+          <figure><img src="img/wunda-chair.jpg" alt="Alumna trabajando en la Wunda Chair" width="787" height="1400" loading="lazy" style="object-position:50% 62%"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="estudio" id="estudio">
+    <div class="wrap">
+      <h2>Un estudio con luz natural en Palermo Hollywood</h2>
+      <div class="galeria">
+        <figure class="g1"><img src="img/estudio-sala.jpg" alt="La sala con los reformers en fila y el espejo" width="1050" height="1400" loading="lazy"><figcaption>La sala de reformers</figcaption></figure>
+        <figure class="g2"><img src="img/clase-grupal.jpg" alt="Clase grupal en los reformers frente al ventanal" width="720" height="1280" loading="lazy"><figcaption>Clase grupal frente al ventanal</figcaption></figure>
+        <figure class="g3"><img src="img/ventanal.jpg" alt="El ventanal de ÜMANO a la calle, con canteros y flores" width="675" height="1200" loading="lazy"><figcaption>El ventanal a la calle</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="plan" id="plan">
+    <div class="wrap">
+      <div class="sticky">
+        <h2>Armá tu plan y reservá tu primera clase</h2>
+        <p class="intro">Elegí cómo querés entrenar y mandanos el pedido por WhatsApp. Te respondemos con los horarios libres y los valores.</p>
+        <div class="vista" aria-hidden="true"><b>Tu mensaje</b><p id="vista"></p></div>
+      </div>
+      <form id="form" novalidate>
+        <fieldset>
+          <legend>¿Cómo querés entrenar?</legend>
+          <div class="ops">
+            <label class="op"><input type="radio" name="modo" value="grupal" checked><span>Grupal</span></label>
+            <label class="op"><input type="radio" name="modo" value="individual"><span>Individual</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>¿Con qué aparato?</legend>
+          <div class="ops">
+            <label class="op"><input type="radio" name="aparato" value="Reformer" checked><span>Reformer</span></label>
+            <label class="op"><input type="radio" name="aparato" value="Mat"><span>Mat</span></label>
+            <label class="op"><input type="radio" name="aparato" value="Wunda Chair"><span>Wunda Chair</span></label>
+            <label class="op"><input type="radio" name="aparato" value="recomendar"><span>Que me recomienden</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>¿Cuántas veces por semana?</legend>
+          <div class="ops resortes">
+            <label class="op"><input type="radio" name="veces" value="1"><span><i class="coils" aria-hidden="true"><i class="coil"></i></i>1 vez</span></label>
+            <label class="op"><input type="radio" name="veces" value="2" checked><span><i class="coils" aria-hidden="true"><i class="coil"></i><i class="coil"></i></i>2 veces</span></label>
+            <label class="op"><input type="radio" name="veces" value="3"><span><i class="coils" aria-hidden="true"><i class="coil"></i><i class="coil"></i><i class="coil"></i></i>3 veces</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>¿Qué franja te queda mejor?</legend>
+          <div class="ops">
+            <label class="op"><input type="radio" name="franja" value="a la mañana" checked><span>Mañana <small>8 a 12 h</small></span></label>
+            <label class="op"><input type="radio" name="franja" value="al mediodía"><span>Mediodía <small>12 a 16 h</small></span></label>
+            <label class="op"><input type="radio" name="franja" value="a la tarde"><span>Tarde <small>16 a 20 h</small></span></label>
+            <label class="op"><input type="radio" name="franja" value="los sábados a la mañana"><span>Sábado <small>8 a 12 h</small></span></label>
+          </div>
+        </fieldset>
+        <div class="dos">
+          <div class="campo" id="campoNombre">
+            <label class="lbl" for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" autocomplete="given-name" required aria-describedby="errNombre">
+            <p class="error" id="errNombre">Escribí tu nombre para que sepamos a quién responder.</p>
+          </div>
+          <div class="campo">
+            <label class="lbl" for="nivel">¿Hiciste Pilates antes?</label>
+            <input id="nivel" name="nivel" placeholder="Ej.: nunca, o un año de reformer">
+          </div>
+        </div>
+        <div class="campo">
+          <label class="lbl" for="nota">¿Algo que tengamos que saber?</label>
+          <textarea id="nota" name="nota" placeholder="Una lesión, un dolor, algo que te recomendó tu médico o kinesiólogo"></textarea>
+          <p class="ayuda">Opcional. Nos ayuda a preparar tu primera clase.</p>
+        </div>
+        <button class="btn btn-tinta" type="submit"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Enviar pedido por WhatsApp</button>
+        <p class="nota">Se abre WhatsApp con el mensaje listo. No se envía nada hasta que lo mandes vos.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="donde" id="horarios">
+    <div class="wrap">
+      <div>
+        <h2>Horarios y cómo llegar</h2>
+        <p class="estado" id="estado"><i aria-hidden="true"></i><span>De lunes a viernes de 8 a 20 h, sábados de 8 a 12 h.</span></p>
+        <div class="semana" id="semana">
+          <div class="dia" data-d="1"><span>Lunes</span><span class="t"><i style="left:0;right:0"></i></span><span class="h">8 a 20 h</span></div>
+          <div class="dia" data-d="2"><span>Martes</span><span class="t"><i style="left:0;right:0"></i></span><span class="h">8 a 20 h</span></div>
+          <div class="dia" data-d="3"><span>Miércoles</span><span class="t"><i style="left:0;right:0"></i></span><span class="h">8 a 20 h</span></div>
+          <div class="dia" data-d="4"><span>Jueves</span><span class="t"><i style="left:0;right:0"></i></span><span class="h">8 a 20 h</span></div>
+          <div class="dia" data-d="5"><span>Viernes</span><span class="t"><i style="left:0;right:0"></i></span><span class="h">8 a 20 h</span></div>
+          <div class="dia" data-d="6"><span>Sábado</span><span class="t"><i style="left:0;right:66.67%"></i></span><span class="h">8 a 12 h</span></div>
+          <div class="dia" data-d="0"><span>Domingo</span><span class="t"></span><span class="h">Cerrado</span></div>
+          <div class="eje" aria-hidden="true"><span></span><div><span>8</span><span>12</span><span>16</span><span>20</span></div><span></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="mapa">
+          <iframe title="Mapa: ÜMANO Pilates, Costa Rica 6043" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Pilates%20UMANO%2C%20Costa%20Rica%206043%2C%20Buenos%20Aires&z=16&output=embed"></iframe>
+        </div>
+        <div class="dir">
+          <img src="img/fachada.jpg" alt="La vereda de ÜMANO con el toldo y el cartel" width="361" height="640" loading="lazy">
+          <div>
+            <h3>Costa Rica 6043</h3>
+            <p>Palermo Hollywood, CABA</p>
+            <a class="google" href="https://www.google.com/maps/place/?q=place_id:ChIJR7oG_oe1vJURpTHKYCNYMNI" target="_blank" rel="noopener"><b>5,0</b><span>en Google, 78 reseñas</span></a>
+            <div class="acc">
+              <a class="btn btn-linea" href="https://www.google.com/maps/dir/?api=1&destination=Pilates%20UMANO%2C%20Costa%20Rica%206043%2C%20Buenos%20Aires&destination_place_id=ChIJR7oG_oe1vJURpTHKYCNYMNI" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Tu primera clase empieza con un mensaje.</h2>
+      <div class="ctas">
+        <a class="btn btn-tinta" href="#plan">Reservá tu clase</a>
+        <a class="btn btn-linea" href="https://www.instagram.com/umanopilates/" target="_blank" rel="noopener">@umanopilates</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ÜMANO Pilates. Costa Rica 6043, Palermo Hollywood. WhatsApp 11 2741-4034.</span>
+    <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5491127414034?text=Hola%20%C3%9CMANO!%20Quer%C3%ADa%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 11 2741-4034">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>11 2741-4034</small></span>
+</a>
+
+<script>
+(function () {
+  var WA = '5491127414034';
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+
+  // ---------- encabezado: translúcido al bajar (sin escuchar el scroll) ----------
+  var top = document.getElementById('top');
+  var centinela = document.createElement('div');
+  centinela.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none';
+  document.body.prepend(centinela);
+  new IntersectionObserver(function (e) { top.classList.toggle('pegado', !e[0].isIntersecting); }).observe(centinela);
+
+  // ---------- menú del celular ----------
+  var btn = document.getElementById('menuBtn'), panel = document.getElementById('panel');
+  function menu(abrir) {
+    top.classList.toggle('abierto', abrir);
+    btn.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+    if (window.lenisInst) { if (abrir) window.lenisInst.stop(); else window.lenisInst.start(); }
+  }
+  btn.addEventListener('click', function () { menu(btn.getAttribute('aria-expanded') !== 'true'); });
+  panel.addEventListener('click', function (e) { if (e.target.closest('a')) menu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && top.classList.contains('abierto')) { menu(false); btn.focus(); } });
+
+  // ---------- portada: el carro sale, destapa la foto y vuelve con el resorte ----------
+  // Curva de resorte amortiguado (ζ 0.62): un pequeño rebote al volver, como el carro cuando lo sueltan.
+  function resorte(z, w) {
+    var pts = [], wd = w * Math.sqrt(1 - z * z);
+    for (var i = 0; i <= 40; i++) {
+      var t = i / 40;
+      var x = 1 - Math.exp(-z * w * t) * (Math.cos(wd * t) + (z * w / wd) * Math.sin(wd * t));
+      pts.push(+x.toFixed(4));
+    }
+    pts[40] = 1;
+    return 'linear(' + pts.join(', ') + ')';
+  }
+  function portada() {
+    var foto = document.getElementById('fotoHero'), img = foto.querySelector('img'), carro = document.getElementById('carro');
+    if (!root.classList.contains('anim')) return;
+    var W = foto.offsetWidth, bw = carro.offsetWidth, left = carro.offsetLeft; // left es negativo en compu
+    var viaje = Math.max(0, W - bw - left);
+    var abierto0 = Math.max(0, W - (bw + left));
+    var salida = 'cubic-bezier(0.32, 0.72, 0, 1)';
+    var vuelta = (window.CSS && CSS.supports && CSS.supports('animation-timing-function', 'linear(0, 1)')) ? resorte(0.62, 14) : 'cubic-bezier(0.34, 1.3, 0.64, 1)';
+    foto.style.clipPath = 'inset(0 ' + abierto0 + 'px 0 0)';
+    var a1 = carro.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(' + viaje + 'px)' }], { duration: 950, delay: 250, easing: salida, fill: 'forwards' });
+    foto.animate([{ clipPath: 'inset(0 ' + abierto0 + 'px 0 0)' }, { clipPath: 'inset(0 0px 0 0)' }], { duration: 950, delay: 250, easing: salida, fill: 'forwards' });
+    img.animate([{ transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 1900, delay: 250, easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'forwards' });
+    a1.finished.then(function () {
+      var a2 = carro.animate([{ transform: 'translateX(' + viaje + 'px)' }, { transform: 'translateX(0)' }], { duration: 1100, delay: 120, easing: vuelta, fill: 'forwards' });
+      setTimeout(function () { root.classList.add('listo'); }, 380);
+      a2.finished.then(function () {
+        // dejar todo en su estado final sin animaciones colgadas (por si cambia el tamaño de la ventana)
+        foto.style.clipPath = 'none'; img.style.transform = 'none';
+        root.classList.remove('anim');
+        foto.getAnimations().concat(img.getAnimations(), carro.getAnimations()).forEach(function (a) { a.cancel(); });
+      });
+    });
+  }
+  if (root.classList.contains('anim')) {
+    var heroImg = document.querySelector('#fotoHero img');
+    var arrancar = function () { requestAnimationFrame(portada); };
+    if (heroImg.complete) arrancar(); else { heroImg.addEventListener('load', arrancar); heroImg.addEventListener('error', arrancar); }
+    setTimeout(function () { if (root.classList.contains('anim') && !root.classList.contains('listo')) root.classList.add('listo'); }, 3500);
+  }
+
+  // ---------- aparatos: pestañas que corren la pista ----------
+  var tabs = [].slice.call(document.querySelectorAll('.tab')), pista = document.getElementById('pista'), riel = document.getElementById('riel');
+  var descs = [].slice.call(document.querySelectorAll('.desc p'));
+  function elegir(i, foco) {
+    tabs.forEach(function (t, k) { t.setAttribute('aria-selected', k === i ? 'true' : 'false'); t.tabIndex = k === i ? 0 : -1; });
+    descs.forEach(function (p, k) { p.hidden = k !== i; });
+    riel.setAttribute('aria-labelledby', 't' + i);
+    if (quieto) { pista.style.opacity = '0'; setTimeout(function () { pista.style.transform = 'translateX(' + (-100 * i) + '%)'; pista.style.opacity = '1'; }, 120); }
+    else pista.style.transform = 'translateX(' + (-100 * i) + '%)';
+    if (foco) tabs[i].focus();
+  }
+  tabs.forEach(function (t, k) {
+    t.addEventListener('click', function () { elegir(k); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); elegir((k + 1) % tabs.length, true); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); elegir((k + tabs.length - 1) % tabs.length, true); }
+    });
+  });
+  // en el celu también se puede deslizar la foto
+  var x0 = null;
+  riel.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  riel.addEventListener('touchend', function (e) {
+    if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) < 40) return;
+    var i = tabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    elegir(Math.max(0, Math.min(tabs.length - 1, i + (dx < 0 ? 1 : -1))));
+  });
+
+  // ---------- armá tu plan: arma el mensaje de WhatsApp ----------
+  var form = document.getElementById('form'), vista = document.getElementById('vista');
+  function val(n) { var el = form.querySelector('[name="' + n + '"]:checked') || form.elements[n]; return el ? (el.value || '').trim() : ''; }
+  function mensaje() {
+    var nombre = val('nombre'), aparato = val('aparato'), veces = val('veces'), modo = val('modo');
+    var l = ['Hola ÜMANO!' + (nombre ? ' Soy ' + nombre + '.' : '')];
+    var que = aparato === 'recomendar' ? 'Pilates (me gustaría que me recomienden el aparato)' : aparato;
+    l.push('Quiero reservar una primera clase de ' + que + ', ' + (modo === 'individual' ? 'individual' : 'grupal') + '.');
+    l.push('La idea es venir ' + (veces === '1' ? '1 vez' : veces + ' veces') + ' por semana, ' + val('franja') + '.');
+    if (val('nivel')) l.push('Experiencia con Pilates: ' + val('nivel') + '.');
+    if (val('nota')) l.push('Para tener en cuenta: ' + val('nota'));
+    l.push('¿Qué horarios tienen libres y cuáles son los valores?');
+    return l.join('\n');
+  }
+  function refrescar() { vista.textContent = mensaje(); }
+  form.addEventListener('input', refrescar); form.addEventListener('change', refrescar); refrescar();
+  var campoNombre = document.getElementById('campoNombre'), nombre = document.getElementById('nombre');
+  nombre.addEventListener('input', function () { if (nombre.value.trim()) { campoNombre.classList.remove('mal'); nombre.removeAttribute('aria-invalid'); } });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!nombre.value.trim()) { campoNombre.classList.add('mal'); nombre.setAttribute('aria-invalid', 'true'); nombre.focus(); return; }
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(mensaje()), '_blank', 'noopener');
+  });
+
+  // ---------- horarios: resalta hoy y dice si está abierto (hora de Buenos Aires) ----------
+  try {
+    var partes = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Argentina/Buenos_Aires', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+    var p = {}; partes.forEach(function (x) { p[x.type] = x.value; });
+    var d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday), h = (+p.hour % 24) + (+p.minute) / 60;
+    var fila = document.querySelector('.dia[data-d="' + d + '"]'); if (fila) fila.classList.add('hoy');
+    var cierra = d >= 1 && d <= 5 ? 20 : d === 6 ? 12 : 0;
+    var est = document.getElementById('estado'), txt = est.querySelector('span');
+    if (cierra && h >= 8 && h < cierra) { est.classList.add('si'); txt.textContent = 'Abierto ahora, hasta las ' + cierra + ' h.'; }
+    else {
+      var abre = h < 8 && d !== 0 ? 'hoy' : d === 5 ? 'el sábado' : d === 6 ? 'el lunes' : 'mañana';
+      txt.textContent = 'Ahora está cerrado. Abre ' + abre + ' a las 8 h.';
+    }
+  } catch (err) {}
+
+  // ---------- scroll suave: Lenis 1.3.26, lerp 0.09, autoRaf ----------
+  if (!quieto) {
+    var sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js'; sc.async = true;
+    sc.onload = function () {
+      if (!window.Lenis) return;
+      var lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
+      window.lenisInst = lenis;
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+        var id = a.getAttribute('href'); if (id.length < 2) return;
+        var el = document.getElementById(id.slice(1)); if (!el) return;
+        e.preventDefault();
+        var head = parseInt(getComputedStyle(root).getPropertyValue('--head')) || 72;
+        lenis.scrollTo(el, { offset: id === '#inicio' ? -999 : -(head + 8), duration: 1.1 });
+        history.pushState(null, '', id);
+      });
+    };
+    document.head.appendChild(sc);
+  }
+})();
+</script>
+</body>
+</html>
