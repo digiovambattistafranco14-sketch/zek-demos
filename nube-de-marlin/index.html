@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nube de Marlin | Decoración con globos y arriendo de candy bar</title>
+<meta name="description" content="Decoración con globos para baby shower, cumpleaños y quince años. Arriendo de candy bar. Elige tus ambientaciones y pide tu cotización.">
+<link rel="icon" href="img/perfil.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nube de Marlin | Decoración con globos">
+<meta property="og:description" content="Baby shower, cumpleaños y quince años. Arriendo de candy bar. Elige tus ambientaciones y pide tu cotización.">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/nube-de-marlin/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/nube-de-marlin/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F1EFF8">
+<link rel="preload" as="image" href="img/foto-10.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fredoka:wght@500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* Concepto: sus montajes. Cada foto va en un panel con forma de arco, como los que arma Nube de Marlin, y en la portada
+   la guirnalda de globos se infla alrededor del arco (el único momento fuerte). El nombre va en letra script, como los
+   nombres que ponen sobre los arcos ("Máximo", "Oh Baby"). Cómo cotizar son tres globos atados.
+   Colores: los del logo (lila, menta, durazno, perla y dorado) sobre un cielo lavanda; la ciruela es el único color de acción.
+   Formas: arco en fotos, píldora en botones y chips, 16px en paneles. */
+:root{
+  color-scheme:light;
+  --cielo:#F1EFF8;
+  --nube:#FBFAFE;
+  --bruma:#E4E0F0;
+  --tinta:#2E2A3D;
+  --suave:#605A71;
+  --linea:#D6D0E6;
+  --ciruela:#5B4590;      /* único color de acción */
+  --ciruela-honda:#4A3778;
+  --oro:#B8913A;
+  --rosa:#F2B5C5; --celeste:#AFCBEA; --menta:#BFE3D2; --durazno:#F6CDAE; --lila:#CDBDEB; --perla:#F4F1EC;
+  --err:#A3261C;
+  --display:'Fredoka', 'Figtree', system-ui, sans-serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --script:'Great Vibes', cursive;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --globo:cubic-bezier(0.34, 1.4, 0.64, 1);
+  --arco:50% 50% 16px 16px / 40% 40% 16px 16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--cielo);color:var(--tinta);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p{margin:0}
+h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ciruela);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+section[id]{scroll-margin-top:84px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.saltar{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ciruela);color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:600}
+.saltar:focus{top:12px}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font:600 16.5px/1 var(--body);text-decoration:none;white-space:nowrap;
+  transition:background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .14s var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn .ico{width:21px;height:21px;flex:none}
+.btn-ciruela{background:var(--ciruela);color:#fff;box-shadow:0 10px 24px -12px rgba(74,55,120,.8)}
+.btn-linea{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(46,42,61,.28)}
+@media (hover:hover) and (pointer:fine){
+  .btn-ciruela:hover{background:var(--ciruela-honda)}
+  .btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--ciruela);color:var(--ciruela)}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;transition:background-color .25s ease, box-shadow .25s ease}
+.top.solido{background:rgba(241,239,248,.82);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);box-shadow:0 1px 0 rgba(46,42,61,.08)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:72px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.marca img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff, 0 4px 12px -4px rgba(46,42,61,.35)}
+.marca span{display:flex;flex-direction:column;font-family:var(--display);font-weight:600;font-size:18px;line-height:1.1;white-space:nowrap}
+.marca small{font-family:var(--body);font-weight:500;font-size:13px;color:var(--suave)}
+.menu{display:flex;align-items:center;gap:4px}
+.menu a{text-decoration:none;font-weight:500;font-size:15.5px;padding:10px 14px;border-radius:999px;transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.menu a:not(.btn):hover{background:rgba(91,69,144,.08)}}
+.menu .btn{min-height:44px;padding:0 20px;font-size:15px;margin-left:8px}
+.menu .btn .ico{width:19px;height:19px}
+.menu-btn{display:none;width:46px;height:46px;border:0;border-radius:50%;background:var(--nube);cursor:pointer;place-items:center;box-shadow:0 2px 8px -3px rgba(46,42,61,.3)}
+.menu-btn svg{width:22px;height:22px}
+.menu-btn .x{display:none}
+.menu-btn[aria-expanded="true"] .x{display:block}
+.menu-btn[aria-expanded="true"] .h{display:none}
+@media (max-width:860px){
+  .menu-btn{display:grid}
+  .menu{position:absolute;top:calc(100% + 6px);left:16px;right:16px;flex-direction:column;align-items:stretch;gap:2px;padding:10px;background:var(--nube);border-radius:16px;
+    box-shadow:0 24px 50px -20px rgba(46,42,61,.45);opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top right;visibility:hidden;
+    transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s}
+  .menu.open{opacity:1;transform:none;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s}
+  .menu a{padding:14px 14px;font-size:17px}
+  .menu .btn{margin:6px 0 0;min-height:52px}
+}
+
+/* ---------- portada: el arco y su guirnalda ---------- */
+.hero{position:relative;padding:112px 0 72px;overflow:hidden;overflow:clip}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px;min-height:min(640px, calc(100dvh - 140px))}
+.hero-txt > *{animation:subir .7s var(--ease-out) both}
+.hero-txt > :nth-child(2){animation-delay:.08s}
+.hero-txt > :nth-child(3){animation-delay:.16s}
+.hero-txt > :nth-child(4){animation-delay:.24s}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.nombre{font-family:var(--script);font-weight:400;font-size:clamp(64px, 8.4vw, 118px);line-height:1.08;color:var(--ciruela);padding-bottom:.06em;margin-left:-.04em}
+.lema{font-family:var(--display);font-weight:500;font-size:clamp(26px, 2.7vw, 36px);line-height:1.18;margin-top:10px;max-width:19ch;text-wrap:balance}
+.bajada{margin-top:16px;font-size:18px;color:var(--suave);max-width:40ch}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+.escena{position:relative;justify-self:center;width:clamp(260px, 30vw, 380px);margin:40px 9% 0 12%}
+.arco{position:relative;aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;background:var(--bruma);
+  box-shadow:0 0 0 10px var(--nube), 0 40px 70px -30px rgba(46,42,61,.55);animation:panel .8s var(--ease-out) .1s both}
+.arco img{width:100%;height:100%;object-fit:cover}
+@keyframes panel{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.base{position:absolute;left:50%;bottom:-26px;width:118%;height:26px;translate:-50% 0;border-radius:50%;background:radial-gradient(closest-side, rgba(46,42,61,.22), transparent);z-index:-1}
+
+.guirnalda{position:absolute;inset:0;pointer-events:none}
+.g{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);width:calc(var(--s) * 1%);aspect-ratio:1/1.08;translate:-50% -50%;border-radius:50%;
+  background:
+    radial-gradient(circle at 33% 27%, rgba(255,255,255,.85) 0 7%, rgba(255,255,255,0) 27%),
+    radial-gradient(circle at 62% 72%, rgba(46,42,61,.16), rgba(46,42,61,0) 58%),
+    var(--c);
+  box-shadow:inset -3px -5px 10px rgba(46,42,61,.10), 0 8px 14px -8px rgba(46,42,61,.4);
+  animation:inflar .6s var(--globo) calc(.55s + var(--i) * 45ms) both}
+.g.oro{--c:linear-gradient(140deg, #F1DB9A 0%, #C9A24A 46%, #9C7A2E 100%)}
+.g.perla{--c:linear-gradient(140deg, #FFFFFF 0%, #EDE6DD 60%, #D9CFC3 100%)}
+@keyframes inflar{from{opacity:0;scale:.35}to{opacity:1;scale:1}}
+
+@media (max-width:860px){
+  .hero{padding:96px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:20px;min-height:0}
+  .nombre{font-size:clamp(60px, 17vw, 84px)}
+  .lema{font-size:clamp(24px, 6.6vw, 30px)}
+  .bajada{font-size:17px}
+  .acciones{margin-top:24px}
+  .acciones .btn{flex:1 1 auto}
+  .escena{width:min(62vw, 300px);margin:48px auto 10px}
+}
+
+/* ---------- catálogo ---------- */
+.catalogo{padding:72px 0 96px;background:var(--nube)}
+.cab h2{font-size:clamp(34px, 4vw, 48px);line-height:1.05}
+.cab p{margin-top:10px;color:var(--suave);max-width:52ch}
+.chips{display:flex;gap:8px;margin:28px 0 30px;overflow-x:auto;scrollbar-width:none;padding:4px;margin-inline:-4px;scroll-snap-type:x proximity}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;scroll-snap-align:start;min-height:44px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;background:var(--cielo);color:var(--tinta);font-weight:600;font-size:15px;
+  display:inline-flex;align-items:center;gap:8px;transition:background-color .18s ease, color .18s ease, transform .12s var(--ease-out)}
+.chip small{font-weight:500;font-size:13px;color:var(--suave);font-variant-numeric:tabular-nums;transition:color .18s ease}
+.chip:active{transform:scale(.97)}
+.chip[aria-pressed="true"]{background:var(--tinta);color:#fff}
+.chip[aria-pressed="true"] small{color:rgba(255,255,255,.72)}
+@media (hover:hover) and (pointer:fine){.chip[aria-pressed="false"]:hover{background:var(--bruma)}}
+
+.grilla{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:44px 32px}
+.prod{display:flex;flex-direction:column;min-width:0}
+.prod[hidden]{display:none}
+.prod .foto{aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;background:var(--bruma);box-shadow:0 0 0 7px var(--cielo)}
+.prod .foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.prod:hover .foto img{transform:scale(1.035)}}
+.prod .cat{margin-top:20px;font-size:14px;font-weight:600;color:var(--ciruela)}
+.prod h3{font-size:23px;line-height:1.15;margin-top:4px}
+.prod .desc{font-size:15.5px;line-height:1.5;color:var(--suave);margin-top:8px}
+.prod .pie{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.precio{font-size:14.5px;font-weight:600;color:var(--suave)}
+.medida .foto{display:grid;place-items:center;background:var(--lila)}
+.racimo{position:relative;width:62%;aspect-ratio:1}
+.racimo .g{animation:none}
+
+/* agregar / cantidad */
+.add{position:relative;height:46px;min-width:150px}
+.agregar,.cant{position:absolute;inset:0;border-radius:999px;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out), visibility 0s}
+.agregar{display:flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;background:var(--ciruela);color:#fff;font-weight:600;font-size:15.5px;
+  box-shadow:0 8px 18px -10px rgba(74,55,120,.9)}
+.agregar svg{width:18px;height:18px}
+.agregar:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.agregar:hover{background:var(--ciruela-honda)}}
+.cant{display:flex;align-items:center;justify-content:space-between;background:var(--cielo);box-shadow:inset 0 0 0 1.5px var(--linea)}
+.cant button{width:46px;height:46px;border:0;border-radius:50%;background:none;cursor:pointer;display:grid;place-items:center;color:var(--ciruela);transition:background-color .15s ease, transform .12s var(--ease-out)}
+.cant button:active{transform:scale(.9)}
+.cant button:disabled{color:#A59FB4;cursor:default}
+@media (hover:hover) and (pointer:fine){.cant button:not(:disabled):hover{background:rgba(91,69,144,.1)}}
+.cant svg{width:18px;height:18px}
+.cant output{font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+.add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar{opacity:0;transform:scale(.96);visibility:hidden;pointer-events:none;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out), visibility 0s linear .18s}
+
+@media (max-width:980px){.grilla{grid-template-columns:repeat(2, minmax(0, 1fr));gap:40px 22px}}
+@media (max-width:560px){
+  .catalogo{padding:56px 0 72px}
+  .grilla{gap:34px 14px}
+  .prod .foto{box-shadow:0 0 0 5px var(--cielo)}
+  .prod .cat{margin-top:14px;font-size:13px}
+  .prod h3{font-size:19px}
+  .prod .desc{font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .prod .pie{flex-direction:column;align-items:stretch;gap:8px;padding-top:12px}
+  .precio{font-size:13.5px}
+  .add{min-width:0;height:44px}
+  .cant button{width:42px;height:44px}
+  .agregar{font-size:15px}
+}
+
+/* ---------- candy bar ---------- */
+.candy{padding:96px 0}
+.candy .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.mesa{position:relative;justify-self:center;width:min(100%, 420px)}
+.mesa .foto{aspect-ratio:1;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(46,42,61,.5)}
+.mesa .foto img{width:100%;height:100%;object-fit:cover}
+.mesa::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border-radius:16px;background:var(--menta);z-index:-1}
+.candy h2{font-size:clamp(34px, 4vw, 48px);line-height:1.05}
+.candy .txt > p{margin-top:14px;color:var(--suave);max-width:46ch;font-size:18px}
+.incluye{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.incluye li{padding:10px 16px;border-radius:999px;background:var(--nube);font-weight:500;font-size:15.5px;box-shadow:inset 0 0 0 1.5px var(--linea)}
+.candy .add{width:240px;margin-top:30px}
+@media (max-width:860px){
+  .candy{padding:72px 0}
+  .candy .wrap{grid-template-columns:1fr;gap:44px}
+  .mesa{width:min(100% - 14px, 420px);margin-left:14px}
+  .candy .add{width:100%;max-width:340px}
+}
+
+/* ---------- cómo cotizar: tres globos atados ---------- */
+.pasos{padding:96px 0 104px;background:var(--nube)}
+.pasos .cab{text-align:center}
+.pasos .cab p{margin-inline:auto}
+.atados{list-style:none;margin:56px auto 0;padding:0;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:32px;max-width:980px}
+.atados li{display:flex;flex-direction:column;align-items:center;text-align:center}
+.atados li:nth-child(2){margin-top:44px}
+.atados li:nth-child(3){margin-top:14px}
+.paso-globo{position:relative;width:96px;height:104px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:34px;color:var(--tinta);
+  background:radial-gradient(circle at 33% 27%, rgba(255,255,255,.85) 0 7%, rgba(255,255,255,0) 27%), radial-gradient(circle at 62% 72%, rgba(46,42,61,.14), rgba(46,42,61,0) 58%), var(--c);
+  box-shadow:inset -4px -6px 12px rgba(46,42,61,.1), 0 14px 22px -12px rgba(46,42,61,.45)}
+.paso-globo::after{content:"";position:absolute;left:50%;bottom:-8px;width:12px;height:10px;translate:-50% 0;background:var(--c);clip-path:polygon(50% 0, 100% 100%, 0 100%);filter:brightness(.93)}
+.hilo{width:2px;height:54px;margin:8px 0 18px;background:linear-gradient(var(--linea), rgba(214,208,230,0))}
+.atados h3{font-size:24px;line-height:1.15}
+.atados p{margin-top:8px;color:var(--suave);max-width:28ch}
+.pago{margin:56px auto 0;max-width:620px;display:flex;align-items:center;gap:16px;padding:18px 22px;border-radius:16px;background:var(--cielo)}
+.pago svg{width:30px;height:30px;flex:none;color:var(--ciruela)}
+.pago p{font-size:16px}
+.pago b{font-weight:600}
+@media (max-width:760px){
+  .pasos{padding:72px 0 80px}
+  .atados{grid-template-columns:1fr;gap:36px;margin-top:40px}
+  .atados li:nth-child(n){margin-top:0}
+  .hilo{height:30px;margin:6px 0 12px}
+  .pago{align-items:flex-start}
+}
+
+/* ---------- cierre ---------- */
+.cierre{padding:96px 0 104px;text-align:center}
+.cierre h2{font-family:var(--script);font-weight:400;font-size:clamp(56px, 7vw, 92px);line-height:1.1;color:var(--ciruela);letter-spacing:0}
+.cierre p{margin:10px auto 0;color:var(--suave);font-size:18px;max-width:40ch}
+.cierre .acciones{justify-content:center}
+
+footer{padding:34px 0 130px;color:var(--suave);font-size:14.5px;box-shadow:0 -1px 0 var(--linea)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+footer a{color:var(--tinta);font-weight:600}
+
+/* ---------- botón flotante de contacto: solo el ícono ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,30,90,.25), 0 16px 34px -10px rgba(120,30,90,.55);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s var(--globo) 2.4s both}
+.wa svg{width:32px;height:32px;position:relative;z-index:1}
+.wa .i-wa{display:none;fill:currentColor;width:34px;height:34px}
+.con-wa .wa{background:#25D366;box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6)}
+.con-wa .wa .i-wa{display:block}.con-wa .wa .i-ig{display:none}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;
+  animation:wa-onda 5s var(--ease-out) 3.4s infinite}
+.con-wa .wa::before,.con-wa .wa::after{background:#25D366}
+.wa::after{animation-delay:3.8s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:var(--nube);color:var(--tinta);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(46,42,61,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:var(--nube);transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:400;font-size:13px;color:var(--suave)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:29px;height:29px}}
+
+/* ---------- botón de la cotización: flotante en compu, barra abajo en el celular ---------- */
+.badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--ciruela);color:#fff;
+  font:700 12.5px/22px var(--body);text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--cielo)}
+.cart-fab{position:fixed;right:calc(max(20px, env(safe-area-inset-right)) + 6px);bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:52px;height:52px;border:0;border-radius:50%;cursor:pointer;background:var(--tinta);color:#fff;display:grid;place-items:center;
+  box-shadow:0 3px 6px rgba(46,42,61,.2), 0 14px 30px -10px rgba(46,42,61,.6);
+  opacity:0;transform:translateY(10px) scale(.92);visibility:hidden;pointer-events:none;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s linear .22s, background-color .2s ease}
+.cart-fab.on{opacity:1;transform:none;visibility:visible;pointer-events:auto;
+  transition:opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility 0s, background-color .2s ease}
+.cart-fab svg{width:25px;height:25px}
+.cart-fab:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.cart-fab:hover{background:var(--ciruela)}}
+.cart-bar{display:none}
+@media (max-width:640px){
+  .cart-fab{display:none}
+  .cart-bar{display:flex;position:fixed;left:16px;right:calc(max(20px, env(safe-area-inset-right)) + 70px);bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+    height:58px;align-items:center;gap:10px;padding:0 12px 0 18px;border:0;border-radius:999px;cursor:pointer;background:var(--tinta);color:#fff;font:600 16px/1 var(--body);
+    box-shadow:0 3px 6px rgba(46,42,61,.2), 0 16px 34px -10px rgba(46,42,61,.6);
+    transform:translateY(calc(100% + 32px));visibility:hidden;transition:transform .26s var(--ease-out), visibility 0s linear .26s}
+  .cart-bar.on{transform:none;visibility:visible;transition:transform .26s var(--ease-out), visibility 0s}
+  .cart-bar:active{transform:scale(.98)}
+  .cart-bar svg{width:23px;height:23px;flex:none}
+  .cart-bar .badge{position:static;margin-left:auto;min-width:34px;height:34px;padding:0 10px;font-size:15px;line-height:34px;background:#fff;color:var(--tinta);box-shadow:none}
+}
+
+/* ---------- el panel de la cotización: de costado en compu, hoja desde abajo en el celular ---------- */
+html.carrito-abierto{overflow:hidden}
+.carrito{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;overflow:hidden;color:var(--tinta)}
+.carrito::backdrop{background:transparent}
+.velo{position:absolute;inset:0;background:rgba(46,42,61,.45);opacity:0;transition:opacity .24s ease}
+.cajon{position:absolute;top:0;right:0;bottom:0;width:min(460px, 100%);display:flex;flex-direction:column;background:var(--cielo);border-radius:22px 0 0 22px;
+  box-shadow:-30px 0 60px -30px rgba(46,42,61,.5);transform:translateX(100%);transition:transform .3s var(--ease-drawer)}
+.carrito.open .velo{opacity:1}
+.carrito.open .cajon{transform:none}
+.cajon-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 14px 24px}
+.cajon-cab h2{font-size:30px;line-height:1.05}
+.cajon-sub{margin-top:6px;font-size:14px;color:var(--suave)}
+.cerrar{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--bruma);display:grid;place-items:center;cursor:pointer;transition:background-color .15s ease, transform .12s var(--ease-out)}
+.cerrar svg{width:20px;height:20px}
+.cerrar:active{transform:scale(.92)}
+@media (hover:hover) and (pointer:fine){.cerrar:hover{background:var(--linea)}}
+.cajon-cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 24px 24px}
+.cajon-pie{padding:14px 20px max(16px, env(safe-area-inset-bottom)) 24px;background:var(--cielo);box-shadow:0 -1px 0 rgba(46,42,61,.12)}
+@media (max-width:640px){
+  .cajon{top:auto;left:0;width:100%;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);border-radius:22px 22px 0 0;
+    box-shadow:0 -30px 60px -30px rgba(46,42,61,.5);transform:translateY(100%)}
+  .cajon-cab{padding:20px 16px 12px 20px}
+  .cajon-cuerpo{padding:4px 16px 20px 20px}
+  .cajon-pie{padding-left:20px;padding-right:16px}
+}
+.vacio{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 0 8px}
+.vacio h3{font-size:24px;line-height:1.15}
+.vacio p{color:var(--suave);max-width:34ch}
+.vacio .btn{margin-top:10px}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--nube);border-radius:16px;padding:10px;
+  box-shadow:0 1px 2px rgba(46,42,61,.08);transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.item.sale{opacity:0;transform:translateX(16px)}
+.item .th{width:56px;height:56px;border-radius:50% 50% 8px 8px / 40% 40% 8px 8px;object-fit:cover;background:var(--bruma)}
+.item .th-globo{width:56px;height:56px;border-radius:50% 50% 8px 8px / 40% 40% 8px 8px;background:var(--lila);display:grid;place-items:center}
+.item .th-globo i{width:26px;height:28px;border-radius:50%;background:radial-gradient(circle at 33% 27%, rgba(255,255,255,.85) 0 8%, rgba(255,255,255,0) 30%), var(--durazno)}
+.item-txt{min-width:0}
+.item-txt b{display:block;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.2}
+.item-txt small{display:block;font-size:13px;color:var(--suave)}
+.quitar{margin-top:2px;min-height:30px;padding:0;border:0;background:none;color:var(--suave);font:400 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (hover:hover) and (pointer:fine){.quitar:hover{color:var(--tinta)}}
+.item .cant{position:static;height:40px;background:var(--cielo);box-shadow:none}
+.item .cant button{width:40px;height:40px}
+.item .cant output{font-size:16px;min-width:14px;text-align:center}
+.vaciar{display:block;margin:12px 0 0 auto;min-height:32px;padding:0;border:0;background:none;color:var(--suave);font:400 14px/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.datos{display:grid;gap:18px;margin-top:22px;padding-top:22px;box-shadow:0 -1px 0 rgba(46,42,61,.14)}
+.datos > h3{font-size:22px;line-height:1.1}
+.datos .f > label{display:block;font-weight:600;font-size:14.5px;margin-bottom:8px}
+.opc{font-weight:400;color:var(--suave)}
+.f{display:flex;flex-direction:column;min-width:0}
+.datos input,.datos textarea{min-height:48px;border-radius:12px;border:1.5px solid rgba(46,42,61,.24);background:var(--nube);padding:0 14px;
+  font:inherit;font-size:16px;color:var(--tinta);width:100%;transition:border-color .15s ease, box-shadow .15s ease}
+.datos textarea{padding:12px 14px;min-height:88px;resize:vertical;line-height:1.45}
+.datos input::placeholder,.datos textarea::placeholder{color:#78728A}
+.datos input:focus,.datos textarea:focus{outline:none;border-color:var(--ciruela);box-shadow:0 0 0 3px rgba(91,69,144,.2)}
+.f.error input{border-color:var(--err);box-shadow:0 0 0 3px rgba(163,38,28,.13)}
+.err{color:var(--err);font-size:13.5px;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.prev{background:var(--nube);border-radius:14px;padding:4px 16px}
+.prev summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:14.5px;color:var(--ciruela)}
+.prev p{white-space:pre-line;font-size:14.5px;line-height:1.5;padding:2px 0 14px}
+.enviar{width:100%;height:56px;font-size:17px;background:var(--ciruela);color:#fff;box-shadow:0 10px 24px -12px rgba(74,55,120,.8)}
+.con-wa .enviar{background:#25D366;color:#073B2A;box-shadow:0 10px 24px -12px rgba(7,94,84,.7)}
+@media (hover:hover) and (pointer:fine){.enviar:hover{background:var(--ciruela-honda)}.con-wa .enviar:hover{background:#1EBE5A}}
+.nota{margin-top:8px;font-size:13.5px;color:var(--suave);text-align:center}
+.aviso{font-size:14.5px;color:var(--ciruela);font-weight:600;text-align:center}
+.aviso:not(:empty){margin-top:8px}
+.aviso.mal{color:var(--err)}
+
+/* ---------- menos movimiento: la guirnalda ya está inflada ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .hero-txt > *,.arco,.wa{animation:aparecer .4s ease both}
+  .g{animation:aparecer .4s ease .2s both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .prod .foto img{transition:none}
+  .prod:hover .foto img{transform:none}
+  .cajon{transform:none !important;opacity:0;transition:opacity .18s ease}
+  .carrito.open .cajon{opacity:1}
+  .add[data-n="0"] .cant,.add:not([data-n="0"]) .agregar,.cart-fab,.item.sale,.menu{transform:none}
+  .cart-bar{transform:none;opacity:0;transition:opacity .2s ease, visibility 0s linear .2s}
+  .cart-bar.on{opacity:1;transition:opacity .2s ease, visibility 0s}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+
+/* Lenis */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+</style>
+</head>
+<body>
+<a class="saltar" href="#ambientaciones">Ir a las ambientaciones</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 01-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884 2.640 0 5.122 1.030 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.450-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.050 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.480-8.413z"/></symbol>
+  <symbol id="mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="menos" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="cruz" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="hamb" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="portapapeles" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M9 3.5h6v3H9zM8.5 11h7M8.5 14.5h7M8.5 18h4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="tarjeta" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M2.5 9.5h19M6 15h4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Nube de Marlin, ir al inicio">
+      <img src="img/perfil.jpg" alt="" width="46" height="46">
+      <span>Nube de Marlin<small>Decoración con globos</small></span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Secciones">
+      <a href="#ambientaciones">Ambientaciones</a>
+      <a href="#candy-bar">Candy bar</a>
+      <a href="#cotizar">Cómo cotizar</a>
+      <a class="btn btn-ciruela" data-contacto href="https://ig.me/m/nubedemarlin_deco" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escríbenos</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+      <svg class="h" aria-hidden="true"><use href="#hamb"/></svg><svg class="x" aria-hidden="true"><use href="#cruz"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-txt">
+      <h1 class="nombre">Nube de Marlin</h1>
+      <p class="lema">Decoración con globos para todo tipo de celebración</p>
+      <p class="bajada">Baby shower, cumpleaños y quince años. También arriendo de candy bar.</p>
+      <div class="acciones">
+        <a class="btn btn-ciruela" href="#ambientaciones">Ver ambientaciones</a>
+        <a class="btn btn-linea" data-contacto href="https://ig.me/m/nubedemarlin_deco" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escríbenos</a>
+      </div>
+    </div>
+
+    <div class="escena">
+      <div class="arco"><img src="img/foto-10.jpg" alt="Arco de globos celestes y tierra con el nombre Máximo, globos aerostáticos, un oso gigante y el número 2 con luces" width="640" height="640" fetchpriority="high"></div>
+      <span class="base" aria-hidden="true"></span>
+      <div class="guirnalda" aria-hidden="true">
+        <i class="g" style="--x:-10;--y:96;--s:24;--c:var(--rosa);--i:0"></i>
+        <i class="g perla" style="--x:4;--y:101;--s:14;--i:1"></i>
+        <i class="g" style="--x:-17;--y:84;--s:17;--c:var(--lila);--i:2"></i>
+        <i class="g" style="--x:-5;--y:80;--s:12;--c:var(--menta);--i:3"></i>
+        <i class="g" style="--x:-15;--y:70;--s:21;--c:var(--celeste);--i:4"></i>
+        <i class="g oro" style="--x:-4;--y:62;--s:11;--i:5"></i>
+        <i class="g" style="--x:-14;--y:54;--s:15;--c:var(--durazno);--i:6"></i>
+        <i class="g" style="--x:-9;--y:43;--s:19;--c:var(--rosa);--i:7"></i>
+        <i class="g perla" style="--x:-16;--y:34;--s:12;--i:8"></i>
+        <i class="g" style="--x:-6;--y:27;--s:17;--c:var(--lila);--i:9"></i>
+        <i class="g" style="--x:2;--y:15;--s:20;--c:var(--menta);--i:10"></i>
+        <i class="g oro" style="--x:-4;--y:6;--s:12;--i:11"></i>
+        <i class="g" style="--x:12;--y:3;--s:16;--c:var(--celeste);--i:12"></i>
+        <i class="g" style="--x:22;--y:-6;--s:19;--c:var(--rosa);--i:13"></i>
+        <i class="g perla" style="--x:32;--y:-2;--s:11;--i:14"></i>
+        <i class="g" style="--x:40;--y:-9;--s:15;--c:var(--durazno);--i:15"></i>
+        <i class="g" style="--x:51;--y:-5;--s:12;--c:var(--lila);--i:16"></i>
+        <i class="g oro" style="--x:60;--y:-11;--s:16;--i:17"></i>
+        <i class="g" style="--x:70;--y:-5;--s:13;--c:var(--menta);--i:18"></i>
+        <i class="g" style="--x:80;--y:-8;--s:18;--c:var(--celeste);--i:19"></i>
+        <i class="g" style="--x:91;--y:1;--s:14;--c:var(--rosa);--i:20"></i>
+        <i class="g perla" style="--x:100;--y:9;--s:17;--i:21"></i>
+        <i class="g" style="--x:107;--y:19;--s:12;--c:var(--lila);--i:22"></i>
+        <i class="g" style="--x:103;--y:27;--s:9;--c:var(--durazno);--i:23"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalogo" id="ambientaciones" aria-labelledby="t-amb">
+  <div class="wrap">
+    <div class="cab">
+      <h2 id="t-amb">Ambientaciones</h2>
+      <p>Agrega las que te gusten y pide tu cotización. Cada montaje se arma con tus colores, tu temática y el nombre de quien celebra.</p>
+    </div>
+
+    <div class="chips" role="group" aria-label="Filtrar por categoría">
+      <button class="chip" type="button" data-filtro="todas" aria-pressed="true">Todas <small>9</small></button>
+      <button class="chip" type="button" data-filtro="baby" aria-pressed="false">Baby shower <small>2</small></button>
+      <button class="chip" type="button" data-filtro="cumple" aria-pressed="false">Cumpleaños <small>3</small></button>
+      <button class="chip" type="button" data-filtro="numeros" aria-pressed="false">Números luminosos <small>1</small></button>
+      <button class="chip" type="button" data-filtro="candy" aria-pressed="false">Candy bar <small>1</small></button>
+      <button class="chip" type="button" data-filtro="carteles" aria-pressed="false">Carteles <small>1</small></button>
+    </div>
+
+    <ul class="grilla" id="grilla">
+      <li class="prod" data-item="oh-baby" data-cat="baby">
+        <div class="foto"><img src="img/foto-07.jpg" alt="Panel redondo celeste con guirnalda de globos rosa, celeste y dorado y cartel de luz Oh Baby" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Baby shower</p>
+        <h3>Oh Baby rosa y celeste</h3>
+        <p class="desc">Panel redondo, guirnalda de globos rosa, celeste y dorado, cartel de luz Oh Baby y cilindros a juego.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="oh-baby"></div></div>
+      </li>
+      <li class="prod" data-item="osito-luna" data-cat="baby">
+        <div class="foto"><img src="img/foto-11.jpg" alt="Paneles en arco con una luna y un osito, guirnalda de globos tierra y celeste y cubos con la palabra BABY" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Baby shower</p>
+        <h3>Osito y luna</h3>
+        <p class="desc">Paneles en arco con luna y osito, guirnalda en tonos tierra y celeste, cilindros y cubos BABY.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="osito-luna"></div></div>
+      </li>
+      <li class="prod" data-item="globos-aerostaticos" data-cat="cumple">
+        <div class="foto"><img src="img/foto-10.jpg" alt="Arco con el nombre Máximo, globos aerostáticos, oso gigante y número 2 con luces" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Cumpleaños</p>
+        <h3>Globos aerostáticos</h3>
+        <p class="desc">Arco con el nombre, nubes y globos aerostáticos, oso gigante, número luminoso y cilindros.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="globos-aerostaticos"></div></div>
+      </li>
+      <li class="prod" data-item="minnie" data-cat="cumple">
+        <div class="foto"><img src="img/foto-05.jpg" alt="Ambientación de Minnie con panel redondo, cilindros temáticos y escalera roja con letras" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Cumpleaños</p>
+        <h3>Minnie</h3>
+        <p class="desc">Panel redondo de Minnie, cilindros a juego, escalera con letras y alfombra.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="minnie"></div></div>
+      </li>
+      <li class="prod" data-item="trono-rosa" data-cat="cumple">
+        <div class="foto"><img src="img/foto-06.jpg" alt="Sillón trono blanco, pared de lentejuelas, columnas de globos rosa, perla y dorado y número 5" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Cumpleaños</p>
+        <h3>Trono rosa y dorado</h3>
+        <p class="desc">Sillón trono, pared de lentejuelas, columnas de globos rosa, perla y dorado, y número gigante.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="trono-rosa"></div></div>
+      </li>
+      <li class="prod" data-item="numeros" data-cat="numeros">
+        <div class="foto"><img src="img/foto-04.jpg" alt="Número 15 gigante con luces encendidas" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Números luminosos</p>
+        <h3>Números con luces</h3>
+        <p class="desc">Números gigantes iluminados para quince años y cumpleaños. Suman a cualquier ambientación.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="numeros"></div></div>
+      </li>
+      <li class="prod" data-item="candy-bar" data-cat="candy">
+        <div class="foto"><img src="img/foto-12.jpg" alt="Mesa con bases de madera, tortera dorada y bandejas doradas para candy bar" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Candy bar</p>
+        <h3>Candy bar en arriendo</h3>
+        <p class="desc">Bases de madera, tortera y bandejas doradas para armar tu mesa dulce.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="candy-bar"></div></div>
+      </li>
+      <li class="prod" data-item="cartel" data-cat="carteles">
+        <div class="foto"><img src="img/foto-08.jpg" alt="Cartel de bienvenida con el nombre Vannesa, en atril con rosas rojas y pampas" width="640" height="640" loading="lazy"></div>
+        <p class="cat">Carteles</p>
+        <h3>Cartel de bienvenida</h3>
+        <p class="desc">Con el nombre de quien celebra, en atril y con arreglo de flores.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="cartel"></div></div>
+      </li>
+      <li class="prod medida" data-item="a-medida" data-cat="medida">
+        <div class="foto">
+          <div class="racimo" aria-hidden="true">
+            <i class="g" style="--x:34;--y:40;--s:46;--c:var(--rosa)"></i>
+            <i class="g perla" style="--x:66;--y:36;--s:38"></i>
+            <i class="g" style="--x:50;--y:64;--s:42;--c:var(--menta)"></i>
+            <i class="g oro" style="--x:24;--y:70;--s:24"></i>
+            <i class="g" style="--x:76;--y:66;--s:28;--c:var(--durazno)"></i>
+          </div>
+        </div>
+        <p class="cat">Tu idea</p>
+        <h3>Ambientación a tu medida</h3>
+        <p class="desc">Cuéntanos la temática, los colores y el nombre, y te cotizamos el montaje.</p>
+        <div class="pie"><span class="precio">Precio a cotizar</span><div class="add" data-item="a-medida"></div></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="candy" id="candy-bar" aria-labelledby="t-candy">
+  <div class="wrap">
+    <div class="mesa"><div class="foto"><img src="img/foto-12.jpg" alt="Bases de madera escalonadas, tortera dorada, bandejas doradas y flores sobre una mesa" width="640" height="640" loading="lazy"></div></div>
+    <div class="txt">
+      <h2 id="t-candy">Arriendo de candy bar</h2>
+      <p>Arrienda las piezas para tu mesa dulce y combínalas con la decoración de globos.</p>
+      <ul class="incluye" aria-label="Piezas del candy bar">
+        <li>Bases de madera</li>
+        <li>Tortera dorada</li>
+        <li>Bandejas doradas</li>
+      </ul>
+      <div class="add" data-item="candy-bar"></div>
+    </div>
+  </div>
+</section>
+
+<section class="pasos" id="cotizar" aria-labelledby="t-cot">
+  <div class="wrap">
+    <div class="cab">
+      <h2 id="t-cot">Cómo cotizar</h2>
+      <p>Arma tu lista acá y te respondemos por mensaje.</p>
+    </div>
+    <ol class="atados">
+      <li><span class="paso-globo" style="--c:var(--rosa)">1</span><span class="hilo" aria-hidden="true"></span><h3>Elige</h3><p>Agrega las ambientaciones que te gusten, o una a tu medida.</p></li>
+      <li><span class="paso-globo" style="--c:var(--menta)">2</span><span class="hilo" aria-hidden="true"></span><h3>Cuéntanos de tu evento</h3><p>Tu nombre, tu teléfono, la fecha y la comuna.</p></li>
+      <li><span class="paso-globo" style="--c:var(--lila)">3</span><span class="hilo" aria-hidden="true"></span><h3>Recibe tu cotización</h3><p>Te respondemos por mensaje para coordinar.</p></li>
+    </ol>
+    <div class="pago">
+      <svg aria-hidden="true"><use href="#tarjeta"/></svg>
+      <p><b>Aceptamos tarjetas de débito y crédito.</b> También puedes pagar con Mercado Pago.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cierre" aria-labelledby="t-cierre">
+  <div class="wrap">
+    <h2 id="t-cierre">¿Qué celebramos?</h2>
+    <p>Cuéntanos la fecha y la idea, y armamos la decoración contigo.</p>
+    <div class="acciones">
+      <a class="btn btn-ciruela" data-contacto href="https://ig.me/m/nubedemarlin_deco" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg>Escríbenos</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Nube de Marlin. Decoraciones con globos y eventos especiales. <a href="https://instagram.com/nubedemarlin_deco" target="_blank" rel="noopener">@nubedemarlin_deco</a></p>
+    <p>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="wa" data-contacto href="https://ig.me/m/nubedemarlin_deco" target="_blank" rel="noopener" aria-label="Escríbenos por mensaje directo de Instagram" id="flotante">
+  <svg class="i-ig" aria-hidden="true"><use href="#ig"/></svg>
+  <svg class="i-wa" aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escríbenos<small id="tipSub">@nubedemarlin_deco, por mensaje directo</small></span>
+</a>
+
+<button class="cart-fab" type="button" id="cartFab" data-abrir-carrito aria-label="Ver tu cotización">
+  <svg aria-hidden="true"><use href="#portapapeles"/></svg><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<button class="cart-bar" type="button" id="cartBar" data-abrir-carrito aria-label="Ver cotización">
+  <svg aria-hidden="true"><use href="#portapapeles"/></svg><span>Ver cotización</span><span class="badge" data-total aria-hidden="true">0</span>
+</button>
+<p class="sr" id="anuncio" aria-live="polite"></p>
+
+<dialog class="carrito" id="carrito" aria-labelledby="carritoTit">
+  <div class="velo" data-cerrar aria-hidden="true"></div>
+  <div class="cajon">
+    <div class="cajon-cab">
+      <div><h2 id="carritoTit">Tu cotización</h2><p class="cajon-sub" id="carritoSub">Nube de Marlin</p></div>
+      <button type="button" class="cerrar" id="cerrarCarrito" data-cerrar aria-label="Cerrar tu cotización"><svg aria-hidden="true"><use href="#cruz"/></svg></button>
+    </div>
+    <div class="cajon-cuerpo" id="cajonCuerpo" data-lenis-prevent>
+      <div class="vacio" id="vacio">
+        <h3>Todavía no elegiste ninguna ambientación.</h3>
+        <p>Mira el catálogo y toca Agregar en las que te gusten.</p>
+        <a class="btn btn-ciruela" href="#ambientaciones" data-ir="ambientaciones">Ver ambientaciones</a>
+      </div>
+      <div id="lleno" hidden>
+        <ul class="lista" id="lista" aria-label="Lo que elegiste"></ul>
+        <button type="button" class="vaciar" id="vaciar">Vaciar cotización</button>
+        <form class="datos" id="datos" novalidate>
+          <h3>Tus datos</h3>
+          <div class="f"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="err-nombre"><small class="err" id="err-nombre"></small></div>
+          <div class="f"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 9 1234 5678" required aria-describedby="err-tel"><small class="err" id="err-tel"></small></div>
+          <div class="f"><label for="fecha">Fecha del evento <span class="opc">(opcional)</span></label><input id="fecha" name="fecha" type="text" placeholder="Ej: sábado 6 de diciembre"></div>
+          <div class="f"><label for="comuna">Comuna o lugar del evento <span class="opc">(opcional)</span></label><input id="comuna" name="comuna" type="text" autocomplete="address-level2"></div>
+          <div class="f"><label for="aclar">Temática, colores y nombre <span class="opc">(opcional)</span></label><textarea id="aclar" name="aclar" placeholder="Ej: baby shower en rosa y celeste, para Emilia"></textarea></div>
+          <details class="prev" id="prev"><summary>Ver cómo llega el mensaje</summary><p id="msgPrev"></p></details>
+        </form>
+      </div>
+    </div>
+    <div class="cajon-pie" id="cajonPie" hidden>
+      <button class="btn enviar" type="submit" form="datos" id="enviar"><svg class="ico" aria-hidden="true"><use href="#ig"/></svg><span>Enviar por Instagram</span></button>
+      <p class="nota" id="nota">Copiamos tu lista y abrimos el chat de @nubedemarlin_deco. Solo tienes que pegarla.</p>
+      <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+// =====================================================================================
+//  WHATSAPP DE NUBE DE MARLIN: la bio dice "Pide tu cotización por WhatsApp", pero el número
+//  no está publicado. Ponlo acá y TODA la página pasa a WhatsApp.
+//  Formato Chile: 56 + 9 + número, sin espacios, sin + ni guiones (ej. '56912345678').
+//  Mientras esté vacío, la lista se copia y se abre el chat de Instagram (@nubedemarlin_deco).
+// =====================================================================================
+var WA = '';
+var IG_DM = 'https://ig.me/m/nubedemarlin_deco';
+var quieto = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+document.documentElement.classList.add('js');
+if (WA) {
+  document.documentElement.classList.add('con-wa');
+  document.querySelectorAll('[data-contacto]').forEach(function (a) { a.href = 'https://wa.me/' + WA; });
+  document.querySelectorAll('.btn use[href="#ig"]').forEach(function (u) { u.setAttribute('href', '#wa'); });
+  document.getElementById('flotante').setAttribute('aria-label', 'Escríbenos por WhatsApp');
+  document.getElementById('tipSub').textContent = 'Por WhatsApp';
+}
+
+function irA(el, alTerminar) {
+  var off = -(document.getElementById('top').offsetHeight + 8);
+  if (window.lenisInst) window.lenisInst.scrollTo(el, { offset: off, duration: 1.1, onComplete: alTerminar });
+  else { el.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); if (alTerminar) setTimeout(alTerminar, quieto ? 0 : 700); }
+}
+
+// Encabezado translúcido al bajar y menú del celular
+(function () {
+  var top = document.getElementById('top');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) { menu.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !e.target.closest('#menu, #menuBtn')) setMenu(false); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { top.classList.toggle('solido', !es[0].isIntersecting); }).observe(sentinel);
+  } else top.classList.add('solido');
+})();
+
+// Filtro por categoría, como una tienda
+(function () {
+  var chips = document.querySelectorAll('.chip[data-filtro]');
+  var prods = document.querySelectorAll('#grilla .prod');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var f = c.getAttribute('data-filtro');
+      chips.forEach(function (o) { o.setAttribute('aria-pressed', String(o === c)); });
+      prods.forEach(function (p) {
+        var cat = p.getAttribute('data-cat');
+        var ver = f === 'todas' || cat === f;
+        var antes = p.hidden;
+        p.hidden = !ver;
+        if (ver && antes && !quieto && p.animate) p.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 240, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+      });
+    });
+  });
+})();
+
+// Tu cotización: agregar desde el catálogo, revisar en el panel y mandarla armada
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var html = document.documentElement;
+  var calma = function () { return quieto; };
+  var CLAVE = 'nube-de-marlin-cotizacion-v1';
+  var EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+
+  var CAT = {};
+  document.querySelectorAll('.prod[data-item]').forEach(function (li) {
+    var img = li.querySelector('.foto img');
+    CAT[li.getAttribute('data-item')] = { nombre: li.querySelector('h3').textContent.trim(), img: img ? img.getAttribute('src') : '' };
+  });
+
+  var estado = { items: [], datos: {} };
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g && Array.isArray(g.items)) {
+      g.items.forEach(function (it) {
+        var n = it && Math.floor(+it.n);
+        if (it && CAT[it.id] && n > 0) estado.items.push({ id: it.id, n: Math.min(20, n) });
+      });
+      if (g.datos && typeof g.datos === 'object') estado.datos = g.datos;
+    }
+  } catch (e) {}
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {} }
+  function idx(id) { for (var i = 0; i < estado.items.length; i++) if (estado.items[i].id === id) return i; return -1; }
+  function cant(id) { var i = idx(id); return i < 0 ? 0 : estado.items[i].n; }
+  function total() { return estado.items.reduce(function (a, it) { return a + it.n; }, 0); }
+
+  var dlg = $('carrito'), form = $('datos'), lista = $('lista');
+  var fab = $('cartFab'), bar = $('cartBar');
+
+  var MAS = '<svg aria-hidden="true"><use href="#mas"/></svg>', MENOS = '<svg aria-hidden="true"><use href="#menos"/></svg>';
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function stepper(n, etiqueta) {
+    return '<div class="cant" role="group" aria-label="' + esc(etiqueta) + '">' +
+      '<button type="button" data-d="-1" aria-label="Uno menos">' + MENOS + '</button>' +
+      '<output>' + n + '</output>' +
+      '<button type="button" data-d="1" aria-label="Uno más">' + MAS + '</button></div>';
+  }
+  document.querySelectorAll('.add[data-item]').forEach(function (box) {
+    var id = box.getAttribute('data-item'); if (!CAT[id]) return;
+    box.innerHTML = '<button type="button" class="agregar" aria-label="Agregar ' + esc(CAT[id].nombre) + ' a tu cotización">' + MAS + 'Agregar</button>' +
+      stepper(0, CAT[id].nombre + ' en tu cotización');
+  });
+
+  var totalAntes = total();
+  function render() {
+    var t = total();
+    document.querySelectorAll('.add[data-item]').forEach(function (box) {
+      var n = cant(box.getAttribute('data-item'));
+      box.setAttribute('data-n', String(n));
+      var o = box.querySelector('output'); if (o) o.textContent = n;
+      var menos = box.querySelector('[data-d="-1"]'); if (menos) menos.setAttribute('aria-label', n === 1 ? 'Quitar de la cotización' : 'Uno menos');
+      var mas = box.querySelector('[data-d="1"]'); if (mas) mas.disabled = n >= 20;
+    });
+    document.querySelectorAll('[data-total]').forEach(function (b) { b.textContent = t; });
+    fab.classList.toggle('on', t > 0); bar.classList.toggle('on', t > 0);
+    fab.setAttribute('aria-label', 'Ver tu cotización (' + t + ')');
+    bar.setAttribute('aria-label', 'Ver cotización (' + t + ')');
+    if (t > totalAntes) pulsar(totalAntes > 0);
+    totalAntes = t;
+
+    $('vacio').hidden = t > 0; $('lleno').hidden = t === 0; $('cajonPie').hidden = t === 0;
+    $('carritoSub').textContent = t ? (estado.items.length === 1 ? '1 ambientación elegida' : estado.items.length + ' ambientaciones elegidas') : 'Nube de Marlin';
+    Array.prototype.forEach.call(lista.querySelectorAll('.item:not(.sale)'), function (li) {
+      if (!cant(li.getAttribute('data-item'))) {
+        li.classList.add('sale');
+        setTimeout(function () { li.remove(); }, calma() ? 0 : 180);
+      }
+    });
+    estado.items.forEach(function (it) {
+      var li = lista.querySelector('.item[data-item="' + it.id + '"]:not(.sale)');
+      if (!li) {
+        li = document.createElement('li'); li.className = 'item'; li.setAttribute('data-item', it.id);
+        var th = CAT[it.id].img ? '<img class="th" src="' + esc(CAT[it.id].img) + '" alt="" loading="lazy">' : '<span class="th-globo" aria-hidden="true"><i></i></span>';
+        li.innerHTML = th +
+          '<div class="item-txt"><b></b><small>Precio a cotizar</small><button type="button" class="quitar" data-quitar>Quitar</button></div>' +
+          stepper(it.n, 'Cantidad de ' + CAT[it.id].nombre);
+        lista.appendChild(li);
+      }
+      li.querySelector('b').textContent = CAT[it.id].nombre;
+      li.querySelector('output').textContent = it.n;
+      li.querySelector('[data-d="-1"]').disabled = it.n <= 1;
+      li.querySelector('[data-d="1"]').disabled = it.n >= 20;
+      li.querySelector('[data-quitar]').setAttribute('aria-label', 'Quitar ' + CAT[it.id].nombre + ' de la cotización');
+    });
+    $('msgPrev').textContent = mensaje(true);
+    guardar();
+  }
+
+  function pulsar(yaEstaba) {
+    if (calma()) return;
+    document.querySelectorAll('.badge[data-total]').forEach(function (b) {
+      if (b.animate) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)', offset: .35 }, { transform: 'scale(1)' }], { duration: 340, easing: EASE });
+    });
+    if (yaEstaba && fab.animate && getComputedStyle(fab).display !== 'none') {
+      fab.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.08)', offset: .35 }, { transform: 'scale(1)' }], { duration: 300, easing: EASE });
+    }
+  }
+  function anunciar(txt) {
+    var el = dlg.open ? $('aviso') : $('anuncio');
+    el.classList.remove('mal');
+    el.textContent = ''; setTimeout(function () { el.textContent = txt; }, 30);
+  }
+  function setCant(id, n) {
+    n = Math.max(0, Math.min(20, n));
+    var i = idx(id);
+    if (i < 0 && n > 0) estado.items.push({ id: id, n: n });
+    else if (i >= 0 && n === 0) estado.items.splice(i, 1);
+    else if (i >= 0) estado.items[i].n = n;
+    render();
+    anunciar(n ? CAT[id].nombre + ': ' + n + ' en tu cotización.' : 'Quitaste ' + CAT[id].nombre + ' de la cotización.');
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.agregar, [data-d], [data-quitar], [data-abrir-carrito], [data-cerrar], [data-ir], #vaciar');
+    if (!b) return;
+    var cont = b.closest('[data-item]'), id = cont && cont.getAttribute('data-item');
+    if (b.classList.contains('agregar')) {
+      setCant(id, 1);
+      if (id === 'a-medida') { abrir(b); setTimeout(function () { $('aclar').focus(); }, calma() ? 0 : 320); return; }
+      var mas = cont.querySelector('[data-d="1"]'); if (mas) mas.focus();
+    } else if (b.hasAttribute('data-d')) {
+      var n = cant(id) + (+b.getAttribute('data-d'));
+      setCant(id, n);
+      if (n <= 0 && cont.classList.contains('add')) cont.querySelector('.agregar').focus();
+    } else if (b.hasAttribute('data-quitar')) {
+      var vecino = cont.nextElementSibling || cont.previousElementSibling;
+      setCant(id, 0);
+      if (vecino && !vecino.classList.contains('sale')) vecino.querySelector('[data-quitar]').focus();
+      else if (!total()) $('vacio').querySelector('a').focus();
+    } else if (b.id === 'vaciar') {
+      estado.items = []; render(); anunciar('Vaciaste la cotización.');
+      $('vacio').querySelector('a').focus();
+    } else if (b.hasAttribute('data-abrir-carrito')) {
+      abrir(b);
+    } else if (b.hasAttribute('data-cerrar')) {
+      cerrar();
+    } else if (b.hasAttribute('data-ir')) {
+      e.preventDefault();
+      cerrar(b.getAttribute('data-ir'));
+    }
+  });
+
+  var abridor = null, timer = 0, irDestino = null;
+  function abrir(desde) {
+    clearTimeout(timer);
+    abridor = desde || document.activeElement;
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      html.classList.add('carrito-abierto');
+      if (window.lenisInst) window.lenisInst.stop();
+      $('aviso').textContent = '';
+      $('cajonCuerpo').scrollTop = 0;
+      void dlg.offsetWidth;
+    }
+    dlg.scrollTop = 0;
+    dlg.classList.add('open');
+    $('cerrarCarrito').focus({ preventScroll: true });
+  }
+  dlg.addEventListener('scroll', function () { if (dlg.scrollTop || dlg.scrollLeft) { dlg.scrollTop = 0; dlg.scrollLeft = 0; } });
+  function cerrar(destino) {
+    if (!dlg.open) return;
+    irDestino = destino || null;
+    dlg.classList.remove('open');
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (dlg.open && !dlg.classList.contains('open')) { if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); alCerrar(); } } }, calma() ? 180 : 300);
+  }
+  function alCerrar() {
+    dlg.classList.remove('open');
+    html.classList.remove('carrito-abierto');
+    if (window.lenisInst) window.lenisInst.start();
+    if (irDestino) {
+      var sec = $(irDestino); irDestino = null;
+      if (sec) irA(sec, function () { var primero = sec.querySelector('.agregar'); if (primero) primero.focus({ preventScroll: true }); });
+    } else if (abridor && document.contains(abridor) && abridor.getClientRects().length) {
+      abridor.focus({ preventScroll: true });
+    }
+  }
+  dlg.addEventListener('close', alCerrar);
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); cerrar(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); cerrar(); return; }
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(dlg.querySelectorAll('button, a[href], input, textarea, summary, [tabindex]:not([tabindex="-1"])'),
+      function (el) { return !el.disabled && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden'; });
+    if (!f.length) return;
+    var pri = f[0], ult = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); }
+    else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+  });
+
+  // ----- tus datos -----
+  var campos = ['nombre', 'tel', 'fecha', 'comuna', 'aclar'];
+  function leer() { var d = {}; campos.forEach(function (c) { d[c] = $(c).value.replace(/\s+/g, ' ').trim(); }); return d; }
+  (function restaurar() { var d = estado.datos || {}; campos.forEach(function (c) { if (typeof d[c] === 'string') $(c).value = d[c]; }); })();
+  function mensaje(borrador) {
+    var d = leer(), L = ['¡Hola, Nube de Marlin! Quiero cotizar:'];
+    estado.items.forEach(function (it) { L.push('• ' + (it.n > 1 ? it.n + ' x ' : '') + CAT[it.id].nombre); });
+    if (d.aclar) L.push('Temática, colores y nombre: ' + d.aclar);
+    L.push('');
+    L.push('Nombre: ' + (d.nombre || (borrador ? '…' : '')));
+    L.push('Teléfono: ' + (d.tel || (borrador ? '…' : '')));
+    if (d.fecha) L.push('Fecha del evento: ' + d.fecha);
+    if (d.comuna) L.push('Comuna o lugar: ' + d.comuna);
+    L.push('', '¿Me envían la cotización? ¡Gracias!');
+    return L.join('\n');
+  }
+  function syncDatos() { estado.datos = leer(); $('msgPrev').textContent = mensaje(true); guardar(); }
+  form.addEventListener('input', function (e) {
+    var f = e.target.closest('.f');
+    if (f && f.classList.contains('error')) marcar(e.target, '');
+    if (!form.querySelector('.f.error')) { $('aviso').classList.remove('mal'); $('aviso').textContent = ''; }
+    syncDatos();
+  });
+  form.addEventListener('change', syncDatos);
+  function marcar(input, txt) {
+    var f = input.closest('.f'), err = $('err-' + input.id);
+    f.classList.toggle('error', !!txt);
+    if (txt) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    if (err) err.textContent = txt;
+  }
+  function validar() {
+    var malos = [], d = leer();
+    [
+      ['nombre', d.nombre ? '' : 'Escribe tu nombre para saber de quién es la cotización.'],
+      ['tel', !d.tel ? 'Escribe tu teléfono para coordinar.' : d.tel.replace(/\D/g, '').length < 8 ? 'Revisa el teléfono: tiene que tener al menos 8 números.' : '']
+    ].forEach(function (c) { marcar($(c[0]), c[1]); if (c[1]) malos.push($(c[0])); });
+    return malos;
+  }
+
+  // ----- enviar -----
+  var envBtn = $('enviar');
+  if (WA) {
+    envBtn.querySelector('use').setAttribute('href', '#wa');
+    envBtn.querySelector('span').textContent = 'Enviar por WhatsApp';
+    $('nota').textContent = 'Se abre WhatsApp con tu lista escrita. Solo falta tocar enviar.';
+  }
+  function abrirLink(url) { var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; dlg.appendChild(a); a.click(); a.remove(); }
+  function copiarViejo(txt) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      dlg.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return !!ok;
+    } catch (e) { return false; }
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return copiarViejo(txt); });
+    return Promise.resolve(copiarViejo(txt));
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!total()) return;
+    var aviso = $('aviso'), malos = validar();
+    if (malos.length) {
+      aviso.classList.add('mal');
+      aviso.textContent = malos.length === 1 ? 'Falta completar un dato.' : 'Faltan completar ' + malos.length + ' datos.';
+      malos[0].focus();
+      return;
+    }
+    aviso.classList.remove('mal');
+    var msg = mensaje(false);
+    if (WA) { abrirLink('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg)); aviso.textContent = 'Abrimos WhatsApp con tu lista.'; return; }
+    copiar(msg).then(function (ok) {
+      if (ok) aviso.textContent = 'Copiamos tu lista: pégala en el chat.';
+      else { aviso.textContent = 'No pudimos copiarla sola: cópiala de "Ver cómo llega el mensaje" y pégala en el chat.'; $('prev').open = true; }
+      abrirLink(IG_DM);
+    });
+  });
+
+  render();
+  syncDatos();
+})();
+
+// Scroll suave: Lenis 1.3.26, lerp 0.09, autoRaf
+(function () {
+  if (quieto) return;
+  var sc = document.createElement('script');
+  sc.src = 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js'; sc.async = true;
+  sc.onload = function () {
+    if (!window.Lenis) return;
+    var lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
+    window.lenisInst = lenis;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+      var id = a.getAttribute('href'); if (id.length < 2) return;
+      var el = document.getElementById(id.slice(1)); if (!el) return;
+      e.preventDefault();
+      history.pushState(null, '', id);
+      irA(el);
+    });
+  };
+  document.head.appendChild(sc);
+})();
+</script>
+</body>
+</html>
