@@ -1,0 +1,1475 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- PROPUESTA: esta línea evita que Google la indexe mientras es una muestra.
+     Cuando la web pase al dominio del negocio, borrar esta meta y activar el canonical de abajo. -->
+<meta name="robots" content="noindex, nofollow">
+<!-- <link rel="canonical" href="https://www.SU-DOMINIO.com.ar/"> -->
+<title>Aberturas San José | Aberturas de aluminio, madera y chapa en Rosario</title>
+<meta name="description" content="Fábrica de aberturas en Rosario: ventanas, puertas y cerramientos de aluminio, madera y chapa a medida, con colocación. Av. Alberdi 187. Pedí tu presupuesto sin cargo por WhatsApp.">
+<meta name="theme-color" content="#13213B">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Aberturas San José">
+<meta property="og:title" content="Aberturas San José | Aberturas a medida en Rosario">
+<meta property="og:description" content="Ventanas, puertas y cerramientos de aluminio, madera y chapa. Fabricamos y colocamos. Armá tu presupuesto en 2 minutos.">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/aberturas-san-jose/">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/aberturas-san-jose/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cerramiento de aluminio blanco hecho por Aberturas San José">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preload" as="image" href="img/obra-cerramiento-esquina.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Aberturas San José",
+  "description": "Fábrica de aberturas de aluminio, madera y chapa en Rosario. Ventanas, puertas y cerramientos a medida, con colocación y asesoramiento.",
+  "image": "https://digiovambattistafranco14-sketch.github.io/zek-demos/aberturas-san-jose/og.jpg",
+  "logo": "https://digiovambattistafranco14-sketch.github.io/zek-demos/aberturas-san-jose/img/perfil.jpg",
+  "url": "https://digiovambattistafranco14-sketch.github.io/zek-demos/aberturas-san-jose/",
+  "telephone": "+54 341 435-7850",
+  "email": "aberturasanjose@hotmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Alberdi 187",
+    "addressLocality": "Rosario",
+    "addressRegion": "Santa Fe",
+    "postalCode": "S2000",
+    "addressCountry": "AR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -32.9269719, "longitude": -60.6765719 },
+  "areaServed": "Rosario y alrededores",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "12:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "15:30", "closes": "19:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:30" }
+  ],
+  "sameAs": ["https://www.instagram.com/aberturassanjose_rosario/"],
+  "hasMap": "https://www.google.com/maps/place/Aberturas+San+Jos%C3%A9/@-32.9269719,-60.6765719,17z"
+}
+</script>
+<style>
+/* ---------------------------------------------------------------
+   Aberturas San José · propuesta ZEK
+   Concepto: la abertura. La portada es una ventana corrediza que se abre
+   (y se puede deslizar), y el presupuesto se dibuja como un croquis con cotas.
+   Radios: botones en píldora, tarjetas 14px, campos 10px. Nada más.
+---------------------------------------------------------------- */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --alu:#E3E8EE; --alu-2:#C7CFD8; --alu-3:#97A3B1;
+  --ink:#13213B; --ink-2:#4A566A; --azul:#24509E; --azul-suave:#E7EEF9; --azul-hondo:#1B3C78;
+  --naranja:#F08A24; --naranja-hover:#F69B3F; --error:#B42318; --ok:#17784A;
+  --head:72px; --r-card:14px; --r-input:10px;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1); --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1); --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --display:"Archivo", "Segoe UI", system-ui, sans-serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --sombra:0 1px 2px rgba(19,33,59,.06), 0 18px 40px -24px rgba(19,33,59,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);font-stretch:112%;font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{width:min(1240px, 100% - 40px);margin-inline:auto}
+section[id]{scroll-margin-top:calc(var(--head) + 12px)}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico-wa{width:20px;height:20px;flex:none}
+i.ph{font-size:1.25em;line-height:1}
+
+/* ---------- Lenis ---------- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:0;
+  font-weight:650;font-size:16.5px;text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:transform .16s var(--ease-out), background-color .2s ease, box-shadow .2s ease, color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-pri{background:var(--naranja);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.35) inset, 0 10px 24px -12px rgba(200,100,10,.65)}
+.btn-sec{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--alu-3)}
+.btn-wa{background:#25D366;color:#0B3B23}
+@media (hover:hover) and (pointer:fine){
+  .btn-pri:hover{background:var(--naranja-hover)}
+  .btn-sec:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .btn-wa:hover{background:#2EE072}
+}
+
+/* ---------- encabezado ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--head);display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease}
+.top.scrolled{background:rgba(243,245,248,.84);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:0 1px 0 rgba(19,33,59,.08), 0 12px 30px -20px rgba(19,33,59,.35)}
+.top .wrap{display:flex;align-items:center;gap:20px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 2px #fff, 0 4px 12px -4px rgba(19,33,59,.4)}
+.marca b{display:block;font-family:var(--display);font-stretch:108%;font-weight:800;font-size:18px;line-height:1.1;letter-spacing:-.01em}
+.marca small{display:block;font-size:13px;color:var(--ink-2);line-height:1.25;white-space:nowrap}
+.nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nav a.l{padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:550;font-size:15.5px;color:var(--ink);transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.nav a.l:hover{background:rgba(19,33,59,.06)}}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15.5px;margin-left:8px}
+.burger{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:0;background:var(--surface);box-shadow:var(--sombra);place-items:center;cursor:pointer}
+.burger i{font-size:22px}
+.menu-movil{position:fixed;top:calc(var(--head) - 4px);left:12px;right:12px;z-index:49;background:var(--surface);border-radius:var(--r-card);padding:10px;
+  box-shadow:0 30px 60px -20px rgba(19,33,59,.45);transform-origin:top right;opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.menu-movil.abierto{opacity:1;transform:none;pointer-events:auto}
+.menu-movil a.l{display:flex;align-items:center;justify-content:space-between;padding:15px 14px;text-decoration:none;font-weight:600;font-size:17px;border-radius:10px}
+.menu-movil a.l + a.l{border-top:1px solid var(--alu)}
+.menu-movil .acc{display:grid;gap:8px;margin-top:8px}
+.menu-movil .btn{width:100%}
+@media (max-width:980px){
+  .nav{display:none}.burger{display:grid}
+}
+@media (max-width:420px){.marca small{display:none}}
+
+/* ---------- portada: la ventana ---------- */
+.hero{padding:calc(var(--head) + 36px) 0 56px;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px, 5vw, 80px);align-items:center;min-height:calc(100dvh - var(--head) - 92px)}
+.hero h1{font-size:clamp(2.6rem, 5.4vw, 4.6rem);font-stretch:118%;line-height:.98;max-width:12ch}
+.hero .lead{margin-top:22px;font-size:clamp(1.05rem, 1.4vw, 1.2rem);color:var(--ink-2);max-width:40ch}
+.hero .ctas{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.hero-copy > *{animation:subir .8s var(--ease-out) both}
+.hero-copy .lead{animation-delay:.08s}.hero-copy .ctas{animation-delay:.16s}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.ventana{margin:0;justify-self:end;width:min(100%, 520px)}
+.marco{position:relative;aspect-ratio:4/5;max-height:calc(100dvh - var(--head) - 150px);margin-left:auto;padding:14px;border-radius:8px;
+  background:linear-gradient(135deg,#FBFCFD 0%,#D2D9E1 38%,#F1F4F7 55%,#BAC4CF 100%);
+  box-shadow:inset 0 1px 0 #fff, inset 0 -1px 0 rgba(19,33,59,.15), 0 2px 4px rgba(19,33,59,.08), 0 40px 80px -40px rgba(19,33,59,.55)}
+.vano{position:relative;height:100%;overflow:hidden;border-radius:2px;background:#C9D3DE;box-shadow:inset 0 0 0 1px rgba(19,33,59,.25)}
+.vano > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hoja{position:absolute;top:0;bottom:0;width:51%;border:10px solid #DDE3E9;
+  border-image:linear-gradient(135deg,#F7F9FB 0%,#CDD5DD 35%,#EEF1F4 60%,#AEB8C4 100%) 1;
+  box-shadow:6px 0 14px -6px rgba(19,33,59,.35)}
+.hoja .vidrio{position:relative;display:block;height:100%;
+  background:linear-gradient(118deg, rgba(255,255,255,.34) 0%, rgba(255,255,255,.07) 26%, rgba(255,255,255,0) 27%, rgba(255,255,255,0) 58%, rgba(255,255,255,.16) 59%, rgba(255,255,255,.03) 72%, rgba(255,255,255,0) 73%), rgba(196,218,238,.16);
+  -webkit-backdrop-filter:blur(1.2px) saturate(1.08);backdrop-filter:blur(1.2px) saturate(1.08);
+  box-shadow:inset 0 0 0 1px rgba(19,33,59,.22), inset 0 0 30px rgba(255,255,255,.12)}
+.hoja-fija{left:0;z-index:1}
+.hoja-movil{right:0;z-index:2;cursor:grab;touch-action:pan-y;will-change:transform;
+  animation:abrir 1.5s var(--ease-in-out) .55s both}
+.hoja-movil.mano{animation:none !important;cursor:grabbing}
+.manija{position:absolute;left:3px;top:50%;width:5px;height:58px;margin-top:-29px;border-radius:3px;background:linear-gradient(90deg,#3A4352,#1E2532);box-shadow:0 2px 4px rgba(0,0,0,.25)}
+@keyframes abrir{from{transform:translateX(0)}to{transform:translateX(-94%)}}
+.ventana figcaption{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin-top:14px;font-size:14px;color:var(--ink-2)}
+
+@media (max-width:860px){
+  .hero{padding-top:calc(var(--head) + 20px)}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;gap:34px}
+  .hero h1{max-width:13ch}
+  .ventana{justify-self:stretch;width:100%}
+  .marco{aspect-ratio:1/1.08;max-height:none;padding:10px}
+  .hoja{border-width:7px}
+  .ventana figcaption{justify-content:flex-start}
+}
+@media (max-width:520px){
+  .hero .ctas .btn{flex:1 1 100%}
+}
+
+/* ---------- datos ---------- */
+.datos{padding:8px 0 24px}
+.datos ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sombra)}
+.datos li{display:flex;gap:14px;align-items:flex-start;padding:22px 24px}
+.datos li + li{border-left:1px solid var(--alu)}
+.datos i.ph{font-size:26px;color:var(--azul);margin-top:2px}
+.datos b{display:block;font-family:var(--display);font-stretch:110%;font-size:19px;line-height:1.2}
+.datos span{display:block;font-size:14.5px;color:var(--ink-2);line-height:1.4;margin-top:2px}
+.datos a{text-decoration:none}
+@media (max-width:900px){
+  .datos ul{grid-template-columns:1fr 1fr}
+  .datos li:nth-child(3){border-left:0}
+  .datos li:nth-child(n+3){border-top:1px solid var(--alu)}
+}
+@media (max-width:480px){.datos li{padding:18px 16px;gap:10px}.datos b{font-size:17px}.datos span{font-size:13.5px}}
+
+/* ---------- títulos de sección ---------- */
+.bloque{padding:clamp(72px, 10vw, 128px) 0}
+.cab{max-width:720px;margin-bottom:clamp(32px, 4vw, 52px)}
+.cab h2{font-size:clamp(2rem, 4vw, 3.2rem)}
+.cab p{margin-top:16px;font-size:18px;color:var(--ink-2);max-width:58ch}
+
+/* ---------- productos (bento) ---------- */
+.bento{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.prod{position:relative;border-radius:var(--r-card);overflow:hidden;background:var(--surface);box-shadow:var(--sombra);display:flex;flex-direction:column}
+.prod figure{margin:0;position:relative;overflow:hidden;background:var(--alu)}
+.prod figure img{width:100%;height:100%;object-fit:cover}
+.prod .txt{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.prod h3{font-size:clamp(1.4rem, 2vw, 1.75rem)}
+.prod p{color:var(--ink-2);font-size:16px}
+.prod .cotizar{margin-top:auto;padding-top:8px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;border:0;background:none;padding-left:0;font-weight:650;color:var(--azul);cursor:pointer;font-size:16px;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+.p-cerr{grid-row:1 / span 2}
+.p-cerr figure{flex:1;min-height:360px}
+.p-cerr .txt{flex:0 0 auto}
+.p-vent figure,.p-puer figure{aspect-ratio:4/3}
+.p-mat{grid-column:2 / span 2;background:var(--azul-hondo);color:#fff;display:grid;grid-template-columns:.8fr 1.2fr}
+.p-mat figure{height:100%;min-height:240px}
+.p-mat .txt{padding:26px 28px}
+.p-mat h3{color:#fff}
+.mats{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:14px}
+.mats li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:15.5px;color:#D6E0F0;line-height:1.45}
+.mats li b{color:#fff;font-weight:650}
+.mats i.ph{font-size:22px;color:#9DB8E6;margin-top:1px}
+@media (hover:hover) and (pointer:fine){
+  .prod figure img{transition:transform .6s var(--ease-out)}
+  .prod:hover figure img{transform:scale(1.03)}
+}
+@media (max-width:980px){
+  .bento{grid-template-columns:1fr 1fr}
+  .p-cerr{grid-row:auto;grid-column:1 / -1}
+  .p-cerr figure{min-height:0;aspect-ratio:16/10}
+  .p-mat{grid-column:1 / -1}
+}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr}
+  .p-cerr figure{aspect-ratio:4/3.4}
+  .p-mat{grid-template-columns:1fr}
+  .p-mat figure{min-height:0;aspect-ratio:16/9}
+  .prod .txt{padding:20px}
+}
+
+/* ---------- obras ---------- */
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin:-12px 0 28px}
+.filtros button{min-height:42px;padding:0 18px;border-radius:999px;border:0;background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--alu-2);font-weight:600;font-size:15px;cursor:pointer;transition:background-color .2s ease, color .2s ease, box-shadow .2s ease}
+.filtros button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:none}
+.obras{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+.obra{margin:0}
+.obra button{display:block;width:100%;padding:0;border:0;background:var(--alu);border-radius:var(--r-card);overflow:hidden;cursor:zoom-in;aspect-ratio:4/5}
+.obra img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+.obra figcaption{margin-top:10px;font-size:14.5px;color:var(--ink-2);line-height:1.4}
+.obra[hidden]{display:none}
+@media (hover:hover) and (pointer:fine){.obra button:hover img{transform:scale(1.035)}}
+@media (max-width:980px){.obras{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){
+  .obras{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-20px;padding:0 20px 8px;scrollbar-width:none}
+  .obras::-webkit-scrollbar{display:none}
+  .obra{flex:0 0 74%;scroll-snap-align:start}
+}
+.visor{border:0;padding:0;background:transparent;max-width:min(92vw, 760px);width:100%;max-height:92dvh}
+.visor::backdrop{background:rgba(10,18,33,.82);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.visor[open]{animation:visor .22s var(--ease-out)}
+@keyframes visor{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.visor img{width:100%;max-height:78dvh;object-fit:contain;border-radius:var(--r-card);background:#0e1626}
+.visor p{color:#E6ECF5;text-align:center;margin-top:12px;font-size:15px}
+.visor .vb{position:absolute;top:50%;width:48px;height:48px;margin-top:-40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;cursor:pointer}
+.visor .vb i{font-size:22px}
+.visor .ant{left:10px}.visor .sig{right:10px}
+.visor .cerrar{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;cursor:pointer}
+
+/* ---------- cómo trabajamos: el riel ---------- */
+.proceso{background:var(--surface)}
+.riel{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;counter-reset:paso}
+.riel::before{content:"";position:absolute;left:0;right:0;top:22px;height:4px;border-radius:2px;background:linear-gradient(180deg,#F4F6F8,#C3CCD6);box-shadow:inset 0 1px 0 rgba(19,33,59,.12)}
+.riel li{position:relative;counter-increment:paso}
+.riel .n{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--display);font-weight:800;font-size:18px;box-shadow:0 0 0 6px var(--surface)}
+.riel .n::before{content:counter(paso)}
+.riel h3{font-size:1.3rem;margin-top:22px}
+.riel p{margin-top:8px;color:var(--ink-2);font-size:16px;max-width:30ch}
+.fabrica{display:grid;grid-template-columns:repeat(2, minmax(0, 560px));gap:16px;margin-top:clamp(40px, 5vw, 64px)}
+.fabrica figure{margin:0}
+.fabrica img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-card);background:var(--alu)}
+.fabrica figure:first-child img{object-position:50% 70%}
+.fabrica figure:last-child img{object-position:50% 40%}
+.fabrica figcaption{margin-top:10px;font-size:14.5px;color:var(--ink-2)}
+@media (max-width:900px){
+  .riel{grid-template-columns:1fr;gap:30px;padding-left:4px}
+  .riel::before{left:26px;right:auto;top:10px;bottom:10px;width:4px;height:auto}
+  .riel li{display:grid;grid-template-columns:48px 1fr;column-gap:20px}
+  .riel .n{grid-row:1 / span 3}
+  .riel h3{margin-top:8px}
+}
+@media (max-width:640px){.fabrica{grid-template-columns:1fr}.fabrica img{aspect-ratio:4/3}}
+
+/* ---------- cotizador ---------- */
+.cot{padding:clamp(72px, 10vw, 128px) 0}
+.cot-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px, 4vw, 64px);align-items:start}
+.cot-intro{position:sticky;top:calc(var(--head) + 24px)}
+.cot-intro h2{font-size:clamp(2rem, 4vw, 3.2rem)}
+.cot-intro > p{margin-top:16px;color:var(--ink-2);font-size:18px;max-width:46ch}
+.croquis{margin-top:28px;background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sombra);padding:18px 18px 16px;
+  background-image:linear-gradient(rgba(36,80,158,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(36,80,158,.07) 1px, transparent 1px);background-size:20px 20px;background-position:-1px -1px}
+.croquis svg{display:block;width:100%;height:auto;max-height:300px}
+.croquis .vacio{font-size:14.5px;color:var(--ink-2);text-align:center;margin-top:6px}
+.resumen{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.resumen li{font-size:13.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--azul-suave);color:var(--azul-hondo)}
+.cot-form{background:var(--surface);border-radius:var(--r-card);box-shadow:0 1px 2px rgba(19,33,59,.06), 0 40px 80px -40px rgba(19,33,59,.45);overflow:hidden}
+.prog{padding:22px 28px 0}
+.prog .fila{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;color:var(--ink-2)}
+.prog .fila b{color:var(--ink);font-weight:650}
+.barra{margin-top:12px;height:6px;border-radius:3px;background:var(--alu);overflow:hidden}
+.barra i{display:block;height:100%;background:var(--azul);border-radius:3px;transform-origin:left;transform:scaleX(.1666);transition:transform .35s var(--ease-out)}
+.pasos{padding:24px 28px 8px;min-height:420px}
+.paso{border:0;margin:0;padding:0;min-width:0}
+.paso[hidden]{display:none}
+.paso.entra{animation:pasoEntra .26s var(--ease-out)}
+.paso.entra.atras{animation-name:pasoVuelve}
+@keyframes pasoEntra{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes pasoVuelve{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.paso legend,.paso h3.leg{font-family:var(--display);font-stretch:110%;font-weight:800;font-size:clamp(1.4rem, 2.4vw, 1.75rem);line-height:1.1;padding:0;margin:0 0 6px}
+.paso .ayuda{color:var(--ink-2);font-size:15.5px;margin-bottom:18px}
+.grupo{margin-top:22px}
+.grupo > .tit{display:block;font-weight:650;font-size:15.5px;margin-bottom:10px}
+.grupo > .tit small{font-weight:500;color:var(--ink-2)}
+.ops{display:grid;gap:10px}
+.ops.dos{grid-template-columns:1fr 1fr}
+.op{position:relative}
+.op input{position:absolute;opacity:0;pointer-events:none}
+.op label{display:flex;align-items:center;gap:14px;min-height:58px;padding:12px 16px;border-radius:var(--r-input);background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--alu);cursor:pointer;line-height:1.3;
+  transition:box-shadow .15s ease, background-color .15s ease, transform .12s var(--ease-out)}
+.op label:active{transform:scale(.985)}
+.op label i.ph{font-size:24px;color:var(--azul);flex:none}
+.op label span{display:block}
+.op label small{display:block;color:var(--ink-2);font-size:14px;margin-top:2px}
+.op input:checked + label{background:var(--azul-suave);box-shadow:inset 0 0 0 2px var(--azul)}
+.op input:focus-visible + label{outline:3px solid var(--azul);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.op label:hover{box-shadow:inset 0 0 0 1.5px var(--alu-3)}.op input:checked + label:hover{box-shadow:inset 0 0 0 2px var(--azul)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .op label{min-height:44px;padding:8px 16px;border-radius:999px;font-weight:550}
+.campo{display:grid;gap:7px}
+.campo label{font-weight:650;font-size:15.5px}
+.campo label small{font-weight:500;color:var(--ink-2)}
+.campo input,.campo select,.campo textarea{width:100%;min-height:52px;padding:12px 14px;border-radius:var(--r-input);border:0;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--alu-2);font-size:16.5px;color:var(--ink);transition:box-shadow .15s ease}
+.campo input::placeholder,.campo textarea::placeholder{color:#6B7586}
+.campo textarea{min-height:92px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;box-shadow:inset 0 0 0 2px var(--azul)}
+.campo .hint{font-size:14px;color:var(--ink-2)}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.medidas-x{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.medidas-x .por{padding-bottom:14px;color:var(--ink-2);font-weight:600}
+.cant{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--alu-2);padding:4px}
+.cant button{width:44px;height:44px;border-radius:50%;border:0;background:var(--surface);box-shadow:0 1px 3px rgba(19,33,59,.18);display:grid;place-items:center;cursor:pointer}
+.cant button:active{transform:scale(.94)}
+.cant output{min-width:44px;text-align:center;font-family:var(--display);font-weight:800;font-size:20px}
+.err{color:var(--error);font-size:14.5px;font-weight:550;margin-top:10px;display:flex;gap:6px;align-items:center}
+.err[hidden]{display:none}
+.nav-pasos{display:flex;justify-content:space-between;gap:12px;padding:16px 28px 26px;border-top:1px solid var(--alu);background:linear-gradient(#fff,#FAFBFC)}
+.nav-pasos .btn{min-height:50px}
+.nav-pasos #atras[disabled]{visibility:hidden}
+.final h3.leg{display:flex;align-items:center;gap:10px}
+.final h3.leg i{color:var(--ok);font-size:30px}
+.tabla-res{margin:16px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:15.5px}
+.tabla-res dt{color:var(--ink-2)}
+.tabla-res dd{margin:0;font-weight:600}
+.envio{margin-top:24px;display:grid;gap:10px}
+.envio .btn{width:100%}
+.envio .nota{font-size:14px;color:var(--ink-2);text-align:center}
+.vista{margin-top:22px;border-radius:var(--r-input);background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--alu)}
+.vista summary{cursor:pointer;padding:14px 16px;font-weight:650;font-size:15px;list-style:none;display:flex;align-items:center;gap:8px}
+.vista summary::-webkit-details-marker{display:none}
+.vista summary i{transition:transform .2s var(--ease-out)}
+.vista[open] summary i{transform:rotate(90deg)}
+.vista .dentro{padding:0 16px 16px}
+.etiqueta{display:inline-block;padding:7px 13px;border-radius:12px;font-weight:700;font-size:14.5px;line-height:1.4}
+.etiqueta.caliente{background:#FDE7D3;color:#8A3B00}
+.etiqueta.tibio{background:#FFF3C9;color:#6B4E00}
+.etiqueta.frio{background:#E2EAF5;color:#23426F}
+.porque{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px;font-size:14.5px;color:var(--ink-2)}
+.porque b{color:var(--ink)}
+.burbuja{margin-top:14px;background:#E7FFDB;border-radius:10px 10px 10px 2px;padding:12px 14px;font-size:14px;line-height:1.5;white-space:pre-wrap;font-family:var(--body);color:#111B21;max-height:300px;overflow:auto;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+@media (max-width:980px){
+  .cot-grid{grid-template-columns:1fr}
+  .cot-intro{position:static}
+  .croquis{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:12px}
+  .croquis svg{max-height:150px}
+  .croquis .vacio{text-align:left;margin:0}
+  .resumen{margin:0}
+}
+@media (max-width:560px){
+  .prog{padding:18px 18px 0}
+  .pasos{padding:20px 18px 6px;min-height:0}
+  .nav-pasos{padding:14px 18px 18px;position:sticky;bottom:0}
+  .ops.dos{grid-template-columns:1fr}
+  .campos{grid-template-columns:1fr}
+  .croquis{grid-template-columns:116px 1fr}
+}
+
+/* ---------- te llamamos ---------- */
+.llamada{background:var(--azul);color:#fff;padding:clamp(56px, 7vw, 88px) 0}
+.llamada .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px, 4vw, 64px);align-items:center}
+.llamada h2{font-size:clamp(1.9rem, 3.4vw, 2.8rem);color:#fff}
+.llamada .wrap > div > p{margin-top:14px;color:#D9E4F7;font-size:18px;max-width:42ch}
+.form-corto{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(255,255,255,.08);padding:22px;border-radius:var(--r-card);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.form-corto .campo label{color:#fff}
+.form-corto .campo input,.form-corto .campo select{background:#fff;box-shadow:none}
+.form-corto .campo input:focus,.form-corto .campo select:focus{box-shadow:0 0 0 3px #9DB8E6}
+.form-corto .ancho{grid-column:1 / -1}
+.form-corto .chips .op label{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35);color:#fff}
+.form-corto .chips .op input:checked + label{background:#fff;color:var(--ink);box-shadow:none}
+.form-corto .tit{display:block;font-weight:650;font-size:15.5px;margin-bottom:8px}
+.form-corto .err{color:#FFD7CF}
+.form-corto .btn{width:100%}
+@media (max-width:860px){.llamada .wrap{grid-template-columns:1fr}}
+@media (max-width:520px){.form-corto{grid-template-columns:1fr;padding:16px}}
+
+/* ---------- opiniones ---------- */
+.opiniones .wrap{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(28px, 5vw, 80px);align-items:start}
+.puntaje{font-family:var(--display);font-stretch:120%;font-weight:800;font-size:clamp(4.5rem, 9vw, 7rem);line-height:.9;letter-spacing:-.03em}
+.estrellas{display:flex;gap:2px;margin-top:12px;color:#E8A317;font-size:22px}
+.puntaje-txt{margin-top:10px;color:var(--ink-2)}
+.puntaje-txt a{font-weight:650;color:var(--azul)}
+.citas{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cita{margin:0;padding:26px;background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sombra);display:flex;flex-direction:column;gap:18px}
+.cita blockquote{margin:0;font-size:18px;line-height:1.5}
+.cita figcaption{margin-top:auto;font-size:14.5px;color:var(--ink-2)}
+.cita figcaption b{display:block;color:var(--ink);font-weight:650}
+@media (max-width:860px){.opiniones .wrap{grid-template-columns:1fr}.citas{grid-template-columns:1fr}}
+
+/* ---------- el local ---------- */
+.local{background:var(--surface)}
+.local-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.local-foto{margin:0;border-radius:var(--r-card);overflow:hidden;background:var(--alu);align-self:start;aspect-ratio:1080/617}
+.local-foto img{width:100%;height:100%;object-fit:cover}
+.local-info{padding:8px 0 0 clamp(0px, 2vw, 24px)}
+.local-info h2{font-size:clamp(2rem, 3.6vw, 2.9rem)}
+.dir{margin-top:14px;font-size:19px;font-weight:600}
+.dir small{display:block;font-weight:500;font-size:15.5px;color:var(--ink-2)}
+.estado{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:7px 14px;border-radius:999px;background:var(--bg);font-weight:600;font-size:14.5px}
+.estado.si{background:#E1F5EA;color:var(--ok)}
+.horas{margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;font-size:16px}
+.horas dt{color:var(--ink-2)}
+.horas dd{margin:0;font-weight:600}
+.horas .hoy{color:var(--ink)}
+.horas dd.hoy{color:var(--azul)}
+.contactos{margin-top:24px;display:grid;gap:10px}
+.contactos a{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:600;padding:12px 14px;border-radius:var(--r-input);background:var(--bg);transition:background-color .2s ease}
+.contactos a i{font-size:22px;color:var(--azul)}
+.contactos a span small{display:block;font-weight:500;font-size:13.5px;color:var(--ink-2)}
+@media (hover:hover) and (pointer:fine){.contactos a:hover{background:var(--alu)}}
+.mapa{grid-column:1 / -1;border-radius:var(--r-card);overflow:hidden;height:340px;background:var(--alu)}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+@media (max-width:860px){.local-grid{grid-template-columns:1fr}.local-info{padding:8px 0 0}.mapa{height:280px}}
+
+/* ---------- cierre y pie ---------- */
+.cierre{padding:clamp(72px, 9vw, 112px) 0;text-align:left}
+.cierre .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.cierre h2{font-size:clamp(2.2rem, 5vw, 4rem);max-width:14ch;font-stretch:118%}
+.cierre .ctas{display:flex;gap:12px;flex-wrap:wrap}
+footer{padding:28px 0 120px;border-top:1px solid var(--alu);font-size:14.5px;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer a{color:var(--ink);font-weight:600}
+
+/* ---------- barra de presupuesto (celular) ---------- */
+.barra-cta{position:fixed;left:16px;right:96px;bottom:max(20px, env(safe-area-inset-bottom));z-index:55;transform:translateY(140%);opacity:0;
+  transition:transform .3s var(--ease-drawer), opacity .2s ease}
+.barra-cta.ver{transform:none;opacity:1}
+.barra-cta .btn{width:100%;min-height:58px;box-shadow:0 14px 30px -10px rgba(19,33,59,.5)}
+@media (min-width:861px){.barra-cta{display:none}}
+
+/* ---------- botón de WhatsApp: solo el ícono ---------- */
+.wa{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 3px 6px rgba(7,94,84,.25), 0 16px 34px -10px rgba(7,94,84,.6);
+  transition:transform .2s var(--ease-out), box-shadow .2s ease;
+  animation:wa-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 1.8s both}
+.wa svg{width:34px;height:34px;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:0;opacity:0;animation:wa-onda 5s var(--ease-out) 2.8s infinite}
+.wa::after{animation-delay:3.2s}
+.wa .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--ink);font-weight:600;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(19,33,59,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.wa .tip small{display:block;font-weight:500;font-size:13px;color:var(--ink-2)}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .wa:hover{transform:scale(1.07);box-shadow:0 4px 8px rgba(7,94,84,.25), 0 22px 44px -10px rgba(7,94,84,.7)}
+  .wa:hover svg{animation:wa-suena .6s var(--ease-out)}
+  .wa:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .wa:hover::before,.wa:hover::after{animation-play-state:paused}
+}
+@keyframes wa-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes wa-onda{0%{opacity:.45;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes wa-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@media (max-width:520px){.wa{width:58px;height:58px}.wa svg{width:31px;height:31px}.barra-cta{right:90px}}
+
+@media (max-width:860px){body.en-cot .wa{visibility:hidden}}
+.aviso{position:fixed;left:50%;bottom:100px;z-index:70;transform:translate(-50%, 16px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;font-size:15px;transition:opacity .2s ease, transform .25s var(--ease-out)}
+.aviso.ver{opacity:1;transform:translate(-50%, 0)}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .hero-copy > *{animation:aparecer .3s ease both}
+  .hoja-movil{animation:none;transform:translateX(-94%)}
+  .wa{animation:aparecer .3s ease both}
+  .wa::before,.wa::after{animation:none}
+  .wa:hover svg{animation:none}
+  .paso.entra,.paso.entra.atras{animation:aparecer .2s ease}
+  .prod:hover figure img,.obra button:hover img{transform:none}
+  .barra-cta{transition:opacity .2s ease;transform:none}
+}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></symbol></svg>
+
+<div id="centinela" style="position:absolute;top:0;left:0;width:1px;height:40px;pointer-events:none" aria-hidden="true"></div>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Aberturas San José, ir al inicio">
+      <img src="img/perfil.jpg" alt="Logo de Aberturas San José" width="46" height="46">
+      <span><b>Aberturas San José</b><small>Fábrica de aluminio, madera y chapa</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a class="l" href="#productos">Productos</a>
+      <a class="l" href="#obras">Obras</a>
+      <a class="l" href="#presupuesto">Presupuesto</a>
+      <a class="l" href="#local">El local</a>
+      <a class="btn btn-wa" href="https://wa.me/5493412285629?text=Hola!%20Les%20escribo%20desde%20la%20web." target="_blank" rel="noopener">
+        <svg class="ico-wa" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+    </nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú"><i class="ph ph-list" aria-hidden="true"></i></button>
+  </div>
+</header>
+<div class="menu-movil" id="menuMovil" data-lenis-prevent>
+  <a class="l" href="#productos">Productos <i class="ph ph-caret-right" aria-hidden="true"></i></a>
+  <a class="l" href="#obras">Obras <i class="ph ph-caret-right" aria-hidden="true"></i></a>
+  <a class="l" href="#proceso">Cómo trabajamos <i class="ph ph-caret-right" aria-hidden="true"></i></a>
+  <a class="l" href="#local">El local <i class="ph ph-caret-right" aria-hidden="true"></i></a>
+  <div class="acc">
+    <a class="btn btn-pri" href="#presupuesto"><i class="ph ph-ruler" aria-hidden="true"></i>Armá tu presupuesto</a>
+    <a class="btn btn-wa" href="https://wa.me/5493412285629?text=Hola!%20Les%20escribo%20desde%20la%20web." target="_blank" rel="noopener"><svg class="ico-wa" aria-hidden="true"><use href="#wa"/></svg>Escribinos</a>
+  </div>
+</div>
+
+<main id="inicio">
+  <section class="hero" aria-labelledby="titulo">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="titulo">Aberturas a medida en Rosario</h1>
+        <p class="lead">Ventanas, puertas y cerramientos de aluminio, madera y chapa. Los fabricamos en nuestro taller y los colocamos.</p>
+        <div class="ctas">
+          <a class="btn btn-pri" href="#presupuesto"><i class="ph ph-ruler" aria-hidden="true"></i>Armá tu presupuesto</a>
+          <a class="btn btn-sec" href="#llamada"><i class="ph ph-phone-call" aria-hidden="true"></i>Te llamamos</a>
+        </div>
+      </div>
+      <figure class="ventana">
+        <div class="marco">
+          <div class="vano">
+            <img src="img/obra-cerramiento-esquina.jpg" width="1080" height="1350" fetchpriority="high"
+                 alt="Cerramiento de galería en aluminio blanco con vidrio, en esquina, hecho por Aberturas San José">
+            <div class="hoja hoja-fija" aria-hidden="true"><span class="vidrio"></span></div>
+            <div class="hoja hoja-movil" id="hoja" aria-hidden="true"><span class="vidrio"></span><span class="manija"></span></div>
+          </div>
+        </div>
+        <figcaption><i class="ph ph-hand-pointing" aria-hidden="true"></i>Deslizá la hoja. Cerramiento en aluminio blanco, una de nuestras obras.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="datos" aria-label="Por qué elegirnos">
+    <div class="wrap">
+      <ul>
+        <li><i class="ph ph-star" aria-hidden="true"></i><div><a href="#opiniones"><b>4,1 en Google</b></a><span>31 opiniones de clientes</span></div></li>
+        <li><i class="ph ph-calendar-check" aria-hidden="true"></i><div><b>25 años</b><span>haciendo aberturas en Rosario</span></div></li>
+        <li><i class="ph ph-factory" aria-hidden="true"></i><div><b>Fabricación propia</b><span>a medida de cada vano</span></div></li>
+        <li><i class="ph ph-receipt" aria-hidden="true"></i><div><b>Presupuesto sin cargo</b><span>por WhatsApp o en el local</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bloque" id="productos" aria-labelledby="t-prod">
+    <div class="wrap">
+      <div class="cab">
+        <h2 id="t-prod">Qué fabricamos</h2>
+        <p>Todo en aberturas para tu casa, tu local o tu obra. Estándar o a medida, con colocación y asesoramiento.</p>
+      </div>
+      <div class="bento">
+        <article class="prod p-cerr">
+          <figure><img src="img/obra-galeria-blanca.jpg" width="1080" height="1350" loading="lazy" alt="Cerramiento de galería con aluminio blanco y vidrio, recién colocado"></figure>
+          <div class="txt">
+            <h3>Cerramientos</h3>
+            <p>Galerías, terrazas y quinchos cerrados con aluminio y vidrio. Más luz natural y un espacio que se usa todo el año.</p>
+            <button class="cotizar" type="button" data-tipo="cerramiento">Cotizar un cerramiento <i class="ph ph-arrow-down-right" aria-hidden="true"></i></button>
+          </div>
+        </article>
+        <article class="prod p-vent">
+          <figure><img src="img/obra-ventana-negra.jpg" width="704" height="880" loading="lazy" alt="Ventana corrediza de aluminio negro colocada en una obra nueva"></figure>
+          <div class="txt">
+            <h3>Ventanas</h3>
+            <p>Corredizas, de abrir y paños fijos. En aluminio blanco, negro o en madera.</p>
+            <button class="cotizar" type="button" data-tipo="ventana">Cotizar ventanas <i class="ph ph-arrow-down-right" aria-hidden="true"></i></button>
+          </div>
+        </article>
+        <article class="prod p-puer">
+          <figure><img src="img/puerta-aluminio-blanca.jpg" width="720" height="900" loading="lazy" alt="Puerta de aluminio blanco con vidrio arriba y panel abajo, colocada en un cerramiento"></figure>
+          <div class="txt">
+            <h3>Puertas</h3>
+            <p>De entrada, interiores y colgantes estilo granero, en aluminio, madera o chapa.</p>
+            <button class="cotizar" type="button" data-tipo="puerta">Cotizar puertas <i class="ph ph-arrow-down-right" aria-hidden="true"></i></button>
+          </div>
+        </article>
+        <article class="prod p-mat">
+          <figure><img src="img/taller-ventana.jpg" width="720" height="900" loading="lazy" alt="Ventana de abrir de aluminio terminada en el taller"></figure>
+          <div class="txt">
+            <h3>Tres materiales, un mismo taller</h3>
+            <ul class="mats">
+              <li><i class="ph ph-cube" aria-hidden="true"></i><span><b>Aluminio.</b> Liviano, resistente a la humedad y prácticamente libre de mantenimiento. Blanco o negro.</span></li>
+              <li><i class="ph ph-tree" aria-hidden="true"></i><span><b>Madera.</b> Para quien busca la calidez de una abertura de madera.</span></li>
+              <li><i class="ph ph-shield-check" aria-hidden="true"></i><span><b>Chapa.</b> Puertas con aplique símil madera o acero, cerradura de seguridad y relleno de espuma poliuretánica.</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="obras" aria-labelledby="t-obras" style="padding-top:0">
+    <div class="wrap">
+      <div class="cab">
+        <h2 id="t-obras">Obras terminadas</h2>
+        <p>Trabajos nuestros en Rosario y alrededores. Tocá una foto para verla grande.</p>
+      </div>
+      <div class="filtros" role="group" aria-label="Filtrar obras">
+        <button type="button" aria-pressed="true" data-f="todas">Todas</button>
+        <button type="button" aria-pressed="false" data-f="cerr">Cerramientos</button>
+        <button type="button" aria-pressed="false" data-f="vent">Ventanas y puertas</button>
+        <button type="button" aria-pressed="false" data-f="obra">En obra</button>
+      </div>
+      <div class="obras" id="obrasGrid">
+        <figure class="obra" data-cat="cerr"><button type="button"><img src="img/obra-galeria-lateral.jpg" width="1080" height="1350" loading="lazy" alt="Cerramiento lateral de galería en aluminio blanco"></button><figcaption>Cerramiento de galería en aluminio blanco</figcaption></figure>
+        <figure class="obra" data-cat="cerr"><button type="button"><img src="img/obra-cerramiento-negro.jpg" width="720" height="900" loading="lazy" alt="Cerramiento de aluminio negro con paños fijos y banderolas en un patio"></button><figcaption>Cerramiento en aluminio negro con banderolas</figcaption></figure>
+        <figure class="obra" data-cat="vent"><button type="button"><img src="img/obra-vivienda-gris.jpg" width="720" height="900" loading="lazy" alt="Vivienda moderna gris con puerta de entrada y ventanas negras"></button><figcaption>Vivienda nueva: puerta de entrada y ventanas negras</figcaption></figure>
+        <figure class="obra" data-cat="cerr"><button type="button"><img src="img/obra-pergola-negra.jpg" width="720" height="900" loading="lazy" alt="Cerramiento de aluminio negro bajo pérgola de madera"></button><figcaption>Cerramiento negro bajo pérgola</figcaption></figure>
+        <figure class="obra" data-cat="cerr"><button type="button"><img src="img/obra-terraza-blanca.jpg" width="720" height="880" loading="lazy" alt="Cerramiento de terraza con puertas de aluminio blanco y estructura negra"></button><figcaption>Terraza cerrada con puertas de aluminio</figcaption></figure>
+        <figure class="obra" data-cat="obra"><button type="button"><img src="img/colocacion-terraza.jpg" width="720" height="900" loading="lazy" alt="Colocador instalando un cerramiento de terraza bajo techo de madera"></button><figcaption>Colocando un cerramiento de terraza</figcaption></figure>
+        <figure class="obra" data-cat="vent"><button type="button"><img src="img/detalle-cerradura.jpg" width="420" height="525" loading="lazy" alt="Detalle de cerradura de seguridad colocada en una puerta de aluminio"></button><figcaption>Cerradura de seguridad en puerta de aluminio</figcaption></figure>
+        <figure class="obra" data-cat="obra"><button type="button"><img src="img/colocacion-estructura.jpg" width="720" height="900" loading="lazy" alt="Colocador armando la estructura de un cerramiento de terraza"></button><figcaption>Armando la estructura de un cerramiento</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="visor" id="visor" aria-label="Foto de la obra" data-lenis-prevent>
+    <img id="visorImg" src="" alt="">
+    <p id="visorTxt"></p>
+    <button class="vb ant" type="button" id="visorAnt" aria-label="Foto anterior"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+    <button class="vb sig" type="button" id="visorSig" aria-label="Foto siguiente"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+    <button class="cerrar" type="button" id="visorCerrar" aria-label="Cerrar"><i class="ph ph-x" aria-hidden="true"></i></button>
+  </dialog>
+
+  <section class="bloque proceso" id="proceso" aria-labelledby="t-proc">
+    <div class="wrap">
+      <div class="cab">
+        <h2 id="t-proc">Cómo trabajamos</h2>
+        <p>De la consulta a la abertura colocada, con la misma gente de principio a fin.</p>
+      </div>
+      <ol class="riel">
+        <li><span class="n" aria-hidden="true"></span><h3>Nos contás qué necesitás</h3><p>Con el presupuestador de abajo, por WhatsApp o en el local de Av. Alberdi 187.</p></li>
+        <li><span class="n" aria-hidden="true"></span><h3>Te asesoramos y presupuestamos</h3><p>Te ayudamos a elegir línea y material. El presupuesto es sin cargo.</p></li>
+        <li><span class="n" aria-hidden="true"></span><h3>Fabricamos a medida</h3><p>Cada abertura se arma en nuestro taller para que calce justo en tu vano.</p></li>
+        <li><span class="n" aria-hidden="true"></span><h3>La colocamos</h3><p>Instalamos en tu casa u obra, en Rosario y alrededores.</p></li>
+      </ol>
+      <div class="fabrica">
+        <figure><img src="img/taller-armado.jpg" width="720" height="900" loading="lazy" alt="Perfil de aluminio y vidrio durante el armado en el taller"><figcaption>En el taller: armado de una hoja de aluminio</figcaption></figure>
+        <figure><img src="img/colocacion-equipo.jpg" width="959" height="1199" loading="lazy" alt="Dos colocadores de Aberturas San José instalando un paño de vidrio en una obra"><figcaption>En la obra: colocación de un paño de vidrio</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRESUPUESTADOR ===================== -->
+  <section class="cot" id="presupuesto" aria-labelledby="t-cot">
+    <div class="wrap cot-grid">
+      <div class="cot-intro">
+        <h2 id="t-cot">Armá tu presupuesto</h2>
+        <p>Seis preguntas cortas y lo mandás por WhatsApp. Te respondemos con el presupuesto, sin cargo.</p>
+        <div class="croquis" aria-live="polite">
+          <svg id="croquis" viewBox="0 0 320 250" role="img" aria-label="Croquis de la abertura que elegiste"></svg>
+          <div>
+            <p class="vacio" id="croquisTxt">Elegí qué necesitás y te lo dibujamos acá, con tus medidas.</p>
+            <ul class="resumen" id="resumen"></ul>
+          </div>
+        </div>
+      </div>
+
+      <form class="cot-form" id="cot" novalidate>
+        <div class="prog">
+          <div class="fila"><span id="pasoN">Paso 1 de 6</span><b id="pasoNombre">Qué necesitás</b></div>
+          <div class="barra" aria-hidden="true"><i id="barra"></i></div>
+        </div>
+        <div class="pasos">
+
+          <fieldset class="paso" data-paso="1">
+            <legend>¿Qué necesitás?</legend>
+            <p class="ayuda">Elegí lo principal. Si son varias cosas, contalo al final.</p>
+            <div class="ops">
+              <div class="op"><input type="radio" name="tipo" id="t1" value="ventana"><label for="t1"><i class="ph ph-square-split-horizontal" aria-hidden="true"></i><span>Ventanas</span></label></div>
+              <div class="op"><input type="radio" name="tipo" id="t2" value="puerta"><label for="t2"><i class="ph ph-door" aria-hidden="true"></i><span>Puertas</span></label></div>
+              <div class="op"><input type="radio" name="tipo" id="t3" value="balcon"><label for="t3"><i class="ph ph-door-open" aria-hidden="true"></i><span>Puerta balcón o corrediza grande</span></label></div>
+              <div class="op"><input type="radio" name="tipo" id="t4" value="cerramiento"><label for="t4"><i class="ph ph-house-line" aria-hidden="true"></i><span>Cerramiento<small>Galería, terraza o quincho</small></span></label></div>
+              <div class="op"><input type="radio" name="tipo" id="t5" value="obra"><label for="t5"><i class="ph ph-buildings" aria-hidden="true"></i><span>Todas las aberturas de una obra</span></label></div>
+            </div>
+            <div class="grupo" id="subGrupo" hidden>
+              <span class="tit" id="subTit">¿De qué tipo? <small>(opcional)</small></span>
+              <div class="chips" id="subOps"></div>
+            </div>
+            <p class="err" data-err="tipo" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Elegí una opción para seguir.</p>
+          </fieldset>
+
+          <fieldset class="paso" data-paso="2" hidden>
+            <legend>¿En qué material?</legend>
+            <p class="ayuda">Si no lo tenés decidido, te asesoramos.</p>
+            <div class="ops">
+              <div class="op"><input type="radio" name="material" id="m1" value="Aluminio blanco"><label for="m1"><i class="ph ph-cube" aria-hidden="true"></i><span>Aluminio blanco<small>Liviano y casi sin mantenimiento</small></span></label></div>
+              <div class="op"><input type="radio" name="material" id="m2" value="Aluminio negro"><label for="m2"><i class="ph ph-cube" aria-hidden="true"></i><span>Aluminio negro<small>El que más se pide en obras nuevas</small></span></label></div>
+              <div class="op"><input type="radio" name="material" id="m3" value="Madera"><label for="m3"><i class="ph ph-tree" aria-hidden="true"></i><span>Madera</span></label></div>
+              <div class="op"><input type="radio" name="material" id="m4" value="Chapa"><label for="m4"><i class="ph ph-shield-check" aria-hidden="true"></i><span>Chapa<small>Puertas símil madera o acero</small></span></label></div>
+              <div class="op"><input type="radio" name="material" id="m5" value="A definir"><label for="m5"><i class="ph ph-chats-circle" aria-hidden="true"></i><span>No sé, quiero que me asesoren</span></label></div>
+            </div>
+            <p class="err" data-err="material" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Elegí una opción para seguir.</p>
+          </fieldset>
+
+          <fieldset class="paso" data-paso="3" hidden>
+            <legend>Medidas y cantidad</legend>
+            <p class="ayuda">Con medidas aproximadas ya podemos orientarte.</p>
+            <div class="grupo" style="margin-top:0">
+              <span class="tit">¿Cuántas?</span>
+              <div class="cant">
+                <button type="button" id="menos" aria-label="Una menos"><i class="ph ph-minus" aria-hidden="true"></i></button>
+                <output id="cantOut" aria-live="polite">1</output>
+                <button type="button" id="mas" aria-label="Una más"><i class="ph ph-plus" aria-hidden="true"></i></button>
+              </div>
+            </div>
+            <div class="grupo">
+              <span class="tit">¿Tenés las medidas?</span>
+              <div class="ops">
+                <div class="op"><input type="radio" name="medidas" id="d1" value="exactas"><label for="d1"><i class="ph ph-ruler" aria-hidden="true"></i><span>Sí, exactas o tengo el plano</span></label></div>
+                <div class="op"><input type="radio" name="medidas" id="d2" value="aprox"><label for="d2"><i class="ph ph-arrows-out-line-horizontal" aria-hidden="true"></i><span>Tengo medidas aproximadas</span></label></div>
+                <div class="op"><input type="radio" name="medidas" id="d3" value="no"><label for="d3"><i class="ph ph-question" aria-hidden="true"></i><span>Todavía no</span></label></div>
+              </div>
+            </div>
+            <div class="grupo" id="medGrupo" hidden>
+              <div class="medidas-x">
+                <div class="campo"><label for="ancho">Ancho <small>(cm)</small></label><input id="ancho" name="ancho" type="number" inputmode="numeric" min="20" max="2000" placeholder="150"></div>
+                <span class="por" aria-hidden="true">x</span>
+                <div class="campo"><label for="alto">Alto <small>(cm)</small></label><input id="alto" name="alto" type="number" inputmode="numeric" min="20" max="600" placeholder="110"></div>
+              </div>
+              <p class="hint" style="margin-top:8px;font-size:14px;color:var(--ink-2)">Medidas del vano. Si son varias distintas, poné la principal y aclaralo al final.</p>
+            </div>
+            <p class="err" data-err="medidas" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Contanos si tenés las medidas.</p>
+          </fieldset>
+
+          <fieldset class="paso" data-paso="4" hidden>
+            <legend>Sobre la obra</legend>
+            <div class="grupo" style="margin-top:12px">
+              <span class="tit">¿Para dónde es?</span>
+              <div class="ops">
+                <div class="op"><input type="radio" name="uso" id="u1" value="casa"><label for="u1"><i class="ph ph-house" aria-hidden="true"></i><span>Para mi casa</span></label></div>
+                <div class="op"><input type="radio" name="uso" id="u2" value="local"><label for="u2"><i class="ph ph-storefront" aria-hidden="true"></i><span>Para un local o comercio</span></label></div>
+                <div class="op"><input type="radio" name="uso" id="u3" value="pro"><label for="u3"><i class="ph ph-hard-hat" aria-hidden="true"></i><span>Soy constructor, arquitecto o desarrollador</span></label></div>
+              </div>
+              <p class="err" data-err="uso" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Elegí una opción.</p>
+            </div>
+            <div class="grupo">
+              <span class="tit">¿Es para…?</span>
+              <div class="chips">
+                <div class="op"><input type="radio" name="situacion" id="s1" value="nueva"><label for="s1">Obra nueva</label></div>
+                <div class="op"><input type="radio" name="situacion" id="s2" value="reemplazo"><label for="s2">Cambiar aberturas viejas</label></div>
+                <div class="op"><input type="radio" name="situacion" id="s3" value="ampliacion"><label for="s3">Ampliación o cerramiento</label></div>
+              </div>
+              <p class="err" data-err="situacion" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Elegí una opción.</p>
+            </div>
+            <div class="grupo">
+              <div class="campo">
+                <label for="zona">Barrio o localidad</label>
+                <input id="zona" name="zona" list="zonas" autocomplete="address-level2" placeholder="Ej.: Fisherton, Funes, Baigorria">
+                <datalist id="zonas"><option value="Rosario centro"><option value="Rosario norte"><option value="Rosario sur"><option value="Rosario oeste"><option value="Fisherton"><option value="Funes"><option value="Roldán"><option value="Granadero Baigorria"><option value="Capitán Bermúdez"><option value="Villa Gobernador Gálvez"><option value="Pérez"><option value="San Lorenzo"><option value="Ibarlucea"></datalist>
+              </div>
+              <p class="err" data-err="zona" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Contanos dónde es la obra.</p>
+            </div>
+            <div class="grupo">
+              <span class="tit">¿Necesitás colocación?</span>
+              <div class="chips">
+                <div class="op"><input type="radio" name="colocacion" id="c1" value="Sí"><label for="c1">Sí, con colocación</label></div>
+                <div class="op"><input type="radio" name="colocacion" id="c2" value="No"><label for="c2">No, solo las aberturas</label></div>
+                <div class="op"><input type="radio" name="colocacion" id="c3" value="No sé"><label for="c3">No sé todavía</label></div>
+              </div>
+              <p class="err" data-err="colocacion" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Elegí una opción.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="paso" data-paso="5" hidden>
+            <legend>¿Para cuándo?</legend>
+            <p class="ayuda">Así sabemos cómo organizarnos con tu pedido.</p>
+            <div class="ops">
+              <div class="op"><input type="radio" name="plazo" id="p1" value="ya"><label for="p1"><i class="ph ph-lightning" aria-hidden="true"></i><span>Lo antes posible<small>Este mes</small></span></label></div>
+              <div class="op"><input type="radio" name="plazo" id="p2" value="1a3"><label for="p2"><i class="ph ph-calendar" aria-hidden="true"></i><span>En 1 a 3 meses</span></label></div>
+              <div class="op"><input type="radio" name="plazo" id="p3" value="despues"><label for="p3"><i class="ph ph-calendar-plus" aria-hidden="true"></i><span>Más adelante</span></label></div>
+              <div class="op"><input type="radio" name="plazo" id="p4" value="averiguando"><label for="p4"><i class="ph ph-magnifying-glass" aria-hidden="true"></i><span>Por ahora estoy averiguando</span></label></div>
+            </div>
+            <p class="err" data-err="plazo" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Elegí una opción para seguir.</p>
+            <div class="grupo">
+              <span class="tit">¿Qué buscás en precio? <small>(opcional)</small></span>
+              <div class="chips">
+                <div class="op"><input type="radio" name="presupuesto" id="b1" value="economico"><label for="b1">Lo más económico</label></div>
+                <div class="op"><input type="radio" name="presupuesto" id="b2" value="equilibrio"><label for="b2">Calidad y precio</label></div>
+                <div class="op"><input type="radio" name="presupuesto" id="b3" value="mejor"><label for="b3">Lo mejor, aunque cueste más</label></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="paso" data-paso="6" hidden>
+            <legend>¿Cómo te contactamos?</legend>
+            <p class="ayuda">Usamos tus datos solo para responderte.</p>
+            <div class="campos">
+              <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre"></div>
+              <div class="campo"><label for="tel">Teléfono o WhatsApp</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="341 555 1234"></div>
+            </div>
+            <p class="err" data-err="nombre" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Dejanos tu nombre.</p>
+            <p class="err" data-err="tel" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Revisá el teléfono: con la característica, por ejemplo 341 555 1234.</p>
+            <div class="grupo">
+              <span class="tit">¿Cómo preferís que te respondamos?</span>
+              <div class="chips">
+                <div class="op"><input type="radio" name="via" id="v1" value="WhatsApp" checked><label for="v1">WhatsApp</label></div>
+                <div class="op"><input type="radio" name="via" id="v2" value="Llamada"><label for="v2">Llamada</label></div>
+                <div class="op"><input type="radio" name="via" id="v3" value="Email"><label for="v3">Email</label></div>
+              </div>
+            </div>
+            <div class="grupo" id="mailGrupo" hidden>
+              <div class="campo"><label for="email">Tu email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com"></div>
+              <p class="err" data-err="email" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i>Revisá el email.</p>
+            </div>
+            <div class="grupo">
+              <span class="tit">¿En qué horario?</span>
+              <div class="chips">
+                <div class="op"><input type="radio" name="horario" id="h1" value="a la mañana"><label for="h1">Mañana</label></div>
+                <div class="op"><input type="radio" name="horario" id="h2" value="a la tarde"><label for="h2">Tarde</label></div>
+                <div class="op"><input type="radio" name="horario" id="h3" value="en cualquier horario" checked><label for="h3">Cualquiera</label></div>
+              </div>
+            </div>
+            <div class="grupo">
+              <div class="campo"><label for="nota">¿Algo más? <small>(opcional)</small></label><textarea id="nota" name="nota" placeholder="Ej.: son 3 ventanas de 150 x 110 y una puerta de entrada"></textarea></div>
+            </div>
+          </fieldset>
+
+          <div class="paso final" data-paso="7" hidden>
+            <h3 class="leg"><i class="ph ph-check-circle" aria-hidden="true"></i>Tu consulta está lista</h3>
+            <p class="ayuda">Revisala y mandala. Se abre WhatsApp con el mensaje armado: solo tocás enviar.</p>
+            <dl class="tabla-res" id="tablaRes"></dl>
+            <div class="envio">
+              <a class="btn btn-wa" id="enviarWa" href="#" target="_blank" rel="noopener"><svg class="ico-wa" aria-hidden="true"><use href="#wa"/></svg>Enviar por WhatsApp</a>
+              <button class="btn btn-sec" type="button" id="copiar"><i class="ph ph-copy" aria-hidden="true"></i>Copiar el mensaje</button>
+              <p class="nota">¿Preferís no usar WhatsApp? Llamanos al <a href="tel:+543414357850">0341 435-7850</a>.</p>
+            </div>
+            <details class="vista">
+              <summary><i class="ph ph-caret-right" aria-hidden="true"></i>Así le llega a Aberturas San José</summary>
+              <div class="dentro">
+                <span class="etiqueta" id="etq"></span>
+                <ul class="porque" id="porque"></ul>
+                <div class="burbuja" id="burbuja"></div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="nav-pasos">
+          <button class="btn btn-sec" type="button" id="atras" disabled><i class="ph ph-arrow-left" aria-hidden="true"></i>Atrás</button>
+          <button class="btn btn-pri" type="button" id="seguir">Seguir<i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="llamada" id="llamada" aria-labelledby="t-llam">
+    <div class="wrap">
+      <div>
+        <h2 id="t-llam">¿Sin tiempo? Te llamamos</h2>
+        <p>Dejanos tu número y en qué horario te queda cómodo. Te llamamos para ver qué necesitás.</p>
+      </div>
+      <form class="form-corto" id="llamar" novalidate>
+        <div class="campo"><label for="lNombre">Nombre</label><input id="lNombre" autocomplete="name" placeholder="Tu nombre"></div>
+        <div class="campo"><label for="lTel">Teléfono</label><input id="lTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="341 555 1234"></div>
+        <div class="campo ancho"><label for="lTema">¿Sobre qué?</label>
+          <select id="lTema"><option>Ventanas</option><option>Puertas</option><option>Cerramiento</option><option>Aberturas para una obra</option><option>Otra consulta</option></select></div>
+        <div class="ancho"><span class="tit">Horario</span>
+          <div class="chips">
+            <div class="op"><input type="radio" name="lHora" id="lh1" value="a la mañana" checked><label for="lh1">Mañana</label></div>
+            <div class="op"><input type="radio" name="lHora" id="lh2" value="a la tarde"><label for="lh2">Tarde</label></div>
+          </div>
+        </div>
+        <p class="err ancho" id="lErr" hidden><i class="ph ph-warning-circle" aria-hidden="true"></i><span>Completá tu nombre y un teléfono con característica.</span></p>
+        <button class="btn btn-pri ancho" type="submit"><i class="ph ph-phone-call" aria-hidden="true"></i>Pedir que me llamen</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="bloque opiniones" id="opiniones" aria-labelledby="t-op">
+    <div class="wrap">
+      <div>
+        <h2 id="t-op" class="sr">Opiniones en Google</h2>
+        <p class="puntaje" aria-label="4,1 de 5">4,1</p>
+        <div class="estrellas" aria-hidden="true"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph ph-star"></i></div>
+        <p class="puntaje-txt">de 5 en Google, con 31 opiniones.<br><a href="https://www.google.com/maps/place/Aberturas+San+Jos%C3%A9/@-32.9269719,-60.6765719,17z" target="_blank" rel="noopener">Leer las opiniones</a></p>
+      </div>
+      <div class="citas">
+        <figure class="cita">
+          <blockquote>“Gran atención y precios justos, me agradó que estuvieran siempre atentos desde el primer momento. Muy agradable el muchacho de colocación también.”</blockquote>
+          <figcaption><b>Bautista Carazzo</b>Opinión en Google</figcaption>
+        </figure>
+        <figure class="cita">
+          <blockquote>“Me dió la posibilidad de comprar un producto con tarjeta en cuotas al mismo precio que me salía en otros lugares abonando solo en efectivo.”</blockquote>
+          <figcaption><b>Debora Belen Potenza</b>Opinión en Google</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque local" id="local" aria-labelledby="t-local">
+    <div class="wrap local-grid">
+      <figure class="local-foto"><img src="img/local-alberdi.jpg" width="1080" height="617" loading="lazy" alt="Frente del local de Aberturas San José en Av. Alberdi 187, Rosario"></figure>
+      <div class="local-info">
+        <h2 id="t-local">Vení a ver las aberturas</h2>
+        <p class="dir">Av. Alberdi 187, Rosario<small>Trabajamos en Rosario y alrededores</small></p>
+        <span class="estado" id="estado"><i class="ph ph-clock" aria-hidden="true"></i><span>Lunes a viernes de 8:30 a 12:30 y de 15:30 a 19:30</span></span>
+        <dl class="horas" id="horas">
+          <dt data-d="1-5">Lunes a viernes</dt><dd data-d="1-5">8:30 a 12:30 y 15:30 a 19:30</dd>
+          <dt data-d="6">Sábado</dt><dd data-d="6">9:00 a 12:30</dd>
+          <dt data-d="0">Domingo</dt><dd data-d="0">Cerrado</dd>
+        </dl>
+        <div class="contactos">
+          <a href="https://wa.me/5493412285629?text=Hola!%20Les%20escribo%20desde%20la%20web." target="_blank" rel="noopener"><svg class="ico-wa" aria-hidden="true" style="color:#1FAF54;width:22px;height:22px"><use href="#wa"/></svg><span>341 228-5629<small>WhatsApp</small></span></a>
+          <a href="tel:+543414357850"><i class="ph ph-phone" aria-hidden="true"></i><span>0341 435-7850<small>Teléfono fijo</small></span></a>
+          <a href="mailto:aberturasanjose@hotmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>aberturasanjose@hotmail.com<small>Email</small></span></a>
+        </div>
+      </div>
+      <div class="mapa">
+        <iframe title="Mapa: Aberturas San José, Av. Alberdi 187, Rosario" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Aberturas%20San%20Jos%C3%A9%2C%20Av.%20Alberdi%20187%2C%20Rosario&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre" aria-label="Pedí tu presupuesto">
+    <div class="wrap">
+      <h2>Tu próxima abertura empieza con una medida</h2>
+      <div class="ctas">
+        <a class="btn btn-pri" href="#presupuesto"><i class="ph ph-ruler" aria-hidden="true"></i>Armá tu presupuesto</a>
+        <a class="btn btn-sec" href="https://www.instagram.com/aberturassanjose_rosario/" target="_blank" rel="noopener"><i class="ph ph-instagram-logo" aria-hidden="true"></i>Ver más en Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Aberturas San José · Av. Alberdi 187, Rosario</span>
+    <span>Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></span>
+  </div>
+</footer>
+
+<div class="barra-cta" id="barraCta"><a class="btn btn-pri" href="#presupuesto"><i class="ph ph-ruler" aria-hidden="true"></i>Armá tu presupuesto</a></div>
+
+<a class="wa" href="https://wa.me/5493412285629?text=Hola!%20Les%20escribo%20desde%20la%20web." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp al 341 228-5629">
+  <svg aria-hidden="true"><use href="#wa"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>341 228-5629</small></span>
+</a>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var WA = '5493412285629';
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  function aviso(txt) {
+    var a = $('#aviso'); a.textContent = txt; a.classList.add('ver');
+    clearTimeout(aviso.t); aviso.t = setTimeout(function () { a.classList.remove('ver'); }, 2600);
+  }
+
+  /* =====================================================================
+     BASE DE CONSULTAS (preparada, SIN ACTIVAR)
+     Hoy cada consulta sale por WhatsApp. Para que además quede guardada en
+     una planilla, el negocio necesita su propia cuenta. Dos caminos:
+
+     A) Google Sheets (gratis):
+        1. En Google Drive, crear una planilla "Consultas web" con estas columnas en la fila 1:
+           fecha | etiqueta | temperatura | puntaje | categoria | tipo | subtipo | material | cantidad |
+           medidas | ancho | alto | uso | situacion | zona | colocacion | plazo | presupuesto |
+           nombre | tel | via | email | horario | nota | origen
+        2. Extensiones > Apps Script, pegar esto y guardar:
+             function doPost(e) {
+               var h = SpreadsheetApp.getActiveSheet();
+               var d = JSON.parse(e.postData.contents);
+               var cols = h.getRange(1, 1, 1, h.getLastColumn()).getValues()[0];
+               h.appendRow(cols.map(function (c) { return d[c] !== undefined ? d[c] : ''; }));
+               return ContentService.createTextOutput('ok');
+             }
+        3. Implementar > Nueva implementación > Aplicación web, "Cualquier usuario". Copiar la URL.
+        4. Pegar esa URL en LEADS_URL (abajo). Listo: cada consulta suma una fila,
+           y se puede filtrar por temperatura (Caliente / Tibio / Frío).
+
+     B) Formspree (formspree.io): crear un formulario, copiar su endpoint
+        (https://formspree.io/f/XXXXXXX) en LEADS_URL y poner LEADS_FORMSPREE = true.
+        Llega cada consulta por mail y queda en su panel.
+
+     Con LEADS_URL vacío no se envía nada a ningún lado.
+     ===================================================================== */
+  var LEADS_URL = '';
+  var LEADS_FORMSPREE = false;
+  function guardarConsulta(datos) {
+    if (!LEADS_URL) return;
+    try {
+      var cuerpo = JSON.stringify(datos);
+      if (LEADS_FORMSPREE) {
+        fetch(LEADS_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: cuerpo });
+      } else {
+        // Apps Script no responde CORS: se manda como texto y sin esperar respuesta
+        fetch(LEADS_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: cuerpo });
+      }
+    } catch (e) {}
+  }
+
+  /* ---------- encabezado translúcido al bajar ---------- */
+  var top = $('#top');
+  var hero = $('.hero');
+  new IntersectionObserver(function (es) { top.classList.toggle('scrolled', !es[0].isIntersecting); }).observe($('#centinela'));
+
+  /* ---------- menú del celular ---------- */
+  var burger = $('#burger'), menu = $('#menuMovil');
+  function menuAbrir(si) {
+    menu.classList.toggle('abierto', si); burger.setAttribute('aria-expanded', si ? 'true' : 'false');
+    burger.innerHTML = si ? '<i class="ph ph-x" aria-hidden="true"></i>' : '<i class="ph ph-list" aria-hidden="true"></i>';
+    burger.setAttribute('aria-label', si ? 'Cerrar menú' : 'Abrir menú');
+  }
+  burger.addEventListener('click', function () { menuAbrir(!menu.classList.contains('abierto')); });
+  $$('a', menu).forEach(function (a) { a.addEventListener('click', function () { menuAbrir(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menuAbrir(false); });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('abierto') && !menu.contains(e.target) && !burger.contains(e.target)) menuAbrir(false); });
+
+  /* ---------- la hoja corrediza: se abre sola y se puede deslizar ---------- */
+  var hoja = $('#hoja');
+  (function () {
+    var x0 = 0, base = 0, arrastrando = false, ancho = 0;
+    function actual() {
+      var m = getComputedStyle(hoja).transform;
+      if (!m || m === 'none') return 0;
+      return parseFloat(m.split(',')[4]) || 0;
+    }
+    hoja.addEventListener('pointerdown', function (e) {
+      ancho = hoja.offsetWidth * .94; base = actual(); x0 = e.clientX; arrastrando = true;
+      hoja.classList.add('mano'); hoja.style.transform = 'translateX(' + base + 'px)';
+      hoja.setPointerCapture(e.pointerId);
+    });
+    hoja.addEventListener('pointermove', function (e) {
+      if (!arrastrando) return;
+      var x = Math.max(-ancho, Math.min(0, base + e.clientX - x0));
+      hoja.style.transform = 'translateX(' + x + 'px)';
+    });
+    function soltar() { if (!arrastrando) return; arrastrando = false; hoja.classList.remove('mano'); hoja.style.animation = 'none'; }
+    hoja.addEventListener('pointerup', soltar);
+    hoja.addEventListener('pointercancel', soltar);
+  })();
+
+  /* ---------- obras: filtros y visor ---------- */
+  var obras = $$('.obra');
+  $$('.filtros button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('.filtros button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      var f = b.dataset.f;
+      obras.forEach(function (o) { o.hidden = !(f === 'todas' || o.dataset.cat === f); });
+    });
+  });
+  var visor = $('#visor'), vImg = $('#visorImg'), vTxt = $('#visorTxt'), vIdx = 0;
+  function visibles() { return obras.filter(function (o) { return !o.hidden; }); }
+  function mostrar(i) {
+    var vs = visibles(); vIdx = (i + vs.length) % vs.length;
+    var img = $('img', vs[vIdx]); vImg.src = img.src; vImg.alt = img.alt; vTxt.textContent = $('figcaption', vs[vIdx]).textContent;
+  }
+  obras.forEach(function (o) {
+    $('button', o).addEventListener('click', function () {
+      if (typeof visor.showModal !== 'function') return;
+      mostrar(visibles().indexOf(o)); visor.showModal(); if (window.lenisInst) window.lenisInst.stop();
+    });
+  });
+  $('#visorAnt').addEventListener('click', function () { mostrar(vIdx - 1); });
+  $('#visorSig').addEventListener('click', function () { mostrar(vIdx + 1); });
+  $('#visorCerrar').addEventListener('click', function () { visor.close(); });
+  visor.addEventListener('close', function () { if (window.lenisInst) window.lenisInst.start(); });
+  visor.addEventListener('click', function (e) { if (e.target === visor) visor.close(); });
+  visor.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') mostrar(vIdx - 1); if (e.key === 'ArrowRight') mostrar(vIdx + 1); });
+
+  /* ---------- horario y "abierto ahora" (hora de Rosario) ---------- */
+  try {
+    var ahora = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires' }));
+    var d = ahora.getDay(), m = ahora.getHours() * 60 + ahora.getMinutes();
+    var tramos = d >= 1 && d <= 5 ? [[510, 750], [930, 1170]] : d === 6 ? [[540, 750]] : [];
+    var clave = d >= 1 && d <= 5 ? '1-5' : String(d);
+    $$('#horas [data-d="' + clave + '"]').forEach(function (n) { n.classList.add('hoy'); });
+    var est = $('#estado'), txt = $('span', est);
+    var abierto = tramos.some(function (t) { return m >= t[0] && m < t[1]; });
+    function hh(x) { return Math.floor(x / 60) + ':' + ('0' + x % 60).slice(-2); }
+    if (abierto) {
+      var t = tramos.filter(function (t) { return m >= t[0] && m < t[1]; })[0];
+      est.classList.add('si'); txt.textContent = 'Abierto ahora, hasta las ' + hh(t[1]);
+    } else {
+      var luego = tramos.filter(function (t) { return m < t[0]; })[0];
+      if (luego) txt.textContent = 'Ahora cerrado. Abre hoy a las ' + hh(luego[0]);
+      else txt.textContent = 'Ahora cerrado. Abre ' + (d === 6 ? 'el lunes a las 8:30' : d === 5 ? 'el sábado a las 9:00' : 'mañana a las 8:30');
+    }
+  } catch (e) {}
+
+  /* =====================================================================
+     PRESUPUESTADOR: pasos, croquis con cotas y temperatura de la consulta
+     ===================================================================== */
+  var form = $('#cot');
+  var pasos = $$('.paso', form);
+  var NOMBRES = ['Qué necesitás', 'Material', 'Medidas', 'La obra', 'Tiempos', 'Contacto', 'Listo'];
+  var TIPOS = {
+    ventana: { nom: 'Ventanas', corto: 'Ventanas', sub: ['Corrediza', 'De abrir', 'Paño fijo', 'No sé'], w: 150, h: 110 },
+    puerta: { nom: 'Puertas', corto: 'Puertas', sub: ['De entrada', 'Interior', 'Colgante estilo granero', 'No sé'], w: 90, h: 205 },
+    balcon: { nom: 'Puerta balcón o corrediza grande', corto: 'Puerta balcón', sub: ['2 hojas', '3 o más hojas', 'No sé'], w: 200, h: 205 },
+    cerramiento: { nom: 'Cerramiento', corto: 'Cerramiento', sub: ['Galería', 'Terraza o balcón', 'Quincho', 'Otro'], w: 400, h: 240 },
+    obra: { nom: 'Aberturas para una obra', corto: 'Aberturas de obra', sub: [], w: 0, h: 0 }
+  };
+  var st = { paso: 1, cant: 1 };
+  var CLAVE = 'asj-presupuesto';
+  try { var g = JSON.parse(localStorage.getItem(CLAVE) || 'null'); if (g && typeof g === 'object') st = Object.assign(st, g, { paso: Math.min(g.paso || 1, 6) }); } catch (e) {}
+
+  function val(n) { var el = form.querySelector('[name="' + n + '"]:checked'); return el ? el.value : ''; }
+  function leer() {
+    ['tipo', 'subtipo', 'material', 'medidas', 'uso', 'situacion', 'colocacion', 'plazo', 'presupuesto', 'via', 'horario'].forEach(function (n) { st[n] = val(n); });
+    ['ancho', 'alto', 'zona', 'nombre', 'tel', 'email', 'nota'].forEach(function (n) { var el = form.elements[n]; if (el) st[n] = el.value.trim(); });
+    try { localStorage.setItem(CLAVE, JSON.stringify(st)); } catch (e) {}
+  }
+  function poner() {
+    ['tipo', 'material', 'medidas', 'uso', 'situacion', 'colocacion', 'plazo', 'presupuesto', 'via', 'horario'].forEach(function (n) {
+      if (!st[n]) return; var el = form.querySelector('[name="' + n + '"][value="' + st[n] + '"]'); if (el) el.checked = true;
+    });
+    ['ancho', 'alto', 'zona', 'nombre', 'tel', 'email', 'nota'].forEach(function (n) { if (st[n] && form.elements[n]) form.elements[n].value = st[n]; });
+    $('#cantOut').textContent = st.cant;
+    armarSub();
+    if (st.subtipo) { var s = form.querySelector('[name="subtipo"][value="' + st.subtipo + '"]'); if (s) s.checked = true; }
+    $('#medGrupo').hidden = !(st.medidas && st.medidas !== 'no');
+    $('#mailGrupo').hidden = st.via !== 'Email';
+  }
+  function armarSub() {
+    var t = TIPOS[val('tipo')], g = $('#subGrupo'), c = $('#subOps');
+    if (!t || !t.sub.length) { g.hidden = true; c.innerHTML = ''; return; }
+    g.hidden = false;
+    c.innerHTML = t.sub.map(function (s, i) {
+      return '<div class="op"><input type="radio" name="subtipo" id="sb' + i + '" value="' + s + '"><label for="sb' + i + '">' + s + '</label></div>';
+    }).join('');
+  }
+
+  /* --- croquis: dibujo técnico simple con cotas --- */
+  var COL = { 'Aluminio blanco': ['#F4F6F8', '#5A6676'], 'Aluminio negro': ['#2B313B', '#13213B'], 'Madera': ['#B9875A', '#5E3D22'], 'Chapa': ['#8D9AAB', '#3C4757'], 'A definir': ['#E9EDF2', '#4A566A'] };
+  function rect(x, y, w, h, f, s, sw, extra) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="' + f + '" stroke="' + s + '" stroke-width="' + (sw || 1.5) + '"' + (extra || '') + '/>'; }
+  function linea(x1, y1, x2, y2, s, sw, extra) { return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + s + '" stroke-width="' + (sw || 1) + '"' + (extra || '') + '/>'; }
+  function texto(x, y, t, extra) { return '<text x="' + x + '" y="' + y + '" font-family="Instrument Sans, sans-serif" font-size="13" font-weight="600" fill="#4A566A" text-anchor="middle"' + (extra || '') + '>' + t + '</text>'; }
+  var VIDRIO = '#E4EDF7';
+  function abertura(tipo, sub, x, y, w, h, c) {
+    var f = c[0], s = c[1], o = '', p = Math.max(5, Math.min(w, h) * .06);
+    o += rect(x, y, w, h, f, s, 2);
+    if (tipo === 'puerta') {
+      var vid = /Aluminio/.test(st.material || '') || sub === 'Colgante estilo granero' ? 0 : 1;
+      if (sub === 'Colgante estilo granero') {
+        o += linea(x - 10, y - 8, x + w + 10, y - 8, s, 3);
+        o += rect(x + p, y + p, w - 2 * p, h - 2 * p, f, s, 1.2);
+        o += linea(x + p, y + p, x + w - p, y + h - p, s, 1, ' opacity=".5"') + linea(x + w - p, y + p, x + p, y + h - p, s, 1, ' opacity=".5"');
+      } else {
+        o += rect(x + p, y + p, w - 2 * p, (h - 2 * p) * (vid ? .42 : .62), vid ? f : VIDRIO, s, 1.2);
+        if (vid) o += rect(x + p, y + p + (h - 2 * p) * .48, w - 2 * p, (h - 2 * p) * .46, f, s, 1.2);
+        else o += rect(x + p, y + p + (h - 2 * p) * .66, w - 2 * p, (h - 2 * p) * .3, f, s, 1.2);
+      }
+      o += rect(x + w - p - 5, y + h * .5 - 9, 3.5, 18, s, s, 1, ' rx="1.5"');
+    } else if (tipo === 'cerramiento') {
+      var n = 4, bh = h * .2;
+      o += linea(x, y + bh, x + w, y + bh, s, 2);
+      for (var i = 0; i < n; i++) {
+        o += rect(x + p + i * (w - 2 * p) / n, y + p, (w - 2 * p) / n - 3, bh - p - 2, VIDRIO, s, 1);
+        o += rect(x + p + i * (w - 2 * p) / n, y + bh + 4, (w - 2 * p) / n - 3, h - bh - p - 4, VIDRIO, s, 1.2);
+      }
+      o += flecha(x + w * .37, x + w * .2, y + h * .6, s) + flecha(x + w * .63, x + w * .8, y + h * .6, s);
+    } else if (tipo === 'balcon' || (tipo === 'ventana' && (sub === 'Corrediza' || sub === '' || sub === 'No sé'))) {
+      var hojas = sub === '3 o más hojas' ? 4 : 2, hw = (w - 2 * p) / hojas;
+      for (var k = 0; k < hojas; k++) o += rect(x + p + k * hw + (k % 2 ? -2 : 2), y + p + (k % 2 ? 3 : 0), hw, h - 2 * p - 3, VIDRIO, s, 1.4);
+      o += flecha(x + w * .5 + hw * .15, x + w * .5 + hw * .55, y + h * .5, s);
+      if (tipo === 'balcon') o += rect(x + w * .5 - 7, y + h * .52 - 9, 3.5, 18, s, s, 1, ' rx="1.5"');
+    } else if (tipo === 'ventana' && sub === 'De abrir') {
+      o += rect(x + p, y + p, w - 2 * p, h - 2 * p, VIDRIO, s, 1.4);
+      o += linea(x + p, y + p, x + w - p, y + h / 2, s, 1, ' stroke-dasharray="5 4"') + linea(x + p, y + h - p, x + w - p, y + h / 2, s, 1, ' stroke-dasharray="5 4"');
+    } else if (tipo === 'ventana') {
+      o += rect(x + p, y + p, w - 2 * p, h - 2 * p, VIDRIO, s, 1.4);
+    }
+    return o;
+  }
+  function flecha(x1, x2, yy, s) {
+    var d = x2 > x1 ? -5 : 5;
+    return linea(x1, yy, x2, yy, s, 1.2) + '<path d="M' + x2 + ' ' + yy + ' l' + d + ' -4 M' + x2 + ' ' + yy + ' l' + d + ' 4" stroke="' + s + '" stroke-width="1.2" fill="none"/>';
+  }
+  function cota(x1, y1, x2, y2, t, vertical) {
+    var c = '#24509E', o = linea(x1, y1, x2, y2, c, 1.2);
+    if (vertical) {
+      o += linea(x1 - 5, y1, x1 + 5, y1, c, 1.2) + linea(x2 - 5, y2, x2 + 5, y2, c, 1.2);
+      o += '<text x="' + (x1 + 10) + '" y="' + ((y1 + y2) / 2 + 4) + '" font-family="Instrument Sans, sans-serif" font-size="13" font-weight="650" fill="#24509E">' + t + '</text>';
+    } else {
+      o += linea(x1, y1 - 5, x1, y1 + 5, c, 1.2) + linea(x2, y2 - 5, x2, y2 + 5, c, 1.2);
+      o += '<text x="' + ((x1 + x2) / 2) + '" y="' + (y1 + 18) + '" font-family="Instrument Sans, sans-serif" font-size="13" font-weight="650" fill="#24509E" text-anchor="middle">' + t + '</text>';
+    }
+    return o;
+  }
+  function dibujar() {
+    var svg = $('#croquis'), tipo = st.tipo, c = COL[st.material] || ['#EEF2F6', '#13213B'], o = '';
+    if (!tipo) {
+      o += abertura('ventana', 'Corrediza', 70, 40, 170, 125, ['#EEF2F6', '#97A3B1']);
+      o += cota(70, 190, 240, 190, '? cm') + cota(258, 40, 258, 165, '? cm', true);
+      svg.innerHTML = o; return;
+    }
+    if (tipo === 'obra') {
+      o += abertura('ventana', 'Corrediza', 30, 60, 120, 90, c) + abertura('puerta', 'De entrada', 175, 40, 62, 140, c) + abertura('ventana', 'De abrir', 255, 80, 45, 60, c);
+      o += texto(160, 222, st.cant > 1 ? st.cant + ' aberturas' : 'Varias aberturas');
+      svg.innerHTML = o; return;
+    }
+    var t = TIPOS[tipo], an = parseInt(st.ancho, 10), al = parseInt(st.alto, 10);
+    var W = an > 0 ? an : t.w, H = al > 0 ? al : t.h;
+    var esc = Math.min(200 / W, 165 / H), w = Math.max(30, W * esc), h = Math.max(30, H * esc);
+    var x = (262 - w) / 2, y = 20 + (175 - h) / 2;
+    if (st.subtipo === 'Colgante estilo granero') y += 6;
+    o += abertura(tipo, st.subtipo || '', x, y, w, h, c);
+    o += cota(x, y + h + 18, x + w, y + h + 18, (an > 0 ? an : '?') + ' cm');
+    o += cota(x + w + 16, y, x + w + 16, y + h, (al > 0 ? al : '?') + ' cm', true);
+    if (st.cant > 1) o += '<g><rect x="6" y="6" width="44" height="26" rx="13" fill="#13213B"/><text x="28" y="24" font-family="Archivo, sans-serif" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">x' + st.cant + '</text></g>';
+    svg.innerHTML = o;
+  }
+
+  /* --- temperatura: reglas simples y explicables --- */
+  function evaluar() {
+    var pts = 0, por = [];
+    var PL = { ya: [3, 'Quiere comprar este mes'], '1a3': [2, 'Compra en 1 a 3 meses'], despues: [1, 'Compra más adelante'], averiguando: [0, 'Por ahora está averiguando'] }[st.plazo] || [0, 'Sin plazo'];
+    pts += PL[0]; por.push([PL[0], PL[1]]);
+    var ME = { exactas: [2, 'Tiene medidas exactas o plano'], aprox: [1, 'Tiene medidas aproximadas'], no: [0, 'Todavía no tiene medidas'] }[st.medidas] || [0, 'Sin medidas'];
+    pts += ME[0]; por.push([ME[0], ME[1]]);
+    if (st.material && st.material !== 'A definir') { pts += 1; por.push([1, 'Ya eligió material']); } else por.push([0, 'Necesita asesoramiento con el material']);
+    if (st.colocacion === 'Sí') { pts += 1; por.push([1, 'Quiere colocación (trabajo completo)']); }
+    if (st.cant >= 3 || st.tipo === 'cerramiento' || st.tipo === 'obra' || st.uso === 'pro' || st.uso === 'local') { pts += 1; por.push([1, 'Pedido grande o comercial']); }
+    if (st.presupuesto === 'equilibrio' || st.presupuesto === 'mejor') { pts += 1; por.push([1, 'Prioriza calidad']); }
+    var temp = pts >= 6 ? 'caliente' : pts >= 3 ? 'tibio' : 'frio';
+    if (st.plazo === 'averiguando' && temp === 'caliente') { temp = 'tibio'; por.push([0, 'Tope en tibio: solo está averiguando']); }
+    var cat = st.uso === 'pro' ? 'Profesional / constructora'
+      : st.situacion === 'nueva' ? 'Obra nueva'
+      : st.situacion === 'reemplazo' ? 'Reemplazo'
+      : st.situacion === 'ampliacion' ? 'Ampliación o cerramiento' : 'Consulta';
+    if (st.uso === 'local' && st.uso !== 'pro') cat += ' en comercio';
+    var T = { caliente: ['🔥', 'CALIENTE', 'Caliente'], tibio: ['🌤️', 'TIBIO', 'Tibio'], frio: ['❄️', 'FRÍO', 'Frío'] }[temp];
+    var mat = st.material && st.material !== 'A definir' ? ' ' + st.material.toLowerCase().replace('aluminio', 'de aluminio').replace(/^madera$/, 'de madera').replace(/^chapa$/, 'de chapa') : '';
+    var queCosa = TIPOS[st.tipo] ? TIPOS[st.tipo].corto : 'Aberturas';
+    var etiqueta = T[0] + ' ' + T[1] + ' · ' + cat + ' · ' + queCosa + mat;
+    return { pts: pts, max: 9, temp: temp, T: T, cat: cat, etiqueta: etiqueta, por: por };
+  }
+  var USOS = { casa: 'Su casa', local: 'Local o comercio', pro: 'Profesional (constructor / arquitecto)' };
+  var SITS = { nueva: 'Obra nueva', reemplazo: 'Cambiar aberturas viejas', ampliacion: 'Ampliación o cerramiento' };
+  var PLAZOS = { ya: 'Lo antes posible (este mes)', '1a3': 'En 1 a 3 meses', despues: 'Más adelante', averiguando: 'Por ahora está averiguando' };
+  var PRECIO = { economico: 'Lo más económico', equilibrio: 'Calidad y precio', mejor: 'Lo mejor, aunque cueste más' };
+  var MEDS = { exactas: 'Exactas o tiene plano', aprox: 'Aproximadas', no: 'Todavía no' };
+  function medidaTxt() { return st.ancho && st.alto ? st.ancho + ' x ' + st.alto + ' cm' : st.ancho ? st.ancho + ' cm de ancho' : st.alto ? st.alto + ' cm de alto' : ''; }
+  function mensaje(ev) {
+    var L = [];
+    L.push('*' + ev.etiqueta + '*');
+    L.push('Consulta desde la web');
+    L.push('');
+    L.push('*Qué busca*');
+    L.push('• ' + (TIPOS[st.tipo] ? TIPOS[st.tipo].nom : '') + (st.subtipo && st.subtipo !== 'No sé' ? ': ' + st.subtipo.toLowerCase() : ''));
+    L.push('• Material: ' + (st.material === 'A definir' ? 'quiere asesoramiento' : st.material));
+    L.push('• Cantidad: ' + st.cant);
+    L.push('• Medidas: ' + (MEDS[st.medidas] || '') + (medidaTxt() ? ' (' + medidaTxt() + ')' : ''));
+    L.push('');
+    L.push('*La obra*');
+    L.push('• Para: ' + (USOS[st.uso] || ''));
+    L.push('• ' + (SITS[st.situacion] || ''));
+    L.push('• Zona: ' + st.zona);
+    L.push('• Colocación: ' + st.colocacion);
+    L.push('');
+    L.push('*Interés*');
+    L.push('• Plazo: ' + (PLAZOS[st.plazo] || ''));
+    if (st.presupuesto) L.push('• Busca: ' + PRECIO[st.presupuesto]);
+    L.push('• Puntaje: ' + ev.pts + ' de ' + ev.max);
+    L.push('');
+    L.push('*Contacto*');
+    L.push('• ' + st.nombre + ', ' + st.tel);
+    L.push('• Prefiere ' + ({ WhatsApp: 'WhatsApp', 'Llamada': 'que lo llamen', Email: 'email' }[st.via] || 'WhatsApp') + ' ' + (st.horario || '') + (st.via === 'Email' && st.email ? ': ' + st.email : ''));
+    if (st.nota) { L.push(''); L.push('*Comentario*'); L.push(st.nota); }
+    return L.join('\n');
+  }
+  function resumen() {
+    var chips = [];
+    if (TIPOS[st.tipo]) chips.push(TIPOS[st.tipo].corto + (st.subtipo && st.subtipo !== 'No sé' && st.subtipo !== 'Otro' ? ', ' + st.subtipo.toLowerCase() : ''));
+    if (st.material) chips.push(st.material === 'A definir' ? 'Material a definir' : st.material);
+    if (st.tipo) chips.push(st.cant + (st.cant === 1 ? ' unidad' : ' unidades'));
+    if (st.zona) chips.push(st.zona);
+    if (st.plazo) chips.push(PLAZOS[st.plazo]);
+    $('#resumen').innerHTML = chips.map(function (c) { return '<li>' + c.replace(/</g, '&lt;') + '</li>'; }).join('');
+    $('#croquisTxt').hidden = !!chips.length;
+  }
+
+  /* --- validación por paso --- */
+  function error(nombre, si) { var e = form.querySelector('[data-err="' + nombre + '"]'); if (e) e.hidden = !si; return si; }
+  function valido(n) {
+    leer(); var ok = true;
+    function req(campo, cond) { if (error(campo, !cond)) ok = false; }
+    if (n === 1) req('tipo', !!st.tipo);
+    if (n === 2) req('material', !!st.material);
+    if (n === 3) req('medidas', !!st.medidas);
+    if (n === 4) { req('uso', !!st.uso); req('situacion', !!st.situacion); req('zona', st.zona.length >= 2); req('colocacion', !!st.colocacion); }
+    if (n === 5) req('plazo', !!st.plazo);
+    if (n === 6) {
+      req('nombre', st.nombre.length >= 2);
+      req('tel', (st.tel.replace(/\D/g, '').length >= 8));
+      if (st.via === 'Email') req('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(st.email)); else error('email', false);
+    }
+    if (!ok) { var primero = form.querySelector('.paso:not([hidden]) .err:not([hidden])'); if (primero) primero.scrollIntoView({ block: 'nearest', behavior: quieto ? 'auto' : 'smooth' }); }
+    return ok;
+  }
+  function ir(n, atras) {
+    st.paso = n;
+    pasos.forEach(function (p) {
+      var es = +p.dataset.paso === n; p.hidden = !es;
+      p.classList.remove('entra', 'atras');
+      if (es) { void p.offsetWidth; p.classList.add('entra'); if (atras) p.classList.add('atras'); }
+    });
+    $('#pasoN').textContent = n <= 6 ? 'Paso ' + n + ' de 6' : 'Todo listo';
+    $('#pasoNombre').textContent = NOMBRES[n - 1];
+    $('#barra').style.transform = 'scaleX(' + Math.min(n, 6) / 6 + ')';
+    $('#atras').disabled = n === 1;
+    var seg = $('#seguir');
+    if (n === 7) { seg.innerHTML = '<i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>Empezar otra'; armarFinal(); }
+    else seg.innerHTML = (n === 6 ? 'Ver mi consulta' : 'Seguir') + '<i class="ph ph-arrow-right" aria-hidden="true"></i>';
+    try { localStorage.setItem(CLAVE, JSON.stringify(st)); } catch (e) {}
+  }
+  function subirAlForm() {
+    var r = form.getBoundingClientRect(), head = parseInt(getComputedStyle(root).getPropertyValue('--head')) || 72;
+    if (r.top < head || r.top > window.innerHeight * .5) {
+      if (window.lenisInst) window.lenisInst.scrollTo(form, { offset: -(head + 12), duration: .7 });
+      else window.scrollTo({ top: window.scrollY + r.top - head - 12, behavior: quieto ? 'auto' : 'smooth' });
+    }
+  }
+  var datosFinales = null;
+  function armarFinal() {
+    leer();
+    var ev = evaluar(), msg = mensaje(ev);
+    var filas = [
+      ['Qué', (TIPOS[st.tipo] ? TIPOS[st.tipo].nom : '') + (st.subtipo && st.subtipo !== 'No sé' ? ', ' + st.subtipo.toLowerCase() : '')],
+      ['Material', st.material === 'A definir' ? 'Te asesoramos' : st.material],
+      ['Cantidad', String(st.cant)],
+      ['Medidas', (MEDS[st.medidas] || '') + (medidaTxt() ? ', ' + medidaTxt() : '')],
+      ['Obra', (SITS[st.situacion] || '') + ', ' + st.zona],
+      ['Colocación', st.colocacion],
+      ['Plazo', PLAZOS[st.plazo] || ''],
+      ['Contacto', st.nombre + ', ' + st.tel]
+    ];
+    $('#tablaRes').innerHTML = filas.map(function (f) { return '<dt>' + f[0] + '</dt><dd>' + String(f[1]).replace(/</g, '&lt;') + '</dd>'; }).join('');
+    var e = $('#etq'); e.className = 'etiqueta ' + ev.temp; e.textContent = ev.T[0] + ' ' + ev.T[2] + ', ' + ev.pts + ' de ' + ev.max + ' puntos · ' + ev.cat;
+    $('#porque').innerHTML = ev.por.map(function (p) { return '<li><b>' + (p[0] ? '+' + p[0] : '0') + '</b> ' + p[1] + '</li>'; }).join('') +
+      '<li>Caliente: 6 o más. Tibio: 3 a 5. Frío: 2 o menos.</li>';
+    $('#burbuja').textContent = msg;
+    $('#enviarWa').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+    datosFinales = {
+      fecha: new Date().toISOString(), etiqueta: ev.etiqueta, temperatura: ev.T[2], puntaje: ev.pts, categoria: ev.cat,
+      tipo: TIPOS[st.tipo] ? TIPOS[st.tipo].nom : '', subtipo: st.subtipo, material: st.material, cantidad: st.cant,
+      medidas: MEDS[st.medidas] || '', ancho: st.ancho, alto: st.alto, uso: USOS[st.uso] || '', situacion: SITS[st.situacion] || '',
+      zona: st.zona, colocacion: st.colocacion, plazo: PLAZOS[st.plazo] || '', presupuesto: PRECIO[st.presupuesto] || '',
+      nombre: st.nombre, tel: st.tel, via: st.via, email: st.email, horario: st.horario, nota: st.nota, origen: 'presupuestador web'
+    };
+  }
+  $('#enviarWa').addEventListener('click', function () { if (datosFinales) guardarConsulta(datosFinales); });
+  $('#copiar').addEventListener('click', function () {
+    var t = $('#burbuja').textContent;
+    function ok() { aviso('Mensaje copiado. Pegalo en WhatsApp o en Instagram.'); }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, function () { copiarViejo(t); ok(); });
+    else { copiarViejo(t); ok(); }
+  });
+  function copiarViejo(t) { var a = document.createElement('textarea'); a.value = t; a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (e) {} a.remove(); }
+
+  $('#seguir').addEventListener('click', function () {
+    if (st.paso === 7) {
+      try { localStorage.removeItem(CLAVE); } catch (e) {}
+      var conservar = { nombre: st.nombre, tel: st.tel, via: st.via, email: st.email, horario: st.horario };
+      form.reset(); st = Object.assign({ paso: 1, cant: 1 }, conservar); poner(); refrescar(); ir(1, true); subirAlForm(); return;
+    }
+    if (!valido(st.paso)) return;
+    ir(st.paso + 1); subirAlForm();
+  });
+  $('#atras').addEventListener('click', function () { if (st.paso > 1) { leer(); ir(st.paso - 1, true); subirAlForm(); } });
+
+  function refrescar() { leer(); dibujar(); resumen(); }
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'tipo') { armarSub(); }
+    if (e.target.name === 'medidas') $('#medGrupo').hidden = e.target.value === 'no';
+    if (e.target.name === 'via') $('#mailGrupo').hidden = e.target.value !== 'Email';
+    if (e.target.name) error(e.target.name, false);
+    refrescar();
+  });
+  form.addEventListener('input', function (e) { if (e.target.name) error(e.target.name, false); refrescar(); });
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+  $('#mas').addEventListener('click', function () { st.cant = Math.min(99, st.cant + 1); $('#cantOut').textContent = st.cant; refrescar(); });
+  $('#menos').addEventListener('click', function () { st.cant = Math.max(1, st.cant - 1); $('#cantOut').textContent = st.cant; refrescar(); });
+
+  // "Cotizar ..." desde los productos: preselecciona el tipo y baja al presupuestador
+  $$('.cotizar').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var r = form.querySelector('[name="tipo"][value="' + b.dataset.tipo + '"]');
+      if (r) { r.checked = true; armarSub(); error('tipo', false); refrescar(); if (st.paso !== 1) ir(1, true); }
+      var sec = $('#presupuesto'), head = parseInt(getComputedStyle(root).getPropertyValue('--head')) || 72;
+      if (window.lenisInst) window.lenisInst.scrollTo(sec, { offset: -(head + 8), duration: 1.1 });
+      else sec.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth' });
+    });
+  });
+
+  poner(); dibujar(); resumen(); ir(st.paso || 1);
+
+  /* ---------- formulario corto: te llamamos ---------- */
+  $('#llamar').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = $('#lNombre').value.trim(), t = $('#lTel').value.trim(), tema = $('#lTema').value, h = ($('[name="lHora"]:checked') || {}).value || '';
+    var ok = n.length >= 2 && t.replace(/\D/g, '').length >= 8;
+    $('#lErr').hidden = ok; if (!ok) return;
+    var msg = '*📞 PEDIDO DE LLAMADA · ' + tema + '*\nDesde la web\n\n• Nombre: ' + n + '\n• Teléfono: ' + t + '\n• Llamar ' + h;
+    guardarConsulta({ fecha: new Date().toISOString(), etiqueta: '📞 PEDIDO DE LLAMADA · ' + tema, temperatura: 'Llamar', tipo: tema, nombre: n, tel: t, horario: h, origen: 'te llamamos' });
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+
+  /* ---------- barra "Armá tu presupuesto" en el celular ---------- */
+  var barraCta = $('#barraCta'), enHero = true, enCot = false;
+  function barra() { barraCta.classList.toggle('ver', !enHero && !enCot); }
+  new IntersectionObserver(function (es) { enHero = es[0].isIntersecting; barra(); }, { threshold: .15 }).observe(hero);
+  new IntersectionObserver(function (es) { enCot = es[0].isIntersecting; document.body.classList.toggle('en-cot', enCot); barra(); }, { threshold: .05 }).observe($('#presupuesto'));
+
+  // ---------- scroll suave: Lenis 1.3.26, lerp 0.09, autoRaf ----------
+  if (!quieto) {
+    var sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js'; sc.async = true;
+    sc.onload = function () {
+      if (!window.Lenis) return;
+      var lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
+      window.lenisInst = lenis;
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+        var id = a.getAttribute('href'); if (id.length < 2) return;
+        var el = document.getElementById(id.slice(1)); if (!el) return;
+        e.preventDefault();
+        var head = parseInt(getComputedStyle(root).getPropertyValue('--head')) || 72;
+        lenis.scrollTo(el, { offset: id === '#inicio' ? -999 : -(head + 8), duration: 1.1 });
+        history.pushState(null, '', id);
+      });
+    };
+    document.head.appendChild(sc);
+  }
+})();
+</script>
+</body>
+</html>
