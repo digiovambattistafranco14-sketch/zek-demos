@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El nieto de Rogelio | Pizzas artesanales listas para hornear</title>
+<meta name="description" content="Pizzas y pizzetas artesanales, listas para hornear. Conseguilas en Donado 695, Bahía Blanca. Armá tu pedido y mandalo por Instagram.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EE8A12">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="El nieto de Rogelio">
+<meta property="og:title" content="El nieto de Rogelio | Pizzas artesanales listas para hornear">
+<meta property="og:description" content="Pizzas y pizzetas artesanales, listas para hornear. Conseguilas en Donado 695, Bahía Blanca.">
+<meta property="og:url" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/el-nieto-de-rogelio/">
+<meta property="og:image" content="https://digiovambattistafranco14-sketch.github.io/zek-demos/el-nieto-de-rogelio/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-especial.jpg">
+<style>
+:root{
+  --naranja:#EE8A12;
+  --naranja-hondo:#D9760A;
+  --carbon:#1F1C19;
+  --tinta:#2B2723;
+  --gris:#655D55;
+  --lima:#C8D25A;
+  --hielo:#EAF1F3;
+  --hielo-borde:#D3DFE3;
+  --papel:#FFFEFB;
+  --ig:#D62976;
+  --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+  --head:72px;
+  --r:20px;
+  --display:"Playfair Display", Georgia, serif;
+  --sans:"Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+section[id]{scroll-margin-top:calc(var(--head) + 12px)}
+.wrap{width:min(1180px, 100% - 40px);margin-inline:auto}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+[hidden]{display:none !important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--carbon);outline-offset:3px;border-radius:8px}
+
+/* papel arrugado, como el fondo de sus historias */
+.papel{position:relative;background-color:var(--naranja);isolation:isolate}
+.papel::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='4' seed='7'/%3E%3CfeDiffuseLighting lighting-color='%23ffffff' surfaceScale='3.2'%3E%3CfeDistantLight azimuth='45' elevation='58'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size:600px 600px}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:2px solid transparent;
+  font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:transform .14s var(--ease-out), background-color .2s ease, color .2s ease, border-color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-carbon{background:var(--carbon);color:var(--papel)}
+.btn-linea{border-color:var(--carbon);color:var(--carbon);background:transparent}
+@media (hover:hover) and (pointer:fine){
+  .btn-carbon:hover{background:#000}
+  .btn-linea:hover{background:var(--carbon);color:var(--papel)}
+}
+
+/* ---------- encabezado ---------- */
+.head{position:fixed;inset:0 0 auto;z-index:50;height:var(--head);transition:background-color .25s ease, box-shadow .25s ease}
+.head .wrap{height:100%;display:flex;align-items:center;gap:20px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca img{width:46px;height:46px;border-radius:50%;border:2px solid var(--carbon);background:#ddd}
+.marca b{display:block;font-family:var(--display);font-weight:800;font-size:19px;line-height:1.1;color:var(--carbon)}
+.marca span{display:block;font-size:13px;color:var(--tinta);line-height:1.2;white-space:nowrap}
+.nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;padding:10px 14px;border-radius:999px;color:var(--carbon);transition:background-color .2s ease}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(31,28,25,.08)}}
+.head .btn{min-height:44px;padding:0 18px;font-size:15px}
+.nav .btn,.menu-movil .btn{color:var(--papel)}
+@media (hover:hover) and (pointer:fine){.nav .btn:hover{background:#000}}
+.head.solida{background:rgba(255,254,251,.8);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(31,28,25,.08)}
+.menu-btn{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:2px solid var(--carbon);background:transparent;place-items:center;cursor:pointer}
+.menu-movil{position:fixed;top:var(--head);left:12px;right:12px;z-index:49;background:var(--papel);border-radius:var(--r);padding:10px;
+  box-shadow:0 24px 60px -20px rgba(60,30,0,.45);display:grid;gap:2px;
+  opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top center;pointer-events:none;visibility:hidden;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s .2s}
+.menu-movil.abierto{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .2s var(--ease-out), transform .2s var(--ease-out)}
+.menu-movil a{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:14px;text-decoration:none;font-weight:600;font-size:17px;color:var(--carbon)}
+.menu-movil a:active{background:var(--hielo)}
+.menu-movil .btn{margin-top:6px}
+@media (max-width:900px){
+  .nav{display:none}
+  .menu-btn{display:grid}
+}
+@media (max-width:420px){.marca span{display:none}}
+
+/* ---------- portada ---------- */
+.hero{min-height:100dvh;padding:calc(var(--head) + 36px) 0 64px;display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;align-items:center}
+.hero h1{font-family:var(--display);font-style:italic;font-weight:800;font-size:clamp(44px, 5.6vw, 76px);line-height:1.04;letter-spacing:-.01em;margin:0 0 22px;color:var(--carbon);padding-bottom:4px;text-wrap:balance}
+.hero p{font-size:clamp(18px, 1.6vw, 21px);max-width:36ch;margin:0 0 32px;color:var(--carbon)}
+.hero p strong{font-weight:700}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* la puerta del freezer: la foto arranca empañada y se desempaña */
+.puerta{position:relative;justify-self:end;width:min(400px, 100%);aspect-ratio:9/13;border-radius:var(--r);overflow:hidden;
+  background:var(--hielo);border:3px solid var(--carbon);box-shadow:14px 14px 0 var(--carbon)}
+.puerta img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+@property --deshielo{syntax:"<percentage>";inherits:false;initial-value:-25%}
+.escarcha{position:absolute;inset:0;pointer-events:none;
+  background-color:rgba(234,241,243,.5);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  -webkit-backdrop-filter:blur(18px) saturate(.55) brightness(1.12);backdrop-filter:blur(18px) saturate(.55) brightness(1.12);
+  -webkit-mask-image:radial-gradient(circle at 50% 46%, transparent var(--deshielo), #000 calc(var(--deshielo) + 22%));
+  mask-image:radial-gradient(circle at 50% 46%, transparent var(--deshielo), #000 calc(var(--deshielo) + 22%));
+  animation:deshielo 2.2s cubic-bezier(0.77, 0, 0.175, 1) .5s forwards;animation-play-state:paused}
+.puerta.lista .escarcha{animation-play-state:running}
+@keyframes deshielo{to{--deshielo:130%}}
+
+@media (max-width:900px){
+  .hero{min-height:auto;padding:calc(var(--head) + 28px) 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .puerta{justify-self:start;width:min(360px, calc(100% - 14px));aspect-ratio:4/5}
+}
+
+/* ---------- carta ---------- */
+.carta{background:var(--hielo);padding:104px 0}
+.titulo{font-family:var(--display);font-weight:800;font-size:clamp(36px, 4.4vw, 56px);line-height:1.08;margin:0 0 14px;color:var(--carbon);text-wrap:balance}
+.bajada{max-width:52ch;margin:0 0 48px;color:var(--gris);font-size:18px}
+.lista{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.plato{display:grid;grid-template-columns:168px 1fr;gap:20px;align-items:center;background:var(--papel);border:1px solid var(--hielo-borde);border-radius:var(--r);padding:14px 20px 14px 14px}
+.plato .foto{width:168px;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#dfe6e8}
+.plato .foto img{width:100%;height:100%;object-fit:cover}
+.plato .foto.icono{display:grid;place-items:center;color:var(--carbon);background-color:var(--naranja)}
+.plato .foto.icono .ico{width:52px;height:52px;stroke-width:1.5}
+.plato h3{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15;margin:0 0 4px;color:var(--carbon)}
+.plato p{margin:0 0 12px;color:var(--gris);font-size:15.5px;line-height:1.45}
+.plato .pie{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.precio{font-size:14px;font-weight:600;color:var(--gris)}
+.sumar{min-height:44px;padding:0 18px;font-size:15px}
+.contador{display:inline-flex;align-items:center;height:44px;border-radius:999px;background:var(--carbon);color:var(--papel)}
+.contador button{width:44px;height:44px;border:0;background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;border-radius:50%}
+.contador button:active{transform:scale(.92)}
+.contador output{min-width:24px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.contador .ico{width:18px;height:18px}
+.nota-carta{margin:28px 0 0;color:var(--gris);font-size:15px}
+@media (max-width:900px){.lista{grid-template-columns:1fr}}
+@media (max-width:520px){
+  .carta{padding:80px 0}
+  .plato{grid-template-columns:112px 1fr;gap:14px;padding:12px 14px 12px 12px;align-items:start}
+  .plato .foto{width:112px;aspect-ratio:1/1}
+  .plato h3{font-size:21px}
+  .plato p{font-size:15px;margin-bottom:10px}
+}
+
+/* ---------- cómo se hacen ---------- */
+.taller{padding:112px 0}
+.taller .wrap{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.taller .texto{position:sticky;top:calc(var(--head) + 40px)}
+.taller .texto p{max-width:38ch;color:var(--gris);font-size:18px;margin:0 0 14px}
+.taller .texto p strong{color:var(--carbon)}
+.fotos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fotos figure{margin:0;border-radius:var(--r);overflow:hidden;background:var(--hielo)}
+.fotos img{width:100%;height:100%;object-fit:cover}
+.fotos .alta{grid-row:span 2;aspect-ratio:9/16}
+.fotos .baja{aspect-ratio:4/5}
+@media (max-width:900px){
+  .taller{padding:88px 0}
+  .taller .wrap{grid-template-columns:1fr;gap:36px}
+  .taller .texto{position:static}
+  .fotos{gap:10px}
+}
+
+/* ---------- cómo resolver tus comidas ---------- */
+.resolver{padding:100px 0}
+.resolver h2{font-style:italic;margin-bottom:6px}
+.resolver .bajada{color:var(--carbon);margin-bottom:52px}
+.pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;position:relative}
+.pasos::before{content:"";position:absolute;left:36px;right:12%;top:36px;border-top:3px dashed rgba(31,28,25,.55)}
+.pasos li{position:relative}
+.pasos .circ{width:72px;height:72px;border-radius:50%;background:var(--carbon);color:var(--lima);display:grid;place-items:center;margin-bottom:18px}
+.pasos .circ .ico{width:32px;height:32px}
+.pasos h3{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15;margin:0 0 6px;color:var(--carbon)}
+.pasos p{margin:0;color:var(--carbon);max-width:28ch}
+@media (max-width:760px){
+  .resolver{padding:80px 0}
+  .pasos{grid-template-columns:1fr;gap:26px}
+  .pasos::before{left:35px;right:auto;top:20px;bottom:20px;border-top:0;border-left:3px dashed rgba(31,28,25,.55)}
+  .pasos li{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:center}
+  .pasos .circ{margin:0}
+}
+
+/* ---------- dónde ---------- */
+.donde{padding:104px 0;background:var(--papel)}
+.donde .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.donde .dir{font-size:20px;color:var(--carbon);margin:0 0 6px;font-weight:600}
+.donde .dir + p{color:var(--gris);margin:0 0 28px;max-width:40ch}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.donde .aviso{font-size:15px;color:var(--gris);margin:0}
+.mapa{border-radius:var(--r);overflow:hidden;border:3px solid var(--carbon);aspect-ratio:4/3;background:var(--hielo)}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+@media (max-width:900px){
+  .donde{padding:84px 0}
+  .donde .wrap{grid-template-columns:1fr;gap:36px}
+}
+
+/* ---------- pie ---------- */
+footer{background:var(--carbon);color:#d9d3cc;padding:44px 0 130px;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+footer .marca b{color:var(--papel)}
+footer .marca span{color:#bdb6ae}
+footer .marca img{border-color:var(--naranja)}
+footer a{color:var(--papel);font-weight:600}
+footer .zek{color:#bdb6ae}
+
+/* ---------- botón flotante de Instagram: solo el ícono ---------- */
+.dm{position:fixed;right:max(20px, env(safe-area-inset-right));bottom:max(20px, env(safe-area-inset-bottom));z-index:60;
+  width:64px;height:64px;border-radius:50%;color:#fff;display:grid;place-items:center;text-decoration:none;
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 3px 6px rgba(120,20,70,.25), 0 16px 34px -10px rgba(120,20,70,.6);
+  transition:transform .2s var(--ease-out), bottom .3s var(--ease-out);
+  animation:dm-entra .7s cubic-bezier(0.34, 1.4, 0.64, 1) 2.4s both}
+.dm .ico{width:32px;height:32px;stroke-width:1.8;position:relative;z-index:1}
+.dm::before,.dm::after{content:"";position:absolute;inset:0;border-radius:50%;background:#d6249f;z-index:0;opacity:0;
+  animation:dm-onda 5s var(--ease-out) 3.4s infinite}
+.dm::after{animation-delay:3.8s}
+.dm .tip{position:absolute;right:calc(100% + 14px);top:50%;white-space:nowrap;background:#fff;color:var(--carbon);font-weight:700;font-size:15px;
+  padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px -12px rgba(31,28,25,.45);pointer-events:none;
+  opacity:0;transform:translate(8px, -50%) scale(.97);transform-origin:right center;transition:opacity .18s var(--ease-out), transform .18s var(--ease-out)}
+.dm .tip::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
+.dm .tip small{display:block;font-weight:500;font-size:13px;color:var(--gris)}
+.dm:active{transform:scale(.94)}
+.dm:focus-visible .tip{opacity:1;transform:translate(0, -50%)}
+@media (hover:hover) and (pointer:fine){
+  .dm:hover{transform:scale(1.07)}
+  .dm:hover .ico{animation:dm-suena .6s var(--ease-out)}
+  .dm:hover .tip{opacity:1;transform:translate(0, -50%)}
+  .dm:hover::before,.dm:hover::after{animation-play-state:paused}
+}
+@keyframes dm-entra{from{opacity:0;transform:translateY(24px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes dm-onda{0%{opacity:.4;transform:scale(1)}36%{opacity:0;transform:scale(1.75)}100%{opacity:0;transform:scale(1.75)}}
+@keyframes dm-suena{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+
+/* ---------- carrito ---------- */
+.carro-flot{position:fixed;right:max(24px, env(safe-area-inset-right));bottom:calc(max(20px, env(safe-area-inset-bottom)) + 80px);z-index:60;
+  width:58px;height:58px;border-radius:50%;border:0;background:var(--carbon);color:var(--papel);display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(31,28,25,.6);
+  opacity:0;transform:translateY(12px) scale(.9);pointer-events:none;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out)}
+.carro-flot .ico{width:26px;height:26px}
+.badge{position:absolute;top:-4px;right:-4px;min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:var(--lima);color:var(--carbon);
+  font-size:13px;font-weight:800;display:grid;place-items:center;border:2px solid var(--carbon);font-variant-numeric:tabular-nums}
+.badge.salta{animation:salta .3s var(--ease-out)}
+@keyframes salta{0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)}}
+.barra{display:none}
+body.con-pedido .carro-flot{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:720px){
+  .carro-flot{display:none}
+  .barra{position:fixed;left:12px;right:12px;bottom:max(12px, env(safe-area-inset-bottom));z-index:60;height:58px;border-radius:999px;border:0;
+    background:var(--carbon);color:var(--papel);display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:16px;cursor:pointer;
+    box-shadow:0 14px 30px -12px rgba(31,28,25,.6);
+    opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .22s var(--ease-out), transform .22s var(--ease-out)}
+  body.con-pedido .barra{opacity:1;transform:none;pointer-events:auto}
+  body.con-pedido .dm{bottom:calc(max(12px, env(safe-area-inset-bottom)) + 72px)}
+  .dm{width:58px;height:58px}
+  .dm .ico{width:29px;height:29px}
+}
+
+.velo{position:fixed;inset:0;z-index:70;background:rgba(31,28,25,.45);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.velo.abierto{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;bottom:0;z-index:71;width:min(440px, 100%);background:var(--papel);display:flex;flex-direction:column;
+  transform:translateX(100%);visibility:hidden;transition:transform .4s var(--ease-drawer), visibility 0s .4s;box-shadow:-20px 0 60px -30px rgba(31,28,25,.5)}
+.panel.abierto{transform:none;visibility:visible;transition:transform .4s var(--ease-drawer)}
+.panel-cab{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--hielo-borde)}
+.panel-cab h2{font-family:var(--display);font-weight:800;font-size:28px;margin:0;color:var(--carbon)}
+.cerrar{width:44px;height:44px;border-radius:50%;border:0;background:var(--hielo);display:grid;place-items:center;cursor:pointer}
+.panel-cuerpo{flex:1;overflow-y:auto;padding:8px 20px 24px;overscroll-behavior:contain}
+.items{list-style:none;margin:0 0 8px;padding:0}
+.items li{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--hielo-borde)}
+.items img,.items .mini{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--naranja)}
+.items .mini{display:grid;place-items:center;color:var(--carbon)}
+.items b{display:block;font-weight:700;color:var(--carbon);line-height:1.2}
+.items small{color:var(--gris);font-size:13.5px}
+.items .contador{height:40px}
+.items .contador button{width:38px;height:40px}
+.vacio{text-align:center;padding:40px 10px;color:var(--gris)}
+.vacio .ico{width:48px;height:48px;margin:0 auto 12px;color:var(--naranja-hondo);stroke-width:1.5}
+.vacio p{margin:0 0 18px}
+.form{display:grid;gap:16px;margin-top:18px}
+.campo{display:grid;gap:6px}
+.campo label{font-weight:700;font-size:15px;color:var(--carbon)}
+.campo label span{font-weight:500;color:var(--gris)}
+.campo input,.campo textarea{font:inherit;font-size:16px;color:var(--carbon);background:#fff;border:1.5px solid #c9d3d6;border-radius:12px;padding:12px 14px;min-height:50px;width:100%;
+  transition:border-color .15s ease, box-shadow .15s ease}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input::placeholder,.campo textarea::placeholder{color:#7d756e}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--carbon);box-shadow:0 0 0 3px rgba(238,138,18,.35)}
+.campo.error input{border-color:#B3261E}
+.campo .err{display:none;color:#B3261E;font-size:14px;font-weight:600}
+.campo.error .err{display:block}
+.retiro{display:flex;gap:10px;align-items:flex-start;background:var(--hielo);border-radius:14px;padding:12px 14px;font-size:15px;color:var(--carbon)}
+.retiro .ico{width:20px;height:20px;margin-top:2px}
+.panel-pie{padding:16px 20px max(16px, env(safe-area-inset-bottom));border-top:1px solid var(--hielo-borde);display:grid;gap:10px}
+.panel-pie .btn{width:100%}
+.panel-pie .alt{font-size:14px;color:var(--gris);text-align:center;margin:0}
+.panel-pie .alt a{color:var(--carbon);font-weight:700}
+.listo{display:none;background:#EEF6E0;border:1.5px solid #9DB04A;color:#33400F;border-radius:14px;padding:12px 14px;font-size:15px}
+.listo.ver{display:block}
+@media (max-width:720px){
+  .panel{top:auto;left:0;width:100%;max-height:90dvh;border-radius:22px 22px 0 0;transform:translateY(100%)}
+  .panel.abierto{transform:none}
+  .panel::before{content:"";position:absolute;top:8px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:999px;background:#c9d3d6}
+  .panel-cab{padding-top:22px}
+}
+
+/* ---------- Lenis ---------- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .escarcha{animation:fundir .5s ease .2s forwards;-webkit-mask-image:none;mask-image:none}
+  .dm{animation:fundir-in .3s ease both}
+  .dm::before,.dm::after{animation:none}
+  .dm:hover .ico{animation:none}
+  .badge.salta{animation:none}
+  .panel,.panel.abierto{transition:opacity .2s ease, visibility 0s;transform:none;opacity:0}
+  .panel.abierto{opacity:1}
+}
+@keyframes fundir{to{opacity:0}}
+@keyframes fundir-in{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- íconos de Tabler Icons (MIT) -->
+  <symbol id="i-ig" viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.01"/></symbol>
+  <symbol id="i-bolsa" viewBox="0 0 24 24"><path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"/><path d="M9 11v-5a3 3 0 0 1 6 0v5"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24"><path d="M12 5l0 14"/><path d="M5 12l14 0"/></symbol>
+  <symbol id="i-menos" viewBox="0 0 24 24"><path d="M5 12l14 0"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6l16 0"/><path d="M4 12l16 0"/><path d="M4 18l16 0"/></symbol>
+  <symbol id="i-pizza" viewBox="0 0 24 24"><path d="M12 21.5c-3.04 0 -5.952 -.714 -8.5 -1.983l8.5 -16.517l8.5 16.517a19.09 19.09 0 0 1 -8.5 1.983z"/><path d="M5.38 15.866a14.94 14.94 0 0 0 6.815 1.634a14.944 14.944 0 0 0 6.502 -1.479"/><path d="M13 11.01v-.01"/><path d="M11 14v-.01"/></symbol>
+  <symbol id="i-heladera" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/><path d="M5 10h14"/><path d="M9 13v3"/><path d="M9 6v1"/></symbol>
+  <symbol id="i-fuego" viewBox="0 0 24 24"><path d="M12 10.941c2.333 -3.308 .167 -7.823 -1 -8.941c0 3.395 -2.235 5.299 -3.667 6.706c-1.43 1.408 -2.333 3.621 -2.333 5.588c0 3.704 3.134 6.706 7 6.706s7 -3.002 7 -6.706c0 -1.712 -1.232 -4.403 -2.333 -5.588c-2.084 3.353 -3.257 3.353 -4.667 2.235"/></symbol>
+</svg>
+
+<header class="head" id="head">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="El nieto de Rogelio, inicio">
+      <img src="img/logo.jpg" alt="" width="46" height="46">
+      <div><b>El nieto de Rogelio</b><span>Pizzas artesanales listas para hornear</span></div>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#pizzas">Pizzas</a>
+      <a href="#como-se-hacen">Cómo se hacen</a>
+      <a href="#donde">Dónde comprar</a>
+      <a class="btn btn-carbon" href="https://ig.me/m/elnietoderogelio" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>Escribinos</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+<div class="menu-movil" id="menuMovil" data-lenis-prevent>
+  <a href="#pizzas">Pizzas</a>
+  <a href="#como-se-hacen">Cómo se hacen</a>
+  <a href="#donde">Dónde comprar</a>
+  <a class="btn btn-carbon" href="https://ig.me/m/elnietoderogelio" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>Escribinos</a>
+</div>
+
+<main>
+  <div id="arriba" style="position:absolute;top:0;height:24px;width:1px" aria-hidden="true"></div>
+  <section class="hero papel" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1>Freezer lleno, corazón contento.</h1>
+        <p>Pizzas y pizzetas artesanales, listas para hornear. Conseguilas en <strong>Donado 695, Bahía Blanca</strong>.</p>
+        <div class="ctas">
+          <a class="btn btn-carbon" href="#pizzas"><svg class="ico" aria-hidden="true"><use href="#i-bolsa"/></svg>Armá tu pedido</a>
+          <a class="btn btn-linea" href="https://www.google.com/maps/search/?api=1&query=Donado+695+Bah%C3%ADa+Blanca" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+        </div>
+      </div>
+      <div class="puerta">
+        <img src="img/hero-especial.jpg" alt="Pizza Especial de El nieto de Rogelio, envasada y lista para hornear, sobre el freezer" width="360" height="640" fetchpriority="high">
+        <div class="escarcha" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="carta" id="pizzas">
+    <div class="wrap">
+      <h2 class="titulo">Elegí tus pizzas</h2>
+      <p class="bajada">Agregalas al pedido y mandanoslo por Instagram. El precio y cuándo pasar a buscarlas lo charlamos por mensaje.</p>
+      <div class="lista" id="lista"></div>
+      <p class="nota-carta">Los sabores pueden cambiar según el día. Si buscás uno en especial, escribinos antes de pasar.</p>
+    </div>
+  </section>
+
+  <section class="taller" id="como-se-hacen">
+    <div class="wrap">
+      <div class="texto">
+        <h2 class="titulo">Inteligencia artesanal</h2>
+        <p>La masa se amasa a mano, el queso lo rallamos nosotros y cada pizza se arma una por una.</p>
+        <p><strong>Comprometidos con la calidad</strong>, para que la saques del freezer y la disfrutes recién horneada.</p>
+      </div>
+      <div class="fotos">
+        <figure class="alta"><img src="img/masa.jpg" alt="Bollo de masa casera apoyado sobre una asadera" width="361" height="640" loading="lazy"></figure>
+        <figure class="baja"><img src="img/rallado.jpg" alt="Rallando el queso en el taller" width="361" height="470" loading="lazy"></figure>
+        <figure class="baja"><img src="img/equipo.jpg" alt="El equipo preparando la masa en la mesa de trabajo" width="361" height="430" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="resolver papel" aria-labelledby="resolverT">
+    <div class="wrap">
+      <h2 class="titulo" id="resolverT">¿Cómo resolver tus comidas?</h2>
+      <p class="bajada">Tranqui, nosotros lo resolvemos.</p>
+      <ol class="pasos">
+        <li><span class="circ"><svg class="ico" aria-hidden="true"><use href="#i-bolsa"/></svg></span><div><h3>Elegís tus sabores</h3><p>Pasás por Donado 695 o nos mandás el pedido.</p></div></li>
+        <li><span class="circ"><svg class="ico" aria-hidden="true"><use href="#i-heladera"/></svg></span><div><h3>Las guardás en el freezer</h3><p>Siempre tenés una a mano para cuando no hay ganas de cocinar.</p></div></li>
+        <li><span class="circ"><svg class="ico" aria-hidden="true"><use href="#i-fuego"/></svg></span><div><h3>Al horno y a la mesa</h3><p>Vienen listas para hornear. Vos solo prendés el horno.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="donde" id="donde">
+    <div class="wrap">
+      <div>
+        <h2 class="titulo">Conseguilas en Donado 695</h2>
+        <p class="dir">Donado 695, Bahía Blanca</p>
+        <p>Las encontrás en Rogelio Pastas Frescas Artesanales.</p>
+        <div class="acciones">
+          <a class="btn btn-carbon" href="https://www.google.com/maps/search/?api=1&query=Donado+695+Bah%C3%ADa+Blanca" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+          <a class="btn btn-linea" href="tel:+542914539072"><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg>0291 453-9072</a>
+        </div>
+        <p class="aviso">Antes de pasar, escribinos y te decimos qué sabores hay y en qué horario.</p>
+      </div>
+      <div class="mapa">
+        <iframe title="Mapa: Donado 695, Bahía Blanca" src="https://maps.google.com/maps?q=Donado%20695%2C%20Bah%C3%ADa%20Blanca&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="marca" href="https://instagram.com/elnietoderogelio" target="_blank" rel="noopener">
+      <img src="img/logo.jpg" alt="" width="46" height="46" loading="lazy">
+      <div><b>El nieto de Rogelio</b><span>@elnietoderogelio</span></div>
+    </a>
+    <p class="zek">Propuesta de diseño por <a href="https://instagram.com/zek.webs" target="_blank" rel="noopener">ZEK Agencia Digital</a></p>
+  </div>
+</footer>
+
+<a class="dm" href="https://ig.me/m/elnietoderogelio" target="_blank" rel="noopener" aria-label="Escribinos por mensaje directo de Instagram">
+  <svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>
+  <span class="tip" aria-hidden="true">¿Te ayudamos? Escribinos<small>por Instagram, @elnietoderogelio</small></span>
+</a>
+
+<button class="carro-flot" id="carroFlot" aria-label="Ver tu pedido"><svg class="ico" aria-hidden="true"><use href="#i-bolsa"/></svg><span class="badge" id="badge">0</span></button>
+<button class="barra" id="barra"><svg class="ico" aria-hidden="true"><use href="#i-bolsa"/></svg><span id="barraTxt">Ver pedido (0)</span></button>
+
+<div class="velo" id="velo"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelT" data-lenis-prevent>
+  <div class="panel-cab">
+    <h2 id="panelT">Tu pedido</h2>
+    <button class="cerrar" id="cerrar" aria-label="Cerrar el pedido"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="panel-cuerpo">
+    <ul class="items" id="items"></ul>
+    <div class="vacio" id="vacio">
+      <svg class="ico" aria-hidden="true"><use href="#i-pizza"/></svg>
+      <p>Todavía no agregaste nada. Elegí tus pizzas de la carta.</p>
+      <a class="btn btn-linea" href="#pizzas" id="irCarta">Ver la carta</a>
+    </div>
+    <form class="form" id="form" novalidate>
+      <div class="campo" id="cNombre">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" autocomplete="name" required>
+        <span class="err">Poné tu nombre así sabemos de quién es el pedido.</span>
+      </div>
+      <div class="campo" id="cTel">
+        <label for="tel">Teléfono</label>
+        <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 291 555 1234" required>
+        <span class="err">Poné un teléfono para poder avisarte.</span>
+      </div>
+      <div class="campo">
+        <label for="cuando">¿Cuándo pasás a buscarlo? <span>(opcional)</span></label>
+        <input id="cuando" name="cuando" placeholder="Ej.: mañana a la tarde">
+      </div>
+      <div class="campo">
+        <label for="notas">Aclaraciones <span>(opcional)</span></label>
+        <textarea id="notas" name="notas" placeholder="Ej.: si no hay Especial, cambiala por Mozzarella"></textarea>
+      </div>
+      <p class="retiro"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Retirás en Donado 695, Bahía Blanca.</p>
+      <p class="listo" id="listo" role="status">Copiamos tu pedido. Pegalo en el chat de Instagram que se abrió y mandalo.</p>
+    </form>
+  </div>
+  <div class="panel-pie" id="panelPie">
+    <button class="btn btn-carbon" id="enviar" type="submit" form="form"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>Enviar pedido por Instagram</button>
+    <p class="alt">Copiamos el pedido y se abre el chat. También podés llamar al <a href="tel:+542914539072">0291 453-9072</a>.</p>
+  </div>
+</aside>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var IG_DM = 'https://ig.me/m/elnietoderogelio';
+
+  // ---------- portada: el deshielo arranca cuando la foto ya cargó ----------
+  var puerta = document.querySelector('.puerta'), fotoHero = puerta.querySelector('img');
+  function deshelar() { puerta.classList.add('lista'); }
+  if (fotoHero.complete) deshelar(); else { fotoHero.addEventListener('load', deshelar); fotoHero.addEventListener('error', deshelar); setTimeout(deshelar, 3000); }
+
+  // ---------- carta ----------
+  var CARTA = [
+    { id: 'especial', nombre: 'Especial', desc: 'Salsa, jamón, mozzarella, morrones y aceitunas.', img: 'img/p-especial.jpg', alt: 'Pizza Especial con jamón, morrones y aceitunas' },
+    { id: 'mozzarella', nombre: 'Mozzarella', desc: 'La clásica, con mozzarella.', img: 'img/p-mozzarella.jpg', alt: 'Pizza de mozzarella envasada' },
+    { id: 'cuatro-quesos', nombre: 'Cuatro quesos', desc: 'Cuatro quesos sobre la masa de la casa.', img: 'img/p-cuatro-quesos.jpg', alt: 'Pizza cuatro quesos envasada' },
+    { id: 'roquefort', nombre: 'Roquefort, pera y nuez', desc: 'Roquefort con pera y nuez.', img: 'img/p-roquefort.jpg', alt: 'Pizza de roquefort, pera y nuez' },
+    { id: 'salteado', nombre: 'Salteado al disco', desc: 'Con morrones salteados al disco.', img: 'img/p-salteado.jpg', alt: 'Pizza con salteado al disco de morrones' },
+    { id: 'pizzetas', nombre: 'Pizzetas', desc: 'Pizzetas artesanales, listas para hornear. Preguntanos los sabores.', img: null, alt: '' }
+  ];
+  var porId = {}; CARTA.forEach(function (p) { porId[p.id] = p; });
+
+  var pedido = {};
+  try { pedido = JSON.parse(localStorage.getItem('nieto-pedido') || '{}') || {}; } catch (e) { pedido = {}; }
+  Object.keys(pedido).forEach(function (k) { if (!porId[k] || !(pedido[k] > 0)) delete pedido[k]; });
+  function guardar() { try { localStorage.setItem('nieto-pedido', JSON.stringify(pedido)); } catch (e) {} }
+
+  var lista = document.getElementById('lista');
+  function icono(id) { return '<svg class="ico" aria-hidden="true"><use href="#' + id + '"/></svg>'; }
+  function control(id) {
+    var n = pedido[id] || 0, p = porId[id];
+    if (!n) return '<button class="btn btn-linea sumar" data-mas="' + id + '" aria-label="Agregar ' + p.nombre + ' al pedido">' + icono('i-mas') + 'Agregar</button>';
+    return '<span class="contador"><button data-menos="' + id + '" aria-label="Sacar una ' + p.nombre + '">' + icono('i-menos') + '</button>' +
+      '<output aria-live="polite" aria-label="Cantidad de ' + p.nombre + '">' + n + '</output>' +
+      '<button data-mas="' + id + '" aria-label="Sumar una ' + p.nombre + '">' + icono('i-mas') + '</button></span>';
+  }
+  lista.innerHTML = CARTA.map(function (p) {
+    var foto = p.img
+      ? '<div class="foto"><img src="' + p.img + '" alt="' + p.alt + '" loading="lazy"></div>'
+      : '<div class="foto icono papel">' + icono('i-pizza') + '</div>';
+    return '<article class="plato">' + foto + '<div><h3>' + p.nombre + '</h3><p>' + p.desc + '</p>' +
+      '<div class="pie"><span class="precio">Consultá el precio</span><span data-ctrl="' + p.id + '">' + control(p.id) + '</span></div></div></article>';
+  }).join('');
+
+  var items = document.getElementById('items'), vacio = document.getElementById('vacio');
+  var form = document.getElementById('form'), panelPie = document.getElementById('panelPie');
+  var badge = document.getElementById('badge'), barraTxt = document.getElementById('barraTxt');
+  function total() { return Object.keys(pedido).reduce(function (s, k) { return s + pedido[k]; }, 0); }
+
+  function pintar(cambio) {
+    document.querySelectorAll('[data-ctrl]').forEach(function (el) {
+      var id = el.getAttribute('data-ctrl');
+      var tenia = el.querySelector('.contador') !== null, tiene = (pedido[id] || 0) > 0;
+      if (tenia && tiene) el.querySelector('output').textContent = pedido[id];
+      else el.innerHTML = control(id);
+    });
+    var ids = Object.keys(pedido);
+    items.innerHTML = ids.map(function (id) {
+      var p = porId[id];
+      var mini = p.img ? '<img src="' + p.img + '" alt="">' : '<span class="mini papel">' + icono('i-pizza') + '</span>';
+      return '<li>' + mini + '<div><b>' + p.nombre + '</b><small>Consultá el precio</small></div>' + control(id) + '</li>';
+    }).join('');
+    var n = total();
+    vacio.hidden = n > 0; form.hidden = n === 0; panelPie.hidden = n === 0;
+    document.body.classList.toggle('con-pedido', n > 0);
+    badge.textContent = n; barraTxt.textContent = 'Ver pedido (' + n + ')';
+    if (cambio && !quieto) { badge.classList.remove('salta'); void badge.offsetWidth; badge.classList.add('salta'); }
+  }
+
+  document.addEventListener('click', function (e) {
+    var mas = e.target.closest('[data-mas]'), menos = e.target.closest('[data-menos]');
+    if (mas) { var id = mas.getAttribute('data-mas'); pedido[id] = (pedido[id] || 0) + 1; }
+    else if (menos) { var id2 = menos.getAttribute('data-menos'); pedido[id2] = (pedido[id2] || 0) - 1; if (pedido[id2] <= 0) delete pedido[id2]; }
+    else return;
+    var enLista = e.target.closest('[data-ctrl]');
+    guardar(); pintar(true);
+    document.getElementById('listo').classList.remove('ver');
+    // si el botón "Agregar" se transformó en contador, el foco pasa al "+"
+    if (enLista && mas) { var b = enLista.querySelector('[data-mas]'); if (b) b.focus(); }
+  });
+
+  // ---------- panel del pedido ----------
+  var panel = document.getElementById('panel'), velo = document.getElementById('velo');
+  var ultimoFoco = null;
+  function abrir() {
+    ultimoFoco = document.activeElement;
+    panel.classList.add('abierto'); velo.classList.add('abierto');
+    if (window.lenisInst) window.lenisInst.stop();
+    setTimeout(function () { document.getElementById('cerrar').focus(); }, 60);
+  }
+  function cerrar() {
+    panel.classList.remove('abierto'); velo.classList.remove('abierto');
+    if (window.lenisInst) window.lenisInst.start();
+    if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+  }
+  document.getElementById('carroFlot').addEventListener('click', abrir);
+  document.getElementById('barra').addEventListener('click', abrir);
+  document.getElementById('cerrar').addEventListener('click', cerrar);
+  document.getElementById('irCarta').addEventListener('click', cerrar);
+  velo.addEventListener('click', cerrar);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('abierto')) cerrar(); });
+
+  // datos del cliente, guardados para la próxima
+  ['nombre', 'tel', 'cuando', 'notas'].forEach(function (k) {
+    var el = document.getElementById(k);
+    try { var v = localStorage.getItem('nieto-' + k); if (v) el.value = v; } catch (e) {}
+    el.addEventListener('input', function () {
+      try { localStorage.setItem('nieto-' + k, el.value); } catch (e) {}
+      var c = el.closest('.campo'); if (c && el.value.trim()) c.classList.remove('error');
+    });
+  });
+
+  function copiarViejo(txt) {
+    var t = document.createElement('textarea'); t.value = txt; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select(); var ok = false; try { ok = document.execCommand('copy'); } catch (e) {} t.remove(); return ok;
+  }
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(txt).catch(function () { copiarViejo(txt); }); return; }
+    copiarViejo(txt);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = document.getElementById('nombre'), tel = document.getElementById('tel');
+    var malo = null;
+    [[nombre, 'cNombre'], [tel, 'cTel']].forEach(function (par) {
+      var vacioCampo = !par[0].value.trim() || (par[0] === tel && par[0].value.replace(/\D/g, '').length < 6);
+      document.getElementById(par[1]).classList.toggle('error', vacioCampo);
+      if (vacioCampo && !malo) malo = par[0];
+    });
+    if (malo) { malo.focus(); return; }
+    var lineas = ['¡Hola! Quiero hacer un pedido:'];
+    Object.keys(pedido).forEach(function (id) { lineas.push('- ' + pedido[id] + ' x ' + porId[id].nombre); });
+    lineas.push('', 'Nombre: ' + nombre.value.trim(), 'Teléfono: ' + tel.value.trim());
+    var cuando = document.getElementById('cuando').value.trim(), notas = document.getElementById('notas').value.trim();
+    lineas.push('Retiro en Donado 695' + (cuando ? ': ' + cuando : ''));
+    if (notas) lineas.push('Aclaraciones: ' + notas);
+    var txt = lineas.join('\n');
+    window.open(IG_DM, '_blank', 'noopener');
+    copiar(txt);
+    document.getElementById('listo').classList.add('ver');
+  });
+
+  pintar(false);
+
+  // ---------- encabezado y menú ----------
+  var head = document.getElementById('head');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { head.classList.toggle('solida', !en[0].isIntersecting); }).observe(document.getElementById('arriba'));
+  } else { head.classList.add('solida'); }
+
+  var menuBtn = document.getElementById('menuBtn'), menu = document.getElementById('menuMovil');
+  function menuToggle(abrirlo) {
+    menu.classList.toggle('abierto', abrirlo);
+    menuBtn.setAttribute('aria-expanded', abrirlo ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', abrirlo ? 'Cerrar menú' : 'Abrir menú');
+    if (abrirlo) head.classList.add('solida');
+  }
+  menuBtn.addEventListener('click', function () { menuToggle(!menu.classList.contains('abierto')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) menuToggle(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menuToggle(false); });
+
+  // ---------- scroll suave: Lenis 1.3.26, lerp 0.09, autoRaf ----------
+  if (!quieto) {
+    var sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js'; sc.async = true;
+    sc.onload = function () {
+      if (!window.Lenis) return;
+      var lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
+      window.lenisInst = lenis;
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+        var id = a.getAttribute('href'); if (id.length < 2) return;
+        var el = document.getElementById(id.slice(1)); if (!el) return;
+        e.preventDefault();
+        var h = parseInt(getComputedStyle(root).getPropertyValue('--head')) || 72;
+        lenis.scrollTo(el, { offset: id === '#inicio' ? -999 : -(h + 8), duration: 1.1 });
+        history.pushState(null, '', id);
+      });
+    };
+    document.head.appendChild(sc);
+  }
+})();
+</script>
+</body>
+</html>
