@@ -122,7 +122,7 @@ section[id]{scroll-margin-top:calc(var(--head) + 12px)}
   -webkit-mask-image:radial-gradient(circle at 50% 46%, transparent var(--deshielo), #000 calc(var(--deshielo) + 22%));
   mask-image:radial-gradient(circle at 50% 46%, transparent var(--deshielo), #000 calc(var(--deshielo) + 22%));
   animation:deshielo 2.2s cubic-bezier(0.77, 0, 0.175, 1) .5s forwards;animation-play-state:paused}
-.puerta.lista .escarcha{animation-play-state:running}
+.puerta.deshelada .escarcha{animation-play-state:running}
 @keyframes deshielo{to{--deshielo:130%}}
 
 @media (max-width:900px){
@@ -521,7 +521,7 @@ html.lenis,html.lenis body{height:auto}
 
   // ---------- portada: el deshielo arranca cuando la foto ya cargó ----------
   var puerta = document.querySelector('.puerta'), fotoHero = puerta.querySelector('img');
-  function deshelar() { puerta.classList.add('lista'); }
+  function deshelar() { puerta.classList.add('deshelada'); }
   if (fotoHero.complete) deshelar(); else { fotoHero.addEventListener('load', deshelar); fotoHero.addEventListener('error', deshelar); setTimeout(deshelar, 3000); }
 
   // ---------- carta ----------
